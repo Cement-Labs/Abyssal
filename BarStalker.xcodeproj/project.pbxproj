@@ -8,18 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		C66CABA42A38871500E4D8E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CABA32A38871500E4D8E6 /* AppDelegate.swift */; };
-		C66CABA62A38871500E4D8E6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CABA52A38871500E4D8E6 /* ViewController.swift */; };
 		C66CABA82A38871500E4D8E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C66CABA72A38871500E4D8E6 /* Assets.xcassets */; };
 		C66CABAB2A38871500E4D8E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66CABA92A38871500E4D8E6 /* Main.storyboard */; };
+		C66CABB32A388FBD00E4D8E6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CABB22A388FBD00E4D8E6 /* ViewController.swift */; };
+		C66CABB52A3893B000E4D8E6 /* BarStalker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CABB42A3893B000E4D8E6 /* BarStalker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C66CABA02A38871500E4D8E6 /* BarStalker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BarStalker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C66CABA32A38871500E4D8E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C66CABA52A38871500E4D8E6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C66CABA72A38871500E4D8E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C66CABAA2A38871500E4D8E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C66CABAC2A38871500E4D8E6 /* BarStalker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BarStalker.entitlements; sourceTree = "<group>"; };
+		C66CABB22A388FBD00E4D8E6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Quotes/ViewController.swift; sourceTree = "<group>"; };
+		C66CABB42A3893B000E4D8E6 /* BarStalker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarStalker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +55,8 @@
 			isa = PBXGroup;
 			children = (
 				C66CABA32A38871500E4D8E6 /* AppDelegate.swift */,
-				C66CABA52A38871500E4D8E6 /* ViewController.swift */,
+				C66CABB22A388FBD00E4D8E6 /* ViewController.swift */,
+				C66CABB42A3893B000E4D8E6 /* BarStalker.swift */,
 				C66CABA72A38871500E4D8E6 /* Assets.xcassets */,
 				C66CABA92A38871500E4D8E6 /* Main.storyboard */,
 				C66CABAC2A38871500E4D8E6 /* BarStalker.entitlements */,
@@ -131,7 +134,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C66CABA62A38871500E4D8E6 /* ViewController.swift in Sources */,
+				C66CABB52A3893B000E4D8E6 /* BarStalker.swift in Sources */,
+				C66CABB32A388FBD00E4D8E6 /* ViewController.swift in Sources */,
 				C66CABA42A38871500E4D8E6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,6 +284,7 @@
 				DEVELOPMENT_TEAM = 7XRF3J9RS4;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -307,6 +312,7 @@
 				DEVELOPMENT_TEAM = 7XRF3J9RS4;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
