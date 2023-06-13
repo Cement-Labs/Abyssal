@@ -9,7 +9,8 @@ import Cocoa
 
 class ViewController: NSViewController {
 
-    override func viewDidLoad() {
+    override func viewDidLoad(
+    ) {
         super.viewDidLoad()
         // Do view setup here.
     }
@@ -19,13 +20,21 @@ class ViewController: NSViewController {
 extension ViewController {
     
     // MARK: Storyboard instantiation
-    static func freshController() -> ViewController {
+    static func freshController(
+    ) -> ViewController {
         //1.
-        let storyboard = NSStoryboard(name: NSStoryboard.Name("Main"), bundle: nil)
+        let storyboard = NSStoryboard(
+            name: NSStoryboard.Name("Main"),
+            bundle: nil
+        )
+        
         //2.
         let identifier = NSStoryboard.SceneIdentifier("ViewController")
+        
         //3.
-        guard let viewcontroller = storyboard.instantiateController(withIdentifier: identifier) as? ViewController else {
+        guard let viewcontroller = storyboard.instantiateController(
+            withIdentifier: identifier
+        ) as? ViewController else {
             fatalError("Can't find ViewController")
         }
         return viewcontroller
@@ -36,11 +45,15 @@ extension ViewController {
 // MARK: Actions
 extension ViewController {
     
-    @IBAction func quit(_ sender: NSButton) {
+    @IBAction func quit(
+        _ sender: NSButton
+    ) {
         NSApplication.shared.terminate(sender)
     }
     
-    @IBAction func reset(_ sender: NSButton) {
+    @IBAction func reset(
+        _ sender: NSButton
+    ) {
         
     }
     
