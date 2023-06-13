@@ -37,6 +37,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 strongSelf.closePopover(sender: event)
             }
         }
+        
+        StatusBarController.setupSeparator()
     }
     
     

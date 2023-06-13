@@ -13,6 +13,7 @@ class ViewController: NSViewController {
     ) {
         super.viewDidLoad()
         // Do view setup here.
+        StatusBarController.setupSeparator()
     }
     
 }
@@ -22,16 +23,16 @@ extension ViewController {
     // MARK: Storyboard instantiation
     static func freshController(
     ) -> ViewController {
-        //1.
+        // 1.
         let storyboard = NSStoryboard(
             name: NSStoryboard.Name("Main"),
             bundle: nil
         )
         
-        //2.
+        // 2.
         let identifier = NSStoryboard.SceneIdentifier("ViewController")
         
-        //3.
+        // 3.
         guard let viewcontroller = storyboard.instantiateController(
             withIdentifier: identifier
         ) as? ViewController else {
@@ -54,7 +55,19 @@ extension ViewController {
     @IBAction func reset(
         _ sender: NSButton
     ) {
-        
+        print("reset")
+    }
+    
+    @IBAction func testHide(
+        _ sender: NSSwitch
+    ) {
+        switch sender.state {
+        case .on:
+            StatusBarController.enableCollapse()
+        case .off:
+            StatusBarController.disableCollapse()
+        default: break
+        }
     }
     
 }

@@ -12,6 +12,7 @@
 		C66CABAB2A38871500E4D8E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66CABA92A38871500E4D8E6 /* Main.storyboard */; };
 		C66CABB32A388FBD00E4D8E6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CABB22A388FBD00E4D8E6 /* ViewController.swift */; };
 		C66CABB72A389F2500E4D8E6 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CABB62A389F2500E4D8E6 /* EventMonitor.swift */; };
+		C6DEC52A2A38BF6C00943448 /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DEC5292A38BF6C00943448 /* StatusBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,9 +20,10 @@
 		C66CABA32A38871500E4D8E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C66CABA72A38871500E4D8E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C66CABAA2A38871500E4D8E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C66CABAC2A38871500E4D8E6 /* BarStalker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BarStalker.entitlements; sourceTree = "<group>"; };
+		C66CABAC2A38871500E4D8E6 /* Stalker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Stalker.entitlements; sourceTree = "<group>"; };
 		C66CABB22A388FBD00E4D8E6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Quotes/ViewController.swift; sourceTree = "<group>"; };
 		C66CABB62A389F2500E4D8E6 /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
+		C6DEC5292A38BF6C00943448 /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,7 +40,8 @@
 		C66CAB972A38871500E4D8E6 = {
 			isa = PBXGroup;
 			children = (
-				C66CABA22A38871500E4D8E6 /* BarStalker */,
+				C66CABAC2A38871500E4D8E6 /* Stalker.entitlements */,
+				C66CABA22A38871500E4D8E6 /* Stalker */,
 				C66CABA12A38871500E4D8E6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -51,17 +54,17 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C66CABA22A38871500E4D8E6 /* BarStalker */ = {
+		C66CABA22A38871500E4D8E6 /* Stalker */ = {
 			isa = PBXGroup;
 			children = (
 				C66CABA32A38871500E4D8E6 /* AppDelegate.swift */,
+				C6DEC5292A38BF6C00943448 /* StatusBarController.swift */,
 				C66CABB22A388FBD00E4D8E6 /* ViewController.swift */,
 				C66CABA72A38871500E4D8E6 /* Assets.xcassets */,
 				C66CABB62A389F2500E4D8E6 /* EventMonitor.swift */,
 				C66CABA92A38871500E4D8E6 /* Main.storyboard */,
-				C66CABAC2A38871500E4D8E6 /* BarStalker.entitlements */,
 			);
-			path = BarStalker;
+			path = Stalker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -99,7 +102,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C66CAB9B2A38871500E4D8E6 /* Build configuration list for PBXProject "BarStalker" */;
+			buildConfigurationList = C66CAB9B2A38871500E4D8E6 /* Build configuration list for PBXProject "Stalker" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -135,6 +138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C66CABB72A389F2500E4D8E6 /* EventMonitor.swift in Sources */,
+				C6DEC52A2A38BF6C00943448 /* StatusBarController.swift in Sources */,
 				C66CABB32A388FBD00E4D8E6 /* ViewController.swift in Sources */,
 				C66CABA42A38871500E4D8E6 /* AppDelegate.swift in Sources */,
 			);
@@ -277,7 +281,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = BarStalker/BarStalker.entitlements;
+				CODE_SIGN_ENTITLEMENTS = BarStalker.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -305,7 +310,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = BarStalker/BarStalker.entitlements;
+				CODE_SIGN_ENTITLEMENTS = BarStalker.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -331,7 +337,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C66CAB9B2A38871500E4D8E6 /* Build configuration list for PBXProject "BarStalker" */ = {
+		C66CAB9B2A38871500E4D8E6 /* Build configuration list for PBXProject "Stalker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C66CABAD2A38871500E4D8E6 /* Debug */,

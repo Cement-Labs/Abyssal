@@ -687,53 +687,70 @@
             <objects>
                 <viewController storyboardIdentifier="ViewController" id="XfG-lQ-9wD" customClass="ViewController" customModule="BarStalker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="145"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button imageHugsTitle="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HzU-Y0-nE5">
-                                <rect key="frame" x="124" y="0.0" width="78" height="38"/>
+                            <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="cgp-nF-rry">
+                                <rect key="frame" x="17" y="16" width="451" height="51"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" id="C9k-29-8bb">
+                                    <rect key="frame" x="4" y="5" width="443" height="43"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button imageHugsTitle="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p3a-vu-AXK">
+                                            <rect key="frame" x="243" y="15" width="58" height="14"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                            <buttonCell key="cell" type="bevel" title="Quit" bezelStyle="regularSquare" imagePosition="left" alignment="left" imageScaling="proportionallyDown" inset="2" id="PEl-Mr-Acb">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                                <imageReference key="image" image="xmark.circle.fill" catalog="system" symbolScale="default" renderingMode="hierarchical-single">
+                                                    <hierarchicalColors>
+                                                        <color name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                                                        <color name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                    </hierarchicalColors>
+                                                </imageReference>
+                                            </buttonCell>
+                                            <color key="contentTintColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                                            <connections>
+                                                <action selector="quit:" target="XfG-lQ-9wD" id="FTX-0l-U4o"/>
+                                            </connections>
+                                        </button>
+                                        <button imageHugsTitle="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L93-BV-4Mx">
+                                            <rect key="frame" x="148" y="15" width="58" height="14"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                            <buttonCell key="cell" type="bevel" title="Reset" bezelStyle="regularSquare" imagePosition="left" alignment="right" imageScaling="proportionallyDown" inset="2" id="A9y-OP-zrz">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                                <imageReference key="image" image="arrow.uturn.down.circle.fill" catalog="system" symbolScale="default" renderingMode="hierarchical-single">
+                                                    <hierarchicalColors>
+                                                        <color name="AccentColor"/>
+                                                        <color name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                    </hierarchicalColors>
+                                                </imageReference>
+                                            </buttonCell>
+                                            <color key="contentTintColor" name="AccentColor"/>
+                                            <connections>
+                                                <action selector="reset:" target="XfG-lQ-9wD" id="4VZ-d0-B7k"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </view>
+                            </box>
+                            <switch horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" baseWritingDirection="leftToRight" alignment="left" translatesAutoresizingMaskIntoConstraints="NO" id="btq-5H-JUt">
+                                <rect key="frame" x="219" y="101" width="42" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="bevel" title="Reset" bezelStyle="rounded" imagePosition="leading" alignment="right" imageScaling="proportionallyDown" inset="2" id="cZV-5v-ohv">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                    <imageReference key="image" image="arrow.uturn.down.circle.fill" catalog="system" symbolScale="default" renderingMode="hierarchical-single">
-                                        <hierarchicalColors>
-                                            <color name="AccentColor"/>
-                                            <color name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
-                                            <color name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
-                                        </hierarchicalColors>
-                                    </imageReference>
-                                </buttonCell>
-                                <color key="contentTintColor" name="AccentColor"/>
                                 <connections>
-                                    <action selector="reset:" target="XfG-lQ-9wD" id="A09-T0-7v4"/>
+                                    <action selector="testHide:" target="XfG-lQ-9wD" id="W43-OA-Itm"/>
                                 </connections>
-                            </button>
-                            <button imageHugsTitle="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p3a-vu-AXK">
-                                <rect key="frame" x="284" y="14" width="58" height="14"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="bevel" title="Quit" bezelStyle="regularSquare" imagePosition="left" alignment="left" imageScaling="proportionallyDown" inset="2" id="PEl-Mr-Acb">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                    <imageReference key="image" image="xmark.circle.fill" catalog="system" symbolScale="default" renderingMode="hierarchical-single">
-                                        <hierarchicalColors>
-                                            <color name="systemRedColor" catalog="System" colorSpace="catalog"/>
-                                            <color name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
-                                            <color name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
-                                        </hierarchicalColors>
-                                    </imageReference>
-                                </buttonCell>
-                                <color key="contentTintColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
-                                <connections>
-                                    <action selector="quit:" target="XfG-lQ-9wD" id="FTX-0l-U4o"/>
-                                </connections>
-                            </button>
+                            </switch>
                         </subviews>
                     </view>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="75" y="592.5"/>
         </scene>
     </scenes>
     <resources>
