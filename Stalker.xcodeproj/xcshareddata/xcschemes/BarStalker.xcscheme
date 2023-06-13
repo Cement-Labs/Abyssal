@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C66CAB9F2A38871500E4D8E6"
-               BuildableName = "BarStalker.app"
-               BlueprintName = "BarStalker"
+               BuildableName = "Stalker.app"
+               BlueprintName = "Stalker"
                ReferencedContainer = "container:Stalker.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -44,8 +44,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C66CAB9F2A38871500E4D8E6"
-            BuildableName = "BarStalker.app"
-            BlueprintName = "BarStalker"
+            BuildableName = "Stalker.app"
+            BlueprintName = "Stalker"
             ReferencedContainer = "container:Stalker.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -61,8 +61,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C66CAB9F2A38871500E4D8E6"
-            BuildableName = "BarStalker.app"
-            BlueprintName = "BarStalker"
+            BuildableName = "Stalker.app"
+            BlueprintName = "Stalker"
             ReferencedContainer = "container:Stalker.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

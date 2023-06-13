@@ -13,7 +13,6 @@ class ViewController: NSViewController {
     ) {
         super.viewDidLoad()
         // Do view setup here.
-        StatusBarController.setupSeparator()
     }
     
 }
@@ -63,9 +62,9 @@ extension ViewController {
     ) {
         switch sender.state {
         case .on:
-            StatusBarController.enableCollapse()
+            AppDelegate.statusBarController.enableCollapse()
         case .off:
-            StatusBarController.disableCollapse()
+            AppDelegate.statusBarController.disableCollapse()
         default: break
         }
     }

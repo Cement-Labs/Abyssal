@@ -6,26 +6,21 @@
 //
 
 import Cocoa
+import AppKit
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
     
-    let statusItem = NSStatusBar.system.statusItem(
-        withLength:NSStatusItem.variableLength
-    )
-    
     let popover = NSPopover()
     
-    var eventMonitor: EventMonitor?
+    static let statusBarController = StatusBarController()
     
+    var eventMonitor: EventMonitor?
     
     func applicationDidFinishLaunching(
         _ aNotification: Notification
     ) {
-        if let button = statusItem.button {
-            button.image = NSImage(named:NSImage.Name("StatusBarButtonImage"))
-            button.action = #selector(togglePopover(_:))
-        }
+        AppDelegate.statusBarController.setup()
         
         popover.contentViewController = ViewController.freshController()
         
@@ -34,11 +29,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                    .rightMouseDown]
         ) { [weak self] event in
             if let strongSelf = self, strongSelf.popover.isShown {
-                strongSelf.closePopover(sender: event)
+                strongSelf.closePopover(event)
             }
         }
-        
-        StatusBarController.setupSeparator()
     }
     
     
@@ -46,6 +39,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         _ aNotification: Notification
     ) {
         // Insert code here to tear down your application
+        
+        AppDelegate.statusBarController.stopTimer()
     }
     
     func applicationSupportsSecureRestorableState(
@@ -55,19 +50,29 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @objc func togglePopover(
-        _ sender: Any?
+        _ sender: NSButton
     ) {
         if popover.isShown {
-            closePopover(sender: sender)
+            closePopover(sender)
         } else {
-            showPopover(sender: sender)
+            showPopover(sender)
+        }
+    }
+    
+    @objc func toggleCollapse(
+        _ sender: NSButton
+    ) {
+        if AppDelegate.statusBarController.collapsed {
+            AppDelegate.statusBarController.disableCollapse()
+        } else {
+            AppDelegate.statusBarController.enableCollapse()
         }
     }
     
     func showPopover(
-        sender: Any?
+        _ sender: Any?
     ) {
-        if let button = statusItem.button {
+        if let button = sender as? NSButton {
             popover.show(
                 relativeTo: button.bounds,
                 of: button,
@@ -79,7 +84,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func closePopover(
-        sender: Any?
+        _ sender: Any?
     ) {
         popover.performClose(
             sender
