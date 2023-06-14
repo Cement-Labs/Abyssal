@@ -59,16 +59,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    @objc func toggleCollapse(
-        _ sender: NSButton
-    ) {
-        if AppDelegate.statusBarController.collapsed {
-            AppDelegate.statusBarController.disableCollapse()
-        } else {
-            AppDelegate.statusBarController.enableCollapse()
-        }
-    }
-    
     func showPopover(
         _ sender: Any?
     ) {

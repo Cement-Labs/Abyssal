@@ -14,6 +14,7 @@
 		C66CABB72A389F2500E4D8E6 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CABB62A389F2500E4D8E6 /* EventMonitor.swift */; };
 		C6DEC52A2A38BF6C00943448 /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DEC5292A38BF6C00943448 /* StatusBarController.swift */; };
 		C6DEC52C2A38CDE500943448 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DEC52B2A38CDE500943448 /* Helper.swift */; };
+		C6DEC52F2A39C83F00943448 /* NSView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DEC52E2A39C83F00943448 /* NSView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		C66CABB62A389F2500E4D8E6 /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 		C6DEC5292A38BF6C00943448 /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
 		C6DEC52B2A38CDE500943448 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		C6DEC52E2A39C83F00943448 /* NSView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 		C66CABA22A38871500E4D8E6 /* Stalker */ = {
 			isa = PBXGroup;
 			children = (
+				C6DEC52D2A39C83100943448 /* Extensions */,
 				C66CABA32A38871500E4D8E6 /* AppDelegate.swift */,
 				C6DEC52B2A38CDE500943448 /* Helper.swift */,
 				C6DEC5292A38BF6C00943448 /* StatusBarController.swift */,
@@ -68,6 +71,14 @@
 				C66CABA92A38871500E4D8E6 /* Main.storyboard */,
 			);
 			path = Stalker;
+			sourceTree = "<group>";
+		};
+		C6DEC52D2A39C83100943448 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C6DEC52E2A39C83F00943448 /* NSView+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,6 +156,7 @@
 				C6DEC52C2A38CDE500943448 /* Helper.swift in Sources */,
 				C66CABB32A388FBD00E4D8E6 /* ViewController.swift in Sources */,
 				C66CABA42A38871500E4D8E6 /* AppDelegate.swift in Sources */,
+				C6DEC52F2A39C83F00943448 /* NSView+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
