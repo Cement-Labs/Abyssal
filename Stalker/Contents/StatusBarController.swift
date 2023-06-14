@@ -13,7 +13,7 @@ class StatusBarController {
 	
 	var timer: Timer?
 	
-	// MARK: Constants
+	// MARK: - Constants
 	
 	static let COLLAPSE_DISABLED_LENGTH: 	CGFloat  = 2
 	
@@ -31,7 +31,7 @@ class StatusBarController {
 	
 	static let EMPTY_ICON: 		NSImage? = NSImage(named:NSImage.Name("SepSpace"))
 	
-	// MARK: Icons
+	// MARK: - Icons
 	
 	// Actual separators
 	
@@ -78,7 +78,7 @@ class StatusBarController {
 		}
 	}
 	
-	// MARK: Methods
+	// MARK: - Methods
 	
 	private func repoint() {
 		seps.sort {
@@ -107,7 +107,7 @@ class StatusBarController {
 	
 	private func saveSepsOrder() {
 		let sepsOrder: [Int?] = [seps.firstIndex(of: sep1), seps.firstIndex(of: sep2), seps.firstIndex(of: sep3)]
-		Data.sepsOrder(sepsOrder)
+		Data.sepsOrder = sepsOrder
 	}
 	
 	func setup() {
@@ -190,6 +190,32 @@ class StatusBarController {
 				ratio: StatusBarController.LERP_RATIO
 			)
 		}
+	}
+	
+	// MARK: - Show / hide icons
+	
+	func showHead() {
+		self.tail.isVisible = true
+	}
+	
+	func hideHead() {
+		self.tail.isVisible = false
+	}
+	
+	func showSeparator() {
+		self.tail.isVisible = true
+	}
+	
+	func hideSeparator() {
+		self.tail.isVisible = false
+	}
+	
+	func showTail() {
+		self.tail.isVisible = true
+	}
+	
+	func hideTail() {
+		self.tail.isVisible = false
 	}
 	
 }

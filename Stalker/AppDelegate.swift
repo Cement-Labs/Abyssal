@@ -82,12 +82,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func showPopover(
         _ sender: Any?
     ) {
-        if let button = sender as? NSButton {
+        if let button = AppDelegate.statusBarController.head.button ?? sender as? NSButton {
             popover.show(
-                relativeTo: button.bounds,
-                of: button,
-                preferredEdge: NSRectEdge.minY
+				relativeTo: 	button.bounds,
+				of: 			button,
+                preferredEdge: 	NSRectEdge.minY
             )
+			
+			if let window = popover.contentViewController?.view.window {
+				// Activate the popover window
+				window.becomeKey()
+			}
         }
         
         eventMonitor?.start()

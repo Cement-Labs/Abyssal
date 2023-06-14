@@ -16,6 +16,9 @@
 		C6DEC52C2A38CDE500943448 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DEC52B2A38CDE500943448 /* Helper.swift */; };
 		C6DEC52F2A39C83F00943448 /* NSView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DEC52E2A39C83F00943448 /* NSView+Extension.swift */; };
 		C6DEC5312A39EE0A00943448 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DEC5302A39EE0A00943448 /* Data.swift */; };
+		C6DEC5332A3A048B00943448 /* NSSwitch+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DEC5322A3A048B00943448 /* NSSwitch+Extension.swift */; };
+		C6DEC5352A3A052700943448 /* NSButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DEC5342A3A052700943448 /* NSButton+Extension.swift */; };
+		C6DEC53D2A3A0E8900943448 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DEC53C2A3A0E8900943448 /* Animations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,9 @@
 		C6DEC52B2A38CDE500943448 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		C6DEC52E2A39C83F00943448 /* NSView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+Extension.swift"; sourceTree = "<group>"; };
 		C6DEC5302A39EE0A00943448 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		C6DEC5322A3A048B00943448 /* NSSwitch+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSwitch+Extension.swift"; sourceTree = "<group>"; };
+		C6DEC5342A3A052700943448 /* NSButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSButton+Extension.swift"; sourceTree = "<group>"; };
+		C6DEC53C2A3A0E8900943448 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,15 +69,14 @@
 		C66CABA22A38871500E4D8E6 /* Stalker */ = {
 			isa = PBXGroup;
 			children = (
+				C6DEC5392A3A0B2300943448 /* Contents */,
+				C6DEC5372A3A05E200943448 /* Infrastructures */,
+				C6DEC5362A3A05D300943448 /* Events */,
 				C6DEC52D2A39C83100943448 /* Extensions */,
 				C66CABA32A38871500E4D8E6 /* AppDelegate.swift */,
-				C6DEC52B2A38CDE500943448 /* Helper.swift */,
-				C6DEC5292A38BF6C00943448 /* StatusBarController.swift */,
 				C66CABB22A388FBD00E4D8E6 /* ViewController.swift */,
 				C66CABA72A38871500E4D8E6 /* Assets.xcassets */,
-				C66CABB62A389F2500E4D8E6 /* EventMonitor.swift */,
 				C66CABA92A38871500E4D8E6 /* Main.storyboard */,
-				C6DEC5302A39EE0A00943448 /* Data.swift */,
 			);
 			path = Stalker;
 			sourceTree = "<group>";
@@ -80,8 +85,36 @@
 			isa = PBXGroup;
 			children = (
 				C6DEC52E2A39C83F00943448 /* NSView+Extension.swift */,
+				C6DEC5322A3A048B00943448 /* NSSwitch+Extension.swift */,
+				C6DEC5342A3A052700943448 /* NSButton+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C6DEC5362A3A05D300943448 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				C66CABB62A389F2500E4D8E6 /* EventMonitor.swift */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		C6DEC5372A3A05E200943448 /* Infrastructures */ = {
+			isa = PBXGroup;
+			children = (
+				C6DEC52B2A38CDE500943448 /* Helper.swift */,
+				C6DEC5302A39EE0A00943448 /* Data.swift */,
+				C6DEC53C2A3A0E8900943448 /* Animations.swift */,
+			);
+			path = Infrastructures;
+			sourceTree = "<group>";
+		};
+		C6DEC5392A3A0B2300943448 /* Contents */ = {
+			isa = PBXGroup;
+			children = (
+				C6DEC5292A38BF6C00943448 /* StatusBarController.swift */,
+			);
+			path = Contents;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,12 +187,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6DEC53D2A3A0E8900943448 /* Animations.swift in Sources */,
 				C6DEC5312A39EE0A00943448 /* Data.swift in Sources */,
 				C66CABB72A389F2500E4D8E6 /* EventMonitor.swift in Sources */,
 				C6DEC52A2A38BF6C00943448 /* StatusBarController.swift in Sources */,
 				C6DEC52C2A38CDE500943448 /* Helper.swift in Sources */,
 				C66CABB32A388FBD00E4D8E6 /* ViewController.swift in Sources */,
 				C66CABA42A38871500E4D8E6 /* AppDelegate.swift in Sources */,
+				C6DEC5332A3A048B00943448 /* NSSwitch+Extension.swift in Sources */,
+				C6DEC5352A3A052700943448 /* NSButton+Extension.swift in Sources */,
 				C6DEC52F2A39C83F00943448 /* NSView+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
