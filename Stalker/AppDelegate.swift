@@ -48,6 +48,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     ) -> Bool {
         return true
     }
+	
+	@objc func toggle(
+		_ sender: NSButton
+	) {
+		if Helper.Keyboard.option {
+			togglePopover(sender)
+		} else {
+			toggleCollapse(sender)
+		}
+	}
+	
+	@objc func toggleCollapse(
+		_ sender: NSButton
+	) {
+		if AppDelegate.statusBarController.collapsed {
+			AppDelegate.statusBarController.disableCollapse()
+		} else {
+			AppDelegate.statusBarController.enableCollapse()
+		}
+	}
     
     @objc func togglePopover(
         _ sender: NSButton

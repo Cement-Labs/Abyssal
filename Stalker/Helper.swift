@@ -10,6 +10,7 @@ import ApplicationServices
 import AppKit
 
 class Helper {
+	
     static func lerp(
         a: CGFloat,
         b: CGFloat,
@@ -26,4 +27,17 @@ class Helper {
         guard #available(macOS 12, *) else { return false }
         return NSScreen.main?.safeAreaInsets.top != 0
     }
+	
+	class Keyboard {
+		
+		static var command: Bool {
+			return NSEvent.modifierFlags.contains(.command)
+		}
+		
+		static var option: Bool {
+			return NSEvent.modifierFlags.contains(.option)
+		}
+		
+	}
+	
 }

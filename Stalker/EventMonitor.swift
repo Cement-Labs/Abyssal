@@ -6,6 +6,7 @@
 //
 
 import Cocoa
+import AppKit
 
 public class EventMonitor {
   private var monitor: Any?

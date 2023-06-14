@@ -12,7 +12,6 @@ class ViewController: NSViewController {
     override func viewDidLoad(
     ) {
         super.viewDidLoad()
-        // Do view setup here.
     }
     
 }
@@ -20,53 +19,35 @@ class ViewController: NSViewController {
 extension ViewController {
     
     // MARK: Storyboard instantiation
+	
     static func freshController(
     ) -> ViewController {
-        // 1.
         let storyboard = NSStoryboard(
             name: NSStoryboard.Name("Main"),
             bundle: nil
         )
         
-        // 2.
         let identifier = NSStoryboard.SceneIdentifier("ViewController")
         
-        // 3.
         guard let viewcontroller = storyboard.instantiateController(
             withIdentifier: identifier
         ) as? ViewController else {
-            fatalError("Can't find ViewController")
+            fatalError("Can not find ViewController")
         }
+		
         return viewcontroller
     }
     
 }
 
-// MARK: Actions
 extension ViewController {
+	
+	// MARK: Actions
     
     @IBAction func quit(
         _ sender: NSButton
     ) {
-        NSApplication.shared.terminate(sender)
-    }
-    
-    @IBAction func reset(
-        _ sender: NSButton
-    ) {
-        print("reset")
-    }
-    
-    @IBAction func testHide(
-        _ sender: NSSwitch
-    ) {
-        switch sender.state {
-        case .on:
-            AppDelegate.statusBarController.enableCollapse()
-        case .off:
-            AppDelegate.statusBarController.disableCollapse()
-        default: break
-        }
+		NSApplication.shared.terminate(sender)
     }
     
 }
