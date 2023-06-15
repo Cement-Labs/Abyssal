@@ -7,6 +7,7 @@
 
 import Foundation
 import AppKit
+import LaunchAtLogin
 
 enum Data {
 	
@@ -16,17 +17,11 @@ enum Data {
 		
 		// MARK: - Booleans
 		
-		static let AUTO_HIDES_AFTER_TIMEOUT: String = "autoHides"
+		static let AUTO_HIDES_AFTER_TIMEOUT: 	String = "autoHides"
 		
-		static let USE_ALWAYS_HIDE_AREA: String = "alwaysHide"
+		static let USE_ALWAYS_HIDE_AREA: 		String = "alwaysHide"
 		
-		static let STARTS_WITH_MACOS: String = "startsWithSystem"
-		
-		// MARK: - Numbers
-		
-		static let MAX_ICON_WIDTH: String = "maxIconWidth"
-		
-		static let AUTO_HIDE_TIMEOUT: String = "timeout"
+		static let REDUCE_ANIMATION: 			String = "reduceAnimation"
 		
 	}
 	
@@ -45,49 +40,28 @@ enum Data {
 		}
 	}
 	
-	static var autoHidesAfterTimeout: Bool {
-		get {
-			return UserDefaults.standard.bool(
-				forKey: Keys.AUTO_HIDES_AFTER_TIMEOUT
-			)
-		}
+	static var autoHides: Bool {
+		get { return UserDefaults.standard.bool(forKey: Keys.AUTO_HIDES_AFTER_TIMEOUT) }
 		
-		set {
-			UserDefaults.standard.set(
-				newValue,
-				forKey: Keys.AUTO_HIDES_AFTER_TIMEOUT
-			)
-		}
+		set { UserDefaults.standard.set(newValue, forKey: Keys.AUTO_HIDES_AFTER_TIMEOUT) }
 	}
 	
 	static var useAlwaysHideArea: Bool {
-		get {
-			return UserDefaults.standard.bool(
-				forKey: Keys.USE_ALWAYS_HIDE_AREA
-			)
-		}
+		get { return UserDefaults.standard.bool(forKey: Keys.USE_ALWAYS_HIDE_AREA) }
 		
-		set {
-			UserDefaults.standard.set(
-				newValue,
-				forKey: Keys.USE_ALWAYS_HIDE_AREA
-			)
-		}
+		set { UserDefaults.standard.set(newValue, forKey: Keys.USE_ALWAYS_HIDE_AREA) }
 	}
 	
 	static var startsWithMacos: Bool {
-		get {
-			return UserDefaults.standard.bool(
-				forKey: Keys.STARTS_WITH_MACOS
-			)
-		}
+		get { return LaunchAtLogin.isEnabled }
 		
-		set {
-			UserDefaults.standard.set(
-				newValue,
-				forKey: Keys.STARTS_WITH_MACOS
-			)
-		}
+		set { LaunchAtLogin.isEnabled = newValue }
+	}
+	
+	static var reduceAnimation: Bool {
+		get { return UserDefaults.standard.bool(forKey: Keys.REDUCE_ANIMATION) }
+		
+		set { UserDefaults.standard.set(newValue, forKey: Keys.REDUCE_ANIMATION) }
 	}
 	
 }

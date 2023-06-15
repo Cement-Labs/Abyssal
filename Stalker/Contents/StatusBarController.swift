@@ -9,21 +9,23 @@ import AppKit
 
 class StatusBarController {
 	
+	var mouseAbove: Bool {
+		return Helper.Mouse.above(head.button?.origin)
+	}
+	
 	var collapsed: Bool = false
 	
 	var timer: Timer?
 	
 	// MARK: - Constants
 	
-	static let COLLAPSE_DISABLED_LENGTH: 	CGFloat  = 2
+	static let COLLAPSE_DISABLED_LENGTH: 	CGFloat = 2
 	
-	static let COLLAPSE_IGNORED_LENGTH: 	CGFloat  = 52
+	static let COLLAPSE_IGNORED_LENGTH: 	CGFloat = 52
 	
-	static let COLLAPSE_ENABLED_LENGTH: 	CGFloat  = 10000
+	static let NOTCH_DISABLED_AREA_WIDTH:	CGFloat = 290
 	
-	static let LERP_RATIO: CGFloat = 0.079
-	
-	static let HEAD_ICON: 		NSImage? = NSImage(named:NSImage.Name("SepWave"))
+	static let HEAD_ICON: 		NSImage? = NSImage(named:NSImage.Name("SepDot"))
 	
 	static let SEPARATOR_ICON: 	NSImage? = NSImage(named:NSImage.Name("SepLine"))
 	
@@ -90,17 +92,17 @@ class StatusBarController {
 	
 	private func remap() {
 		if let button = self.head.button {
-			button.image 	= Helper.Keyboard.command ? StatusBarController.HEAD_ICON : StatusBarController.EMPTY_ICON
+			button.image 	= (Helper.Keyboard.command && self.mouseAbove) || !collapsed ? StatusBarController.HEAD_ICON : StatusBarController.EMPTY_ICON
 			button.action 	= #selector(AppDelegate.toggle(_:))
 		}
 		
 		if let button = self.separator.button {
-			button.image 	= Helper.Keyboard.command ? StatusBarController.SEPARATOR_ICON : StatusBarController.EMPTY_ICON
+			button.image 	= (Helper.Keyboard.command && self.mouseAbove) ? StatusBarController.SEPARATOR_ICON : StatusBarController.EMPTY_ICON
 			button.action 	= #selector(AppDelegate.toggle(_:))
 		}
 		
 		if let button = self.tail.button {
-			button.image 	= Helper.Keyboard.command ? StatusBarController.TAIL_ICON : StatusBarController.EMPTY_ICON
+			button.image 	= (Helper.Keyboard.command && self.mouseAbove) ? StatusBarController.TAIL_ICON : StatusBarController.EMPTY_ICON
 			button.action 	= #selector(AppDelegate.toggle(_:))
 		}
 	}
@@ -131,7 +133,7 @@ class StatusBarController {
 	
 	func startTimer() {
 		timer = Timer.scheduledTimer(
-			withTimeInterval: 0.01,
+			withTimeInterval: 1.0 / 60.0,
 			repeats: true
 		) { [weak self] _ in
 			self?.repoint()
@@ -147,48 +149,69 @@ class StatusBarController {
 	}
 	
 	private func lerp() {
-		var enabledLength = StatusBarController.COLLAPSE_ENABLED_LENGTH
-		   
-		if var screenWidth = Helper.screenWidth() {
-			if Helper.hasNotch() {
-				screenWidth /= 2.0
-			}
-			enabledLength = screenWidth
+		
+		let maxLength = Helper.screenWidth ?? 10000
+		var aimmedX: CGFloat
+		
+		if let screenWidth = Helper.screenWidth, Helper.hasNotch {
+			aimmedX = screenWidth / 2.0 + StatusBarController.NOTCH_DISABLED_AREA_WIDTH / 2.0
+		} else {
+			aimmedX = 0
 		}
+		
+		let popoverNotShown = !(Helper.delegate?.popover.isShown ?? false)
 		
 		// Head
 		
 		do {
-			let length = self.head.length
-			self.head.length = Helper.lerp(
-				a: length,
-				b: self.collapsed ? StatusBarController.COLLAPSE_IGNORED_LENGTH : StatusBarController.COLLAPSE_DISABLED_LENGTH,
-				ratio: StatusBarController.LERP_RATIO
-			)
+			let flag = self.collapsed && !self.mouseAbove && popoverNotShown
+			
+			if Data.reduceAnimation {
+				self.head.length = StatusBarController.COLLAPSE_DISABLED_LENGTH
+			} else {
+				self.head.length = Helper.lerp(
+					a: self.head.length,
+					b: flag ? StatusBarController.COLLAPSE_IGNORED_LENGTH : StatusBarController.COLLAPSE_DISABLED_LENGTH,
+					ratio: Animations.LERP_RATIO
+				)
+			}
 		}
 		
 		// Separator
 		
 		do {
-			let length = self.separator.length
+			let flag = self.collapsed && !self.mouseAbove && popoverNotShown
 			
-			self.separator.length = Helper.lerp(
-				a: length,
-				b: self.collapsed ? enabledLength : StatusBarController.COLLAPSE_DISABLED_LENGTH,
-				ratio: StatusBarController.LERP_RATIO
-			)
+			let length = self.separator.length
+			guard let x = self.separator.button?.origin?.x else {
+				return
+			}
+			
+			if Data.reduceAnimation {
+				self.separator.length = flag ? maxLength : StatusBarController.COLLAPSE_DISABLED_LENGTH
+			} else {
+				self.separator.length = Helper.lerp(
+				 a: length,
+				 b: flag ? max(0, x + length - aimmedX) : StatusBarController.COLLAPSE_DISABLED_LENGTH,
+				 ratio: Animations.LERP_RATIO
+			 )
+			}
 		}
 		
 		// Tail
 		
 		do {
-			let length = self.tail.length
+			let flag = !(Helper.Keyboard.command && self.mouseAbove) && popoverNotShown
 			
-			self.tail.length = Helper.lerp(
-				a: length,
-				b: (!self.collapsed && Helper.Keyboard.command) ? StatusBarController.COLLAPSE_DISABLED_LENGTH : enabledLength,
-				ratio: StatusBarController.LERP_RATIO
-			)
+			if Data.reduceAnimation {
+				self.tail.length = flag ? maxLength : StatusBarController.COLLAPSE_DISABLED_LENGTH
+			} else {
+				self.tail.length = Helper.lerp(
+				 a: self.tail.length,
+				 b: flag ? maxLength - aimmedX : StatusBarController.COLLAPSE_DISABLED_LENGTH,
+				 ratio: Animations.LERP_RATIO
+			 )
+			}
 		}
 	}
 	

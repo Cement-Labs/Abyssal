@@ -12,6 +12,7 @@
 		C66CABAB2A38871500E4D8E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66CABA92A38871500E4D8E6 /* Main.storyboard */; };
 		C66CABB32A388FBD00E4D8E6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CABB22A388FBD00E4D8E6 /* ViewController.swift */; };
 		C66CABB72A389F2500E4D8E6 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CABB62A389F2500E4D8E6 /* EventMonitor.swift */; };
+		C66F02AF2A3B5B4D00077CE3 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = C66F02AE2A3B5B4D00077CE3 /* LaunchAtLogin */; };
 		C6DEC52A2A38BF6C00943448 /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DEC5292A38BF6C00943448 /* StatusBarController.swift */; };
 		C6DEC52C2A38CDE500943448 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DEC52B2A38CDE500943448 /* Helper.swift */; };
 		C6DEC52F2A39C83F00943448 /* NSView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DEC52E2A39C83F00943448 /* NSView+Extension.swift */; };
@@ -27,7 +28,7 @@
 		C66CABA72A38871500E4D8E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C66CABAA2A38871500E4D8E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C66CABAC2A38871500E4D8E6 /* Stalker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Stalker.entitlements; sourceTree = "<group>"; };
-		C66CABB22A388FBD00E4D8E6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Quotes/ViewController.swift; sourceTree = "<group>"; };
+		C66CABB22A388FBD00E4D8E6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C66CABB62A389F2500E4D8E6 /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 		C6DEC5292A38BF6C00943448 /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
 		C6DEC52B2A38CDE500943448 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
@@ -43,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C66F02AF2A3B5B4D00077CE3 /* LaunchAtLogin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,16 +71,24 @@
 		C66CABA22A38871500E4D8E6 /* Stalker */ = {
 			isa = PBXGroup;
 			children = (
+				C66F02AA2A3B4BEB00077CE3 /* Views */,
 				C6DEC5392A3A0B2300943448 /* Contents */,
 				C6DEC5372A3A05E200943448 /* Infrastructures */,
 				C6DEC5362A3A05D300943448 /* Events */,
 				C6DEC52D2A39C83100943448 /* Extensions */,
 				C66CABA32A38871500E4D8E6 /* AppDelegate.swift */,
-				C66CABB22A388FBD00E4D8E6 /* ViewController.swift */,
 				C66CABA72A38871500E4D8E6 /* Assets.xcassets */,
 				C66CABA92A38871500E4D8E6 /* Main.storyboard */,
 			);
 			path = Stalker;
+			sourceTree = "<group>";
+		};
+		C66F02AA2A3B4BEB00077CE3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C66CABB22A388FBD00E4D8E6 /* ViewController.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		C6DEC52D2A39C83100943448 /* Extensions */ = {
@@ -133,6 +143,9 @@
 			dependencies = (
 			);
 			name = Stalker;
+			packageProductDependencies = (
+				C66F02AE2A3B5B4D00077CE3 /* LaunchAtLogin */,
+			);
 			productName = BarStalker;
 			productReference = C66CABA02A38871500E4D8E6 /* Stalker.app */;
 			productType = "com.apple.product-type.application";
@@ -161,6 +174,9 @@
 				Base,
 			);
 			mainGroup = C66CAB972A38871500E4D8E6;
+			packageReferences = (
+				C66F02AD2A3B5B4D00077CE3 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
+			);
 			productRefGroup = C66CABA12A38871500E4D8E6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -412,6 +428,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C66F02AD2A3B5B4D00077CE3 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C66F02AE2A3B5B4D00077CE3 /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C66F02AD2A3B5B4D00077CE3 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */;
+			productName = LaunchAtLogin;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C66CAB982A38871500E4D8E6 /* Project object */;
 }

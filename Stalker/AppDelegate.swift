@@ -13,18 +13,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     let popover = NSPopover()
     
-    static let statusBarController = StatusBarController()
+	let statusBarController = StatusBarController()
+	
+	// MARK: - Event Monitors
     
-    var eventMonitor: EventMonitor?
+    var closeEventMonitor: EventMonitor?
     
     func applicationDidFinishLaunching(
         _ aNotification: Notification
     ) {
-        AppDelegate.statusBarController.setup()
+        statusBarController.setup()
         
         popover.contentViewController = ViewController.freshController()
         
-        eventMonitor = EventMonitor(
+        closeEventMonitor = EventMonitor(
             mask: [.leftMouseDown,
                    .rightMouseDown]
         ) { [weak self] event in
@@ -40,7 +42,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     ) {
         // Insert code here to tear down your application
         
-        AppDelegate.statusBarController.stopTimer()
+        statusBarController.stopTimer()
     }
     
     func applicationSupportsSecureRestorableState(
@@ -62,10 +64,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	@objc func toggleCollapse(
 		_ sender: NSButton
 	) {
-		if AppDelegate.statusBarController.collapsed {
-			AppDelegate.statusBarController.disableCollapse()
+		if statusBarController.collapsed {
+			statusBarController.disableCollapse()
 		} else {
-			AppDelegate.statusBarController.enableCollapse()
+			statusBarController.enableCollapse()
 		}
 	}
     
@@ -82,7 +84,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func showPopover(
         _ sender: Any?
     ) {
-        if let button = AppDelegate.statusBarController.head.button ?? sender as? NSButton {
+        if let button = statusBarController.head.button ?? sender as? NSButton {
             popover.show(
 				relativeTo: 	button.bounds,
 				of: 			button,
@@ -95,7 +97,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			}
         }
         
-        eventMonitor?.start()
+        closeEventMonitor?.start()
     }
     
     func closePopover(
@@ -105,7 +107,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             sender
         )
         
-        eventMonitor?.stop()
+        closeEventMonitor?.stop()
     }
     
 }
