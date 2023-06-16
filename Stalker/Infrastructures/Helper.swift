@@ -27,14 +27,22 @@ class Helper {
 		return NSApplication.shared.delegate as? AppDelegate
 	}
     
-	static var screenWidth: CGFloat? {
-        return NSScreen.main?.frame.size.width ?? nil
-    }
-    
 	static var hasNotch: Bool {
         guard #available(macOS 12, *) else { return false }
         return NSScreen.main?.safeAreaInsets.top != 0
     }
+	
+	class Screen {
+		
+		static var width: CGFloat? {
+			return NSScreen.main?.frame.size.width ?? nil
+		}
+		
+		static var height: CGFloat? {
+			return NSScreen.main?.frame.size.height ?? nil
+		}
+		
+	}
 	
 	class Keyboard {
 		
@@ -59,6 +67,69 @@ class Helper {
 			} else {
 				return false
 			}
+		}
+		
+		static func above(
+			_ y: CGFloat
+		) -> Bool {
+			return Mouse.above(CGPoint(x: 0, y: y))
+		}
+		
+		static func under(
+			_ point: CGPoint?
+		) -> Bool {
+			let mouseLocationY = NSEvent.mouseLocation.y
+			if let borderY = point?.y {
+				return mouseLocationY <= borderY
+			} else {
+				return false
+			}
+		}
+		
+		static func under(
+			_ y: CGFloat
+		) -> Bool {
+			return Mouse.under(CGPoint(x: 0, y: y))
+		}
+		
+		static func left(
+			_ point: CGPoint?
+		) -> Bool {
+			let mouseLocationX = NSEvent.mouseLocation.x
+			if let borderX = point?.x {
+				return mouseLocationX <= borderX
+			} else {
+				return false
+			}
+		}
+		
+		static func left(
+			_ x: CGFloat
+		) -> Bool {
+			return Mouse.left(CGPoint(x: x, y: 0))
+		}
+		
+		static func right(
+			_ point: CGPoint?
+		) -> Bool {
+			let mouseLocationX = NSEvent.mouseLocation.x
+			if let borderX = point?.x {
+				return mouseLocationX >= borderX
+			} else {
+				return false
+			}
+		}
+		
+		static func right(
+			_ x: CGFloat
+		) -> Bool {
+			return Mouse.right(CGPoint(x: x, y: 0))
+		}
+		
+		static func inside(
+			_ rect: NSRect?
+		) -> Bool {
+			return rect?.contains(NSEvent.mouseLocation) ?? false
 		}
 		
 	}

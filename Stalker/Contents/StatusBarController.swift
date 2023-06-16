@@ -9,13 +9,56 @@ import AppKit
 
 class StatusBarController {
 	
-	var mouseAbove: Bool {
-		return Helper.Mouse.above(head.button?.origin)
+	var mouseOver: 		Bool {
+		return Helper.Mouse.above(head.button?.origin) && (!Helper.hasNotch || Helper.Mouse.right((Helper.Screen.width ?? 0) / 2))
 	}
 	
-	var collapsed: Bool = false
+	var mouseIdle: 		Bool {
+		if
+			let originTail = tail.button?.origin,
+			let originHead = head.button?.origin,
+			let screenHeight = Helper.Screen.height
+		{
+			let rect = NSRect(
+				x: 		originTail.x + tail.length,
+				y: 		originTail.y,
+				width: 	originHead.x - (originTail.x + tail.length),
+				height: screenHeight - originHead.y
+			)
+			
+			return Helper.Mouse.inside(rect)
+		} else {
+			return false
+		}
+	}
+	
+	var mouseTrigger: 	Bool {
+		if
+			let origin = head.button?.origin,
+			let screenHeight = Helper.Screen.height
+		{
+			let rect = NSRect(
+				x: 		origin.x,
+				y: 		origin.y,
+				width: 	head.length + 20,
+				height: screenHeight - origin.y
+			)
+			
+			return Helper.Mouse.inside(rect)
+		} else {
+			return false
+		}
+	}
+	
+	var collapsed: 	Bool = false
+	
+	var idling: 	Bool = false
 	
 	var timer: Timer?
+	
+	var mouseClickEventMonitor: EventMonitor?
+	
+	var mouseMovedEventMonitor: EventMonitor?
 	
 	// MARK: - Constants
 	
@@ -37,90 +80,115 @@ class StatusBarController {
 	
 	// Actual separators
 	
-	let sep1: NSStatusItem = NSStatusBar.system.statusItem(
+	private let _sep1: NSStatusItem = NSStatusBar.system.statusItem(
 		withLength: NSStatusItem.variableLength
 	)
 	
-	let sep2: NSStatusItem = NSStatusBar.system.statusItem(
+	private let _sep2: NSStatusItem = NSStatusBar.system.statusItem(
 		withLength: NSStatusItem.variableLength
 	)
 	
-	let sep3: NSStatusItem = NSStatusBar.system.statusItem(
+	private let _sep3: NSStatusItem = NSStatusBar.system.statusItem(
 		withLength: NSStatusItem.variableLength
 	)
 	
 	// Separators list
 	
-	var seps: [NSStatusItem]
+	private var _seps: [NSStatusItem]
 	
 	// Pointers specifying separators' positions
 	
 	var head: 		NSStatusItem {
-		return seps[2]
+		var order: Int = 2
+		
+		if let savedSepsOrder = Data.sepsOrder, let savedOrder = savedSepsOrder[order] {
+			order = savedOrder
+		}
+		
+		return _seps[order]
 	}
 	
 	var separator: 	NSStatusItem {
-		return seps[1]
+		var order: Int = 1
+		
+		if let savedSepsOrder = Data.sepsOrder, let savedOrder = savedSepsOrder[order] {
+			order = savedOrder
+		}
+		
+		return _seps[order]
 	}
 	
 	var tail: 		NSStatusItem {
-		return seps[0]
+		var order: Int = 0
+		
+		if let savedSepsOrder = Data.sepsOrder, let savedOrder = savedSepsOrder[order] {
+			order = savedOrder
+		}
+		
+		return _seps[order]
 	}
 	
 	init() {
-		// sep[0] is the most left while sep[2] is the most right
-		seps = [sep1, sep2, sep3]
-		
-		if let savedSepsOrder = Data.sepsOrder {
-			if let sep1Order = savedSepsOrder[0], let sep2Order = savedSepsOrder[1], let sep3Order = savedSepsOrder[2] {
-				seps[sep1Order] = sep1
-				seps[sep2Order] = sep2
-				seps[sep3Order] = sep3
-			}
-		}
+		// _sep1 is the most left while _sep2 is the most right
+		_seps = [_sep1, _sep2, _sep3]
 	}
 	
 	// MARK: - Methods
 	
 	private func repoint() {
-		seps.sort {
-			$0.button?.origin?.x ?? 0 < $1.button?.origin?.x ?? 0
+		guard _seps.allSatisfy ({ sep in
+			sep.button?.origin?.x ?? 0 > 0
+		}) else {
+			return
 		}
 		
-		saveSepsOrder()
+		saveSepsOrder(
+			_seps.sorted {
+				$0.button?.origin?.x ?? 0 < $1.button?.origin?.x ?? 0
+			}
+		)
 	}
 	
 	private func remap() {
 		if let button = self.head.button {
-			button.image 	= (Helper.Keyboard.command && self.mouseAbove) || !collapsed ? StatusBarController.HEAD_ICON : StatusBarController.EMPTY_ICON
+			button.image 	= (Helper.Keyboard.command && self.mouseOver) || !collapsed ? StatusBarController.HEAD_ICON : StatusBarController.EMPTY_ICON
 			button.action 	= #selector(AppDelegate.toggle(_:))
 		}
 		
 		if let button = self.separator.button {
-			button.image 	= (Helper.Keyboard.command && self.mouseAbove) ? StatusBarController.SEPARATOR_ICON : StatusBarController.EMPTY_ICON
+			button.image 	= (Helper.Keyboard.command && self.mouseOver) ? StatusBarController.SEPARATOR_ICON : StatusBarController.EMPTY_ICON
 			button.action 	= #selector(AppDelegate.toggle(_:))
 		}
 		
 		if let button = self.tail.button {
-			button.image 	= (Helper.Keyboard.command && self.mouseAbove) ? StatusBarController.TAIL_ICON : StatusBarController.EMPTY_ICON
+			button.image 	= (Helper.Keyboard.command && self.mouseOver) ? StatusBarController.TAIL_ICON : StatusBarController.EMPTY_ICON
 			button.action 	= #selector(AppDelegate.toggle(_:))
 		}
 	}
 	
-	private func saveSepsOrder() {
-		let sepsOrder: [Int?] = [seps.firstIndex(of: sep1), seps.firstIndex(of: sep2), seps.firstIndex(of: sep3)]
+	private func saveSepsOrder(
+		_ currentSeps: [NSStatusItem]
+	) {
+		let sepsOrder: [Int?] = [_seps.firstIndex(of: currentSeps[0]),
+								 _seps.firstIndex(of: currentSeps[1]),
+								 _seps.firstIndex(of: currentSeps[2])]
 		Data.sepsOrder = sepsOrder
 	}
 	
 	func setup() {
-		repoint()
-		remap()
+		// Init status icons
 		
 		head.length 		= 0
 		separator.length 	= 0
 		tail.length 		= 0
-
-		startTimer()
+		
+		startTimers()
+		startMonitors()
+	}
+	
+	func terminate() {
+		stopTimers()
+		stopMonitors()
 	}
 	
 	func enableCollapse() {
@@ -131,29 +199,72 @@ class StatusBarController {
 		self.collapsed = false
 	}
 	
-	func startTimer() {
+	func enableIdle() {
+		self.idling = true
+	}
+	
+	func disableIdle() {
+		self.idling = false
+	}
+	
+	func startTimers() {
 		timer = Timer.scheduledTimer(
 			withTimeInterval: 1.0 / 60.0,
 			repeats: true
 		) { [weak self] _ in
-			self?.repoint()
-			self?.remap()
-			
-			self?.lerp()
+			if let strongSelf = self {
+				strongSelf.remap()
+				strongSelf.lerp()
+				strongSelf.repoint()
+			}
 		}
 	}
 	
-	func stopTimer() {
+	func stopTimers() {
 		timer?.invalidate()
 		timer = nil
 	}
 	
-	private func lerp() {
+	func startMonitors() {
+		mouseClickEventMonitor = EventMonitor(
+			mask: [.leftMouseDown,
+				   .rightMouseDown]
+		) { [weak self] event in
+			if let strongSelf = self {
+				if strongSelf.mouseIdle && strongSelf.collapsed {
+					strongSelf.enableIdle()
+				}
+			}
+		}
 		
-		let maxLength = Helper.screenWidth ?? 10000
+		mouseMovedEventMonitor = EventMonitor(
+			mask: [.mouseMoved]
+		) { [weak self] event in
+			if let strongSelf = self {
+				if strongSelf.mouseTrigger && strongSelf.idling {
+					strongSelf.disableIdle()
+				}
+			}
+		}
+		
+		mouseClickEventMonitor?.start()
+		mouseMovedEventMonitor?.start()
+	}
+	
+	func stopMonitors() {
+		mouseClickEventMonitor?.stop()
+		mouseMovedEventMonitor?.stop()
+	}
+	
+	func hold() {
+		disableCollapse()
+	}
+	
+	private func lerp() {
+		let maxLength = Helper.Screen.width ?? 10000
 		var aimmedX: CGFloat
 		
-		if let screenWidth = Helper.screenWidth, Helper.hasNotch {
+		if let screenWidth = Helper.Screen.width, Helper.hasNotch {
 			aimmedX = screenWidth / 2.0 + StatusBarController.NOTCH_DISABLED_AREA_WIDTH / 2.0
 		} else {
 			aimmedX = 0
@@ -164,7 +275,7 @@ class StatusBarController {
 		// Head
 		
 		do {
-			let flag = self.collapsed && !self.mouseAbove && popoverNotShown
+			let flag = self.collapsed && !self.idling && !self.mouseOver && popoverNotShown
 			
 			if Data.reduceAnimation {
 				self.head.length = StatusBarController.COLLAPSE_DISABLED_LENGTH
@@ -180,7 +291,15 @@ class StatusBarController {
 		// Separator
 		
 		do {
-			let flag = self.collapsed && !self.mouseAbove && popoverNotShown
+			// Use always hide?
+			
+			tailVisible(Data.useAlwaysHideArea)
+			
+			guard Data.useAlwaysHideArea else {
+				return
+			}
+			
+			let flag = self.collapsed && !self.idling && !self.mouseOver && popoverNotShown
 			
 			let length = self.separator.length
 			guard let x = self.separator.button?.origin?.x else {
@@ -191,17 +310,17 @@ class StatusBarController {
 				self.separator.length = flag ? maxLength : StatusBarController.COLLAPSE_DISABLED_LENGTH
 			} else {
 				self.separator.length = Helper.lerp(
-				 a: length,
-				 b: flag ? max(0, x + length - aimmedX) : StatusBarController.COLLAPSE_DISABLED_LENGTH,
-				 ratio: Animations.LERP_RATIO
-			 )
+					a: length,
+					b: flag ? max(0, x + length - aimmedX) : StatusBarController.COLLAPSE_DISABLED_LENGTH,
+					ratio: Animations.LERP_RATIO
+				)
 			}
 		}
 		
 		// Tail
 		
 		do {
-			let flag = !(Helper.Keyboard.command && self.mouseAbove) && popoverNotShown
+			let flag = !(Helper.Keyboard.command && self.mouseOver) && popoverNotShown
 			
 			if Data.reduceAnimation {
 				self.tail.length = flag ? maxLength : StatusBarController.COLLAPSE_DISABLED_LENGTH
@@ -217,28 +336,22 @@ class StatusBarController {
 	
 	// MARK: - Show / hide icons
 	
-	func showHead() {
-		self.tail.isVisible = true
+	func headVisible(
+		_ flag: Bool
+	) {
+		self.head.isVisible = flag
 	}
 	
-	func hideHead() {
-		self.tail.isVisible = false
+	func separatorVisible(
+		_ flag: Bool
+	) {
+		self.separator.isVisible = flag
 	}
 	
-	func showSeparator() {
-		self.tail.isVisible = true
-	}
-	
-	func hideSeparator() {
-		self.tail.isVisible = false
-	}
-	
-	func showTail() {
-		self.tail.isVisible = true
-	}
-	
-	func hideTail() {
-		self.tail.isVisible = false
+	func tailVisible(
+		_ flag: Bool
+	) {
+		self.tail.isVisible = flag
 	}
 	
 }

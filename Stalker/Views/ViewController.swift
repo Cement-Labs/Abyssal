@@ -300,14 +300,6 @@ extension ViewController {
 		_ sender: NSSwitch
 	) {
 		Data.useAlwaysHideArea 	= sender.flag
-		
-		if let appDelegate = Helper.delegate {
-			if sender.flag {
-				appDelegate.statusBarController.showTail()
-			} else {
-				appDelegate.statusBarController.hideTail()
-			}
-		}
 	}
 	
 	@IBAction func startsWithMacos(

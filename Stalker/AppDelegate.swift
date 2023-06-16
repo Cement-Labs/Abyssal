@@ -17,7 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	
 	// MARK: - Event Monitors
     
-    var closeEventMonitor: EventMonitor?
+    var mouseClickEventMonitor: EventMonitor?
     
     func applicationDidFinishLaunching(
         _ aNotification: Notification
@@ -26,12 +26,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         popover.contentViewController = ViewController.freshController()
         
-        closeEventMonitor = EventMonitor(
+        mouseClickEventMonitor = EventMonitor(
             mask: [.leftMouseDown,
                    .rightMouseDown]
         ) { [weak self] event in
-            if let strongSelf = self, strongSelf.popover.isShown {
-                strongSelf.closePopover(event)
+            if let strongSelf = self {
+				if strongSelf.popover.isShown {
+					strongSelf.closePopover(event)
+				}
             }
         }
     }
@@ -42,7 +44,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     ) {
         // Insert code here to tear down your application
         
-        statusBarController.stopTimer()
+        statusBarController.terminate()
     }
     
     func applicationSupportsSecureRestorableState(
@@ -92,12 +94,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             )
 			
 			if let window = popover.contentViewController?.view.window {
-				// Activate the popover window
+				// Activate popover
 				window.becomeKey()
 			}
         }
         
-        closeEventMonitor?.start()
+        mouseClickEventMonitor?.start()
     }
     
     func closePopover(
@@ -107,7 +109,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             sender
         )
         
-        closeEventMonitor?.stop()
+        mouseClickEventMonitor?.stop()
     }
     
 }
