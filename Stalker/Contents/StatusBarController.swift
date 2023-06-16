@@ -256,10 +256,6 @@ class StatusBarController {
 		mouseMovedEventMonitor?.stop()
 	}
 	
-	func hold() {
-		disableCollapse()
-	}
-	
 	private func lerp() {
 		let maxLength = Helper.Screen.width ?? 10000
 		var aimmedX: CGFloat

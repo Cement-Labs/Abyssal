@@ -137,13 +137,13 @@ extension ViewController {
         
         let identifier = NSStoryboard.SceneIdentifier("ViewController")
         
-        guard let viewcontroller = storyboard.instantiateController(
+        guard let controller = storyboard.instantiateController(
             withIdentifier: identifier
         ) as? ViewController else {
             fatalError("Can not find ViewController")
         }
 		
-        return viewcontroller
+        return controller
     }
 	
 	func updateData() {

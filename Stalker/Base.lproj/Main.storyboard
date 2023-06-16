@@ -83,9 +83,9 @@
                                     <rect key="frame" x="1" y="1" width="366" height="24"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <button ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lno-8O-Iz8">
-                                            <rect key="frame" x="6" y="4" width="116" height="16"/>
-                                            <buttonCell key="cell" type="bevel" title="Source Code" bezelStyle="rounded" image="opticaldisc" catalog="system" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" inset="2" id="OjW-Fe-OGQ">
+                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="lno-8O-Iz8">
+                                            <rect key="frame" x="8" y="2.5" width="120" height="17"/>
+                                            <buttonCell key="cell" type="bevel" title="Source Code" bezelStyle="rounded" image="apple.terminal.on.rectangle.fill" catalog="system" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" inset="2" id="OjW-Fe-OGQ">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" size="13" name="MobileMan"/>
                                             </buttonCell>
@@ -97,9 +97,9 @@
                                                 <action selector="inspectSourceCode:" target="XfG-lQ-9wD" id="3FB-gU-8Or"/>
                                             </connections>
                                         </button>
-                                        <button ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aXF-sF-flQ" userLabel="Buy Me a Juice">
-                                            <rect key="frame" x="223" y="4" width="137.5" height="16"/>
-                                            <buttonCell key="cell" type="bevel" title="Buy Me a Juice" bezelStyle="rounded" image="cup.and.saucer" catalog="system" imagePosition="trailing" alignment="right" imageScaling="proportionallyDown" inset="2" id="gbY-hT-jUX">
+                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="aXF-sF-flQ" userLabel="Buy Me a Juice">
+                                            <rect key="frame" x="221" y="4" width="137.5" height="16"/>
+                                            <buttonCell key="cell" type="bevel" title="Buy Me a Juice" bezelStyle="rounded" image="cup.and.saucer.fill" catalog="system" imagePosition="trailing" alignment="right" imageScaling="proportionallyDown" inset="2" id="gbY-hT-jUX">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" size="13" name="MobileMan"/>
                                             </buttonCell>
@@ -123,8 +123,10 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="3pc-OX-nv1" firstAttribute="centerY" secondItem="zt2-N7-04s" secondAttribute="centerY" constant="1" id="KpH-dB-2zE"/>
-                                        <constraint firstItem="lno-8O-Iz8" firstAttribute="leading" secondItem="zt2-N7-04s" secondAttribute="leading" constant="6" id="LJM-Jq-j4w"/>
-                                        <constraint firstAttribute="trailing" secondItem="aXF-sF-flQ" secondAttribute="trailing" constant="6" id="R2B-DN-p2E"/>
+                                        <constraint firstItem="lno-8O-Iz8" firstAttribute="leading" secondItem="zt2-N7-04s" secondAttribute="leading" constant="8" id="LJM-Jq-j4w"/>
+                                        <constraint firstAttribute="trailing" secondItem="aXF-sF-flQ" secondAttribute="trailing" constant="8" id="R2B-DN-p2E"/>
+                                        <constraint firstItem="lno-8O-Iz8" firstAttribute="centerY" secondItem="zt2-N7-04s" secondAttribute="centerY" constant="2" id="d9x-bk-r4x"/>
+                                        <constraint firstItem="aXF-sF-flQ" firstAttribute="centerY" secondItem="zt2-N7-04s" secondAttribute="centerY" constant="2" id="irW-l4-KW9"/>
                                         <constraint firstItem="3pc-OX-nv1" firstAttribute="centerX" secondItem="zt2-N7-04s" secondAttribute="centerX" id="nFU-so-Ze1"/>
                                     </constraints>
                                 </view>
@@ -331,7 +333,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <button imageHugsTitle="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sDV-9z-3dI">
-                                            <rect key="frame" x="24" y="0.0" width="318" height="32"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="366" height="32"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <buttonCell key="cell" type="bevel" title="Quit App" bezelStyle="rounded" image="stop.circle.fill" catalog="system" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" inset="2" id="yop-en-yxo">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -379,8 +381,8 @@
     </scenes>
     <resources>
         <image name="Logo" width="2133.5" height="2133.5"/>
-        <image name="cup.and.saucer" catalog="system" width="20" height="15"/>
-        <image name="opticaldisc" catalog="system" width="15" height="15"/>
+        <image name="apple.terminal.on.rectangle.fill" catalog="system" width="19" height="16"/>
+        <image name="cup.and.saucer.fill" catalog="system" width="20" height="15"/>
         <image name="stop.circle.fill" catalog="system" width="15" height="15"/>
         <namedColor name="TransparentDangerColor">
             <color red="1" green="0.23100000619888306" blue="0.18799999356269836" alpha="0.10000000149011612" colorSpace="custom" customColorSpace="sRGB"/>

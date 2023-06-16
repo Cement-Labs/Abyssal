@@ -11,7 +11,7 @@ import AppKit
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
     
-    let popover = NSPopover()
+	let popover: 			NSPopover = NSPopover()
     
 	let statusBarController = StatusBarController()
 	
@@ -24,7 +24,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     ) {
         statusBarController.setup()
         
-        popover.contentViewController = ViewController.freshController()
+        popover.contentViewController 			= ViewController.freshController()
         
         mouseClickEventMonitor = EventMonitor(
             mask: [.leftMouseDown,
