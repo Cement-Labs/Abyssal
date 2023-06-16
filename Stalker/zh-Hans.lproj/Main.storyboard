@@ -84,10 +84,10 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <button ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lno-8O-Iz8">
-                                            <rect key="frame" x="6" y="4" width="116" height="16"/>
-                                            <buttonCell key="cell" type="bevel" title="Source Code" bezelStyle="rounded" image="opticaldisc" catalog="system" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" inset="2" id="OjW-Fe-OGQ">
+                                            <rect key="frame" x="6" y="4" width="59" height="16"/>
+                                            <buttonCell key="cell" type="bevel" title="源代码" bezelStyle="rounded" image="opticaldisc" catalog="system" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" inset="2" id="OjW-Fe-OGQ">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" size="13" name="MobileMan"/>
+                                                <font key="font" size="13" name="VonwaonBitmap-12px"/>
                                             </buttonCell>
                                             <color key="contentTintColor" name="systemOrangeColor" catalog="System" colorSpace="catalog"/>
                                             <symbolConfiguration key="symbolConfiguration" weight="bold">
@@ -97,11 +97,11 @@
                                                 <action selector="inspectSourceCode:" target="XfG-lQ-9wD" id="3FB-gU-8Or"/>
                                             </connections>
                                         </button>
-                                        <button ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aXF-sF-flQ" userLabel="Buy Me a Juice">
-                                            <rect key="frame" x="223" y="4" width="137.5" height="16"/>
-                                            <buttonCell key="cell" type="bevel" title="Buy Me a Juice" bezelStyle="rounded" image="cup.and.saucer" catalog="system" imagePosition="trailing" alignment="right" imageScaling="proportionallyDown" inset="2" id="gbY-hT-jUX">
+                                        <button ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aXF-sF-flQ">
+                                            <rect key="frame" x="283" y="4" width="77.5" height="16"/>
+                                            <buttonCell key="cell" type="bevel" title="赞助一下" bezelStyle="rounded" image="cup.and.saucer" catalog="system" imagePosition="trailing" alignment="right" imageScaling="proportionallyDown" inset="2" id="gbY-hT-jUX">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" size="13" name="MobileMan"/>
+                                                <font key="font" size="13" name="VonwaonBitmap-12px"/>
                                             </buttonCell>
                                             <color key="contentTintColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
                                             <symbolConfiguration key="symbolConfiguration" weight="bold">
@@ -164,7 +164,7 @@
                                                     <subviews>
                                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="x9I-1B-5mg">
                                                             <rect key="frame" x="-2" y="0.0" width="304" height="16"/>
-                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Auto Hides" id="GR1-ls-Xll">
+                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="自动隐藏" id="GR1-ls-Xll">
                                                                 <font key="font" metaFont="systemSemibold" size="13"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -194,7 +194,7 @@
                                                     <subviews>
                                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kAO-3G-Qug">
                                                             <rect key="frame" x="-2" y="0.0" width="304" height="16"/>
-                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Use Always Hide Area" id="tNP-6M-aPS">
+                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="使用永久隐藏区域" id="tNP-6M-aPS">
                                                                 <font key="font" metaFont="systemSemibold" size="13"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -227,7 +227,7 @@
                                                     <subviews>
                                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1Sc-hR-x8W">
                                                             <rect key="frame" x="-2" y="0.0" width="304" height="16"/>
-                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Starts With macOS" id="uRl-sX-BhJ">
+                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="随macOS启动" id="uRl-sX-BhJ">
                                                                 <font key="font" metaFont="systemSemibold" size="13"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -257,7 +257,7 @@
                                                     <subviews>
                                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jpR-MS-Zlj">
                                                             <rect key="frame" x="-2" y="0.0" width="304" height="16"/>
-                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Reduce Animation" id="ZjE-yo-2df">
+                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="减少动画" id="ZjE-yo-2df">
                                                                 <font key="font" metaFont="systemSemibold" size="13"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -333,7 +333,7 @@
                                         <button imageHugsTitle="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sDV-9z-3dI">
                                             <rect key="frame" x="24" y="0.0" width="318" height="32"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                            <buttonCell key="cell" type="bevel" title="Quit App" bezelStyle="rounded" image="stop.circle.fill" catalog="system" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" inset="2" id="yop-en-yxo">
+                                            <buttonCell key="cell" type="bevel" title="退出应用" bezelStyle="rounded" image="stop.circle.fill" catalog="system" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" inset="2" id="yop-en-yxo">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="systemBlack" size="13"/>
                                             </buttonCell>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C61F6FFC2A3C6C9800776397 /* Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61F6FFB2A3C6C9800776397 /* Separator.swift */; };
 		C66CABA42A38871500E4D8E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CABA32A38871500E4D8E6 /* AppDelegate.swift */; };
 		C66CABA82A38871500E4D8E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C66CABA72A38871500E4D8E6 /* Assets.xcassets */; };
 		C66CABAB2A38871500E4D8E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66CABA92A38871500E4D8E6 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C61F6FFB2A3C6C9800776397 /* Separator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Separator.swift; sourceTree = "<group>"; };
 		C66CABA02A38871500E4D8E6 /* Stalker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stalker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C66CABA32A38871500E4D8E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C66CABA72A38871500E4D8E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -30,6 +32,7 @@
 		C66CABAC2A38871500E4D8E6 /* Stalker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Stalker.entitlements; sourceTree = "<group>"; };
 		C66CABB22A388FBD00E4D8E6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C66CABB62A389F2500E4D8E6 /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
+		C6C265AD2A3B9B2200877F70 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/Main.storyboard"; sourceTree = "<group>"; };
 		C6DEC5292A38BF6C00943448 /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
 		C6DEC52B2A38CDE500943448 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		C6DEC52E2A39C83F00943448 /* NSView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+Extension.swift"; sourceTree = "<group>"; };
@@ -123,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				C6DEC5292A38BF6C00943448 /* StatusBarController.swift */,
+				C61F6FFB2A3C6C9800776397 /* Separator.swift */,
 			);
 			path = Contents;
 			sourceTree = "<group>";
@@ -172,6 +176,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = C66CAB972A38871500E4D8E6;
 			packageReferences = (
@@ -205,6 +210,7 @@
 			files = (
 				C6DEC53D2A3A0E8900943448 /* Animations.swift in Sources */,
 				C6DEC5312A39EE0A00943448 /* Data.swift in Sources */,
+				C61F6FFC2A3C6C9800776397 /* Separator.swift in Sources */,
 				C66CABB72A389F2500E4D8E6 /* EventMonitor.swift in Sources */,
 				C6DEC52A2A38BF6C00943448 /* StatusBarController.swift in Sources */,
 				C6DEC52C2A38CDE500943448 /* Helper.swift in Sources */,
@@ -223,6 +229,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				C66CABAA2A38871500E4D8E6 /* Base */,
+				C6C265AD2A3B9B2200877F70 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
