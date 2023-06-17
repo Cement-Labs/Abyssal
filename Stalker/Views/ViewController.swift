@@ -49,31 +49,30 @@ class ViewController: NSViewController {
 	
 	@IBOutlet weak var reduceAnimation: 	NSSwitch!
 	
-    override func viewDidLoad(
-    ) {
-        super.viewDidLoad()
+	override func viewDidLoad(
+	) {
+		super.viewDidLoad()
 		
 		updateData()
 		
 		// Init tracking areas
 		
-		let options: NSTrackingArea.Options = [.mouseEnteredAndExited,
-											   .activeInActiveApp]
-		
 		quitAppTrackingArea = NSTrackingArea(
 			rect: 		quitAppPlaceholder.bounds,
-			options: 	options,
+			options: 	[.mouseEnteredAndExited,
+						 .activeInActiveApp],
 			owner: 		self,
-			userInfo: 	["area": 1]
+			userInfo: 	["area": "quitApp"]
 		)
 		
 		quitApp.addTrackingArea(quitAppTrackingArea!)
 		
 		stalkerTrackingArea = NSTrackingArea(
 			rect: 		stalkerPlaceholder.bounds,
-			options: 	options,
+			options: 	[.mouseEnteredAndExited,
+						 .activeInActiveApp],
 			owner: 		self,
-			userInfo: 	["area": 2]
+			userInfo: 	["area": "stalker"]
 		)
 		
 		stalker.addTrackingArea(stalkerTrackingArea!)
@@ -81,6 +80,7 @@ class ViewController: NSViewController {
 		// Init main view
 		
 		info.alphaValue = 0
+		info.frameCenterRotation = -3
 		stalker.alphaValue = 1
 		
 		main.setFrameSize(
@@ -120,31 +120,31 @@ class ViewController: NSViewController {
 		// Init quit app button
 		
 		quitAppButton.alphaValue = 0
-    }
-    
+	}
+	
 }
 
 extension ViewController {
-    
-    // MARK: - Storyboard Instantiation
 	
-    static func freshController(
-    ) -> ViewController {
-        let storyboard = NSStoryboard(
-            name: NSStoryboard.Name("Main"),
-            bundle: nil
-        )
-        
-        let identifier = NSStoryboard.SceneIdentifier("ViewController")
-        
-        guard let controller = storyboard.instantiateController(
-            withIdentifier: identifier
-        ) as? ViewController else {
-            fatalError("Can not find ViewController")
-        }
+	// MARK: - Storyboard Instantiation
+	
+	static func freshController(
+	) -> ViewController {
+		let storyboard = NSStoryboard(
+			name: NSStoryboard.Name("Main"),
+			bundle: nil
+		)
 		
-        return controller
-    }
+		let identifier = NSStoryboard.SceneIdentifier("ViewController")
+		
+		guard let controller = storyboard.instantiateController(
+			withIdentifier: identifier
+		) as? ViewController else {
+			fatalError("Can not find ViewController")
+		}
+		
+		return controller
+	}
 	
 	func updateData() {
 		autoHides			.set(Data.autoHides)
@@ -164,9 +164,9 @@ extension ViewController {
 	) {
 		super.mouseEntered(with: event)
 		
-		if let userInfo = event.trackingArea?.userInfo as? [String: Int], let area = userInfo["area"] {
+		if let userInfo = event.trackingArea?.userInfo as? [String : String], let area = userInfo["area"] {
 			switch area {
-			case 1: // Quit app
+			case "quitApp":
 				
 				NSAnimationContext.runAnimationGroup({ context in
 					context.duration = Animations.Time.QUIT_APP_EXPAND
@@ -200,13 +200,14 @@ extension ViewController {
 					stalker			.animator().alphaValue = 0
 				})
 				
-			case 2: // Stalker
+			case "stalker":
 				
 				info	.animator().alphaValue = 1
+				info	.animator().frameCenterRotation = 0
 				stalker	.animator().alphaValue = 0.55
 				
 				let blur = CIFilter(name: "CIDiscBlur")
-				blur?.setValue(8, forKey: kCIInputRadiusKey)
+				blur?.setValue(16, forKey: kCIInputRadiusKey)
 				
 				let halftone = CIFilter(name: "CICMYKHalftone")
 				halftone?.setValue(6, 		forKey: kCIInputWidthKey)
@@ -222,15 +223,15 @@ extension ViewController {
 			}
 		}
 	}
-
+	
 	override func mouseExited(
 		with event: NSEvent
 	) {
 		super.mouseEntered(with: event)
 		
-		if let userInfo = event.trackingArea?.userInfo as? [String: Int], let area = userInfo["area"] {
+		if let userInfo = event.trackingArea?.userInfo as? [String : String], let area = userInfo["area"] {
 			switch area {
-			case 1: // Quit app
+			case "quitApp":
 				
 				NSAnimationContext.runAnimationGroup({ context in
 					context.duration = Animations.Time.QUIT_APP_EXPAND
@@ -264,9 +265,10 @@ extension ViewController {
 					stalker			.animator().alphaValue = 1
 				})
 				
-			case 2: // Stalker
+			case "stalker":
 				
 				info	.animator().alphaValue = 0
+				info	.animator().frameCenterRotation = -3
 				stalker	.animator().alphaValue = 1
 				
 				stalker.animator().contentFilters = []
@@ -281,12 +283,12 @@ extension ViewController {
 extension ViewController {
 	
 	// MARK: - Global Actions
-    
-    @IBAction func quit(
-        _ sender: NSButton
-    ) {
+	
+	@IBAction func quit(
+		_ sender: NSButton
+	) {
 		NSApplication.shared.terminate(sender)
-    }
+	}
 	
 	// MARK: - Data Actions
 	
@@ -329,5 +331,5 @@ extension ViewController {
 			NSWorkspace.shared.open(url)
 		}
 	}
-    
+	
 }

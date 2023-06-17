@@ -9,7 +9,7 @@ import Foundation
 
 class Animations {
 	
-	static var LERP_RATIO: CGFloat = 0.097
+	static var LERP_RATIO: CGFloat = 0.23
 	
 	class Time {
 		

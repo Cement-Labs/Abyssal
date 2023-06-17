@@ -5,7 +5,6 @@
 //  Created by KrLite on 2023/6/14.
 //
 
-import Foundation
 import AppKit
 import LaunchAtLogin
 

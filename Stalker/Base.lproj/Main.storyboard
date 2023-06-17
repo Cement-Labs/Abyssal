@@ -76,15 +76,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="408" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <box fixedFrame="YES" boxType="custom" cornerRadius="13" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="AE1-vw-2zX" userLabel="Info">
+                            <box fixedFrame="YES" boxType="custom" borderWidth="0.0" cornerRadius="13" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="AE1-vw-2zX" userLabel="Info">
                                 <rect key="frame" x="20" y="224" width="368" height="26"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" id="zt2-N7-04s">
-                                    <rect key="frame" x="1" y="1" width="366" height="24"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="368" height="26"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <button translatesAutoresizingMaskIntoConstraints="NO" id="lno-8O-Iz8">
-                                            <rect key="frame" x="8" y="2.5" width="120" height="17"/>
+                                            <rect key="frame" x="8" y="3.5" width="120" height="17"/>
                                             <buttonCell key="cell" type="bevel" title="Source Code" bezelStyle="rounded" image="apple.terminal.on.rectangle.fill" catalog="system" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" inset="2" id="OjW-Fe-OGQ">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" size="13" name="MobileMan"/>
@@ -98,7 +98,7 @@
                                             </connections>
                                         </button>
                                         <button translatesAutoresizingMaskIntoConstraints="NO" id="aXF-sF-flQ" userLabel="Buy Me a Juice">
-                                            <rect key="frame" x="221" y="4" width="137.5" height="16"/>
+                                            <rect key="frame" x="223" y="5" width="137.5" height="16"/>
                                             <buttonCell key="cell" type="bevel" title="Buy Me a Juice" bezelStyle="rounded" image="cup.and.saucer.fill" catalog="system" imagePosition="trailing" alignment="right" imageScaling="proportionallyDown" inset="2" id="gbY-hT-jUX">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" size="13" name="MobileMan"/>
@@ -112,7 +112,7 @@
                                             </connections>
                                         </button>
                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3pc-OX-nv1">
-                                            <rect key="frame" x="129" y="-43" width="108" height="108"/>
+                                            <rect key="frame" x="130" y="-42" width="108" height="108"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="108" id="MDB-0y-NN9"/>
                                                 <constraint firstAttribute="height" constant="108" id="Zeg-jP-UBX"/>
@@ -130,7 +130,6 @@
                                         <constraint firstItem="3pc-OX-nv1" firstAttribute="centerX" secondItem="zt2-N7-04s" secondAttribute="centerX" id="nFU-so-Ze1"/>
                                     </constraints>
                                 </view>
-                                <color key="borderColor" name="quaternaryLabelColor" catalog="System" colorSpace="catalog"/>
                             </box>
                             <box fixedFrame="YES" boxType="custom" cornerRadius="13" title="Box" titlePosition="noTitle" transparent="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oKr-8Q-j0H" userLabel="Stalker Placeholder">
                                 <rect key="frame" x="20" y="224" width="368" height="26"/>
