@@ -8,59 +8,105 @@
 import AppKit
 import LaunchAtLogin
 
-enum Data {
+public enum Data {
 	
-	class Keys {
+	public class Keys {
 		
-		static let SEPS_ORDER: String = "sepsOrder"
+		public static let SEPS_ORDER: String = "sepsOrder"
 		
 		// MARK: - Booleans
 		
-		static let AUTO_HIDES_AFTER_TIMEOUT: 	String = "autoHides"
+		public static let COLLAPSED:					String = "collapsed"
 		
-		static let USE_ALWAYS_HIDE_AREA: 		String = "alwaysHide"
 		
-		static let REDUCE_ANIMATION: 			String = "reduceAnimation"
+		
+		public static let AUTO_HIDES_AFTER_TIMEOUT: 	String = "autoHides"
+		
+		public static let USE_ALWAYS_HIDE_AREA: 		String = "alwaysHide"
+		
+		public static let DISABLES_IN_SUFFICIENT_SPACE: String = "autoDisables"
+		
+		public static let REDUCE_ANIMATION: 			String = "reduceAnimation"
 		
 	}
 	
-	static var sepsOrder: [Int?]? {
+	public static var sepsOrder: [Int?]? {
 		get {
 			return UserDefaults.standard.array(
 				forKey: Keys.SEPS_ORDER
 			) as? [Int?]
 		}
 		
-		set {
+		set(sepsOrder) {
 			UserDefaults.standard.set(
-				newValue,
+				sepsOrder,
 				forKey: Keys.SEPS_ORDER
 			)
 		}
 	}
 	
-	static var autoHides: Bool {
-		get { return UserDefaults.standard.bool(forKey: Keys.AUTO_HIDES_AFTER_TIMEOUT) }
+	
+	
+	public static var collapsed: Bool {
+		get {
+			return UserDefaults.standard.bool(forKey: Keys.COLLAPSED)
+		}
 		
-		set { UserDefaults.standard.set(newValue, forKey: Keys.AUTO_HIDES_AFTER_TIMEOUT) }
+		set(flag) {
+			UserDefaults.standard.set(flag, forKey: Keys.COLLAPSED)
+		}
 	}
 	
-	static var useAlwaysHideArea: Bool {
-		get { return UserDefaults.standard.bool(forKey: Keys.USE_ALWAYS_HIDE_AREA) }
+	
+	
+	public static var autoHides: 					Bool {
+		get {
+			return UserDefaults.standard.bool(forKey: Keys.AUTO_HIDES_AFTER_TIMEOUT)
+		}
 		
-		set { UserDefaults.standard.set(newValue, forKey: Keys.USE_ALWAYS_HIDE_AREA) }
+		set(flag) {
+			UserDefaults.standard.set(flag, forKey: Keys.AUTO_HIDES_AFTER_TIMEOUT)
+		}
 	}
 	
-	static var startsWithMacos: Bool {
-		get { return LaunchAtLogin.isEnabled }
+	public static var useAlwaysHideArea: 			Bool {
+		get {
+			return UserDefaults.standard.bool(forKey: Keys.USE_ALWAYS_HIDE_AREA)
+		}
 		
-		set { LaunchAtLogin.isEnabled = newValue }
+		set(flag) {
+			UserDefaults.standard.set(flag, forKey: Keys.USE_ALWAYS_HIDE_AREA)
+		}
 	}
 	
-	static var reduceAnimation: Bool {
-		get { return UserDefaults.standard.bool(forKey: Keys.REDUCE_ANIMATION) }
+	public static var startsWithMacos: 				Bool {
+		get {
+			return LaunchAtLogin.isEnabled
+		}
 		
-		set { UserDefaults.standard.set(newValue, forKey: Keys.REDUCE_ANIMATION) }
+		set(flag) {
+			LaunchAtLogin.isEnabled = flag
+		}
+	}
+	
+	public static var disablesInSufficientSpace: 	Bool {
+		get {
+			return UserDefaults.standard.bool(forKey: Keys.DISABLES_IN_SUFFICIENT_SPACE)
+		}
+		
+		set(flag) {
+			UserDefaults.standard.set(flag, forKey: Keys.DISABLES_IN_SUFFICIENT_SPACE)
+		}
+	}
+	
+	public static var reduceAnimation: 				Bool {
+		get {
+			return UserDefaults.standard.bool(forKey: Keys.REDUCE_ANIMATION)
+		}
+		
+		set(flag) {
+			UserDefaults.standard.set(flag, forKey: Keys.REDUCE_ANIMATION)
+		}
 	}
 	
 }

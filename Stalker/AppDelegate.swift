@@ -19,6 +19,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	
 	var mouseEventMonitor: EventMonitor?
 	
+	// MARK: - Application Methods
+	
 	func applicationDidFinishLaunching(
 		_ aNotification: Notification
 	) {
@@ -48,6 +50,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		return true
 	}
 	
+}
+
+extension AppDelegate {
+	
+	// MARK: - Toggles
+	
 	@objc func toggle(
 		_ sender: NSButton
 	) {
@@ -61,15 +69,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	@objc func toggleCollapse(
 		_ sender: NSButton
 	) {
-		guard !(statusBarController.idling || statusBarController.sideIdling) else {
-			statusBarController.disableIdle()
+		guard !(statusBarController.idling || statusBarController.idlingAlwaysHideArea) else {
+			statusBarController.unidle()
 			return
 		}
 		
-		if statusBarController.collapsed {
-			statusBarController.disableCollapse()
+		if Data.collapsed {
+			statusBarController.uncollapse()
 		} else {
-			statusBarController.enableCollapse()
+			statusBarController.collapse()
 		}
 	}
 	

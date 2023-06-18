@@ -21,6 +21,7 @@
 		C6DEC5332A3A048B00943448 /* NSSwitch+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DEC5322A3A048B00943448 /* NSSwitch+Extension.swift */; };
 		C6DEC5352A3A052700943448 /* NSButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DEC5342A3A052700943448 /* NSButton+Extension.swift */; };
 		C6DEC53D2A3A0E8900943448 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DEC53C2A3A0E8900943448 /* Animations.swift */; };
+		C6E2C0302A3EE9F1007D4E1B /* StatusBarStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E2C02F2A3EE9F1007D4E1B /* StatusBarStateManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		C66CABAC2A38871500E4D8E6 /* Stalker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Stalker.entitlements; sourceTree = "<group>"; };
 		C66CABB22A388FBD00E4D8E6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C66CABB62A389F2500E4D8E6 /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
+		C674C8BD2A3F05E70016029D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/Main.storyboard"; sourceTree = "<group>"; };
 		C6B3E79A2A3D83C400B650BC /* NSRect+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSRect+Extension.swift"; sourceTree = "<group>"; };
 		C6DEC5292A38BF6C00943448 /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
 		C6DEC52B2A38CDE500943448 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
@@ -39,7 +41,7 @@
 		C6DEC5322A3A048B00943448 /* NSSwitch+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSwitch+Extension.swift"; sourceTree = "<group>"; };
 		C6DEC5342A3A052700943448 /* NSButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSButton+Extension.swift"; sourceTree = "<group>"; };
 		C6DEC53C2A3A0E8900943448 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
-		C6EF89FF2A3C9F81006832AD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/Main.storyboard"; sourceTree = "<group>"; };
+		C6E2C02F2A3EE9F1007D4E1B /* StatusBarStateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarStateManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				C6DEC5292A38BF6C00943448 /* StatusBarController.swift */,
+				C6E2C02F2A3EE9F1007D4E1B /* StatusBarStateManager.swift */,
 			);
 			path = Contents;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 				C6DEC52A2A38BF6C00943448 /* StatusBarController.swift in Sources */,
 				C6DEC52C2A38CDE500943448 /* Helper.swift in Sources */,
 				C66CABB32A388FBD00E4D8E6 /* ViewController.swift in Sources */,
+				C6E2C0302A3EE9F1007D4E1B /* StatusBarStateManager.swift in Sources */,
 				C66CABA42A38871500E4D8E6 /* AppDelegate.swift in Sources */,
 				C6DEC5332A3A048B00943448 /* NSSwitch+Extension.swift in Sources */,
 				C6DEC5352A3A052700943448 /* NSButton+Extension.swift in Sources */,
@@ -229,7 +233,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				C66CABAA2A38871500E4D8E6 /* Base */,
-				C6EF89FF2A3C9F81006832AD /* zh-Hans */,
+				C674C8BD2A3F05E70016029D /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -380,7 +384,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = net.krlite.Stalker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -411,7 +415,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = net.krlite.Stalker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

@@ -73,18 +73,18 @@
             <objects>
                 <viewController title="View" storyboardIdentifier="ViewController" id="XfG-lQ-9wD" customClass="ViewController" customModule="Stalker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="408" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="408" height="290"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <box fixedFrame="YES" boxType="custom" borderWidth="0.0" cornerRadius="13" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="AE1-vw-2zX" userLabel="Info">
-                                <rect key="frame" x="20" y="224" width="368" height="26"/>
+                                <rect key="frame" x="20" y="244" width="368" height="26"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" id="zt2-N7-04s">
                                     <rect key="frame" x="0.0" y="0.0" width="368" height="26"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <button translatesAutoresizingMaskIntoConstraints="NO" id="lno-8O-Iz8">
-                                            <rect key="frame" x="8" y="4.5" width="63" height="17"/>
+                                            <rect key="frame" x="8" y="3.5" width="63" height="17"/>
                                             <buttonCell key="cell" type="bevel" title="源代码" bezelStyle="rounded" image="apple.terminal.on.rectangle.fill" catalog="system" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" inset="2" id="OjW-Fe-OGQ">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" size="13" name="VonwaonBitmap-12px"/>
@@ -94,12 +94,12 @@
                                                 <nil key="locale"/>
                                             </symbolConfiguration>
                                             <connections>
-                                                <action selector="inspectSourceCode:" target="XfG-lQ-9wD" id="3FB-gU-8Or"/>
+                                                <action selector="sourceCodeUrl:" target="XfG-lQ-9wD" id="3FB-gU-8Or"/>
                                             </connections>
                                         </button>
-                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="aXF-sF-flQ" userLabel="Buy Me a Juice">
-                                            <rect key="frame" x="307" y="6" width="51.5" height="16"/>
-                                            <buttonCell key="cell" type="bevel" title="赞助" bezelStyle="rounded" image="cup.and.saucer.fill" catalog="system" imagePosition="trailing" alignment="right" imageScaling="proportionallyDown" inset="2" id="gbY-hT-jUX">
+                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="aXF-sF-flQ">
+                                            <rect key="frame" x="283" y="5" width="77.5" height="16"/>
+                                            <buttonCell key="cell" type="bevel" title="赞助一下" bezelStyle="rounded" image="cup.and.saucer.fill" catalog="system" imagePosition="trailing" alignment="right" imageScaling="proportionallyDown" inset="2" id="gbY-hT-jUX">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" size="13" name="VonwaonBitmap-12px"/>
                                             </buttonCell>
@@ -108,11 +108,11 @@
                                                 <nil key="locale"/>
                                             </symbolConfiguration>
                                             <connections>
-                                                <action selector="sponsor:" target="XfG-lQ-9wD" id="tzp-yZ-IV3"/>
+                                                <action selector="sponsorUrl:" target="XfG-lQ-9wD" id="tzp-yZ-IV3"/>
                                             </connections>
                                         </button>
                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3pc-OX-nv1">
-                                            <rect key="frame" x="129" y="-41" width="108" height="108"/>
+                                            <rect key="frame" x="130" y="-42" width="108" height="108"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="108" id="MDB-0y-NN9"/>
                                                 <constraint firstAttribute="height" constant="108" id="Zeg-jP-UBX"/>
@@ -130,9 +130,10 @@
                                         <constraint firstItem="3pc-OX-nv1" firstAttribute="centerX" secondItem="zt2-N7-04s" secondAttribute="centerX" id="nFU-so-Ze1"/>
                                     </constraints>
                                 </view>
+                                <color key="fillColor" name="InfoBackgroundColor"/>
                             </box>
                             <box fixedFrame="YES" boxType="custom" cornerRadius="13" title="Box" titlePosition="noTitle" transparent="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oKr-8Q-j0H" userLabel="Stalker Placeholder">
-                                <rect key="frame" x="20" y="224" width="368" height="26"/>
+                                <rect key="frame" x="20" y="244" width="368" height="26"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" id="hFa-U3-h4z">
                                     <rect key="frame" x="1" y="1" width="366" height="24"/>
@@ -150,18 +151,18 @@
                                     </subviews>
                                 </view>
                             </box>
-                            <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="cgp-nF-rry">
-                                <rect key="frame" x="17" y="66" width="374" height="146"/>
+                            <box fixedFrame="YES" boxType="custom" cornerRadius="5" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="cgp-nF-rry" userLabel="Preferences">
+                                <rect key="frame" x="20" y="70" width="368" height="160"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" wantsLayer="YES" id="C9k-29-8bb">
-                                    <rect key="frame" x="4" y="5" width="366" height="138"/>
+                                    <rect key="frame" x="1" y="1" width="366" height="158"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <stackView distribution="fillEqually" orientation="vertical" alignment="centerX" spacing="11" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VaZ-s8-RGi">
-                                            <rect key="frame" x="16" y="16" width="334" height="109"/>
+                                            <rect key="frame" x="16" y="11" width="334" height="136"/>
                                             <subviews>
                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rjc-DS-W9i" userLabel="Auto Hides">
-                                                    <rect key="frame" x="0.0" y="93" width="334" height="16"/>
+                                                    <rect key="frame" x="0.0" y="120" width="334" height="16"/>
                                                     <subviews>
                                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="x9I-1B-5mg">
                                                             <rect key="frame" x="-2" y="0.0" width="304" height="16"/>
@@ -191,11 +192,11 @@
                                                     </customSpacing>
                                                 </stackView>
                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="plQ-cU-EIY" userLabel="Use Always Hide Area">
-                                                    <rect key="frame" x="0.0" y="66" width="334" height="16"/>
+                                                    <rect key="frame" x="0.0" y="93" width="334" height="16"/>
                                                     <subviews>
                                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kAO-3G-Qug">
                                                             <rect key="frame" x="-2" y="0.0" width="304" height="16"/>
-                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="使用永远隐藏区域" id="tNP-6M-aPS">
+                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="使用永久隐藏区域" id="tNP-6M-aPS">
                                                                 <font key="font" metaFont="systemSemibold" size="13"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -220,8 +221,46 @@
                                                         <real value="3.4028234663852886e+38"/>
                                                     </customSpacing>
                                                 </stackView>
-                                                <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="H0N-WG-5EI">
-                                                    <rect key="frame" x="28" y="52" width="278" height="5"/>
+                                                <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mZs-s8-GNV" userLabel="Disables In Insufficient Space">
+                                                    <rect key="frame" x="0.0" y="66" width="334" height="16"/>
+                                                    <subviews>
+                                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rx2-fn-b3h">
+                                                            <rect key="frame" x="-2" y="0.0" width="304" height="16"/>
+                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="状态栏空间不足时停用" id="LA8-DD-5dp">
+                                                                <font key="font" metaFont="systemSemibold" size="13"/>
+                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
+                                                        <switch horizontalHuggingPriority="750" verticalHuggingPriority="750" controlSize="mini" baseWritingDirection="leftToRight" alignment="left" translatesAutoresizingMaskIntoConstraints="NO" id="tlI-W6-qbG">
+                                                            <rect key="frame" x="307" y="0.0" width="28" height="16"/>
+                                                            <connections>
+                                                                <action selector="toggleDisablesInInsufficientSpace:" target="XfG-lQ-9wD" id="QLg-Ab-9qz"/>
+                                                            </connections>
+                                                        </switch>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="16" id="wiO-LH-Vfd"/>
+                                                    </constraints>
+                                                    <visibilityPriorities>
+                                                        <integer value="1000"/>
+                                                        <integer value="1000"/>
+                                                    </visibilityPriorities>
+                                                    <customSpacing>
+                                                        <real value="3.4028234663852886e+38"/>
+                                                        <real value="3.4028234663852886e+38"/>
+                                                    </customSpacing>
+                                                </stackView>
+                                                <box boxType="custom" borderWidth="0.0" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="qW0-Np-0Oj" userLabel="Separator Line">
+                                                    <rect key="frame" x="16" y="54" width="302" height="1"/>
+                                                    <view key="contentView" id="vfX-b7-LnH">
+                                                        <rect key="frame" x="0.0" y="0.0" width="302" height="1"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    </view>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="M19-Id-Hsq"/>
+                                                    </constraints>
+                                                    <color key="fillColor" name="SecondaryBorderColor"/>
                                                 </box>
                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mim-fr-TPw" userLabel="Starts With macOS">
                                                     <rect key="frame" x="0.0" y="27" width="334" height="16"/>
@@ -288,17 +327,23 @@
                                                 <constraint firstAttribute="trailing" secondItem="mim-fr-TPw" secondAttribute="trailing" id="7c2-HB-4It"/>
                                                 <constraint firstAttribute="trailing" secondItem="aM0-Tc-lvC" secondAttribute="trailing" id="A9D-A0-UID"/>
                                                 <constraint firstItem="Rjc-DS-W9i" firstAttribute="centerX" secondItem="VaZ-s8-RGi" secondAttribute="centerX" id="GuW-zG-szt"/>
+                                                <constraint firstItem="qW0-Np-0Oj" firstAttribute="leading" secondItem="VaZ-s8-RGi" secondAttribute="leading" constant="16" id="Ijo-ba-dmG"/>
                                                 <constraint firstAttribute="trailing" secondItem="plQ-cU-EIY" secondAttribute="trailing" id="JHe-bT-41Q"/>
+                                                <constraint firstAttribute="trailing" secondItem="mZs-s8-GNV" secondAttribute="trailing" id="LQj-w9-rzj"/>
                                                 <constraint firstItem="aM0-Tc-lvC" firstAttribute="centerX" secondItem="VaZ-s8-RGi" secondAttribute="centerX" id="NPo-KU-3Uc"/>
                                                 <constraint firstAttribute="trailing" secondItem="Rjc-DS-W9i" secondAttribute="trailing" id="QG1-6c-lDI"/>
+                                                <constraint firstItem="mZs-s8-GNV" firstAttribute="leading" secondItem="VaZ-s8-RGi" secondAttribute="leading" id="T0e-gu-LHi"/>
                                                 <constraint firstItem="aM0-Tc-lvC" firstAttribute="leading" secondItem="VaZ-s8-RGi" secondAttribute="leading" id="eDr-WM-Ya0"/>
+                                                <constraint firstItem="mZs-s8-GNV" firstAttribute="centerX" secondItem="VaZ-s8-RGi" secondAttribute="centerX" id="f0d-3h-alG"/>
                                                 <constraint firstItem="plQ-cU-EIY" firstAttribute="leading" secondItem="VaZ-s8-RGi" secondAttribute="leading" id="gWN-38-rn9"/>
                                                 <constraint firstItem="plQ-cU-EIY" firstAttribute="centerX" secondItem="VaZ-s8-RGi" secondAttribute="centerX" id="kQn-8D-xuJ"/>
                                                 <constraint firstItem="mim-fr-TPw" firstAttribute="centerX" secondItem="VaZ-s8-RGi" secondAttribute="centerX" id="s6g-W3-fsh"/>
                                                 <constraint firstItem="Rjc-DS-W9i" firstAttribute="leading" secondItem="VaZ-s8-RGi" secondAttribute="leading" id="xjt-fA-ctH"/>
                                                 <constraint firstItem="mim-fr-TPw" firstAttribute="leading" secondItem="VaZ-s8-RGi" secondAttribute="leading" id="zWH-YI-zDy"/>
+                                                <constraint firstAttribute="trailing" secondItem="qW0-Np-0Oj" secondAttribute="trailing" constant="16" id="zgg-ff-GW2"/>
                                             </constraints>
                                             <visibilityPriorities>
+                                                <integer value="1000"/>
                                                 <integer value="1000"/>
                                                 <integer value="1000"/>
                                                 <integer value="1000"/>
@@ -311,18 +356,18 @@
                                                 <real value="3.4028234663852886e+38"/>
                                                 <real value="3.4028234663852886e+38"/>
                                                 <real value="3.4028234663852886e+38"/>
+                                                <real value="3.4028234663852886e+38"/>
                                             </customSpacing>
                                         </stackView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="VaZ-s8-RGi" firstAttribute="centerY" secondItem="C9k-29-8bb" secondAttribute="centerY" id="2EW-rf-thY"/>
                                         <constraint firstItem="VaZ-s8-RGi" firstAttribute="leading" secondItem="C9k-29-8bb" secondAttribute="leading" constant="16" id="2RS-PN-vbs"/>
                                         <constraint firstItem="VaZ-s8-RGi" firstAttribute="centerX" secondItem="C9k-29-8bb" secondAttribute="centerX" id="FDq-Xn-2Up"/>
-                                        <constraint firstItem="VaZ-s8-RGi" firstAttribute="centerY" secondItem="C9k-29-8bb" secondAttribute="centerY" id="dk6-3G-mFL"/>
                                         <constraint firstAttribute="trailing" secondItem="VaZ-s8-RGi" secondAttribute="trailing" constant="16" id="iPO-9g-upt"/>
-                                        <constraint firstItem="VaZ-s8-RGi" firstAttribute="top" secondItem="C9k-29-8bb" secondAttribute="top" constant="16" id="kyV-Iv-WqN"/>
-                                        <constraint firstAttribute="bottom" secondItem="VaZ-s8-RGi" secondAttribute="bottom" constant="16" id="ok4-aO-D42"/>
                                     </constraints>
                                 </view>
+                                <color key="borderColor" name="BorderColor"/>
                             </box>
                             <box fixedFrame="YES" boxType="custom" cornerRadius="4" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="ukX-cV-gCY">
                                 <rect key="frame" x="20" y="20" width="368" height="34"/>
@@ -363,6 +408,7 @@
                         <outlet property="autoHides" destination="btq-5H-JUt" id="0fw-Yt-hme"/>
                         <outlet property="info" destination="AE1-vw-2zX" id="5sR-8O-E4A"/>
                         <outlet property="main" destination="m2S-Jp-Qdl" id="lf7-2U-DmK"/>
+                        <outlet property="preferences" destination="cgp-nF-rry" id="nAe-uW-jGf"/>
                         <outlet property="quitApp" destination="ukX-cV-gCY" id="5oT-tc-6qH"/>
                         <outlet property="quitAppButton" destination="sDV-9z-3dI" id="LyR-ZN-t94"/>
                         <outlet property="quitAppPlaceholder" destination="JHe-tc-Es4" id="j6A-Rb-KCJ"/>
@@ -375,7 +421,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="475"/>
+            <point key="canvasLocation" x="75" y="485"/>
         </scene>
     </scenes>
     <resources>
@@ -383,6 +429,15 @@
         <image name="apple.terminal.on.rectangle.fill" catalog="system" width="19" height="16"/>
         <image name="cup.and.saucer.fill" catalog="system" width="20" height="15"/>
         <image name="stop.circle.fill" catalog="system" width="15" height="15"/>
+        <namedColor name="BorderColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="0.27000000000000002" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="InfoBackgroundColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="0.029999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SecondaryBorderColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <namedColor name="TransparentDangerColor">
             <color red="1" green="0.23100000619888306" blue="0.18799999356269836" alpha="0.10000000149011612" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

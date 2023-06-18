@@ -19,11 +19,15 @@ class ViewController: NSViewController {
 	
 	static let QUIT_APP_MAX_HEIGHT: CGFloat = 32
 	
+	static let INFO_SHIFT: CGFloat = 8
+	
 	// MARK: - Outlets
 	
 	@IBOutlet var main: NSView!
 	
 	@IBOutlet weak var info: NSBox!
+	
+	@IBOutlet weak var preferences: NSBox!
 	
 	
 	
@@ -48,6 +52,8 @@ class ViewController: NSViewController {
 	@IBOutlet weak var startsWithMacos: 	NSSwitch!
 	
 	@IBOutlet weak var reduceAnimation: 	NSSwitch!
+	
+	// MARK: - View Methods
 	
 	override func viewDidLoad(
 	) {
@@ -80,8 +86,16 @@ class ViewController: NSViewController {
 		// Init main view
 		
 		info.alphaValue = 0
-		info.frameCenterRotation = -3
 		stalker.alphaValue = 1
+		
+		info.setFrameOrigin(
+			info.frame.origin.applying(
+				CGAffineTransform(
+					translationX: 0,
+					y: ViewController.INFO_SHIFT
+				)
+			)
+		)
 		
 		main.setFrameSize(
 			NSSize(
@@ -168,55 +182,72 @@ extension ViewController {
 			switch area {
 			case "quitApp":
 				
-				NSAnimationContext.runAnimationGroup({ context in
-					context.duration = Animations.Time.QUIT_APP_EXPAND
-					
-					main.animator().setFrameOrigin(
-						main.frame.origin.applying(
-							CGAffineTransform(
-								translationX: 0,
-								y: ViewController.QUIT_APP_MAX_HEIGHT - ViewController.QUIT_APP_MIN_HEIGHT
-							)
+				main.animator().setFrameOrigin(
+					main.frame.origin.applying(
+						CGAffineTransform(
+							translationX: 0,
+							y: ViewController.QUIT_APP_MAX_HEIGHT - ViewController.QUIT_APP_MIN_HEIGHT
 						)
 					)
-					
-					quitApp.animator().setFrameSize(
-						NSSize(
-							width: 	quitApp.frame.width,
-							height: ViewController.QUIT_APP_MAX_HEIGHT
+				)
+				
+				quitApp.animator().setFrameSize(
+					NSSize(
+						width: 	quitApp.frame.width,
+						height: ViewController.QUIT_APP_MAX_HEIGHT
+					)
+				)
+				
+				quitApp.animator().setFrameOrigin(
+					quitApp.frame.origin.applying(
+						CGAffineTransform(
+							translationX: 0,
+							y: ViewController.QUIT_APP_MIN_HEIGHT - ViewController.QUIT_APP_MAX_HEIGHT
 						)
 					)
+				)
+				
+				quitAppButton	.animator().alphaValue = 1
+				stalker			.animator().alphaValue = 0
+				
+				// Preferences filters
+				
+				do {
+					let blur = CIFilter(name: "CIGaussianBlur")
+					blur?.setValue(8, forKey: kCIInputRadiusKey)
 					
-					quitApp.animator().setFrameOrigin(
-						quitApp.frame.origin.applying(
-							CGAffineTransform(
-								translationX: 0,
-								y: ViewController.QUIT_APP_MIN_HEIGHT - ViewController.QUIT_APP_MAX_HEIGHT
-							)
-						)
-					)
-					
-					quitAppButton	.animator().alphaValue = 1
-					stalker			.animator().alphaValue = 0
-				})
+					preferences.animator().contentFilters = [blur!]
+				}
 				
 			case "stalker":
 				
 				info	.animator().alphaValue = 1
-				info	.animator().frameCenterRotation = 0
 				stalker	.animator().alphaValue = 0.55
 				
-				let blur = CIFilter(name: "CIDiscBlur")
-				blur?.setValue(16, forKey: kCIInputRadiusKey)
+				info.animator().setFrameOrigin(
+					info.frame.origin.applying(
+						CGAffineTransform(
+							translationX: 0,
+							y: -ViewController.INFO_SHIFT
+						)
+					)
+				)
 				
-				let halftone = CIFilter(name: "CICMYKHalftone")
-				halftone?.setValue(6, 		forKey: kCIInputWidthKey)
-				halftone?.setValue(0, 		forKey: kCIInputAngleKey)
-				halftone?.setValue(0.2, 	forKey: kCIInputSharpnessKey)
-				halftone?.setValue(1, 		forKey: "inputGCR")
-				halftone?.setValue(0.75, 	forKey: "inputUCR")
+				// Stalker filters
 				
-				stalker.animator().contentFilters = [blur!, halftone!]
+				do {
+					let blur = CIFilter(name: "CIGaussianBlur")
+					blur?.setValue(16, forKey: kCIInputRadiusKey)
+					
+					let halftone = CIFilter(name: "CICMYKHalftone")
+					halftone?.setValue(6, 		forKey: kCIInputWidthKey)
+					halftone?.setValue(0, 		forKey: kCIInputAngleKey)
+					halftone?.setValue(0.2, 	forKey: kCIInputSharpnessKey)
+					halftone?.setValue(1, 		forKey: "inputGCR")
+					halftone?.setValue(0.75, 	forKey: "inputUCR")
+					
+					stalker.animator().contentFilters = [blur!, halftone!]
+				}
 				
 			default:
 				break
@@ -233,43 +264,49 @@ extension ViewController {
 			switch area {
 			case "quitApp":
 				
-				NSAnimationContext.runAnimationGroup({ context in
-					context.duration = Animations.Time.QUIT_APP_EXPAND
-					
-					main.animator().setFrameOrigin(
-						main.frame.origin.applying(
-							CGAffineTransform(
-								translationX: 0,
-								y: ViewController.QUIT_APP_MIN_HEIGHT - ViewController.QUIT_APP_MAX_HEIGHT
-							)
+				main.animator().setFrameOrigin(
+					main.frame.origin.applying(
+						CGAffineTransform(
+							translationX: 0,
+							y: ViewController.QUIT_APP_MIN_HEIGHT - ViewController.QUIT_APP_MAX_HEIGHT
 						)
 					)
-					
-					quitApp.animator().setFrameSize(
-						NSSize(
-							width: 	quitApp.frame.width,
-							height: ViewController.QUIT_APP_MIN_HEIGHT
+				)
+				
+				quitApp.animator().setFrameSize(
+					NSSize(
+						width: 	quitApp.frame.width,
+						height: ViewController.QUIT_APP_MIN_HEIGHT
+					)
+				)
+				
+				quitApp.animator().setFrameOrigin(
+					quitApp.frame.origin.applying(
+						CGAffineTransform(
+							translationX: 0,
+							y: ViewController.QUIT_APP_MAX_HEIGHT - ViewController.QUIT_APP_MIN_HEIGHT
 						)
 					)
-					
-					quitApp.animator().setFrameOrigin(
-						quitApp.frame.origin.applying(
-							CGAffineTransform(
-								translationX: 0,
-								y: ViewController.QUIT_APP_MAX_HEIGHT - ViewController.QUIT_APP_MIN_HEIGHT
-							)
-						)
-					)
-					
-					quitAppButton	.animator().alphaValue = 0
-					stalker			.animator().alphaValue = 1
-				})
+				)
+				
+				quitAppButton	.animator().alphaValue = 0
+				stalker			.animator().alphaValue = 1
+				
+				preferences.animator().contentFilters = []
 				
 			case "stalker":
 				
 				info	.animator().alphaValue = 0
-				info	.animator().frameCenterRotation = -3
 				stalker	.animator().alphaValue = 1
+				
+				info.animator().setFrameOrigin(
+					info.frame.origin.applying(
+						CGAffineTransform(
+							translationX: 0,
+							y: ViewController.INFO_SHIFT
+						)
+					)
+				)
 				
 				stalker.animator().contentFilters = []
 				
@@ -290,33 +327,7 @@ extension ViewController {
 		NSApplication.shared.terminate(sender)
 	}
 	
-	// MARK: - Data Actions
-	
-	@IBAction func autoHides(
-		_ sender: NSSwitch
-	) {
-		Data.autoHides 			= sender.flag
-	}
-	
-	@IBAction func useAlwaysHideArea(
-		_ sender: NSSwitch
-	) {
-		Data.useAlwaysHideArea 	= sender.flag
-	}
-	
-	@IBAction func startsWithMacos(
-		_ sender: NSSwitch
-	) {
-		Data.startsWithMacos 	= sender.flag
-	}
-	
-	@IBAction func reduceAnimation(
-		_ sender: NSSwitch
-	) {
-		Data.reduceAnimation	= sender.flag
-	}
-	
-	@IBAction func inspectSourceCode(
+	@IBAction func sourceCodeUrl(
 		_ sender: NSButton
 	) {
 		if let url = Helper.SOURCE_CODE_URL {
@@ -324,12 +335,44 @@ extension ViewController {
 		}
 	}
 	
-	@IBAction func sponsor(
+	@IBAction func sponsorUrl(
 		_ sender: NSButton
 	) {
 		if let url = Helper.SPONSOR_URL {
 			NSWorkspace.shared.open(url)
 		}
+	}
+	
+	// MARK: - Data Actions
+	
+	@IBAction func toggleAutoHides(
+		_ sender: NSSwitch
+	) {
+		Data.autoHides 					= sender.flag
+	}
+	
+	@IBAction func toggleUseAlwaysHideArea(
+		_ sender: NSSwitch
+	) {
+		Data.useAlwaysHideArea 			= sender.flag
+	}
+	
+	@IBAction func toggleDisablesInInsufficientSpace(
+		_ sender: NSSwitch
+	) {
+		Data.disablesInSufficientSpace 	= sender.flag
+	}
+	
+	@IBAction func toggleStartsWithMacos(
+		_ sender: NSSwitch
+	) {
+		Data.startsWithMacos 			= sender.flag
+	}
+	
+	@IBAction func toggleReduceAnimation(
+		_ sender: NSSwitch
+	) {
+		Data.reduceAnimation			= sender.flag
 	}
 	
 }
