@@ -172,10 +172,10 @@
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                         </textField>
-                                                        <switch horizontalHuggingPriority="750" verticalHuggingPriority="750" controlSize="mini" baseWritingDirection="leftToRight" alignment="left" translatesAutoresizingMaskIntoConstraints="NO" id="btq-5H-JUt">
+                                                        <switch horizontalHuggingPriority="750" verticalHuggingPriority="750" controlSize="mini" baseWritingDirection="leftToRight" alignment="left" translatesAutoresizingMaskIntoConstraints="NO" id="btq-5H-JUt" userLabel="Auto Hides">
                                                             <rect key="frame" x="307" y="0.0" width="28" height="16"/>
                                                             <connections>
-                                                                <action selector="autoHides:" target="XfG-lQ-9wD" id="mde-Qw-3Fz"/>
+                                                                <action selector="toggleAutoHides:" target="XfG-lQ-9wD" id="MjU-Zd-RzT"/>
                                                             </connections>
                                                         </switch>
                                                     </subviews>
@@ -205,7 +205,7 @@
                                                         <switch horizontalHuggingPriority="750" verticalHuggingPriority="750" controlSize="mini" baseWritingDirection="leftToRight" alignment="left" translatesAutoresizingMaskIntoConstraints="NO" id="J3b-pa-Hhp">
                                                             <rect key="frame" x="307" y="0.0" width="28" height="16"/>
                                                             <connections>
-                                                                <action selector="useAlwaysHideArea:" target="XfG-lQ-9wD" id="OLS-81-vhF"/>
+                                                                <action selector="toggleUseAlwaysHideArea:" target="XfG-lQ-9wD" id="FJV-af-1lB"/>
                                                             </connections>
                                                         </switch>
                                                     </subviews>
@@ -232,10 +232,10 @@
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                         </textField>
-                                                        <switch horizontalHuggingPriority="750" verticalHuggingPriority="750" controlSize="mini" baseWritingDirection="leftToRight" alignment="left" translatesAutoresizingMaskIntoConstraints="NO" id="tlI-W6-qbG">
+                                                        <switch horizontalHuggingPriority="750" verticalHuggingPriority="750" controlSize="mini" baseWritingDirection="leftToRight" alignment="left" translatesAutoresizingMaskIntoConstraints="NO" id="tlI-W6-qbG" userLabel="Disables In Insufficient Space">
                                                             <rect key="frame" x="307" y="0.0" width="28" height="16"/>
                                                             <connections>
-                                                                <action selector="toggleDisablesInInsufficientSpace:" target="XfG-lQ-9wD" id="QLg-Ab-9qz"/>
+                                                                <action selector="toggleDisablesInInsufficientSpace:" target="XfG-lQ-9wD" id="eSn-bC-wuL"/>
                                                             </connections>
                                                         </switch>
                                                     </subviews>
@@ -273,10 +273,10 @@
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                         </textField>
-                                                        <switch horizontalHuggingPriority="750" verticalHuggingPriority="750" controlSize="mini" baseWritingDirection="leftToRight" alignment="left" translatesAutoresizingMaskIntoConstraints="NO" id="pZX-aV-bY4" userLabel="Starts With macOS">
+                                                        <switch horizontalHuggingPriority="750" verticalHuggingPriority="750" controlSize="mini" baseWritingDirection="leftToRight" alignment="left" translatesAutoresizingMaskIntoConstraints="NO" id="pZX-aV-bY4">
                                                             <rect key="frame" x="307" y="0.0" width="28" height="16"/>
                                                             <connections>
-                                                                <action selector="startsWithMacos:" target="XfG-lQ-9wD" id="TWQ-sW-0hv"/>
+                                                                <action selector="toggleStartsWithMacos:" target="XfG-lQ-9wD" id="4JR-RR-fH0"/>
                                                             </connections>
                                                         </switch>
                                                     </subviews>
@@ -306,7 +306,7 @@
                                                         <switch horizontalHuggingPriority="750" verticalHuggingPriority="750" controlSize="mini" baseWritingDirection="leftToRight" alignment="left" translatesAutoresizingMaskIntoConstraints="NO" id="WSc-W9-RlH">
                                                             <rect key="frame" x="307" y="0.0" width="28" height="16"/>
                                                             <connections>
-                                                                <action selector="reduceAnimation:" target="XfG-lQ-9wD" id="pe7-Tj-YOU"/>
+                                                                <action selector="toggleReduceAnimation:" target="XfG-lQ-9wD" id="rXA-id-dKx"/>
                                                             </connections>
                                                         </switch>
                                                     </subviews>
@@ -430,13 +430,13 @@
         <image name="cup.and.saucer.fill" catalog="system" width="20" height="15"/>
         <image name="stop.circle.fill" catalog="system" width="15" height="15"/>
         <namedColor name="BorderColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="0.27000000000000002" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.0" green="0.0" blue="0.0" alpha="0.27000001072883606" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="InfoBackgroundColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="0.029999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.0" blue="0.0" alpha="0.029999999329447746" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SecondaryBorderColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.0" green="0.0" blue="0.0" alpha="0.10000000149011612" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="TransparentDangerColor">
             <color red="1" green="0.23100000619888306" blue="0.18799999356269836" alpha="0.10000000149011612" colorSpace="custom" customColorSpace="sRGB"/>
