@@ -11,19 +11,7 @@ class StatusBarController {
 	
 	// MARK: - Constants
 	
-	static let COLLAPSE_DISABLED_LENGTH: 	CGFloat = 2
-	
 	static let NOTCH_DISABLED_AREA_WIDTH:	CGFloat = 250
-	
-	
-	
-	static let HEAD_ICON: 		NSImage? = NSImage(named:NSImage.Name("SepDot"))
-	
-	static let SEPARATOR_ICON: 	NSImage? = NSImage(named:NSImage.Name("SepLine"))
-	
-	static let TAIL_ICON: 		NSImage? = NSImage(named:NSImage.Name("SepDottedLine"))
-	
-	static let EMPTY_ICON: 		NSImage? = NSImage(named:NSImage.Name("SepSpace"))
 	
 	// MARK: - States
 	
@@ -197,7 +185,7 @@ class StatusBarController {
 		
 		// Init status icons
 		
-		head.length 		= StatusBarController.COLLAPSE_DISABLED_LENGTH
+		head.length 		= Data.theme.iconWidth
 		separator.length 	= 0
 		tail.length 		= 0
 		
@@ -217,6 +205,8 @@ class StatusBarController {
 		
 		startTimers()
 		startMonitors()
+		
+		Data.theme = Themes.hiddenBar
 	}
 	
 	deinit {
@@ -255,7 +245,7 @@ class StatusBarController {
 			
 			Helper.lerpAsync(
 				a: self.head.length,
-				b: StatusBarController.COLLAPSE_DISABLED_LENGTH * (flag ? 10.0 : 1.0),
+				b: flag ? Data.theme.iconWidthAlt : Data.theme.iconWidth,
 				ratio: Animations.LERP_RATIO
 			) { result in
 				self.head.length = result
@@ -274,7 +264,7 @@ class StatusBarController {
 				let origin = self.separator.button?.origin,
 				self.lastFlags[0] != flag || origin.x != self.lastOriginXs[0]
 			{
-				self.lengths[0] = flag ? max(0, x + length - borderX) : StatusBarController.COLLAPSE_DISABLED_LENGTH
+				self.lengths[0] = flag ? max(0, x + length - borderX) : Data.theme.iconWidth
 				self.lastOriginXs[0] = origin.x
 				self.lastFlags[0] = flag
 			}
@@ -301,7 +291,7 @@ class StatusBarController {
 				let origin = self.tail.button?.origin,
 				self.lastFlags[1] != flag || origin.x != self.lastOriginXs[1]
 			{
-				self.lengths[1] = flag ? max(0, (Helper.Screen.width ?? 10000) - borderX) : StatusBarController.COLLAPSE_DISABLED_LENGTH
+				self.lengths[1] = flag ? max(0, (Helper.Screen.width ?? 10000) - borderX) : Data.theme.iconWidth
 				self.lastOriginXs[1] = origin.x
 				self.lastFlags[1] = flag
 			}
@@ -339,7 +329,7 @@ extension StatusBarController {
 	}
 	
 	func remap() {
-		head.button?.image = !Data.collapsed ? StatusBarController.HEAD_ICON : StatusBarController.EMPTY_ICON
+		head.button?.image = Data.collapsed ? Data.theme.headCollapsed : Data.theme.headUncollapsed
 		
 		if let trigger = headTrigger, 		mouseOnStatusBar && (idling || idlingAlwaysHideArea) && trigger.containsMouse { unidle() }
 		
@@ -347,13 +337,16 @@ extension StatusBarController {
 		
 		if let trigger = tailTrigger, 		mouseOnStatusBar && (idling || idlingAlwaysHideArea) && trigger.containsMouse { unidle() }
 		
-		if mouseOnStatusBar && (Helper.Keyboard.command || Helper.Keyboard.option) {
-			head.button?.image 		= StatusBarController.HEAD_ICON
-			separator.button?.image = StatusBarController.SEPARATOR_ICON
-			tail.button?.image 		= StatusBarController.TAIL_ICON
+		if !Data.theme.autoHideIcons {
+			separator.button?.image = Data.theme.separator
+			tail.button?.image 		= Data.theme.tail
+		} else if mouseOnStatusBar && (Helper.Keyboard.command || Helper.Keyboard.option) {
+			head.button?.image 		= Data.theme.headUncollapsed
+			separator.button?.image = Data.theme.separator
+			tail.button?.image 		= Data.theme.tail
 		} else {
-			separator.button?.image = StatusBarController.EMPTY_ICON
-			tail.button?.image 		= StatusBarController.EMPTY_ICON
+			separator.button?.image = Themes.Theme.EMPTY
+			tail.button?.image 		= Themes.Theme.EMPTY
 		}
 	}
 	

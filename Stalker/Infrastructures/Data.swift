@@ -12,6 +12,8 @@ public enum Data {
 	
 	public class Keys {
 		
+		static let THEME: String = "theme"
+		
 		public static let SEPS_ORDER: String = "sepsOrder"
 		
 		// MARK: - Booleans
@@ -28,6 +30,23 @@ public enum Data {
 		
 		public static let REDUCE_ANIMATION: 			String = "reduceAnimation"
 		
+	}
+	
+	static var theme: Themes.Theme {
+		get {
+			return Themes.from(
+				UserDefaults.standard.string(
+					forKey: Keys.THEME
+				)
+			)
+		}
+		
+		set(theme) {
+			UserDefaults.standard.set(
+				theme.name,
+				forKey: Keys.THEME
+			)
+		}
 	}
 	
 	public static var sepsOrder: [Int?]? {
