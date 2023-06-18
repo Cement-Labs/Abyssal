@@ -354,6 +354,7 @@ extension ViewController {
 	@IBAction func toggleUseAlwaysHideArea(
 		_ sender: NSSwitch
 	) {
+		Helper.delegate?.statusBarController.tailVisible(sender.flag)
 		Data.useAlwaysHideArea 			= sender.flag
 	}
 	

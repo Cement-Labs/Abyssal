@@ -201,10 +201,6 @@ class StatusBarController {
 		separator.length 	= 0
 		tail.length 		= 0
 		
-		headVisible(true)
-		separatorVisible(true)
-		tailVisible(true)
-		
 		if let button = self.head.button {
 			button.action 	= #selector(AppDelegate.toggle(_:))
 		}
@@ -254,7 +250,7 @@ class StatusBarController {
 		
 		// Head
 		
-		DispatchQueue.global().async {
+		DispatchQueue.global().async {			
 			let flag = Data.collapsed && !(self.idling || self.idlingAlwaysHideArea) && !self.mouseOnStatusBar && popoverNotShown
 			
 			Helper.lerpAsync(
@@ -299,11 +295,6 @@ class StatusBarController {
 		// Tail
 		
 		DispatchQueue.global().async {
-			// Use always hide?
-			
-			self.tailVisible(Data.useAlwaysHideArea)
-			guard Data.useAlwaysHideArea else { return }
-			
 			let flag = !(Helper.Keyboard.command && self.mouseOnStatusBar) && !self.idlingAlwaysHideArea && popoverNotShown
 			
 			if
@@ -337,12 +328,12 @@ extension StatusBarController {
 	
 	func reorder() {
 		guard _seps.allSatisfy ({ sep in
-			sep.button?.origin?.x ?? 0 > 0
+			sep.button?.origin?.x ?? 0 > 0 || !sep.isVisible
 		}) else { return }
 		
 		saveSepsOrder(
 			_seps.sorted {
-				$0.button?.origin?.x ?? 0 < $1.button?.origin?.x ?? 0
+				($0.isVisible ? ($0.button?.origin?.x ?? 0) : 0) < ($1.isVisible ? ($1.button?.origin?.x ?? 0) : 0)
 			}
 		)
 	}

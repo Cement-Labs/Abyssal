@@ -139,7 +139,7 @@
                                     <rect key="frame" x="1" y="1" width="366" height="24"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" alphaValue="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="vmq-K9-cCf">
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" alphaValue="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="vmq-K9-cCf">
                                             <rect key="frame" x="-3" y="-1" width="372" height="26"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" enabled="NO" alignment="center" title="Stalker" id="Y7L-ap-vBY">
@@ -164,7 +164,7 @@
                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rjc-DS-W9i" userLabel="Auto Hides">
                                                     <rect key="frame" x="0.0" y="120" width="334" height="16"/>
                                                     <subviews>
-                                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="x9I-1B-5mg">
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="x9I-1B-5mg">
                                                             <rect key="frame" x="-2" y="0.0" width="304" height="16"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Auto Hides" id="GR1-ls-Xll">
                                                                 <font key="font" metaFont="systemSemibold" size="13"/>
@@ -194,7 +194,7 @@
                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="plQ-cU-EIY" userLabel="Use Always Hide Area">
                                                     <rect key="frame" x="0.0" y="93" width="334" height="16"/>
                                                     <subviews>
-                                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kAO-3G-Qug">
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kAO-3G-Qug">
                                                             <rect key="frame" x="-2" y="0.0" width="304" height="16"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Use Always Hide Area" id="tNP-6M-aPS">
                                                                 <font key="font" metaFont="systemSemibold" size="13"/>
@@ -224,7 +224,7 @@
                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mZs-s8-GNV" userLabel="Disables In Insufficient Space">
                                                     <rect key="frame" x="0.0" y="66" width="334" height="16"/>
                                                     <subviews>
-                                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rx2-fn-b3h">
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rx2-fn-b3h">
                                                             <rect key="frame" x="-2" y="0.0" width="304" height="16"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Disables In Insufficient Space" id="LA8-DD-5dp">
                                                                 <font key="font" metaFont="systemSemibold" size="13"/>
@@ -265,7 +265,7 @@
                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mim-fr-TPw" userLabel="Starts With macOS">
                                                     <rect key="frame" x="0.0" y="27" width="334" height="16"/>
                                                     <subviews>
-                                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1Sc-hR-x8W">
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1Sc-hR-x8W">
                                                             <rect key="frame" x="-2" y="0.0" width="304" height="16"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Starts With macOS" id="uRl-sX-BhJ">
                                                                 <font key="font" metaFont="systemSemibold" size="13"/>
@@ -295,7 +295,7 @@
                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aM0-Tc-lvC" userLabel="Reduce Animation">
                                                     <rect key="frame" x="0.0" y="0.0" width="334" height="16"/>
                                                     <subviews>
-                                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jpR-MS-Zlj">
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jpR-MS-Zlj">
                                                             <rect key="frame" x="-2" y="0.0" width="304" height="16"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Reduce Animation" id="ZjE-yo-2df">
                                                                 <font key="font" metaFont="systemSemibold" size="13"/>
