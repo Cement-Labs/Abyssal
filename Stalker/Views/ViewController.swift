@@ -7,11 +7,13 @@
 
 import Cocoa
 
-class ViewController: NSViewController {
+class ViewController: NSViewController, NSMenuDelegate {
 	
 	var quitAppTrackingArea: NSTrackingArea?
 	
 	var stalkerTrackingArea: NSTrackingArea?
+	
+	let themesMenu: NSMenu = NSMenu()
 	
 	// MARK: - Constants
 	
@@ -45,7 +47,9 @@ class ViewController: NSViewController {
 	
 	
 	
-	@IBOutlet weak var autoHides: 			NSSwitch!
+	@IBOutlet weak var themes: NSPopUpButton!
+	
+	
 	
 	@IBOutlet weak var useAlwaysHideArea: 	NSSwitch!
 	
@@ -60,6 +64,26 @@ class ViewController: NSViewController {
 		super.viewDidLoad()
 		
 		updateData()
+		
+		// Init themes menu
+		
+		themes.removeAllItems()
+		themes.addItems(withTitles: Themes.THEME_NAMES_LIST)
+		themes.menu?.delegate = self
+		
+		if let index = Themes.THEMES_LIST.firstIndex(of: Data.theme) {
+			themes.selectItem(at: index)
+		}
+		
+		var maxWidth: CGFloat = 0
+		if let menu = themes.menu {
+			for item in menu.items {
+				let size = NSAttributedString(string: item.title).size()
+				maxWidth = max(maxWidth, size.width)
+			}
+			
+			themes.widthAnchor.constraint(equalToConstant: maxWidth + 50).isActive = true
+		}
 		
 		// Init tracking areas
 		
@@ -140,6 +164,35 @@ class ViewController: NSViewController {
 
 extension ViewController {
 	
+	// MARK: - Themes Menu Delegate
+	
+	@objc func menu(
+		_ menu: NSMenu,
+		willHighlight menuItem: NSMenuItem?
+	) {
+		if
+			let menuItem = menuItem,
+			let index = themes.menu?.items.firstIndex(of: menuItem)
+		{
+			// Doesn't work for now
+			// Data.theme = Themes.THEMES_LIST[index]
+		}
+	}
+	
+	@objc func menuDidClose(
+		_ menu: NSMenu
+	) {
+		if let menuItem = themes.menu?.highlightedItem,
+		   let index = themes.menu?.items.firstIndex(of: menuItem)
+		{
+			Data.theme = Themes.THEMES_LIST[index]
+		}
+	}
+	
+}
+
+extension ViewController {
+	
 	// MARK: - Storyboard Instantiation
 	
 	static func freshController(
@@ -161,7 +214,6 @@ extension ViewController {
 	}
 	
 	func updateData() {
-		autoHides			.set(Data.autoHides)
 		useAlwaysHideArea	.set(Data.useAlwaysHideArea)
 		startsWithMacos		.set(Data.startsWithMacos)
 		reduceAnimation		.set(Data.reduceAnimation)
@@ -327,34 +379,27 @@ extension ViewController {
 		NSApplication.shared.terminate(sender)
 	}
 	
-	@IBAction func sourceCodeUrl(
+	@IBAction func triggerSourceCode(
 		_ sender: NSButton
 	) {
 		if let url = Helper.SOURCE_CODE_URL {
 			NSWorkspace.shared.open(url)
+			Helper.delegate?.togglePopover(sender)
 		}
 	}
 	
-	@IBAction func sponsorUrl(
+	@IBAction func triggerUpdate(
 		_ sender: NSButton
 	) {
-		if let url = Helper.SPONSOR_URL {
-			NSWorkspace.shared.open(url)
-		}
+		// Needed to be implemented
 	}
 	
 	// MARK: - Data Actions
 	
-	@IBAction func toggleAutoHides(
-		_ sender: NSSwitch
-	) {
-		Data.autoHides 					= sender.flag
-	}
-	
 	@IBAction func toggleUseAlwaysHideArea(
 		_ sender: NSSwitch
 	) {
-		Helper.delegate?.statusBarController.tailVisible(sender.flag)
+		Helper.delegate?.statusBarController.untilTailVisible(sender.flag)
 		Data.useAlwaysHideArea 			= sender.flag
 	}
 	

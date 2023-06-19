@@ -10,7 +10,7 @@ import AppKit
 
 class Themes {
 	
-	class Theme {
+	class Theme: Equatable {
 		
 		static let EMPTY: NSImage? = NSImage(named: NSImage.Name("Empty"))
 		
@@ -60,6 +60,23 @@ class Themes {
 			self.autoHideIcons 	= autoHideIcons
 		}
 		
+		static func == (
+			lhs: Themes.Theme,
+			rhs: Themes.Theme
+		) -> Bool {
+			return lhs.name == rhs.name
+		}
+		
+	}
+	
+	static var THEMES_LIST: 		[Theme] {
+		return [stalker, hiddenBar]
+	}
+	
+	static var THEME_NAMES_LIST: 	[String] {
+		return THEMES_LIST.map({ theme in
+			return theme.name
+		})
 	}
 	
 	static func from(
@@ -76,7 +93,7 @@ class Themes {
 	}
 	
 	static let stalker: 	Theme = Theme(
-		"stalker",
+		"Stalker",
 		headUncollapsed: 	"Stalker/SepDot",
 		headCollapsed: 		nil,
 		separator: 			"Stalker/SepLine",
@@ -88,7 +105,7 @@ class Themes {
 	)
 	
 	static let hiddenBar: 	Theme = Theme(
-		"hiddenBar",
+		"Hidden Bar",
 		headUncollapsed: 	"HiddenBar/ic_left",
 		headCollapsed: 		"HiddenBar/ic_right",
 		separator: 			"HiddenBar/ic_line",

@@ -11,19 +11,21 @@ extension StatusBarController {
 	
 	// MARK: - Icon Visibilities
 	
-	func headVisible(
+	func untilHeadVisible(
 		_ flag: Bool
 	) {
+		untilSeparatorVisible(flag)
 		self.head.isVisible = flag
 	}
 	
-	func separatorVisible(
+	func untilSeparatorVisible(
 		_ flag: Bool
 	) {
+		untilTailVisible(flag)
 		self.separator.isVisible = flag
 	}
 	
-	func tailVisible(
+	func untilTailVisible(
 		_ flag: Bool
 	) {
 		self.tail.isVisible = flag

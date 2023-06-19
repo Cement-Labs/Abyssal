@@ -15,6 +15,8 @@ class StatusBarController {
 	
 	// MARK: - States
 	
+	var available:				Bool = false
+	
 	var idling: 				Bool = false
 	
 	var idlingAlwaysHideArea: 	Bool = false
@@ -23,7 +25,7 @@ class StatusBarController {
 	
 	var mouseOnStatusBar: 			Bool {
 		guard
-			let origin = head.button?.origin,
+			let origin = head.button?.window?.frame.origin,
 			let screenWidth = Helper.Screen.width,
 			NSEvent.mouseLocation.x >= (Helper.Screen.hasNotch ? screenWidth / 2 : 0)
 				&& NSEvent.mouseLocation.y >= origin.y
@@ -32,7 +34,7 @@ class StatusBarController {
 	}
 	
 	var mouseOverAlwaysHideArea: 	Bool {
-		guard let origin = tail.button?.origin else { return false }
+		guard let origin = tail.button?.window?.frame.origin else { return false }
 		return NSEvent.mouseLocation.x <= origin.x
 	}
 	
@@ -40,7 +42,7 @@ class StatusBarController {
 	
 	var inInsufficientSpace: Bool {
 		guard
-			let origin = separator.button?.origin,
+			let origin = separator.button?.window?.frame.origin,
 			let screenWidth = Helper.Screen.width
 		else { return false }
 		return origin.x + separator.length <= (Helper.Screen.hasNotch ? screenWidth / 2 + StatusBarController.NOTCH_DISABLED_AREA_WIDTH / 2 : 0)
@@ -62,8 +64,8 @@ class StatusBarController {
 	
 	var inside: 				NSRect? {
 		if
-			let originTail = tail.button?.origin,
-			let originHead = head.button?.origin,
+			let originTail = tail.button?.window?.frame.origin,
+			let originHead = head.button?.window?.frame.origin,
 			let screenHeight = Helper.Screen.height
 		{
 			return NSRect(
@@ -79,7 +81,7 @@ class StatusBarController {
 	
 	var headTrigger: 		NSRect? {
 		if
-			let origin = head.button?.origin,
+			let origin = head.origin,
 			let screenHeight = Helper.Screen.height
 		{
 			return NSRect(
@@ -95,7 +97,7 @@ class StatusBarController {
 	
 	var separatorTrigger: 	NSRect? {
 		if
-			let origin = separator.button?.origin,
+			let origin = separator.origin,
 			let screenHeight = Helper.Screen.height
 		{
 			return NSRect(
@@ -111,7 +113,7 @@ class StatusBarController {
 	
 	var tailTrigger: 		NSRect? {
 		if
-			let origin = tail.button?.origin,
+			let origin = tail.origin,
 			let screenHeight = Helper.Screen.height
 		{
 			return NSRect(
@@ -205,8 +207,6 @@ class StatusBarController {
 		
 		startTimers()
 		startMonitors()
-		
-		Data.theme = Themes.hiddenBar
 	}
 	
 	deinit {
@@ -223,6 +223,8 @@ class StatusBarController {
 	private var lastFlags: [Bool] = [false, false]
 	
 	func update() {
+		guard available else { return }
+		
 		guard !inInsufficientSpace else {
 			head.length 		= 0
 			separator.length 	= 0
@@ -240,7 +242,7 @@ class StatusBarController {
 		
 		// Head
 		
-		DispatchQueue.global().async {			
+		DispatchQueue.main.async {
 			let flag = Data.collapsed && !(self.idling || self.idlingAlwaysHideArea) && !self.mouseOnStatusBar && popoverNotShown
 			
 			Helper.lerpAsync(
@@ -254,14 +256,14 @@ class StatusBarController {
 		
 		// Separator
 		
-		DispatchQueue.global().async {
+		DispatchQueue.main.async {
 			let flag = Data.collapsed && !(self.idling || self.idlingAlwaysHideArea) && !self.mouseOnStatusBar && popoverNotShown
 			
-			guard let x = self.separator.button?.origin?.x else { return }
+			guard let x = self.separator.origin?.x else { return }
 			let length = self.separator.length
 			
 			if
-				let origin = self.separator.button?.origin,
+				let origin = self.separator.origin,
 				self.lastFlags[0] != flag || origin.x != self.lastOriginXs[0]
 			{
 				self.lengths[0] = flag ? max(0, x + length - borderX) : Data.theme.iconWidth
@@ -284,11 +286,11 @@ class StatusBarController {
 		
 		// Tail
 		
-		DispatchQueue.global().async {
+		DispatchQueue.main.async {
 			let flag = !(Helper.Keyboard.command && self.mouseOnStatusBar) && !self.idlingAlwaysHideArea && popoverNotShown
 			
 			if
-				let origin = self.tail.button?.origin,
+				let origin = self.tail.origin,
 				self.lastFlags[1] != flag || origin.x != self.lastOriginXs[1]
 			{
 				self.lengths[1] = flag ? max(0, (Helper.Screen.width ?? 10000) - borderX) : Data.theme.iconWidth
@@ -317,30 +319,44 @@ extension StatusBarController {
 	// MARK: - Appearance Handlers
 	
 	func reorder() {
-		guard _seps.allSatisfy ({ sep in
-			sep.button?.origin?.x ?? 0 > 0 || !sep.isVisible
-		}) else { return }
+		guard available else {
+			available = !(available && _seps.allSatisfy({ sep in
+				!sep.isVisible || sep.origin?.x ?? 0 != 0
+			}))
+			return
+		}
 		
 		saveSepsOrder(
 			_seps.sorted {
-				($0.isVisible ? ($0.button?.origin?.x ?? 0) : 0) < ($1.isVisible ? ($1.button?.origin?.x ?? 0) : 0)
+				($0.isVisible ? ($0.origin?.x ?? 0) : 0) <= ($1.isVisible ? ($1.origin?.x ?? 0) : 0)
 			}
 		)
 	}
 	
 	func remap() {
+		guard available else { return }
+		
+		let popoverShown = Helper.delegate?.popover.isShown ?? false
+		
 		head.button?.image = Data.collapsed ? Data.theme.headCollapsed : Data.theme.headUncollapsed
 		
-		if let trigger = headTrigger, 		mouseOnStatusBar && (idling || idlingAlwaysHideArea) && trigger.containsMouse { unidle() }
-		
-		if let trigger = separatorTrigger, 	mouseOnStatusBar && (idling || idlingAlwaysHideArea) && trigger.containsMouse { unidle() }
-		
-		if let trigger = tailTrigger, 		mouseOnStatusBar && (idling || idlingAlwaysHideArea) && trigger.containsMouse { unidle() }
+		if
+			let headTrigger 		= headTrigger,
+			let separatorTrigger 	= separatorTrigger,
+			let tailTrigger 		= tailTrigger,
+			mouseOnStatusBar
+				&& (idling || idlingAlwaysHideArea)
+				&& (
+					headTrigger.containsMouse
+					|| separatorTrigger.containsMouse
+					|| tailTrigger.containsMouse
+				)
+		{ unidle() }
 		
 		if !Data.theme.autoHideIcons {
 			separator.button?.image = Data.theme.separator
 			tail.button?.image 		= Data.theme.tail
-		} else if mouseOnStatusBar && (Helper.Keyboard.command || Helper.Keyboard.option) {
+		} else if popoverShown || (mouseOnStatusBar && (Helper.Keyboard.command || Helper.Keyboard.option)) {
 			head.button?.image 		= Data.theme.headUncollapsed
 			separator.button?.image = Data.theme.separator
 			tail.button?.image 		= Data.theme.tail

@@ -22,8 +22,6 @@ public enum Data {
 		
 		
 		
-		public static let AUTO_HIDES_AFTER_TIMEOUT: 	String = "autoHides"
-		
 		public static let USE_ALWAYS_HIDE_AREA: 		String = "alwaysHide"
 		
 		public static let DISABLES_IN_SUFFICIENT_SPACE: String = "autoDisables"
@@ -34,16 +32,16 @@ public enum Data {
 	
 	static var theme: Themes.Theme {
 		get {
-			return Themes.from(
-				UserDefaults.standard.string(
+			return Themes.THEMES_LIST[
+				UserDefaults.standard.integer(
 					forKey: Keys.THEME
 				)
-			)
+			]
 		}
 		
 		set(theme) {
 			UserDefaults.standard.set(
-				theme.name,
+				Themes.THEMES_LIST.firstIndex(of: theme),
 				forKey: Keys.THEME
 			)
 		}
@@ -77,16 +75,6 @@ public enum Data {
 	}
 	
 	
-	
-	public static var autoHides: 					Bool {
-		get {
-			return UserDefaults.standard.bool(forKey: Keys.AUTO_HIDES_AFTER_TIMEOUT)
-		}
-		
-		set(flag) {
-			UserDefaults.standard.set(flag, forKey: Keys.AUTO_HIDES_AFTER_TIMEOUT)
-		}
-	}
 	
 	public static var useAlwaysHideArea: 			Bool {
 		get {

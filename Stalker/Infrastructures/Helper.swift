@@ -13,8 +13,6 @@ class Helper {
 	
 	static let SOURCE_CODE_URL: URL? = URL(string: "https://github.com/KrLite/Stalker")
 	
-	static let SPONSOR_URL: 	URL? = nil
-	
     static func lerpAsync(
         a: 			CGFloat,
         b: 			CGFloat,
