@@ -47,15 +47,29 @@ class ViewController: NSViewController, NSMenuDelegate {
 	
 	
 	
+	@IBOutlet weak var feedbackIntensityLabel: NSTextField!
+	
+	
+	
 	@IBOutlet weak var themes: NSPopUpButton!
 	
 	
 	
-	@IBOutlet weak var useAlwaysHideArea: 	NSSwitch!
+	@IBOutlet weak var autoShows: 					NSSwitch!
 	
-	@IBOutlet weak var startsWithMacos: 	NSSwitch!
+	@IBOutlet weak var useAlwaysHideArea: 			NSSwitch!
 	
-	@IBOutlet weak var reduceAnimation: 	NSSwitch!
+	@IBOutlet weak var reduceAnimation: 			NSSwitch!
+	
+	@IBOutlet weak var disablesInInsufficientSpace: NSSwitch!
+	
+	
+	
+	@IBOutlet weak var feedbackIntensity: NSSlider!
+	
+	
+	
+	@IBOutlet weak var startsWithMacos: 			NSSwitch!
 	
 	// MARK: - View Methods
 	
@@ -64,26 +78,6 @@ class ViewController: NSViewController, NSMenuDelegate {
 		super.viewDidLoad()
 		
 		updateData()
-		
-		// Init themes menu
-		
-		themes.removeAllItems()
-		themes.addItems(withTitles: Themes.THEME_NAMES_LIST)
-		themes.menu?.delegate = self
-		
-		if let index = Themes.THEMES_LIST.firstIndex(of: Data.theme) {
-			themes.selectItem(at: index)
-		}
-		
-		var maxWidth: CGFloat = 0
-		if let menu = themes.menu {
-			for item in menu.items {
-				let size = NSAttributedString(string: item.title).size()
-				maxWidth = max(maxWidth, size.width)
-			}
-			
-			themes.widthAnchor.constraint(equalToConstant: maxWidth + 50).isActive = true
-		}
 		
 		// Init tracking areas
 		
@@ -213,10 +207,56 @@ extension ViewController {
 		return controller
 	}
 	
+}
+
+extension ViewController {
+	
 	func updateData() {
-		useAlwaysHideArea	.set(Data.useAlwaysHideArea)
-		startsWithMacos		.set(Data.startsWithMacos)
-		reduceAnimation		.set(Data.reduceAnimation)
+		
+		// Init themes menu
+		
+		themes.removeAllItems()
+		themes.addItems(withTitles: Themes.THEME_NAMES_LIST)
+		themes.menu?.delegate = self
+		
+		if let index = Themes.THEMES_LIST.firstIndex(of: Data.theme) {
+			themes.selectItem(at: index)
+		}
+		
+		var maxWidth: CGFloat = 0
+		if let menu = themes.menu {
+			for item in menu.items {
+				let size = NSAttributedString(string: item.title).size()
+				maxWidth = max(maxWidth, size.width)
+			}
+			
+			themes.widthAnchor.constraint(equalToConstant: maxWidth + 50).isActive = true
+		}
+		
+		// Init controls
+		
+		autoShows					.set(Data.autoShows)
+		feedbackIntensity			.objectValue = Data.feedbackIntensity
+		feedBackIntensityEnabled(Data.autoShows)
+		
+		useAlwaysHideArea			.set(Data.useAlwaysHideArea)
+		disablesInInsufficientSpace	.set(Data.disablesInSufficientSpace)
+		reduceAnimation				.set(Data.reduceAnimation)
+		
+		startsWithMacos				.set(Data.startsWithMacos)
+	}
+	
+	func feedBackIntensityEnabled(
+		_ flag: Bool
+	) {
+		feedbackIntensity.isEnabled = flag
+		feedBackIntensityLabelEnabled(flag && Data.feedbackIntensity > 0)
+	}
+	
+	func feedBackIntensityLabelEnabled(
+		_ flag: Bool
+	) {
+		feedbackIntensityLabel.textColor = flag ? NSColor.labelColor : NSColor.disabledControlTextColor
 	}
 	
 }
@@ -373,19 +413,11 @@ extension ViewController {
 	
 	// MARK: - Global Actions
 	
-	@IBAction func quit(
-		_ sender: NSButton
-	) {
-		NSApplication.shared.terminate(sender)
-	}
-	
 	@IBAction func triggerSourceCode(
 		_ sender: NSButton
 	) {
-		if let url = Helper.SOURCE_CODE_URL {
-			NSWorkspace.shared.open(url)
-			Helper.delegate?.togglePopover(sender)
-		}
+		NSWorkspace.shared.open(Helper.SOURCE_CODE_URL)
+		Helper.delegate?.togglePopover(sender)
 	}
 	
 	@IBAction func triggerUpdate(
@@ -394,13 +426,26 @@ extension ViewController {
 		// Needed to be implemented
 	}
 	
+	@IBAction func quit(
+		_ sender: NSButton
+	) {
+		NSApplication.shared.terminate(sender)
+	}
+	
 	// MARK: - Data Actions
+	
+	@IBAction func toggleAutoShows(
+		_ sender: NSSwitch
+	) {
+		Data.autoShows					= sender.flag
+		feedBackIntensityEnabled(sender.flag)
+	}
 	
 	@IBAction func toggleUseAlwaysHideArea(
 		_ sender: NSSwitch
 	) {
-		Helper.delegate?.statusBarController.untilTailVisible(sender.flag)
 		Data.useAlwaysHideArea 			= sender.flag
+		Helper.delegate?.statusBarController.untilTailVisible(sender.flag)
 	}
 	
 	@IBAction func toggleDisablesInInsufficientSpace(
@@ -409,16 +454,27 @@ extension ViewController {
 		Data.disablesInSufficientSpace 	= sender.flag
 	}
 	
+	@IBAction func toggleReduceAnimation(
+		_ sender: NSSwitch
+	) {
+		Data.reduceAnimation			= sender.flag
+	}
+	
+	
+	
 	@IBAction func toggleStartsWithMacos(
 		_ sender: NSSwitch
 	) {
 		Data.startsWithMacos 			= sender.flag
 	}
 	
-	@IBAction func toggleReduceAnimation(
-		_ sender: NSSwitch
+	
+	
+	@IBAction func toggleFeedbackIntensity(
+		_ sender: NSSlider
 	) {
-		Data.reduceAnimation			= sender.flag
+		Data.feedbackIntensity			= sender.integerValue
+		feedBackIntensityLabelEnabled(sender.integerValue > 0)
 	}
 	
 }

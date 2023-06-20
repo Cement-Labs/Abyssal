@@ -11,7 +11,37 @@ import AppKit
 
 class Helper {
 	
-	static let SOURCE_CODE_URL: URL? = URL(string: "https://github.com/KrLite/Stalker")
+	static let SOURCE_CODE_URL: URL = URL(string: "https://github.com/KrLite/Stalker")!
+	
+	static let RELEASE_TAG_URL: URL = URL(string: "https://api.github.com/repos/KrLite/Stalker/tags")!
+	
+	static let CHECK_NEWER_VERSION_TASK = URLSession.shared.dataTask(with: RELEASE_TAG_URL) { (data, response, error) in
+		guard let data = data else { return }
+		// Check if a newer tag is available
+		
+		do {
+			if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] {
+				print(json)
+			}
+			if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]],
+			   let latestTag = json.first?["name"] as? String
+			{
+				let latestVersion = latestTag.replacingOccurrences(of: "v", with: "")
+				let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
+				
+				newerVersionAvailable = latestVersion.compare(currentVersion, options: .numeric) == .orderedDescending
+				print(latestTag)
+			}
+		} catch let error as NSError {
+			print("Failed to load: \(error.localizedDescription)")
+		}
+	}
+	
+	static var newerVersionAvailable: Bool = false
+	
+	static var delegate: AppDelegate? {
+		return NSApplication.shared.delegate as? AppDelegate
+	}
 	
     static func lerpAsync(
         a: 			CGFloat,
@@ -24,10 +54,6 @@ class Helper {
 			completion(a + (b - a) * ratio)
 		}
     }
-	
-	static var delegate: AppDelegate? {
-		return NSApplication.shared.delegate as? AppDelegate
-	}
 	
 	class Screen {
 		

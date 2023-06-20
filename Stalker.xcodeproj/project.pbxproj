@@ -376,6 +376,7 @@
 				DEVELOPMENT_TEAM = 7XRF3J9RS4;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Stalker/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Stalker;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
@@ -407,6 +408,7 @@
 				DEVELOPMENT_TEAM = 7XRF3J9RS4;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Stalker/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Stalker;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;

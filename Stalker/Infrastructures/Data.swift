@@ -16,11 +16,15 @@ public enum Data {
 		
 		public static let SEPS_ORDER: String = "sepsOrder"
 		
+		public static let FEEDBACK_INTENSITY: String = "feedbackIntensity"
+		
 		// MARK: - Booleans
 		
 		public static let COLLAPSED:					String = "collapsed"
 		
 		
+		
+		public static let AUTO_SHOWS:					String = "autoShows"
 		
 		public static let USE_ALWAYS_HIDE_AREA: 		String = "alwaysHide"
 		
@@ -74,7 +78,40 @@ public enum Data {
 		}
 	}
 	
+	public static var feedbackIntensity: Int {
+		get {
+			return UserDefaults.standard.integer(forKey: Keys.FEEDBACK_INTENSITY)
+		}
+		
+		set(intensity) {
+			UserDefaults.standard.set(intensity, forKey: Keys.FEEDBACK_INTENSITY)
+		}
+	}
 	
+	public static var feedbackAttributes: (NSHapticFeedbackManager.FeedbackPattern, Int) {
+		switch feedbackIntensity {
+		case 1:
+			return (.alignment, 2)
+		case 2:
+			return (.levelChange, 5)
+		case 3:
+			return (.generic, 8)
+		default:
+			return (.generic, 0)
+		}
+	}
+	
+	
+	
+	public static var autoShows: 					Bool {
+		get {
+			return UserDefaults.standard.bool(forKey: Keys.AUTO_SHOWS)
+		}
+		
+		set(flag) {
+			UserDefaults.standard.set(flag, forKey: Keys.AUTO_SHOWS)
+		}
+	}
 	
 	public static var useAlwaysHideArea: 			Bool {
 		get {

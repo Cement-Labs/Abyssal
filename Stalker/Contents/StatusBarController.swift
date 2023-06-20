@@ -79,54 +79,6 @@ class StatusBarController {
 		}
 	}
 	
-	var headTrigger: 		NSRect? {
-		if
-			let origin = head.origin,
-			let screenHeight = Helper.Screen.height
-		{
-			return NSRect(
-				x: 		origin.x,
-				y: 		origin.y,
-				width: 	head.length + 20,
-				height: screenHeight - origin.y
-			)
-		} else {
-			return nil
-		}
-	}
-	
-	var separatorTrigger: 	NSRect? {
-		if
-			let origin = separator.origin,
-			let screenHeight = Helper.Screen.height
-		{
-			return NSRect(
-				x: 		origin.x,
-				y: 		origin.y,
-				width: 	separator.length + 20,
-				height: screenHeight - origin.y
-			)
-		} else {
-			return nil
-		}
-	}
-	
-	var tailTrigger: 		NSRect? {
-		if
-			let origin = tail.origin,
-			let screenHeight = Helper.Screen.height
-		{
-			return NSRect(
-				x: 		origin.x,
-				y: 		origin.y,
-				width: 	tail.length + 20,
-				height: screenHeight - origin.y
-			)
-		} else {
-			return nil
-		}
-	}
-	
 	// MARK: - Icons
 	
 	// Separator instances
@@ -222,6 +174,10 @@ class StatusBarController {
 	
 	private var lastFlags: [Bool] = [false, false]
 	
+	private var mouseWasOnStatusBar: Bool = false
+	
+	private var lastFeedback: Int = 0
+	
 	func update() {
 		guard available else { return }
 		
@@ -230,6 +186,21 @@ class StatusBarController {
 			separator.length 	= 0
 			tail.length 		= 0
 			return
+		}
+		
+		if
+			Data.collapsed && !idling && !idlingAlwaysHideArea && Data.autoShows && !(Helper.delegate?.popover.isShown ?? false) &&  (
+				(!mouseWasOnStatusBar && mouseOnStatusBar)
+				|| (mouseWasOnStatusBar && !mouseOnStatusBar)
+			)
+		{
+			guard lastFeedback <= Data.feedbackAttributes.1 else {
+				mouseWasOnStatusBar = mouseOnStatusBar
+				lastFeedback = 0
+				return
+			}
+			lastFeedback += 1
+			NSHapticFeedbackManager.defaultPerformer.perform(Data.feedbackAttributes.0, performanceTime: .now)
 		}
 		
 		var borderX: CGFloat
@@ -243,7 +214,7 @@ class StatusBarController {
 		// Head
 		
 		DispatchQueue.main.async {
-			let flag = Data.collapsed && !(self.idling || self.idlingAlwaysHideArea) && !self.mouseOnStatusBar && popoverNotShown
+			let flag = Data.collapsed && !(self.idling || self.idlingAlwaysHideArea) && (!Data.autoShows || !self.mouseOnStatusBar) && popoverNotShown
 			
 			Helper.lerpAsync(
 				a: self.head.length,
@@ -257,7 +228,7 @@ class StatusBarController {
 		// Separator
 		
 		DispatchQueue.main.async {
-			let flag = Data.collapsed && !(self.idling || self.idlingAlwaysHideArea) && !self.mouseOnStatusBar && popoverNotShown
+			let flag = Data.collapsed && !(self.idling || self.idlingAlwaysHideArea) && (!Data.autoShows || !self.mouseOnStatusBar) && popoverNotShown
 			
 			guard let x = self.separator.origin?.x else { return }
 			let length = self.separator.length
@@ -318,6 +289,25 @@ extension StatusBarController {
 	
 	// MARK: - Appearance Handlers
 	
+	func trigger(
+		_ icon: NSStatusItem
+	) -> NSRect? {
+		if
+			let origin = icon.origin,
+			let screenHeight = Helper.Screen.height,
+			let width = icon.button?.frame.width
+		{
+			return NSRect(
+				x: 		origin.x,
+				y: 		origin.y,
+				width: 	width + 20,
+				height: screenHeight - origin.y
+			)
+		} else {
+			return nil
+		}
+	}
+	
 	func reorder() {
 		guard available else {
 			available = !(available && _seps.allSatisfy({ sep in
@@ -336,14 +326,21 @@ extension StatusBarController {
 	func remap() {
 		guard available else { return }
 		
+		guard Data.autoShows || !Data.collapsed else {
+			head.button?.image		= Themes.Theme.EMPTY
+			separator.button?.image = Themes.Theme.EMPTY
+			tail.button?.image 		= Themes.Theme.EMPTY
+			return
+		}
+		
 		let popoverShown = Helper.delegate?.popover.isShown ?? false
 		
 		head.button?.image = Data.collapsed ? Data.theme.headCollapsed : Data.theme.headUncollapsed
 		
 		if
-			let headTrigger 		= headTrigger,
-			let separatorTrigger 	= separatorTrigger,
-			let tailTrigger 		= tailTrigger,
+			let headTrigger 		= trigger(head),
+			let separatorTrigger 	= trigger(separator),
+			let tailTrigger 		= trigger(tail),
 			mouseOnStatusBar
 				&& (idling || idlingAlwaysHideArea)
 				&& (

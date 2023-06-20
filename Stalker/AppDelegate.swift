@@ -107,6 +107,7 @@ extension AppDelegate {
 			}
 		}
 		
+		// Helper.CHECK_NEWER_VERSION_TASK.resume()
 		mouseEventMonitor?.start()
 	}
 	
