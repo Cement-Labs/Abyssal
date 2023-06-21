@@ -38,16 +38,6 @@ class StatusBarController {
 		return NSEvent.mouseLocation.x <= origin.x
 	}
 	
-	
-	
-	var inInsufficientSpace: Bool {
-		guard
-			let origin = separator.button?.window?.frame.origin,
-			let screenWidth = Helper.Screen.width
-		else { return false }
-		return origin.x + separator.length <= (Helper.Screen.hasNotch ? screenWidth / 2 + StatusBarController.NOTCH_DISABLED_AREA_WIDTH / 2 : 0)
-	}
-	
 	// MARK: - Timers & Event Monitors
 	
 	// Timers
@@ -174,32 +164,24 @@ class StatusBarController {
 	
 	private var lastFlags: [Bool] = [false, false]
 	
+	private var tailWasUnstable: Bool = false
+	
 	private var mouseWasOnStatusBar: Bool = false
 	
-	private var lastFeedback: Int = 0
+	private var feedbackCount: Int = 0
 	
 	func update() {
 		guard available else { return }
 		
-		guard !inInsufficientSpace else {
-			head.length 		= 0
-			separator.length 	= 0
-			tail.length 		= 0
-			return
-		}
-		
-		if
-			Data.collapsed && !idling && !idlingAlwaysHideArea && Data.autoShows && !(Helper.delegate?.popover.isShown ?? false) &&  (
-				(!mouseWasOnStatusBar && mouseOnStatusBar)
-				|| (mouseWasOnStatusBar && !mouseOnStatusBar)
-			)
+		if Data.collapsed && !idling && !idlingAlwaysHideArea && Data.autoShows && !(Helper.delegate?.popover.isShown ?? false)
+			&&  ((!mouseWasOnStatusBar && mouseOnStatusBar) || (mouseWasOnStatusBar && !mouseOnStatusBar))
 		{
-			guard lastFeedback <= Data.feedbackAttributes.1 else {
+			guard feedbackCount < Data.feedbackAttributes.1 else {
 				mouseWasOnStatusBar = mouseOnStatusBar
-				lastFeedback = 0
+				feedbackCount = 0
 				return
 			}
-			lastFeedback += 1
+			feedbackCount += 1
 			NSHapticFeedbackManager.defaultPerformer.perform(Data.feedbackAttributes.0, performanceTime: .now)
 		}
 		
@@ -260,11 +242,29 @@ class StatusBarController {
 		DispatchQueue.main.async {
 			let flag = !(Helper.Keyboard.command && self.mouseOnStatusBar) && !self.idlingAlwaysHideArea && popoverNotShown
 			
+			guard let x = self.tail.origin?.x else { return }
+			let length = self.tail.length
+			
+			if !flag && !self.tailWasUnstable {
+				if let origin = self.separator.origin, self.lengths[1] <= 0 {
+					self.lengths[1] = origin.x - borderX
+				}
+				
+				self.tail.length = self.lengths[1]
+				self.tailWasUnstable = true
+				return
+			} else if flag && !self.tailWasUnstable {
+				self.tail.length = Helper.Screen.width ?? 10000
+				return
+			} else if self.tailWasUnstable {
+				self.tailWasUnstable = !flag || self.tailWasUnstable && x > borderX
+			}
+			
 			if
 				let origin = self.tail.origin,
 				self.lastFlags[1] != flag || origin.x != self.lastOriginXs[1]
 			{
-				self.lengths[1] = flag ? max(0, (Helper.Screen.width ?? 10000) - borderX) : Data.theme.iconWidth
+				self.lengths[1] = flag ? max(0, x + length - borderX) : Data.theme.iconWidth
 				self.lastOriginXs[1] = origin.x
 				self.lastFlags[1] = flag
 			}
@@ -294,13 +294,12 @@ extension StatusBarController {
 	) -> NSRect? {
 		if
 			let origin = icon.origin,
-			let screenHeight = Helper.Screen.height,
-			let width = icon.button?.frame.width
+			let screenHeight = Helper.Screen.height
 		{
 			return NSRect(
 				x: 		origin.x,
 				y: 		origin.y,
-				width: 	width + 20,
+				width: 	Data.theme.iconWidth + 10 * 2,
 				height: screenHeight - origin.y
 			)
 		} else {
@@ -326,7 +325,7 @@ extension StatusBarController {
 	func remap() {
 		guard available else { return }
 		
-		guard Data.autoShows || !Data.collapsed else {
+		guard Data.autoShows || !Data.collapsed || !Data.theme.autoHideIcons else {
 			head.button?.image		= Themes.Theme.EMPTY
 			separator.button?.image = Themes.Theme.EMPTY
 			tail.button?.image 		= Themes.Theme.EMPTY
@@ -351,8 +350,8 @@ extension StatusBarController {
 		{ unidle() }
 		
 		if !Data.theme.autoHideIcons {
-			separator.button?.image = Data.theme.separator
-			tail.button?.image 		= Data.theme.tail
+			separator.button?.image = (popoverShown || !Data.collapsed || idling || idlingAlwaysHideArea || (Data.autoShows && mouseOnStatusBar)) ? Data.theme.separator : Themes.Theme.EMPTY
+			tail.button?.image 		= (popoverShown || idling || idlingAlwaysHideArea || Helper.Keyboard.command) ? Data.theme.tail : Themes.Theme.EMPTY
 		} else if popoverShown || (mouseOnStatusBar && (Helper.Keyboard.command || Helper.Keyboard.option)) {
 			head.button?.image 		= Data.theme.headUncollapsed
 			separator.button?.image = Data.theme.separator

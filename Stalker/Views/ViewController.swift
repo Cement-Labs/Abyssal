@@ -27,9 +27,29 @@ class ViewController: NSViewController, NSMenuDelegate {
 	
 	@IBOutlet var main: NSView!
 	
-	@IBOutlet weak var info: NSBox!
+	
+	
+	@IBOutlet weak var update: 		NSBox!
+	
+	@IBOutlet weak var version: 	NSBox!
+	
+	@IBOutlet weak var sourceCode: 	NSBox!
+	
+	@IBOutlet weak var info: 		NSBox!
 	
 	@IBOutlet weak var preferences: NSBox!
+	
+	
+	
+	@IBOutlet weak var updateButton: 		NSButton!
+	
+	@IBOutlet weak var updateIcon: 			NSImageView!
+	
+	@IBOutlet weak var versionButton: 		NSButton!
+	
+	@IBOutlet weak var sourceCodeButton: 	NSButton!
+	
+	@IBOutlet weak var logo: NSImageView!
 	
 	
 	
@@ -49,9 +69,12 @@ class ViewController: NSViewController, NSMenuDelegate {
 	
 	@IBOutlet weak var feedbackIntensityLabel: NSTextField!
 	
+	@IBOutlet weak var feedbackIntensity: NSSlider!
+	
 	
 	
 	@IBOutlet weak var themes: NSPopUpButton!
+	
 	
 	
 	
@@ -60,14 +83,6 @@ class ViewController: NSViewController, NSMenuDelegate {
 	@IBOutlet weak var useAlwaysHideArea: 			NSSwitch!
 	
 	@IBOutlet weak var reduceAnimation: 			NSSwitch!
-	
-	@IBOutlet weak var disablesInInsufficientSpace: NSSwitch!
-	
-	
-	
-	@IBOutlet weak var feedbackIntensity: NSSlider!
-	
-	
 	
 	@IBOutlet weak var startsWithMacos: 			NSSwitch!
 	
@@ -78,6 +93,29 @@ class ViewController: NSViewController, NSMenuDelegate {
 		super.viewDidLoad()
 		
 		updateData()
+		
+		// Init version info
+		
+		do {
+			updateVersionInfo()
+			
+			updateButton.title = String.localizedStringWithFormat(
+				NSLocalizedString(
+					"New Version Available - Version %1$@ → %2$@",
+					comment: "Version info with an update available"
+				),
+				Helper.version ?? "?",
+				Helper.versionComponent.version
+			)
+			
+			versionButton.title = String.localizedStringWithFormat(
+				NSLocalizedString(
+					"Version %@",
+					comment: "Version info"
+				),
+				Helper.version ?? "?"
+			)
+		}
 		
 		// Init tracking areas
 		
@@ -103,15 +141,14 @@ class ViewController: NSViewController, NSMenuDelegate {
 		
 		// Init main view
 		
-		info.alphaValue = 0
 		stalker.alphaValue = 1
 		
-		info.setFrameOrigin(
-			info.frame.origin.applying(
-				CGAffineTransform(
-					translationX: 0,
-					y: ViewController.INFO_SHIFT
-				)
+		adjustInfoAlpha(0)
+		
+		shiftInfoFrameOrigin(
+			CGAffineTransform(
+				translationX: 0,
+				y: ViewController.INFO_SHIFT
 			)
 		)
 		
@@ -154,6 +191,10 @@ class ViewController: NSViewController, NSMenuDelegate {
 		quitAppButton.alphaValue = 0
 	}
 	
+	override func viewDidAppear() {
+		Helper.CHECK_NEWER_VERSION_TASK.resume()
+	}
+	
 }
 
 extension ViewController {
@@ -166,7 +207,7 @@ extension ViewController {
 	) {
 		if
 			let menuItem = menuItem,
-			let index = themes.menu?.items.firstIndex(of: menuItem)
+			let _ = themes.menu?.items.firstIndex(of: menuItem)
 		{
 			// Doesn't work for now
 			// Data.theme = Themes.THEMES_LIST[index]
@@ -189,8 +230,7 @@ extension ViewController {
 	
 	// MARK: - Storyboard Instantiation
 	
-	static func freshController(
-	) -> ViewController {
+	static func freshController() -> ViewController {
 		let storyboard = NSStoryboard(
 			name: NSStoryboard.Name("Main"),
 			bundle: nil
@@ -211,39 +251,81 @@ extension ViewController {
 
 extension ViewController {
 	
+	func updateVersionInfo() {
+		updateButton.isHidden		= !Helper.versionComponent.needsUpdate
+		updateIcon.isHidden			= !Helper.versionComponent.needsUpdate
+		sourceCodeButton.isHidden 	= Helper.versionComponent.needsUpdate
+		versionButton.isHidden 		= Helper.versionComponent.needsUpdate
+		logo.isHidden 				= Helper.versionComponent.needsUpdate
+	}
+	
 	func updateData() {
-		
 		// Init themes menu
 		
-		themes.removeAllItems()
-		themes.addItems(withTitles: Themes.THEME_NAMES_LIST)
-		themes.menu?.delegate = self
-		
-		if let index = Themes.THEMES_LIST.firstIndex(of: Data.theme) {
-			themes.selectItem(at: index)
-		}
-		
-		var maxWidth: CGFloat = 0
-		if let menu = themes.menu {
-			for item in menu.items {
-				let size = NSAttributedString(string: item.title).size()
-				maxWidth = max(maxWidth, size.width)
+		do {
+			themes.removeAllItems()
+			themes.addItems(withTitles: Themes.THEME_NAMES_LIST)
+			themes.menu?.delegate = self
+			
+			if let index = Themes.THEMES_LIST.firstIndex(of: Data.theme) {
+				themes.selectItem(at: index)
 			}
 			
-			themes.widthAnchor.constraint(equalToConstant: maxWidth + 50).isActive = true
+			var maxWidth: CGFloat = 0
+			if let menu = themes.menu {
+				for item in menu.items {
+					let size = NSAttributedString(string: item.title).size()
+					maxWidth = max(maxWidth, size.width)
+				}
+				
+				themes.widthAnchor.constraint(equalToConstant: maxWidth + 65).isActive = true
+			}
 		}
 		
 		// Init controls
 		
-		autoShows					.set(Data.autoShows)
-		feedbackIntensity			.objectValue = Data.feedbackIntensity
+		autoShows.set(Data.autoShows)
+		feedbackIntensity.objectValue = Data.feedbackIntensity
 		feedBackIntensityEnabled(Data.autoShows)
 		
-		useAlwaysHideArea			.set(Data.useAlwaysHideArea)
-		disablesInInsufficientSpace	.set(Data.disablesInSufficientSpace)
-		reduceAnimation				.set(Data.reduceAnimation)
+		useAlwaysHideArea	.set(Data.useAlwaysHideArea)
+		reduceAnimation		.set(Data.reduceAnimation)
 		
-		startsWithMacos				.set(Data.startsWithMacos)
+		startsWithMacos		.set(Data.startsWithMacos)
+	}
+	
+	func adjustInfoAlpha(
+		_ alpha: CGFloat,
+		_ animated: Bool = false
+	) {
+		if animated {
+			update.animator().alphaValue 		= alpha
+			version.animator().alphaValue 		= alpha
+			sourceCode.animator().alphaValue 	= alpha
+			info.animator().alphaValue 			= alpha
+		} else {
+			update.alphaValue 		= alpha
+			version.alphaValue 		= alpha
+			sourceCode.alphaValue 	= alpha
+			info.alphaValue 		= alpha
+		}
+	}
+	
+	func shiftInfoFrameOrigin(
+		_ applying: CGAffineTransform,
+		_ animated: Bool = false
+	) {
+		if animated {
+			update		.animator().setFrameOrigin(update		.frame.origin.applying(applying))
+			version		.animator().setFrameOrigin(version		.frame.origin.applying(applying))
+			sourceCode	.animator().setFrameOrigin(sourceCode	.frame.origin.applying(applying))
+			info		.animator().setFrameOrigin(info			.frame.origin.applying(applying))
+		} else {
+			update		.setFrameOrigin(update		.frame.origin.applying(applying))
+			version		.setFrameOrigin(version		.frame.origin.applying(applying))
+			sourceCode	.setFrameOrigin(sourceCode	.frame.origin.applying(applying))
+			info		.setFrameOrigin(info		.frame.origin.applying(applying))
+		}
 	}
 	
 	func feedBackIntensityEnabled(
@@ -313,16 +395,15 @@ extension ViewController {
 				
 			case "stalker":
 				
-				info	.animator().alphaValue = 1
-				stalker	.animator().alphaValue = 0.55
+				stalker.animator().alphaValue = 0.55
 				
-				info.animator().setFrameOrigin(
-					info.frame.origin.applying(
-						CGAffineTransform(
-							translationX: 0,
-							y: -ViewController.INFO_SHIFT
-						)
-					)
+				adjustInfoAlpha(1, true)
+				
+				shiftInfoFrameOrigin(
+					CGAffineTransform(
+						translationX: 0,
+						y: -ViewController.INFO_SHIFT
+					), true
 				)
 				
 				// Stalker filters
@@ -339,6 +420,38 @@ extension ViewController {
 					halftone?.setValue(0.75, 	forKey: "inputUCR")
 					
 					stalker.animator().contentFilters = [blur!, halftone!]
+				}
+				
+				// Version info
+				
+				do {
+					updateVersionInfo()
+					
+					if
+						updateIcon.layer?.animationKeys()?.isEmpty == nil
+							|| updateIcon.layer?.animationKeys()?.isEmpty == true
+					{
+						updateIcon.layer?.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+						
+						if let origin = updateIcon.layer?.frame.origin {
+							updateIcon.layer?.frame.origin = origin.applying(
+								CGAffineTransform(
+									translationX: 	(updateIcon.layer?.frame.width ?? 0) / 2,
+									y: 				(updateIcon.layer?.frame.height ?? 0) / 2
+								)
+							)
+						}
+						
+						let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation")
+						
+						rotationAnimation.fromValue = 0
+						rotationAnimation.toValue = 2 * Double.pi
+						rotationAnimation.duration = 1.0
+						
+						rotationAnimation.repeatCount = Float.infinity
+						
+						updateIcon.layer?.add(rotationAnimation, forKey: "rotationAnimation")
+					}
 				}
 				
 			default:
@@ -388,16 +501,15 @@ extension ViewController {
 				
 			case "stalker":
 				
-				info	.animator().alphaValue = 0
 				stalker	.animator().alphaValue = 1
 				
-				info.animator().setFrameOrigin(
-					info.frame.origin.applying(
-						CGAffineTransform(
-							translationX: 0,
-							y: ViewController.INFO_SHIFT
-						)
-					)
+				adjustInfoAlpha(0, true)
+				
+				shiftInfoFrameOrigin(
+					CGAffineTransform(
+						translationX: 0,
+						y: ViewController.INFO_SHIFT
+					), true
 				)
 				
 				stalker.animator().contentFilters = []
@@ -416,14 +528,22 @@ extension ViewController {
 	@IBAction func triggerSourceCode(
 		_ sender: NSButton
 	) {
-		NSWorkspace.shared.open(Helper.SOURCE_CODE_URL)
 		Helper.delegate?.togglePopover(sender)
+		NSWorkspace.shared.open(Helper.SOURCE_CODE_URL)
+	}
+	
+	@IBAction func triggerCheckUpdate(
+		_ sender: NSButton
+	) {
+		Helper.CHECK_NEWER_VERSION_TASK.resume()
+		updateVersionInfo()
 	}
 	
 	@IBAction func triggerUpdate(
 		_ sender: NSButton
 	) {
-		// Needed to be implemented
+		Helper.delegate?.togglePopover(sender)
+		NSWorkspace.shared.open(Helper.RELEASE_URL)
 	}
 	
 	@IBAction func quit(
@@ -446,12 +566,6 @@ extension ViewController {
 	) {
 		Data.useAlwaysHideArea 			= sender.flag
 		Helper.delegate?.statusBarController.untilTailVisible(sender.flag)
-	}
-	
-	@IBAction func toggleDisablesInInsufficientSpace(
-		_ sender: NSSwitch
-	) {
-		Data.disablesInSufficientSpace 	= sender.flag
 	}
 	
 	@IBAction func toggleReduceAnimation(

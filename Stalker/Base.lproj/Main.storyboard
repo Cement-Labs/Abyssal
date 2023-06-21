@@ -9,160 +9,37 @@
         <!--Application-->
         <scene sceneID="JPo-4y-FX3">
             <objects>
+                <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Stalker" customModuleProvider="target"/>
                 <application id="hnw-xV-0zn" sceneMemberID="viewController">
-                    <menu key="mainMenu" title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
-                        <items>
-                            <menuItem title="Stalker" id="1Xt-HY-uBw">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Stalker" systemMenu="apple" id="uQy-DD-JDr">
-                                    <items>
-                                        <menuItem title="About Stalker" id="5kV-Vb-QxS">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
-                                        <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW"/>
-                                        <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
-                                        <menuItem title="Services" id="NMo-om-nkz">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <menu key="submenu" title="Services" systemMenu="services" id="hz9-B4-Xy5"/>
-                                        </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="4je-JR-u6R"/>
-                                        <menuItem title="Hide Stalker" keyEquivalent="h" id="Olw-nP-bQN">
-                                            <connections>
-                                                <action selector="hide:" target="Ady-hI-5gd" id="PnN-Uc-m68"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Hide Others" keyEquivalent="h" id="Vdr-fp-XzO">
-                                            <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
-                                            <connections>
-                                                <action selector="hideOtherApplications:" target="Ady-hI-5gd" id="VT4-aY-XCT"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Show All" id="Kd2-mp-pUS">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="unhideAllApplications:" target="Ady-hI-5gd" id="Dhg-Le-xox"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
-                                        <menuItem title="Quit Stalker" keyEquivalent="q" id="4sb-4s-VLi">
-                                            <connections>
-                                                <action selector="terminate:" target="Ady-hI-5gd" id="Te7-pn-YzF"/>
-                                            </connections>
-                                        </menuItem>
-                                    </items>
-                                </menu>
-                            </menuItem>
-                        </items>
-                    </menu>
+                    <menu key="mainMenu" title="Main Menu" systemMenu="main" id="AYu-sK-qS6"/>
                     <connections>
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Stalker" customModuleProvider="target"/>
-                <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
-                <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
         </scene>
         <!--View-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController title="View" storyboardIdentifier="ViewController" id="XfG-lQ-9wD" customClass="ViewController" customModule="Stalker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="[View]" storyboardIdentifier="ViewController" id="XfG-lQ-9wD" userLabel="View" customClass="ViewController" customModule="Stalker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="408" height="357"/>
+                        <rect key="frame" x="0.0" y="0.0" width="408" height="334"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <box fixedFrame="YES" boxType="custom" borderWidth="0.0" cornerRadius="13" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="AE1-vw-2zX" userLabel="Info">
-                                <rect key="frame" x="20" y="311" width="368" height="26"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" id="zt2-N7-04s">
-                                    <rect key="frame" x="0.0" y="0.0" width="368" height="26"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="lno-8O-Iz8">
-                                            <rect key="frame" x="4" y="3.5" width="117" height="21"/>
-                                            <buttonCell key="cell" type="bevel" title="Source Code" bezelStyle="rounded" image="bookmark.circle.fill" catalog="system" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" inset="2" id="OjW-Fe-OGQ">
-                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" size="15" name="VonwaonBitmap-12px+Mobile-Man"/>
-                                            </buttonCell>
-                                            <color key="contentTintColor" name="systemOrangeColor" catalog="System" colorSpace="catalog"/>
-                                            <symbolConfiguration key="symbolConfiguration" scale="large" weight="bold">
-                                                <nil key="locale"/>
-                                            </symbolConfiguration>
-                                            <connections>
-                                                <action selector="triggerSourceCode:" target="XfG-lQ-9wD" id="3FB-gU-8Or"/>
-                                            </connections>
-                                        </button>
-                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="aXF-sF-flQ" userLabel="Version">
-                                            <rect key="frame" x="261" y="3.5" width="103.5" height="21"/>
-                                            <buttonCell key="cell" type="bevel" title="Version 1.2" bezelStyle="rounded" image="arrow.triangle.2.circlepath.circle.fill" catalog="system" imagePosition="trailing" alignment="right" imageScaling="proportionallyDown" inset="2" id="gbY-hT-jUX">
-                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" size="15" name="VonwaonBitmap-12px+Mobile-Man"/>
-                                            </buttonCell>
-                                            <color key="contentTintColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
-                                            <symbolConfiguration key="symbolConfiguration" scale="large" weight="bold">
-                                                <nil key="locale"/>
-                                            </symbolConfiguration>
-                                            <connections>
-                                                <action selector="triggerUpdate:" target="XfG-lQ-9wD" id="tzp-yZ-IV3"/>
-                                            </connections>
-                                        </button>
-                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3pc-OX-nv1" userLabel="Logo">
-                                            <rect key="frame" x="130" y="-41" width="108" height="108"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="108" id="MDB-0y-NN9"/>
-                                                <constraint firstAttribute="height" constant="108" id="Zeg-jP-UBX"/>
-                                                <constraint firstAttribute="width" secondItem="3pc-OX-nv1" secondAttribute="height" multiplier="1:1" id="lIY-9h-KvE"/>
-                                            </constraints>
-                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Logo" id="65v-a5-BXA"/>
-                                        </imageView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="3pc-OX-nv1" firstAttribute="centerY" secondItem="zt2-N7-04s" secondAttribute="centerY" id="KpH-dB-2zE"/>
-                                        <constraint firstItem="lno-8O-Iz8" firstAttribute="leading" secondItem="zt2-N7-04s" secondAttribute="leading" constant="4" id="LJM-Jq-j4w"/>
-                                        <constraint firstAttribute="trailing" secondItem="aXF-sF-flQ" secondAttribute="trailing" constant="4" id="R2B-DN-p2E"/>
-                                        <constraint firstItem="lno-8O-Iz8" firstAttribute="centerY" secondItem="zt2-N7-04s" secondAttribute="centerY" constant="-1" id="d9x-bk-r4x"/>
-                                        <constraint firstItem="aXF-sF-flQ" firstAttribute="centerY" secondItem="zt2-N7-04s" secondAttribute="centerY" constant="-1" id="irW-l4-KW9"/>
-                                        <constraint firstItem="3pc-OX-nv1" firstAttribute="centerX" secondItem="zt2-N7-04s" secondAttribute="centerX" id="nFU-so-Ze1"/>
-                                    </constraints>
-                                </view>
-                                <color key="fillColor" name="InfoBackgroundColor"/>
-                            </box>
-                            <box fixedFrame="YES" boxType="custom" cornerRadius="13" title="Box" titlePosition="noTitle" transparent="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oKr-8Q-j0H" userLabel="Stalker Placeholder">
-                                <rect key="frame" x="20" y="311" width="368" height="26"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" id="hFa-U3-h4z">
-                                    <rect key="frame" x="1" y="1" width="366" height="24"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" alphaValue="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="vmq-K9-cCf">
-                                            <rect key="frame" x="-3" y="-1" width="372" height="26"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" enabled="NO" alignment="center" title="Stalker" id="Y7L-ap-vBY">
-                                                <font key="font" metaFont="systemBlack" size="22"/>
-                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
-                                    </subviews>
-                                </view>
-                            </box>
-                            <box fixedFrame="YES" boxType="custom" cornerRadius="5" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="cgp-nF-rry" userLabel="Preferences">
-                                <rect key="frame" x="20" y="70" width="368" height="227"/>
+                            <box fixedFrame="YES" boxType="custom" cornerRadius="5" title="[Preferences]" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="cgp-nF-rry" userLabel="Preferences">
+                                <rect key="frame" x="20" y="70" width="368" height="202"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" wantsLayer="YES" id="C9k-29-8bb">
-                                    <rect key="frame" x="1" y="1" width="366" height="225"/>
+                                    <rect key="frame" x="1" y="1" width="366" height="200"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <stackView distribution="fillEqually" orientation="vertical" alignment="centerX" spacing="11" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VaZ-s8-RGi">
-                                            <rect key="frame" x="16" y="12" width="334" height="202"/>
+                                            <rect key="frame" x="16" y="13" width="334" height="175"/>
                                             <subviews>
                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rjc-DS-W9i" userLabel="Theme">
-                                                    <rect key="frame" x="0.0" y="186" width="334" height="16"/>
+                                                    <rect key="frame" x="0.0" y="159" width="334" height="16"/>
                                                     <subviews>
                                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="x9I-1B-5mg">
                                                             <rect key="frame" x="-2" y="0.0" width="48" height="16"/>
@@ -171,6 +48,9 @@
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
+                                                            <attributedString key="userComments">
+                                                                <fragment content="Theme"/>
+                                                            </attributedString>
                                                         </textField>
                                                         <popUpButton translatesAutoresizingMaskIntoConstraints="NO" id="VzU-dY-PnS">
                                                             <rect key="frame" x="47" y="0.0" width="287" height="16"/>
@@ -200,7 +80,7 @@
                                                     </customSpacing>
                                                 </stackView>
                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WRM-sR-SM4" userLabel="Auto Shows">
-                                                    <rect key="frame" x="0.0" y="159" width="334" height="16"/>
+                                                    <rect key="frame" x="0.0" y="132" width="334" height="16"/>
                                                     <subviews>
                                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TvF-jG-ph7">
                                                             <rect key="frame" x="-2" y="0.0" width="304" height="16"/>
@@ -230,7 +110,7 @@
                                                     </customSpacing>
                                                 </stackView>
                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jsb-xP-CBr" userLabel="Feedback Intensity">
-                                                    <rect key="frame" x="0.0" y="132" width="334" height="16"/>
+                                                    <rect key="frame" x="0.0" y="105" width="334" height="16"/>
                                                     <subviews>
                                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gIB-Bf-IEr">
                                                             <rect key="frame" x="-2" y="0.0" width="145" height="16"/>
@@ -265,8 +145,8 @@
                                                         <real value="3.4028234663852886e+38"/>
                                                     </customSpacing>
                                                 </stackView>
-                                                <box boxType="custom" borderWidth="0.0" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="2nE-gv-4iQ" userLabel="Separator Line">
-                                                    <rect key="frame" x="0.0" y="120" width="334" height="1"/>
+                                                <box boxType="custom" borderWidth="0.0" title="[Separator Line]" translatesAutoresizingMaskIntoConstraints="NO" id="2nE-gv-4iQ" userLabel="Separator Line">
+                                                    <rect key="frame" x="0.0" y="93" width="334" height="1"/>
                                                     <view key="contentView" id="2Qa-uL-csx">
                                                         <rect key="frame" x="0.0" y="0.0" width="334" height="1"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -275,9 +155,12 @@
                                                         <constraint firstAttribute="height" constant="1" id="98E-7N-n5C"/>
                                                     </constraints>
                                                     <color key="fillColor" name="SecondaryBorderColor"/>
+                                                    <attributedString key="userComments">
+                                                        <fragment content="Box"/>
+                                                    </attributedString>
                                                 </box>
                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="plQ-cU-EIY" userLabel="Use Always Hide Area">
-                                                    <rect key="frame" x="0.0" y="93" width="334" height="16"/>
+                                                    <rect key="frame" x="0.0" y="66" width="334" height="16"/>
                                                     <subviews>
                                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kAO-3G-Qug">
                                                             <rect key="frame" x="-2" y="0.0" width="304" height="16"/>
@@ -296,36 +179,6 @@
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="16" id="ieh-vh-VBW"/>
-                                                    </constraints>
-                                                    <visibilityPriorities>
-                                                        <integer value="1000"/>
-                                                        <integer value="1000"/>
-                                                    </visibilityPriorities>
-                                                    <customSpacing>
-                                                        <real value="3.4028234663852886e+38"/>
-                                                        <real value="3.4028234663852886e+38"/>
-                                                    </customSpacing>
-                                                </stackView>
-                                                <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mZs-s8-GNV" userLabel="Disables In Insufficient Space">
-                                                    <rect key="frame" x="0.0" y="66" width="334" height="16"/>
-                                                    <subviews>
-                                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rx2-fn-b3h">
-                                                            <rect key="frame" x="-2" y="0.0" width="304" height="16"/>
-                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Disables In Insufficient Space" id="LA8-DD-5dp">
-                                                                <font key="font" metaFont="systemSemibold" size="13"/>
-                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                            </textFieldCell>
-                                                        </textField>
-                                                        <switch horizontalHuggingPriority="750" verticalHuggingPriority="750" controlSize="mini" baseWritingDirection="leftToRight" alignment="left" translatesAutoresizingMaskIntoConstraints="NO" id="tlI-W6-qbG" userLabel="Disables In Insufficient Space">
-                                                            <rect key="frame" x="307" y="0.0" width="28" height="16"/>
-                                                            <connections>
-                                                                <action selector="toggleDisablesInInsufficientSpace:" target="XfG-lQ-9wD" id="eSn-bC-wuL"/>
-                                                            </connections>
-                                                        </switch>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="16" id="wiO-LH-Vfd"/>
                                                     </constraints>
                                                     <visibilityPriorities>
                                                         <integer value="1000"/>
@@ -366,7 +219,7 @@
                                                         <real value="3.4028234663852886e+38"/>
                                                     </customSpacing>
                                                 </stackView>
-                                                <box boxType="custom" borderWidth="0.0" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="qW0-Np-0Oj" userLabel="Separator Line">
+                                                <box boxType="custom" borderWidth="0.0" title="[Separator Line]" translatesAutoresizingMaskIntoConstraints="NO" id="qW0-Np-0Oj" userLabel="Separator Line">
                                                     <rect key="frame" x="0.0" y="27" width="334" height="1"/>
                                                     <view key="contentView" id="vfX-b7-LnH">
                                                         <rect key="frame" x="0.0" y="0.0" width="334" height="1"/>
@@ -376,6 +229,9 @@
                                                         <constraint firstAttribute="height" constant="1" id="M19-Id-Hsq"/>
                                                     </constraints>
                                                     <color key="fillColor" name="SecondaryBorderColor"/>
+                                                    <attributedString key="userComments">
+                                                        <fragment content="Box"/>
+                                                    </attributedString>
                                                 </box>
                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mim-fr-TPw" userLabel="Starts With macOS">
                                                     <rect key="frame" x="0.0" y="0.0" width="334" height="16"/>
@@ -417,9 +273,7 @@
                                                 <constraint firstItem="Jsb-xP-CBr" firstAttribute="leading" secondItem="VaZ-s8-RGi" secondAttribute="leading" id="ERi-41-ukP"/>
                                                 <constraint firstAttribute="trailing" secondItem="2nE-gv-4iQ" secondAttribute="trailing" id="IyD-mD-juM"/>
                                                 <constraint firstAttribute="trailing" secondItem="plQ-cU-EIY" secondAttribute="trailing" id="JHe-bT-41Q"/>
-                                                <constraint firstAttribute="trailing" secondItem="mZs-s8-GNV" secondAttribute="trailing" id="LQj-w9-rzj"/>
                                                 <constraint firstAttribute="trailing" secondItem="Rjc-DS-W9i" secondAttribute="trailing" id="QG1-6c-lDI"/>
-                                                <constraint firstItem="mZs-s8-GNV" firstAttribute="leading" secondItem="VaZ-s8-RGi" secondAttribute="leading" id="T0e-gu-LHi"/>
                                                 <constraint firstItem="WRM-sR-SM4" firstAttribute="leading" secondItem="VaZ-s8-RGi" secondAttribute="leading" id="d1e-AB-It7"/>
                                                 <constraint firstItem="aM0-Tc-lvC" firstAttribute="leading" secondItem="VaZ-s8-RGi" secondAttribute="leading" id="eDr-WM-Ya0"/>
                                                 <constraint firstItem="qW0-Np-0Oj" firstAttribute="leading" secondItem="VaZ-s8-RGi" secondAttribute="leading" id="gUA-J9-HvL"/>
@@ -437,10 +291,8 @@
                                                 <integer value="1000"/>
                                                 <integer value="1000"/>
                                                 <integer value="1000"/>
-                                                <integer value="1000"/>
                                             </visibilityPriorities>
                                             <customSpacing>
-                                                <real value="3.4028234663852886e+38"/>
                                                 <real value="3.4028234663852886e+38"/>
                                                 <real value="3.4028234663852886e+38"/>
                                                 <real value="3.4028234663852886e+38"/>
@@ -460,8 +312,11 @@
                                     </constraints>
                                 </view>
                                 <color key="borderColor" name="BorderColor"/>
+                                <attributedString key="userComments">
+                                    <fragment content="Box"/>
+                                </attributedString>
                             </box>
-                            <box fixedFrame="YES" boxType="custom" cornerRadius="4" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="ukX-cV-gCY">
+                            <box fixedFrame="YES" boxType="custom" cornerRadius="4" title="[Quit App]" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="ukX-cV-gCY">
                                 <rect key="frame" x="20" y="20" width="368" height="34"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" id="iEj-hA-Zjj">
@@ -484,8 +339,11 @@
                                 </view>
                                 <color key="borderColor" name="TransparentDangerColor"/>
                                 <color key="fillColor" name="TransparentDangerColor"/>
+                                <attributedString key="userComments">
+                                    <fragment content="Box"/>
+                                </attributedString>
                             </box>
-                            <box hidden="YES" fixedFrame="YES" boxType="custom" cornerRadius="4" title="Box" titlePosition="noTitle" transparent="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JHe-tc-Es4" userLabel="Quit App Placeholder">
+                            <box hidden="YES" fixedFrame="YES" boxType="custom" cornerRadius="4" title="[Quit App Placeholder]" titlePosition="noTitle" transparent="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JHe-tc-Es4" userLabel="Quit App Placeholder">
                                 <rect key="frame" x="20" y="20" width="368" height="34"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" id="GMe-T2-eP0">
@@ -493,31 +351,208 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <color key="borderColor" name="TransparentDangerColor"/>
+                                <attributedString key="userComments">
+                                    <fragment content="Box"/>
+                                </attributedString>
+                            </box>
+                            <box fixedFrame="YES" boxType="custom" borderWidth="0.0" cornerRadius="13" title="[Update]" titlePosition="noTitle" transparent="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UOR-rn-oHn" userLabel="Update">
+                                <rect key="frame" x="20" y="288" width="368" height="26"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" id="aB4-wr-nfo">
+                                    <rect key="frame" x="0.0" y="0.0" width="368" height="26"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lnM-Lf-t3L" userLabel="Update">
+                                            <rect key="frame" x="144" y="7" width="81" height="12"/>
+                                            <buttonCell key="cell" type="bevel" title="Update..." bezelStyle="rounded" imagePosition="right" alignment="center" imageScaling="proportionallyDown" inset="2" id="DtJ-mO-qIh">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" size="11" name="VonwaonBitmap-12px+Mobile-Man"/>
+                                            </buttonCell>
+                                            <color key="contentTintColor" name="systemGreenColor" catalog="System" colorSpace="catalog"/>
+                                            <connections>
+                                                <action selector="triggerUpdate:" target="XfG-lQ-9wD" id="Kn6-ld-dKA"/>
+                                            </connections>
+                                        </button>
+                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GMd-to-xYl" userLabel="Update Icon">
+                                            <rect key="frame" x="344" y="4" width="20" height="20"/>
+                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="arrow.triangle.2.circlepath.circle.fill" catalog="system" id="3qc-Yq-oiL"/>
+                                            <color key="contentTintColor" name="systemGreenColor" catalog="System" colorSpace="catalog"/>
+                                            <symbolConfiguration key="symbolConfiguration" scale="large">
+                                                <nil key="locale"/>
+                                            </symbolConfiguration>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="lnM-Lf-t3L" firstAttribute="centerY" secondItem="aB4-wr-nfo" secondAttribute="centerY" id="Y3h-W9-e2H"/>
+                                        <constraint firstItem="GMd-to-xYl" firstAttribute="centerY" secondItem="aB4-wr-nfo" secondAttribute="centerY" id="Z7U-xN-CMF"/>
+                                        <constraint firstAttribute="trailing" secondItem="GMd-to-xYl" secondAttribute="trailing" constant="4" id="o2i-a8-Aaf"/>
+                                        <constraint firstItem="lnM-Lf-t3L" firstAttribute="centerX" secondItem="aB4-wr-nfo" secondAttribute="centerX" id="xaw-mN-s6N"/>
+                                    </constraints>
+                                </view>
+                                <shadow key="shadow" blurRadius="18">
+                                    <color key="color" name="systemGreenColor" catalog="System" colorSpace="catalog"/>
+                                </shadow>
+                                <color key="fillColor" name="InfoBackgroundColor"/>
+                                <attributedString key="userComments">
+                                    <fragment content="Box"/>
+                                </attributedString>
+                            </box>
+                            <box fixedFrame="YES" boxType="custom" borderWidth="0.0" cornerRadius="13" title="[Version]" titlePosition="noTitle" transparent="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x8Y-7b-qKd" userLabel="Version">
+                                <rect key="frame" x="20" y="288" width="368" height="26"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" id="wN6-18-f1s">
+                                    <rect key="frame" x="0.0" y="0.0" width="368" height="26"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="aXF-sF-flQ" userLabel="Version">
+                                            <rect key="frame" x="259" y="3.5" width="105.5" height="21"/>
+                                            <buttonCell key="cell" type="bevel" title="Version..." bezelStyle="rounded" image="arrow.triangle.2.circlepath.circle.fill" catalog="system" imagePosition="trailing" alignment="right" imageScaling="proportionallyDown" inset="2" id="gbY-hT-jUX">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" size="11" name="VonwaonBitmap-12px+Mobile-Man"/>
+                                            </buttonCell>
+                                            <color key="contentTintColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
+                                            <symbolConfiguration key="symbolConfiguration" scale="large" weight="bold">
+                                                <nil key="locale"/>
+                                            </symbolConfiguration>
+                                            <connections>
+                                                <action selector="triggerCheckUpdate:" target="XfG-lQ-9wD" id="tzp-yZ-IV3"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="aXF-sF-flQ" firstAttribute="centerY" secondItem="wN6-18-f1s" secondAttribute="centerY" id="OgZ-mk-xbN"/>
+                                        <constraint firstAttribute="trailing" secondItem="aXF-sF-flQ" secondAttribute="trailing" constant="4" id="ZuV-62-46t"/>
+                                    </constraints>
+                                </view>
+                                <shadow key="shadow" blurRadius="18">
+                                    <color key="color" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
+                                </shadow>
+                                <color key="fillColor" name="InfoBackgroundColor"/>
+                                <attributedString key="userComments">
+                                    <fragment content="Box"/>
+                                </attributedString>
+                            </box>
+                            <box fixedFrame="YES" boxType="custom" borderWidth="0.0" cornerRadius="13" title="[Source Code]" titlePosition="noTitle" transparent="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AE1-vw-2zX" userLabel="Source Code">
+                                <rect key="frame" x="20" y="288" width="368" height="26"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" id="zt2-N7-04s">
+                                    <rect key="frame" x="0.0" y="0.0" width="368" height="26"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="lno-8O-Iz8">
+                                            <rect key="frame" x="4" y="3.5" width="140" height="21"/>
+                                            <buttonCell key="cell" type="bevel" title="Source Code" bezelStyle="rounded" image="bookmark.circle.fill" catalog="system" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" inset="2" id="OjW-Fe-OGQ">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" size="11" name="VonwaonBitmap-12px+Mobile-Man"/>
+                                            </buttonCell>
+                                            <color key="contentTintColor" name="systemOrangeColor" catalog="System" colorSpace="catalog"/>
+                                            <symbolConfiguration key="symbolConfiguration" scale="large" weight="bold">
+                                                <nil key="locale"/>
+                                            </symbolConfiguration>
+                                            <connections>
+                                                <action selector="triggerSourceCode:" target="XfG-lQ-9wD" id="3FB-gU-8Or"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="lno-8O-Iz8" firstAttribute="leading" secondItem="zt2-N7-04s" secondAttribute="leading" constant="4" id="LJM-Jq-j4w"/>
+                                        <constraint firstItem="lno-8O-Iz8" firstAttribute="centerY" secondItem="zt2-N7-04s" secondAttribute="centerY" id="kV3-s7-MAk"/>
+                                    </constraints>
+                                </view>
+                                <shadow key="shadow" blurRadius="18">
+                                    <color key="color" name="systemOrangeColor" catalog="System" colorSpace="catalog"/>
+                                </shadow>
+                                <color key="fillColor" name="InfoBackgroundColor"/>
+                                <attributedString key="userComments">
+                                    <fragment content="Box"/>
+                                </attributedString>
+                            </box>
+                            <box fixedFrame="YES" boxType="custom" borderWidth="0.0" cornerRadius="13" title="[Info]" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="AaO-nF-9hq" userLabel="Info">
+                                <rect key="frame" x="20" y="288" width="368" height="26"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" id="Fut-MO-ssB">
+                                    <rect key="frame" x="0.0" y="0.0" width="368" height="26"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3pc-OX-nv1" userLabel="Logo">
+                                            <rect key="frame" x="130" y="-41" width="108" height="108"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="108" id="MDB-0y-NN9"/>
+                                                <constraint firstAttribute="height" constant="108" id="Zeg-jP-UBX"/>
+                                                <constraint firstAttribute="width" secondItem="3pc-OX-nv1" secondAttribute="height" multiplier="1:1" id="lIY-9h-KvE"/>
+                                            </constraints>
+                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Logo" id="65v-a5-BXA"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="3pc-OX-nv1" firstAttribute="centerY" secondItem="Fut-MO-ssB" secondAttribute="centerY" id="TCr-61-oId"/>
+                                        <constraint firstItem="3pc-OX-nv1" firstAttribute="centerX" secondItem="Fut-MO-ssB" secondAttribute="centerX" id="jxY-xx-ctm"/>
+                                    </constraints>
+                                </view>
+                                <color key="fillColor" name="InfoBackgroundColor"/>
+                                <attributedString key="userComments">
+                                    <fragment content="Box"/>
+                                </attributedString>
+                            </box>
+                            <box fixedFrame="YES" boxType="custom" cornerRadius="13" title="[Stalker Placeholder]" titlePosition="noTitle" transparent="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oKr-8Q-j0H" userLabel="Stalker Placeholder">
+                                <rect key="frame" x="20" y="288" width="368" height="26"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" id="hFa-U3-h4z">
+                                    <rect key="frame" x="1" y="1" width="366" height="24"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" alphaValue="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="vmq-K9-cCf">
+                                            <rect key="frame" x="-3" y="-1" width="372" height="26"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" enabled="NO" alignment="center" title="Stalker" id="Y7L-ap-vBY">
+                                                <font key="font" metaFont="systemBlack" size="22"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </subviews>
+                                </view>
+                                <shadow key="shadow" blurRadius="16">
+                                    <color key="color" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                </shadow>
+                                <attributedString key="userComments">
+                                    <fragment content="Box"/>
+                                </attributedString>
                             </box>
                         </subviews>
                     </view>
+                    <attributedString key="userComments">
+                        <fragment content="View"/>
+                    </attributedString>
                     <connections>
                         <outlet property="autoShows" destination="jt5-Jk-hJf" id="1q6-ND-Sda"/>
-                        <outlet property="disablesInInsufficientSpace" destination="tlI-W6-qbG" id="e68-vK-O3m"/>
                         <outlet property="feedbackIntensity" destination="tPn-wd-XrU" id="obK-Ar-UvI"/>
                         <outlet property="feedbackIntensityLabel" destination="gIB-Bf-IEr" id="WZF-ju-k2S"/>
-                        <outlet property="info" destination="AE1-vw-2zX" id="5sR-8O-E4A"/>
+                        <outlet property="info" destination="AaO-nF-9hq" id="3a7-i6-8uk"/>
+                        <outlet property="logo" destination="3pc-OX-nv1" id="9nT-j2-vd8"/>
                         <outlet property="main" destination="m2S-Jp-Qdl" id="lf7-2U-DmK"/>
                         <outlet property="preferences" destination="cgp-nF-rry" id="nAe-uW-jGf"/>
                         <outlet property="quitApp" destination="ukX-cV-gCY" id="5oT-tc-6qH"/>
                         <outlet property="quitAppButton" destination="sDV-9z-3dI" id="LyR-ZN-t94"/>
                         <outlet property="quitAppPlaceholder" destination="JHe-tc-Es4" id="j6A-Rb-KCJ"/>
                         <outlet property="reduceAnimation" destination="WSc-W9-RlH" id="OAX-iv-93K"/>
+                        <outlet property="sourceCode" destination="AE1-vw-2zX" id="azF-CM-xD4"/>
+                        <outlet property="sourceCodeButton" destination="lno-8O-Iz8" id="y9V-x2-H28"/>
                         <outlet property="stalker" destination="vmq-K9-cCf" id="PaL-ae-Jel"/>
                         <outlet property="stalkerPlaceholder" destination="oKr-8Q-j0H" id="FaS-ny-YH1"/>
                         <outlet property="startsWithMacos" destination="pZX-aV-bY4" id="Mih-2R-CoF"/>
                         <outlet property="themes" destination="VzU-dY-PnS" id="9Yg-ce-LQv"/>
+                        <outlet property="update" destination="UOR-rn-oHn" id="u9l-VB-yJ8"/>
+                        <outlet property="updateButton" destination="lnM-Lf-t3L" id="Jly-ce-p4K"/>
+                        <outlet property="updateIcon" destination="GMd-to-xYl" id="2rM-tt-UGz"/>
                         <outlet property="useAlwaysHideArea" destination="J3b-pa-Hhp" id="SID-8z-oKk"/>
+                        <outlet property="version" destination="x8Y-7b-qKd" id="hti-46-4Qg"/>
+                        <outlet property="versionButton" destination="aXF-sF-flQ" id="rYf-X1-yWX"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="518.5"/>
+            <point key="canvasLocation" x="75" y="507"/>
         </scene>
     </scenes>
     <resources>

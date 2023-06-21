@@ -14,23 +14,21 @@ public enum Data {
 		
 		static let THEME: String = "theme"
 		
-		public static let SEPS_ORDER: String = "sepsOrder"
+		public static let SEPS_ORDER: 			String = "sepsOrder"
 		
-		public static let FEEDBACK_INTENSITY: String = "feedbackIntensity"
+		public static let FEEDBACK_INTENSITY: 	String = "feedbackIntensity"
 		
 		// MARK: - Booleans
 		
-		public static let COLLAPSED:					String = "collapsed"
+		public static let COLLAPSED: String = "collapsed"
 		
 		
 		
-		public static let AUTO_SHOWS:					String = "autoShows"
+		public static let AUTO_SHOWS:			String = "autoShows"
 		
-		public static let USE_ALWAYS_HIDE_AREA: 		String = "alwaysHide"
+		public static let USE_ALWAYS_HIDE_AREA: String = "alwaysHide"
 		
-		public static let DISABLES_IN_SUFFICIENT_SPACE: String = "autoDisables"
-		
-		public static let REDUCE_ANIMATION: 			String = "reduceAnimation"
+		public static let REDUCE_ANIMATION: 	String = "reduceAnimation"
 		
 	}
 	
@@ -91,11 +89,11 @@ public enum Data {
 	public static var feedbackAttributes: (NSHapticFeedbackManager.FeedbackPattern, Int) {
 		switch feedbackIntensity {
 		case 1:
-			return (.alignment, 2)
+			return (.levelChange, 1)
 		case 2:
-			return (.levelChange, 5)
+			return (.alignment, 2)
 		case 3:
-			return (.generic, 8)
+			return (.generic, 4)
 		default:
 			return (.generic, 0)
 		}
@@ -130,16 +128,6 @@ public enum Data {
 		
 		set(flag) {
 			LaunchAtLogin.isEnabled = flag
-		}
-	}
-	
-	public static var disablesInSufficientSpace: 	Bool {
-		get {
-			return UserDefaults.standard.bool(forKey: Keys.DISABLES_IN_SUFFICIENT_SPACE)
-		}
-		
-		set(flag) {
-			UserDefaults.standard.set(flag, forKey: Keys.DISABLES_IN_SUFFICIENT_SPACE)
 		}
 	}
 	

@@ -1,0 +1,74 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Approaching" : {
+      "comment" : "Name for theme 'Approaching'"
+    },
+    "Droplets" : {
+      "comment" : "Name for theme 'Droplets'"
+    },
+    "Electrodiagram" : {
+      "comment" : "Name for theme 'Electrodiagram'"
+    },
+    "Hidden Bar" : {
+      "comment" : "Name for theme 'Hidden Bar'",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hidden Bar"
+          }
+        }
+      }
+    },
+    "Metres Away" : {
+      "comment" : "Name for theme 'Metres Away'"
+    },
+    "New Version Available - Version %1$@ → %2$@" : {
+      "comment" : "Version info with an update available",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New Version Available - Version %1$@ → %2$@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "有版本更新 - 版本 %1$@ → %2$@"
+          }
+        }
+      }
+    },
+    "Stalker" : {
+      "comment" : "Name for theme 'Stalker'",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stalker"
+          }
+        }
+      }
+    },
+    "Version %@" : {
+      "comment" : "Version info",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version %@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "版本%@"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

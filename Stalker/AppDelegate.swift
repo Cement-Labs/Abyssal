@@ -25,6 +25,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		_ aNotification: Notification
 	) {
 		popover.contentViewController = ViewController.freshController()
+		Helper.CHECK_NEWER_VERSION_TASK.resume()
 		
 		mouseEventMonitor = EventMonitor(
 			mask: [.leftMouseDown,
@@ -107,7 +108,6 @@ extension AppDelegate {
 			}
 		}
 		
-		// Helper.CHECK_NEWER_VERSION_TASK.resume()
 		mouseEventMonitor?.start()
 	}
 	

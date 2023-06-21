@@ -40,9 +40,9 @@ class Themes {
 			_ name: String,
 			
 			headUncollapsed: 	String?,
-			headCollapsed: 	String?,
-			separator: 		String?,
-			tail: 			String?,
+			headCollapsed: 		String?,
+			separator: 			String?,
+			tail: 				String?,
 			
 			iconWidth:		CGFloat,
 			iconWidthAlt:	CGFloat,
@@ -69,43 +69,42 @@ class Themes {
 		
 	}
 	
-	static var THEMES_LIST: 		[Theme] {
-		return [stalker, hiddenBar]
+	static var THEMES_LIST: [Theme] {
+		return [
+			stalker,
+			hiddenBar,
+			approaching,
+			metresAway,
+			electrodiagram,
+			droplets
+		]
 	}
 	
-	static var THEME_NAMES_LIST: 	[String] {
+	static var THEME_NAMES_LIST: [String] {
 		return THEMES_LIST.map({ theme in
 			return theme.name
 		})
 	}
 	
-	static func from(
-		_ name: String?
-	) -> Theme {
-		switch name {
-		case stalker.name:
-			return stalker
-		case hiddenBar.name:
-			return hiddenBar
-		default:
-			return stalker
-		}
-	}
-	
-	static let stalker: 	Theme = Theme(
-		"Stalker",
-		headUncollapsed: 	"Stalker/SepDot",
+	static let stalker: Theme = Theme(
+		String(
+			localized: 	"Stalker",
+			comment: 	"Name for theme 'Stalker'"
+		),
+		headUncollapsed: 	"Stalker/Dot",
 		headCollapsed: 		nil,
-		separator: 			"Stalker/SepLine",
-		tail: 				"Stalker/SepDottedLine",
+		separator: 			"Stalker/Line",
+		tail: 				"Stalker/DottedLine",
 		
 		iconWidth: 2, iconWidthAlt: 10,
 		autoHideIcons: true
-		
 	)
 	
-	static let hiddenBar: 	Theme = Theme(
-		"Hidden Bar",
+	static let hiddenBar: Theme = Theme(
+		String(
+			localized: 	"Hidden Bar",
+			comment: 	"Name for theme 'Hidden Bar'"
+		),
 		headUncollapsed: 	"HiddenBar/ic_left",
 		headCollapsed: 		"HiddenBar/ic_right",
 		separator: 			"HiddenBar/ic_line",
@@ -113,7 +112,62 @@ class Themes {
 		
 		iconWidth: 20, iconWidthAlt: 32,
 		autoHideIcons: false
+	)
+	
+	static let approaching: Theme = Theme(
+		String(
+			localized: 	"Approaching",
+			comment: 	"Name for theme 'Approaching'"
+		),
+		headUncollapsed: 	"Approaching/Primary",
+		headCollapsed: 		nil,
+		separator: 			"Approaching/Secondary",
+		tail: 				"Approaching/Tertiary",
 		
+		iconWidth: 8, iconWidthAlt: 16,
+		autoHideIcons: true
+	)
+	
+	static let metresAway: Theme = Theme(
+		String(
+			localized: 	"Metres Away",
+			comment: 	"Name for theme 'Metres Away'"
+		),
+		headUncollapsed: 	"MetresAway/Line",
+		headCollapsed: 		"MetresAway/Line",
+		separator: 			"MetresAway/MetreLine",
+		tail: 				"MetresAway/MetreLine",
+		
+		iconWidth: 1, iconWidthAlt: 32,
+		autoHideIcons: false
+	)
+	
+	static let electrodiagram: Theme = Theme(
+		String(
+			localized: 	"Electrodiagram",
+			comment: 	"Name for theme 'Electrodiagram'"
+		),
+		headUncollapsed: 	"Electrodiagram/DiagramHead",
+		headCollapsed: 		"Electrodiagram/DiagramHead",
+		separator: 			"Electrodiagram/Diagram",
+		tail: 				"Electrodiagram/DiagramTail",
+		
+		iconWidth: 1, iconWidthAlt: 18,
+		autoHideIcons: false
+	)
+	
+	static let droplets: Theme = Theme(
+		String(
+			localized: 	"Droplets",
+			comment: 	"Name for theme 'Droplets'"
+		),
+		headUncollapsed: 	"Droplets/Drops",
+		headCollapsed: 		"Droplets/Drops",
+		separator: 			"Droplets/LDrop",
+		tail: 				"Droplets/MDrop",
+		
+		iconWidth: 6, iconWidthAlt: 22,
+		autoHideIcons: false
 	)
 	
 }

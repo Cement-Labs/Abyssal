@@ -9,6 +9,9 @@ import Foundation
 
 class Animations {
 	
-	static var LERP_RATIO: CGFloat = 0.23
+	static var LERP_RATIO: CGFloat {
+		let baseValue = 0.23
+		return baseValue * (Helper.Keyboard.shift ? 0.25 : 1)
+	}
 	
 }
