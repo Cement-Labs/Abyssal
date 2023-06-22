@@ -83,7 +83,7 @@ extension StatusBarController {
 				strongSelf.mouseOnStatusBar
 			else { return }
 			
-			if Data.collapsed && inside.containsMouse && !Helper.Keyboard.command {
+			if Data.collapsed && inside.containsMouse && !(Helper.Keyboard.command && event?.type == .leftMouseDown) {
 				strongSelf.idle()
 			}
 			

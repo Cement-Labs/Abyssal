@@ -171,7 +171,7 @@ class StatusBarController {
 	
 	private var lastFlags: 		(s: Bool, t: Bool) = (s: false, t: false)
 	
-	private var tailWasUnstable: 				Bool = false
+	private var wasUnstable: 	(s: Bool, t: Bool) = (s: false, t: false)
 	
 	private var mouseWasOnStatusBarOrUnidled: 	Bool = false
 	
@@ -203,6 +203,7 @@ class StatusBarController {
 		
 		// Calculate border
 		
+		let maxWidth = Helper.Screen.maxWidth ?? 10000 // To cover all screens
 		var borderX: CGFloat
 		
 		if let screenWidth = Helper.Screen.width, Helper.Screen.hasNotch {
@@ -253,6 +254,19 @@ class StatusBarController {
 			guard let x = self.separator.origin?.x else { return }
 			let length = self.separator.length
 			
+			if !flag && !self.wasUnstable.s {
+				if self.lengths.s <= 0 { self.lengths.s = x + length - borderX }
+				
+				self.separator.length = self.lengths.s
+				self.wasUnstable.s = true
+				return
+			} else if flag && !self.wasUnstable.s {
+				self.separator.length = maxWidth
+				return
+			} else if self.wasUnstable.s {
+				self.wasUnstable.s = !flag || self.wasUnstable.s && x > borderX + 5
+			}
+			
 			if
 				let origin = self.separator.origin,
 				self.lastFlags.s != flag || origin.x != self.lastOriginXs.s
@@ -287,24 +301,22 @@ class StatusBarController {
 		}
 		
 		DispatchQueue.main.async {
-			let flag = !(Helper.Keyboard.command && self.mouseOnStatusBar) && !self.idlingAlwaysHideArea && popoverNotShown
+			let flag = !(Helper.Keyboard.command && ((Data.collapsed && !self.idling) || self.mouseOnStatusBar)) && !self.idlingAlwaysHideArea && popoverNotShown
 			
 			guard let x = self.tail.origin?.x else { return }
 			let length = self.tail.length
 			
-			if !flag && !self.tailWasUnstable {
-				if let origin = self.separator.origin, self.lengths.t <= 0 {
-					self.lengths.t = origin.x - borderX
-				}
+			if !flag && !self.wasUnstable.t {
+				if self.lengths.t <= 0 { self.lengths.t = x + length - borderX }
 				
 				self.tail.length = self.lengths.t
-				self.tailWasUnstable = true
+				self.wasUnstable.t = true
 				return
-			} else if flag && !self.tailWasUnstable {
-				self.tail.length = Helper.Screen.width ?? 10000
+			} else if flag && !self.wasUnstable.t {
+				self.tail.length = maxWidth
 				return
-			} else if self.tailWasUnstable {
-				self.tailWasUnstable = !flag || self.tailWasUnstable && x > borderX
+			} else if self.wasUnstable.t {
+				self.wasUnstable.t = !flag || self.wasUnstable.t && x > borderX + 5
 			}
 			
 			if
@@ -343,7 +355,7 @@ class StatusBarController {
 			) ? 1 : 0
 			
 			alphaValues.t = (
-				popoverShown || idling || idlingAlwaysHideArea
+				popoverShown || idlingAlwaysHideArea
 				|| (mouseOnStatusBar && (Helper.Keyboard.command || Helper.Keyboard.option))
 			) ? 1 : 0
 		}

@@ -157,12 +157,40 @@ class Helper {
 			return NSScreen.main?.safeAreaInsets.top != 0
 		}
 		
-		static var width: 	CGFloat? {
+		static var width: 		CGFloat? {
 			return NSScreen.main?.frame.size.width ?? nil
 		}
 		
-		static var height: 	CGFloat? {
+		static var height: 		CGFloat? {
 			return NSScreen.main?.frame.size.height ?? nil
+		}
+		
+		static var maxWidth: 	CGFloat? {
+			let screens = NSScreen.screens
+			var maxWidth: CGFloat?
+
+			for screen in screens {
+				let screenFrame = screen.visibleFrame
+				if maxWidth == nil || screenFrame.size.width > maxWidth ?? 0 {
+					maxWidth = screenFrame.size.width
+				}
+			}
+			
+			return maxWidth
+		}
+		
+		static var maxHeight: 	CGFloat? {
+			let screens = NSScreen.screens
+			var maxHeight: CGFloat?
+
+			for screen in screens {
+				let screenFrame = screen.visibleFrame
+				if maxHeight == nil || screenFrame.size.height > maxHeight ?? 0 {
+					maxHeight = screenFrame.size.height
+				}
+			}
+			
+			return maxHeight
 		}
 		
 	}
