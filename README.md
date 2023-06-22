@@ -1,9 +1,12 @@
 <blockquote>
   <details>
     <summary>
-      <code>In Other Languages...</code>
+      <code>あ ←→ A</code>
     </summary>
-    <a href="/Docs/Chinese-Simplified.md">简体中文</a>
+    <br />
+    &emsp;&ensp;English
+    <br />
+    &emsp;&ensp;<a href="/Docs/Chinese-Simplified.md">简体中文</a>
   </details>
 </blockquote>
 
