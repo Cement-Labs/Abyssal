@@ -101,7 +101,7 @@ class ViewController: NSViewController, NSMenuDelegate {
 			
 			updateButton.title = String.localizedStringWithFormat(
 				NSLocalizedString(
-					"New Version Available - Version %1$@ → %2$@",
+					"Update Available - Version %1$@ → %2$@",
 					comment: "Version info with an update available"
 				),
 				Helper.version ?? "?",
@@ -254,6 +254,7 @@ extension ViewController {
 	func updateVersionInfo() {
 		updateButton.isHidden		= !Helper.versionComponent.needsUpdate
 		updateIcon.isHidden			= !Helper.versionComponent.needsUpdate
+		
 		sourceCodeButton.isHidden 	= Helper.versionComponent.needsUpdate
 		versionButton.isHidden 		= Helper.versionComponent.needsUpdate
 		logo.isHidden 				= Helper.versionComponent.needsUpdate

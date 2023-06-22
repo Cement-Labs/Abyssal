@@ -15,7 +15,11 @@ class StatusBarController {
 	
 	// MARK: - States
 	
-	var alphaValues: (h: CGFloat, s: CGFloat, t: CGFloat) = (h: -10, s: -32, t: -32) // For launching animations
+	var alphaValues: 	(h: CGFloat, s: CGFloat, t: CGFloat) = (h: -10, s: -32, t: -32)
+	
+	var lengths: 		(h: CGFloat, s: CGFloat, t: CGFloat) = (h: 0, s: 0, t: 0)
+	
+	
 	
 	var available:				Bool = false
 	
@@ -131,9 +135,9 @@ class StatusBarController {
 		
 		// Init status icons
 		
-		head.length 		= 0
-		separator.length 	= 0
-		tail.length 		= 0
+		head.length 		= lengths.h
+		separator.length 	= lengths.s
+		tail.length 		= lengths.t
 		
 		if let button = self.head.button {
 			button.action = #selector(AppDelegate.toggle(_:))
@@ -141,11 +145,13 @@ class StatusBarController {
 		}
 		
 		if let button = self.separator.button {
-			// button.action = #selector(AppDelegate.toggle(_:))
+			button.action = #selector(AppDelegate.toggleCollapse(_:))
+			button.sendAction(on: [.leftMouseUp, .rightMouseUp])
 		}
 		
 		if let button = self.tail.button {
-			// button.action = #selector(AppDelegate.toggle(_:))
+			button.action = #selector(AppDelegate.toggleCollapse(_:))
+			button.sendAction(on: [.leftMouseUp, .rightMouseUp])
 		}
 		
 		// Start services
@@ -161,32 +167,41 @@ class StatusBarController {
 	
 	// MARK: - Body
 	
-	private var lengths: 		(s: CGFloat, t: CGFloat) = (s: 0, t: 0)
-	
 	private var lastOriginXs: 	(s: CGFloat, t: CGFloat) = (s: 0, t: 0)
 	
 	private var lastFlags: 		(s: Bool, t: Bool) = (s: false, t: false)
 	
-	private var tailWasUnstable: 		Bool = false
+	private var tailWasUnstable: 				Bool = false
 	
-	private var mouseWasOnStatusBar: 	Bool = false
+	private var mouseWasOnStatusBarOrUnidled: 	Bool = false
 	
 	private var feedbackCount: Int = 0
 	
 	func update() {
 		guard available else { return }
 		
+		// Process feedback
+		
 		if Data.collapsed && !idling && !idlingAlwaysHideArea && Data.autoShows && !(Helper.delegate?.popover.isShown ?? false)
-			&&  ((!mouseWasOnStatusBar && mouseOnStatusBar) || (mouseWasOnStatusBar && !mouseOnStatusBar))
+			&&  !(idling && idlingAlwaysHideArea) && ((!mouseWasOnStatusBarOrUnidled && mouseOnStatusBar) || (mouseWasOnStatusBarOrUnidled && !mouseOnStatusBar))
 		{
-			guard feedbackCount < Data.feedbackAttributes.1 else {
-				mouseWasOnStatusBar = mouseOnStatusBar
+			guard feedbackCount < Data.feedbackAttributes.repeats else {
+				mouseWasOnStatusBarOrUnidled = mouseOnStatusBar
 				feedbackCount = 0
 				return
 			}
 			feedbackCount += 1
-			NSHapticFeedbackManager.defaultPerformer.perform(Data.feedbackAttributes.0, performanceTime: .now)
+			NSHapticFeedbackManager.defaultPerformer.perform(Data.feedbackAttributes.pattern, performanceTime: .now)
 		}
+		
+		// Modify basic appearance
+		
+		head.button?.appearsDisabled 		= !Data.theme.autoHideIcons && !Data.collapsed
+		separator.button?.appearsDisabled 	= !Data.theme.autoHideIcons && !Data.collapsed
+		tail.button?.appearsDisabled 		= !Data.theme.autoHideIcons && !Data.collapsed
+		
+		
+		// Calculate border
 		
 		var borderX: CGFloat
 		
@@ -208,11 +223,13 @@ class StatusBarController {
 		}
 		
 		DispatchQueue.main.async {
-			let flag = Data.collapsed && !(self.idling || self.idlingAlwaysHideArea) && (!Data.autoShows || !self.mouseOnStatusBar) && popoverNotShown
+			let flag = popoverNotShown && Data.collapsed && !(self.idling || self.idlingAlwaysHideArea) && (!Data.autoShows || !self.mouseOnStatusBar)
+			
+			self.lengths.h = flag ? Data.theme.iconWidthAlt : Data.theme.iconWidth
 			
 			Helper.lerpAsync(
 				a: self.head.length,
-				b: flag ? Data.theme.iconWidthAlt : Data.theme.iconWidth,
+				b: self.lengths.h,
 				ratio: Animations.LERP_RATIO
 			) { result in
 				self.head.length = result
@@ -231,7 +248,7 @@ class StatusBarController {
 		}
 		
 		DispatchQueue.main.async {
-			let flag = Data.collapsed && !(self.idling || self.idlingAlwaysHideArea) && (!Data.autoShows || !self.mouseOnStatusBar) && popoverNotShown
+			let flag = popoverNotShown && Data.collapsed && !(self.idling || self.idlingAlwaysHideArea) && (!Data.autoShows || !self.mouseOnStatusBar)
 			
 			guard let x = self.separator.origin?.x else { return }
 			let length = self.separator.length
@@ -327,7 +344,7 @@ class StatusBarController {
 			
 			alphaValues.t = (
 				popoverShown || idling || idlingAlwaysHideArea
-				|| Helper.Keyboard.command
+				|| (mouseOnStatusBar && (Helper.Keyboard.command || Helper.Keyboard.option))
 			) ? 1 : 0
 		}
 	}
@@ -394,7 +411,10 @@ extension StatusBarController {
 			mouseOnStatusBar
 				&& (idling || idlingAlwaysHideArea)
 				&& (headTrigger.containsMouse || separatorTrigger.containsMouse || tailTrigger.containsMouse)
-		{ unidle() }
+		{
+			unidle()
+			mouseWasOnStatusBarOrUnidled = false
+		}
 		
 		if !Data.theme.autoHideIcons {
 			// Special judge. See #update()

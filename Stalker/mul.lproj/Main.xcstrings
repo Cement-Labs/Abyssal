@@ -46,6 +46,12 @@
             "state" : "new",
             "value" : "[Info]"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
         }
       }
     },
@@ -61,7 +67,7 @@
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : ""
           }
         }
@@ -130,6 +136,12 @@
             "state" : "new",
             "value" : "Update..."
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
         }
       }
     },
@@ -145,7 +157,7 @@
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : ""
           }
         }
@@ -201,24 +213,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : ""
-          }
-        }
-      }
-    },
-    "LA8-DD-5dp.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Disables In Insufficient Space\"; ObjectID = \"LA8-DD-5dp\";",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Disables In Insufficient Space"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "显示空间不足时停用"
           }
         }
       }
@@ -340,6 +334,12 @@
             "state" : "new",
             "value" : "[Update]"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
         }
       }
     },
@@ -388,6 +388,12 @@
             "state" : "new",
             "value" : "[Version]"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
         }
       }
     },
@@ -416,6 +422,12 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
+            "value" : "Stalker"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "Stalker"
           }
         }

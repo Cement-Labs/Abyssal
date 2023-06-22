@@ -86,7 +86,9 @@ public enum Data {
 		}
 	}
 	
-	public static var feedbackAttributes: (NSHapticFeedbackManager.FeedbackPattern, Int) {
+	public static var feedbackAttributes: (
+		pattern: NSHapticFeedbackManager.FeedbackPattern, repeats: Int
+	) {
 		switch feedbackIntensity {
 		case 1:
 			return (.levelChange, 1)

@@ -14,46 +14,30 @@
       "comment" : "Name for theme 'Electrodiagram'"
     },
     "Hidden Bar" : {
-      "comment" : "Name for theme 'Hidden Bar'",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hidden Bar"
-          }
-        }
-      }
+      "comment" : "Name for theme 'Hidden Bar'"
     },
     "Metres Away" : {
       "comment" : "Name for theme 'Metres Away'"
-    },
-    "New Version Available - Version %1$@ → %2$@" : {
-      "comment" : "Version info with an update available",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "New Version Available - Version %1$@ → %2$@"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "有版本更新 - 版本 %1$@ → %2$@"
-          }
-        }
-      }
     },
     "Not So Happy" : {
       "comment" : "Name for theme 'Not So Happy'"
     },
     "Stalker" : {
-      "comment" : "Name for theme 'Stalker'",
+      "comment" : "Name for theme 'Stalker'"
+    },
+    "Update Available - Version %1$@ → %2$@" : {
+      "comment" : "Version info with an update available",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update Available - Version %1$@ → %2$@"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Stalker"
+            "value" : "有可用更新 - 版本 %1$@ → %2$@"
           }
         }
       }
