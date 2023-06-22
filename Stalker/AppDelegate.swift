@@ -55,20 +55,30 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 extension AppDelegate {
 	
+	@objc func quit(
+		_ sender: Any?
+	) {
+		NSApplication.shared.terminate(sender)
+	}
+	
 	// MARK: - Toggles
 	
 	@objc func toggle(
-		_ sender: NSButton
+		_ sender: Any?
 	) {
 		if Helper.Keyboard.option {
 			togglePopover(sender)
 		} else {
-			toggleCollapse(sender)
+			if let event = NSApp.currentEvent, event.type == .rightMouseUp {
+				togglePopover(sender)
+			} else {
+				toggleCollapse(sender)
+			}
 		}
 	}
 	
 	@objc func toggleCollapse(
-		_ sender: NSButton
+		_ sender: Any?
 	) {
 		guard !(statusBarController.idling || statusBarController.idlingAlwaysHideArea) else {
 			statusBarController.unidle()
@@ -83,7 +93,7 @@ extension AppDelegate {
 	}
 	
 	@objc func togglePopover(
-		_ sender: NSButton
+		_ sender: Any?
 	) {
 		if popover.isShown {
 			closePopover(sender)

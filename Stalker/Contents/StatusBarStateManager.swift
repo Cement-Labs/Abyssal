@@ -76,6 +76,7 @@ extension StatusBarController {
 			mask: [.leftMouseDown,
 				   .rightMouseDown]
 		) { [weak self] event in
+			
 			guard
 				let strongSelf = self,
 				let inside = strongSelf.inside,

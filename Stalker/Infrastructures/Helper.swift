@@ -85,13 +85,24 @@ class Helper {
 		return NSApplication.shared.delegate as? AppDelegate
 	}
 	
+	static func lerp(
+		a: 			CGFloat,
+		b: 			CGFloat,
+		ratio: 		CGFloat,
+		_ ignoreSmallValues: Bool = true
+	) -> CGFloat {
+		guard !ignoreSmallValues || abs(b - a) >= 1 else { return b }
+		return a + (b - a) * ratio
+	}
+	
     static func lerpAsync(
         a: 			CGFloat,
         b: 			CGFloat,
         ratio: 		CGFloat,
+		_ ignoreSmallValues: Bool = true,
 		completion: @escaping (Double) -> Void
     ) {
-		guard abs(b - a) >= 1 else { return }
+		guard !ignoreSmallValues || abs(b - a) >= 1 else { return }
 		DispatchQueue.global().async {
 			completion(a + (b - a) * ratio)
 		}

@@ -4,6 +4,9 @@
     "Approaching" : {
       "comment" : "Name for theme 'Approaching'"
     },
+    "Codec" : {
+      "comment" : "Name for theme 'Codec'"
+    },
     "Droplets" : {
       "comment" : "Name for theme 'Droplets'"
     },
@@ -40,6 +43,9 @@
           }
         }
       }
+    },
+    "Not So Happy" : {
+      "comment" : "Name for theme 'Not So Happy'"
     },
     "Stalker" : {
       "comment" : "Name for theme 'Stalker'",

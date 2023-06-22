@@ -52,8 +52,8 @@ class Themes {
 			
 			self.headUncollapsed 	= headUncollapsed 	!= nil ? NSImage(named: NSImage.Name(headUncollapsed!)) 	: Theme.EMPTY
 			self.headCollapsed 		= headCollapsed 	!= nil ? NSImage(named: NSImage.Name(headCollapsed!)) 		: Theme.EMPTY
-			self.separator 			= separator 	!= nil ? NSImage(named: NSImage.Name(separator!)) 				: Theme.EMPTY
-			self.tail 				= tail 			!= nil ? NSImage(named: NSImage.Name(tail!)) 					: Theme.EMPTY
+			self.separator 			= separator 		!= nil ? NSImage(named: NSImage.Name(separator!)) 			: Theme.EMPTY
+			self.tail 				= tail 				!= nil ? NSImage(named: NSImage.Name(tail!)) 				: Theme.EMPTY
 			
 			self.iconWidth 		= iconWidth
 			self.iconWidthAlt 	= iconWidthAlt
@@ -76,14 +76,14 @@ class Themes {
 			approaching,
 			metresAway,
 			electrodiagram,
-			droplets
-		]
+			droplets,
+			codec,
+			notSoHappy
+		].sorted(by: { $0.name < $1.name })
 	}
 	
 	static var THEME_NAMES_LIST: [String] {
-		return THEMES_LIST.map({ theme in
-			return theme.name
-		})
+		return THEMES_LIST.map { $0.name }
 	}
 	
 	static let stalker: Theme = Theme(
@@ -92,7 +92,7 @@ class Themes {
 			comment: 	"Name for theme 'Stalker'"
 		),
 		headUncollapsed: 	"Stalker/Dot",
-		headCollapsed: 		nil,
+		headCollapsed: 		"Stalker/Dot",
 		separator: 			"Stalker/Line",
 		tail: 				"Stalker/DottedLine",
 		
@@ -120,7 +120,7 @@ class Themes {
 			comment: 	"Name for theme 'Approaching'"
 		),
 		headUncollapsed: 	"Approaching/Primary",
-		headCollapsed: 		nil,
+		headCollapsed: 		"Approaching/Primary",
 		separator: 			"Approaching/Secondary",
 		tail: 				"Approaching/Tertiary",
 		
@@ -138,7 +138,7 @@ class Themes {
 		separator: 			"MetresAway/MetreLine",
 		tail: 				"MetresAway/MetreLine",
 		
-		iconWidth: 1, iconWidthAlt: 32,
+		iconWidth: 3, iconWidthAlt: 32,
 		autoHideIcons: false
 	)
 	
@@ -167,6 +167,34 @@ class Themes {
 		tail: 				"Droplets/MDrop",
 		
 		iconWidth: 6, iconWidthAlt: 22,
+		autoHideIcons: false
+	)
+	
+	static let codec: Theme = Theme(
+		String(
+			localized: 	"Codec",
+			comment: 	"Name for theme 'Codec'"
+		),
+		headUncollapsed: 	"Codec/R",
+		headCollapsed: 		"Codec/R",
+		separator: 			"Codec/L",
+		tail: 				"Codec/P",
+		
+		iconWidth: 16, iconWidthAlt: 24,
+		autoHideIcons: false
+	)
+	
+	static let notSoHappy: Theme = Theme(
+		String(
+			localized: 	"Not So Happy",
+			comment: 	"Name for theme 'Not So Happy'"
+		),
+		headUncollapsed: 	"NotSoHappy/Sad",
+		headCollapsed: 		"NotSoHappy/Happy",
+		separator: 			"NotSoHappy/Pale",
+		tail: 				"NotSoHappy/Amazed",
+		
+		iconWidth: 14, iconWidthAlt: 32,
 		autoHideIcons: false
 	)
 	
