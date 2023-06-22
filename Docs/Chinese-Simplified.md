@@ -4,7 +4,7 @@
       <code>あ ←→ A</code>
     </summary>
     <br />
-    &emsp;&ensp;<a href="https://github/com/KrLite/Stalker">English</a>
+    &emsp;&ensp;<a href="https://github.com/KrLite/Stalker">English</a>
     <br />
     &emsp;&ensp;简体中文
   </details>
