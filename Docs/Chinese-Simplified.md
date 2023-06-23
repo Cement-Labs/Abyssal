@@ -12,13 +12,15 @@
 
 # <p align="center"><img width="172" src="/Stalker/Assets.xcassets/AppIcon.appiconset/icon_512x512@2x@2x.png?raw=true" /><br />Stalker</p><br />
 
-## 检查系统是否支持Stalker
- Stalker支持macOS Monterey（12.0）及以上版本
+> **Note**
+> 
+> **Stalker**需要在**macOS Monterey 12.0**及以上版本中运行。
 >[确定你的 Mac 使用的是哪个 macOS 版本](https://support.apple.com/zh-cn/HT201260)
 
-## 学习使用Stalker 
+### 学习使用Stalker 
 
 #### 了解Stalker
+
 ![Stalker布局](https://github.com/Xinshao-air/Xinshao-Doc/blob/main/截屏2023-06-22%2017.53.53.png?raw=true)
 Stalker存在三个区域分别是：永久隐藏区域、隐藏区域、显示区域
 
@@ -30,18 +32,23 @@ Stalker存在三个区域分别是：永久隐藏区域、隐藏区域、显示�
 >例如：图中的Wi-Fi就无法隐藏。
 
 #### 显示编辑图标
+
 将鼠标移动至状态栏同时按下command(⌘)键，将显示全部图标。  
 将鼠标移动至状态栏同时按下option(⌥)键，将仅显示“隐藏区域”图标。  
 点击Stalker**状态栏**图标将会永久显示“隐藏区域”和“显示区域”的图标。  
 您可以按下command(⌘)键拖动排列图标。  
 
 #### 打开设置界面
+
 方法一：右键点击Stalker状态栏图标。  
 方法二：点击Stalker状态栏图标的同时按下option(⌥)。  
 ![Stalker设置](https://github.com/Xinshao-air/Xinshao-Doc/blob/main/测试.png?raw=true)
 >对于部分搭载Intel版本的Mac性能占用可能偏高，推荐打开“减少动画”。
 
-##  安装并打开Stalker
+### 安装并运行[^install_and_run]
+
+[^install_and_run]: [打开来自身份不明开发者的 Mac App](https://support.apple.com/zh-cn/guide/mac-help/mh40616/mac)
+
 ![截屏](https://github.com/Xinshao-air/Xinshao-Doc/blob/main/截屏2023-06-22%2016.55.33.png?raw=true)
 打开“Stalker.dmg”将Stalker拖入“Applications“
 
@@ -53,7 +60,4 @@ Stalker存在三个区域分别是：永久隐藏区域、隐藏区域、显示�
 
 ![截屏](https://github.com/Xinshao-air/Xinshao-Doc/blob/main/截屏2023-06-22%2016.57.10.png?raw=true)
 弹出该窗口后继续点击“**打开**”
-
-如果希望以后能更简单的安装运行请支持KrLite。
-> [打开来自身份不明开发者的 Mac App](https://support.apple.com/zh-cn/guide/mac-help/mh40616/mac)
-
+(https://support.apple.com/zh-cn/guide/mac-help/mh40616/mac)
