@@ -4,7 +4,7 @@
       <code>あ ←→ A</code>
     </summary>
     <!--Head-->
-    &emsp;&ensp;<sub><b>Stalker</b> supports the following languages. <a href="ADD_A_LOCALIZATION.md"><code>↗ Add a localization</code></a></sub>
+    &emsp;&ensp;<sub><b>Stalker</b> supports the following languages. <a href="/Docs/ADD_A_LOCALIZATION.md"><code>↗ Add a localization</code></a></sub>
     <br />
     <!--Body-->
     <br />
