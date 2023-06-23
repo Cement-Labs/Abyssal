@@ -12,14 +12,16 @@
 
 # <p align="center"><img width="172" src="/Stalker/Assets.xcassets/AppIcon.appiconset/icon_512x512@2x@2x.png?raw=true" /><br />Stalker</p><br />
 
-> **Note**
-> 
-> **Stalker**需要在**macOS Monterey 12.0**及以上版本中运行。
->[确定你的 Mac 使用的是哪个 macOS 版本](https://support.apple.com/zh-cn/HT201260)
+> 简化、整理并掌控你的macOS菜单栏。
 
-### 学习使用Stalker 
+> **Note**  
+> **Stalker**需要在**macOS Monterey 12.0**[^check_your_macos_version]及以上版本中运行。
 
-#### 了解Stalker
+[^check_your_macos_version]: [确定你的 Mac 使用的是哪个 macOS 版本](https://support.apple.com/zh-cn/HT201260)
+
+### 了解与使用
+
+#### 基本逻辑
 
 ![Stalker布局](https://github.com/Xinshao-air/Xinshao-Doc/blob/main/截屏2023-06-22%2017.53.53.png?raw=true)
 Stalker存在三个区域分别是：永久隐藏区域、隐藏区域、显示区域
