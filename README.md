@@ -6,7 +6,7 @@
     <br />
     &emsp;&ensp;English
     <br />
-    &emsp;&ensp;<a href="/Docs/Chinese-Simplified.md">简体中文</a>
+    &emsp;&ensp;<a href="/Docs/简体中文.md">简体中文</a>
   </details>
 </blockquote>
 
