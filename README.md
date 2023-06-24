@@ -134,8 +134,8 @@ You can perform different actions by clicking on the separators of **Stalker**, 
 
 Let's take a look at how to customize **Stalker**. You can open the preferences menu by:
 
-- <kbd>Right Click</kbd> `Menu Icon`&thinsp;<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/DefaultTheme/Dark/Dot.png?raw=true" /><img height="12" src="/Docs/Contents/DefaultTheme/Light/Dot.png?raw=true" /></picture>。
-- <kbd>⌥ Option</kbd> <kbd>Click</kbd> `Menu Icon`&thinsp;<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/DefaultTheme/Dark/Dot.png?raw=true" /><img height="12" src="/Docs/Contents/DefaultTheme/Light/Dot.png?raw=true" /></picture>。
+- <kbd>Right Click</kbd> `Menu Icon`&thinsp;<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/DefaultTheme/Dark/Dot.png?raw=true" /><img height="12" src="/Docs/Contents/DefaultTheme/Light/Dot.png?raw=true" /></picture>.
+- <kbd>⌥ Option</kbd> <kbd>Click</kbd> `Menu Icon`&thinsp;<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/DefaultTheme/Dark/Dot.png?raw=true" /><img height="12" src="/Docs/Contents/DefaultTheme/Light/Dot.png?raw=true" /></picture>.
 
 The menu items are explained as follows:
 
