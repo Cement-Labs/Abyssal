@@ -41,7 +41,7 @@
 
 ### Basic Stuffs
 
-**Stalker** 将你的菜单栏划分为三个区域 - <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/永远隐藏区域-5C167F" /><img src="https://img.shields.io/badge/永远隐藏区域-EFD9FF" /></picture></sub>、<sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/隐藏区域-903150" /><img src="https://img.shields.io/badge/隐藏区域-FFC9D9" /></picture></sub> 和 <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/显示区域-3A659E" /><img src="https://img.shields.io/badge/显示区域-BADDFF" /></picture></sub>：
+**Stalker** divides your menu bar into three areas - <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Always Hide Area-5C167F" /><img src="https://img.shields.io/badge/Always Hide Area-EFD9FF" /></picture></sub>, <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Hide Area-903150" /><img src="https://img.shields.io/badge/Hide Area-FFC9D9" /></picture></sub> and <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Show Area-3A659E" /><img src="https://img.shields.io/badge/Show Area-BADDFF" /></picture></sub>：
 
 - <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/永远隐藏区域-5C167F" /><img src="https://img.shields.io/badge/永远隐藏区域-EFD9FF" /></picture></sub>&emsp;此区域内的图标将被<i>永远隐藏，</i>除非你主动查看它们。
 - <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/隐藏区域-903150" /><img src="https://img.shields.io/badge/隐藏区域-FFC9D9" /></picture></sub>&emsp;此区域内的图标遵循一定的显示逻辑。通常情况下，*你看不到它们。*
