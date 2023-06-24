@@ -132,76 +132,76 @@ You can perform different actions by clicking on the separators of **Stalker**, 
 
 ### Preferences & Customizations
 
-让我们回顾一下，要调整 **Stalker** 设置，你可以通过以下方法打开设置菜单：
+Let's take a look at how to customize **Stalker**. You can open the preferences menu by:
 
 - <kbd>Right Click</kbd> `Menu Icon`&thinsp;<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/DefaultTheme/Dark/Dot.png?raw=true" /><img height="12" src="/Docs/Contents/DefaultTheme/Light/Dot.png?raw=true" /></picture>。
 - <kbd>⌥ Option</kbd> <kbd>Click</kbd> `Menu Icon`&thinsp;<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/DefaultTheme/Dark/Dot.png?raw=true" /><img height="12" src="/Docs/Contents/DefaultTheme/Light/Dot.png?raw=true" /></picture>。
 
-菜单中各项设置的作用如下：
+The menu items are explained as follows:
 
 <br />
 
-###### 主题<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Theme.png?raw=true" /><img align="right" height="12" alt="Default: Stalker" src="/Docs/Contents/Preferences/Light/Theme.png?raw=true" /></picture>
+###### Theme<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Theme.png?raw=true" /><img align="right" height="12" alt="Default: Stalker" src="/Docs/Contents/Preferences/Light/Theme.png?raw=true" /></picture>
 
-不同主题间的显示效果迥异，并且一些主题会自动隐藏分隔图标，另一些则不会。
+Separator's appearances differ from theme to theme, and some themes will automatically hide separators, while others will not.
 
-###### 自动隐藏<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-Off.png?raw=true" /><img align="right" height="12" alt="Default: Off" src="/Docs/Contents/Preferences/Light/Switch-Off.png?raw=true" /></picture>
+###### Auto Hides<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-Off.png?raw=true" /><img align="right" height="12" alt="Default: Off" src="/Docs/Contents/Preferences/Light/Switch-Off.png?raw=true" /></picture>
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-Off.png?raw=true" /><img height="12" alt="Off" src="/Docs/Contents/Preferences/Light/Switch-Off.png?raw=true" /></picture>&emsp;需要手动控制处于 <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Hide Area-903150" /><img src="https://img.shields.io/badge/Hide Area-FFC9D9" /></picture></sub> 的菜单栏图标的显示和隐藏状态。
+<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-Off.png?raw=true" /><img height="12" alt="Off" src="/Docs/Contents/Preferences/Light/Switch-Off.png?raw=true" /></picture>&emsp;You will need to control the visibility of icons inside <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Hide Area-903150" /><img src="https://img.shields.io/badge/Hide Area-FFC9D9" /></picture></sub> manually.
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-On.png?raw=true" /><img height="12" alt="On" src="/Docs/Contents/Preferences/Light/Switch-On.png?raw=true" /></picture>&emsp;**Stalker** 会在你不需要使用菜单栏时自动隐藏处于 <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Hide Area-903150" /><img src="https://img.shields.io/badge/Hide Area-FFC9D9" /></picture></sub> 的菜单栏图标。
+<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-On.png?raw=true" /><img height="12" alt="On" src="/Docs/Contents/Preferences/Light/Switch-On.png?raw=true" /></picture>&emsp;**Stalker** will hide icons inside <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Hide Area-903150" /><img src="https://img.shields.io/badge/Hide Area-FFC9D9" /></picture></sub> automatically when you are not using them.
 
-###### 反馈强度<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Slider-0.png?raw=true" /><img align="right" height="12" alt="Default: Disabled" src="/Docs/Contents/Preferences/Light/Slider-0.png?raw=true" /></picture>
+###### Feedback Intensity<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Slider-0.png?raw=true" /><img align="right" height="12" alt="Default: Disabled" src="/Docs/Contents/Preferences/Light/Slider-0.png?raw=true" /></picture>
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Slider-0.png?raw=true" /><img height="12" alt="Disabled" src="/Docs/Contents/Preferences/Light/Slider-0.png?raw=true" /></picture>&emsp;Haptic feedback **Disabled.**
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Slider-1.png?raw=true" /><img height="12" alt="Light" src="/Docs/Contents/Preferences/Light/Slider-1.png?raw=true" /></picture>&emsp;**Light** haptic feedback.
+<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Slider-1.png?raw=true" /><img height="12" alt="Light" src="/Docs/Contents/Preferences/Light/Slider-1.png?raw=true" /></picture>&emsp;**Light** haptic feedback intensity.
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Slider-2.png?raw=true" /><img height="12" alt="Medium" src="/Docs/Contents/Preferences/Light/Slider-2.png?raw=true" /></picture>&emsp;**Medium** haptic feedback.
+<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Slider-2.png?raw=true" /><img height="12" alt="Medium" src="/Docs/Contents/Preferences/Light/Slider-2.png?raw=true" /></picture>&emsp;**Medium** haptic feedback intensity.
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Slider-3.png?raw=true" /><img height="12" alt="Heavy" src="/Docs/Contents/Preferences/Light/Slider-3.png?raw=true" /></picture>&emsp;**Heavy** haptic feedback.
+<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Slider-3.png?raw=true" /><img height="12" alt="Heavy" src="/Docs/Contents/Preferences/Light/Slider-3.png?raw=true" /></picture>&emsp;**Heavy** haptic feedback intensity.
 
-> 由于 macOS 的限制，你可能无法感受到明显的震感反馈。
-
-<br />
-
-###### 使用Always Hide Area<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-Off.png?raw=true" /><img align="right" height="12" alt="Default: Off" src="/Docs/Contents/Preferences/Light/Switch-Off.png?raw=true" /></picture>
-
-<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-Off.png?raw=true" /><img height="12" alt="Off" src="/Docs/Contents/Preferences/Light/Switch-Off.png?raw=true" /></picture>&emsp;**完全禁用** <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Always Hide Area-5C167F" /><img src="https://img.shields.io/badge/Always Hide Area-EFD9FF" /></picture></sub> 并且**不显示** `Always Hide Separator`&thinsp;<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/DefaultTheme/Dark/DottedLine.png?raw=true" /><img height="12" src="/Docs/Contents/DefaultTheme/Light/DottedLine.png?raw=true" /></picture>。
-
-<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-On.png?raw=true" /><img height="12" alt="On" src="/Docs/Contents/Preferences/Light/Switch-On.png?raw=true" /></picture>&emsp;**启用** <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Always Hide Area-5C167F" /><img src="https://img.shields.io/badge/Always Hide Area-EFD9FF" /></picture></sub> 并且**显示** `Always Hide Separator`&thinsp;<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/DefaultTheme/Dark/DottedLine.png?raw=true" /><img height="12" src="/Docs/Contents/DefaultTheme/Light/DottedLine.png?raw=true" /></picture>。
-
-###### 减少动画<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-Off.png?raw=true" /><img align="right" height="12" alt="Default: Off" src="/Docs/Contents/Preferences/Light/Switch-Off.png?raw=true" /></picture>
-
-<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-Off.png?raw=true" /><img height="12" alt="Off" src="/Docs/Contents/Preferences/Light/Switch-Off.png?raw=true" /></picture>&emsp;减少动画以减少性能占用。
-
-<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-On.png?raw=true" /><img height="12" alt="On" src="/Docs/Contents/Preferences/Light/Switch-On.png?raw=true" /></picture>&emsp;正常显示动画。
-
-> 如果你正在使用 Intel 芯片的 Mac，建议保持 `减少动画` 选项为&emsp;<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-On.png?raw=true" /><img height="12" alt="On" src="/Docs/Contents/Preferences/Light/Switch-On.png?raw=true" /></picture>&emsp;以保证运行流畅。
+> Due to the limitations of macOS, you may not feel a strong haptic feedback.
 
 <br />
 
-###### 随 macOS 启动<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-Off.png?raw=true" /><img align="right" height="12" alt="Default: Off" src="/Docs/Contents/Preferences/Light/Switch-Off.png?raw=true" /></picture>
+###### Use Always Hide Area<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-Off.png?raw=true" /><img align="right" height="12" alt="Default: Off" src="/Docs/Contents/Preferences/Light/Switch-Off.png?raw=true" /></picture>
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-Off.png?raw=true" /><img height="12" alt="Off" src="/Docs/Contents/Preferences/Light/Switch-Off.png?raw=true" /></picture>&emsp;你需要手动开启 **Stalker**。
+<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-Off.png?raw=true" /><img height="12" alt="Off" src="/Docs/Contents/Preferences/Light/Switch-Off.png?raw=true" /></picture>&emsp;**Completely disbble** <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Always Hide Area-5C167F" /><img src="https://img.shields.io/badge/Always Hide Area-EFD9FF" /></picture></sub> and **completely hide** `Always Hide Separator`&thinsp;<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/DefaultTheme/Dark/DottedLine.png?raw=true" /><img height="12" src="/Docs/Contents/DefaultTheme/Light/DottedLine.png?raw=true" /></picture>.
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-On.png?raw=true" /><img height="12" alt="On" src="/Docs/Contents/Preferences/Light/Switch-On.png?raw=true" /></picture>&emsp;**Stalker** 将随 macOS 启动。
+<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-On.png?raw=true" /><img height="12" alt="On" src="/Docs/Contents/Preferences/Light/Switch-On.png?raw=true" /></picture>&emsp;**Enable** <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Always Hide Area-5C167F" /><img src="https://img.shields.io/badge/Always Hide Area-EFD9FF" /></picture></sub> and **show** `Always Hide Separator`&thinsp;<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/DefaultTheme/Dark/DottedLine.png?raw=true" /><img height="12" src="/Docs/Contents/DefaultTheme/Light/DottedLine.png?raw=true" /></picture>.
+
+###### Reduce Animation<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-Off.png?raw=true" /><img align="right" height="12" alt="Default: Off" src="/Docs/Contents/Preferences/Light/Switch-Off.png?raw=true" /></picture>
+
+<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-Off.png?raw=true" /><img height="12" alt="Off" src="/Docs/Contents/Preferences/Light/Switch-Off.png?raw=true" /></picture>&emsp;Reduce the animation in order to make **Stalker** run more smoothly.
+
+<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-On.png?raw=true" /><img height="12" alt="On" src="/Docs/Contents/Preferences/Light/Switch-On.png?raw=true" /></picture>&emsp;Show the animation to make **Stalker** prettier.
+
+> If you are using an Intel chip Mac, it is recommended to keep the `Reduce Animation` option as&emsp;<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-On.png?raw=true" /><img height="12" alt="On" src="/Docs/Contents/Preferences/Light/Switch-On.png?raw=true" /></picture>&emsp;to ensure the smoothness of **Stalker.**
+
+<br />
+
+###### Starts with macOS<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-Off.png?raw=true" /><img align="right" height="12" alt="Default: Off" src="/Docs/Contents/Preferences/Light/Switch-Off.png?raw=true" /></picture>
+
+<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-Off.png?raw=true" /><img height="12" alt="Off" src="/Docs/Contents/Preferences/Light/Switch-Off.png?raw=true" /></picture>&emsp;You need to manually open **Stalker** every time you start macOS.
+
+<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-On.png?raw=true" /><img height="12" alt="On" src="/Docs/Contents/Preferences/Light/Switch-On.png?raw=true" /></picture>&emsp;**Stalker** will automatically start when you start macOS.
 
 ### Attention Required
 
 ###### Auto Idling
 
-因为 macOS 的限制，**Stalker** 无法知道你是否打开了处于 <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Always Hide Area-5C167F" /><img src="https://img.shields.io/badge/Always Hide Area-EFD9FF" /></picture></sub> 或 <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Hide Area-903150" /><img src="https://img.shields.io/badge/Hide Area-FFC9D9" /></picture></sub> 的菜单。如果这时 `自动隐藏` 功能贸然隐藏了这些图标，那么菜单也会随之移动。为此，**Stalker** 采用了一种检测方式以最大程度的避免类似情况的发生。
+Due to the limitations of macOS, **Stalker** cannot know whether you have opened a menu in <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Always Hide Area-5C167F" /><img src="https://img.shields.io/badge/Always Hide Area-EFD9FF" /></picture></sub> or <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Hide Area-903150" /><img src="https://img.shields.io/badge/Hide Area-FFC9D9" /></picture></sub>. If the `Auto Hide` function hides these icons rashly, the menu will also move with it. Therefore, **Stalker** adopts a detection method to avoid similar situations to the greatest extent.
 
-简单来说，当你在菜单栏中点按了一处**很可能有其它图标，且该图标很可能处于 <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Hide Area-903150" /><img src="https://img.shields.io/badge/Hide Area-FFC9D9" /></picture></sub> 或 <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Always Hide Area-5C167F" /><img src="https://img.shields.io/badge/Always Hide Area-EFD9FF" /></picture></sub>** 的位置时，**Stalker** 会选择暂停 `自动隐藏`，进入 `自动闲置` 状态。 当你结束操作后，只需将鼠标轻轻**移过** **Stalker** 的任意一个图标上方，就可以取消 `自动闲置`，恢复 `自动隐藏`。
+Speaking generally, when you click on a place in the menu bar **where there is likely to be other icons, and the icon is likely to be inside <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Hide Area-903150" /><img src="https://img.shields.io/badge/Hide Area-FFC9D9" /></picture></sub> or <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Always Hide Area-5C167F" /><img src="https://img.shields.io/badge/Always Hide Area-EFD9FF" /></picture></sub>**, **Stalker** will choose to pause `Auto Hide` and enter the `Auto Idle` state. When you finish the operation, just move the mouse gently **over** any separator of **Stalker**, and you can cancel `Auto Idle` and resume `Auto Hide`.
 
-`自动闲置` 会根据你的点按位置自动开启，且会区分 <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Always Hide Area-5C167F" /><img src="https://img.shields.io/badge/Always Hide Area-EFD9FF" /></picture></sub> and <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Hide Area-903150" /><img src="https://img.shields.io/badge/Hide Area-FFC9D9" /></picture></sub>。当你**移过** **Stalker** 的任意图标上方时，这两种 `自动闲置` 状态都会被取消。
+`Auto Idle` will enable automatically accordng to your clicking position, and it will distinguish <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Always Hide Area-5C167F" /><img src="https://img.shields.io/badge/Always Hide Area-EFD9FF" /></picture></sub> and <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Hide Area-903150" /><img src="https://img.shields.io/badge/Hide Area-FFC9D9" /></picture></sub>. When you **move your mouse over** any separator of **Stalker**, both `Auto Idle` states will be canceled.
 
-`自动闲置` 只在 `自动隐藏` 激活时激活。
+`Auto Idle` will only be activated when `Auto Hide` is activated.
 
 ###### Haptic Feedback
 
-当你**触发** `自动隐藏`、**取消** `自动隐藏`、**触发** `自动闲置` 和**取消** `自动闲置` 时，**Stalker** 会提供震感反馈[^haptic_feedback_support_needed]。
+As you **trigger** `Auto Hide`, **cancel** `Auto Hide`, **trigger** `Auto Idle` and **cancel** `Auto Idle`, **Stalker** will provide a haptic feedback[^haptic_feedback_support_needed].
 
 [^haptic_feedback_support_needed]: Your device must support *Haptic Feedback.*
 
