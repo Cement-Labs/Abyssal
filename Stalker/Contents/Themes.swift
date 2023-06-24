@@ -69,7 +69,7 @@ class Themes {
 		
 	}
 	
-	static var THEMES_LIST: [Theme] {
+	static var themes: [Theme] {
 		return [
 			stalker,
 			hiddenBar,
@@ -82,8 +82,12 @@ class Themes {
 		].sorted(by: { $0.name < $1.name })
 	}
 	
-	static var THEME_NAMES_LIST: [String] {
-		return THEMES_LIST.map { $0.name }
+	static var defaultTheme: Theme {
+		return stalker
+	}
+	
+	static var themeNames: [String] {
+		return themes.map { $0.name }
 	}
 	
 	static let stalker: Theme = Theme(

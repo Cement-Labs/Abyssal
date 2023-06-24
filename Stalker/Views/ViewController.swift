@@ -220,7 +220,7 @@ extension ViewController {
 		if let menuItem = themes.menu?.highlightedItem,
 		   let index = themes.menu?.items.firstIndex(of: menuItem)
 		{
-			Data.theme = Themes.THEMES_LIST[index]
+			Data.theme = Themes.themes[index]
 		}
 	}
 	
@@ -265,10 +265,10 @@ extension ViewController {
 		
 		do {
 			themes.removeAllItems()
-			themes.addItems(withTitles: Themes.THEME_NAMES_LIST)
+			themes.addItems(withTitles: Themes.themeNames)
 			themes.menu?.delegate = self
 			
-			if let index = Themes.THEMES_LIST.firstIndex(of: Data.theme) {
+			if let index = Themes.themes.firstIndex(of: Data.theme) {
 				themes.selectItem(at: index)
 			}
 			

@@ -34,16 +34,18 @@ public enum Data {
 	
 	static var theme: Themes.Theme {
 		get {
-			return Themes.THEMES_LIST[
-				UserDefaults.standard.integer(
-					forKey: Keys.THEME
-				)
-			]
+			let index = UserDefaults.standard.integer(forKey: Keys.THEME)
+			
+			guard index < Themes.themes.count else {
+				return Themes.defaultTheme
+			}
+			
+			return Themes.themes[index]
 		}
 		
 		set(theme) {
 			UserDefaults.standard.set(
-				Themes.THEMES_LIST.firstIndex(of: theme),
+				Themes.themes.firstIndex(of: theme),
 				forKey: Keys.THEME
 			)
 		}
