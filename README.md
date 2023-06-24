@@ -27,11 +27,11 @@
 ### <div><!--Empty Lines--><br /><br /></div>
 
 > **Note**&emsp;
-> **Stalker** 需要在 **macOS 12.0 Monterey**[^check_your_macos_version] 及以上版本中运行。
+> **Stalker** requires **macOS 12.0 Monterey**[^check_your_macos_version] and above.
 
-[^check_your_macos_version]: [`↗ 确定你的 Mac 使用的是哪个 macOS 版本`](https://support.apple.com/zh-cn/HT201260)
+[^check_your_macos_version]: [`↗ Find out which macOS your Mac is using`](https://support.apple.com/en-us/HT201260)
 
-## 了解与使用
+## Introduction & Usage
 
 <div align="center">
   <img width="700" src="/Docs/Contents/English/Overview.png?raw=true" />
@@ -39,7 +39,7 @@
 
 ### <div><!--Empty Lines--><br /><br /></div>
 
-### 运行逻辑
+### Basic Stuffs
 
 **Stalker** 将你的菜单栏划分为三个区域 - <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/永远隐藏区域-5C167F" /><img src="https://img.shields.io/badge/永远隐藏区域-EFD9FF" /></picture></sub>、<sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/隐藏区域-903150" /><img src="https://img.shields.io/badge/隐藏区域-FFC9D9" /></picture></sub> 和 <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/显示区域-3A659E" /><img src="https://img.shields.io/badge/显示区域-BADDFF" /></picture></sub>：
 
@@ -51,18 +51,18 @@
 
 > **Stalker** 会判断以上三个图标的先后顺序，因此你可以随意拖动它们。例如，将 `菜单图标`&thinsp;<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/DefaultTheme/Dark/Dot.png?raw=true" /><img height="12" src="/Docs/Contents/DefaultTheme/Light/Dot.png?raw=true" /></picture> 拖动到 `永远隐藏线`&thinsp;<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/DefaultTheme/Dark/DottedLine.png?raw=true" /><img height="12" src="/Docs/Contents/DefaultTheme/Light/DottedLine.png?raw=true" /></picture> 的左侧是被允许的，因为它会自动变成新的 `永远隐藏线`&thinsp;<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/DefaultTheme/Dark/DottedLine.png?raw=true" /><img height="12" src="/Docs/Contents/DefaultTheme/Light/DottedLine.png?raw=true" /></picture>。
 
-### 显示并移动图标
+### Show & Move Icons
 
 在包括默认主题在内的一些主题中，图标会被默认隐藏。而当设置菜单打开，或在你将鼠标移动至菜单栏上[^mouse_onto_status_bar]并按下 <kbd>⌘ Command</kbd> 或 <Kbd>⌥ Option</kbd> 时，**Stalker** 会显示全部图标。在剩下的主题中，图标不会被隐藏，但是会根据应用状态自动改变外观。图标的显示和隐藏还遵循一些特别规则：
 
 - 在使用默认隐藏图标的主题时，`菜单图标`&thinsp;<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/DefaultTheme/Dark/Dot.png?raw=true" /><img height="12" src="/Docs/Contents/DefaultTheme/Light/Dot.png?raw=true" /></picture> 会指示处于 <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/隐藏区域-903150" /><img src="https://img.shields.io/badge/隐藏区域-FFC9D9" /></picture></sub> 的菜单栏图标的显示状态。若 `菜单图标`&thinsp;<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/DefaultTheme/Dark/Dot.png?raw=true" /><img height="12" src="/Docs/Contents/DefaultTheme/Light/Dot.png?raw=true" /></picture> <b>显示，</b>代表处于 <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/隐藏区域-903150" /><img src="https://img.shields.io/badge/隐藏区域-FFC9D9" /></picture></sub> 的菜单栏图标将**不会被隐藏。** 反之，代表处于 <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/隐藏区域-903150" /><img src="https://img.shields.io/badge/隐藏区域-FFC9D9" /></picture></sub> 的菜单栏图标将**隐藏。**
 - 在使用其它主题时，所有图标会一同指示处于 <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/隐藏区域-903150" /><img src="https://img.shields.io/badge/隐藏区域-FFC9D9" /></picture></sub> 的菜单栏图标的显示状态。若所有图标<b>变为半透明，</b>代表处于 <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/隐藏区域-903150" /><img src="https://img.shields.io/badge/隐藏区域-FFC9D9" /></picture></sub> 的菜单栏图标将**不会被隐藏。** 反之，代表处于 <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/隐藏区域-903150" /><img src="https://img.shields.io/badge/隐藏区域-FFC9D9" /></picture></sub> 的菜单栏图标将**隐藏。**
 
-[^mouse_onto_status_bar]: 在刘海屏的显示器上，你可能需要将鼠标移动到*屏幕右半侧*的菜单栏上。
+[^mouse_onto_status_bar]: You may need to move your mouse onto the right half of the menu bar on monitors with notches.
 
 按住 <kbd>⌘ Command</kbd> 并拖动可以更改图标顺序。例如，将更多的图标放入或移出 <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/隐藏区域-903150" /><img src="https://img.shields.io/badge/隐藏区域-FFC9D9" /></picture></sub>。
 
-### 点按图标
+### Click on the Icons
 
 你可以通过点按 **Stalker** 的不同图标进行不同的操作，无论图标是否显示：
 
@@ -129,7 +129,7 @@
   </tr>
 </table>
 
-### 设置与自定义
+### Preferences & Customizations
 
 让我们回顾一下，要调整 **Stalker** 设置，你可以通过以下方法打开设置菜单：
 
@@ -186,9 +186,9 @@
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-On.png?raw=true" /><img height="12" alt="开" src="/Docs/Contents/Preferences/Light/Switch-On.png?raw=true" /></picture>&emsp;**Stalker** 将随 macOS 启动。
 
-### 需要注意的操作
+### Attention Required
 
-###### 自动闲置
+###### Auto Idling
 
 因为 macOS 的限制，**Stalker** 无法知道你是否打开了处于 <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/永远隐藏区域-5C167F" /><img src="https://img.shields.io/badge/永远隐藏区域-EFD9FF" /></picture></sub> 或 <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/隐藏区域-903150" /><img src="https://img.shields.io/badge/隐藏区域-FFC9D9" /></picture></sub> 的菜单。如果这时 `自动隐藏` 功能贸然隐藏了这些图标，那么菜单也会随之移动。为此，**Stalker** 采用了一种检测方式以最大程度的避免类似情况的发生。
 
@@ -198,26 +198,26 @@
 
 `自动闲置` 只在 `自动隐藏` 激活时激活。
 
-###### 震感反馈
+###### Haptic Feedback
 
 当你**触发** `自动隐藏`、**取消** `自动隐藏`、**触发** `自动闲置` 和**取消** `自动闲置` 时，**Stalker** 会提供震感反馈[^haptic_feedback_support_needed]。
 
-[^haptic_feedback_support_needed]: 你的设备需要支持 *Haptic 震感反馈。*
+[^haptic_feedback_support_needed]: Your device must support *Haptic Feedback.*
 
 ### <div><!--Empty Lines--><br /><br /></div>
 
-## 安装与运行[^install_and_run]
+## Install & Run[^install_and_run]
 
-[^install_and_run]: [`↗ 打开来自身份不明开发者的 Mac App`](https://support.apple.com/zh-cn/guide/mac-help/mh40616/mac)
+[^install_and_run]: [`↗ Open a Mac app from an unidentified developer`](https://support.apple.com/guide/mac-help/mh40616/mac)
 
 ### <div><!--Empty Lines--><br /><br /></div>
 
-作为开源免费软件，**Stalker** 暂无能力支付[苹果开发者账户](https://developer.apple.com/cn/help/account/)的会员费。因此，你无法在 App Store 中下载 <b>Stalker，</b>并且可能需要允许 **Stalker** 以未验证应用的身份运行。
+As an open-sourced and free software, **Stalker** has no ability to pay for [Apple Developer Account.](https://developer.apple.com/help/account/)Thus, you can't install **Stalker** from App Store, and you may need to allow **Stalker** to run as an unidentified app.
 
-### 安装步骤
+### Steps to Follow
 
 > **Note**&emsp;
-> 目前，你只能在 [Releases](https://github.com?KrLite/Stalker/releases) 页面手动下载 **Stalker**  的安装磁盘映像。
+> You can download the installing disk image of **Stalker** only from [Releases](https://github.com?KrLite/Stalker/releases) page manually for now.
 
 <h6>
 
@@ -236,9 +236,9 @@
      />
   </picture>
 </div>
-装载 <code>.dmg</code> 磁盘映像
+Mount the <code>.dmg</code> disk image
 <br />
-将 Stalker 拖动到 Applications 文件夹中
+Drag Stalker to the Applications Folder
 </blockquote>
 
 <br />
@@ -258,7 +258,7 @@
      />
   </picture>
 </div>
-若弹出窗口，选择 <code>在访达中显示</code>
+If a pop-up window appears, choose <code>Show in Finder</code>
 </blockquote>
 
 <br />
@@ -278,9 +278,9 @@
      />
   </picture>
 </div>
-<kbd>右键点按</kbd> Stalker
+<kbd>Right Click</kbd> Stalker
 <br />
-选择 <code>打开</code>
+Choose <code>Open</code>
 </blockquote>
 
 <br />
@@ -300,7 +300,7 @@
      />
   </picture>
 </div>
-选择 <code>打开</code>
+Choose <code>Open</code>
 </blockquote>
 
 </h6>
