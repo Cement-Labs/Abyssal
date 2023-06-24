@@ -306,3 +306,41 @@ Choose <code>Open</code>
 
 </h6>
 
+### <div><!--Empty Lines--><br /><br /></div>
+
+<blockquote>
+  <details>
+    <summary>
+      <code>Contributors</code>
+    </summary>
+    <br />
+    <table>
+      <tr>
+        <td>
+          <!--KrLite-->
+          <a href="https://github.com/KrLite">
+            <img src="https://github.com/KrLite.png?size=125" />
+          </a>
+          <br />
+          <b>KrLite</b>
+          <br />
+          <sup>
+            Project Leader
+          </sup>
+        </td>
+        <td>
+          <!--芯梢-->
+          <a href="https://github.com/Xinshao-air">
+            <img src="https://github.com/Xinshao-air.png?size=125" />
+          </a>
+          <br />
+          <b>芯梢</b>
+          <br />
+          <sup>
+            Internal Testor & Docs
+          </sup>
+        </td>
+      </tr>
+    </table>
+  </details>
+</blockquote>
