@@ -20,7 +20,7 @@
 
 ### <div><!--Empty Lines--><br /><br /></div>
 
-###### <p align="center">Simplify, Tidy and Master Your macOS Menu Bar.[^menu_bar]。</p>
+###### <p align="center">Simplify, Tidy and Master Your macOS Menu Bar[^menu_bar].</p>
 
 [^menu_bar]: Also known as *Status Bar.*
 
