@@ -20,9 +20,9 @@
 
 ### <div><!--Empty Lines--><br /><br /></div>
 
-###### <p align="center">简化、整理并掌控你的 macOS 菜单栏[^status_bar]。</p>
+###### <p align="center">Simplify, Tidy and Master Your macOS Menu Bar.[^menu_bar]。</p>
 
-[^status_bar]: 又称*状态栏。*
+[^menu_bar]: Also known as *Status Bar.*
 
 ### <div><!--Empty Lines--><br /><br /></div>
 
