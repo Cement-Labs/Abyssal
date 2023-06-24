@@ -20,7 +20,7 @@
 
 ### <div><!--Empty Lines--><br /><br /></div>
 
-###### <p align="center">Simplify, Tidy and Master Your macOS Menu Bar.[^menu_bar]。</p>
+###### <p align="center">Simplify, Tidy and Master Your macOS Menu Bar[^menu_bar].</p>
 
 [^menu_bar]: Also known as *Status Bar.*
 
@@ -134,8 +134,8 @@ You can perform different actions by clicking on the separators of **Stalker**, 
 
 Let's take a look at how to customize **Stalker**. You can open the preferences menu by:
 
-- <kbd>Right Click</kbd> `Menu Icon`&thinsp;<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/DefaultTheme/Dark/Dot.png?raw=true" /><img height="12" src="/Docs/Contents/DefaultTheme/Light/Dot.png?raw=true" /></picture>。
-- <kbd>⌥ Option</kbd> <kbd>Click</kbd> `Menu Icon`&thinsp;<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/DefaultTheme/Dark/Dot.png?raw=true" /><img height="12" src="/Docs/Contents/DefaultTheme/Light/Dot.png?raw=true" /></picture>。
+- <kbd>Right Click</kbd> `Menu Icon`&thinsp;<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/DefaultTheme/Dark/Dot.png?raw=true" /><img height="12" src="/Docs/Contents/DefaultTheme/Light/Dot.png?raw=true" /></picture>.
+- <kbd>⌥ Option</kbd> <kbd>Click</kbd> `Menu Icon`&thinsp;<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/DefaultTheme/Dark/Dot.png?raw=true" /><img height="12" src="/Docs/Contents/DefaultTheme/Light/Dot.png?raw=true" /></picture>.
 
 The menu items are explained as follows:
 
@@ -306,3 +306,41 @@ Choose <code>Open</code>
 
 </h6>
 
+### <div><!--Empty Lines--><br /><br /></div>
+
+<blockquote>
+  <details>
+    <summary>
+      <code>Contributors</code>
+    </summary>
+    <br />
+    <table>
+      <tr>
+        <td>
+          <!--KrLite-->
+          <a href="https://github.com/KrLite">
+            <img src="https://github.com/KrLite.png?size=125" />
+          </a>
+          <br />
+          <b>KrLite</b>
+          <br />
+          <sup>
+            Project Leader
+          </sup>
+        </td>
+        <td>
+          <!--芯梢-->
+          <a href="https://github.com/Xinshao-air">
+            <img src="https://github.com/Xinshao-air.png?size=125" />
+          </a>
+          <br />
+          <b>芯梢</b>
+          <br />
+          <sup>
+            Tests & Images
+          </sup>
+        </td>
+      </tr>
+    </table>
+  </details>
+</blockquote>
