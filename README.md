@@ -337,7 +337,7 @@ Choose <code>Open</code>
           <b>芯梢</b>
           <br />
           <sup>
-            Internal Testor & Docs
+            Tests & Images
           </sup>
         </td>
       </tr>
