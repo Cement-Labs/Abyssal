@@ -9,10 +9,6 @@ import AppKit
 
 class StatusBarController {
 	
-	// MARK: - Constants
-	
-	static let NOTCH_DISABLED_AREA_WIDTH:	CGFloat = 250
-	
 	// MARK: - States
 	
 	var alphaValues: 	(h: CGFloat, s: CGFloat, t: CGFloat) = (h: -10, s: -32, t: -32)
@@ -28,21 +24,39 @@ class StatusBarController {
 	var idlingAlwaysHideArea: 	Bool = false
 	
 	
-	
-	var mouseOnStatusBar: 			Bool {
-		guard
-			let origin = head.button?.window?.frame.origin,
-			let screenWidth = Helper.Screen.width,
-			NSEvent.mouseLocation.x >= (Helper.Screen.hasNotch ? screenWidth / 2 : 0)
-				&& NSEvent.mouseLocation.y >= origin.y
-		else { return false }
-		return true
-	}
-	
-	var mouseOverAlwaysHideArea: 	Bool {
-		guard let origin = tail.button?.window?.frame.origin else { return false }
-		return NSEvent.mouseLocation.x <= origin.x
-	}
+    
+    var mouseOnStatusBar: Bool {
+        guard let origin = head.button?.window?.frame.origin else { return false }
+        return NSEvent.mouseLocation.x >= Helper.menuBarLeftEdge && NSEvent.mouseLocation.y >= origin.y
+    }
+    
+    var mouseInHideArea: Bool {
+        guard
+            let bodyOrigin = body.button?.window?.frame.origin,
+            let tailOrigin = tail.button?.window?.frame.origin
+        else { return false }
+        return mouseOnStatusBar && NSEvent.mouseLocation.x >= tailOrigin.x + tail.length + 20 && NSEvent.mouseLocation.x <= bodyOrigin.x
+    }
+    
+    var mouseInAlwaysHideArea: Bool {
+        guard let origin = tail.button?.window?.frame.origin else { return false }
+        return mouseOnStatusBar && NSEvent.mouseLocation.x <= origin.x
+    }
+    
+    var mouseOverHead: Bool {
+        guard let origin = head.button?.window?.frame.origin else { return false }
+        return mouseOnStatusBar && NSEvent.mouseLocation.x >= origin.x && NSEvent.mouseLocation.x <= origin.x + head.length + 20
+    }
+    
+    var mouseOverBody: Bool {
+        guard let origin = body.button?.window?.frame.origin else { return false }
+        return mouseOnStatusBar && NSEvent.mouseLocation.x >= origin.x && NSEvent.mouseLocation.x <= origin.x + body.length + 20
+    }
+    
+    var mouseOverTail: Bool {
+        guard let origin = tail.button?.window?.frame.origin else { return false }
+        return mouseOnStatusBar && NSEvent.mouseLocation.x >= origin.x && NSEvent.mouseLocation.x <= origin.x + tail.length + 20
+    }
 	
 	// MARK: - Rects
 	
@@ -338,24 +352,6 @@ extension StatusBarController {
 	
 	// MARK: - Appearance Handlers
 	
-	func trigger(
-		_ icon: NSStatusItem
-	) -> NSRect? {
-		if
-			let origin = icon.origin,
-			let screenHeight = Helper.Screen.height
-		{
-			return NSRect(
-				x: 		origin.x,
-				y: 		origin.y,
-				width: 	Data.theme.iconWidth + 10 * 2,
-				height: screenHeight - origin.y
-			)
-		} else {
-			return nil
-		}
-	}
-	
 	func reorder() {
 		guard available else {
 			available = !(available && _seps.allSatisfy { sep in
@@ -388,12 +384,9 @@ extension StatusBarController {
 		let popoverShown = Helper.delegate?.popover.isShown ?? false
 		
 		if
-			let headTrigger 		= trigger(head),
-			let separatorTrigger 	= trigger(body),
-			let tailTrigger 		= trigger(tail),
 			mouseOnStatusBar
 				&& (idling || idlingAlwaysHideArea)
-				&& (headTrigger.containsMouse || separatorTrigger.containsMouse || tailTrigger.containsMouse)
+				&& (mouseOverHead || mouseOverBody || mouseOverTail)
 		{
 			unidleHideArea()
 			mouseWasOnStatusBarOrUnidled = false
