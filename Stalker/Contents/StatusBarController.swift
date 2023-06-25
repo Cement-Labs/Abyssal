@@ -44,36 +44,7 @@ class StatusBarController {
 		return NSEvent.mouseLocation.x <= origin.x
 	}
 	
-	// MARK: - Timers & Event Monitors
-	
-	// Timers
-	
-	var animationTimer: Timer?
-	
-	var actionTimer: 	Timer?
-	
-	// Event monitors
-	
-	var mouseEventMonitor: EventMonitor?
-	
 	// MARK: - Rects
-	
-	var inside: NSRect? {
-		if
-			let originTail = tail.button?.window?.frame.origin,
-			let originHead = head.button?.window?.frame.origin,
-			let screenHeight = Helper.Screen.height
-		{
-			return NSRect(
-				x: 		originTail.x + tail.length,
-				y: 		originTail.y,
-				width: 	originHead.x - (originTail.x + tail.length),
-				height: screenHeight - originHead.y
-			)
-		} else {
-			return nil
-		}
-	}
 	
 	// MARK: - Icons
 	
@@ -97,7 +68,7 @@ class StatusBarController {
 	
 	// Pointers specifying the separators' positions
 	
-	var head: 		NSStatusItem {
+	var head: NSStatusItem {
 		var order: Int = 2
 		
 		if let savedSepsOrder = Data.sepsOrder, let savedOrder = savedSepsOrder[order] {
@@ -107,7 +78,7 @@ class StatusBarController {
 		return _seps[order]
 	}
 	
-	var separator: 	NSStatusItem {
+	var body: NSStatusItem {
 		var order: Int = 1
 		
 		if let savedSepsOrder = Data.sepsOrder, let savedOrder = savedSepsOrder[order] {
@@ -117,7 +88,7 @@ class StatusBarController {
 		return _seps[order]
 	}
 	
-	var tail: 		NSStatusItem {
+	var tail: NSStatusItem {
 		var order: Int = 0
 		
 		if let savedSepsOrder = Data.sepsOrder, let savedOrder = savedSepsOrder[order] {
@@ -136,7 +107,7 @@ class StatusBarController {
 		// Init status icons
 		
 		head.length 		= lengths.h
-		separator.length 	= lengths.s
+		body.length 	= lengths.s
 		tail.length 		= lengths.t
 		
 		if let button = self.head.button {
@@ -144,7 +115,7 @@ class StatusBarController {
 			button.sendAction(on: [.leftMouseUp, .rightMouseUp])
 		}
 		
-		if let button = self.separator.button {
+		if let button = self.body.button {
 			button.action = #selector(AppDelegate.toggleCollapse(_:))
 			button.sendAction(on: [.leftMouseUp, .rightMouseUp])
 		}
@@ -197,7 +168,7 @@ class StatusBarController {
 		// Modify basic appearance
 		
 		head.button?.appearsDisabled 		= !Data.theme.autoHideIcons && !Data.collapsed
-		separator.button?.appearsDisabled 	= !Data.theme.autoHideIcons && !Data.collapsed
+		body.button?.appearsDisabled 	= !Data.theme.autoHideIcons && !Data.collapsed
 		tail.button?.appearsDisabled 		= !Data.theme.autoHideIcons && !Data.collapsed
 		
 		
@@ -218,7 +189,7 @@ class StatusBarController {
 			self.head.button?.alphaValue = Helper.lerp(
 				a: alpha,
 				b: self.alphaValues.h,
-				ratio: Animations.LERP_RATIO,
+				ratio: StatusBarController.lerpRatio,
 				false
 			)
 		}
@@ -231,7 +202,7 @@ class StatusBarController {
 			Helper.lerpAsync(
 				a: self.head.length,
 				b: self.lengths.h,
-				ratio: Animations.LERP_RATIO
+				ratio: StatusBarController.lerpRatio
 			) { result in
 				self.head.length = result
 			}
@@ -239,11 +210,11 @@ class StatusBarController {
 		
 		// Separator
 		
-		if let alpha = self.separator.button?.alphaValue {
-			self.separator.button?.alphaValue = Helper.lerp(
+		if let alpha = self.body.button?.alphaValue {
+			self.body.button?.alphaValue = Helper.lerp(
 				a: alpha,
 				b: self.alphaValues.s,
-				ratio: Animations.LERP_RATIO,
+				ratio: StatusBarController.lerpRatio,
 				false
 			)
 		}
@@ -251,24 +222,24 @@ class StatusBarController {
 		DispatchQueue.main.async {
 			let flag = popoverNotShown && Data.collapsed && !(self.idling || self.idlingAlwaysHideArea) && (!Data.autoShows || !self.mouseOnStatusBar)
 			
-			guard let x = self.separator.origin?.x else { return }
-			let length = self.separator.length
+			guard let x = self.body.origin?.x else { return }
+			let length = self.body.length
 			
 			if !flag && !self.wasUnstable.s {
 				if self.lengths.s <= 0 { self.lengths.s = x + length - borderX }
 				
-				self.separator.length = self.lengths.s
+				self.body.length = self.lengths.s
 				self.wasUnstable.s = true
 				return
 			} else if flag && !self.wasUnstable.s {
-				self.separator.length = maxWidth
+				self.body.length = maxWidth
 				return
 			} else if self.wasUnstable.s {
 				self.wasUnstable.s = !flag || self.wasUnstable.s && x > borderX + 5
 			}
 			
 			if
-				let origin = self.separator.origin,
+				let origin = self.body.origin,
 				self.lastFlags.s != flag || origin.x != self.lastOriginXs.s
 			{
 				self.lengths.s = flag ? max(0, x + length - borderX) : Data.theme.iconWidth
@@ -277,14 +248,14 @@ class StatusBarController {
 			}
 			
 			if Data.reduceAnimation {
-				self.separator.length = self.lengths.s
+				self.body.length = self.lengths.s
 			} else {
 				Helper.lerpAsync(
 					a: length,
 					b: self.lengths.s,
-					ratio: Animations.LERP_RATIO
+					ratio: StatusBarController.lerpRatio
 				) { result in
-					self.separator.length = result
+					self.body.length = result
 				}
 			}
 		}
@@ -295,7 +266,7 @@ class StatusBarController {
 			self.tail.button?.alphaValue =  Helper.lerp(
 				a: alpha,
 				b: self.alphaValues.t,
-				ratio: Animations.LERP_RATIO,
+				ratio: StatusBarController.lerpRatio,
 				false
 			)
 		}
@@ -334,7 +305,7 @@ class StatusBarController {
 				Helper.lerpAsync(
 					a: self.tail.length,
 					b: self.lengths.t,
-					ratio: Animations.LERP_RATIO
+					ratio: StatusBarController.lerpRatio
 				) { result in
 					self.tail.length = result
 				}
@@ -404,7 +375,7 @@ extension StatusBarController {
 		guard available else { return }
 		
 		head.button?.image 		= Data.collapsed ? Data.theme.headCollapsed : Data.theme.headUncollapsed
-		separator.button?.image = Data.theme.separator
+		body.button?.image = Data.theme.separator
 		tail.button?.image 		= Data.theme.tail
 		
 		guard Data.autoShows || !Data.collapsed || !Data.theme.autoHideIcons else {
@@ -418,13 +389,13 @@ extension StatusBarController {
 		
 		if
 			let headTrigger 		= trigger(head),
-			let separatorTrigger 	= trigger(separator),
+			let separatorTrigger 	= trigger(body),
 			let tailTrigger 		= trigger(tail),
 			mouseOnStatusBar
 				&& (idling || idlingAlwaysHideArea)
 				&& (headTrigger.containsMouse || separatorTrigger.containsMouse || tailTrigger.containsMouse)
 		{
-			unidle()
+			unidleHideArea()
 			mouseWasOnStatusBarOrUnidled = false
 		}
 		

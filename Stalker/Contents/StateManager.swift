@@ -7,6 +7,16 @@
 
 import AppKit
 
+// Timers
+
+var animationTimer: Timer?
+
+var actionTimer:     Timer?
+
+// Event monitors
+
+var mouseEventMonitor: EventMonitor?
+
 extension StatusBarController {
 	
 	// MARK: - Icon Visibilities
@@ -22,7 +32,7 @@ extension StatusBarController {
 		_ flag: Bool
 	) {
 		untilTailVisible(flag)
-		self.separator.isVisible = flag
+		self.body.isVisible = flag
 	}
 	
 	func untilTailVisible(
@@ -38,11 +48,11 @@ extension StatusBarController {
 	// MARK: - Enables
 	
 	func collapse() {
-		unidle()
+		unidleHideArea()
 		Data.collapsed = true
 	}
 	
-	func idle() {
+	func idleHideArea() {
 		self.idling = true
 	}
 	
@@ -99,10 +109,10 @@ extension StatusBarController {
 	
 	func uncollapse() {
 		Data.collapsed = false
-		unidle()
+		unidleHideArea()
 	}
 	
-	func unidle() {
+	func unidleHideArea() {
 		self.idling = false
 		unidleAlwaysHideArea()
 	}

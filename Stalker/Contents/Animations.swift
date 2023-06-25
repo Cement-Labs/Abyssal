@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import AppKit
 
-class Animations {
+extension StatusBarController {
 	
-	static var LERP_RATIO: CGFloat {
+	static var lerpRatio: CGFloat {
 		let baseValue = 0.23
 		return baseValue * (Helper.Keyboard.shift ? 0.25 : 1)
 	}

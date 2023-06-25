@@ -81,7 +81,7 @@ extension AppDelegate {
 		_ sender: Any?
 	) {
 		guard !(statusBarController.idling || statusBarController.idlingAlwaysHideArea) else {
-			statusBarController.unidle()
+			statusBarController.unidleHideArea()
 			return
 		}
 		
