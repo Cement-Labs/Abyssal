@@ -11,7 +11,7 @@ import AppKit
 
 var animationTimer: Timer?
 
-var actionTimer:     Timer?
+var actionTimer: Timer?
 
 // Event monitors
 

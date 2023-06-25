@@ -13,9 +13,9 @@ class StatusBarController {
     
     var available: Bool = false
 	
-    var alphaValues: (h: Float16, b: Float16, t: Float16) = (h: -10, b: -32, t: -32)
+    var alphaValues: (h: Int8, b: Int8, t: Int8) = (h: 0, b: 0, t: 0)
 	
-	var lengths: (h: Int64, b: Int64, t: Int64) = (h: 0, b: 0, t: 0)
+	var lengths: (h: Int32, b: Int32, t: Int32) = (h: 0, b: 0, t: 0)
 	
     var idling: (hide: Bool, alwaysHide: Bool) = (hide: false, alwaysHide: false)
 	
@@ -23,7 +23,7 @@ class StatusBarController {
     
     var mouseOnStatusBar: Bool {
         guard let origin = head.button?.window?.frame.origin else { return false }
-        return NSEvent.mouseLocation.x.float16 >= Helper.menuBarLeftEdge && NSEvent.mouseLocation.y >= origin.y
+        return NSEvent.mouseLocation.x >= Helper.menuBarLeftEdge && NSEvent.mouseLocation.y >= origin.y
     }
     
     var mouseInHideArea: Bool {
@@ -86,7 +86,7 @@ class StatusBarController {
 		return _seps[order]
 	}
 	
-	var body: NSStatusItem {
+    var body: NSStatusItem {
 		var order: Int = 1
 		
 		if let savedSepsOrder = Data.sepsOrder, let savedOrder = savedSepsOrder[order] {

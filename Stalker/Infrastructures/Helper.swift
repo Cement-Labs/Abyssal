@@ -85,44 +85,67 @@ class Helper {
 		return NSApplication.shared.delegate as? AppDelegate
 	}
     
-    static var menuBarLeftEdge: Float16 {
+    static var menuBarLeftEdge: CGFloat {
         guard let width = Screen.maxWidth else { return 0 }
         
         if Screen.hasNotch {
-            let notchWidth: Int64 = 250
-            return width.float16 / 2.0 + notchWidth.float16 / 2.0
+            let notchWidth = 250.0
+            return width / 2.0 + notchWidth / 2.0
         } else {
             return 50 // Apple icon + App name should be at least 50.
         }
     }
     
     static func approaching(
-        _ a: Float16, _ b: Float16,
+        _ a: CGFloat, _ b: CGFloat,
         _ ignoreSmallValues: Bool = true
     ) -> Bool {
         return abs(a - b) < (ignoreSmallValues ? 1 : 0.001)
     }
+    
+    static func lerp(
+        a:             Int8,
+        b:             Int8,
+        ratio:         CGFloat,
+        _ ignoreSmallValues: Bool = true
+    ) -> Int8 {
+        guard !ignoreSmallValues || !approaching(a.cgFloat, b.cgFloat, ignoreSmallValues) else { return b }
+        return Int8(exactly: round(a.cgFloat + (b - a).cgFloat * ratio)) ?? 0
+    }
 	
 	static func lerp(
-		a: 			Float16,
-		b: 			Float16,
-		ratio: 		Float16,
+		a: 			Int32,
+		b: 			Int32,
+		ratio: 		CGFloat,
 		_ ignoreSmallValues: Bool = true
-	) -> Float16 {
-		guard !ignoreSmallValues || !approaching(a, b, ignoreSmallValues) else { return b }
-		return a + (b - a) * ratio
+	) -> Int32 {
+        guard !ignoreSmallValues || !approaching(a.cgFloat, b.cgFloat, ignoreSmallValues) else { return b }
+        return Int32(exactly: round(a.cgFloat + (b - a).cgFloat * ratio)) ?? 0
 	}
+    
+    static func lerpAsync(
+        a:          Int8,
+        b:          Int8,
+        ratio:      CGFloat,
+        _ ignoreSmallValues: Bool = true,
+        completion: @escaping (Int8) -> Void
+    ) {
+        guard !ignoreSmallValues || !approaching(a.cgFloat, b.cgFloat, ignoreSmallValues) else { return }
+        DispatchQueue.global().async {
+            completion(Int8(a.cgFloat + (b - a).cgFloat * ratio))
+        }
+    }
 	
     static func lerpAsync(
-        a: 			Float16,
-        b: 			Float16,
-        ratio: 		Float16,
+        a: 			Int32,
+        b: 			Int32,
+        ratio: 		CGFloat,
 		_ ignoreSmallValues: Bool = true,
-		completion: @escaping (Float16) -> Void
+		completion: @escaping (Int32) -> Void
     ) {
-		guard !ignoreSmallValues || !approaching(a, b, ignoreSmallValues) else { return }
+        guard !ignoreSmallValues || !approaching(a.cgFloat, b.cgFloat, ignoreSmallValues) else { return }
 		DispatchQueue.global().async {
-			completion(a + (b - a) * ratio)
+            completion(Int32(a.cgFloat + (b - a).cgFloat * ratio))
 		}
     }
 	

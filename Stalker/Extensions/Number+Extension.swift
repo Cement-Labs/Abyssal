@@ -7,11 +7,7 @@
 
 import Foundation
 
-extension Int64 {
-    
-    var float16: Float16 {
-        return Float16(self)
-    }
+extension Int8 {
     
     var cgFloat: CGFloat {
         return CGFloat(self)
@@ -19,18 +15,10 @@ extension Int64 {
     
 }
 
-extension Float16 {
+extension Int32 {
     
     var cgFloat: CGFloat {
         return CGFloat(self)
-    }
-    
-}
-
-extension CGFloat {
-    
-    var float16: Float16 {
-        return Float16(self)
     }
     
 }
