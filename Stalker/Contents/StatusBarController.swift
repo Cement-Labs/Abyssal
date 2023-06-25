@@ -13,9 +13,9 @@ class StatusBarController {
     
     var available: Bool = false
 	
-	var alphaValues: (h: CGFloat, b: CGFloat, t: CGFloat) = (h: -10, b: -32, t: -32)
+    var alphaValues: (h: Float16, b: Float16, t: Float16) = (h: -10, b: -32, t: -32)
 	
-	var lengths: (h: CGFloat, b: CGFloat, t: CGFloat) = (h: 0, b: 0, t: 0)
+	var lengths: (h: Int64, b: Int64, t: Int64) = (h: 0, b: 0, t: 0)
 	
     var idling: (hide: Bool, alwaysHide: Bool) = (hide: false, alwaysHide: false)
 	
@@ -23,7 +23,7 @@ class StatusBarController {
     
     var mouseOnStatusBar: Bool {
         guard let origin = head.button?.window?.frame.origin else { return false }
-        return NSEvent.mouseLocation.x >= Helper.menuBarLeftEdge && NSEvent.mouseLocation.y >= origin.y
+        return NSEvent.mouseLocation.x.float16 >= Helper.menuBarLeftEdge && NSEvent.mouseLocation.y >= origin.y
     }
     
     var mouseInHideArea: Bool {
@@ -114,9 +114,9 @@ class StatusBarController {
 		
 		// Init status icons
 		
-		head.length = lengths.h
-		body.length = lengths.b
-		tail.length = lengths.t
+        head.length = lengths.h.cgFloat
+        body.length = lengths.b.cgFloat
+        tail.length = lengths.t.cgFloat
 		
 		if let button = self.head.button {
 			button.action = #selector(AppDelegate.toggle(_:))

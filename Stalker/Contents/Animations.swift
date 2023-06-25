@@ -10,14 +10,14 @@ import AppKit
 
 extension StatusBarController {
 	
-	static var lerpRatio: CGFloat {
-		let baseValue = 0.37
+    static var lerpRatio: Float16 {
+        let baseValue: Float16 = 0.66
 		return baseValue * (Helper.Keyboard.shift ? 0.25 : 1)
 	}
 	
 }
 
-var lastOriginXs: (b: CGFloat, t: CGFloat) = (b: 0, t: 0)
+var lastOriginXs: (b: Float16, t: Float16) = (b: 0, t: 0)
 
 var lastFlags: (b: Bool, t: Bool) = (b: false, t: false)
 
@@ -66,51 +66,51 @@ extension StatusBarController {
         
         // Head
         
-        if let alpha = self.head.button?.alphaValue {
+        if let alpha = self.head.button?.alphaValue.float16 {
             self.head.button?.alphaValue = Helper.lerp(
                 a: alpha,
                 b: self.alphaValues.h,
                 ratio: StatusBarController.lerpRatio,
                 false
-            )
+            ).cgFloat
         }
         
         DispatchQueue.main.async {
             let flag = !popoverShown && Data.collapsed && !(self.idling.hide || self.idling.alwaysHide) && (!Data.autoShows || !self.mouseOnStatusBar)
             
-            self.lengths.h = flag ? Data.theme.iconWidthAlt : Data.theme.iconWidth
+            self.lengths.h = Int64(flag ? Data.theme.iconWidthAlt : Data.theme.iconWidth)
             
             Helper.lerpAsync(
-                a: self.head.length,
-                b: self.lengths.h,
+                a: self.head.length.float16,
+                b: self.lengths.h.float16,
                 ratio: StatusBarController.lerpRatio
             ) { result in
-                self.head.length = result
+                self.head.length = result.cgFloat
             }
         }
         
-        // Separator
+        // Body
         
-        if let alpha = self.body.button?.alphaValue {
+        if let alpha = self.body.button?.alphaValue.float16 {
             self.body.button?.alphaValue = Helper.lerp(
                 a: alpha,
                 b: self.alphaValues.b,
                 ratio: StatusBarController.lerpRatio,
                 false
-            )
+            ).cgFloat
         }
         
         do {
             let flag = !popoverShown && Data.collapsed && !(self.idling.hide || self.idling.alwaysHide) && (!Data.autoShows || !self.mouseOnStatusBar)
             
-            guard let x = self.body.origin?.x else { return }
-            let length = self.body.length
+            guard let x = self.body.origin?.x.float16 else { return }
+            let length = self.body.length.float16
             
             DispatchQueue.main.async {
                 if !flag && !wasUnstable.b {
-                    if self.lengths.b <= 0 { self.lengths.b = x + length - Helper.menuBarLeftEdge }
+                    if self.lengths.b <= 0 { self.lengths.b = Int64(x + length - Helper.menuBarLeftEdge) }
                     
-                    self.body.length = self.lengths.b
+                    self.body.length = self.lengths.b.cgFloat
                     wasUnstable.b = true
                     return
                 } else if flag && !wasUnstable.b {
@@ -122,22 +122,22 @@ extension StatusBarController {
                 
                 if
                     let origin = self.body.origin,
-                    lastFlags.b != flag || origin.x != lastOriginXs.b
+                    lastFlags.b != flag || origin.x.float16 != lastOriginXs.b
                 {
-                    self.lengths.b = flag ? max(0, x + length - Helper.menuBarLeftEdge) : Data.theme.iconWidth
-                    lastOriginXs.b = origin.x
+                    self.lengths.b = flag ? Int64(max(0, x + length - Helper.menuBarLeftEdge)) : Data.theme.iconWidth
+                    lastOriginXs.b = origin.x.float16
                     lastFlags.b = flag
                 }
                 
                 if Data.reduceAnimation {
-                    self.body.length = self.lengths.b
+                    self.body.length = self.lengths.b.cgFloat
                 } else {
                     Helper.lerpAsync(
                         a: length,
-                        b: self.lengths.b,
+                        b: self.lengths.b.float16,
                         ratio: StatusBarController.lerpRatio
                     ) { result in
-                        self.body.length = result
+                        self.body.length = result.cgFloat
                     }
                 }
             }
@@ -145,26 +145,26 @@ extension StatusBarController {
         
         // Tail
         
-        if let alpha = self.tail.button?.alphaValue {
+        if let alpha = self.tail.button?.alphaValue.float16 {
             self.tail.button?.alphaValue =  Helper.lerp(
                 a: alpha,
                 b: self.alphaValues.t,
                 ratio: StatusBarController.lerpRatio,
                 false
-            )
+            ).cgFloat
         }
         
         do {
             let flag = !popoverShown && !(Helper.Keyboard.command && ((Data.collapsed && !self.idling.hide) || self.mouseOnStatusBar)) && !self.idling.alwaysHide
             
-            guard let x = self.tail.origin?.x else { return }
-            let length = self.tail.length
+            guard let x = self.tail.origin?.x.float16 else { return }
+            let length = self.tail.length.float16
             
             DispatchQueue.main.async {
                 if !flag && !wasUnstable.t {
-                    if self.lengths.t <= 0 { self.lengths.t = x + length - Helper.menuBarLeftEdge }
+                    if self.lengths.t <= 0 { self.lengths.t = Int64(x + length - Helper.menuBarLeftEdge) }
                     
-                    self.tail.length = self.lengths.t
+                    self.tail.length = self.lengths.t.cgFloat
                     wasUnstable.t = true
                     return
                 } else if flag && !wasUnstable.t {
@@ -176,22 +176,22 @@ extension StatusBarController {
                 
                 if
                     let origin = self.tail.origin,
-                    lastFlags.t != flag || origin.x != lastOriginXs.t
+                    lastFlags.t != flag || origin.x.float16 != lastOriginXs.t
                 {
-                    self.lengths.t = flag ? max(0, x + length - Helper.menuBarLeftEdge) : Data.theme.iconWidth
-                    lastOriginXs.t = origin.x
+                    self.lengths.t = flag ? Int64(max(0, x + length - Helper.menuBarLeftEdge)) : Data.theme.iconWidth
+                    lastOriginXs.t = origin.x.float16
                     lastFlags.t = flag
                 }
                 
                 if Data.reduceAnimation {
-                    self.tail.length = self.lengths.t
+                    self.tail.length = self.lengths.t.cgFloat
                 } else {
                     Helper.lerpAsync(
-                        a: self.tail.length,
-                        b: self.lengths.t,
+                        a: self.tail.length.float16,
+                        b: self.lengths.t.float16,
                         ratio: StatusBarController.lerpRatio
                     ) { result in
-                        self.tail.length = result
+                        self.tail.length = result.cgFloat
                     }
                 }
             }

@@ -85,40 +85,40 @@ class Helper {
 		return NSApplication.shared.delegate as? AppDelegate
 	}
     
-    static var menuBarLeftEdge: CGFloat {
+    static var menuBarLeftEdge: Float16 {
         guard let width = Screen.maxWidth else { return 0 }
         
         if Screen.hasNotch {
-            let notchWidth: CGFloat = 250
-            return width / 2.0 + notchWidth / 2.0
+            let notchWidth: Int64 = 250
+            return width.float16 / 2.0 + notchWidth.float16 / 2.0
         } else {
             return 50 // Apple icon + App name should be at least 50.
         }
     }
     
     static func approaching(
-        _ a: CGFloat, _ b: CGFloat,
+        _ a: Float16, _ b: Float16,
         _ ignoreSmallValues: Bool = true
     ) -> Bool {
         return abs(a - b) < (ignoreSmallValues ? 1 : 0.001)
     }
 	
 	static func lerp(
-		a: 			CGFloat,
-		b: 			CGFloat,
-		ratio: 		CGFloat,
+		a: 			Float16,
+		b: 			Float16,
+		ratio: 		Float16,
 		_ ignoreSmallValues: Bool = true
-	) -> CGFloat {
+	) -> Float16 {
 		guard !ignoreSmallValues || !approaching(a, b, ignoreSmallValues) else { return b }
 		return a + (b - a) * ratio
 	}
 	
     static func lerpAsync(
-        a: 			CGFloat,
-        b: 			CGFloat,
-        ratio: 		CGFloat,
+        a: 			Float16,
+        b: 			Float16,
+        ratio: 		Float16,
 		_ ignoreSmallValues: Bool = true,
-		completion: @escaping (Double) -> Void
+		completion: @escaping (Float16) -> Void
     ) {
 		guard !ignoreSmallValues || !approaching(a, b, ignoreSmallValues) else { return }
 		DispatchQueue.global().async {
@@ -175,15 +175,15 @@ class Helper {
 			return NSScreen.main?.safeAreaInsets.top != 0
 		}
 		
-		static var width: 		CGFloat? {
+		static var width: CGFloat? {
 			return NSScreen.main?.frame.size.width ?? nil
 		}
 		
-		static var height: 		CGFloat? {
+		static var height: CGFloat? {
 			return NSScreen.main?.frame.size.height ?? nil
 		}
 		
-		static var maxWidth: 	CGFloat? {
+		static var maxWidth: CGFloat? {
 			let screens = NSScreen.screens
 			var maxWidth: CGFloat?
 
@@ -197,7 +197,7 @@ class Helper {
 			return maxWidth
 		}
 		
-		static var maxHeight: 	CGFloat? {
+		static var maxHeight: CGFloat? {
 			let screens = NSScreen.screens
 			var maxHeight: CGFloat?
 
