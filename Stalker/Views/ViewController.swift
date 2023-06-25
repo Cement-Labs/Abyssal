@@ -558,38 +558,38 @@ extension ViewController {
 	@IBAction func toggleAutoShows(
 		_ sender: NSSwitch
 	) {
-		Data.autoShows					= sender.flag
+		Data.autoShows = sender.flag
 		feedBackIntensityEnabled(sender.flag)
 	}
+    
+    @IBAction func toggleFeedbackIntensity(
+        _ sender: NSSlider
+    ) {
+        Data.feedbackIntensity = sender.integerValue
+        feedBackIntensityLabelEnabled(sender.integerValue > 0)
+    }
+    
+    
 	
 	@IBAction func toggleUseAlwaysHideArea(
 		_ sender: NSSwitch
 	) {
-		Data.useAlwaysHideArea 			= sender.flag
+		Data.useAlwaysHideArea = sender.flag
 		Helper.delegate?.statusBarController.untilTailVisible(sender.flag)
 	}
 	
 	@IBAction func toggleReduceAnimation(
 		_ sender: NSSwitch
 	) {
-		Data.reduceAnimation			= sender.flag
+		Data.reduceAnimation = sender.flag
 	}
 	
-	
+    
 	
 	@IBAction func toggleStartsWithMacos(
 		_ sender: NSSwitch
 	) {
-		Data.startsWithMacos 			= sender.flag
-	}
-	
-	
-	
-	@IBAction func toggleFeedbackIntensity(
-		_ sender: NSSlider
-	) {
-		Data.feedbackIntensity			= sender.integerValue
-		feedBackIntensityLabelEnabled(sender.integerValue > 0)
+		Data.startsWithMacos = sender.flag
 	}
 	
 }

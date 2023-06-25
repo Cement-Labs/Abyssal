@@ -104,48 +104,48 @@ class Helper {
     }
     
     static func lerp(
-        a:             Int8,
-        b:             Int8,
-        ratio:         CGFloat,
+        a:      Int8,
+        b:      Int8,
+        ratio:  Float16,
         _ ignoreSmallValues: Bool = true
     ) -> Int8 {
         guard !ignoreSmallValues || !approaching(a.cgFloat, b.cgFloat, ignoreSmallValues) else { return b }
-        return Int8(exactly: round(a.cgFloat + (b - a).cgFloat * ratio)) ?? 0
+        return a + Int8((b - a).float16 * ratio)
     }
 	
 	static func lerp(
-		a: 			Int32,
-		b: 			Int32,
-		ratio: 		CGFloat,
+		a:      Int32,
+		b:      Int32,
+		ratio:  Float16,
 		_ ignoreSmallValues: Bool = true
 	) -> Int32 {
         guard !ignoreSmallValues || !approaching(a.cgFloat, b.cgFloat, ignoreSmallValues) else { return b }
-        return Int32(exactly: round(a.cgFloat + (b - a).cgFloat * ratio)) ?? 0
+        return a + Int32((b - a).float16 * ratio)
 	}
     
     static func lerpAsync(
-        a:          Int8,
-        b:          Int8,
-        ratio:      CGFloat,
+        a:      Int8,
+        b:      Int8,
+        ratio:  Float16,
         _ ignoreSmallValues: Bool = true,
         completion: @escaping (Int8) -> Void
     ) {
         guard !ignoreSmallValues || !approaching(a.cgFloat, b.cgFloat, ignoreSmallValues) else { return }
         DispatchQueue.global().async {
-            completion(Int8(a.cgFloat + (b - a).cgFloat * ratio))
+            completion(a + Int8((b - a).float16 * ratio))
         }
     }
 	
     static func lerpAsync(
-        a: 			Int32,
-        b: 			Int32,
-        ratio: 		CGFloat,
+        a:      Int32,
+        b:      Int32,
+        ratio:  Float16,
 		_ ignoreSmallValues: Bool = true,
 		completion: @escaping (Int32) -> Void
     ) {
         guard !ignoreSmallValues || !approaching(a.cgFloat, b.cgFloat, ignoreSmallValues) else { return }
 		DispatchQueue.global().async {
-            completion(Int32(a.cgFloat + (b - a).cgFloat * ratio))
+            completion(a + Int32((b - a).float16 * ratio))
 		}
     }
 	

@@ -13,12 +13,20 @@ extension Int8 {
         return CGFloat(self)
     }
     
+    var float16: Float16 {
+        return Float16(self)
+    }
+    
 }
 
 extension Int32 {
     
     var cgFloat: CGFloat {
         return CGFloat(self)
+    }
+    
+    var float16: Float16 {
+        return Float16(self)
     }
     
 }

@@ -10,9 +10,9 @@ import AppKit
 
 extension StatusBarController {
 	
-    static var lerpRatio: CGFloat {
-        let baseValue = 0.5
-		return baseValue * (Helper.Keyboard.shift ? 0.25 : 1)
+    static var lerpRatio: Float16 {
+        let baseValue: Float16 = 0.69
+        return baseValue * (Helper.Keyboard.shift ? 0.25 : 1)
 	}
 	
 }

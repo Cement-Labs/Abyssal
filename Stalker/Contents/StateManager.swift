@@ -71,7 +71,7 @@ extension StatusBarController {
 		}
 		
 		actionTimer = Timer.scheduledTimer(
-			withTimeInterval: 1.0 / 6.0,
+			withTimeInterval: 1.0 / 5.0,
 			repeats: true
 		) { [weak self] _ in
 			if let strongSelf = self {
