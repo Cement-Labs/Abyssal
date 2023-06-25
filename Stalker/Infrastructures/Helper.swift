@@ -81,9 +81,27 @@ class Helper {
 		}
 	}
 	
-	static var delegate: AppDelegate? {
+    static var delegate: AppDelegate? {
 		return NSApplication.shared.delegate as? AppDelegate
 	}
+    
+    static var menuBarLeftEdge: CGFloat {
+        guard let width = Screen.maxWidth else { return 0 }
+        
+        if Screen.hasNotch {
+            let notchWidth: CGFloat = 250
+            return width / 2.0 + notchWidth / 2.0
+        } else {
+            return 50 // Apple icon + App name should be at least 50.
+        }
+    }
+    
+    static func approaching(
+        _ a: CGFloat, _ b: CGFloat,
+        _ ignoreSmallValues: Bool = true
+    ) -> Bool {
+        return abs(a - b) < (ignoreSmallValues ? 1 : 0.001)
+    }
 	
 	static func lerp(
 		a: 			CGFloat,
@@ -91,7 +109,7 @@ class Helper {
 		ratio: 		CGFloat,
 		_ ignoreSmallValues: Bool = true
 	) -> CGFloat {
-		guard !ignoreSmallValues || abs(b - a) >= 1 else { return b }
+		guard !ignoreSmallValues || !approaching(a, b, ignoreSmallValues) else { return b }
 		return a + (b - a) * ratio
 	}
 	
@@ -102,7 +120,7 @@ class Helper {
 		_ ignoreSmallValues: Bool = true,
 		completion: @escaping (Double) -> Void
     ) {
-		guard !ignoreSmallValues || abs(b - a) >= 1 else { return }
+		guard !ignoreSmallValues || !approaching(a, b, ignoreSmallValues) else { return }
 		DispatchQueue.global().async {
 			completion(a + (b - a) * ratio)
 		}

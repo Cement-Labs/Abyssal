@@ -80,7 +80,7 @@ extension AppDelegate {
 	@objc func toggleCollapse(
 		_ sender: Any?
 	) {
-		guard !(statusBarController.idling || statusBarController.idlingAlwaysHideArea) else {
+		guard !(statusBarController.idling.hide || statusBarController.idling.alwaysHide) else {
 			statusBarController.unidleHideArea()
 			return
 		}

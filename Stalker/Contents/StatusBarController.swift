@@ -10,18 +10,14 @@ import AppKit
 class StatusBarController {
 	
 	// MARK: - States
+    
+    var available: Bool = false
 	
-	var alphaValues: 	(h: CGFloat, s: CGFloat, t: CGFloat) = (h: -10, s: -32, t: -32)
+	var alphaValues: (h: CGFloat, b: CGFloat, t: CGFloat) = (h: -10, b: -32, t: -32)
 	
-	var lengths: 		(h: CGFloat, s: CGFloat, t: CGFloat) = (h: 0, s: 0, t: 0)
+	var lengths: (h: CGFloat, b: CGFloat, t: CGFloat) = (h: 0, b: 0, t: 0)
 	
-	
-	
-	var available:				Bool = false
-	
-	var idling: 				Bool = false
-	
-	var idlingAlwaysHideArea: 	Bool = false
+    var idling: (hide: Bool, alwaysHide: Bool) = (hide: false, alwaysHide: false)
 	
 	
     
@@ -57,8 +53,6 @@ class StatusBarController {
         guard let origin = tail.button?.window?.frame.origin else { return false }
         return mouseOnStatusBar && NSEvent.mouseLocation.x >= origin.x && NSEvent.mouseLocation.x <= origin.x + tail.length + 20
     }
-	
-	// MARK: - Rects
 	
 	// MARK: - Icons
 	
@@ -120,9 +114,9 @@ class StatusBarController {
 		
 		// Init status icons
 		
-		head.length 		= lengths.h
-		body.length 	= lengths.s
-		tail.length 		= lengths.t
+		head.length = lengths.h
+		body.length = lengths.b
+		tail.length = lengths.t
 		
 		if let button = self.head.button {
 			button.action = #selector(AppDelegate.toggle(_:))
@@ -150,209 +144,11 @@ class StatusBarController {
 		stopMonitors()
 	}
 	
-	// MARK: - Body
-	
-	private var lastOriginXs: 	(s: CGFloat, t: CGFloat) = (s: 0, t: 0)
-	
-	private var lastFlags: 		(s: Bool, t: Bool) = (s: false, t: false)
-	
-	private var wasUnstable: 	(s: Bool, t: Bool) = (s: false, t: false)
-	
-	private var mouseWasOnStatusBarOrUnidled: 	Bool = false
-	
-	private var feedbackCount: Int = 0
-	
-	func update() {
-		guard available else { return }
-		
-		// Process feedback
-		
-		if Data.collapsed && !idling && !idlingAlwaysHideArea && Data.autoShows && !(Helper.delegate?.popover.isShown ?? false)
-			&&  !(idling && idlingAlwaysHideArea) && ((!mouseWasOnStatusBarOrUnidled && mouseOnStatusBar) || (mouseWasOnStatusBarOrUnidled && !mouseOnStatusBar))
-		{
-			guard feedbackCount < Data.feedbackAttributes.repeats else {
-				mouseWasOnStatusBarOrUnidled = mouseOnStatusBar
-				feedbackCount = 0
-				return
-			}
-			feedbackCount += 1
-			NSHapticFeedbackManager.defaultPerformer.perform(Data.feedbackAttributes.pattern, performanceTime: .now)
-		}
-		
-		// Modify basic appearance
-		
-		head.button?.appearsDisabled 		= !Data.theme.autoHideIcons && !Data.collapsed
-		body.button?.appearsDisabled 	= !Data.theme.autoHideIcons && !Data.collapsed
-		tail.button?.appearsDisabled 		= !Data.theme.autoHideIcons && !Data.collapsed
-		
-		
-		// Calculate border
-		
-		let maxWidth = Helper.Screen.maxWidth ?? 10000 // To cover all screens
-		var borderX: CGFloat
-		
-		if let screenWidth = Helper.Screen.width, Helper.Screen.hasNotch {
-			borderX = screenWidth / 2.0 + StatusBarController.NOTCH_DISABLED_AREA_WIDTH / 2.0
-		} else { borderX = 20 }
-		
-		let popoverNotShown = !(Helper.delegate?.popover.isShown ?? false)
-		
-		// Head
-		
-		if let alpha = self.head.button?.alphaValue {
-			self.head.button?.alphaValue = Helper.lerp(
-				a: alpha,
-				b: self.alphaValues.h,
-				ratio: StatusBarController.lerpRatio,
-				false
-			)
-		}
-		
-		DispatchQueue.main.async {
-			let flag = popoverNotShown && Data.collapsed && !(self.idling || self.idlingAlwaysHideArea) && (!Data.autoShows || !self.mouseOnStatusBar)
-			
-			self.lengths.h = flag ? Data.theme.iconWidthAlt : Data.theme.iconWidth
-			
-			Helper.lerpAsync(
-				a: self.head.length,
-				b: self.lengths.h,
-				ratio: StatusBarController.lerpRatio
-			) { result in
-				self.head.length = result
-			}
-		}
-		
-		// Separator
-		
-		if let alpha = self.body.button?.alphaValue {
-			self.body.button?.alphaValue = Helper.lerp(
-				a: alpha,
-				b: self.alphaValues.s,
-				ratio: StatusBarController.lerpRatio,
-				false
-			)
-		}
-		
-		DispatchQueue.main.async {
-			let flag = popoverNotShown && Data.collapsed && !(self.idling || self.idlingAlwaysHideArea) && (!Data.autoShows || !self.mouseOnStatusBar)
-			
-			guard let x = self.body.origin?.x else { return }
-			let length = self.body.length
-			
-			if !flag && !self.wasUnstable.s {
-				if self.lengths.s <= 0 { self.lengths.s = x + length - borderX }
-				
-				self.body.length = self.lengths.s
-				self.wasUnstable.s = true
-				return
-			} else if flag && !self.wasUnstable.s {
-				self.body.length = maxWidth
-				return
-			} else if self.wasUnstable.s {
-				self.wasUnstable.s = !flag || self.wasUnstable.s && x > borderX + 5
-			}
-			
-			if
-				let origin = self.body.origin,
-				self.lastFlags.s != flag || origin.x != self.lastOriginXs.s
-			{
-				self.lengths.s = flag ? max(0, x + length - borderX) : Data.theme.iconWidth
-				self.lastOriginXs.s = origin.x
-				self.lastFlags.s = flag
-			}
-			
-			if Data.reduceAnimation {
-				self.body.length = self.lengths.s
-			} else {
-				Helper.lerpAsync(
-					a: length,
-					b: self.lengths.s,
-					ratio: StatusBarController.lerpRatio
-				) { result in
-					self.body.length = result
-				}
-			}
-		}
-		
-		// Tail
-		
-		if let alpha = self.tail.button?.alphaValue {
-			self.tail.button?.alphaValue =  Helper.lerp(
-				a: alpha,
-				b: self.alphaValues.t,
-				ratio: StatusBarController.lerpRatio,
-				false
-			)
-		}
-		
-		DispatchQueue.main.async {
-			let flag = !(Helper.Keyboard.command && ((Data.collapsed && !self.idling) || self.mouseOnStatusBar)) && !self.idlingAlwaysHideArea && popoverNotShown
-			
-			guard let x = self.tail.origin?.x else { return }
-			let length = self.tail.length
-			
-			if !flag && !self.wasUnstable.t {
-				if self.lengths.t <= 0 { self.lengths.t = x + length - borderX }
-				
-				self.tail.length = self.lengths.t
-				self.wasUnstable.t = true
-				return
-			} else if flag && !self.wasUnstable.t {
-				self.tail.length = maxWidth
-				return
-			} else if self.wasUnstable.t {
-				self.wasUnstable.t = !flag || self.wasUnstable.t && x > borderX + 5
-			}
-			
-			if
-				let origin = self.tail.origin,
-				self.lastFlags.t != flag || origin.x != self.lastOriginXs.t
-			{
-				self.lengths.t = flag ? max(0, x + length - borderX) : Data.theme.iconWidth
-				self.lastOriginXs.t = origin.x
-				self.lastFlags.t = flag
-			}
-			
-			if Data.reduceAnimation {
-				self.tail.length = self.lengths.t
-			} else {
-				Helper.lerpAsync(
-					a: self.tail.length,
-					b: self.lengths.t,
-					ratio: StatusBarController.lerpRatio
-				) { result in
-					self.tail.length = result
-				}
-			}
-		}
-		
-		// Special judge for #remap()
-		
-		if !Data.theme.autoHideIcons {
-			let popoverShown = Helper.delegate?.popover.isShown ?? false
-			
-			alphaValues.h = 1
-			
-			alphaValues.s = (
-				popoverShown || !Data.collapsed
-				|| idling || idlingAlwaysHideArea
-				|| (Data.autoShows && mouseOnStatusBar)
-			) ? 1 : 0
-			
-			alphaValues.t = (
-				popoverShown || idlingAlwaysHideArea
-				|| (mouseOnStatusBar && (Helper.Keyboard.command || Helper.Keyboard.option))
-			) ? 1 : 0
-		}
-	}
-	
 }
 
 extension StatusBarController {
 	
-	// MARK: - Appearance Handlers
-	
-	func reorder() {
+	func sort() {
 		guard available else {
 			available = !(available && _seps.allSatisfy { sep in
 				!sep.isVisible || sep.origin?.x ?? 0 != 0
@@ -366,53 +162,14 @@ extension StatusBarController {
 			}
 		)
 	}
-	
-	func remap() {
-		guard available else { return }
-		
-		head.button?.image 		= Data.collapsed ? Data.theme.headCollapsed : Data.theme.headUncollapsed
-		body.button?.image = Data.theme.separator
-		tail.button?.image 		= Data.theme.tail
-		
-		guard Data.autoShows || !Data.collapsed || !Data.theme.autoHideIcons else {
-			alphaValues.h = 0
-			alphaValues.s = 0
-			alphaValues.t = 0
-			return
-		}
-		
-		let popoverShown = Helper.delegate?.popover.isShown ?? false
-		
-		if
-			mouseOnStatusBar
-				&& (idling || idlingAlwaysHideArea)
-				&& (mouseOverHead || mouseOverBody || mouseOverTail)
-		{
-			unidleHideArea()
-			mouseWasOnStatusBarOrUnidled = false
-		}
-		
-		if !Data.theme.autoHideIcons {
-			// Special judge. See #update()
-		} else if popoverShown || (mouseOnStatusBar && (Helper.Keyboard.command || Helper.Keyboard.option)) {
-			head.button?.image = Data.theme.headUncollapsed
-			alphaValues.h = 1
-			alphaValues.s = 1
-			alphaValues.t = 1
-		} else {
-			alphaValues.h = !Data.collapsed ? 1 : 0
-			alphaValues.s = 0
-			alphaValues.t = 0
-		}
-	}
-	
-	func saveSepsOrder(
-		_ currentSeps: [NSStatusItem]
-	) {
-		let sepsOrder: [Int?] = [_seps.firstIndex(of: currentSeps[0]),
-								 _seps.firstIndex(of: currentSeps[1]),
-								 _seps.firstIndex(of: currentSeps[2])]
-		Data.sepsOrder = sepsOrder
-	}
+    
+    func saveSepsOrder(
+        _ currentSeps: [NSStatusItem]
+    ) {
+        let sepsOrder: [Int?] = [_seps.firstIndex(of: currentSeps[0]),
+                                 _seps.firstIndex(of: currentSeps[1]),
+                                 _seps.firstIndex(of: currentSeps[2])]
+        Data.sepsOrder = sepsOrder
+    }
 	
 }

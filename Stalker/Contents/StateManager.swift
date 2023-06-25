@@ -53,16 +53,16 @@ extension StatusBarController {
 	}
 	
 	func idleHideArea() {
-		self.idling = true
+		self.idling.hide = true
 	}
 	
-	func idleAlwaysHideArea() {
-		self.idlingAlwaysHideArea = true
+    func idleAlwaysHideArea() {
+		self.idling.alwaysHide = true
 	}
 	
-	func startTimers() {
+    func startTimers() {
 		animationTimer = Timer.scheduledTimer(
-			withTimeInterval: 1.0 / 60.0,
+            withTimeInterval: 1.0 / 45.0,
 			repeats: true
 		) { [weak self] _ in
 			if let strongSelf = self {
@@ -75,34 +75,35 @@ extension StatusBarController {
 			repeats: true
 		) { [weak self] _ in
 			if let strongSelf = self {
-				strongSelf.reorder()
-				strongSelf.remap()
+				strongSelf.sort()
+				strongSelf.map()
 			}
 		}
 	}
 	
 	func startMonitors() {
-		mouseEventMonitor = EventMonitor(
-			mask: [.leftMouseDown,
-				   .rightMouseDown]
-		) { [weak self] event in
-			
-			guard
-				let strongSelf = self,
-				let inside = strongSelf.inside,
-				strongSelf.mouseOnStatusBar
-			else { return }
-			
-			if Data.collapsed && inside.containsMouse && !(Helper.Keyboard.command && event?.type == .leftMouseDown) {
-				strongSelf.idle()
-			}
-			
-			if strongSelf.mouseOverAlwaysHideArea {
-				strongSelf.idleAlwaysHideArea()
-			}
-		}
-		
-		mouseEventMonitor?.start()
+        if mouseEventMonitor == nil {
+            mouseEventMonitor = EventMonitor(
+                mask: [.leftMouseDown,
+                       .rightMouseDown]
+            ) { [weak self] event in
+                
+                guard
+                    let strongSelf = self,
+                    strongSelf.mouseOnStatusBar
+                else { return }
+                
+                if Data.collapsed && strongSelf.mouseInHideArea && !(Helper.Keyboard.command && event?.type == .leftMouseDown) {
+                    strongSelf.idleHideArea()
+                }
+                
+                if strongSelf.mouseInAlwaysHideArea {
+                    strongSelf.idleAlwaysHideArea()
+                }
+            }
+            
+            mouseEventMonitor?.start()
+        }
 	}
 	
 	// MARK: - Disables
@@ -113,20 +114,24 @@ extension StatusBarController {
 	}
 	
 	func unidleHideArea() {
-		self.idling = false
+		self.idling.hide = false
 		unidleAlwaysHideArea()
 	}
 	
 	func unidleAlwaysHideArea() {
-		self.idlingAlwaysHideArea = false
+		self.idling.alwaysHide = false
 	}
 	
 	func stopTimers() {
-		animationTimer?	.invalidate()
-		actionTimer?	.invalidate()
-		
-		animationTimer 	= nil
-		actionTimer 	= nil
+        if animationTimer != nil {
+            animationTimer?.invalidate()
+            animationTimer = nil
+        }
+        
+        if actionTimer != nil {
+            actionTimer?.invalidate()
+            actionTimer = nil
+        }
 	}
 	
 	func stopMonitors() {
