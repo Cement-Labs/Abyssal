@@ -13,9 +13,9 @@ class StatusBarController {
     
     var available: Bool = false
 	
-    var alphaValues: (h: Int8, b: Int8, t: Int8) = (h: 0, b: 0, t: 0)
+    var alphaValues: (h: CGFloat, b: CGFloat, t: CGFloat) = (h: -10, b: -32, t: -32)
 	
-	var lengths: (h: Int32, b: Int32, t: Int32) = (h: 0, b: 0, t: 0)
+	var lengths: (h: CGFloat, b: CGFloat, t: CGFloat) = (h: 0, b: 0, t: 0)
 	
     var idling: (hide: Bool, alwaysHide: Bool) = (hide: false, alwaysHide: false)
 	
@@ -114,9 +114,9 @@ class StatusBarController {
 		
 		// Init status icons
 		
-        head.length = lengths.h.cgFloat
-        body.length = lengths.b.cgFloat
-        tail.length = lengths.t.cgFloat
+        head.length = lengths.h
+        body.length = lengths.b
+        tail.length = lengths.t
 		
 		if let button = self.head.button {
 			button.action = #selector(AppDelegate.toggle(_:))

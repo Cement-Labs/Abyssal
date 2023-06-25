@@ -88,18 +88,16 @@ public enum Data {
 		}
 	}
 	
-	public static var feedbackAttributes: (
-		pattern: NSHapticFeedbackManager.FeedbackPattern, repeats: Int
-	) {
+    public static var feedbackAttributes: [NSHapticFeedbackManager.FeedbackPattern?] {
 		switch feedbackIntensity {
 		case 1:
-			return (.levelChange, 1)
+            return [.levelChange, .generic]
 		case 2:
-			return (.alignment, 2)
+            return [.generic, nil, nil, .levelChange, .alignment]
 		case 3:
-			return (.generic, 4)
+            return [.generic, .generic, nil, nil, nil, nil, nil, .levelChange, .alignment]
 		default:
-			return (.generic, 0)
+			return []
 		}
 	}
 	

@@ -30,9 +30,9 @@ class Themes {
 		
 		
 		
-		let iconWidth: 		Int32
+		let iconWidth: 		CGFloat
 		
-		let iconWidthAlt:	Int32
+		let iconWidthAlt:	CGFloat
 		
 		let autoHideIcons: 	Bool
 		
@@ -44,8 +44,8 @@ class Themes {
 			separator: 			String?,
 			tail: 				String?,
 			
-			iconWidth:		Int32,
-			iconWidthAlt:	Int32,
+			iconWidth:		CGFloat,
+			iconWidthAlt:	CGFloat,
 			autoHideIcons: 	Bool
 		) {
 			self.name = name

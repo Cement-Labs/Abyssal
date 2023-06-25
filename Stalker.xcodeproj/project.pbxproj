@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		28E096452A47D41C0077B3FF /* Number+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E096442A47D41C0077B3FF /* Number+Extension.swift */; };
 		C63B40532A4060E400BCAE79 /* NSStatusItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63B40522A4060E400BCAE79 /* NSStatusItem+Extension.swift */; };
 		C66CABA42A38871500E4D8E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CABA32A38871500E4D8E6 /* AppDelegate.swift */; };
 		C66CABA82A38871500E4D8E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C66CABA72A38871500E4D8E6 /* Assets.xcassets */; };
@@ -28,7 +27,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		28E096442A47D41C0077B3FF /* Number+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Number+Extension.swift"; sourceTree = "<group>"; };
 		C63B40522A4060E400BCAE79 /* NSStatusItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSStatusItem+Extension.swift"; sourceTree = "<group>"; };
 		C66CABA02A38871500E4D8E6 /* Stalker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stalker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C66CABA32A38871500E4D8E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -110,7 +108,6 @@
 				C6DEC5342A3A052700943448 /* NSButton+Extension.swift */,
 				C6B3E79A2A3D83C400B650BC /* NSRect+Extension.swift */,
 				C63B40522A4060E400BCAE79 /* NSStatusItem+Extension.swift */,
-				28E096442A47D41C0077B3FF /* Number+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -227,7 +224,6 @@
 				C66CABB72A389F2500E4D8E6 /* EventMonitor.swift in Sources */,
 				C6DEC52A2A38BF6C00943448 /* StatusBarController.swift in Sources */,
 				C6DEC52C2A38CDE500943448 /* Helper.swift in Sources */,
-				28E096452A47D41C0077B3FF /* Number+Extension.swift in Sources */,
 				C63B40532A4060E400BCAE79 /* NSStatusItem+Extension.swift in Sources */,
 				C66CABB32A388FBD00E4D8E6 /* ViewController.swift in Sources */,
 				C6E2C0302A3EE9F1007D4E1B /* StateManager.swift in Sources */,

@@ -102,50 +102,30 @@ class Helper {
     ) -> Bool {
         return abs(a - b) < (ignoreSmallValues ? 1 : 0.001)
     }
-    
-    static func lerp(
-        a:      Int8,
-        b:      Int8,
-        ratio:  Float16,
-        _ ignoreSmallValues: Bool = true
-    ) -> Int8 {
-        guard !ignoreSmallValues || !approaching(a.cgFloat, b.cgFloat, ignoreSmallValues) else { return b }
-        return a + Int8((b - a).float16 * ratio)
-    }
 	
 	static func lerp(
-		a:      Int32,
-		b:      Int32,
-		ratio:  Float16,
+		a:      CGFloat,
+		b:      CGFloat,
+		ratio:  CGFloat,
 		_ ignoreSmallValues: Bool = true
-	) -> Int32 {
-        guard !ignoreSmallValues || !approaching(a.cgFloat, b.cgFloat, ignoreSmallValues) else { return b }
-        return a + Int32((b - a).float16 * ratio)
+	) -> CGFloat {
+        guard !ignoreSmallValues || !approaching(a, b, ignoreSmallValues) else { return b }
+        return a + (b - a) * ratio
 	}
-    
-    static func lerpAsync(
-        a:      Int8,
-        b:      Int8,
-        ratio:  Float16,
-        _ ignoreSmallValues: Bool = true,
-        completion: @escaping (Int8) -> Void
-    ) {
-        guard !ignoreSmallValues || !approaching(a.cgFloat, b.cgFloat, ignoreSmallValues) else { return }
-        DispatchQueue.global().async {
-            completion(a + Int8((b - a).float16 * ratio))
-        }
-    }
 	
     static func lerpAsync(
-        a:      Int32,
-        b:      Int32,
-        ratio:  Float16,
+        a:      CGFloat,
+        b:      CGFloat,
+        ratio:  CGFloat,
 		_ ignoreSmallValues: Bool = true,
-		completion: @escaping (Int32) -> Void
+		completion: @escaping (Double) -> Void
     ) {
-        guard !ignoreSmallValues || !approaching(a.cgFloat, b.cgFloat, ignoreSmallValues) else { return }
+        guard !ignoreSmallValues || !approaching(a, b, ignoreSmallValues) else {
+            completion(b)
+            return
+        }
 		DispatchQueue.global().async {
-            completion(a + Int32((b - a).float16 * ratio))
+            completion(a + (b - a) * ratio)
 		}
     }
 	
