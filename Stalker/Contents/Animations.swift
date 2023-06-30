@@ -11,7 +11,7 @@ import AppKit
 extension StatusBarController {
 	
     static var lerpRatio: CGFloat {
-        let baseValue = 0.42
+        let baseValue = 0.53
         return baseValue * (Helper.Keyboard.shift ? 0.25 : 1)
 	}
 	
@@ -21,7 +21,7 @@ var lastOriginXs: (b: CGFloat, t: CGFloat) = (b: 0, t: 0)
 
 var lastFlags: (b: Bool, t: Bool) = (b: false, t: false)
 
-var wasUnstable: (b: Bool, t: Bool) = (b: false, t: false)
+var wasUnstable: (b: Bool, t: Bool) = (b: true, t: true)
 
 
 
@@ -44,7 +44,7 @@ extension StatusBarController {
     func update() {
         guard available else { return }
         
-        var stopDelegate = !popoverShown
+        self.shouldTimersStop = true
         
         // Process feedback
         
@@ -61,7 +61,7 @@ extension StatusBarController {
             }
             feedbackCount += 1
             
-            stopDelegate = stopDelegate && feedbackCount >= Data.feedbackAttributes.count
+            self.shouldTimersStop = self.shouldTimersStop && feedbackCount >= Data.feedbackAttributes.count
         }
         
         // Modify basic appearance
@@ -69,6 +69,23 @@ extension StatusBarController {
         head.button?.appearsDisabled = !Data.theme.autoHideIcons && !Data.collapsed
         body.button?.appearsDisabled = !Data.theme.autoHideIcons && !Data.collapsed
         tail.button?.appearsDisabled = !Data.theme.autoHideIcons && !Data.collapsed
+        
+        // Special judge for #blend()
+        
+        if !Data.theme.autoHideIcons {
+            alphaValues.h = 1
+            
+            alphaValues.b = (
+                popoverShown || !Data.collapsed
+                || idling.hide || idling.alwaysHide
+                || (Data.autoShows && mouseSpare)
+            ) ? 1 : 0
+            
+            alphaValues.t = (
+                popoverShown || idling.alwaysHide
+                || (mouseSpare && (Helper.Keyboard.command || Helper.Keyboard.option))
+            ) ? 1 : 0
+        }
         
         // Head
         
@@ -80,7 +97,7 @@ extension StatusBarController {
                 false
             )
             
-            stopDelegate = stopDelegate && Helper.approaching(alpha, alphaValues.h, false)
+            self.shouldTimersStop = self.shouldTimersStop && Helper.approaching(alpha, alphaValues.h, false)
         }
         
         DispatchQueue.main.async {
@@ -96,7 +113,7 @@ extension StatusBarController {
                 self.head.length = result
             }
             
-            stopDelegate = stopDelegate && Helper.approaching(self.head.length, self.lengths.h)
+            self.shouldTimersStop = self.shouldTimersStop && Helper.approaching(self.head.length, self.lengths.h)
         }
         
         // Body
@@ -109,7 +126,7 @@ extension StatusBarController {
                 false
             )
             
-            stopDelegate = stopDelegate && Helper.approaching(alpha, alphaValues.b, false)
+            self.shouldTimersStop = self.shouldTimersStop && Helper.approaching(alpha, alphaValues.b, false)
         }
         
         do {
@@ -152,7 +169,7 @@ extension StatusBarController {
                         self.body.length = result
                     }
                     
-                    stopDelegate = stopDelegate && Helper.approaching(self.body.length, self.lengths.b)
+                    self.shouldTimersStop = self.shouldTimersStop && Helper.approaching(self.body.length, self.lengths.b)
                 }
             }
         }
@@ -167,7 +184,7 @@ extension StatusBarController {
                 false
             )
             
-            stopDelegate = stopDelegate && Helper.approaching(alpha, alphaValues.t, false)
+            self.shouldTimersStop = self.shouldTimersStop && Helper.approaching(alpha, alphaValues.t, false)
         }
         
         do {
@@ -210,28 +227,9 @@ extension StatusBarController {
                         self.tail.length = result
                     }
                     
-                    stopDelegate = stopDelegate && Helper.approaching(self.tail.length, self.lengths.t)
+                    self.shouldTimersStop = self.shouldTimersStop && Helper.approaching(self.tail.length, self.lengths.t)
                 }
             }
-            
-            shouldTimersStop = stopDelegate
-        }
-        
-        // Special judge for #map()
-        
-        if !Data.theme.autoHideIcons {
-            alphaValues.h = 1
-            
-            alphaValues.b = (
-                popoverShown || !Data.collapsed
-                || idling.hide || idling.alwaysHide
-                || (Data.autoShows && mouseSpare)
-            ) ? 1 : 0
-            
-            alphaValues.t = (
-                popoverShown || idling.alwaysHide
-                || (mouseSpare && (Helper.Keyboard.command || Helper.Keyboard.option))
-            ) ? 1 : 0
         }
     }
     

@@ -210,7 +210,6 @@ extension ViewController {
 			let _ = themes.menu?.items.firstIndex(of: menuItem)
 		{
 			// Doesn't work for now
-			// Data.theme = Themes.THEMES_LIST[index]
 		}
 	}
 	
@@ -221,6 +220,8 @@ extension ViewController {
 		   let index = themes.menu?.items.firstIndex(of: menuItem)
 		{
 			Data.theme = Themes.themes[index]
+            Helper.delegate?.statusBarController.startFunctionalTimers()
+            Helper.delegate?.statusBarController.map()
 		}
 	}
 	

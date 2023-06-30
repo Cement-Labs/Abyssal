@@ -13,7 +13,7 @@ class StatusBarController {
     
     var available: Bool = false
 	
-    var alphaValues: (h: CGFloat, b: CGFloat, t: CGFloat) = (h: -10, b: -32, t: -32)
+    var alphaValues: (h: CGFloat, b: CGFloat, t: CGFloat) = (h: 0, b: 0, t: 0)
 	
 	var lengths: (h: CGFloat, b: CGFloat, t: CGFloat) = (h: 0, b: 0, t: 0)
 	

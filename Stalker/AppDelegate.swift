@@ -97,6 +97,8 @@ extension AppDelegate {
 	@objc func togglePopover(
 		_ sender: Any?
 	) {
+        statusBarController.startFunctionalTimers()
+        
 		if popover.isShown {
 			closePopover(sender)
 		} else {

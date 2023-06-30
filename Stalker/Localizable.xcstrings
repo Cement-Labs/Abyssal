@@ -2,28 +2,92 @@
   "sourceLanguage" : "en",
   "strings" : {
     "Approaching" : {
-      "comment" : "Name for theme 'Approaching'"
+      "comment" : "Name for theme 'Approaching'",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "降临"
+          }
+        }
+      }
     },
     "Codec" : {
-      "comment" : "Name for theme 'Codec'"
+      "comment" : "Name for theme 'Codec'",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "调制、解调"
+          }
+        }
+      }
     },
     "Droplets" : {
-      "comment" : "Name for theme 'Droplets'"
+      "comment" : "Name for theme 'Droplets'",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "点与滴 "
+          }
+        }
+      }
     },
     "Electrodiagram" : {
-      "comment" : "Name for theme 'Electrodiagram'"
+      "comment" : "Name for theme 'Electrodiagram'",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "心电图"
+          }
+        }
+      }
     },
     "Hidden Bar" : {
-      "comment" : "Name for theme 'Hidden Bar'"
+      "comment" : "Name for theme 'Hidden Bar'",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hidden Bar"
+          }
+        }
+      }
     },
     "Metres Away" : {
-      "comment" : "Name for theme 'Metres Away'"
+      "comment" : "Name for theme 'Metres Away'",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "咫尺之外"
+          }
+        }
+      }
     },
     "Not So Happy" : {
-      "comment" : "Name for theme 'Not So Happy'"
+      "comment" : "Name for theme 'Not So Happy'",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "坏心情"
+          }
+        }
+      }
     },
     "Stalker" : {
-      "comment" : "Name for theme 'Stalker'"
+      "comment" : "Name for theme 'Stalker'",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stalker"
+          }
+        }
+      }
     },
     "Update Available - Version %1$@ → %2$@" : {
       "comment" : "Version info with an update available",
@@ -37,7 +101,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "有可用更新 - 版本 %1$@ → %2$@"
+            "value" : "有可用更新 - 版本  %1$@ → %2$@"
           }
         }
       }
@@ -54,7 +118,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "版本%@"
+            "value" : "版本 %@"
           }
         }
       }

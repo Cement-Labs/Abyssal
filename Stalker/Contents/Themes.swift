@@ -17,6 +17,8 @@ class Themes {
 		
 		
 		let name: String
+        
+        let identifier: String
 		
 		
 		
@@ -38,6 +40,7 @@ class Themes {
 		
 		init(
 			_ name: String,
+            _ identifier: String,
 			
 			headUncollapsed: 	String?,
 			headCollapsed: 		String?,
@@ -49,6 +52,7 @@ class Themes {
 			autoHideIcons: 	Bool
 		) {
 			self.name = name
+            self.identifier = identifier
 			
 			self.headUncollapsed 	= headUncollapsed 	!= nil ? NSImage(named: NSImage.Name(headUncollapsed!)) 	: Theme.EMPTY
 			self.headCollapsed 		= headCollapsed 	!= nil ? NSImage(named: NSImage.Name(headCollapsed!)) 		: Theme.EMPTY
@@ -79,7 +83,7 @@ class Themes {
 			droplets,
 			codec,
 			notSoHappy
-		].sorted(by: { $0.name < $1.name })
+        ].sorted(by: { $0.identifier < $1.identifier })
 	}
 	
 	static var defaultTheme: Theme {
@@ -94,7 +98,7 @@ class Themes {
 		String(
 			localized: 	"Stalker",
 			comment: 	"Name for theme 'Stalker'"
-		),
+		), "stalker",
 		headUncollapsed: 	"Stalker/Dot",
 		headCollapsed: 		"Stalker/Dot",
 		separator: 			"Stalker/Line",
@@ -108,7 +112,7 @@ class Themes {
 		String(
 			localized: 	"Hidden Bar",
 			comment: 	"Name for theme 'Hidden Bar'"
-		),
+        ), "hiddenBar",
 		headUncollapsed: 	"HiddenBar/ic_left",
 		headCollapsed: 		"HiddenBar/ic_right",
 		separator: 			"HiddenBar/ic_line",
@@ -122,7 +126,7 @@ class Themes {
 		String(
 			localized: 	"Approaching",
 			comment: 	"Name for theme 'Approaching'"
-		),
+		), "approaching",
 		headUncollapsed: 	"Approaching/Primary",
 		headCollapsed: 		"Approaching/Primary",
 		separator: 			"Approaching/Secondary",
@@ -136,7 +140,7 @@ class Themes {
 		String(
 			localized: 	"Metres Away",
 			comment: 	"Name for theme 'Metres Away'"
-		),
+		), "metresAway",
 		headUncollapsed: 	"MetresAway/Line",
 		headCollapsed: 		"MetresAway/Line",
 		separator: 			"MetresAway/MetreLine",
@@ -150,7 +154,7 @@ class Themes {
 		String(
 			localized: 	"Electrodiagram",
 			comment: 	"Name for theme 'Electrodiagram'"
-		),
+		), "electrodiagram",
 		headUncollapsed: 	"Electrodiagram/DiagramHead",
 		headCollapsed: 		"Electrodiagram/DiagramHead",
 		separator: 			"Electrodiagram/Diagram",
@@ -164,7 +168,7 @@ class Themes {
 		String(
 			localized: 	"Droplets",
 			comment: 	"Name for theme 'Droplets'"
-		),
+		), "droplets",
 		headUncollapsed: 	"Droplets/Drops",
 		headCollapsed: 		"Droplets/Drops",
 		separator: 			"Droplets/LDrop",
@@ -178,7 +182,7 @@ class Themes {
 		String(
 			localized: 	"Codec",
 			comment: 	"Name for theme 'Codec'"
-		),
+		), "codec",
 		headUncollapsed: 	"Codec/R",
 		headCollapsed: 		"Codec/R",
 		separator: 			"Codec/L",
@@ -192,7 +196,7 @@ class Themes {
 		String(
 			localized: 	"Not So Happy",
 			comment: 	"Name for theme 'Not So Happy'"
-		),
+		), "notSoHappy",
 		headUncollapsed: 	"NotSoHappy/Sad",
 		headCollapsed: 		"NotSoHappy/Happy",
 		separator: 			"NotSoHappy/Pale",

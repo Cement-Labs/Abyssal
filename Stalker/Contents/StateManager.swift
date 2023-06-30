@@ -112,7 +112,7 @@ extension StatusBarController {
                     strongSelf.stopFunctionalTimers()
                 }
                 
-                if mouseWasSpare != strongSelf.mouseSpare && Data.collapsed {
+                if Data.collapsed && (mouseWasSpare != strongSelf.mouseSpare || (strongSelf.mouseSpare && (Helper.Keyboard.command || Helper.Keyboard.option))) {
                     strongSelf.startFunctionalTimers()
                 }
                 
@@ -122,7 +122,6 @@ extension StatusBarController {
     }
     
     func startFunctionalTimers() {
-        print("START")
         startAnimationTimer()
         startActionTimer()
     }
@@ -137,8 +136,6 @@ extension StatusBarController {
                     let strongSelf = self,
                     strongSelf.mouseSpare
                 else { return }
-                
-                print(1)
                 
                 if Data.collapsed && strongSelf.mouseInHideArea && !(Helper.Keyboard.command && event?.type == .leftMouseDown) {
                     strongSelf.idleHideArea()
@@ -167,7 +164,6 @@ extension StatusBarController {
 	
 	func unidleAlwaysHideArea() {
 		self.idling.alwaysHide = false
-        
         startFunctionalTimers()
 	}
     
@@ -193,7 +189,6 @@ extension StatusBarController {
     }
     
     func stopFunctionalTimers() {
-        print("SHUT")
         stopAnimationTimer()
         stopActionTimer()
     }
