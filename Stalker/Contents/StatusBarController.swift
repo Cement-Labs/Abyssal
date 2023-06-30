@@ -8,20 +8,20 @@
 import AppKit
 
 class StatusBarController {
-	
-	// MARK: - States
+    
+    // MARK: - States
     
     var available: Bool = false
-	
+    
     var alphaValues: (h: CGFloat, b: CGFloat, t: CGFloat) = (h: 0, b: 0, t: 0)
-	
-	var lengths: (h: CGFloat, b: CGFloat, t: CGFloat) = (h: 0, b: 0, t: 0)
-	
+    
+    var lengths: (h: CGFloat, b: CGFloat, t: CGFloat) = (h: 0, b: 0, t: 0)
+    
     var idling: (hide: Bool, alwaysHide: Bool) = (hide: false, alwaysHide: false)
     
     var shouldTimersStop: Bool = false
-	
-	
+    
+    
     
     var mouseOnStatusBar: Bool {
         guard let origin = head.button?.window?.frame.origin else { return false }
@@ -72,121 +72,121 @@ class StatusBarController {
         else { return false }
         return mouseOnStatusBar && NSEvent.mouseLocation.x >= origin.x && NSEvent.mouseLocation.x <= origin.x + width
     }
-	
-	// MARK: - Icons
-	
-	// Separator instances
-	
-	private let _sep1: NSStatusItem = NSStatusBar.system.statusItem(
-		withLength: NSStatusItem.variableLength
-	)
-	
-	private let _sep2: NSStatusItem = NSStatusBar.system.statusItem(
-		withLength: NSStatusItem.variableLength
-	)
-	
-	private let _sep3: NSStatusItem = NSStatusBar.system.statusItem(
-		withLength: NSStatusItem.variableLength
-	)
-	
-	// Separators list
-	
-	private var _seps: [NSStatusItem]
-	
-	// Pointers specifying the separators' positions
-	
-	var head: NSStatusItem {
-		var order: Int = 2
-		
-		if let savedSepsOrder = Data.sepsOrder, let savedOrder = savedSepsOrder[order] {
-			order = savedOrder
-		}
-		
-		return _seps[order]
-	}
-	
+    
+    // MARK: - Icons
+    
+    // Separator instances
+    
+    private let _sep1: NSStatusItem = NSStatusBar.system.statusItem(
+        withLength: NSStatusItem.variableLength
+    )
+    
+    private let _sep2: NSStatusItem = NSStatusBar.system.statusItem(
+        withLength: NSStatusItem.variableLength
+    )
+    
+    private let _sep3: NSStatusItem = NSStatusBar.system.statusItem(
+        withLength: NSStatusItem.variableLength
+    )
+    
+    // Separators list
+    
+    private var _seps: [NSStatusItem]
+    
+    // Pointers specifying the separators' positions
+    
+    var head: NSStatusItem {
+        var order: Int = 2
+        
+        if let savedSepsOrder = Data.sepsOrder, let savedOrder = savedSepsOrder[order] {
+            order = savedOrder
+        }
+        
+        return _seps[order]
+    }
+    
     var body: NSStatusItem {
-		var order: Int = 1
-		
-		if let savedSepsOrder = Data.sepsOrder, let savedOrder = savedSepsOrder[order] {
-			order = savedOrder
-		}
-		
-		return _seps[order]
-	}
-	
-	var tail: NSStatusItem {
-		var order: Int = 0
-		
-		if let savedSepsOrder = Data.sepsOrder, let savedOrder = savedSepsOrder[order] {
-			order = savedOrder
-		}
-		
-		return _seps[order]
-	}
-	
-	// MARK: - Inits
-	
-	init() {
-		// _sep1 is the most left while _sep2 is the most right
-		_seps = [_sep1, _sep2, _sep3]
-		
-		// Init status icons
-		
+        var order: Int = 1
+        
+        if let savedSepsOrder = Data.sepsOrder, let savedOrder = savedSepsOrder[order] {
+            order = savedOrder
+        }
+        
+        return _seps[order]
+    }
+    
+    var tail: NSStatusItem {
+        var order: Int = 0
+        
+        if let savedSepsOrder = Data.sepsOrder, let savedOrder = savedSepsOrder[order] {
+            order = savedOrder
+        }
+        
+        return _seps[order]
+    }
+    
+    // MARK: - Inits
+    
+    init() {
+        // _sep1 is the most left while _sep2 is the most right
+        _seps = [_sep1, _sep2, _sep3]
+        
+        // Init status icons
+        
         head.length = lengths.h
         body.length = lengths.b
         tail.length = lengths.t
-		
-		if let button = self.head.button {
-			button.action = #selector(AppDelegate.toggle(_:))
-			button.sendAction(on: [.leftMouseUp, .rightMouseUp])
-		}
-		
-		if let button = self.body.button {
-			button.action = #selector(AppDelegate.toggleCollapse(_:))
-			button.sendAction(on: [.leftMouseUp, .rightMouseUp])
-		}
-		
-		if let button = self.tail.button {
-			button.action = #selector(AppDelegate.toggleCollapse(_:))
-			button.sendAction(on: [.leftMouseUp, .rightMouseUp])
-		}
-		
-		// Start services
-		
+        
+        if let button = self.head.button {
+            button.action = #selector(AppDelegate.toggle(_:))
+            button.sendAction(on: [.leftMouseUp, .rightMouseUp])
+        }
+        
+        if let button = self.body.button {
+            button.action = #selector(AppDelegate.toggleCollapse(_:))
+            button.sendAction(on: [.leftMouseUp, .rightMouseUp])
+        }
+        
+        if let button = self.tail.button {
+            button.action = #selector(AppDelegate.toggleCollapse(_:))
+            button.sendAction(on: [.leftMouseUp, .rightMouseUp])
+        }
+        
+        // Start services
+        
         startAnimationTimer()
         startActionTimer()
         
-		startTriggerTimer()
-	}
-	
-	deinit {
+        startTriggerTimer()
+    }
+    
+    deinit {
         // Stop services
         
         stopAnimationTimer()
         stopActionTimer()
         
-		stopTriggerTimer()
-	}
-	
+        stopTriggerTimer()
+    }
+    
 }
 
 extension StatusBarController {
-	
-	func sort() {
-		guard available else {
-			available = !(available && _seps.allSatisfy { sep in
-				!sep.isVisible || sep.origin?.x ?? 0 != 0
-			})
-			return
-		}
-		
-		saveSepsOrder(
-			_seps.sorted {
-				($0.isVisible ? ($0.origin?.x ?? 0) : 0) <= ($1.isVisible ? ($1.origin?.x ?? 0) : 0)
-			}
-		)
-	}
+    
+    func sort() {
+        guard available else {
+            available = !(available && _seps.allSatisfy { sep in
+                !sep.isVisible || sep.origin?.x ?? 0 != 0
+            })
+            return
+        }
+        
+        saveSepsOrder(
+            _seps.sorted {
+                ($0.isVisible ? ($0.origin?.x ?? 0) : 0) <= ($1.isVisible ? ($1.origin?.x ?? 0) : 0)
+            }
+        )
+    }
     
     func saveSepsOrder(
         _ currentSeps: [NSStatusItem]
@@ -196,5 +196,5 @@ extension StatusBarController {
                                  _seps.firstIndex(of: currentSeps[2])]
         Data.sepsOrder = sepsOrder
     }
-	
+    
 }

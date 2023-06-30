@@ -20,50 +20,50 @@ var triggerTimer: Timer?
 var mouseClickEventMonitor: EventMonitor?
 
 extension StatusBarController {
-	
-	// MARK: - Icon Visibilities
-	
-	func untilHeadVisible(
-		_ flag: Bool
-	) {
-		untilSeparatorVisible(flag)
-		self.head.isVisible = flag
-	}
-	
-	func untilSeparatorVisible(
-		_ flag: Bool
-	) {
-		untilTailVisible(flag)
-		self.body.isVisible = flag
-	}
-	
-	func untilTailVisible(
-		_ flag: Bool
-	) {
-		self.tail.isVisible = flag
-	}
-	
+    
+    // MARK: - Icon Visibilities
+    
+    func untilHeadVisible(
+        _ flag: Bool
+    ) {
+        untilSeparatorVisible(flag)
+        self.head.isVisible = flag
+    }
+    
+    func untilSeparatorVisible(
+        _ flag: Bool
+    ) {
+        untilTailVisible(flag)
+        self.body.isVisible = flag
+    }
+    
+    func untilTailVisible(
+        _ flag: Bool
+    ) {
+        self.tail.isVisible = flag
+    }
+    
 }
 
 var mouseWasSpare: Bool = false
 
 extension StatusBarController {
-	
-	// MARK: - Enables
-	
-	func collapse() {
-		unidleHideArea()
-		Data.collapsed = true
-	}
-	
-	func idleHideArea() {
-		self.idling.hide = true
-	}
-	
+    
+    // MARK: - Enables
+    
+    func collapse() {
+        unidleHideArea()
+        Data.collapsed = true
+    }
+    
+    func idleHideArea() {
+        self.idling.hide = true
+    }
+    
     func idleAlwaysHideArea() {
-		self.idling.alwaysHide = true
-	}
-	
+        self.idling.alwaysHide = true
+    }
+    
     func startAnimationTimer() {
         if animationTimer == nil {
             animationTimer = Timer.scheduledTimer(
@@ -75,7 +75,7 @@ extension StatusBarController {
                 strongSelf.update()
             }
         }
-	}
+    }
     
     func startActionTimer() {
         if actionTimer == nil {
@@ -130,7 +130,7 @@ extension StatusBarController {
         startAnimationTimer()
         startActionTimer()
     }
-	
+    
     func startMouseClickEventMonitor() {
         if mouseClickEventMonitor == nil {
             mouseClickEventMonitor = EventMonitor(
@@ -153,24 +153,24 @@ extension StatusBarController {
             
             mouseClickEventMonitor?.start()
         }
-	}
-	
-	// MARK: - Disables
-	
-	func uncollapse() {
-		Data.collapsed = false
-		unidleHideArea()
-	}
-	
-	func unidleHideArea() {
-		self.idling.hide = false
-		unidleAlwaysHideArea()
-	}
-	
-	func unidleAlwaysHideArea() {
-		self.idling.alwaysHide = false
+    }
+    
+    // MARK: - Disables
+    
+    func uncollapse() {
+        Data.collapsed = false
+        unidleHideArea()
+    }
+    
+    func unidleHideArea() {
+        self.idling.hide = false
+        unidleAlwaysHideArea()
+    }
+    
+    func unidleAlwaysHideArea() {
+        self.idling.alwaysHide = false
         startFunctionalTimers()
-	}
+    }
     
     func stopAnimationTimer() {
         if animationTimer != nil {
@@ -197,12 +197,12 @@ extension StatusBarController {
         stopAnimationTimer()
         stopActionTimer()
     }
-	
+    
     func stopMouseClickEventMonitor() {
         if mouseClickEventMonitor != nil {
             mouseClickEventMonitor?.stop()
             mouseClickEventMonitor = nil
         }
-	}
-	
+    }
+    
 }

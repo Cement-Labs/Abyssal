@@ -8,13 +8,13 @@
 import AppKit
 
 extension NSButton {
-	var flag: Bool {
-		return self.state == .on
-	}
+    var flag: Bool {
+        return self.state == .on
+    }
 }
 
 extension NSButton {
-	func set(_ flag: Bool) {
-		self.state = flag ? .on : .off
-	}
+    func set(_ flag: Bool) {
+        self.state = flag ? .on : .off
+    }
 }

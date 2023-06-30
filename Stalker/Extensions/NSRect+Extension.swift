@@ -8,9 +8,9 @@
 import Foundation
 
 extension NSRect {
-	
-	var containsMouse: Bool {
-		return Helper.Mouse.inside(self)
-	}
-	
+    
+    var containsMouse: Bool {
+        return Helper.Mouse.inside(self)
+    }
+    
 }

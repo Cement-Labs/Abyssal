@@ -9,12 +9,12 @@ import Foundation
 import AppKit
 
 extension StatusBarController {
-	
+    
     static var lerpRatio: CGFloat {
         let baseValue = 0.53
         return baseValue * (Helper.Keyboard.shift ? 0.25 : 1)
-	}
-	
+    }
+    
 }
 
 var lastOriginXs: (b: CGFloat, t: CGFloat) = (b: 0, t: 0)
