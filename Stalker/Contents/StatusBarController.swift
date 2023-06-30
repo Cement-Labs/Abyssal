@@ -18,6 +18,8 @@ class StatusBarController {
 	var lengths: (h: CGFloat, b: CGFloat, t: CGFloat) = (h: 0, b: 0, t: 0)
 	
     var idling: (hide: Bool, alwaysHide: Bool) = (hide: false, alwaysHide: false)
+    
+    var shouldTimersStop: Bool = false
 	
 	
     
@@ -29,9 +31,10 @@ class StatusBarController {
     var mouseInHideArea: Bool {
         guard
             let bodyOrigin = body.button?.window?.frame.origin,
-            let tailOrigin = tail.button?.window?.frame.origin
+            let tailOrigin = tail.button?.window?.frame.origin,
+            let tailWidth = tail.button?.window?.frame.width
         else { return false }
-        return mouseOnStatusBar && NSEvent.mouseLocation.x >= tailOrigin.x + tail.length + 20 && NSEvent.mouseLocation.x <= bodyOrigin.x
+        return mouseOnStatusBar && NSEvent.mouseLocation.x >= tailOrigin.x + tailWidth && NSEvent.mouseLocation.x <= bodyOrigin.x
     }
     
     var mouseInAlwaysHideArea: Bool {
@@ -39,19 +42,35 @@ class StatusBarController {
         return mouseOnStatusBar && NSEvent.mouseLocation.x <= origin.x
     }
     
+    var mouseSpare: Bool {
+        guard
+            let origin = head.button?.window?.frame.origin
+        else { return false }
+        return mouseOnStatusBar && NSEvent.mouseLocation.x <= origin.x
+    }
+    
     var mouseOverHead: Bool {
-        guard let origin = head.button?.window?.frame.origin else { return false }
-        return mouseOnStatusBar && NSEvent.mouseLocation.x >= origin.x && NSEvent.mouseLocation.x <= origin.x + head.length + 20
+        guard
+            let origin = head.button?.window?.frame.origin,
+            let width = head.button?.window?.frame.width
+        else { return false }
+        return mouseOnStatusBar && NSEvent.mouseLocation.x >= origin.x && NSEvent.mouseLocation.x <= origin.x + width
     }
     
     var mouseOverBody: Bool {
-        guard let origin = body.button?.window?.frame.origin else { return false }
-        return mouseOnStatusBar && NSEvent.mouseLocation.x >= origin.x && NSEvent.mouseLocation.x <= origin.x + body.length + 20
+        guard
+            let origin = body.button?.window?.frame.origin,
+            let width = body.button?.window?.frame.width
+        else { return false }
+        return mouseOnStatusBar && NSEvent.mouseLocation.x >= origin.x && NSEvent.mouseLocation.x <= origin.x + width
     }
     
     var mouseOverTail: Bool {
-        guard let origin = tail.button?.window?.frame.origin else { return false }
-        return mouseOnStatusBar && NSEvent.mouseLocation.x >= origin.x && NSEvent.mouseLocation.x <= origin.x + tail.length + 20
+        guard
+            let origin = tail.button?.window?.frame.origin,
+            let width = tail.button?.window?.frame.width
+        else { return false }
+        return mouseOnStatusBar && NSEvent.mouseLocation.x >= origin.x && NSEvent.mouseLocation.x <= origin.x + width
     }
 	
 	// MARK: - Icons
@@ -135,13 +154,19 @@ class StatusBarController {
 		
 		// Start services
 		
-		startTimers()
-		startMonitors()
+        startAnimationTimer()
+        startActionTimer()
+        
+		startTriggerTimer()
 	}
 	
 	deinit {
-		stopTimers()
-		stopMonitors()
+        // Stop services
+        
+        stopAnimationTimer()
+        stopActionTimer()
+        
+		stopTriggerTimer()
 	}
 	
 }

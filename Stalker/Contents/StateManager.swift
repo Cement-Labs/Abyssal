@@ -13,9 +13,11 @@ var animationTimer: Timer?
 
 var actionTimer: Timer?
 
+var triggerTimer: Timer?
+
 // Event monitors
 
-var mouseEventMonitor: EventMonitor?
+var mouseClickEventMonitor: EventMonitor?
 
 extension StatusBarController {
 	
@@ -43,6 +45,8 @@ extension StatusBarController {
 	
 }
 
+var mouseWasSpare: Bool = false
+
 extension StatusBarController {
 	
 	// MARK: - Enables
@@ -60,38 +64,81 @@ extension StatusBarController {
 		self.idling.alwaysHide = true
 	}
 	
-    func startTimers() {
-		animationTimer = Timer.scheduledTimer(
-            withTimeInterval: 1.0 / 30.0,
-			repeats: true
-		) { [weak self] _ in
-			if let strongSelf = self {
-				strongSelf.update()
-			}
-		}
-		
-		actionTimer = Timer.scheduledTimer(
-			withTimeInterval: 1.0 / 10.0,
-			repeats: true
-		) { [weak self] _ in
-			if let strongSelf = self {
-				strongSelf.sort()
-				strongSelf.map()
-			}
-		}
+    func startAnimationTimer() {
+        if animationTimer == nil {
+            animationTimer = Timer.scheduledTimer(
+                withTimeInterval: 1.0 / 30.0,
+                repeats: true
+            ) { [weak self] _ in
+                guard let strongSelf = self else { return }
+                
+                strongSelf.update()
+            }
+        }
 	}
+    
+    func startActionTimer() {
+        if actionTimer == nil {
+            actionTimer = Timer.scheduledTimer(
+                withTimeInterval: 1.0 / 6.0,
+                repeats: true
+            ) { [weak self] _ in
+                guard let strongSelf = self else { return }
+                
+                strongSelf.sort()
+                strongSelf.map()
+            }
+        }
+    }
+    
+    func startTriggerTimer() {
+        if triggerTimer == nil {
+            triggerTimer = Timer.scheduledTimer(
+                withTimeInterval: 1.0 / 6.0,
+                repeats: true
+            ) { [weak self] _ in
+                guard let strongSelf = self else { return }
+                
+                strongSelf.checkIdleStates()
+                
+                if !mouseWasSpare && strongSelf.mouseSpare {
+                    strongSelf.startMouseClickEventMonitor()
+                } else if mouseWasSpare && !strongSelf.mouseSpare {
+                    strongSelf.stopMouseClickEventMonitor()
+                }
+                
+                if strongSelf.shouldTimersStop {
+                    strongSelf.shouldTimersStop = false
+                    strongSelf.stopFunctionalTimers()
+                }
+                
+                if mouseWasSpare != strongSelf.mouseSpare && Data.collapsed {
+                    strongSelf.startFunctionalTimers()
+                }
+                
+                mouseWasSpare = strongSelf.mouseSpare
+            }
+        }
+    }
+    
+    func startFunctionalTimers() {
+        print("START")
+        startAnimationTimer()
+        startActionTimer()
+    }
 	
-	func startMonitors() {
-        if mouseEventMonitor == nil {
-            mouseEventMonitor = EventMonitor(
+    func startMouseClickEventMonitor() {
+        if mouseClickEventMonitor == nil {
+            mouseClickEventMonitor = EventMonitor(
                 mask: [.leftMouseDown,
                        .rightMouseDown]
             ) { [weak self] event in
-                
                 guard
                     let strongSelf = self,
-                    strongSelf.mouseOnStatusBar
+                    strongSelf.mouseSpare
                 else { return }
+                
+                print(1)
                 
                 if Data.collapsed && strongSelf.mouseInHideArea && !(Helper.Keyboard.command && event?.type == .leftMouseDown) {
                     strongSelf.idleHideArea()
@@ -102,7 +149,7 @@ extension StatusBarController {
                 }
             }
             
-            mouseEventMonitor?.start()
+            mouseClickEventMonitor?.start()
         }
 	}
 	
@@ -120,22 +167,42 @@ extension StatusBarController {
 	
 	func unidleAlwaysHideArea() {
 		self.idling.alwaysHide = false
+        
+        startFunctionalTimers()
 	}
-	
-	func stopTimers() {
+    
+    func stopAnimationTimer() {
         if animationTimer != nil {
             animationTimer?.invalidate()
             animationTimer = nil
         }
-        
+    }
+    
+    func stopActionTimer() {
         if actionTimer != nil {
             actionTimer?.invalidate()
             actionTimer = nil
         }
-	}
+    }
+    
+    func stopTriggerTimer() {
+        if triggerTimer != nil {
+            triggerTimer?.invalidate()
+            triggerTimer = nil
+        }
+    }
+    
+    func stopFunctionalTimers() {
+        print("SHUT")
+        stopAnimationTimer()
+        stopActionTimer()
+    }
 	
-	func stopMonitors() {
-		mouseEventMonitor?.stop()
+    func stopMouseClickEventMonitor() {
+        if mouseClickEventMonitor != nil {
+            mouseClickEventMonitor?.stop()
+            mouseClickEventMonitor = nil
+        }
 	}
 	
 }

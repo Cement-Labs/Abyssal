@@ -11,7 +11,7 @@ import AppKit
 extension StatusBarController {
 	
     static var lerpRatio: CGFloat {
-        let baseValue = 0.5
+        let baseValue = 0.42
         return baseValue * (Helper.Keyboard.shift ? 0.25 : 1)
 	}
 	
@@ -25,7 +25,7 @@ var wasUnstable: (b: Bool, t: Bool) = (b: false, t: false)
 
 
 
-var mouseWasOnStatusBarOrUnidled: Bool = false
+var mouseWasSpareOrUnidled: Bool = false
 
 var feedbackCount: Int = 0
 
@@ -44,13 +44,15 @@ extension StatusBarController {
     func update() {
         guard available else { return }
         
+        var stopDelegate = !popoverShown
+        
         // Process feedback
         
         if Data.collapsed && !idling.hide && !idling.alwaysHide && Data.autoShows && !(Helper.delegate?.popover.isShown ?? false)
-            &&  !(idling.hide && idling.alwaysHide) && ((!mouseWasOnStatusBarOrUnidled && mouseOnStatusBar) || (mouseWasOnStatusBarOrUnidled && !mouseOnStatusBar))
+            &&  !(idling.hide && idling.alwaysHide) && ((!mouseWasSpareOrUnidled && mouseSpare) || (mouseWasSpareOrUnidled && !mouseSpare))
         {
             guard feedbackCount < Data.feedbackAttributes.count else {
-                mouseWasOnStatusBarOrUnidled = mouseOnStatusBar
+                mouseWasSpareOrUnidled = mouseSpare
                 feedbackCount = 0
                 return
             }
@@ -58,6 +60,8 @@ extension StatusBarController {
                 NSHapticFeedbackManager.defaultPerformer.perform(pattern, performanceTime: .now)
             }
             feedbackCount += 1
+            
+            stopDelegate = stopDelegate && feedbackCount >= Data.feedbackAttributes.count
         }
         
         // Modify basic appearance
@@ -75,10 +79,12 @@ extension StatusBarController {
                 ratio: StatusBarController.lerpRatio,
                 false
             )
+            
+            stopDelegate = stopDelegate && Helper.approaching(alpha, alphaValues.h, false)
         }
         
         DispatchQueue.main.async {
-            let flag = !popoverShown && Data.collapsed && !(self.idling.hide || self.idling.alwaysHide) && (!Data.autoShows || !self.mouseOnStatusBar)
+            let flag = !popoverShown && Data.collapsed && !(self.idling.hide || self.idling.alwaysHide) && (!Data.autoShows || !self.mouseSpare)
             
             self.lengths.h = flag ? Data.theme.iconWidthAlt : Data.theme.iconWidth
             
@@ -89,6 +95,8 @@ extension StatusBarController {
             ) { result in
                 self.head.length = result
             }
+            
+            stopDelegate = stopDelegate && Helper.approaching(self.head.length, self.lengths.h)
         }
         
         // Body
@@ -100,10 +108,12 @@ extension StatusBarController {
                 ratio: StatusBarController.lerpRatio,
                 false
             )
+            
+            stopDelegate = stopDelegate && Helper.approaching(alpha, alphaValues.b, false)
         }
         
         do {
-            let flag = !popoverShown && Data.collapsed && !(self.idling.hide || self.idling.alwaysHide) && (!Data.autoShows || !self.mouseOnStatusBar)
+            let flag = !popoverShown && Data.collapsed && !(self.idling.hide || self.idling.alwaysHide) && (!Data.autoShows || !self.mouseSpare)
             
             guard let x = self.body.origin?.x else { return }
             let length = self.body.length
@@ -141,6 +151,8 @@ extension StatusBarController {
                     ) { result in
                         self.body.length = result
                     }
+                    
+                    stopDelegate = stopDelegate && Helper.approaching(self.body.length, self.lengths.b)
                 }
             }
         }
@@ -154,10 +166,12 @@ extension StatusBarController {
                 ratio: StatusBarController.lerpRatio,
                 false
             )
+            
+            stopDelegate = stopDelegate && Helper.approaching(alpha, alphaValues.t, false)
         }
         
         do {
-            let flag = !popoverShown && !(Helper.Keyboard.command && ((Data.collapsed && !self.idling.hide) || self.mouseOnStatusBar)) && !self.idling.alwaysHide
+            let flag = !popoverShown && !(Helper.Keyboard.command && ((Data.collapsed && !self.idling.hide) || self.mouseSpare)) && !self.idling.alwaysHide
             
             guard let x = self.tail.origin?.x else { return }
             let length = self.tail.length
@@ -195,26 +209,28 @@ extension StatusBarController {
                     ) { result in
                         self.tail.length = result
                     }
+                    
+                    stopDelegate = stopDelegate && Helper.approaching(self.tail.length, self.lengths.t)
                 }
             }
+            
+            shouldTimersStop = stopDelegate
         }
         
         // Special judge for #map()
         
         if !Data.theme.autoHideIcons {
-            let popoverShown = Helper.delegate?.popover.isShown ?? false
-            
             alphaValues.h = 1
             
             alphaValues.b = (
                 popoverShown || !Data.collapsed
                 || idling.hide || idling.alwaysHide
-                || (Data.autoShows && mouseOnStatusBar)
+                || (Data.autoShows && mouseSpare)
             ) ? 1 : 0
             
             alphaValues.t = (
                 popoverShown || idling.alwaysHide
-                || (mouseOnStatusBar && (Helper.Keyboard.command || Helper.Keyboard.option))
+                || (mouseSpare && (Helper.Keyboard.command || Helper.Keyboard.option))
             ) ? 1 : 0
         }
     }
@@ -233,18 +249,9 @@ extension StatusBarController {
             return
         }
         
-        if
-            mouseOnStatusBar
-                && (idling.hide || idling.alwaysHide)
-                && (mouseOverHead || mouseOverBody || mouseOverTail)
-        {
-            unidleHideArea()
-            mouseWasOnStatusBarOrUnidled = false
-        }
-        
         if !Data.theme.autoHideIcons {
             // Special judge. See #update()
-        } else if popoverShown || (mouseOnStatusBar && (Helper.Keyboard.command || Helper.Keyboard.option)) {
+        } else if popoverShown || (mouseSpare && (Helper.Keyboard.command || Helper.Keyboard.option)) {
             head.button?.image = Data.theme.headUncollapsed
             alphaValues.h = 1
             alphaValues.b = 1
@@ -253,6 +260,17 @@ extension StatusBarController {
             alphaValues.h = !Data.collapsed ? 1 : 0
             alphaValues.b = 0
             alphaValues.t = 0
+        }
+    }
+    
+    func checkIdleStates() {
+        if
+            mouseSpare
+                && (idling.hide || idling.alwaysHide)
+                && (mouseOverHead || mouseOverBody || mouseOverTail)
+        {
+            unidleHideArea()
+            mouseWasSpareOrUnidled = false
         }
     }
     

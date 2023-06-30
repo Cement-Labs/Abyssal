@@ -71,15 +71,17 @@ extension AppDelegate {
 		} else {
 			if let event = NSApp.currentEvent, event.type == .rightMouseUp {
 				togglePopover(sender)
-			} else {
-				toggleCollapse(sender)
-			}
+            } else {
+                toggleCollapse(sender)
+            }
 		}
 	}
 	
 	@objc func toggleCollapse(
 		_ sender: Any?
 	) {
+        statusBarController.startFunctionalTimers()
+        
 		guard !(statusBarController.idling.hide || statusBarController.idling.alwaysHide) else {
 			statusBarController.unidleHideArea()
 			return
