@@ -193,7 +193,13 @@ class ViewController: NSViewController, NSMenuDelegate {
 	
 	override func viewDidAppear() {
 		Helper.CHECK_NEWER_VERSION_TASK.resume()
+        
+        Helper.delegate?.statusBarController.startFunctionalTimers()
 	}
+    
+    override func viewWillDisappear() {
+        Helper.delegate?.statusBarController.startFunctionalTimers()
+    }
 	
 }
 

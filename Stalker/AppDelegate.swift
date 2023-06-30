@@ -97,8 +97,6 @@ extension AppDelegate {
 	@objc func togglePopover(
 		_ sender: Any?
 	) {
-        statusBarController.startFunctionalTimers()
-        
 		if popover.isShown {
 			closePopover(sender)
 		} else {
@@ -127,7 +125,7 @@ extension AppDelegate {
 	
 	func closePopover(
 		_ sender: Any?
-	) {
+    ) {
 		popover.performClose(sender)
 		
 		mouseEventMonitor?.stop()

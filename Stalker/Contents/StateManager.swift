@@ -116,6 +116,11 @@ extension StatusBarController {
                     strongSelf.startFunctionalTimers()
                 }
                 
+                if strongSelf.mouseSpare && (Helper.Keyboard.command || Helper.Keyboard.option) && Helper.Mouse.left {
+                    strongSelf.sort()
+                    strongSelf.map()
+                }
+                
                 mouseWasSpare = strongSelf.mouseSpare
             }
         }

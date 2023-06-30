@@ -233,6 +233,10 @@ class Helper {
 	}
 	
 	class Mouse {
+        
+        static var left: Bool {
+            return NSEvent.pressedMouseButtons & 0x1 == 1
+        }
 		
 		static func inside(
 			_ rect: NSRect?

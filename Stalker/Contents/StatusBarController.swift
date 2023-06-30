@@ -46,7 +46,7 @@ class StatusBarController {
         guard
             let origin = head.button?.window?.frame.origin
         else { return false }
-        return mouseOnStatusBar && NSEvent.mouseLocation.x <= origin.x
+        return (Helper.Keyboard.command || Helper.Keyboard.option) ? mouseOnStatusBar : (mouseOnStatusBar && NSEvent.mouseLocation.x <= origin.x)
     }
     
     var mouseOverHead: Bool {
