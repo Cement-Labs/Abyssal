@@ -43,10 +43,8 @@ class StatusBarController {
     }
     
     var mouseSpare: Bool {
-        guard
-            let origin = head.button?.window?.frame.origin
-        else { return false }
-        return (Helper.Keyboard.command || Helper.Keyboard.option) ? mouseOnStatusBar : (mouseOnStatusBar && NSEvent.mouseLocation.x <= origin.x)
+        // Needed to be improved
+        return mouseOnStatusBar
     }
     
     var mouseOverHead: Bool {
@@ -183,7 +181,7 @@ extension StatusBarController {
         
         saveSepsOrder(
             _seps.sorted {
-                ($0.isVisible ? ($0.origin?.x ?? 0) : 0) <= ($1.isVisible ? ($1.origin?.x ?? 0) : 0)
+                $0.isVisible && $1.isVisible && $0.origin?.x ?? 0 <= $1.origin?.x ?? 0
             }
         )
     }

@@ -111,7 +111,7 @@ extension AppDelegate {
             popover.show(
                 relativeTo: 	button.bounds,
                 of: 			button,
-                preferredEdge: 	NSRectEdge.minY
+                preferredEdge: 	.maxX
             )
             
             if let window = popover.contentViewController?.view.window {

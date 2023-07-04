@@ -19,45 +19,13 @@ class MenuController: NSViewController, NSMenuDelegate {
     
     @IBOutlet var main: NSView!
     
+    @IBOutlet weak var appTitle: NSTextField!
     
-    
-    @IBOutlet weak var update: 		NSBox!
-    
-    @IBOutlet weak var version: 	NSBox!
-    
-    @IBOutlet weak var sourceCode: 	NSBox!
-    
-    @IBOutlet weak var info: 		NSBox!
-    
-    @IBOutlet weak var preferences: NSBox!
+    @IBOutlet weak var startsWithMacos: NSSwitch!
     
     
     
-    @IBOutlet weak var updateButton: 		NSButton!
-    
-    @IBOutlet weak var updateIcon: 			NSImageView!
-    
-    @IBOutlet weak var versionButton: 		NSButton!
-    
-    @IBOutlet weak var sourceCodeButton: 	NSButton!
-    
-    @IBOutlet weak var logo: NSImageView!
-    
-    
-    
-    @IBOutlet weak var stalker: NSTextField!
-    
-    @IBOutlet weak var stalkerPlaceholder: NSBox!
-    
-    
-    
-    @IBOutlet weak var quitApp: NSBox!
-    
-    @IBOutlet weak var quitAppPlaceholder: NSBox!
-    
-    @IBOutlet weak var quitAppButton: NSButton!
-    
-    
+    @IBOutlet weak var autoShows: NSSwitch!
     
     @IBOutlet weak var feedbackIntensityLabel: NSTextField!
     
@@ -67,16 +35,9 @@ class MenuController: NSViewController, NSMenuDelegate {
     
     @IBOutlet weak var themes: NSPopUpButton!
     
+    @IBOutlet weak var useAlwaysHideArea:   NSSwitch!
     
-    
-    
-    @IBOutlet weak var autoShows: 					NSSwitch!
-    
-    @IBOutlet weak var useAlwaysHideArea: 			NSSwitch!
-    
-    @IBOutlet weak var reduceAnimation: 			NSSwitch!
-    
-    @IBOutlet weak var startsWithMacos: 			NSSwitch!
+    @IBOutlet weak var reduceAnimation:     NSSwitch!
     
     // MARK: - View Methods
     
@@ -88,7 +49,6 @@ class MenuController: NSViewController, NSMenuDelegate {
     
     override func viewDidAppear() {
         Helper.CHECK_NEWER_VERSION_TASK.resume()
-        
         Helper.delegate?.statusBarController.startFunctionalTimers()
     }
     
@@ -98,7 +58,7 @@ class MenuController: NSViewController, NSMenuDelegate {
     
 }
 
-extension ViewController {
+extension MenuController {
     
     // MARK: - Themes Menu Delegate
     
@@ -165,6 +125,8 @@ extension MenuController {
                 themes.selectItem(at: index)
             }
             
+            /* Deprecated
+             
             var maxWidth: CGFloat = 0
             if let menu = themes.menu {
                 for item in menu.items {
@@ -174,18 +136,20 @@ extension MenuController {
                 
                 themes.widthAnchor.constraint(equalToConstant: maxWidth + 65).isActive = true
             }
+             
+             */
         }
         
         // Init controls
+        
+        startsWithMacos.set(Data.startsWithMacos)
         
         autoShows.set(Data.autoShows)
         feedbackIntensity.objectValue = Data.feedbackIntensity
         feedBackIntensityEnabled(Data.autoShows)
         
-        useAlwaysHideArea	.set(Data.useAlwaysHideArea)
-        reduceAnimation		.set(Data.reduceAnimation)
-        
-        startsWithMacos		.set(Data.startsWithMacos)
+        useAlwaysHideArea.set(Data.useAlwaysHideArea)
+        reduceAnimation.set(Data.reduceAnimation)
     }
     
     func feedBackIntensityEnabled(
@@ -216,9 +180,7 @@ extension MenuController {
             switch area {
             case "quitApp":
                 
-                
-            case "stalker":
-                
+                break
                 
             default:
                 break
@@ -235,9 +197,7 @@ extension MenuController {
             switch area {
             case "quitApp":
                 
-                
-            case "stalker":
-                
+                break
                 
             default:
                 break
@@ -249,27 +209,6 @@ extension MenuController {
 extension MenuController {
     
     // MARK: - Global Actions
-    
-    @IBAction func triggerSourceCode(
-        _ sender: NSButton
-    ) {
-        Helper.delegate?.togglePopover(sender)
-        NSWorkspace.shared.open(Helper.SOURCE_CODE_URL)
-    }
-    
-    @IBAction func triggerCheckUpdate(
-        _ sender: NSButton
-    ) {
-        Helper.CHECK_NEWER_VERSION_TASK.resume()
-        updateVersionInfo()
-    }
-    
-    @IBAction func triggerUpdate(
-        _ sender: NSButton
-    ) {
-        Helper.delegate?.togglePopover(sender)
-        NSWorkspace.shared.open(Helper.RELEASE_URL)
-    }
     
     @IBAction func quit(
         _ sender: NSButton
