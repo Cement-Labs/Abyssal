@@ -24,7 +24,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(
         _ aNotification: Notification
     ) {
-        popover.contentViewController = ViewController.freshController()
+        popover.contentViewController = MenuController.freshController()
         Helper.CHECK_NEWER_VERSION_TASK.resume()
         
         mouseEventMonitor = EventMonitor(

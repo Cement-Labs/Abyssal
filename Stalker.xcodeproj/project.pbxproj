@@ -10,7 +10,7 @@
 		C63B40532A4060E400BCAE79 /* NSStatusItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63B40522A4060E400BCAE79 /* NSStatusItem+Extension.swift */; };
 		C66CABA42A38871500E4D8E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CABA32A38871500E4D8E6 /* AppDelegate.swift */; };
 		C66CABA82A38871500E4D8E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C66CABA72A38871500E4D8E6 /* Assets.xcassets */; };
-		C66CABB32A388FBD00E4D8E6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CABB22A388FBD00E4D8E6 /* ViewController.swift */; };
+		C66CABB32A388FBD00E4D8E6 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CABB22A388FBD00E4D8E6 /* MenuController.swift */; };
 		C66CABB72A389F2500E4D8E6 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CABB62A389F2500E4D8E6 /* EventMonitor.swift */; };
 		C66F02AF2A3B5B4D00077CE3 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = C66F02AE2A3B5B4D00077CE3 /* LaunchAtLogin */; };
 		C69873BC2A42880C00C5E259 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = C69873BB2A42880C00C5E259 /* Localizable.xcstrings */; };
@@ -33,7 +33,7 @@
 		C66CABA72A38871500E4D8E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C66CABAA2A38871500E4D8E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C66CABAC2A38871500E4D8E6 /* Stalker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Stalker.entitlements; sourceTree = "<group>"; };
-		C66CABB22A388FBD00E4D8E6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C66CABB22A388FBD00E4D8E6 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		C66CABB62A389F2500E4D8E6 /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 		C69873BB2A42880C00C5E259 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		C69873C52A42930300C5E259 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/Main.xcstrings; sourceTree = "<group>"; };
@@ -96,7 +96,7 @@
 		C66F02AA2A3B4BEB00077CE3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C66CABB22A388FBD00E4D8E6 /* ViewController.swift */,
+				C66CABB22A388FBD00E4D8E6 /* MenuController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -225,7 +225,7 @@
 				C6DEC52A2A38BF6C00943448 /* StatusBarController.swift in Sources */,
 				C6DEC52C2A38CDE500943448 /* Helper.swift in Sources */,
 				C63B40532A4060E400BCAE79 /* NSStatusItem+Extension.swift in Sources */,
-				C66CABB32A388FBD00E4D8E6 /* ViewController.swift in Sources */,
+				C66CABB32A388FBD00E4D8E6 /* MenuController.swift in Sources */,
 				C6E2C0302A3EE9F1007D4E1B /* StateManager.swift in Sources */,
 				C6CDD0622A3F2F9000ED97F0 /* Themes.swift in Sources */,
 				C66CABA42A38871500E4D8E6 /* AppDelegate.swift in Sources */,
