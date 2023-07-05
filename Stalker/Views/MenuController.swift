@@ -9,9 +9,11 @@ import Cocoa
 
 class MenuController: NSViewController, NSMenuDelegate {
     
-    var quitAppTrackingArea: NSTrackingArea?
+    var quitAppTrackingArea:    NSTrackingArea?
     
-    var stalkerTrackingArea: NSTrackingArea?
+    var linkTrackingArea:       NSTrackingArea?
+    
+    var minimizeTrackingArea:   NSTrackingArea?
     
     let themesMenu: NSMenu = NSMenu()
     
@@ -19,7 +21,37 @@ class MenuController: NSViewController, NSMenuDelegate {
     
     @IBOutlet var main: NSView!
     
+    @IBOutlet weak var layer0__0__1: NSView!
+    
+    @IBOutlet weak var layer0__1__0: NSBox!
+    
+    @IBOutlet weak var layer0__1__1: NSBox!
+    
+    
+    
+    @IBOutlet weak var layer0__0__0__0: NSBox!
+    
+    @IBOutlet weak var layer0__0__0__1: NSBox!
+    
+    @IBOutlet weak var layer0__0__0__2: NSBox!
+    
+    @IBOutlet weak var quitApp: NSButton!
+    
+    @IBOutlet weak var link: NSButton!
+    
+    @IBOutlet weak var minimize: NSButton!
+    
+    
+    
+    @IBOutlet weak var quitAppView: NSView!
+    
+    @IBOutlet weak var linkView: NSView!
+    
+    @IBOutlet weak var minimizeView: NSView!
+    
     @IBOutlet weak var appTitle: NSTextField!
+    
+    @IBOutlet weak var appVersion: NSTextField!
     
     @IBOutlet weak var startsWithMacos: NSSwitch!
     
@@ -45,10 +77,45 @@ class MenuController: NSViewController, NSMenuDelegate {
     ) {
         super.viewDidLoad()
         updateData()
+        
+        if let version = Helper.version {
+            appVersion.isHidden = false
+            appVersion.stringValue = version
+        } else {
+            appVersion.isHidden = true
+        }
+        
+        quitAppTrackingArea = NSTrackingArea(
+            rect: quitAppView.bounds,
+            options: [.activeInActiveApp,
+                      .mouseEnteredAndExited],
+            owner: self,
+            userInfo: ["area": "quitApp"]
+        )
+        
+        linkTrackingArea = NSTrackingArea(
+            rect: linkView.bounds,
+            options: [.activeInActiveApp,
+                      .mouseEnteredAndExited],
+            owner: self,
+            userInfo: ["area": "link"]
+        )
+        
+        minimizeTrackingArea = NSTrackingArea(
+            rect: minimizeView.bounds,
+            options: [.activeInActiveApp,
+                      .mouseEnteredAndExited],
+            owner: self,
+            userInfo: ["area": "minimize"]
+        )
+        
+        quitAppView.addTrackingArea(quitAppTrackingArea!)
+        linkView.addTrackingArea(linkTrackingArea!)
+        minimizeView.addTrackingArea(minimizeTrackingArea!)
     }
     
     override func viewDidAppear() {
-        Helper.CHECK_NEWER_VERSION_TASK.resume()
+        // Helper.CHECK_NEWER_VERSION_TASK.resume()
         Helper.delegate?.statusBarController.startFunctionalTimers()
     }
     
@@ -165,6 +232,77 @@ extension MenuController {
         feedbackIntensityLabel.textColor = flag ? NSColor.labelColor : NSColor.disabledControlTextColor
     }
     
+    func blurContents(
+        _ value: CGFloat
+    ) {
+        if value > 0 {
+            let blur = CIFilter(name: "CIGaussianBlur")
+            blur?.setValue(value, forKey: kCIInputRadiusKey)
+            
+            appTitle.animator().contentFilters      = [blur!]
+            appVersion.animator().contentFilters    = [blur!]
+            
+            // layer0__0__1.animator().contentFilters  = [blur!]
+            layer0__1__0.animator().contentFilters  = [blur!]
+            layer0__1__1.animator().contentFilters  = [blur!]
+        } else {
+            appTitle.animator().contentFilters      = []
+            appVersion.animator().contentFilters    = []
+            
+            // layer0__0__1.animator().contentFilters  = []
+            layer0__1__0.animator().contentFilters  = []
+            layer0__1__1.animator().contentFilters  = []
+        }
+    }
+    
+    func activateQuitApp(
+        _ flag: Bool
+    ) {
+        if flag {
+            layer0__0__0__0.animator().borderColor = Colors.DANGER
+            layer0__0__0__0.animator().fillColor = Colors.DANGER
+            
+            quitApp.animator().contentTintColor = NSColor.white
+        } else {
+            layer0__0__0__0.animator().borderColor = Colors.TRANSLUCENT_DANGER
+            layer0__0__0__0.animator().fillColor = Colors.TRANSLUCENT_DANGER
+            
+            quitApp.animator().contentTintColor = Colors.DANGER
+        }
+    }
+    
+    func activateLink(
+        _ flag: Bool
+    ) {
+        if flag {
+            layer0__0__0__1.animator().borderColor = Colors.HYPER
+            layer0__0__0__1.animator().fillColor = Colors.HYPER
+            
+            link.animator().contentTintColor = NSColor.white
+        } else {
+            layer0__0__0__1.animator().borderColor = Colors.TRANSLUCENT_HYPER
+            layer0__0__0__1.animator().fillColor = Colors.TRANSLUCENT_HYPER
+            
+            link.animator().contentTintColor = Colors.HYPER
+        }
+    }
+    
+    func activateMinimize(
+        _ flag: Bool
+    ) {
+        if flag {
+            layer0__0__0__2.animator().borderColor = Colors.SAFE
+            layer0__0__0__2.animator().fillColor = Colors.SAFE
+            
+            minimize.animator().contentTintColor = NSColor.white
+        } else {
+            layer0__0__0__2.animator().borderColor = Colors.TRANSLUCENT_SAFE
+            layer0__0__0__2.animator().fillColor = Colors.TRANSLUCENT_SAFE
+            
+            minimize.animator().contentTintColor = Colors.SAFE
+        }
+    }
+    
 }
 
 extension MenuController {
@@ -180,7 +318,18 @@ extension MenuController {
             switch area {
             case "quitApp":
                 
-                break
+                blurContents(16)
+                activateQuitApp(true)
+                
+            case "link":
+                
+                blurContents(16)
+                activateLink(true)
+                
+            case "minimize":
+                
+                blurContents(16)
+                activateMinimize(true)
                 
             default:
                 break
@@ -197,7 +346,18 @@ extension MenuController {
             switch area {
             case "quitApp":
                 
-                break
+                blurContents(0)
+                activateQuitApp(false)
+                
+            case "link":
+                
+                blurContents(0)
+                activateLink(false)
+                
+            case "minimize":
+                
+                blurContents(0)
+                activateMinimize(false)
                 
             default:
                 break
@@ -211,9 +371,29 @@ extension MenuController {
     // MARK: - Global Actions
     
     @IBAction func quit(
-        _ sender: NSButton
+        _ sender: Any?
     ) {
-        NSApplication.shared.terminate(sender)
+        minimize(sender)
+        if !(Helper.delegate?.popover.isShown ?? false) {
+            NSApplication.shared.terminate(sender)
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                NSApplication.shared.terminate(sender)
+            }
+        }
+    }
+    
+    @IBAction func sourceCode(
+        _ sender: Any?
+    ) {
+        minimize(sender)
+        NSWorkspace.shared.open(Helper.SOURCE_CODE_URL)
+    }
+    
+    @IBAction func minimize(
+        _ sender: Any?
+    ) {
+        Helper.delegate?.closePopover(sender)
     }
     
     // MARK: - Data Actions
