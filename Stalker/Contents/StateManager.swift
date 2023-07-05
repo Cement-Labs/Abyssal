@@ -109,7 +109,11 @@ extension StatusBarController {
                 
                 if strongSelf.shouldTimersStop {
                     strongSelf.shouldTimersStop = false
-                    strongSelf.stopFunctionalTimers()
+                    
+                    // Reserved time
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        strongSelf.stopFunctionalTimers()
+                    }
                 }
                 
                 if Data.collapsed && (mouseWasSpare != strongSelf.mouseSpare || (strongSelf.mouseSpare && (Helper.Keyboard.command || Helper.Keyboard.option))) {

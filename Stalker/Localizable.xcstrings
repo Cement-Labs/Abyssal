@@ -91,6 +91,7 @@
     },
     "Update Available - Version %1$@ → %2$@" : {
       "comment" : "Version info with an update available",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -108,6 +109,7 @@
     },
     "Version %@" : {
       "comment" : "Version info",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
