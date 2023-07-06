@@ -88,42 +88,6 @@
           }
         }
       }
-    },
-    "Update Available - Version %1$@ → %2$@" : {
-      "comment" : "Version info with an update available",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Update Available - Version %1$@ → %2$@"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "有可用更新 - 版本  %1$@ → %2$@"
-          }
-        }
-      }
-    },
-    "Version %@" : {
-      "comment" : "Version info",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Version %@"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "版本 %@"
-          }
-        }
-      }
     }
   },
   "version" : "1.0"
