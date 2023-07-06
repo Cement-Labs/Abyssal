@@ -19,8 +19,6 @@ class StatusBarController {
     
     var idling: (hide: Bool, alwaysHide: Bool) = (hide: false, alwaysHide: false)
     
-    var shouldTimersStop: Bool = false
-    
     
     
     var mouseOnStatusBar: Bool {

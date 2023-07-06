@@ -113,20 +113,13 @@ class Helper {
         return a + (b - a) * ratio
     }
     
-    static func lerpAsync(
-        a:      CGFloat,
-        b:      CGFloat,
-        ratio:  CGFloat,
-        _ ignoreSmallValues: Bool = true,
-        completion: @escaping (Double) -> Void
+    static func switchToTheme(
+        _ index: Int
     ) {
-        guard !ignoreSmallValues || !approaching(a, b, ignoreSmallValues) else {
-            completion(b)
-            return
-        }
-        DispatchQueue.global().async {
-            completion(a + (b - a) * ratio)
-        }
+        Data.theme = Themes.themes[index]
+        
+        Helper.delegate?.statusBarController.map()
+        Helper.delegate?.statusBarController.startFunctionalTimers()
     }
     
     static func compareVersions(

@@ -13,6 +13,8 @@ var animationTimer: Timer?
 
 var actionTimer: Timer?
 
+var feedbackTimer: Timer?
+
 var triggerTimer: Timer?
 
 // Event monitors
@@ -45,7 +47,9 @@ extension StatusBarController {
     
 }
 
-var mouseWasSpare: Bool = false
+var feedbackCount: Int = 0
+
+var was: (mouseSpare: Bool, command: Bool) = (mouseSpare: false, command: false)
 
 extension StatusBarController {
     
@@ -91,6 +95,30 @@ extension StatusBarController {
         }
     }
     
+    func startFeedbackTimer() {
+        if feedbackTimer == nil {
+            feedbackTimer = Timer.scheduledTimer(
+                withTimeInterval: 1.0 / 30.0,
+                repeats: true
+            ) { [weak self] _ in
+                guard let strongSelf = self else { return }
+                
+                guard feedbackCount < Data.feedbackAttributes.count else {
+                    feedbackCount = 0
+                    strongSelf.stopFeedbackTimer()
+                    
+                    return
+                }
+                
+                if let pattern = Data.feedbackAttributes[feedbackCount] {
+                    NSHapticFeedbackManager.defaultPerformer.perform(pattern, performanceTime: .now)
+                }
+                
+                feedbackCount += 1
+            }
+        }
+    }
+    
     func startTriggerTimer() {
         if triggerTimer == nil {
             triggerTimer = Timer.scheduledTimer(
@@ -101,36 +129,34 @@ extension StatusBarController {
                 
                 strongSelf.checkIdleStates()
                 
-                if !mouseWasSpare && strongSelf.mouseSpare {
-                    strongSelf.startMouseClickEventMonitor()
-                } else if mouseWasSpare && !strongSelf.mouseSpare {
-                    strongSelf.stopMouseClickEventMonitor()
-                }
+                let mouseNeedsUpdate = was.mouseSpare != strongSelf.mouseSpare
+                let keyNeedsUpdate = strongSelf.mouseSpare && (was.command != Helper.Keyboard.command)
                 
-                if strongSelf.shouldTimersStop {
-                    strongSelf.shouldTimersStop = false
-                    
-                    // Reserved time
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        strongSelf.stopFunctionalTimers()
+                if mouseNeedsUpdate {
+                    if was.mouseSpare {
+                        strongSelf.stopMouseClickEventMonitor()
+                    } else {
+                        strongSelf.startMouseClickEventMonitor()
                     }
                 }
                 
-                if Data.collapsed && (mouseWasSpare != strongSelf.mouseSpare || (strongSelf.mouseSpare && (Helper.Keyboard.command || Helper.Keyboard.option))) {
+                if mouseNeedsUpdate || keyNeedsUpdate {
                     strongSelf.startFunctionalTimers()
                 }
                 
-                if strongSelf.mouseSpare && (Helper.Keyboard.command || Helper.Keyboard.option) && Helper.Mouse.left {
+                if keyNeedsUpdate && Helper.Mouse.left {
                     strongSelf.sort()
                     strongSelf.map()
                 }
                 
-                mouseWasSpare = strongSelf.mouseSpare
+                was.mouseSpare = strongSelf.mouseSpare
+                was.command = Helper.Keyboard.command
             }
         }
     }
     
     func startFunctionalTimers() {
+        // print("START")
         startAnimationTimer()
         startActionTimer()
     }
@@ -190,6 +216,13 @@ extension StatusBarController {
         }
     }
     
+    func stopFeedbackTimer() {
+        if feedbackTimer != nil {
+            feedbackTimer?.invalidate()
+            feedbackTimer = nil
+        }
+    }
+    
     func stopTriggerTimer() {
         if triggerTimer != nil {
             triggerTimer?.invalidate()
@@ -198,6 +231,7 @@ extension StatusBarController {
     }
     
     func stopFunctionalTimers() {
+        // print("SHUT")
         stopAnimationTimer()
         stopActionTimer()
     }

@@ -91,11 +91,11 @@ public enum Data {
     public static var feedbackAttributes: [NSHapticFeedbackManager.FeedbackPattern?] {
         switch feedbackIntensity {
         case 1:
-            return [.levelChange, .generic]
+            return [.levelChange]
         case 2:
-            return [.generic, nil, nil, .levelChange, .alignment]
+            return [.generic, nil, nil, .alignment]
         case 3:
-            return [.generic, .generic, nil, nil, nil, nil, nil, .levelChange, .alignment]
+            return [.alignment, .generic, nil, nil, nil, nil, nil, .levelChange]
         default:
             return []
         }

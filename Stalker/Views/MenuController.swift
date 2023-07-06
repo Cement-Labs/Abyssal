@@ -129,27 +129,14 @@ extension MenuController {
     
     // MARK: - Themes Menu Delegate
     
-    @objc func menu(
-        _ menu: NSMenu,
-        willHighlight menuItem: NSMenuItem?
-    ) {
-        if
-            let menuItem = menuItem,
-            let _ = themes.menu?.items.firstIndex(of: menuItem)
-        {
-            // Doesn't work for now
-        }
-    }
-    
     @objc func menuDidClose(
         _ menu: NSMenu
     ) {
-        if let menuItem = themes.menu?.highlightedItem,
-           let index = themes.menu?.items.firstIndex(of: menuItem)
+        if
+            let menuItem = menu.highlightedItem,
+            let index = menu.items.firstIndex(of: menuItem)
         {
-            Data.theme = Themes.themes[index]
-            Helper.delegate?.statusBarController.startFunctionalTimers()
-            Helper.delegate?.statusBarController.map()
+            Helper.switchToTheme(index)
         }
     }
     
@@ -410,6 +397,10 @@ extension MenuController {
     ) {
         Data.feedbackIntensity = sender.integerValue
         feedBackIntensityLabelEnabled(sender.integerValue > 0)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            Helper.delegate?.statusBarController.triggerFeedback()
+        }
     }
     
     

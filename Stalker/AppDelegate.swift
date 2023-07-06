@@ -129,6 +129,7 @@ extension AppDelegate {
         popover.performClose(sender)
         
         mouseEventMonitor?.stop()
+        statusBarController.startFunctionalTimers()
     }
     
 }

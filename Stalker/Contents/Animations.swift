@@ -11,7 +11,7 @@ import AppKit
 extension StatusBarController {
     
     static var lerpRatio: CGFloat {
-        let baseValue = 0.53
+        let baseValue = 0.42
         return baseValue * (Helper.Keyboard.shift ? 0.25 : 1)
     }
     
@@ -23,11 +23,11 @@ var lastFlags: (b: Bool, t: Bool) = (b: false, t: false)
 
 var wasUnstable: (b: Bool, t: Bool) = (b: true, t: true)
 
-
-
 var mouseWasSpareOrUnidled: Bool = false
 
-var feedbackCount: Int = 0
+
+
+var shouldTimersStop: (flag: Bool, count: Int) = (flag: false, count: 0)
 
 
 
@@ -41,30 +41,40 @@ var popoverShown: Bool {
 
 extension StatusBarController {
     
+    func triggerFeedback() {
+        feedbackCount = 0
+        startFeedbackTimer()
+    }
+    
     func update() {
         guard available else { return }
         
-        self.shouldTimersStop = true
+        if shouldTimersStop.flag {
+            // Make abundant for completing animations
+            if shouldTimersStop.count >= 3 {
+                shouldTimersStop = (flag: false, count: 0)
+                stopFunctionalTimers()
+            } else {
+                shouldTimersStop.count += 1
+            }
+        } else {
+            shouldTimersStop.count = 0
+        }
+        
+        shouldTimersStop.flag = true
         
         // Process feedback
         
-        if Data.collapsed && !idling.hide && !idling.alwaysHide && Data.autoShows && !(Helper.delegate?.popover.isShown ?? false)
-            &&  !(idling.hide && idling.alwaysHide) && ((!mouseWasSpareOrUnidled && mouseSpare) || (mouseWasSpareOrUnidled && !mouseSpare))
+        let mouseNeedsUpdate = mouseWasSpareOrUnidled != mouseSpare
+        
+        if Data.collapsed && !idling.hide && !idling.alwaysHide && Data.autoShows && !popoverShown
+            && !(idling.hide && idling.alwaysHide) && mouseNeedsUpdate
         {
-            guard feedbackCount < Data.feedbackAttributes.count else {
-                mouseWasSpareOrUnidled = mouseSpare
-                feedbackCount = 0
-                return
-            }
-            if let pattern = Data.feedbackAttributes[feedbackCount] {
-                NSHapticFeedbackManager.defaultPerformer.perform(pattern, performanceTime: .now)
-            }
-            feedbackCount += 1
-            
-            self.shouldTimersStop = self.shouldTimersStop && feedbackCount >= Data.feedbackAttributes.count
+            mouseWasSpareOrUnidled = mouseSpare
+            triggerFeedback()
         }
         
-        // Modify basic appearance
+        // Basic appearance
         
         head.button?.appearsDisabled = !Data.theme.autoHideIcons && !Data.collapsed
         body.button?.appearsDisabled = !Data.theme.autoHideIcons && !Data.collapsed
@@ -72,19 +82,34 @@ extension StatusBarController {
         
         // Special judge for #blend()
         
-        if !Data.theme.autoHideIcons {
-            alphaValues.h = 1
+        do {
+            guard available else { return }
             
-            alphaValues.b = (
-                popoverShown || !Data.collapsed
-                || idling.hide || idling.alwaysHide
-                || (Data.autoShows && mouseSpare)
-            ) ? 1 : 0
+            head.button?.image = Data.collapsed ? Data.theme.headCollapsed : Data.theme.headUncollapsed
+            body.button?.image = Data.theme.separator
+            tail.button?.image = Data.theme.tail
             
-            alphaValues.t = (
-                popoverShown || idling.alwaysHide
-                || (mouseSpare && (Helper.Keyboard.command || Helper.Keyboard.option))
-            ) ? 1 : 0
+            guard Data.autoShows || !Data.collapsed || !Data.theme.autoHideIcons else {
+                alphaValues.h = 0
+                alphaValues.b = 0
+                alphaValues.t = 0
+                return
+            }
+            
+            if !Data.theme.autoHideIcons {
+                alphaValues.h = 1
+                
+                alphaValues.b = (
+                    popoverShown || !Data.collapsed
+                    || idling.hide || idling.alwaysHide
+                    || (Data.autoShows && mouseSpare)
+                ) ? 1 : 0
+                
+                alphaValues.t = (
+                    popoverShown || idling.alwaysHide
+                    || (mouseSpare && Helper.Keyboard.command)
+                ) ? 1 : 0
+            }
         }
         
         // Head
@@ -97,23 +122,21 @@ extension StatusBarController {
                 false
             )
             
-            self.shouldTimersStop = self.shouldTimersStop && Helper.approaching(alpha, alphaValues.h, false)
+            shouldTimersStop.flag = shouldTimersStop.flag && Helper.approaching(alpha, alphaValues.h, false)
         }
         
-        DispatchQueue.main.async {
+        do {
             let flag = !popoverShown && Data.collapsed && !(self.idling.hide || self.idling.alwaysHide) && (!Data.autoShows || !self.mouseSpare)
             
             self.lengths.h = flag ? Data.theme.iconWidthAlt : Data.theme.iconWidth
             
-            Helper.lerpAsync(
+            self.head.length = Helper.lerp(
                 a: self.head.length,
                 b: self.lengths.h,
                 ratio: StatusBarController.lerpRatio
-            ) { result in
-                self.head.length = result
-            }
+            )
             
-            self.shouldTimersStop = self.shouldTimersStop && Helper.approaching(self.head.length, self.lengths.h)
+            shouldTimersStop.flag = shouldTimersStop.flag && Helper.approaching(self.head.length, self.lengths.h)
         }
         
         // Body
@@ -126,7 +149,7 @@ extension StatusBarController {
                 false
             )
             
-            self.shouldTimersStop = self.shouldTimersStop && Helper.approaching(alpha, alphaValues.b, false)
+            shouldTimersStop.flag = shouldTimersStop.flag && Helper.approaching(alpha, alphaValues.b, false)
         }
         
         do {
@@ -135,13 +158,16 @@ extension StatusBarController {
             guard let x = self.body.origin?.x else { return }
             let length = self.body.length
             
-            DispatchQueue.main.async {
+            do {
                 if !flag && !wasUnstable.b {
                     if self.lengths.b <= 0 { self.lengths.b = x + length - Helper.menuBarLeftEdge }
                     
                     self.body.length = self.lengths.b
                     wasUnstable.b = true
-                    return
+                    
+                    if !Data.reduceAnimation {
+                        return
+                    }
                 } else if flag && !wasUnstable.b {
                     self.body.length = maxLength
                     return
@@ -161,15 +187,13 @@ extension StatusBarController {
                 if Data.reduceAnimation {
                     self.body.length = self.lengths.b
                 } else {
-                    Helper.lerpAsync(
+                    self.body.length = Helper.lerp(
                         a: length,
                         b: self.lengths.b,
                         ratio: StatusBarController.lerpRatio
-                    ) { result in
-                        self.body.length = result
-                    }
+                    )
                     
-                    self.shouldTimersStop = self.shouldTimersStop && Helper.approaching(self.body.length, self.lengths.b)
+                    shouldTimersStop.flag = shouldTimersStop.flag && Helper.approaching(self.body.length, self.lengths.b)
                 }
             }
         }
@@ -184,7 +208,7 @@ extension StatusBarController {
                 false
             )
             
-            self.shouldTimersStop = self.shouldTimersStop && Helper.approaching(alpha, alphaValues.t, false)
+            shouldTimersStop.flag = shouldTimersStop.flag && Helper.approaching(alpha, alphaValues.t, false)
         }
         
         do {
@@ -193,13 +217,16 @@ extension StatusBarController {
             guard let x = self.tail.origin?.x else { return }
             let length = self.tail.length
             
-            DispatchQueue.main.async {
+            do {
                 if !flag && !wasUnstable.t {
                     if self.lengths.t <= 0 { self.lengths.t = x + length - Helper.menuBarLeftEdge }
                     
                     self.tail.length = self.lengths.t
                     wasUnstable.t = true
-                    return
+                    
+                    if !Data.reduceAnimation {
+                        return
+                    }
                 } else if flag && !wasUnstable.t {
                     self.tail.length = maxLength
                     return
@@ -219,15 +246,13 @@ extension StatusBarController {
                 if Data.reduceAnimation {
                     self.tail.length = self.lengths.t
                 } else {
-                    Helper.lerpAsync(
+                    self.tail.length = Helper.lerp(
                         a: length,
                         b: self.lengths.t,
                         ratio: StatusBarController.lerpRatio
-                    ) { result in
-                        self.tail.length = result
-                    }
+                    )
                     
-                    self.shouldTimersStop = self.shouldTimersStop && Helper.approaching(self.tail.length, self.lengths.t)
+                    shouldTimersStop.flag = shouldTimersStop.flag && Helper.approaching(self.tail.length, self.lengths.t)
                 }
             }
         }
@@ -249,7 +274,7 @@ extension StatusBarController {
         
         if !Data.theme.autoHideIcons {
             // Special judge. See #update()
-        } else if popoverShown || (mouseSpare && (Helper.Keyboard.command || Helper.Keyboard.option)) {
+        } else if popoverShown || (mouseSpare && Helper.Keyboard.command) {
             head.button?.image = Data.theme.headUncollapsed
             alphaValues.h = 1
             alphaValues.b = 1
