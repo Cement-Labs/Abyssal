@@ -222,23 +222,39 @@ extension MenuController {
     func blurContents(
         _ value: CGFloat
     ) {
-        if value > 0 {
-            let blur = CIFilter(name: "CIGaussianBlur")
-            blur?.setValue(value, forKey: kCIInputRadiusKey)
-            
-            appTitle.animator().contentFilters      = [blur!]
-            appVersion.animator().contentFilters    = [blur!]
-            
-            // layer0__0__1.animator().contentFilters  = [blur!]
-            layer0__1__0.animator().contentFilters  = [blur!]
-            layer0__1__1.animator().contentFilters  = [blur!]
-        } else {
-            appTitle.animator().contentFilters      = []
-            appVersion.animator().contentFilters    = []
-            
-            // layer0__0__1.animator().contentFilters  = []
-            layer0__1__0.animator().contentFilters  = []
-            layer0__1__1.animator().contentFilters  = []
+        let enabled = value > 0
+        
+        if enabled {
+            self.themes.isHidden = true
+            self.feedbackIntensity.isHidden = true
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+            NSAnimationContext.runAnimationGroup({ context in
+                if enabled {
+                    let blur = CIFilter(name: "CIGaussianBlur")
+                    blur?.setValue(value, forKey: kCIInputRadiusKey)
+                    
+                    self.appTitle.animator().contentFilters      = [blur!]
+                    self.appVersion.animator().contentFilters    = [blur!]
+                    
+                    // self.layer0__0__1.animator().contentFilters  = [blur!]
+                    self.layer0__1__0.animator().contentFilters  = [blur!]
+                    self.layer0__1__1.animator().contentFilters  = [blur!]
+                } else {
+                    self.appTitle.animator().contentFilters      = []
+                    self.appVersion.animator().contentFilters    = []
+                    
+                    // self.layer0__0__1.animator().contentFilters  = []
+                    self.layer0__1__0.animator().contentFilters  = []
+                    self.layer0__1__1.animator().contentFilters  = []
+                }
+            }, completionHandler: {
+                if !enabled {
+                    self.themes.isHidden = false
+                    self.feedbackIntensity.isHidden = false
+                }
+            })
         }
     }
     
