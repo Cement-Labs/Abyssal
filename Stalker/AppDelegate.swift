@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  BarStalker
+//  Stalker
 //
 //  Created by KrLite on 2023/6/13.
 //
