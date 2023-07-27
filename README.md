@@ -35,8 +35,6 @@
   <img width="700" src="/Docs/Contents/English/Overview.png?raw=true" />
 </div>
 
-### <div><!--Empty Lines--><br /><br /></div>
-
 ### Basic Stuffs
 
 **Stalker** divides your menu bar into three areas - <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Always Hide Area-5C167F" /><img src="https://img.shields.io/badge/Always Hide Area-EFD9FF" /></picture></sub>, <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Hide Area-903150" /><img src="https://img.shields.io/badge/Hide Area-FFC9D9" /></picture></sub> and <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Visible Area-3A659E" /><img src="https://img.shields.io/badge/Visible Area-BADDFF" /></picture></sub>：
@@ -143,11 +141,11 @@ The menu items are explained as follows:
 
 Separator's appearances differ from theme to theme, and some themes will automatically hide separators, while others will not.
 
-###### Auto Hides<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-Off.png?raw=true" /><img align="right" height="12" alt="Default: Off" src="/Docs/Contents/Preferences/Light/Switch-Off.png?raw=true" /></picture>
+###### Auto Shows<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-Off.png?raw=true" /><img align="right" height="12" alt="Default: Off" src="/Docs/Contents/Preferences/Light/Switch-Off.png?raw=true" /></picture>
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-Off.png?raw=true" /><img height="12" alt="Off" src="/Docs/Contents/Preferences/Light/Switch-Off.png?raw=true" /></picture>&emsp;You will need to control the visibility of icons inside <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Hide Area-903150" /><img src="https://img.shields.io/badge/Hide Area-FFC9D9" /></picture></sub> manually.
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-On.png?raw=true" /><img height="12" alt="On" src="/Docs/Contents/Preferences/Light/Switch-On.png?raw=true" /></picture>&emsp;**Stalker** will hide icons inside <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Hide Area-903150" /><img src="https://img.shields.io/badge/Hide Area-FFC9D9" /></picture></sub> automatically when you are not using them.
+<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-On.png?raw=true" /><img height="12" alt="On" src="/Docs/Contents/Preferences/Light/Switch-On.png?raw=true" /></picture>&emsp;**Stalker** will hide icons inside <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Hide Area-903150" /><img src="https://img.shields.io/badge/Hide Area-FFC9D9" /></picture></sub> automatically when you are not using them, and show them when you need.
 
 ###### Feedback Intensity<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Slider-0.png?raw=true" /><img align="right" height="12" alt="Default: Disabled" src="/Docs/Contents/Preferences/Light/Slider-0.png?raw=true" /></picture>
 
@@ -208,8 +206,6 @@ As you **trigger** `Auto Hide`, **cancel** `Auto Hide`, **trigger** `Auto Idle` 
 ## Install & Run[^install_and_run]
 
 [^install_and_run]: [`↗ Open a Mac app from an unidentified developer`](https://support.apple.com/guide/mac-help/mh40616/mac)
-
-### <div><!--Empty Lines--><br /><br /></div>
 
 As an open-sourced and free software, **Stalker** has no ability to pay for [Apple Developer Account.](https://developer.apple.com/help/account/)Thus, you can't install **Stalker** from App Store, and you may need to allow **Stalker** to run as an unidentified app.
 
