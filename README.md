@@ -144,7 +144,7 @@ The menu items are explained as follows:
     </th>
   </tr>
   <tr>
-    <td>
+    <td align="right">
       Separator's appearances differ from theme to theme, and some themes will automatically hide separators, while others will not.
     </td>
   </tr>
@@ -157,15 +157,15 @@ The menu items are explained as follows:
     </th>
   </tr>
   <tr>
-    <td>
-      <picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-Off.png?raw=true" /><img width="20.8" alt="Off" src="/Docs/Contents/Preferences/Light/Switch-Off.png?raw=true" /></picture>
+    <td align="right">
+      <picture align="left"><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-Off.png?raw=true" /><img height="12" alt="Off" src="/Docs/Contents/Preferences/Light/Switch-Off.png?raw=true" /></picture>
       &emsp;
       You will need to control the visibility of icons inside <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Hide Area-903150" /><img src="https://img.shields.io/badge/Hide Area-FFC9D9" /></picture></sub> manually.
     </td>
   </tr>
   <tr>
-    <td>
-      <picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-On.png?raw=true" /><img width="20.8" alt="On" src="/Docs/Contents/Preferences/Light/Switch-On.png?raw=true" /></picture>
+    <td align="right">
+      <picture align="left"><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-On.png?raw=true" /><img height="12" alt="On" src="/Docs/Contents/Preferences/Light/Switch-On.png?raw=true" /></picture>
       &emsp;
       <b>Stalker</b> will hide icons inside <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Hide Area-903150" /><img src="https://img.shields.io/badge/Hide Area-FFC9D9" /></picture></sub> automatically when you are not using them, and show them when you need.
     </td>
