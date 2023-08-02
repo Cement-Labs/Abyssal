@@ -152,23 +152,21 @@ The menu items are explained as follows:
 
 <table>
   <tr>
-    <th align="left" colspan="2">
+    <th align="left">
       <h6>Auto Shows<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-Off.png?raw=true" /><img align="right" height="12" alt="Default: Off" src="/Docs/Contents/Preferences/Light/Switch-Off.png?raw=true" /></picture></h6>
     </th>
   </tr>
   <tr>
     <td>
       <picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-Off.png?raw=true" /><img width="20.8" alt="Off" src="/Docs/Contents/Preferences/Light/Switch-Off.png?raw=true" /></picture>
-    </td>
-    <td>
+      &emsp;
       <p>You will need to control the visibility of icons inside <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Hide Area-903150" /><img src="https://img.shields.io/badge/Hide Area-FFC9D9" /></picture></sub> manually.</p>
     </td>
   </tr>
   <tr>
     <td>
       <picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-On.png?raw=true" /><img width="20.8" alt="On" src="/Docs/Contents/Preferences/Light/Switch-On.png?raw=true" /></picture>
-    </td>
-    <td>
+      &emsp;
       <p><b>Stalker</b> will hide icons inside <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Hide Area-903150" /><img src="https://img.shields.io/badge/Hide Area-FFC9D9" /></picture></sub> automatically when you are not using them, and show them when you need.</p>
     </td>
   </tr>
