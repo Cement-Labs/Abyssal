@@ -137,9 +137,18 @@ The menu items are explained as follows:
 
 <br />
 
-###### Theme<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Theme.png?raw=true" /><img align="right" height="12" alt="Default: Stalker" src="/Docs/Contents/Preferences/Light/Theme.png?raw=true" /></picture>
-
-Separator's appearances differ from theme to theme, and some themes will automatically hide separators, while others will not.
+<table>
+  <tr>
+    <th align="left">
+      <h6>Theme<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Theme.png?raw=true" /><img align="right" height="12" alt="Default: Stalker" src="/Docs/Contents/Preferences/Light/Theme.png?raw=true" /></picture></h6>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <p>Separator's appearances differ from theme to theme, and some themes will automatically hide separators, while others will not.</p>
+    </td>
+  </tr>
+</table>
 
 ###### Auto Shows<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-Off.png?raw=true" /><img align="right" height="12" alt="Default: Off" src="/Docs/Contents/Preferences/Light/Switch-Off.png?raw=true" /></picture>
 
