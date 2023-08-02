@@ -172,15 +172,33 @@ The menu items are explained as follows:
   </tr>
 </table>
 
-###### Feedback Intensity<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Slider-0.png?raw=true" /><img align="right" height="12" alt="Default: Disabled" src="/Docs/Contents/Preferences/Light/Slider-0.png?raw=true" /></picture>
-
-<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Slider-0.png?raw=true" /><img height="12" alt="Disabled" src="/Docs/Contents/Preferences/Light/Slider-0.png?raw=true" /></picture>&emsp;Haptic feedback **Disabled.**
-
-<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Slider-1.png?raw=true" /><img height="12" alt="Light" src="/Docs/Contents/Preferences/Light/Slider-1.png?raw=true" /></picture>&emsp;**Light** haptic feedback intensity.
-
-<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Slider-2.png?raw=true" /><img height="12" alt="Medium" src="/Docs/Contents/Preferences/Light/Slider-2.png?raw=true" /></picture>&emsp;**Medium** haptic feedback intensity.
-
-<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Slider-3.png?raw=true" /><img height="12" alt="Heavy" src="/Docs/Contents/Preferences/Light/Slider-3.png?raw=true" /></picture>&emsp;**Heavy** haptic feedback intensity.
+<table>
+  <tr>
+    <th align="left">
+      <h6>Feedback Intensity<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Slider-0.png?raw=true" /><img align="right" height="12" alt="Default: Disabled" src="/Docs/Contents/Preferences/Light/Slider-0.png?raw=true" /></picture></h6>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Slider-0.png?raw=true" /><img height="12" alt="Disabled" src="/Docs/Contents/Preferences/Light/Slider-0.png?raw=true" /></picture>&emsp;Haptic feedback <b>Disabled.</b>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Slider-1.png?raw=true" /><img height="12" alt="Light" src="/Docs/Contents/Preferences/Light/Slider-1.png?raw=true" /></picture>&emsp;<b>Light</b> haptic feedback intensity.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Slider-2.png?raw=true" /><img height="12" alt="Medium" src="/Docs/Contents/Preferences/Light/Slider-2.png?raw=true" /></picture>&emsp;<b>Medium</b> haptic feedback intensity.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Slider-3.png?raw=true" /><img height="12" alt="Heavy" src="/Docs/Contents/Preferences/Light/Slider-3.png?raw=true" /></picture>&emsp;<b>Heavy</b> haptic feedback intensity.
+    </td>
+  </tr>
+</table>
 
 > Due to the limitations of macOS, you may not feel a strong haptic feedback.
 
