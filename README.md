@@ -206,7 +206,8 @@ The menu items are explained as follows:
 
 <table>
   <tr>
-    <th align="left">Use Always Hide Area<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-Off.png?raw=true" /><img align="right" height="12" alt="Default: Off" src="/Docs/Contents/Preferences/Light/Switch-Off.png?raw=true" /></picture>
+    <th align="left">
+      <h6>Use Always Hide Area<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-Off.png?raw=true" /><img align="right" height="12" alt="Default: Off" src="/Docs/Contents/Preferences/Light/Switch-Off.png?raw=true" /></picture></h6>
     </th>
   </tr>
   <tr>
@@ -224,7 +225,7 @@ The menu items are explained as follows:
 <table>
   <tr>
     <th align="left">
-      Reduce Animation<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-Off.png?raw=true" /><img align="right" height="12" alt="Default: Off" src="/Docs/Contents/Preferences/Light/Switch-Off.png?raw=true" /></picture>
+      <h6>Reduce Animation<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-Off.png?raw=true" /><img align="right" height="12" alt="Default: Off" src="/Docs/Contents/Preferences/Light/Switch-Off.png?raw=true" /></picture></h6>
     </th>
   </tr>
   <tr>
