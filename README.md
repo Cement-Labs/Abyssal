@@ -24,7 +24,7 @@
 
 ### <div><!--Empty Lines--><br /><br /></div>
 
-> ***Note***&emsp;
+> **Note**
 > **Stalker** requires **macOS 12.0 Monterey**[^check_your_macos_version] and above.
 
 [^check_your_macos_version]: [`↗ Find out which macOS your Mac is using`](https://support.apple.com/en-us/HT201260)
