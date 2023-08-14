@@ -227,6 +227,10 @@ class Helper {
     
     class Mouse {
         
+        static var none: Bool {
+            return NSEvent.pressedMouseButtons == 0;
+        }
+        
         static var left: Bool {
             return NSEvent.pressedMouseButtons & 0x1 == 1
         }

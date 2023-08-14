@@ -13,6 +13,8 @@ class StatusBarController {
     
     var available: Bool = false
     
+    var edge: CGFloat = 0
+    
     var alphaValues: (h: CGFloat, b: CGFloat, t: CGFloat) = (h: 0, b: 0, t: 0)
     
     var lengths: (h: CGFloat, b: CGFloat, t: CGFloat) = (h: 0, b: 0, t: 0)
@@ -41,8 +43,7 @@ class StatusBarController {
     }
     
     var mouseSpare: Bool {
-        // Needed to be improved
-        return mouseOnStatusBar
+        return mouseOnStatusBar && NSEvent.mouseLocation.x <= edge
     }
     
     var mouseOverHead: Bool {
@@ -191,6 +192,10 @@ extension StatusBarController {
                                  _seps.firstIndex(of: currentSeps[1]),
                                  _seps.firstIndex(of: currentSeps[2])]
         Data.sepsOrder = sepsOrder
+    }
+    
+    func updateEdge() {
+        edge = (body.button?.window?.frame.origin.x ?? 0) + (body.button?.window?.frame.width ?? 0) + (mouseSpare ? 4 : -8)
     }
     
 }
