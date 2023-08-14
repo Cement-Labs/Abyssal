@@ -212,7 +212,7 @@ The menu items are explained as follows:
   </tr>
   <tr>
     <td>
-      <picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-Off.png?raw=true" /><img height="12" alt="Off" src="/Docs/Contents/Preferences/Light/Switch-Off.png?raw=true" /></picture>&emsp;<b>Completely disbble</b> <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Always Hide Area-5C167F" /><img src="https://img.shields.io/badge/Always Hide Area-EFD9FF" /></picture></sub> and <b>completely hide</b> <code>Always Hide Separator</code>&ensp;<sub><picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Icons/Dark/DottedLine.png?raw=true" /><img height="17" src="/Docs/Contents/Icons/Light/DottedLine.png?raw=true" /></picture></sub>.
+      <picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-Off.png?raw=true" /><img height="12" alt="Off" src="/Docs/Contents/Preferences/Light/Switch-Off.png?raw=true" /></picture>&emsp;<b>Completely disable</b> <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Always Hide Area-5C167F" /><img src="https://img.shields.io/badge/Always Hide Area-EFD9FF" /></picture></sub> and <b>completely hide</b> <code>Always Hide Separator</code>&ensp;<sub><picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Icons/Dark/DottedLine.png?raw=true" /><img height="17" src="/Docs/Contents/Icons/Light/DottedLine.png?raw=true" /></picture></sub>.
     </td>
   </tr>
   <tr>
