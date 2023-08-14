@@ -410,7 +410,7 @@ Choose <code>Open</code>
           <b>芯梢</b>
           <br />
           <sup>
-            Tests & Images
+            Tests & Screenshots
           </sup>
         </td>
       </tr>
