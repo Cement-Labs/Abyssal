@@ -290,7 +290,7 @@ As an open-sourced and free software, **Stalker** has no ability to pay for [App
 
 ### Steps to Follow
 
-> ***Note***&emsp;
+> **Note**
 > You can download the installing disk image of **Stalker** only from [Releases](https://github.com?KrLite/Stalker/releases) page manually for now.
 
 <h6>
