@@ -140,7 +140,7 @@ The menu items are explained as follows:
 <table>
   <tr>
     <th align="left">
-      <h6>Theme<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Theme.png?raw=true" /><img align="right" height="12" alt="Default: Stalker" src="/Docs/Contents/Preferences/Light/Theme.png?raw=true" /></picture></h6>
+      <h6>Theme<sup><picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Theme.png?raw=true" /><img align="right" height="18" alt="Default: Stalker" src="/Docs/Contents/Preferences/Light/Theme.png?raw=true" /></picture></sup></h6>
     </th>
   </tr>
   <tr>
