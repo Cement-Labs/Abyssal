@@ -12,7 +12,7 @@ class Themes {
     
     class Theme: Equatable {
         
-        static let EMPTY: NSImage? = NSImage(named: NSImage.Name("Empty"))
+        static let EMPTY: NSImage = NSImage(named: NSImage.Name("Empty"))!
         
         
         
@@ -20,15 +20,17 @@ class Themes {
         
         let identifier: String
         
+        let icon: NSImage
         
         
-        let headUncollapsed: 	NSImage?
         
-        let headCollapsed: 		NSImage?
+        let headUncollapsed: 	NSImage
         
-        let separator: 			NSImage?
+        let headCollapsed: 		NSImage
         
-        let tail:				NSImage?
+        let separator: 			NSImage
+        
+        let tail:				NSImage
         
         
         
@@ -41,6 +43,7 @@ class Themes {
         init(
             _ name: String,
             _ identifier: String,
+            _ icon: String? = nil,
             
             headUncollapsed: 	String?,
             headCollapsed: 		String?,
@@ -54,14 +57,16 @@ class Themes {
             self.name = name
             self.identifier = identifier
             
-            self.headUncollapsed 	= headUncollapsed 	!= nil ? NSImage(named: NSImage.Name(headUncollapsed!)) 	: Theme.EMPTY
-            self.headCollapsed 		= headCollapsed 	!= nil ? NSImage(named: NSImage.Name(headCollapsed!)) 		: Theme.EMPTY
-            self.separator 			= separator 		!= nil ? NSImage(named: NSImage.Name(separator!)) 			: Theme.EMPTY
-            self.tail 				= tail 				!= nil ? NSImage(named: NSImage.Name(tail!)) 				: Theme.EMPTY
+            self.headUncollapsed 	= (headUncollapsed  != nil ? NSImage(named: NSImage.Name(headUncollapsed!)) : Theme.EMPTY) ?? Theme.EMPTY
+            self.headCollapsed 		= (headCollapsed    != nil ? NSImage(named: NSImage.Name(headCollapsed!))   : Theme.EMPTY) ?? Theme.EMPTY
+            self.separator 			= (separator        != nil ? NSImage(named: NSImage.Name(separator!))       : Theme.EMPTY) ?? Theme.EMPTY
+            self.tail 				= (tail             != nil ? NSImage(named: NSImage.Name(tail!))            : Theme.EMPTY) ?? Theme.EMPTY
             
             self.iconWidth 		= iconWidth
             self.iconWidthAlt 	= iconWidthAlt
             self.autoHideIcons 	= autoHideIcons
+            
+            self.icon = (icon != nil ? NSImage(named: NSImage.Name(icon!)) : self.headUncollapsed) ?? Theme.EMPTY
         }
         
         static func == (
@@ -98,7 +103,7 @@ class Themes {
         String(
             localized: 	"Stalker",
             comment: 	"Name for theme 'Stalker'"
-        ), "stalker",
+        ), "stalker", "Stalker/DottedLine",
         headUncollapsed: 	"Stalker/Dot",
         headCollapsed: 		"Stalker/Dot",
         separator: 			"Stalker/Line",

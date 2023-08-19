@@ -67,9 +67,15 @@ class MenuController: NSViewController, NSMenuDelegate {
     
     @IBOutlet weak var themes: NSPopUpButton!
     
-    @IBOutlet weak var useAlwaysHideArea:   NSSwitch!
+    @IBOutlet weak var useAlwaysHideArea: NSSwitch!
     
-    @IBOutlet weak var reduceAnimation:     NSSwitch!
+    @IBOutlet weak var reduceAnimation: NSSwitch!
+    
+    // MARK: - Dispatch Work Items
+    
+    var blurDispatch: DispatchWorkItem?
+    
+    var unblurDispatch: DispatchWorkItem?
     
     // MARK: - View Methods
     
@@ -127,6 +133,7 @@ class MenuController: NSViewController, NSMenuDelegate {
 
 extension MenuController {
     
+    /*
     // MARK: - Themes Menu Delegate
     
     @objc func menuDidClose(
@@ -139,6 +146,7 @@ extension MenuController {
             Helper.switchToTheme(index)
         }
     }
+     */
     
 }
 
@@ -165,30 +173,56 @@ extension MenuController {
     
 }
 
+var indexKey = UnsafeRawPointer(bitPattern: "indexKey".hashValue)
+
 extension MenuController {
+    
+    @objc func switchToTheme(
+        _ sender: Any
+    ) {
+        if
+            let button = sender as? NSMenuItem,
+            let index = objc_getAssociatedObject(button, &indexKey) as? Int
+        {
+            Helper.switchToTheme(index)
+        }
+    }
     
     func updateData() {
         // Init themes menu
         
         do {
-            themes.removeAllItems()
-            themes.addItems(withTitles: Themes.themeNames)
-            themes.menu?.delegate = self
+            for (index, theme) in Themes.themes.enumerated() {
+                let item: NSMenuItem = NSMenuItem(
+                    title: Themes.themeNames[index],
+                    action: #selector(self.switchToTheme(_:)),
+                    keyEquivalent: ""
+                )
+                
+                item.image = theme.icon
+                objc_setAssociatedObject(item, &indexKey, index, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+                
+                self.themesMenu.addItem(item)
+            }
+            
+            self.themes.removeAllItems()
+            self.themes.menu = self.themesMenu
+            self.themes.menu?.delegate = self
             
             if let index = Themes.themes.firstIndex(of: Data.theme) {
-                themes.selectItem(at: index)
+                self.themes.selectItem(at: index)
             }
             
             /* Deprecated
              
             var maxWidth: CGFloat = 0
-            if let menu = themes.menu {
+            if let menu = self.themes.menu {
                 for item in menu.items {
                     let size = NSAttributedString(string: item.title).size()
                     maxWidth = max(maxWidth, size.width)
                 }
                 
-                themes.widthAnchor.constraint(equalToConstant: maxWidth + 65).isActive = true
+                self.themes.widthAnchor.constraint(equalToConstant: maxWidth + 65).isActive = true
             }
              
              */
@@ -225,8 +259,14 @@ extension MenuController {
         let enabled = value > 0
         
         if enabled {
+            self.unblurDispatch?.cancel()
+            
+            self.themes.animator().alphaValue = 0
+            self.feedbackIntensity.animator().alphaValue = 0
+            /*
             self.themes.isHidden = true
             self.feedbackIntensity.isHidden = true
+             */
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
@@ -251,8 +291,12 @@ extension MenuController {
                 }
             }, completionHandler: {
                 if !enabled {
+                    self.themes.animator().alphaValue = 1
+                    self.feedbackIntensity.animator().alphaValue = 1
+                    /*
                     self.themes.isHidden = false
                     self.feedbackIntensity.isHidden = false
+                     */
                 }
             })
         }
@@ -309,6 +353,56 @@ extension MenuController {
 }
 
 extension MenuController {
+    // MARK: - Dispatch Work Item Wrappers
+    
+    func createBlurDispatch(
+        _ area: String
+    ) {
+        self.blurDispatch = DispatchWorkItem { [area] in
+            switch area {
+            case "quitApp":
+                
+                self.blurContents(16)
+                
+            case "link":
+                
+                self.blurContents(16)
+                
+            case "minimize":
+                
+                self.blurContents(16)
+                
+            default:
+                break
+            }
+        }
+    }
+    
+    func createUnblurDispatch(
+        _ area: String
+    ) {
+        self.unblurDispatch = DispatchWorkItem { [area] in
+            switch area {
+            case "quitApp":
+                
+                self.blurContents(0)
+                
+            case "link":
+                
+                self.blurContents(0)
+                
+            case "minimize":
+                
+                self.blurContents(0)
+                
+            default:
+                break
+            }
+        }
+    }
+}
+
+extension MenuController {
     
     // MARK: - Tracking Areas
     
@@ -318,24 +412,26 @@ extension MenuController {
         super.mouseEntered(with: event)
         
         if let userInfo = event.trackingArea?.userInfo as? [String : String], let area = userInfo["area"] {
-            switch area {
-            case "quitApp":
-                
-                blurContents(16)
-                activateQuitApp(true)
-                
-            case "link":
-                
-                blurContents(16)
-                activateLink(true)
-                
-            case "minimize":
-                
-                blurContents(16)
-                activateMinimize(true)
-                
-            default:
-                break
+            self.createBlurDispatch(area)
+            blurDispatch?.perform()
+            
+            DispatchQueue.main.async {
+                switch area {
+                case "quitApp":
+                    
+                    self.activateQuitApp(true)
+                    
+                case "link":
+                    
+                    self.activateLink(true)
+                    
+                case "minimize":
+                    
+                    self.activateMinimize(true)
+                    
+                default:
+                    break
+                }
             }
         }
     }
@@ -346,24 +442,26 @@ extension MenuController {
         super.mouseEntered(with: event)
         
         if let userInfo = event.trackingArea?.userInfo as? [String : String], let area = userInfo["area"] {
-            switch area {
-            case "quitApp":
-                
-                blurContents(0)
-                activateQuitApp(false)
-                
-            case "link":
-                
-                blurContents(0)
-                activateLink(false)
-                
-            case "minimize":
-                
-                blurContents(0)
-                activateMinimize(false)
-                
-            default:
-                break
+            self.createUnblurDispatch(area)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25, execute: self.unblurDispatch ?? DispatchWorkItem {})
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                switch area {
+                case "quitApp":
+                    
+                    self.activateQuitApp(false)
+                    
+                case "link":
+                    
+                    self.activateLink(false)
+                    
+                case "minimize":
+                    
+                    self.activateMinimize(false)
+                    
+                default:
+                    break
+                }
             }
         }
     }

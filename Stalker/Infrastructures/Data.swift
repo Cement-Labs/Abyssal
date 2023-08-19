@@ -95,7 +95,7 @@ public enum Data {
         case 2:
             return [.generic, nil, nil, .alignment]
         case 3:
-            return [.alignment, .generic, nil, nil, nil, nil, nil, .levelChange]
+            return [.levelChange, .alignment, nil, nil, nil, nil, .levelChange]
         default:
             return []
         }
