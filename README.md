@@ -24,7 +24,7 @@
 
 ### <div><!--Empty Lines--><br /><br /></div>
 
-> **Note**
+> [!NOTE]
 > **Stalker** requires **macOS 12.0 Monterey**[^check_your_macos_version] and above.
 
 [^check_your_macos_version]: [`↗ Find out which macOS your Mac is using`](https://support.apple.com/en-us/HT201260)
@@ -290,7 +290,7 @@ As an open-sourced and free software, **Stalker** has no ability to pay for [App
 
 ### Steps to Follow
 
-> **Note**
+> [!NOTE]
 > You can download the installing disk image of **Stalker** only from [Releases](https://github.com?KrLite/Stalker/releases) page manually for now.
 
 <h6>
