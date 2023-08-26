@@ -286,7 +286,7 @@ As you **trigger** `Auto Hide`, **cancel** `Auto Hide`, **trigger** `Auto Idle` 
 
 [^install_and_run]: [`↗ Open a Mac app from an unidentified developer`](https://support.apple.com/guide/mac-help/mh40616/mac)
 
-As an open-sourced and free software, **Stalker** has no ability to pay for [Apple Developer Account.](https://developer.apple.com/help/account/)Thus, you can't install **Stalker** from App Store, and you may need to allow **Stalker** to run as an unidentified app.
+As an open-source and free software, **Stalker** has no ability to pay for [Apple Developer Account.](https://developer.apple.com/help/account/)Thus, you can't install **Stalker** from App Store, and you may need to allow **Stalker** to run as an unidentified app.
 
 ### Steps to Follow
 
