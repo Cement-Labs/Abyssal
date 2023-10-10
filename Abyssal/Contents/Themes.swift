@@ -12,10 +12,6 @@ class Themes {
     
     class Theme: Equatable {
         
-        static let EMPTY: NSImage = NSImage(named: NSImage.Name("Themes/Empty"))!
-        
-        
-        
         let name: String
         
         let identifier: String
@@ -45,28 +41,30 @@ class Themes {
             _ identifier: String,
             _ icon: String? = nil,
             
-            headUncollapsed: 	String?,
-            headCollapsed: 		String?,
-            separator: 			String?,
-            tail: 				String?,
+            headUncollapsed: 	String,
+            headCollapsed: 		String? = nil,
+            separator: 			String,
+            tail: 				String,
             
             iconWidth:		CGFloat,
             iconWidthAlt:	CGFloat,
             autoHideIcons: 	Bool
         ) {
+            let prefix = "Themes/" + identifier + "/"
+            
             self.name = name
             self.identifier = identifier
             
-            self.headUncollapsed 	= (headUncollapsed  != nil ? NSImage(named: NSImage.Name(headUncollapsed!)) : Theme.EMPTY) ?? Theme.EMPTY
-            self.headCollapsed 		= (headCollapsed    != nil ? NSImage(named: NSImage.Name(headCollapsed!))   : Theme.EMPTY) ?? Theme.EMPTY
-            self.separator 			= (separator        != nil ? NSImage(named: NSImage.Name(separator!))       : Theme.EMPTY) ?? Theme.EMPTY
-            self.tail 				= (tail             != nil ? NSImage(named: NSImage.Name(tail!))            : Theme.EMPTY) ?? Theme.EMPTY
+            self.headUncollapsed 	= NSImage(named: NSImage.Name(prefix + headUncollapsed))!
+            self.headCollapsed 		= NSImage(named: NSImage.Name(prefix + (headCollapsed ?? headUncollapsed)))!
+            self.separator 			= NSImage(named: NSImage.Name(prefix + separator))!
+            self.tail 				= NSImage(named: NSImage.Name(prefix + tail))!
             
             self.iconWidth 		= iconWidth
             self.iconWidthAlt 	= iconWidthAlt
             self.autoHideIcons 	= autoHideIcons
             
-            self.icon = (icon != nil ? NSImage(named: NSImage.Name(icon!)) : self.headUncollapsed) ?? Theme.EMPTY
+            self.icon = NSImage(named: NSImage.Name(prefix + (icon ?? headUncollapsed)))!
         }
         
         static func == (
@@ -103,11 +101,10 @@ class Themes {
         String(
             localized: 	"Abyssal",
             comment: 	"Name for theme 'Abyssal'"
-        ), "abyssal", "Themes/Abyssal/DottedLine",
-        headUncollapsed: 	"Themes/Abyssal/Dot",
-        headCollapsed: 		"Themes/Abyssal/Dot",
-        separator: 			"Themes/Abyssal/Line",
-        tail: 				"Themes/Abyssal/DottedLine",
+        ), "Abyssal", "DottedLine",
+        headUncollapsed: 	"Dot",
+        separator: 			"Line",
+        tail: 				"DottedLine",
         
         iconWidth: 2, iconWidthAlt: 10,
         autoHideIcons: true
@@ -117,11 +114,11 @@ class Themes {
         String(
             localized: 	"Hidden Bar",
             comment: 	"Name for theme 'Hidden Bar'"
-        ), "hiddenBar",
-        headUncollapsed: 	"Themes/HiddenBar/ic_left",
-        headCollapsed: 		"Themes/HiddenBar/ic_right",
-        separator: 			"Themes/HiddenBar/ic_line",
-        tail: 				"Themes/HiddenBar/ic_line_translucent",
+        ), "HiddenBar",
+        headUncollapsed: 	"ic_left",
+        headCollapsed: 		"ic_right",
+        separator: 			"ic_line",
+        tail: 				"ic_line_translucent",
         
         iconWidth: 20, iconWidthAlt: 32,
         autoHideIcons: false
@@ -131,11 +128,11 @@ class Themes {
         String(
             localized: 	"Approaching",
             comment: 	"Name for theme 'Approaching'"
-        ), "approaching",
-        headUncollapsed: 	"Themes/Approaching/Primary",
-        headCollapsed: 		"Themes/Approaching/Primary",
-        separator: 			"Themes/Approaching/Secondary",
-        tail: 				"Themes/Approaching/Tertiary",
+        ), "Approaching",
+        headUncollapsed: 	"Primary",
+        headCollapsed: 		"Primary",
+        separator: 			"Secondary",
+        tail: 				"Tertiary",
         
         iconWidth: 8, iconWidthAlt: 16,
         autoHideIcons: true
@@ -145,11 +142,10 @@ class Themes {
         String(
             localized: 	"Metres Away",
             comment: 	"Name for theme 'Metres Away'"
-        ), "metresAway",
-        headUncollapsed: 	"Themes/MetresAway/Line",
-        headCollapsed: 		"Themes/MetresAway/Line",
-        separator: 			"Themes/MetresAway/MetreLine",
-        tail: 				"Themes/MetresAway/MetreLine",
+        ), "MetresAway",
+        headUncollapsed: 	"Line",
+        separator: 			"MetreLine",
+        tail: 				"MetreLine",
         
         iconWidth: 3, iconWidthAlt: 32,
         autoHideIcons: false
@@ -159,11 +155,11 @@ class Themes {
         String(
             localized: 	"Electrodiagram",
             comment: 	"Name for theme 'Electrodiagram'"
-        ), "electrodiagram",
-        headUncollapsed: 	"Themes/Electrodiagram/DiagramHead",
-        headCollapsed: 		"Themes/Electrodiagram/DiagramHead",
-        separator: 			"Themes/Electrodiagram/Diagram",
-        tail: 				"Themes/Electrodiagram/DiagramTail",
+        ), "Electrodiagram",
+        headUncollapsed: 	"DiagramHead",
+        headCollapsed: 		"DiagramHead",
+        separator: 			"Diagram",
+        tail: 				"DiagramTail",
         
         iconWidth: 1, iconWidthAlt: 18,
         autoHideIcons: false
@@ -173,11 +169,11 @@ class Themes {
         String(
             localized: 	"Droplets",
             comment: 	"Name for theme 'Droplets'"
-        ), "droplets",
-        headUncollapsed: 	"Themes/Droplets/Drops",
-        headCollapsed: 		"Themes/Droplets/Drops",
-        separator: 			"Themes/Droplets/LDrop",
-        tail: 				"Themes/Droplets/MDrop",
+        ), "Droplets",
+        headUncollapsed: 	"Drops",
+        headCollapsed: 		"Drops",
+        separator: 			"LDrop",
+        tail: 				"MDrop",
         
         iconWidth: 6, iconWidthAlt: 22,
         autoHideIcons: false
@@ -187,11 +183,11 @@ class Themes {
         String(
             localized: 	"Codec",
             comment: 	"Name for theme 'Codec'"
-        ), "codec",
-        headUncollapsed: 	"Themes/Codec/R",
-        headCollapsed: 		"Themes/Codec/R",
-        separator: 			"Themes/Codec/L",
-        tail: 				"Themes/Codec/P",
+        ), "Codec",
+        headUncollapsed: 	"R",
+        headCollapsed: 		"R",
+        separator: 			"L",
+        tail: 				"P",
         
         iconWidth: 16, iconWidthAlt: 24,
         autoHideIcons: false
@@ -201,11 +197,11 @@ class Themes {
         String(
             localized: 	"Not So Happy",
             comment: 	"Name for theme 'Not So Happy'"
-        ), "notSoHappy",
-        headUncollapsed: 	"Themes/NotSoHappy/Sad",
-        headCollapsed: 		"Themes/NotSoHappy/Happy",
-        separator: 			"Themes/NotSoHappy/Pale",
-        tail: 				"Themes/NotSoHappy/Amazed",
+        ), "NotSoHappy",
+        headUncollapsed: 	"Sad",
+        headCollapsed: 		"Happy",
+        separator: 			"Pale",
+        tail: 				"Amazed",
         
         iconWidth: 14, iconWidthAlt: 32,
         autoHideIcons: false

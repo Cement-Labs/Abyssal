@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22146"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -46,9 +47,9 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pCf-B4-yM6">
-                                                    <rect key="frame" x="-2" y="220" width="252" height="16"/>
+                                                    <rect key="frame" x="-2" y="218" width="252" height="16"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="App Version" id="0hG-A1-HMr">
-                                                        <font key="font" size="13" name="Bison-Bold"/>
+                                                        <font key="font" metaFont="systemBlack" size="13"/>
                                                         <color key="textColor" name="Colors/Border"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
@@ -60,19 +61,20 @@
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <box boxType="custom" cornerRadius="10" title="Layer 0.0.0.0" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="mER-wL-Lkb">
-                                                                <rect key="frame" x="0.0" y="0.0" width="82" height="25"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="87" height="25"/>
                                                                 <view key="contentView" id="ZrD-yh-0Yo">
-                                                                    <rect key="frame" x="1" y="1" width="80" height="23"/>
+                                                                    <rect key="frame" x="1" y="1" width="85" height="23"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <button horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="HAQ-jG-9LD">
-                                                                            <rect key="frame" x="6" y="0.0" width="68" height="23"/>
-                                                                            <buttonCell key="cell" type="bevel" title="Quit app" bezelStyle="rounded" image="xmark" catalog="system" imagePosition="leading" alignment="right" imageScaling="proportionallyDown" inset="2" id="BCa-un-ZBt">
+                                                                            <rect key="frame" x="6" y="0.0" width="73" height="23"/>
+                                                                            <buttonCell key="cell" type="bevel" title="Quit app" bezelStyle="rounded" imagePosition="leading" alignment="right" imageScaling="proportionallyDown" inset="2" id="BCa-un-ZBt">
                                                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                                <font key="font" size="13" name="OverpassNF-SemBd"/>
+                                                                                <font key="font" metaFont="systemBold"/>
+                                                                                <imageReference key="image" image="xmark" catalog="system" symbolScale="default" variableValue="0.80000000000000004"/>
                                                                             </buttonCell>
                                                                             <color key="contentTintColor" name="Colors/Opaque/Danger"/>
-                                                                            <symbolConfiguration key="symbolConfiguration" weight="semibold">
+                                                                            <symbolConfiguration key="symbolConfiguration" weight="bold">
                                                                                 <nil key="locale"/>
                                                                             </symbolConfiguration>
                                                                             <connections>
@@ -100,13 +102,13 @@
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <subviews>
                                                                                 <button translatesAutoresizingMaskIntoConstraints="NO" id="g26-46-pvb">
-                                                                                    <rect key="frame" x="0.0" y="-3.5" width="23" height="31"/>
+                                                                                    <rect key="frame" x="0.0" y="-4" width="23" height="31"/>
                                                                                     <buttonCell key="cell" type="bevel" title="Layer 0.0.0.1 Button 0" bezelStyle="rounded" image="link" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="YHc-dN-U9E">
                                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                         <font key="font" metaFont="system"/>
                                                                                     </buttonCell>
                                                                                     <color key="contentTintColor" name="Colors/Opaque/Hyper"/>
-                                                                                    <symbolConfiguration key="symbolConfiguration" weight="semibold">
+                                                                                    <symbolConfiguration key="symbolConfiguration" weight="bold">
                                                                                         <nil key="locale"/>
                                                                                     </symbolConfiguration>
                                                                                     <connections>
@@ -140,7 +142,7 @@
                                                                                         <font key="font" metaFont="system"/>
                                                                                     </buttonCell>
                                                                                     <color key="contentTintColor" name="Colors/Opaque/Safe"/>
-                                                                                    <symbolConfiguration key="symbolConfiguration" weight="semibold">
+                                                                                    <symbolConfiguration key="symbolConfiguration" weight="bold">
                                                                                         <nil key="locale"/>
                                                                                     </symbolConfiguration>
                                                                                     <connections>
@@ -239,7 +241,7 @@
                                                 </box>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="pCf-B4-yM6" firstAttribute="top" secondItem="3oE-Id-0vv" secondAttribute="bottom" constant="-2" id="1Ma-HL-xY4"/>
+                                                <constraint firstItem="pCf-B4-yM6" firstAttribute="top" secondItem="3oE-Id-0vv" secondAttribute="bottom" id="1Ma-HL-xY4"/>
                                                 <constraint firstItem="tjw-3h-pt1" firstAttribute="top" secondItem="Ay4-EN-hEN" secondAttribute="bottom" constant="20" id="3Sk-AZ-y8U"/>
                                                 <constraint firstItem="3oE-Id-0vv" firstAttribute="leading" secondItem="Nus-iP-k6G" secondAttribute="leading" constant="20" id="BuU-S6-Z4I"/>
                                                 <constraint firstItem="Ay4-EN-hEN" firstAttribute="leading" secondItem="Nus-iP-k6G" secondAttribute="leading" id="J1K-Ny-XbO"/>

@@ -11,11 +11,13 @@ import AppKit
 
 class Helper {
     
-    static let SOURCE_CODE_URL: URL 	= URL(string: "https://github.com/NNN-Studio/Abyssal")!
+    static let REPO_PATH: String = "NNN-Studio/Abyssal"
     
-    static let RELEASE_URL: URL 		= URL(string: "https://github.com/NNN-Studio/Abyssal/releases")!
+    static let SOURCE_CODE_URL: URL 	= URL(string: "https://github.com/" + REPO_PATH)!
     
-    static let RELEASE_TAGS_URL: URL 	= URL(string: "https://api.github.com/repos/NNN-Studio/Abyssal/tags")!
+    static let RELEASE_URL: URL 		= URL(string: "https://github.com/" + REPO_PATH + "/releases")!
+    
+    static let RELEASE_TAGS_URL: URL 	= URL(string: "https://api.github.com/repos/" + REPO_PATH + "/tags")!
     
     static let CHECK_NEWER_VERSION_TASK = URLSession.shared.dataTask(with: RELEASE_TAGS_URL) { (data, response, error) in
         guard let data = data else { return }
