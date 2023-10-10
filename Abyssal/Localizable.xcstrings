@@ -1,0 +1,98 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Abyssal" : {
+      "comment" : "Name for theme 'Abyssal'"
+    },
+    "Approaching" : {
+      "comment" : "Name for theme 'Approaching'",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "降临"
+          }
+        }
+      }
+    },
+    "Codec" : {
+      "comment" : "Name for theme 'Codec'",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "调制、解调"
+          }
+        }
+      }
+    },
+    "Droplets" : {
+      "comment" : "Name for theme 'Droplets'",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "点与滴 "
+          }
+        }
+      }
+    },
+    "Electrodiagram" : {
+      "comment" : "Name for theme 'Electrodiagram'",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "心电图"
+          }
+        }
+      }
+    },
+    "Hidden Bar" : {
+      "comment" : "Name for theme 'Hidden Bar'",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hidden Bar"
+          }
+        }
+      }
+    },
+    "Metres Away" : {
+      "comment" : "Name for theme 'Metres Away'",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "咫尺之外"
+          }
+        }
+      }
+    },
+    "Not So Happy" : {
+      "comment" : "Name for theme 'Not So Happy'",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "坏心情"
+          }
+        }
+      }
+    },
+    "Stalker" : {
+      "comment" : "Name for theme 'Stalker'",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "深渊"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
