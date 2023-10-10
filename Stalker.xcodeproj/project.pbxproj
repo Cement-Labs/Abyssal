@@ -30,7 +30,7 @@
 /* Begin PBXFileReference section */
 		283B13952A558B1500205A84 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		C63B40522A4060E400BCAE79 /* NSStatusItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSStatusItem+Extension.swift"; sourceTree = "<group>"; };
-		C66CABA02A38871500E4D8E6 /* Stalker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stalker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C66CABA02A38871500E4D8E6 /* Abyssal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Abyssal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C66CABA32A38871500E4D8E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C66CABA72A38871500E4D8E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C66CABAA2A38871500E4D8E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -74,7 +74,7 @@
 		C66CABA12A38871500E4D8E6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C66CABA02A38871500E4D8E6 /* Stalker.app */,
+				C66CABA02A38871500E4D8E6 /* Abyssal.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -146,9 +146,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C66CAB9F2A38871500E4D8E6 /* Stalker */ = {
+		C66CAB9F2A38871500E4D8E6 /* Abyssal */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C66CABAF2A38871500E4D8E6 /* Build configuration list for PBXNativeTarget "Stalker" */;
+			buildConfigurationList = C66CABAF2A38871500E4D8E6 /* Build configuration list for PBXNativeTarget "Abyssal" */;
 			buildPhases = (
 				C66CAB9C2A38871500E4D8E6 /* Sources */,
 				C66CAB9D2A38871500E4D8E6 /* Frameworks */,
@@ -158,12 +158,12 @@
 			);
 			dependencies = (
 			);
-			name = Stalker;
+			name = Abyssal;
 			packageProductDependencies = (
 				C66F02AE2A3B5B4D00077CE3 /* LaunchAtLogin */,
 			);
 			productName = BarStalker;
-			productReference = C66CABA02A38871500E4D8E6 /* Stalker.app */;
+			productReference = C66CABA02A38871500E4D8E6 /* Abyssal.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -198,7 +198,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C66CAB9F2A38871500E4D8E6 /* Stalker */,
+				C66CAB9F2A38871500E4D8E6 /* Abyssal */,
 			);
 		};
 /* End PBXProject section */
@@ -307,7 +307,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -365,7 +365,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -387,7 +387,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Stalker/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Stalker;
+				INFOPLIST_KEY_CFBundleDisplayName = Abyssal;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -399,7 +399,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 2.2.1;
-				PRODUCT_BUNDLE_IDENTIFIER = net.krlite.Stalker;
+				PRODUCT_BUNDLE_IDENTIFIER = studio.nnn.Abyssal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -420,7 +420,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Stalker/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Stalker;
+				INFOPLIST_KEY_CFBundleDisplayName = Abyssal;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -432,7 +432,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 2.2.1;
-				PRODUCT_BUNDLE_IDENTIFIER = net.krlite.Stalker;
+				PRODUCT_BUNDLE_IDENTIFIER = studio.nnn.Abyssal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -451,7 +451,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C66CABAF2A38871500E4D8E6 /* Build configuration list for PBXNativeTarget "Stalker" */ = {
+		C66CABAF2A38871500E4D8E6 /* Build configuration list for PBXNativeTarget "Abyssal" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C66CABB02A38871500E4D8E6 /* Debug */,
