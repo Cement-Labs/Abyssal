@@ -9,37 +9,11 @@ import Cocoa
 
 class MenuController: NSViewController, NSMenuDelegate {
     
-    var quitAppTrackingArea:    NSTrackingArea?
-    
-    var linkTrackingArea:       NSTrackingArea?
-    
-    var minimizeTrackingArea:   NSTrackingArea?
-    
     let themesMenu: NSMenu = NSMenu()
     
     // MARK: - Outlets
     
     @IBOutlet var main: NSView!
-    
-    @IBOutlet weak var layer0__0__1: NSView!
-    
-    @IBOutlet weak var layer0__1__0: NSBox!
-    
-    @IBOutlet weak var layer0__1__1: NSBox!
-    
-    
-    
-    @IBOutlet weak var layer0__0__0__0: NSBox!
-    
-    @IBOutlet weak var layer0__0__0__1: NSBox!
-    
-    @IBOutlet weak var layer0__0__0__2: NSBox!
-    
-    @IBOutlet weak var quitApp: NSButton!
-    
-    @IBOutlet weak var link: NSButton!
-    
-    @IBOutlet weak var minimize: NSButton!
     
     
     
@@ -90,34 +64,6 @@ class MenuController: NSViewController, NSMenuDelegate {
         } else {
             appVersion.isHidden = true
         }
-        
-        quitAppTrackingArea = NSTrackingArea(
-            rect: quitAppView.bounds,
-            options: [.activeInActiveApp,
-                      .mouseEnteredAndExited],
-            owner: self,
-            userInfo: ["area": "quitApp"]
-        )
-        
-        linkTrackingArea = NSTrackingArea(
-            rect: linkView.bounds,
-            options: [.activeInActiveApp,
-                      .mouseEnteredAndExited],
-            owner: self,
-            userInfo: ["area": "link"]
-        )
-        
-        minimizeTrackingArea = NSTrackingArea(
-            rect: minimizeView.bounds,
-            options: [.activeInActiveApp,
-                      .mouseEnteredAndExited],
-            owner: self,
-            userInfo: ["area": "minimize"]
-        )
-        
-        quitAppView.addTrackingArea(quitAppTrackingArea!)
-        linkView.addTrackingArea(linkTrackingArea!)
-        minimizeView.addTrackingArea(minimizeTrackingArea!)
     }
     
     override func viewDidAppear() {
@@ -128,25 +74,6 @@ class MenuController: NSViewController, NSMenuDelegate {
     override func viewWillDisappear() {
         Helper.delegate?.statusBarController.startFunctionalTimers()
     }
-    
-}
-
-extension MenuController {
-    
-    /*
-    // MARK: - Themes Menu Delegate
-    
-    @objc func menuDidClose(
-        _ menu: NSMenu
-    ) {
-        if
-            let menuItem = menu.highlightedItem,
-            let index = menu.items.firstIndex(of: menuItem)
-        {
-            Helper.switchToTheme(index)
-        }
-    }
-     */
     
 }
 
@@ -212,20 +139,6 @@ extension MenuController {
             if let index = Themes.themes.firstIndex(of: Data.theme) {
                 self.themes.selectItem(at: index)
             }
-            
-            /* Deprecated
-             
-            var maxWidth: CGFloat = 0
-            if let menu = self.themes.menu {
-                for item in menu.items {
-                    let size = NSAttributedString(string: item.title).size()
-                    maxWidth = max(maxWidth, size.width)
-                }
-                
-                self.themes.widthAnchor.constraint(equalToConstant: maxWidth + 65).isActive = true
-            }
-             
-             */
         }
         
         // Init controls
@@ -253,218 +166,6 @@ extension MenuController {
         feedbackIntensityLabel.textColor = flag ? NSColor.labelColor : NSColor.disabledControlTextColor
     }
     
-    func blurContents(
-        _ value: CGFloat
-    ) {
-        let enabled = value > 0
-        
-        if enabled {
-            self.unblurDispatch?.cancel()
-            
-            self.themes.animator().alphaValue = 0
-            self.feedbackIntensity.animator().alphaValue = 0
-            /*
-            self.themes.isHidden = true
-            self.feedbackIntensity.isHidden = true
-             */
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
-            NSAnimationContext.runAnimationGroup({ context in
-                if enabled {
-                    let blur = CIFilter(name: "CIGaussianBlur")
-                    blur?.setValue(value, forKey: kCIInputRadiusKey)
-                    
-                    self.appTitle.animator().contentFilters      = [blur!]
-                    self.appVersion.animator().contentFilters    = [blur!]
-                    
-                    // self.layer0__0__1.animator().contentFilters  = [blur!]
-                    self.layer0__1__0.animator().contentFilters  = [blur!]
-                    self.layer0__1__1.animator().contentFilters  = [blur!]
-                } else {
-                    self.appTitle.animator().contentFilters      = []
-                    self.appVersion.animator().contentFilters    = []
-                    
-                    // self.layer0__0__1.animator().contentFilters  = []
-                    self.layer0__1__0.animator().contentFilters  = []
-                    self.layer0__1__1.animator().contentFilters  = []
-                }
-            }, completionHandler: {
-                if !enabled {
-                    self.themes.animator().alphaValue = 1
-                    self.feedbackIntensity.animator().alphaValue = 1
-                    /*
-                    self.themes.isHidden = false
-                    self.feedbackIntensity.isHidden = false
-                     */
-                }
-            })
-        }
-    }
-    
-    func activateQuitApp(
-        _ flag: Bool
-    ) {
-        if flag {
-            layer0__0__0__0.animator().borderColor = Colors.DANGER
-            layer0__0__0__0.animator().fillColor = Colors.DANGER
-            
-            quitApp.animator().contentTintColor = NSColor.white
-        } else {
-            layer0__0__0__0.animator().borderColor = Colors.TRANSLUCENT_DANGER
-            layer0__0__0__0.animator().fillColor = Colors.TRANSLUCENT_DANGER
-            
-            quitApp.animator().contentTintColor = Colors.DANGER
-        }
-    }
-    
-    func activateLink(
-        _ flag: Bool
-    ) {
-        if flag {
-            layer0__0__0__1.animator().borderColor = Colors.HYPER
-            layer0__0__0__1.animator().fillColor = Colors.HYPER
-            
-            link.animator().contentTintColor = NSColor.white
-        } else {
-            layer0__0__0__1.animator().borderColor = Colors.TRANSLUCENT_HYPER
-            layer0__0__0__1.animator().fillColor = Colors.TRANSLUCENT_HYPER
-            
-            link.animator().contentTintColor = Colors.HYPER
-        }
-    }
-    
-    func activateMinimize(
-        _ flag: Bool
-    ) {
-        if flag {
-            layer0__0__0__2.animator().borderColor = Colors.SAFE
-            layer0__0__0__2.animator().fillColor = Colors.SAFE
-            
-            minimize.animator().contentTintColor = NSColor.white
-        } else {
-            layer0__0__0__2.animator().borderColor = Colors.TRANSLUCENT_SAFE
-            layer0__0__0__2.animator().fillColor = Colors.TRANSLUCENT_SAFE
-            
-            minimize.animator().contentTintColor = Colors.SAFE
-        }
-    }
-    
-}
-
-extension MenuController {
-    // MARK: - Dispatch Work Item Wrappers
-    
-    func createBlurDispatch(
-        _ area: String
-    ) {
-        self.blurDispatch = DispatchWorkItem { [area] in
-            switch area {
-            case "quitApp":
-                
-                self.blurContents(16)
-                
-            case "link":
-                
-                self.blurContents(16)
-                
-            case "minimize":
-                
-                self.blurContents(16)
-                
-            default:
-                break
-            }
-        }
-    }
-    
-    func createUnblurDispatch(
-        _ area: String
-    ) {
-        self.unblurDispatch = DispatchWorkItem { [area] in
-            switch area {
-            case "quitApp":
-                
-                self.blurContents(0)
-                
-            case "link":
-                
-                self.blurContents(0)
-                
-            case "minimize":
-                
-                self.blurContents(0)
-                
-            default:
-                break
-            }
-        }
-    }
-}
-
-extension MenuController {
-    
-    // MARK: - Tracking Areas
-    
-    override func mouseEntered(
-        with event: NSEvent
-    ) {
-        super.mouseEntered(with: event)
-        
-        if let userInfo = event.trackingArea?.userInfo as? [String : String], let area = userInfo["area"] {
-            self.createBlurDispatch(area)
-            blurDispatch?.perform()
-            
-            DispatchQueue.main.async {
-                switch area {
-                case "quitApp":
-                    
-                    self.activateQuitApp(true)
-                    
-                case "link":
-                    
-                    self.activateLink(true)
-                    
-                case "minimize":
-                    
-                    self.activateMinimize(true)
-                    
-                default:
-                    break
-                }
-            }
-        }
-    }
-    
-    override func mouseExited(
-        with event: NSEvent
-    ) {
-        super.mouseEntered(with: event)
-        
-        if let userInfo = event.trackingArea?.userInfo as? [String : String], let area = userInfo["area"] {
-            self.createUnblurDispatch(area)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25, execute: self.unblurDispatch ?? DispatchWorkItem {})
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                switch area {
-                case "quitApp":
-                    
-                    self.activateQuitApp(false)
-                    
-                case "link":
-                    
-                    self.activateLink(false)
-                    
-                case "minimize":
-                    
-                    self.activateMinimize(false)
-                    
-                default:
-                    break
-                }
-            }
-        }
-    }
 }
 
 extension MenuController {

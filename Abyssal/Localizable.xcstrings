@@ -2,7 +2,15 @@
   "sourceLanguage" : "en",
   "strings" : {
     "Abyssal" : {
-      "comment" : "Name for theme 'Abyssal'"
+      "comment" : "Name for theme 'Abyssal'",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "深渊"
+          }
+        }
+      }
     },
     "Approaching" : {
       "comment" : "Name for theme 'Approaching'",
@@ -77,18 +85,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "坏心情"
-          }
-        }
-      }
-    },
-    "Stalker" : {
-      "comment" : "Name for theme 'Stalker'",
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "深渊"
           }
         }
       }

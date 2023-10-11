@@ -12,24 +12,39 @@ public enum Data {
     
     public class Keys {
         
-        static let THEME: String = "theme"
-        
-        public static let SEPS_ORDER: 			String = "sepsOrder"
-        
-        public static let FEEDBACK_INTENSITY: 	String = "feedbackIntensity"
-        
-        // MARK: - Booleans
-        
-        public static let COLLAPSED: String = "collapsed"
+        public static let THEME: String = "Theme"
         
         
         
-        public static let AUTO_SHOWS:			String = "autoShows"
+        public static let SEPS_ORDER: 			String = "SepsOrder"
         
-        public static let USE_ALWAYS_HIDE_AREA: String = "alwaysHide"
+        public static let FEEDBACK_INTENSITY: 	String = "FeedbackIntensity"
         
-        public static let REDUCE_ANIMATION: 	String = "reduceAnimation"
         
+        
+        public static let COLLAPSED: String = "Collapsed"
+        
+        
+        
+        public static let AUTO_SHOWS:			String = "AutoShows"
+        
+        public static let USE_ALWAYS_HIDE_AREA: String = "AlwaysHide"
+        
+        public static let REDUCE_ANIMATION: 	String = "ReduceAnimation"
+        
+    }
+    
+    public static func registerDefaults() {
+        UserDefaults.standard.register(defaults: [Keys.THEME: Themes.abyssal.name])
+        
+        UserDefaults.standard.register(defaults: [Keys.SEPS_ORDER: [0, 1, 2]])
+        UserDefaults.standard.register(defaults: [Keys.FEEDBACK_INTENSITY: 0])
+        
+        UserDefaults.standard.register(defaults: [Keys.COLLAPSED: false])
+        
+        UserDefaults.standard.register(defaults: [Keys.AUTO_SHOWS: true])
+        UserDefaults.standard.register(defaults: [Keys.USE_ALWAYS_HIDE_AREA: true])
+        UserDefaults.standard.register(defaults: [Keys.REDUCE_ANIMATION: false])
     }
     
     static var theme: Themes.Theme {
@@ -103,7 +118,7 @@ public enum Data {
     
     
     
-    public static var autoShows: 					Bool {
+    public static var autoShows: Bool {
         get {
             return UserDefaults.standard.bool(forKey: Keys.AUTO_SHOWS)
         }
@@ -113,7 +128,7 @@ public enum Data {
         }
     }
     
-    public static var useAlwaysHideArea: 			Bool {
+    public static var useAlwaysHideArea: Bool {
         get {
             return UserDefaults.standard.bool(forKey: Keys.USE_ALWAYS_HIDE_AREA)
         }
@@ -123,7 +138,7 @@ public enum Data {
         }
     }
     
-    public static var startsWithMacos: 				Bool {
+    public static var startsWithMacos: Bool {
         get {
             return LaunchAtLogin.isEnabled
         }
@@ -133,7 +148,7 @@ public enum Data {
         }
     }
     
-    public static var reduceAnimation: 				Bool {
+    public static var reduceAnimation: Bool {
         get {
             return UserDefaults.standard.bool(forKey: Keys.REDUCE_ANIMATION)
         }

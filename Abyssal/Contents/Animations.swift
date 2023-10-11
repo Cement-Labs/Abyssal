@@ -74,13 +74,13 @@ extension StatusBarController {
             triggerFeedback()
         }
         
-        // Basic appearance
+        // Basic appearances
         
         head.button?.appearsDisabled = !Data.theme.autoHideIcons && !Data.collapsed
         body.button?.appearsDisabled = !Data.theme.autoHideIcons && !Data.collapsed
         tail.button?.appearsDisabled = !Data.theme.autoHideIcons && !Data.collapsed
         
-        // Special judge for #blend()
+        // Special judge for #map()
         
         do {
             guard available else { return }
@@ -100,14 +100,18 @@ extension StatusBarController {
                 alphaValues.h = 1
                 
                 alphaValues.b = (
-                    popoverShown || !Data.collapsed
-                    || idling.hide || idling.alwaysHide
+                    popoverShown
+                    || !Data.collapsed
+                    || idling.hide
+                    || idling.alwaysHide
                     || (Data.autoShows && mouseSpare)
                 ) ? 1 : 0
                 
                 alphaValues.t = (
-                    popoverShown || idling.alwaysHide
-                    || (mouseSpare && Helper.Keyboard.command)
+                    popoverShown
+                    || idling.alwaysHide
+                    || Helper.Keyboard.command
+                    || Helper.Keyboard.option
                 ) ? 1 : 0
             }
         }
@@ -274,11 +278,11 @@ extension StatusBarController {
         
         if !Data.theme.autoHideIcons {
             // Special judge. See #update()
-        } else if popoverShown || (mouseSpare && Helper.Keyboard.command) {
+        } else if popoverShown || Helper.Keyboard.command || Helper.Keyboard.option {
             head.button?.image = Data.theme.headUncollapsed
             alphaValues.h = 1
-            alphaValues.b = 1
-            alphaValues.t = 1
+            alphaValues.b = mouseSpare ? 1 : 0
+            alphaValues.t = mouseSpare ? 1 : 0
         } else {
             alphaValues.h = !Data.collapsed ? 1 : 0
             alphaValues.b = 0

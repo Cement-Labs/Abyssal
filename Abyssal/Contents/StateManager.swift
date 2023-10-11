@@ -21,7 +21,7 @@ var timeoutTimer: Timer?
 
 // Event monitors
 
-var mouseClickEventMonitor: EventMonitor?
+var mouseEventMonitor: EventMonitor?
 
 
 
@@ -61,7 +61,7 @@ extension StatusBarController {
 
 var feedbackCount: Int = 0
 
-var was: (mouseSpare: Bool, command: Bool) = (mouseSpare: false, command: false)
+var was: (mouseSpare: Bool, command: Bool, option: Bool) = (mouseSpare: false, command: false, option: false)
 
 extension StatusBarController {
     
@@ -117,7 +117,7 @@ extension StatusBarController {
                 
                 guard feedbackCount < Data.feedbackAttributes.count else {
                     feedbackCount = 0
-                    strongSelf.stopFeedbackTimer()
+                    strongSelf.stopTimer(&feedbackTimer)
                     
                     return
                 }
@@ -137,7 +137,8 @@ extension StatusBarController {
                 withTimeInterval: 1.0 / 6.0,
                 repeats: true
             ) { [weak self] _ in
-                guard let strongSelf = self else { return }
+                guard let strongSelf = self
+                else { return }
                 
                 strongSelf.checkIdleStates()
                 
@@ -154,13 +155,13 @@ extension StatusBarController {
                 }
                 
                 let mouseNeedsUpdate = was.mouseSpare != strongSelf.mouseSpare
-                let keyNeedsUpdate = strongSelf.mouseSpare && (was.command != Helper.Keyboard.command)
+                let keyNeedsUpdate = was.command != Helper.Keyboard.command || was.option != Helper.Keyboard.option
                 
                 if mouseNeedsUpdate {
                     if was.mouseSpare {
-                        strongSelf.stopMouseClickEventMonitor()
+                        strongSelf.stopMonitor(&mouseEventMonitor)
                     } else {
-                        strongSelf.startMouseClickEventMonitor()
+                        strongSelf.startMouseEventMonitor()
                     }
                 }
                 
@@ -168,13 +169,16 @@ extension StatusBarController {
                     strongSelf.startFunctionalTimers()
                 }
                 
-                if keyNeedsUpdate && Helper.Mouse.left {
+                if keyNeedsUpdate {
                     strongSelf.sort()
                     strongSelf.map()
                 }
                 
-                was.mouseSpare = strongSelf.mouseSpare
-                was.command = Helper.Keyboard.command
+                was = (
+                    mouseSpare: strongSelf.mouseSpare,
+                    command: Helper.Keyboard.command,
+                    option: Helper.Keyboard.option
+                )
             }
         }
     }
@@ -188,14 +192,13 @@ extension StatusBarController {
                     guard let strongSelf = self else { return }
                     
                     strongSelf.unidleHideArea()
-                    strongSelf.stopTimeoutTimer()
+                    strongSelf.stopTimer(&timeoutTimer) { timeout = true }
                 }
             )
         }
     }
     
     func startFunctionalTimers() {
-        // print("START")
         startAnimationTimer()
         startActionTimer()
         
@@ -207,13 +210,13 @@ extension StatusBarController {
         }
         
         if (!idling.hide && !idling.alwaysHide) {
-            stopTimeoutTimer()
+            stopTimer(&timeoutTimer) { timeout = true }
         }
     }
     
-    func startMouseClickEventMonitor() {
-        if mouseClickEventMonitor == nil {
-            mouseClickEventMonitor = EventMonitor(
+    func startMouseEventMonitor() {
+        if mouseEventMonitor == nil {
+            mouseEventMonitor = EventMonitor(
                 mask: [.leftMouseDown,
                        .rightMouseDown]
             ) { [weak self] event in
@@ -231,7 +234,7 @@ extension StatusBarController {
                 }
             }
             
-            mouseClickEventMonitor?.start()
+            mouseEventMonitor?.start()
         }
     }
     
@@ -252,57 +255,30 @@ extension StatusBarController {
         startFunctionalTimers()
     }
     
-    func stopAnimationTimer() {
-        if animationTimer != nil {
-            animationTimer?.invalidate()
-            animationTimer = nil
-        }
-    }
-    
-    func stopActionTimer() {
-        if actionTimer != nil {
-            actionTimer?.invalidate()
-            actionTimer = nil
-        }
-    }
-    
-    func stopFeedbackTimer() {
-        if feedbackTimer != nil {
-            feedbackTimer?.invalidate()
-            feedbackTimer = nil
-        }
-    }
-    
-    func stopTriggerTimer() {
-        if triggerTimer != nil {
-            triggerTimer?.invalidate()
-            triggerTimer = nil
-        }
-    }
-    
-    func stopTimeoutTimer() {
-        if timeoutTimer != nil {
-            timeoutTimer?.invalidate()
-            timeoutTimer = nil
+    func stopTimer(_ timer: inout Timer?, afterStopped: () -> Void = {}) {
+        if timer != nil {
+            timer?.invalidate()
+            timer = nil
             
-            timeout = true
+            afterStopped()
+        }
+    }
+    
+    func stopMonitor(_ monitor: inout EventMonitor?, afterStopped: () -> Void = {}) {
+        if monitor != nil {
+            monitor?.stop()
+            monitor = nil
+            
+            afterStopped()
         }
     }
     
     func stopFunctionalTimers() {
-        // print("SHUT")
-        stopAnimationTimer()
-        stopActionTimer()
+        stopTimer(&animationTimer)
+        stopTimer(&actionTimer)
         
         shouldEdgeUpdate.will = true
         timeout = false
-    }
-    
-    func stopMouseClickEventMonitor() {
-        if mouseClickEventMonitor != nil {
-            mouseClickEventMonitor?.stop()
-            mouseClickEventMonitor = nil
-        }
     }
     
 }

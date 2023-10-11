@@ -160,10 +160,10 @@ class StatusBarController {
     deinit {
         // Stop services
         
-        stopAnimationTimer()
-        stopActionTimer()
+        stopTimer(&animationTimer)
+        stopTimer(&actionTimer)
         
-        stopTriggerTimer()
+        stopTimer(&triggerTimer)
     }
     
 }

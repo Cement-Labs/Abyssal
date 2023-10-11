@@ -78,7 +78,7 @@ class Themes {
     
     static var themes: [Theme] {
         return [
-            stalker,
+            abyssal,
             hiddenBar,
             approaching,
             metresAway,
@@ -90,14 +90,14 @@ class Themes {
     }
     
     static var defaultTheme: Theme {
-        return stalker
+        return abyssal
     }
     
     static var themeNames: [String] {
         return themes.map { $0.name }
     }
     
-    static let stalker: Theme = Theme(
+    static let abyssal: Theme = Theme(
         String(
             localized: 	"Abyssal",
             comment: 	"Name for theme 'Abyssal'"
