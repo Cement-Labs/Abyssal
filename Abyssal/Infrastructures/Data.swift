@@ -11,6 +11,12 @@ import LaunchAtLogin
 public enum Data {
     
     public class Keys {
+
+        public static let MODIFIERS: String = "Modifiers"
+
+        public static let TIMEOUT: String = "Timeout"
+
+
         
         public static let THEME: String = "Theme"
         
@@ -35,6 +41,9 @@ public enum Data {
     }
     
     public static func registerDefaults() {
+        UserDefaults.standard.register(defaults: [Keys.MODIFIERS: [true, true]])
+        UserDefaults.standard.register(defaults: [Keys.TIMEOUT: 3])
+
         UserDefaults.standard.register(defaults: [Keys.THEME: Themes.abyssal.name])
         
         UserDefaults.standard.register(defaults: [Keys.SEPS_ORDER: [0, 1, 2]])
@@ -46,6 +55,67 @@ public enum Data {
         UserDefaults.standard.register(defaults: [Keys.USE_ALWAYS_HIDE_AREA: true])
         UserDefaults.standard.register(defaults: [Keys.REDUCE_ANIMATION: false])
     }
+    
+    static var modifiers: (option: Bool, command: Bool) {
+        get {
+            if let array = UserDefaults.standard.array(forKey: Keys.MODIFIERS) as? [Bool] {
+                return (option: array[0], command: array[1])
+            } else {
+                return (option: true, command: true)
+            }
+        }
+        
+        set(modifiers) {
+            UserDefaults.standard.set(
+                [modifiers.option, modifiers.command],
+                forKey: Keys.MODIFIERS
+            )
+        }
+    }
+    
+    static var timeout: Int {
+        get {
+            return UserDefaults.standard.integer(forKey: Keys.TIMEOUT)
+        }
+        
+        set(timeout) {
+            UserDefaults.standard.set(
+                timeout,
+                forKey: Keys.TIMEOUT
+            )
+        }
+    }
+    
+    static let timeoutTickMarks: Int = 11
+    
+    static var timeoutAttribute: (attr: Int?, label: String) {
+        switch timeout {
+        case 0:
+            return (attr: 5, label: Helper.FormattedTime.inSeconds(5))
+        case 1:
+            return (attr: 10, label: Helper.FormattedTime.inSeconds(10))
+        case 2:
+            return (attr: 15, label: Helper.FormattedTime.inSeconds(15))
+        case 3:
+            return (attr: 30, label: Helper.FormattedTime.inSeconds(30))
+        case 4:
+            return (attr: 45, label: Helper.FormattedTime.inSeconds(45))
+        case 5:
+            return (attr: 60, label: Helper.FormattedTime.inMinutes(1))
+        case 6:
+            return (attr: 60 * 2, label: Helper.FormattedTime.inMinutes(2))
+        case 7:
+            return (attr: 60 * 3, label: Helper.FormattedTime.inMinutes(3))
+        case 8:
+            return (attr: 60 * 5, label: Helper.FormattedTime.inMinutes(5))
+        case 9:
+            return (attr: 60 * 10, label: Helper.FormattedTime.inMinutes(10))
+        default:
+            return (attr: nil, label: Helper.FormattedTime.FOREVER)
+        }
+    }
+    
+    
     
     static var theme: Themes.Theme {
         get {
@@ -66,6 +136,8 @@ public enum Data {
         }
     }
     
+    
+    
     public static var sepsOrder: [Int?]? {
         get {
             return UserDefaults.standard.array(
@@ -81,18 +153,6 @@ public enum Data {
         }
     }
     
-    
-    
-    public static var collapsed: Bool {
-        get {
-            return UserDefaults.standard.bool(forKey: Keys.COLLAPSED)
-        }
-        
-        set(flag) {
-            UserDefaults.standard.set(flag, forKey: Keys.COLLAPSED)
-        }
-    }
-    
     public static var feedbackIntensity: Int {
         get {
             return UserDefaults.standard.integer(forKey: Keys.FEEDBACK_INTENSITY)
@@ -103,7 +163,9 @@ public enum Data {
         }
     }
     
-    public static var feedbackAttributes: [NSHapticFeedbackManager.FeedbackPattern?] {
+    public static let feedbackIntensityTickMarks: Int = 4
+    
+    public static var feedbackAttribute: [NSHapticFeedbackManager.FeedbackPattern?] {
         switch feedbackIntensity {
         case 1:
             return [.levelChange]
@@ -113,6 +175,18 @@ public enum Data {
             return [.levelChange, .alignment, nil, nil, nil, nil, .levelChange]
         default:
             return []
+        }
+    }
+    
+    
+    
+    public static var collapsed: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: Keys.COLLAPSED)
+        }
+        
+        set(flag) {
+            UserDefaults.standard.set(flag, forKey: Keys.COLLAPSED)
         }
     }
     

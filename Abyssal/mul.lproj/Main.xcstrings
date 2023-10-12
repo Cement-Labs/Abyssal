@@ -43,14 +43,14 @@
         }
       }
     },
-    "Ay4-EN-hEN.title" : {
-      "comment" : "Class = \"NSBox\"; title = \"Layer 0.0.0\"; ObjectID = \"Ay4-EN-hEN\";",
+    "34L-jV-T7X.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Command\"; ObjectID = \"34L-jV-T7X\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Layer 0.0.0"
+            "value" : "Command"
           }
         }
       }
@@ -103,26 +103,38 @@
         }
       }
     },
-    "dJV-pr-4Ds.title" : {
-      "comment" : "Class = \"NSBox\"; title = \"Layer 0.0\"; ObjectID = \"dJV-pr-4Ds\";",
+    "CYc-8M-0bY.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Option\"; ObjectID = \"CYc-8M-0bY\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Layer 0.0"
+            "value" : "Option"
+          }
+        }
+      }
+    },
+    "dJV-pr-4Ds.title" : {
+      "comment" : "Class = \"NSBox\"; title = \"Main/Heading\"; ObjectID = \"dJV-pr-4Ds\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Main/Heading"
           }
         }
       }
     },
     "e3U-gc-FYv.title" : {
-      "comment" : "Class = \"NSBox\"; title = \"Layer 0.0.0.1\"; ObjectID = \"e3U-gc-FYv\";",
+      "comment" : "Class = \"NSBox\"; title = \"Main/Body 2/Buttons/Link\"; ObjectID = \"e3U-gc-FYv\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Layer 0.0.0.1"
+            "value" : "Main/Body 2/Buttons/Link"
           }
         }
       }
@@ -146,13 +158,13 @@
       }
     },
     "ehV-zN-An1.title" : {
-      "comment" : "Class = \"NSBox\"; title = \"Layer 0.1.0\"; ObjectID = \"ehV-zN-An1\";",
+      "comment" : "Class = \"NSBox\"; title = \"Main/Body 2/Preferences 1\"; ObjectID = \"ehV-zN-An1\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Layer 0.1.0"
+            "value" : "Main/Body 2/Preferences 1"
           }
         }
       }
@@ -175,6 +187,18 @@
         }
       }
     },
+    "get-yv-9fl.title" : {
+      "comment" : "Class = \"NSBox\"; title = \"Main/Body 1/Preferences 1\"; ObjectID = \"get-yv-9fl\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Main/Body 1/Preferences 1"
+          }
+        }
+      }
+    },
     "H6v-Qm-J1v.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Theme\"; ObjectID = \"H6v-Qm-J1v\";",
       "extractionState" : "extracted_with_value",
@@ -193,14 +217,26 @@
         }
       }
     },
-    "mER-wL-Lkb.title" : {
-      "comment" : "Class = \"NSBox\"; title = \"Layer 0.0.0.0\"; ObjectID = \"mER-wL-Lkb\";",
+    "hml-Gq-OgY.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Timeout\"; ObjectID = \"hml-Gq-OgY\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Layer 0.0.0.0"
+            "value" : "Timeout"
+          }
+        }
+      }
+    },
+    "mER-wL-Lkb.title" : {
+      "comment" : "Class = \"NSBox\"; title = \"Main/Body 2/Buttons/Quit App\"; ObjectID = \"mER-wL-Lkb\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Main/Body 2/Buttons/Quit App"
           }
         }
       }
@@ -218,13 +254,13 @@
       }
     },
     "oPU-r1-7qb.title" : {
-      "comment" : "Class = \"NSBox\"; title = \"Layer 0.0.0.2\"; ObjectID = \"oPU-r1-7qb\";",
+      "comment" : "Class = \"NSBox\"; title = \"Main/Body 2/Buttons/Minimize\"; ObjectID = \"oPU-r1-7qb\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Layer 0.0.0.2"
+            "value" : "Main/Body 2/Buttons/Minimize"
           }
         }
       }
@@ -248,13 +284,13 @@
       }
     },
     "Q2R-pO-mzF.title" : {
-      "comment" : "Class = \"NSButtonCell\"; title = \"Layer 0.0.0.2 Button 0\"; ObjectID = \"Q2R-pO-mzF\";",
+      "comment" : "Class = \"NSButtonCell\"; title = \"Minimize\"; ObjectID = \"Q2R-pO-mzF\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Layer 0.0.0.2 Button 0"
+            "value" : "Minimize"
           }
         }
       }
@@ -272,13 +308,13 @@
       }
     },
     "QZS-zG-dv0.title" : {
-      "comment" : "Class = \"NSBox\"; title = \"Layer 0.1.1\"; ObjectID = \"QZS-zG-dv0\";",
+      "comment" : "Class = \"NSBox\"; title = \"Main/Body 2/Preferences 2\"; ObjectID = \"QZS-zG-dv0\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Layer 0.1.1"
+            "value" : "Main/Body 2/Preferences 2"
           }
         }
       }
@@ -295,14 +331,38 @@
         }
       }
     },
-    "tjw-3h-pt1.title" : {
-      "comment" : "Class = \"NSBox\"; title = \"Layer 0.0.1\"; ObjectID = \"tjw-3h-pt1\";",
+    "SFf-Jy-pSC.title" : {
+      "comment" : "Class = \"NSBox\"; title = \"Command\"; ObjectID = \"SFf-Jy-pSC\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Layer 0.0.1"
+            "value" : "Command"
+          }
+        }
+      }
+    },
+    "TDg-JT-8w0.title" : {
+      "comment" : "Class = \"NSBox\"; title = \"Option\"; ObjectID = \"TDg-JT-8w0\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Option"
+          }
+        }
+      }
+    },
+    "tjw-3h-pt1.title" : {
+      "comment" : "Class = \"NSBox\"; title = \"Main/Body 1/Preferences 2\"; ObjectID = \"tjw-3h-pt1\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Main/Body 1/Preferences 2"
           }
         }
       }
@@ -325,14 +385,38 @@
         }
       }
     },
-    "YHc-dN-U9E.title" : {
-      "comment" : "Class = \"NSButtonCell\"; title = \"Layer 0.0.0.1 Button 0\"; ObjectID = \"YHc-dN-U9E\";",
+    "v46-rn-EtL.title" : {
+      "comment" : "Class = \"NSBox\"; title = \"Main/Body 2/Buttons\"; ObjectID = \"v46-rn-EtL\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Layer 0.0.0.1 Button 0"
+            "value" : "Main/Body 2/Buttons"
+          }
+        }
+      }
+    },
+    "YHc-dN-U9E.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Link\"; ObjectID = \"YHc-dN-U9E\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Link"
+          }
+        }
+      }
+    },
+    "zX5-Vr-1M7.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Modifiers\"; ObjectID = \"zX5-Vr-1M7\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Modifiers"
           }
         }
       }

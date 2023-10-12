@@ -117,10 +117,10 @@ extension StatusBarController {
         
         // Head
         
-        if let alpha = self.head.button?.alphaValue {
-            self.head.button?.alphaValue = Helper.lerp(
+        if let alpha = head.button?.alphaValue {
+            head.button?.alphaValue = Helper.lerp(
                 a: alpha,
-                b: self.alphaValues.h,
+                b: alphaValues.h,
                 ratio: StatusBarController.lerpRatio,
                 false
             )
@@ -129,25 +129,25 @@ extension StatusBarController {
         }
         
         do {
-            let flag = !popoverShown && Data.collapsed && !(self.idling.hide || self.idling.alwaysHide) && (!Data.autoShows || !self.mouseSpare)
+            let flag = !popoverShown && Data.collapsed && !(idling.hide || idling.alwaysHide) && (!Data.autoShows || !mouseSpare)
             
-            self.lengths.h = flag ? Data.theme.iconWidthAlt : Data.theme.iconWidth
+            lengths.h = flag ? Data.theme.iconWidthAlt : Data.theme.iconWidth
             
-            self.head.length = Helper.lerp(
-                a: self.head.length,
-                b: self.lengths.h,
+            head.length = Helper.lerp(
+                a: head.length,
+                b: lengths.h,
                 ratio: StatusBarController.lerpRatio
             )
             
-            shouldTimersStop.flag = shouldTimersStop.flag && Helper.approaching(self.head.length, self.lengths.h)
+            shouldTimersStop.flag = shouldTimersStop.flag && Helper.approaching(head.length, lengths.h)
         }
         
         // Body
         
-        if let alpha = self.body.button?.alphaValue {
-            self.body.button?.alphaValue = Helper.lerp(
+        if let alpha = body.button?.alphaValue {
+            body.button?.alphaValue = Helper.lerp(
                 a: alpha,
-                b: self.alphaValues.b,
+                b: alphaValues.b,
                 ratio: StatusBarController.lerpRatio,
                 false
             )
@@ -156,57 +156,57 @@ extension StatusBarController {
         }
         
         do {
-            let flag = !popoverShown && Data.collapsed && !(self.idling.hide || self.idling.alwaysHide) && (!Data.autoShows || !self.mouseSpare)
+            let flag = !popoverShown && Data.collapsed && !(idling.hide || idling.alwaysHide) && (!Data.autoShows || !mouseSpare)
             
-            guard let x = self.body.origin?.x else { return }
-            let length = self.body.length
+            guard let x = body.origin?.x else { return }
+            let length = body.length
             
             do {
                 if !flag && !wasUnstable.b {
-                    if self.lengths.b <= 0 { self.lengths.b = x + length - Helper.menuBarLeftEdge }
+                    if lengths.b <= 0 { lengths.b = x + length - Helper.menuBarLeftEdge }
                     
-                    self.body.length = self.lengths.b
+                    body.length = lengths.b
                     wasUnstable.b = true
                     
                     if !Data.reduceAnimation {
                         return
                     }
                 } else if flag && !wasUnstable.b {
-                    self.body.length = maxLength
+                    body.length = maxLength
                     return
                 } else if wasUnstable.b {
                     wasUnstable.b = !flag || wasUnstable.b && x > Helper.menuBarLeftEdge + 5
                 }
                 
                 if
-                    let origin = self.body.origin,
+                    let origin = body.origin,
                     lastFlags.b != flag || origin.x != lastOriginXs.b
                 {
-                    self.lengths.b = flag ? max(0, x + length - Helper.menuBarLeftEdge) : Data.theme.iconWidth
+                    lengths.b = flag ? max(0, x + length - Helper.menuBarLeftEdge) : Data.theme.iconWidth
                     lastOriginXs.b = origin.x
                     lastFlags.b = flag
                 }
                 
                 if Data.reduceAnimation {
-                    self.body.length = self.lengths.b
+                    body.length = lengths.b
                 } else {
-                    self.body.length = Helper.lerp(
+                    body.length = Helper.lerp(
                         a: length,
-                        b: self.lengths.b,
+                        b: lengths.b,
                         ratio: StatusBarController.lerpRatio
                     )
                     
-                    shouldTimersStop.flag = shouldTimersStop.flag && Helper.approaching(self.body.length, self.lengths.b)
+                    shouldTimersStop.flag = shouldTimersStop.flag && Helper.approaching(body.length, lengths.b)
                 }
             }
         }
         
         // Tail
         
-        if let alpha = self.tail.button?.alphaValue {
-            self.tail.button?.alphaValue =  Helper.lerp(
+        if let alpha = tail.button?.alphaValue {
+            tail.button?.alphaValue =  Helper.lerp(
                 a: alpha,
-                b: self.alphaValues.t,
+                b: alphaValues.t,
                 ratio: StatusBarController.lerpRatio,
                 false
             )
@@ -215,47 +215,47 @@ extension StatusBarController {
         }
         
         do {
-            let flag = !popoverShown && !(Helper.Keyboard.modifiers && ((Data.collapsed && !self.idling.hide) || self.mouseSpare)) && !self.idling.alwaysHide
+            let flag = !popoverShown && !(Helper.Keyboard.modifiers && ((Data.collapsed && !idling.hide) || mouseSpare)) && !idling.alwaysHide
             
-            guard let x = self.tail.origin?.x else { return }
-            let length = self.tail.length
+            guard let x = tail.origin?.x else { return }
+            let length = tail.length
             
             do {
                 if !flag && !wasUnstable.t {
-                    if self.lengths.t <= 0 { self.lengths.t = x + length - Helper.menuBarLeftEdge }
+                    if lengths.t <= 0 { lengths.t = x + length - Helper.menuBarLeftEdge }
                     
-                    self.tail.length = self.lengths.t
+                    tail.length = lengths.t
                     wasUnstable.t = true
                     
                     if !Data.reduceAnimation {
                         return
                     }
                 } else if flag && !wasUnstable.t {
-                    self.tail.length = maxLength
+                    tail.length = maxLength
                     return
                 } else if wasUnstable.t {
                     wasUnstable.t = !flag || wasUnstable.t && x > Helper.menuBarLeftEdge + 5
                 }
                 
                 if
-                    let origin = self.tail.origin,
+                    let origin = tail.origin,
                     lastFlags.t != flag || origin.x != lastOriginXs.t
                 {
-                    self.lengths.t = flag ? max(0, x + length - Helper.menuBarLeftEdge) : Data.theme.iconWidth
+                    lengths.t = flag ? max(0, x + length - Helper.menuBarLeftEdge) : Data.theme.iconWidth
                     lastOriginXs.t = origin.x
                     lastFlags.t = flag
                 }
                 
                 if Data.reduceAnimation {
-                    self.tail.length = self.lengths.t
+                    tail.length = lengths.t
                 } else {
-                    self.tail.length = Helper.lerp(
+                    tail.length = Helper.lerp(
                         a: length,
-                        b: self.lengths.t,
+                        b: lengths.t,
                         ratio: StatusBarController.lerpRatio
                     )
                     
-                    shouldTimersStop.flag = shouldTimersStop.flag && Helper.approaching(self.tail.length, self.lengths.t)
+                    shouldTimersStop.flag = shouldTimersStop.flag && Helper.approaching(tail.length, lengths.t)
                 }
             }
         }

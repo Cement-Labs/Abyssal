@@ -39,14 +39,14 @@ class Helper {
     }
     
     static var version: String? {
-        return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+        Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     }
     
     static var _latestTag: String = ""
     
     static var latestTag: String {
         get {
-            return _latestTag
+            _latestTag
         }
         
         set(version) {
@@ -84,7 +84,7 @@ class Helper {
     }
     
     static var delegate: AppDelegate? {
-        return NSApplication.shared.delegate as? AppDelegate
+        NSApplication.shared.delegate as? AppDelegate
     }
     
     static var menuBarLeftEdge: CGFloat {
@@ -102,7 +102,7 @@ class Helper {
         _ a: CGFloat, _ b: CGFloat,
         _ ignoreSmallValues: Bool = true
     ) -> Bool {
-        return abs(a - b) < (ignoreSmallValues ? 1 : 0.001)
+        abs(a - b) < (ignoreSmallValues ? 1 : 0.001)
     }
     
     static func lerp(
@@ -162,10 +162,36 @@ class Helper {
         return .orderedSame
     }
     
+    class FormattedTime {
+        
+        static let SECONDS = String(localized: "Seconds")
+        
+        static let MINUTES = String(localized: "Minutes")
+        
+        static let FOREVER = String(localized: "Forever")
+        
+        static func orElseForever(_ number: Any?, unit: String) -> String {
+            if let number = number as? LosslessStringConvertible {
+                String(number) + unit
+            } else {
+                FOREVER
+            }
+        }
+        
+        static func inSeconds(_ number: Any?) -> String {
+            orElseForever(number, unit: SECONDS)
+        }
+        
+        static func inMinutes(_ number: Any?) -> String {
+            orElseForever(number, unit: MINUTES)
+        }
+        
+    }
+    
     class Screen {
         
         static var frame: NSRect? {
-            return NSScreen.main?.frame
+            NSScreen.main?.frame
         }
         
         static var hasNotch: Bool {
@@ -174,11 +200,11 @@ class Helper {
         }
         
         static var width: CGFloat? {
-            return NSScreen.main?.frame.size.width ?? nil
+            NSScreen.main?.frame.size.width ?? nil
         }
         
         static var height: CGFloat? {
-            return NSScreen.main?.frame.size.height ?? nil
+            NSScreen.main?.frame.size.height ?? nil
         }
         
         static var maxWidth: CGFloat? {
@@ -214,19 +240,19 @@ class Helper {
     class Keyboard {
         
         static var command: Bool {
-            return NSEvent.modifierFlags.contains(.command)
+            NSEvent.modifierFlags.contains(.command)
         }
         
         static var option: Bool {
-            return NSEvent.modifierFlags.contains(.option)
+            NSEvent.modifierFlags.contains(.option)
         }
         
         static var shift: Bool {
-            return NSEvent.modifierFlags.contains(.shift)
+            NSEvent.modifierFlags.contains(.shift)
         }
         
         static var modifiers: Bool {
-            return command || option
+            command || option
         }
         
     }
@@ -234,17 +260,17 @@ class Helper {
     class Mouse {
         
         static var none: Bool {
-            return NSEvent.pressedMouseButtons == 0;
+            NSEvent.pressedMouseButtons == 0;
         }
         
         static var left: Bool {
-            return NSEvent.pressedMouseButtons & 0x1 == 1
+            NSEvent.pressedMouseButtons & 0x1 == 1
         }
         
         static func inside(
             _ rect: NSRect?
         ) -> Bool {
-            return rect?.contains(NSEvent.mouseLocation) ?? false
+            rect?.contains(NSEvent.mouseLocation) ?? false
         }
         
     }

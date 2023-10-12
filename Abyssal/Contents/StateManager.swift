@@ -41,20 +41,20 @@ extension StatusBarController {
         _ flag: Bool
     ) {
         untilSeparatorVisible(flag)
-        self.head.isVisible = flag
+        head.isVisible = flag
     }
     
     func untilSeparatorVisible(
         _ flag: Bool
     ) {
         untilTailVisible(flag)
-        self.body.isVisible = flag
+        body.isVisible = flag
     }
     
     func untilTailVisible(
         _ flag: Bool
     ) {
-        self.tail.isVisible = flag
+        tail.isVisible = flag
     }
     
 }
@@ -73,11 +73,11 @@ extension StatusBarController {
     }
     
     func idleHideArea() {
-        self.idling.hide = true
+        idling.hide = true
     }
     
     func idleAlwaysHideArea() {
-        self.idling.alwaysHide = true
+        idling.alwaysHide = true
     }
     
     func startAnimationTimer() {
@@ -115,14 +115,14 @@ extension StatusBarController {
             ) { [weak self] _ in
                 guard let strongSelf = self else { return }
                 
-                guard feedbackCount < Data.feedbackAttributes.count else {
+                guard feedbackCount < Data.feedbackAttribute.count else {
                     feedbackCount = 0
                     strongSelf.stopTimer(&feedbackTimer)
                     
                     return
                 }
                 
-                if let pattern = Data.feedbackAttributes[feedbackCount] {
+                if let pattern = Data.feedbackAttribute[feedbackCount] {
                     NSHapticFeedbackManager.defaultPerformer.perform(pattern, performanceTime: .now)
                 }
                 
@@ -183,9 +183,11 @@ extension StatusBarController {
     }
     
     func startTimeoutTimer() {
-        if timeoutTimer == nil {
+        let timeoutAttribute = Data.timeoutAttribute
+        
+        if timeoutTimer == nil && timeoutAttribute.attr != nil {
             timeoutTimer = Timer.scheduledTimer(
-                withTimeInterval: 30.0,
+                withTimeInterval: Double(timeoutAttribute.attr!),
                 repeats: false,
                 block: { [weak self] _ in
                     guard let strongSelf = self else { return }
@@ -245,12 +247,12 @@ extension StatusBarController {
     }
     
     func unidleHideArea() {
-        self.idling.hide = false
+        idling.hide = false
         unidleAlwaysHideArea()
     }
     
     func unidleAlwaysHideArea() {
-        self.idling.alwaysHide = false
+        idling.alwaysHide = false
         startFunctionalTimers()
     }
     

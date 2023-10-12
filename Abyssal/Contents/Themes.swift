@@ -71,13 +71,13 @@ class Themes {
             lhs: Themes.Theme,
             rhs: Themes.Theme
         ) -> Bool {
-            return lhs.name == rhs.name
+            lhs.name == rhs.name
         }
         
     }
     
     static var themes: [Theme] {
-        return [
+        [
             abyssal,
             hiddenBar,
             approaching,

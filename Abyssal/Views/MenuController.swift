@@ -23,11 +23,23 @@ class MenuController: NSViewController, NSMenuDelegate {
     
     @IBOutlet weak var minimizeView: NSView!
     
+    
+    
+    @IBOutlet weak var modifierOption: NSBox!
+    
+    @IBOutlet weak var modifierCommand: NSBox!
+    
+    @IBOutlet weak var timeoutLabel: NSTextField!
+    
+    @IBOutlet weak var timeout: NSSlider!
+    
+
+    
     @IBOutlet weak var appTitle: NSTextField!
     
     @IBOutlet weak var appVersion: NSTextField!
     
-    @IBOutlet weak var startsWithMacos: NSSwitch!
+    @IBOutlet weak var startsWithMacOS: NSSwitch!
     
     
     
@@ -45,18 +57,12 @@ class MenuController: NSViewController, NSMenuDelegate {
     
     @IBOutlet weak var reduceAnimation: NSSwitch!
     
-    // MARK: - Dispatch Work Items
-    
-    var blurDispatch: DispatchWorkItem?
-    
-    var unblurDispatch: DispatchWorkItem?
-    
     // MARK: - View Methods
     
     override func viewDidLoad(
     ) {
         super.viewDidLoad()
-        updateData()
+        initData()
         
         if let version = Helper.version {
             appVersion.isHidden = false
@@ -115,7 +121,7 @@ extension MenuController {
         }
     }
     
-    func updateData() {
+    func initData() {
         // Init themes menu
         
         do {
@@ -143,27 +149,62 @@ extension MenuController {
         
         // Init controls
         
-        startsWithMacos.set(Data.startsWithMacos)
+        timeout.minValue = 0
+        timeout.maxValue = Double(Data.timeoutTickMarks - 1)
+        timeout.numberOfTickMarks = Data.timeoutTickMarks
+        
+        feedbackIntensity.minValue = 0
+        feedbackIntensity.maxValue = Double(Data.feedbackIntensityTickMarks - 1)
+        feedbackIntensity.numberOfTickMarks = Data.feedbackIntensityTickMarks
+        
+        
+        
+        updateModifiers()
+        
+        timeout.objectValue = Data.timeout
+        updateTimeoutEnabled()
+        
+        startsWithMacOS.set(Data.startsWithMacos)
         
         autoShows.set(Data.autoShows)
         feedbackIntensity.objectValue = Data.feedbackIntensity
-        feedBackIntensityEnabled(Data.autoShows)
+        updateFeedbackIntensityEnabled()
         
         useAlwaysHideArea.set(Data.useAlwaysHideArea)
         reduceAnimation.set(Data.reduceAnimation)
     }
     
-    func feedBackIntensityEnabled(
+    
+    
+    func setSliderEnabled(
+        _ slider: NSSlider,
         _ flag: Bool
     ) {
-        feedbackIntensity.isEnabled = flag
-        feedBackIntensityLabelEnabled(flag && Data.feedbackIntensity > 0)
+        slider.isEnabled = flag
     }
     
-    func feedBackIntensityLabelEnabled(
+    func setSliderLabelEnabled(
+        _ label: NSTextField,
         _ flag: Bool
     ) {
-        feedbackIntensityLabel.textColor = flag ? NSColor.labelColor : NSColor.disabledControlTextColor
+        label.textColor = flag ? NSColor.labelColor : NSColor.disabledControlTextColor
+    }
+    
+    func updateTimeoutEnabled() {
+        setSliderEnabled(timeout, Data.autoShows)
+        setSliderLabelEnabled(timeoutLabel, Data.timeoutAttribute.attr != nil)
+    }
+    
+    func updateFeedbackIntensityEnabled() {
+        setSliderEnabled(feedbackIntensity, Data.autoShows)
+        setSliderLabelEnabled(feedbackIntensityLabel, Data.feedbackIntensity != 0)
+    }
+    
+    
+    
+    func updateModifiers() {
+        modifierOption.fillColor = Data.modifiers.option ? NSColor.quinaryLabel : NSColor.clear
+        modifierCommand.fillColor = Data.modifiers.command ? NSColor.quinaryLabel : NSColor.clear
     }
     
 }
@@ -199,19 +240,34 @@ extension MenuController {
     }
     
     // MARK: - Data Actions
+    @IBAction func toggleModifierOption(
+        _ sender: NSButton
+    ) {
+        Data.modifiers.option = sender.flag
+        updateModifiers()
+    }
+    
+    @IBAction func toggleModifierCommand(
+        _ sender: NSButton
+    ) {
+        Data.modifiers.command = sender.flag
+        updateModifiers()
+    }
+    
+    
     
     @IBAction func toggleAutoShows(
         _ sender: NSSwitch
     ) {
         Data.autoShows = sender.flag
-        feedBackIntensityEnabled(sender.flag)
+        updateFeedbackIntensityEnabled()
     }
     
     @IBAction func toggleFeedbackIntensity(
         _ sender: NSSlider
     ) {
         Data.feedbackIntensity = sender.integerValue
-        feedBackIntensityLabelEnabled(sender.integerValue > 0)
+        updateFeedbackIntensityEnabled()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             Helper.delegate?.statusBarController.triggerFeedback()

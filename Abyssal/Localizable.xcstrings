@@ -56,6 +56,9 @@
         }
       }
     },
+    "Forever" : {
+
+    },
     "Hidden Bar" : {
       "comment" : "Name for theme 'Hidden Bar'",
       "localizations" : {
@@ -78,6 +81,9 @@
         }
       }
     },
+    "Minutes" : {
+
+    },
     "Not So Happy" : {
       "comment" : "Name for theme 'Not So Happy'",
       "localizations" : {
@@ -88,6 +94,9 @@
           }
         }
       }
+    },
+    "Seconds" : {
+
     }
   },
   "version" : "1.0"
