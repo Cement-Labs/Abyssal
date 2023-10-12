@@ -42,29 +42,31 @@
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3oE-Id-0vv">
-                                                            <rect key="frame" x="18" y="82" width="217" height="28"/>
+                                                            <rect key="frame" x="18" y="59" width="217" height="28"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Abyssal" id="S3l-Th-u8S">
                                                                 <font key="font" metaFont="systemHeavy" size="24"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                         </textField>
-                                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pCf-B4-yM6">
-                                                            <rect key="frame" x="-2" y="66" width="257" height="16"/>
-                                                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="App Version" id="0hG-A1-HMr">
-                                                                <font key="font" metaFont="systemBlack" size="13"/>
-                                                                <color key="textColor" name="Colors/Border"/>
-                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                            </textFieldCell>
-                                                        </textField>
+                                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="Fj0-aa-Z4F">
+                                                            <rect key="frame" x="76" y="41" width="101" height="16"/>
+                                                            <buttonCell key="cell" type="bevel" title="App Version" bezelStyle="rounded" image="shift.fill" catalog="system" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" inset="2" id="1vF-An-AOf">
+                                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                <font key="font" metaFont="systemBold"/>
+                                                            </buttonCell>
+                                                            <color key="contentTintColor" name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                            <connections>
+                                                                <action selector="goToRelease:" target="crA-Or-uDV" id="ebB-WE-9vd"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="pCf-B4-yM6" firstAttribute="top" secondItem="3oE-Id-0vv" secondAttribute="bottom" id="1Ma-HL-xY4"/>
+                                                        <constraint firstItem="Fj0-aa-Z4F" firstAttribute="centerX" secondItem="Nus-iP-k6G" secondAttribute="centerX" id="4QG-aY-U7g"/>
+                                                        <constraint firstItem="Fj0-aa-Z4F" firstAttribute="top" secondItem="3oE-Id-0vv" secondAttribute="bottom" constant="2" id="7Pw-Ze-COx"/>
                                                         <constraint firstItem="3oE-Id-0vv" firstAttribute="leading" secondItem="Nus-iP-k6G" secondAttribute="leading" constant="20" id="BuU-S6-Z4I"/>
-                                                        <constraint firstItem="3oE-Id-0vv" firstAttribute="top" secondItem="Nus-iP-k6G" secondAttribute="top" constant="20" id="Jt9-i4-yQS"/>
+                                                        <constraint firstItem="3oE-Id-0vv" firstAttribute="centerY" secondItem="Nus-iP-k6G" secondAttribute="centerY" constant="-8" id="QC7-uW-xDH"/>
                                                         <constraint firstAttribute="trailing" secondItem="3oE-Id-0vv" secondAttribute="trailing" constant="20" id="jzD-fk-goK"/>
-                                                        <constraint firstAttribute="trailing" secondItem="pCf-B4-yM6" secondAttribute="trailing" id="kmP-e1-68s"/>
-                                                        <constraint firstItem="pCf-B4-yM6" firstAttribute="leading" secondItem="Nus-iP-k6G" secondAttribute="leading" id="zQV-JM-UQu"/>
                                                     </constraints>
                                                 </view>
                                             </box>
@@ -94,14 +96,43 @@
                                                                                 <stackView distribution="fillEqually" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IFo-av-mg0">
                                                                                     <rect key="frame" x="98" y="0.0" width="115" height="24"/>
                                                                                     <subviews>
+                                                                                        <box boxType="custom" borderWidth="0.0" cornerRadius="12" title="Command" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="ys5-8l-bsx">
+                                                                                            <rect key="frame" x="0.0" y="0.0" width="33" height="24"/>
+                                                                                            <view key="contentView" id="fIO-ps-fir">
+                                                                                                <rect key="frame" x="0.0" y="0.0" width="33" height="24"/>
+                                                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                                                <subviews>
+                                                                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dRB-pC-5Qd" userLabel="Shift">
+                                                                                                        <rect key="frame" x="0.0" y="-2.5" width="33.5" height="30"/>
+                                                                                                        <buttonCell key="cell" type="bevel" title="Command" bezelStyle="rounded" image="shift" catalog="system" imagePosition="only" alignment="center" inset="2" id="ugu-DQ-ax1">
+                                                                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                                                            <font key="font" metaFont="system"/>
+                                                                                                        </buttonCell>
+                                                                                                        <symbolConfiguration key="symbolConfiguration" scale="medium" weight="bold">
+                                                                                                            <nil key="locale"/>
+                                                                                                        </symbolConfiguration>
+                                                                                                        <connections>
+                                                                                                            <action selector="toggleModifierShift:" target="crA-Or-uDV" id="hFp-Ve-zX0"/>
+                                                                                                        </connections>
+                                                                                                    </button>
+                                                                                                </subviews>
+                                                                                                <constraints>
+                                                                                                    <constraint firstAttribute="trailing" secondItem="dRB-pC-5Qd" secondAttribute="trailing" id="2h9-Fm-7zJ"/>
+                                                                                                    <constraint firstItem="dRB-pC-5Qd" firstAttribute="top" secondItem="fIO-ps-fir" secondAttribute="top" id="76n-gu-uvl"/>
+                                                                                                    <constraint firstAttribute="bottom" secondItem="dRB-pC-5Qd" secondAttribute="bottom" id="jT8-9s-6gY"/>
+                                                                                                    <constraint firstItem="dRB-pC-5Qd" firstAttribute="leading" secondItem="fIO-ps-fir" secondAttribute="leading" id="r7j-Nw-fDZ"/>
+                                                                                                </constraints>
+                                                                                            </view>
+                                                                                            <color key="fillColor" name="Colors/Border"/>
+                                                                                        </box>
                                                                                         <box boxType="custom" borderWidth="0.0" cornerRadius="12" title="Option" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="TDg-JT-8w0">
-                                                                                            <rect key="frame" x="0.0" y="0.0" width="54" height="24"/>
+                                                                                            <rect key="frame" x="41" y="0.0" width="33" height="24"/>
                                                                                             <view key="contentView" id="412-fH-eRX">
-                                                                                                <rect key="frame" x="0.0" y="0.0" width="54" height="24"/>
+                                                                                                <rect key="frame" x="0.0" y="0.0" width="33" height="24"/>
                                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                                 <subviews>
                                                                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5xq-3Q-O2J">
-                                                                                                        <rect key="frame" x="0.0" y="-2.5" width="54.5" height="29"/>
+                                                                                                        <rect key="frame" x="0.0" y="-2.5" width="33.5" height="29"/>
                                                                                                         <buttonCell key="cell" type="bevel" title="Option" bezelStyle="rounded" image="option" catalog="system" imagePosition="only" alignment="center" inset="2" id="CYc-8M-0bY">
                                                                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                                             <font key="font" metaFont="system"/>
@@ -121,16 +152,16 @@
                                                                                                     <constraint firstItem="5xq-3Q-O2J" firstAttribute="leading" secondItem="412-fH-eRX" secondAttribute="leading" id="sai-I7-tZY"/>
                                                                                                 </constraints>
                                                                                             </view>
-                                                                                            <color key="fillColor" name="quaternaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                                                            <color key="fillColor" name="Colors/Border"/>
                                                                                         </box>
                                                                                         <box boxType="custom" borderWidth="0.0" cornerRadius="12" title="Command" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="SFf-Jy-pSC">
-                                                                                            <rect key="frame" x="62" y="0.0" width="53" height="24"/>
+                                                                                            <rect key="frame" x="82" y="0.0" width="33" height="24"/>
                                                                                             <view key="contentView" id="8xW-JC-aMU">
-                                                                                                <rect key="frame" x="0.0" y="0.0" width="53" height="24"/>
+                                                                                                <rect key="frame" x="0.0" y="0.0" width="33" height="24"/>
                                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                                 <subviews>
                                                                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jAc-NH-1Qe" userLabel="Command">
-                                                                                                        <rect key="frame" x="0.0" y="-2.5" width="53.5" height="30"/>
+                                                                                                        <rect key="frame" x="0.0" y="-2.5" width="33.5" height="30"/>
                                                                                                         <buttonCell key="cell" type="bevel" title="Command" bezelStyle="rounded" image="command" catalog="system" imagePosition="only" alignment="center" inset="2" id="34L-jV-T7X">
                                                                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                                             <font key="font" metaFont="system"/>
@@ -150,11 +181,13 @@
                                                                                                     <constraint firstAttribute="bottom" secondItem="jAc-NH-1Qe" secondAttribute="bottom" id="FFR-Xz-Eqd"/>
                                                                                                 </constraints>
                                                                                             </view>
-                                                                                            <color key="fillColor" name="quaternaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                                                            <color key="fillColor" name="Colors/Border"/>
                                                                                         </box>
                                                                                     </subviews>
                                                                                     <constraints>
+                                                                                        <constraint firstItem="ys5-8l-bsx" firstAttribute="top" secondItem="IFo-av-mg0" secondAttribute="top" id="1Ie-f1-OdP"/>
                                                                                         <constraint firstItem="SFf-Jy-pSC" firstAttribute="top" secondItem="IFo-av-mg0" secondAttribute="top" id="Kpk-q1-ipc"/>
+                                                                                        <constraint firstAttribute="bottom" secondItem="ys5-8l-bsx" secondAttribute="bottom" id="Wkv-pL-mGW"/>
                                                                                         <constraint firstAttribute="bottom" secondItem="TDg-JT-8w0" secondAttribute="bottom" id="pty-Y1-Zc0"/>
                                                                                         <constraint firstAttribute="bottom" secondItem="SFf-Jy-pSC" secondAttribute="bottom" id="pyu-tr-Ie7"/>
                                                                                         <constraint firstItem="TDg-JT-8w0" firstAttribute="top" secondItem="IFo-av-mg0" secondAttribute="top" id="sOF-OE-F0Y"/>
@@ -162,8 +195,10 @@
                                                                                     <visibilityPriorities>
                                                                                         <integer value="1000"/>
                                                                                         <integer value="1000"/>
+                                                                                        <integer value="1000"/>
                                                                                     </visibilityPriorities>
                                                                                     <customSpacing>
+                                                                                        <real value="3.4028234663852886e+38"/>
                                                                                         <real value="3.4028234663852886e+38"/>
                                                                                         <real value="3.4028234663852886e+38"/>
                                                                                     </customSpacing>
@@ -783,7 +818,7 @@
                     </customView>
                     <connections>
                         <outlet property="appTitle" destination="3oE-Id-0vv" id="Vr7-8v-lpY"/>
-                        <outlet property="appVersion" destination="pCf-B4-yM6" id="2hx-Pc-JDN"/>
+                        <outlet property="appVersion" destination="Fj0-aa-Z4F" id="9Cp-xo-eNl"/>
                         <outlet property="autoShows" destination="C8P-qk-mj3" id="gbY-jx-LRW"/>
                         <outlet property="feedbackIntensity" destination="hXa-jz-GTN" id="jba-pN-6Te"/>
                         <outlet property="feedbackIntensityLabel" destination="r9u-Pv-knm" id="okM-tr-7zN"/>
@@ -791,7 +826,11 @@
                         <outlet property="main" destination="N9w-5A-9hS" id="cnO-Ur-cyv"/>
                         <outlet property="minimizeView" destination="wue-hj-JhU" id="8jG-wN-6kR"/>
                         <outlet property="modifierCommand" destination="SFf-Jy-pSC" id="eLD-jM-apX"/>
+                        <outlet property="modifierCommandButton" destination="jAc-NH-1Qe" id="EOy-zR-41b"/>
                         <outlet property="modifierOption" destination="TDg-JT-8w0" id="WqG-W0-vZV"/>
+                        <outlet property="modifierOptionButton" destination="5xq-3Q-O2J" id="1d8-SM-Tc4"/>
+                        <outlet property="modifierShift" destination="ys5-8l-bsx" id="de3-Ly-rMO"/>
+                        <outlet property="modifierShiftButton" destination="dRB-pC-5Qd" id="GRM-Cc-RJa"/>
                         <outlet property="quitAppView" destination="ZrD-yh-0Yo" id="mZg-IK-NO6"/>
                         <outlet property="reduceAnimation" destination="Gtp-g1-P2a" id="xlD-oN-huE"/>
                         <outlet property="startsWithMacOS" destination="LZw-uQ-YQE" id="ecU-1k-k4N"/>
@@ -812,6 +851,8 @@
         <image name="command" catalog="system" width="15" height="14"/>
         <image name="link" catalog="system" width="17" height="17"/>
         <image name="option" catalog="system" width="16" height="14"/>
+        <image name="shift" catalog="system" width="17" height="14"/>
+        <image name="shift.fill" catalog="system" width="17" height="14"/>
         <image name="xmark" catalog="system" width="14" height="13"/>
         <namedColor name="Colors/Background">
             <color red="0.0" green="0.0" blue="0.0" alpha="0.029999999329447746" colorSpace="custom" customColorSpace="sRGB"/>

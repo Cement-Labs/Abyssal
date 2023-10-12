@@ -41,7 +41,7 @@ public enum Data {
     }
     
     public static func registerDefaults() {
-        UserDefaults.standard.register(defaults: [Keys.MODIFIERS: [true, true]])
+        UserDefaults.standard.register(defaults: [Keys.MODIFIERS: [true, true, false]])
         UserDefaults.standard.register(defaults: [Keys.TIMEOUT: 3])
 
         UserDefaults.standard.register(defaults: [Keys.THEME: Themes.abyssal.name])
@@ -56,18 +56,25 @@ public enum Data {
         UserDefaults.standard.register(defaults: [Keys.REDUCE_ANIMATION: false])
     }
     
-    static var modifiers: (option: Bool, command: Bool) {
+    static var modifiers: (option: Bool, command: Bool, shift: Bool) {
         get {
+            let defaultTuple = (option: true, command: true, shift: false)
+            
             if let array = UserDefaults.standard.array(forKey: Keys.MODIFIERS) as? [Bool] {
-                return (option: array[0], command: array[1])
+                guard array.count == Mirror(reflecting: defaultTuple).children.count
+                else {
+                    return defaultTuple
+                }
+                        
+                return (option: array[0], command: array[1], shift: array[2])
             } else {
-                return (option: true, command: true)
+                return defaultTuple
             }
         }
         
         set(modifiers) {
             UserDefaults.standard.set(
-                [modifiers.option, modifiers.command],
+                [modifiers.option, modifiers.command, modifiers.shift],
                 forKey: Keys.MODIFIERS
             )
         }

@@ -50,7 +50,7 @@ class Themes {
             iconWidthAlt:	CGFloat,
             autoHideIcons: 	Bool
         ) {
-            let prefix = "Themes/" + identifier + "/"
+            let prefix = "Themes/\(identifier)/"
             
             self.name = name
             self.identifier = identifier

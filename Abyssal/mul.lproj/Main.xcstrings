@@ -1,8 +1,8 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "0hG-A1-HMr.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"App Version\"; ObjectID = \"0hG-A1-HMr\";",
+    "1vF-An-AOf.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"App Version\"; ObjectID = \"1vF-An-AOf\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
@@ -385,6 +385,18 @@
         }
       }
     },
+    "ugu-DQ-ax1.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Command\"; ObjectID = \"ugu-DQ-ax1\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Command"
+          }
+        }
+      }
+    },
     "v46-rn-EtL.title" : {
       "comment" : "Class = \"NSBox\"; title = \"Main/Body 2/Buttons\"; ObjectID = \"v46-rn-EtL\";",
       "extractionState" : "extracted_with_value",
@@ -405,6 +417,18 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Link"
+          }
+        }
+      }
+    },
+    "ys5-8l-bsx.title" : {
+      "comment" : "Class = \"NSBox\"; title = \"Command\"; ObjectID = \"ys5-8l-bsx\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Command"
           }
         }
       }

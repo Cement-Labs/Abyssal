@@ -13,11 +13,11 @@ class Helper {
     
     static let REPO_PATH: String = "NNN-Studio/Abyssal"
     
-    static let SOURCE_CODE_URL: URL 	= URL(string: "https://github.com/" + REPO_PATH)!
+    static let SOURCE_CODE_URL: URL 	= URL(string: "https://github.com/\(REPO_PATH)")!
     
-    static let RELEASE_URL: URL 		= URL(string: "https://github.com/" + REPO_PATH + "/releases")!
+    static let RELEASE_URL: URL 		= URL(string: "https://github.com/\(REPO_PATH)/releases")!
     
-    static let RELEASE_TAGS_URL: URL 	= URL(string: "https://api.github.com/repos/" + REPO_PATH + "/tags")!
+    static let RELEASE_TAGS_URL: URL 	= URL(string: "https://api.github.com/repos/\(REPO_PATH)/tags")!
     
     static let CHECK_NEWER_VERSION_TASK = URLSession.shared.dataTask(with: RELEASE_TAGS_URL) { (data, response, error) in
         guard let data = data else { return }
@@ -27,8 +27,10 @@ class Helper {
                 let tags = json.sorted { (v1, v2) -> Bool in
                     let name1 = v1["name"] as? String ?? ""
                     let name2 = v2["name"] as? String ?? ""
+                    
                     return name2.compare(name1, options: .numeric) == .orderedAscending
                 }
+                
                 if let latestTag = tags.first?["name"] as? String {
                     Helper.latestTag = latestTag
                 }
@@ -50,36 +52,27 @@ class Helper {
         }
         
         set(version) {
-            let pattern = "^v?(\\d+\\.\\d+)"
-            if let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive) {
-                let nsVersion = version as NSString
-                if let match = regex.firstMatch(
-                    in: 		version,
-                    options: 	[],
-                    range: 		NSRange(location: 0, length: nsVersion.length)
-                ) {
-                    if let versionRange = Range(match.range(at: 1), in: version) {
-                        let versionNumber = String(version[versionRange])
-                        Helper._latestTag = versionNumber
-                    }
-                }
-            } else {
-                _latestTag = ""
+            let regex = /\d+\.\d+\.\d+/
+            let nsVersion = version
+            
+            if let match = nsVersion.firstMatch(of: regex) {
+                Helper._latestTag = String(match.output)
             }
         }
     }
     
-    static var versionComponent: (needsUpdate: Bool, color: NSColor, version: String) {
+    static var versionComponent: (needsUpdate: Bool, version: String) {
         if let version = version {
             switch compareVersions(version, latestTag) {
-            case .orderedAscending: // Needs an update
-                return (true, .systemGreen, latestTag)
+            case .orderedAscending:
+                // Needs an update
+                return (true, latestTag)
             default:
-                return (false, .systemPink, version)
+                return (false, version)
             }
         } else {
-            print("Version information not found")
-            return (false, .systemPink, "...")
+            debugPrint("Version check failed!")
+            return (false, "")
         }
     }
     
@@ -252,7 +245,9 @@ class Helper {
         }
         
         static var modifiers: Bool {
-            command || option
+            (Data.modifiers.command && command)
+            || (Data.modifiers.option && option)
+            || (Data.modifiers.command && command)
         }
         
     }

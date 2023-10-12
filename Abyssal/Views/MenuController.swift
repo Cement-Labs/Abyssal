@@ -25,9 +25,17 @@ class MenuController: NSViewController, NSMenuDelegate {
     
     
     
+    @IBOutlet weak var modifierShift: NSBox!
+    
+    @IBOutlet weak var modifierShiftButton: NSButton!
+    
     @IBOutlet weak var modifierOption: NSBox!
     
+    @IBOutlet weak var modifierOptionButton: NSButton!
+    
     @IBOutlet weak var modifierCommand: NSBox!
+    
+    @IBOutlet weak var modifierCommandButton: NSButton!
     
     @IBOutlet weak var timeoutLabel: NSTextField!
     
@@ -37,7 +45,7 @@ class MenuController: NSViewController, NSMenuDelegate {
     
     @IBOutlet weak var appTitle: NSTextField!
     
-    @IBOutlet weak var appVersion: NSTextField!
+    @IBOutlet weak var appVersion: NSButton!
     
     @IBOutlet weak var startsWithMacOS: NSSwitch!
     
@@ -63,17 +71,10 @@ class MenuController: NSViewController, NSMenuDelegate {
     ) {
         super.viewDidLoad()
         initData()
-        
-        if let version = Helper.version {
-            appVersion.isHidden = false
-            appVersion.stringValue = version
-        } else {
-            appVersion.isHidden = true
-        }
     }
     
     override func viewDidAppear() {
-        // Helper.CHECK_NEWER_VERSION_TASK.resume()
+        Helper.CHECK_NEWER_VERSION_TASK.resume()
         Helper.delegate?.statusBarController.startFunctionalTimers()
     }
     
@@ -122,6 +123,24 @@ extension MenuController {
     }
     
     func initData() {
+        // Init version info
+        
+        appVersion.title = Helper.versionComponent.version
+        
+        if Helper.versionComponent.needsUpdate {
+            appVersion.isEnabled = true
+            appVersion.image = NSImage(systemSymbolName: "shift.fill", accessibilityDescription: nil)
+            
+            appTitle.textColor = NSColor.controlAccentColor
+            appVersion.contentTintColor = NSColor.controlAccentColor
+        } else {
+            appVersion.isEnabled = false
+            appVersion.image = nil
+            
+            appTitle.textColor = NSColor.labelColor
+            appVersion.contentTintColor = NSColor.tertiaryLabelColor
+        }
+        
         // Init themes menu
         
         do {
@@ -159,19 +178,22 @@ extension MenuController {
         
         
         
+        modifierShiftButton.flag = Data.modifiers.shift
+        modifierOptionButton.flag = Data.modifiers.option
+        modifierCommandButton.flag = Data.modifiers.command
         updateModifiers()
         
         timeout.objectValue = Data.timeout
         updateTimeoutEnabled()
         
-        startsWithMacOS.set(Data.startsWithMacos)
+        startsWithMacOS.flag = Data.startsWithMacos
         
-        autoShows.set(Data.autoShows)
+        autoShows.flag = Data.autoShows
         feedbackIntensity.objectValue = Data.feedbackIntensity
         updateFeedbackIntensityEnabled()
         
-        useAlwaysHideArea.set(Data.useAlwaysHideArea)
-        reduceAnimation.set(Data.reduceAnimation)
+        useAlwaysHideArea.flag = Data.useAlwaysHideArea
+        reduceAnimation.flag = Data.reduceAnimation
     }
     
     
@@ -203,13 +225,36 @@ extension MenuController {
     
     
     func updateModifiers() {
-        modifierOption.fillColor = Data.modifiers.option ? NSColor.quinaryLabel : NSColor.clear
-        modifierCommand.fillColor = Data.modifiers.command ? NSColor.quinaryLabel : NSColor.clear
+        NSAnimationContext.runAnimationGroup({ context in
+            context.duration = 0.1
+            
+            updateModifier(modifierShift, Data.modifiers.shift)
+            updateModifier(modifierOption, Data.modifiers.option)
+            updateModifier(modifierCommand, Data.modifiers.command)
+        })
+    }
+    
+    func updateModifier(
+        _ box: NSBox,
+        _ flag: Bool
+    ) {
+        let colorOn = Colors.BORDER.withAlphaComponent(0.2)
+        let colorOff = Colors.BORDER.withAlphaComponent(0)
+        
+        box.animator().fillColor = flag ? colorOn : colorOff
     }
     
 }
 
 extension MenuController {
+    
+    func openUrl(
+        _ sender: Any?,
+        _ url: URL
+    ) {
+        minimize(sender)
+        NSWorkspace.shared.open(url)
+    }
     
     // MARK: - Global Actions
     
@@ -226,11 +271,16 @@ extension MenuController {
         }
     }
     
+    @IBAction func goToRelease(
+        _ sender: Any?
+    ) {
+        openUrl(sender, Helper.RELEASE_URL)
+    }
+    
     @IBAction func sourceCode(
         _ sender: Any?
     ) {
-        minimize(sender)
-        NSWorkspace.shared.open(Helper.SOURCE_CODE_URL)
+        openUrl(sender, Helper.SOURCE_CODE_URL)
     }
     
     @IBAction func minimize(
@@ -240,6 +290,13 @@ extension MenuController {
     }
     
     // MARK: - Data Actions
+    @IBAction func toggleModifierShift(
+        _ sender: NSButton
+    ) {
+        Data.modifiers.shift = sender.flag
+        updateModifiers()
+    }
+    
     @IBAction func toggleModifierOption(
         _ sender: NSButton
     ) {
