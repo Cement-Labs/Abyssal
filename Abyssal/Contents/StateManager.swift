@@ -61,7 +61,7 @@ extension StatusBarController {
 
 var feedbackCount: Int = 0
 
-var was: (mouseSpare: Bool, command: Bool, option: Bool) = (mouseSpare: false, command: false, option: false)
+var was: (mouseSpare: Bool, modifiers: Bool) = (mouseSpare: false, modifiers: false)
 
 extension StatusBarController {
     
@@ -155,7 +155,7 @@ extension StatusBarController {
                 }
                 
                 let mouseNeedsUpdate = was.mouseSpare != strongSelf.mouseSpare
-                let keyNeedsUpdate = was.command != Helper.Keyboard.command || was.option != Helper.Keyboard.option
+                let keyNeedsUpdate = was.modifiers != Helper.Keyboard.modifiers
                 
                 if mouseNeedsUpdate {
                     if was.mouseSpare {
@@ -176,8 +176,7 @@ extension StatusBarController {
                 
                 was = (
                     mouseSpare: strongSelf.mouseSpare,
-                    command: Helper.Keyboard.command,
-                    option: Helper.Keyboard.option
+                    modifiers: Helper.Keyboard.modifiers
                 )
             }
         }

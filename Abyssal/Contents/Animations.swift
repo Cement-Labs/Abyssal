@@ -110,8 +110,7 @@ extension StatusBarController {
                 alphaValues.t = (
                     popoverShown
                     || idling.alwaysHide
-                    || Helper.Keyboard.command
-                    || Helper.Keyboard.option
+                    || Helper.Keyboard.modifiers
                 ) ? 1 : 0
             }
         }
@@ -216,7 +215,7 @@ extension StatusBarController {
         }
         
         do {
-            let flag = !popoverShown && !(Helper.Keyboard.command && ((Data.collapsed && !self.idling.hide) || self.mouseSpare)) && !self.idling.alwaysHide
+            let flag = !popoverShown && !(Helper.Keyboard.modifiers && ((Data.collapsed && !self.idling.hide) || self.mouseSpare)) && !self.idling.alwaysHide
             
             guard let x = self.tail.origin?.x else { return }
             let length = self.tail.length
@@ -278,7 +277,7 @@ extension StatusBarController {
         
         if !Data.theme.autoHideIcons {
             // Special judge. See #update()
-        } else if popoverShown || Helper.Keyboard.command || Helper.Keyboard.option {
+        } else if popoverShown || Helper.Keyboard.modifiers {
             head.button?.image = Data.theme.headUncollapsed
             alphaValues.h = 1
             alphaValues.b = mouseSpare ? 1 : 0

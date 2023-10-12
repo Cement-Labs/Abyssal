@@ -225,6 +225,10 @@ class Helper {
             return NSEvent.modifierFlags.contains(.shift)
         }
         
+        static var modifiers: Bool {
+            return command || option
+        }
+        
     }
     
     class Mouse {
