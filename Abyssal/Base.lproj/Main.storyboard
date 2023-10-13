@@ -42,7 +42,7 @@
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3oE-Id-0vv">
-                                                            <rect key="frame" x="18" y="59" width="217" height="28"/>
+                                                            <rect key="frame" x="76" y="59" width="102" height="28"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Abyssal" id="S3l-Th-u8S">
                                                                 <font key="font" metaFont="systemHeavy" size="24"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -64,9 +64,8 @@
                                                     <constraints>
                                                         <constraint firstItem="Fj0-aa-Z4F" firstAttribute="centerX" secondItem="Nus-iP-k6G" secondAttribute="centerX" id="4QG-aY-U7g"/>
                                                         <constraint firstItem="Fj0-aa-Z4F" firstAttribute="top" secondItem="3oE-Id-0vv" secondAttribute="bottom" constant="2" id="7Pw-Ze-COx"/>
-                                                        <constraint firstItem="3oE-Id-0vv" firstAttribute="leading" secondItem="Nus-iP-k6G" secondAttribute="leading" constant="20" id="BuU-S6-Z4I"/>
                                                         <constraint firstItem="3oE-Id-0vv" firstAttribute="centerY" secondItem="Nus-iP-k6G" secondAttribute="centerY" constant="-8" id="QC7-uW-xDH"/>
-                                                        <constraint firstAttribute="trailing" secondItem="3oE-Id-0vv" secondAttribute="trailing" constant="20" id="jzD-fk-goK"/>
+                                                        <constraint firstItem="3oE-Id-0vv" firstAttribute="centerX" secondItem="Nus-iP-k6G" secondAttribute="centerX" id="eq3-j5-ypl"/>
                                                     </constraints>
                                                 </view>
                                             </box>
@@ -123,7 +122,7 @@
                                                                                                     <constraint firstItem="dRB-pC-5Qd" firstAttribute="leading" secondItem="fIO-ps-fir" secondAttribute="leading" id="r7j-Nw-fDZ"/>
                                                                                                 </constraints>
                                                                                             </view>
-                                                                                            <color key="fillColor" name="Colors/Border"/>
+                                                                                            <color key="fillColor" name="quaternaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                                                         </box>
                                                                                         <box boxType="custom" borderWidth="0.0" cornerRadius="12" title="Option" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="TDg-JT-8w0">
                                                                                             <rect key="frame" x="41" y="0.0" width="33" height="24"/>
@@ -152,7 +151,7 @@
                                                                                                     <constraint firstItem="5xq-3Q-O2J" firstAttribute="leading" secondItem="412-fH-eRX" secondAttribute="leading" id="sai-I7-tZY"/>
                                                                                                 </constraints>
                                                                                             </view>
-                                                                                            <color key="fillColor" name="Colors/Border"/>
+                                                                                            <color key="fillColor" name="quaternaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                                                         </box>
                                                                                         <box boxType="custom" borderWidth="0.0" cornerRadius="12" title="Command" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="SFf-Jy-pSC">
                                                                                             <rect key="frame" x="82" y="0.0" width="33" height="24"/>
@@ -181,7 +180,7 @@
                                                                                                     <constraint firstAttribute="bottom" secondItem="jAc-NH-1Qe" secondAttribute="bottom" id="FFR-Xz-Eqd"/>
                                                                                                 </constraints>
                                                                                             </view>
-                                                                                            <color key="fillColor" name="Colors/Border"/>
+                                                                                            <color key="fillColor" name="quaternaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                                                         </box>
                                                                                     </subviews>
                                                                                     <constraints>
@@ -387,7 +386,7 @@
                                                     <rect key="frame" x="1" y="1" width="323" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <box boxType="custom" cornerRadius="10" title="Main/Body 2/Buttons/Quit App" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="mER-wL-Lkb" userLabel="Quit App">
+                                                        <box boxType="custom" cornerRadius="10" title="Main/Body 2/Buttons/Quit App" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="mER-wL-Lkb" userLabel="Quit App" customClass="FillOnHoverBox" customModule="Abyssal" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="247" height="30"/>
                                                             <view key="contentView" id="ZrD-yh-0Yo">
                                                                 <rect key="frame" x="1" y="1" width="245" height="28"/>
@@ -422,7 +421,7 @@
                                                         <stackView distribution="fillEqually" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ssr-lq-AB5">
                                                             <rect key="frame" x="255" y="0.0" width="68" height="30"/>
                                                             <subviews>
-                                                                <box horizontalCompressionResistancePriority="1000" boxType="custom" cornerRadius="10" title="Main/Body 2/Buttons/Link" translatesAutoresizingMaskIntoConstraints="NO" id="e3U-gc-FYv" userLabel="Link">
+                                                                <box horizontalCompressionResistancePriority="1000" boxType="custom" cornerRadius="10" title="Main/Body 2/Buttons/Link" translatesAutoresizingMaskIntoConstraints="NO" id="e3U-gc-FYv" userLabel="Link" customClass="FillOnHoverBox" customModule="Abyssal" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                                     <view key="contentView" id="9In-t0-6Gf">
                                                                         <rect key="frame" x="1" y="1" width="28" height="28"/>
@@ -456,7 +455,7 @@
                                                                     <color key="borderColor" name="Colors/Translucent/Hyper"/>
                                                                     <color key="fillColor" name="Colors/Translucent/Hyper"/>
                                                                 </box>
-                                                                <box horizontalCompressionResistancePriority="1000" boxType="custom" cornerRadius="10" title="Main/Body 2/Buttons/Minimize" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="oPU-r1-7qb" userLabel="Minimize">
+                                                                <box horizontalCompressionResistancePriority="1000" boxType="custom" cornerRadius="10" title="Main/Body 2/Buttons/Minimize" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="oPU-r1-7qb" userLabel="Minimize" customClass="FillOnHoverBox" customModule="Abyssal" customModuleProvider="target">
                                                                     <rect key="frame" x="38" y="0.0" width="30" height="30"/>
                                                                     <view key="contentView" id="wue-hj-JhU">
                                                                         <rect key="frame" x="1" y="1" width="28" height="28"/>

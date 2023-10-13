@@ -67,8 +67,7 @@ class MenuController: NSViewController, NSMenuDelegate {
     
     // MARK: - View Methods
     
-    override func viewDidLoad(
-    ) {
+    override func viewDidLoad() {
         super.viewDidLoad()
         initData()
     }
@@ -84,11 +83,15 @@ class MenuController: NSViewController, NSMenuDelegate {
     
 }
 
+var menuAppearanceObservation: NSKeyValueObservation?
+
 extension MenuController {
     
     // MARK: - Storyboard Instantiation
     
     static func freshController() -> MenuController {
+        Helper.CHECK_NEWER_VERSION_TASK.resume()
+        
         let storyboard = NSStoryboard(
             name: NSStoryboard.Name("Main"),
             bundle: nil
@@ -102,12 +105,23 @@ extension MenuController {
             fatalError("Can not find MenuController")
         }
         
+        // Observe appearance change
+        menuAppearanceObservation = NSApp.observe(\.effectiveAppearance) { (app, _) in
+            app.effectiveAppearance.performAsCurrentDrawingAppearance {
+                let menuController = ((app.delegate as? AppDelegate)?.popover.contentViewController as? MenuController)
+                
+                if menuController?.isViewLoaded ?? false {
+                    menuController?.updateColoredWidgets()
+                }
+            }
+        }
+        
         return controller
     }
     
 }
 
-var indexKey = UnsafeRawPointer(bitPattern: "indexKey".hashValue)
+var themeIndexKey = UnsafeRawPointer(bitPattern: "themeIndexKey".hashValue)
 
 extension MenuController {
     
@@ -116,32 +130,26 @@ extension MenuController {
     ) {
         if
             let button = sender as? NSMenuItem,
-            let index = objc_getAssociatedObject(button, &indexKey) as? Int
+            let index = objc_getAssociatedObject(button, &themeIndexKey) as? Int
         {
             Helper.switchToTheme(index)
         }
     }
     
     func initData() {
-        // Init version info
+        // Version info
         
         appVersion.title = Helper.versionComponent.version
         
         if Helper.versionComponent.needsUpdate {
             appVersion.isEnabled = true
             appVersion.image = NSImage(systemSymbolName: "shift.fill", accessibilityDescription: nil)
-            
-            appTitle.textColor = NSColor.controlAccentColor
-            appVersion.contentTintColor = NSColor.controlAccentColor
         } else {
             appVersion.isEnabled = false
             appVersion.image = nil
-            
-            appTitle.textColor = NSColor.labelColor
-            appVersion.contentTintColor = NSColor.tertiaryLabelColor
         }
         
-        // Init themes menu
+        // Themes menu
         
         do {
             for (index, theme) in Themes.themes.enumerated() {
@@ -152,7 +160,7 @@ extension MenuController {
                 )
                 
                 item.image = theme.icon
-                objc_setAssociatedObject(item, &indexKey, index, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+                objc_setAssociatedObject(item, &themeIndexKey, index, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
                 
                 self.themesMenu.addItem(item)
             }
@@ -166,7 +174,7 @@ extension MenuController {
             }
         }
         
-        // Init controls
+        // Controls
         
         timeout.minValue = 0
         timeout.maxValue = Double(Data.timeoutTickMarks - 1)
@@ -194,18 +202,56 @@ extension MenuController {
         
         useAlwaysHideArea.flag = Data.useAlwaysHideArea
         reduceAnimation.flag = Data.reduceAnimation
+        
+        updateColoredWidgets()
     }
     
+    func updateColoredWidgets() {
+        if Helper.versionComponent.needsUpdate {
+            appVersion.contentTintColor = NSColor.controlAccentColor
+        } else {
+            appVersion.contentTintColor = NSColor.tertiaryLabelColor
+        }
+        
+        updateModifiers()
+    }
     
+    func updateModifiers() {
+        NSAnimationContext.runAnimationGroup({ context in
+            context.duration = 0.1
+            
+            updateModifier(modifierShift, Data.modifiers.shift)
+            updateModifier(modifierOption, Data.modifiers.option)
+            updateModifier(modifierCommand, Data.modifiers.command)
+        })
+    }
     
-    func setSliderEnabled(
+    private func updateModifier(
+        _ box: NSBox,
+        _ flag: Bool
+    ) {
+        let colorOn = NSColor.quaternaryLabelColor.withAlphaComponent(0.1)
+        let colorOff = NSColor.quaternaryLabelColor.withAlphaComponent(0)
+        
+        box.animator().fillColor = flag ? colorOn : colorOff
+    }
+    
+    func updateButtons() {
+        
+    }
+    
+}
+
+extension MenuController {
+    
+    private func setSliderEnabled(
         _ slider: NSSlider,
         _ flag: Bool
     ) {
         slider.isEnabled = flag
     }
     
-    func setSliderLabelEnabled(
+    private func setSliderLabelEnabled(
         _ label: NSTextField,
         _ flag: Bool
     ) {
@@ -220,28 +266,6 @@ extension MenuController {
     func updateFeedbackIntensityEnabled() {
         setSliderEnabled(feedbackIntensity, Data.autoShows)
         setSliderLabelEnabled(feedbackIntensityLabel, Data.feedbackIntensity != 0)
-    }
-    
-    
-    
-    func updateModifiers() {
-        NSAnimationContext.runAnimationGroup({ context in
-            context.duration = 0.1
-            
-            updateModifier(modifierShift, Data.modifiers.shift)
-            updateModifier(modifierOption, Data.modifiers.option)
-            updateModifier(modifierCommand, Data.modifiers.command)
-        })
-    }
-    
-    func updateModifier(
-        _ box: NSBox,
-        _ flag: Bool
-    ) {
-        let colorOn = Colors.BORDER.withAlphaComponent(0.2)
-        let colorOff = Colors.BORDER.withAlphaComponent(0)
-        
-        box.animator().fillColor = flag ? colorOn : colorOff
     }
     
 }

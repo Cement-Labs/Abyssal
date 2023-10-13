@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		282D880A2AD58BEA0015111C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C66CABA72A38871500E4D8E6 /* Assets.xcassets */; };
 		2838D6B22AD842DB0087A5DE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2838D6B12AD842DB0087A5DE /* Colors.swift */; };
+		2852BDE72AD957B100AA8AD1 /* FillOnHoverBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2852BDE62AD957B100AA8AD1 /* FillOnHoverBox.swift */; };
 		C63B40532A4060E400BCAE79 /* NSStatusItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63B40522A4060E400BCAE79 /* NSStatusItem+Extension.swift */; };
 		C66CABA42A38871500E4D8E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CABA32A38871500E4D8E6 /* AppDelegate.swift */; };
 		C66CABB32A388FBD00E4D8E6 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CABB22A388FBD00E4D8E6 /* MenuController.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		2838D6B12AD842DB0087A5DE /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		2852BDE62AD957B100AA8AD1 /* FillOnHoverBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillOnHoverBox.swift; sourceTree = "<group>"; };
 		C63B40522A4060E400BCAE79 /* NSStatusItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSStatusItem+Extension.swift"; sourceTree = "<group>"; };
 		C66CABA02A38871500E4D8E6 /* Abyssal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Abyssal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C66CABA32A38871500E4D8E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				C66CABB22A388FBD00E4D8E6 /* MenuController.swift */,
+				2852BDE62AD957B100AA8AD1 /* FillOnHoverBox.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2852BDE72AD957B100AA8AD1 /* FillOnHoverBox.swift in Sources */,
 				C6B3E79B2A3D83C400B650BC /* NSRect+Extension.swift in Sources */,
 				C6DEC53D2A3A0E8900943448 /* Animations.swift in Sources */,
 				C6DEC5312A39EE0A00943448 /* Data.swift in Sources */,

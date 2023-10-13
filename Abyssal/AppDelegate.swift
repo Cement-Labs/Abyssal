@@ -25,9 +25,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         _ aNotification: Notification
     ) {
         Data.registerDefaults()
-        
         popover.contentViewController = MenuController.freshController()
-        Helper.CHECK_NEWER_VERSION_TASK.resume()
         
         mouseEventMonitor = EventMonitor(
             mask: [.leftMouseDown,
@@ -40,7 +38,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
     }
-    
     
     func applicationWillTerminate(
         _ aNotification: Notification
