@@ -12,6 +12,7 @@
 		2852BDE72AD957B100AA8AD1 /* FillOnHoverBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2852BDE62AD957B100AA8AD1 /* FillOnHoverBox.swift */; };
 		2852BDE92AD97A0E00AA8AD1 /* NSSlider+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2852BDE82AD97A0E00AA8AD1 /* NSSlider+Extension.swift */; };
 		2852BDEB2AD97AEC00AA8AD1 /* TipsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2852BDEA2AD97AEC00AA8AD1 /* TipsManager.swift */; };
+		2852BDEE2AD98E6000AA8AD1 /* MarginTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2852BDED2AD98E6000AA8AD1 /* MarginTextFieldCell.swift */; };
 		C63B40532A4060E400BCAE79 /* NSStatusItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63B40522A4060E400BCAE79 /* NSStatusItem+Extension.swift */; };
 		C66CABA42A38871500E4D8E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CABA32A38871500E4D8E6 /* AppDelegate.swift */; };
 		C66CABB32A388FBD00E4D8E6 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CABB22A388FBD00E4D8E6 /* MenuController.swift */; };
@@ -35,6 +36,7 @@
 		2852BDE62AD957B100AA8AD1 /* FillOnHoverBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillOnHoverBox.swift; sourceTree = "<group>"; };
 		2852BDE82AD97A0E00AA8AD1 /* NSSlider+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSlider+Extension.swift"; sourceTree = "<group>"; };
 		2852BDEA2AD97AEC00AA8AD1 /* TipsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsManager.swift; sourceTree = "<group>"; };
+		2852BDED2AD98E6000AA8AD1 /* MarginTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarginTextFieldCell.swift; sourceTree = "<group>"; };
 		C63B40522A4060E400BCAE79 /* NSStatusItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSStatusItem+Extension.swift"; sourceTree = "<group>"; };
 		C66CABA02A38871500E4D8E6 /* Abyssal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Abyssal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C66CABA32A38871500E4D8E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +70,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2852BDEC2AD98E5200AA8AD1 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2852BDED2AD98E6000AA8AD1 /* MarginTextFieldCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		C66CAB972A38871500E4D8E6 = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +98,7 @@
 		C66CABA22A38871500E4D8E6 /* Abyssal */ = {
 			isa = PBXGroup;
 			children = (
+				2852BDEC2AD98E5200AA8AD1 /* Cells */,
 				C66F02AA2A3B4BEB00077CE3 /* Views */,
 				C6DEC5392A3A0B2300943448 /* Contents */,
 				C6DEC5372A3A05E200943448 /* Infrastructures */,
@@ -239,6 +250,7 @@
 				C6DEC52A2A38BF6C00943448 /* StatusBarController.swift in Sources */,
 				C6DEC52C2A38CDE500943448 /* Helper.swift in Sources */,
 				C63B40532A4060E400BCAE79 /* NSStatusItem+Extension.swift in Sources */,
+				2852BDEE2AD98E6000AA8AD1 /* MarginTextFieldCell.swift in Sources */,
 				C66CABB32A388FBD00E4D8E6 /* MenuController.swift in Sources */,
 				C6E2C0302A3EE9F1007D4E1B /* StateManager.swift in Sources */,
 				2852BDEB2AD97AEC00AA8AD1 /* TipsManager.swift in Sources */,

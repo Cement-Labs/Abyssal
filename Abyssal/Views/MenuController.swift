@@ -376,6 +376,7 @@ extension MenuController {
     ) {
         Data.tips = sender.flag
         updateButtons()
+        showLittlePopoverWithMessage(sender: view, message: "123456")
     }
     
     
