@@ -95,7 +95,7 @@
                                                                                 <stackView distribution="fillEqually" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IFo-av-mg0">
                                                                                     <rect key="frame" x="98" y="0.0" width="115" height="24"/>
                                                                                     <subviews>
-                                                                                        <box boxType="custom" borderWidth="0.0" cornerRadius="12" title="Command" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="ys5-8l-bsx">
+                                                                                        <box boxType="custom" borderWidth="0.0" cornerRadius="12" title="Command" titlePosition="noTitle" transparent="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ys5-8l-bsx">
                                                                                             <rect key="frame" x="0.0" y="0.0" width="33" height="24"/>
                                                                                             <view key="contentView" id="fIO-ps-fir">
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="33" height="24"/>
@@ -617,7 +617,7 @@
                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
                                                                         </textField>
-                                                                        <switch horizontalHuggingPriority="750" verticalHuggingPriority="750" baseWritingDirection="leftToRight" alignment="left" translatesAutoresizingMaskIntoConstraints="NO" id="C8P-qk-mj3">
+                                                                        <switch horizontalHuggingPriority="750" verticalHuggingPriority="750" baseWritingDirection="leftToRight" alignment="left" state="on" translatesAutoresizingMaskIntoConstraints="NO" id="C8P-qk-mj3">
                                                                             <rect key="frame" x="243" y="-1" width="42" height="25"/>
                                                                             <connections>
                                                                                 <action selector="toggleAutoShows:" target="crA-Or-uDV" id="jcu-si-MoM"/>
@@ -723,7 +723,7 @@
                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
                                                                         </textField>
-                                                                        <switch horizontalHuggingPriority="750" verticalHuggingPriority="750" baseWritingDirection="leftToRight" alignment="left" translatesAutoresizingMaskIntoConstraints="NO" id="sQ8-l7-Qi6">
+                                                                        <switch horizontalHuggingPriority="750" verticalHuggingPriority="750" baseWritingDirection="leftToRight" alignment="left" state="on" translatesAutoresizingMaskIntoConstraints="NO" id="sQ8-l7-Qi6">
                                                                             <rect key="frame" x="243" y="-1" width="42" height="25"/>
                                                                             <connections>
                                                                                 <action selector="toggleUseAlwaysHideArea:" target="crA-Or-uDV" id="lEC-dS-AUQ"/>
