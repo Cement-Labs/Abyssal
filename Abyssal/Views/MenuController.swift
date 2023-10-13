@@ -376,7 +376,6 @@ extension MenuController {
     ) {
         Data.tips = sender.flag
         updateButtons()
-        showTest(at: timeout.thumbRect)
     }
     
     
