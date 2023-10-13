@@ -26,13 +26,13 @@ class Colors {
         
         public static let DANGER = Colors.getOrClear("Translucent/Danger")
         
-        public static let HYPER = Colors.getOrClear("Translucent/Hyper")
-        
-        public static let MAGIC = Colors.getOrClear("Translucent/Magic")
-        
         public static let SAFE = Colors.getOrClear("Translucent/Safe")
         
         public static let UNSAFE = Colors.getOrClear("Translucent/Unsafe")
+        
+        public static var accent: NSColor {
+            NSColor.controlAccentColor.withAlphaComponent(0.07)
+        }
         
     }
     
@@ -40,13 +40,13 @@ class Colors {
         
         public static let DANGER = Colors.getOrClear("Opaque/Danger")
         
-        public static let HYPER = Colors.getOrClear("Opaque/Hyper")
-        
-        public static let MAGIC = Colors.getOrClear("Opaque/Magic")
-        
         public static let SAFE = Colors.getOrClear("Opaque/Safe")
         
         public static let UNSAFE = Colors.getOrClear("Opaque/Unsafe")
+        
+        public static var accent: NSColor {
+            NSColor.controlAccentColor
+        }
         
     }
     

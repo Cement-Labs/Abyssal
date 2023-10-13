@@ -17,14 +17,6 @@ class MenuController: NSViewController, NSMenuDelegate {
     
     
     
-    @IBOutlet weak var quitAppView: NSView!
-    
-    @IBOutlet weak var linkView: NSView!
-    
-    @IBOutlet weak var minimizeView: NSView!
-    
-    
-    
     @IBOutlet weak var modifierShift: NSBox!
     
     @IBOutlet weak var modifierShiftButton: NSButton!
@@ -48,6 +40,24 @@ class MenuController: NSViewController, NSMenuDelegate {
     @IBOutlet weak var appVersion: NSButton!
     
     @IBOutlet weak var startsWithMacOS: NSSwitch!
+    
+    
+    
+    @IBOutlet weak var quitApp: FillOnHoverBox!
+    
+    @IBOutlet weak var quitAppButton: NSButton!
+    
+    @IBOutlet weak var link: FillOnHoverBox!
+    
+    @IBOutlet weak var linkButton: NSButton!
+    
+    @IBOutlet weak var minimize: FillOnHoverBox!
+    
+    @IBOutlet weak var minimizeButton: NSButton!
+    
+    @IBOutlet weak var tips: FillOnHoverBox!
+    
+    @IBOutlet weak var tipsButton: NSButton!
     
     
     
@@ -208,12 +218,13 @@ extension MenuController {
     
     func updateColoredWidgets() {
         if Helper.versionComponent.needsUpdate {
-            appVersion.contentTintColor = NSColor.controlAccentColor
+            appVersion.contentTintColor = Colors.Opaque.accent
         } else {
             appVersion.contentTintColor = NSColor.tertiaryLabelColor
         }
         
         updateModifiers()
+        updateButtons()
     }
     
     func updateModifiers() {
@@ -230,14 +241,32 @@ extension MenuController {
         _ box: NSBox,
         _ flag: Bool
     ) {
-        let colorOn = NSColor.quaternaryLabelColor.withAlphaComponent(0.1)
+        let colorOn = NSColor.quaternaryLabelColor.withAlphaComponent(0.07)
         let colorOff = NSColor.quaternaryLabelColor.withAlphaComponent(0)
         
         box.animator().fillColor = flag ? colorOn : colorOff
     }
     
     func updateButtons() {
+        quitApp.setOriginlalFillColor(Colors.Translucent.DANGER)
+        quitApp.animator().borderColor = Colors.Translucent.DANGER
+        quitAppButton.animator().contentTintColor = Colors.Opaque.DANGER
         
+        tips.setOriginlalFillColor(Colors.Translucent.accent)
+        tips.overrideFillColor(Data.tips ? Colors.Opaque.accent : nil)
+        tips.animator().borderColor = Colors.Translucent.accent
+        tipsButton.animator().contentTintColor = Data.tips ? NSColor.labelColor : Colors.Opaque.accent
+        tipsButton.image = Data.tips
+        ? NSImage(systemSymbolName: "tag.fill", accessibilityDescription: nil)
+        : NSImage(systemSymbolName: "tag.slash", accessibilityDescription: nil)
+        
+        link.setOriginlalFillColor(Colors.Translucent.accent)
+        link.animator().borderColor = Colors.Translucent.accent
+        linkButton.animator().contentTintColor = Colors.Opaque.accent
+        
+        minimize.setOriginlalFillColor(Colors.Translucent.SAFE)
+        minimize.animator().borderColor = Colors.Translucent.SAFE
+        minimizeButton.animator().contentTintColor = Colors.Opaque.SAFE
     }
     
 }
@@ -265,7 +294,7 @@ extension MenuController {
     
     func updateFeedbackIntensityEnabled() {
         setSliderEnabled(feedbackIntensity, Data.autoShows)
-        setSliderLabelEnabled(feedbackIntensityLabel, Data.feedbackIntensity != 0)
+        setSliderLabelEnabled(feedbackIntensityLabel, Data.autoShows && Data.feedbackIntensity != 0)
     }
     
 }
@@ -333,6 +362,20 @@ extension MenuController {
     ) {
         Data.modifiers.command = sender.flag
         updateModifiers()
+    }
+    
+    @IBAction func toggleTimeout(
+        _ sender: NSSlider
+    ) {
+        Data.timeout = sender.integerValue
+        updateTimeoutEnabled()
+    }
+    
+    @IBAction func toggleTips(
+        _ sender: NSButton
+    ) {
+        Data.tips = sender.flag
+        updateButtons()
     }
     
     

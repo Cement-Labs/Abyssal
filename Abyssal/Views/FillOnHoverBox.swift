@@ -10,9 +10,28 @@ import AppKit
 
 class FillOnHoverBox: NSBox {
     
-    private var fill: CGColor?
+    private var originalFillColor: NSColor = NSColor.clear
     
-    private var onHover: Bool = false
+    private var overrideFillColor: NSColor?
+    
+    private var isHovered: Bool = false
+    
+    public func setOriginlalFillColor(
+        _ originalFillColor: NSColor
+    ) {
+        self.originalFillColor = originalFillColor
+    }
+    
+    public func overrideFillColor(
+        _ overrideFillColor: NSColor? = nil
+    ) {
+        self.overrideFillColor = overrideFillColor
+        updateFillColor()
+    }
+    
+    override func awakeFromNib() {
+        updateFillColor()
+    }
     
     override func updateTrackingAreas() {
         super.updateTrackingAreas()
@@ -32,20 +51,27 @@ class FillOnHoverBox: NSBox {
     override func mouseEntered(with event: NSEvent) {
         super.mouseEntered(with: event)
         
-        onHover = true
-        a()
+        isHovered = true
+        updateFillColor()
     }
     
     override func mouseExited(with event: NSEvent) {
         super.mouseExited(with: event)
         
-        onHover = false
-        a()
+        isHovered = false
+        updateFillColor()
     }
     
-    private func a() {
-        animator().layer?.backgroundColor = onHover ? NSColor.white.cgColor : NSColor.black.cgColor
-        layer?.setNeedsDisplay()
+    private func updateFillColor() {
+        NSAnimationContext.runAnimationGroup({ context in
+            context.duration = 0.1
+            
+            if overrideFillColor == nil {
+                animator().fillColor = isHovered ? originalFillColor : originalFillColor.withAlphaComponent(0)
+            } else {
+                animator().fillColor = overrideFillColor!
+            }
+        })
     }
     
 }

@@ -15,6 +15,8 @@ public enum Data {
         public static let MODIFIERS: String = "Modifiers"
 
         public static let TIMEOUT: String = "Timeout"
+        
+        public static let TIPS: String = "Tips"
 
 
         
@@ -43,6 +45,7 @@ public enum Data {
     public static func registerDefaults() {
         UserDefaults.standard.register(defaults: [Keys.MODIFIERS: [true, true, false]])
         UserDefaults.standard.register(defaults: [Keys.TIMEOUT: 3])
+        UserDefaults.standard.register(defaults: [Keys.TIPS: true])
 
         UserDefaults.standard.register(defaults: [Keys.THEME: Themes.abyssal.name])
         
@@ -119,6 +122,16 @@ public enum Data {
             return (attr: 60 * 10, label: Helper.FormattedTime.inMinutes(10))
         default:
             return (attr: nil, label: Helper.FormattedTime.FOREVER)
+        }
+    }
+    
+    static var tips: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: Keys.TIPS)
+        }
+        
+        set(flag) {
+            UserDefaults.standard.set(flag, forKey: Keys.TIPS)
         }
     }
     

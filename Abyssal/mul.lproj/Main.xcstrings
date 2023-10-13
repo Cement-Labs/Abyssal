@@ -91,6 +91,36 @@
         }
       }
     },
+    "BfR-ev-j7B.title" : {
+      "comment" : "Class = \"NSBox\"; title = \"Main/Body 2/Buttons/Link\"; ObjectID = \"BfR-ev-j7B\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Main/Body 2/Buttons/Link"
+          }
+        }
+      }
+    },
+    "CAQ-b2-2Ky.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Tips\"; ObjectID = \"CAQ-b2-2Ky\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Tips"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "提示"
+          }
+        }
+      }
+    },
     "crA-Or-uDV.title" : {
       "comment" : "Class = \"NSViewController\"; title = \"Layer 0\"; ObjectID = \"crA-Or-uDV\";",
       "extractionState" : "extracted_with_value",
@@ -226,6 +256,12 @@
             "state" : "new",
             "value" : "Timeout"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "超时"
+          }
         }
       }
     },
@@ -242,13 +278,13 @@
       }
     },
     "MQT-X4-oSO.title" : {
-      "comment" : "Class = \"NSMenuItem\"; title = \"3\"; ObjectID = \"MQT-X4-oSO\";",
+      "comment" : "Class = \"NSMenuItem\"; title = \"Theme\"; ObjectID = \"MQT-X4-oSO\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "3"
+            "value" : "Theme"
           }
         }
       }
@@ -296,13 +332,13 @@
       }
     },
     "Qzp-Dk-chW.title" : {
-      "comment" : "Class = \"NSMenuItem\"; title = \"2\"; ObjectID = \"Qzp-Dk-chW\";",
+      "comment" : "Class = \"NSMenuItem\"; title = \"Theme\"; ObjectID = \"Qzp-Dk-chW\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "2"
+            "value" : "Theme"
           }
         }
       }
@@ -397,18 +433,6 @@
         }
       }
     },
-    "v46-rn-EtL.title" : {
-      "comment" : "Class = \"NSBox\"; title = \"Main/Body 2/Buttons\"; ObjectID = \"v46-rn-EtL\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Main/Body 2/Buttons"
-          }
-        }
-      }
-    },
     "YHc-dN-U9E.title" : {
       "comment" : "Class = \"NSButtonCell\"; title = \"Link\"; ObjectID = \"YHc-dN-U9E\";",
       "extractionState" : "extracted_with_value",
@@ -441,6 +465,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Modifiers"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "修饰键"
           }
         }
       }
