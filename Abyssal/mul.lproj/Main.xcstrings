@@ -355,6 +355,18 @@
         }
       }
     },
+    "S0d-4S-IAp.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Label\"; ObjectID = \"S0d-4S-IAp\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Label"
+          }
+        }
+      }
+    },
     "S3l-Th-u8S.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Abyssal\"; ObjectID = \"S3l-Th-u8S\";",
       "extractionState" : "extracted_with_value",
@@ -429,6 +441,18 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Command"
+          }
+        }
+      }
+    },
+    "UMT-PH-sqJ.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"123\"; ObjectID = \"UMT-PH-sqJ\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "123"
           }
         }
       }

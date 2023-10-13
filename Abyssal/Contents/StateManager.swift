@@ -1,5 +1,5 @@
 //
-//  StatusBarStateManager.swift
+//  StateManager.swift
 //  Abyssal
 //
 //  Created by KrLite on 2023/6/18.

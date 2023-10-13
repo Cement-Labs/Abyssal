@@ -1,5 +1,5 @@
 //
-//  QuotesViewController.swift
+//  MenuController.swift
 //  Abyssal
 //
 //  Created by KrLite on 2023/6/13.
@@ -376,6 +376,7 @@ extension MenuController {
     ) {
         Data.tips = sender.flag
         updateButtons()
+        showTest(at: timeout.thumbRect)
     }
     
     
