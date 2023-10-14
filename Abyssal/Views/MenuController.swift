@@ -255,7 +255,7 @@ extension MenuController {
         tips.setOriginlalFillColor(Colors.Translucent.accent)
         tips.overrideFillColor(Data.tips ? Colors.Opaque.accent : nil)
         tips.animator().borderColor = Colors.Translucent.accent
-        tipsButton.animator().contentTintColor = Data.tips ? NSColor.labelColor : Colors.Opaque.accent
+        tipsButton.animator().contentTintColor = Data.tips ? NSColor.white : Colors.Opaque.accent
         tipsButton.image = Data.tips
         ? NSImage(systemSymbolName: "tag.fill", accessibilityDescription: nil)
         : NSImage(systemSymbolName: "tag.slash", accessibilityDescription: nil)
@@ -376,7 +376,11 @@ extension MenuController {
     ) {
         Data.tips = sender.flag
         updateButtons()
-        showLittlePopoverWithMessage(sender: view, message: "123456")
+        Tips.show(
+            self.view,
+            NSMakeRect(0, -50, 70, 100),
+            dataString: "Data"
+        )
     }
     
     

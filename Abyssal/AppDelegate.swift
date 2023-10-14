@@ -107,16 +107,32 @@ extension AppDelegate {
         _ sender: Any?
     ) {
         if let button = statusBarController.head.button ?? sender as? NSButton {
+            
+            let invisiblePanel = NSPanel(
+                contentRect: NSMakeRect(0, 0, 1, 5),
+                styleMask: [.borderless],
+                backing: .buffered,
+                defer: false
+            )
+            invisiblePanel.isFloatingPanel = true
+            invisiblePanel.alphaValue = 0
+            
+            let buttonRect = button.convert(button.bounds, to: nil)
+            let screenRect = button.window!.convertToScreen(buttonRect)
+
+            invisiblePanel.setFrameOrigin(NSPoint(
+                x: screenRect.maxX,
+                y: screenRect.maxY
+            ))
+            invisiblePanel.makeKeyAndOrderFront(nil)
+            
             popover.show(
-                relativeTo: 	button.bounds,
-                of: 			button,
-                preferredEdge: 	.maxX
+                relativeTo: 	invisiblePanel.contentView!.frame,
+                of: 			invisiblePanel.contentView!,
+                preferredEdge: 	.minY
             )
             
-            if let window = popover.contentViewController?.view.window {
-                // Activate popover
-                window.becomeKey()
-            }
+            popover.contentViewController?.view.window?.makeKey()
         }
         
         mouseEventMonitor?.start()
