@@ -26,6 +26,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     ) {
         Data.registerDefaults()
         popover.contentViewController = MenuController.freshController()
+        popover.behavior = .transient
         
         mouseEventMonitor = EventMonitor(
             mask: [.leftMouseDown,

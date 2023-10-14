@@ -157,26 +157,29 @@ class Helper {
     
     class FormattedTime {
         
-        static let SECONDS = String(localized: "Seconds")
+        static let SECOND = NSLocalizedString("FormattedTime/Seconds", value: "%lld seconds", comment: "(Int) + seconds")
         
-        static let MINUTES = String(localized: "Minutes")
+        static let MINUTE = NSLocalizedString("FormattedTime/Minutes", value: "%lld minutes", comment: "(Int) + minutes")
         
-        static let FOREVER = String(localized: "Forever")
+        static let FOREVER = NSLocalizedString("FormattedTime/Forever", comment: "Forever")
         
-        static func orElseForever(_ number: Any?, unit: String) -> String {
-            if let number = number as? LosslessStringConvertible {
-                String(number) + Data.SPACE + unit
+        static func orElseForever(
+            _ number: Any?,
+            unit: String
+        ) -> String {
+            if let number = number as? Int {
+                String(format: unit, number)
             } else {
                 FOREVER
             }
         }
         
         static func inSeconds(_ number: Any?) -> String {
-            orElseForever(number, unit: SECONDS)
+            orElseForever(number, unit: SECOND)
         }
         
         static func inMinutes(_ number: Any?) -> String {
-            orElseForever(number, unit: MINUTES)
+            orElseForever(number, unit: MINUTE)
         }
         
     }

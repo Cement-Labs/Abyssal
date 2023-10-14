@@ -22,6 +22,8 @@ class Tip {
         popover.isShown
     }
     
+    private var willShow: DispatchWorkItem?
+    
     init?(
         dataString: (() -> String?)? = nil,
         tipString: (() -> String?)? = nil,
@@ -141,15 +143,27 @@ class Tip {
     ) {
         guard isShown || (!isShown && update()) else { return }
         
-        popover.show(
-            relativeTo:     rect(),
-            of:             sender,
-            preferredEdge:  NSRectEdge.maxY
-        )
+        willShow = DispatchWorkItem {
+            self.popover.show(
+                relativeTo:     self.rect(),
+                of:             sender,
+                preferredEdge:  NSRectEdge.maxY
+            )
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: willShow!)
     }
     
     func close() {
+        willShow?.cancel()
         popover.performClose(self)
+    }
+    
+    func offset(
+        _ dx: CGFloat,
+        _ dy: CGFloat
+    ) {
+        rect = { self.rect().offsetBy(dx: dx, dy: dy) }
     }
     
 }
@@ -185,7 +199,6 @@ class Tips {
         if let area = event.trackingArea {
             map
                 .filter { $0.key == area }
-                .filter { $0.value.tip.isShown }
                 .forEach { $0.value.tip.close() }
         }
     }

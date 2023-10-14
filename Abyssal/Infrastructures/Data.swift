@@ -59,7 +59,10 @@ public enum Data {
         UserDefaults.standard.register(defaults: [Keys.REDUCE_ANIMATION: false])
     }
     
-    static let SPACE = String(localized: " ", comment: "Language-specified space between sentences.")
+    static var SPACE: String {
+        let string = NSLocalizedString("Data/Space", comment: "Language-specified space between sentences.")
+        return string == "nil" ? "" : string
+    }
     
     static var modifiers: (option: Bool, command: Bool, shift: Bool) {
         get {

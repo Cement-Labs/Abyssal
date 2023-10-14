@@ -1,9 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    " " : {
-      "comment" : "Language-specified space between sentences."
-    },
     "Abyssal" : {
       "comment" : "Name for theme 'Abyssal'",
       "localizations" : {
@@ -14,9 +11,6 @@
           }
         }
       }
-    },
-    "An update is available." : {
-
     },
     "Approaching" : {
       "comment" : "Name for theme 'Approaching'",
@@ -36,6 +30,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "调制、解调"
+          }
+        }
+      }
+    },
+    "Data/Space" : {
+      "comment" : "Language-specified space between sentences.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " "
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "nil"
           }
         }
       }
@@ -62,7 +73,8 @@
         }
       }
     },
-    "Forever" : {
+    "FormattedTime/Forever" : {
+      "comment" : "Forever",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -78,6 +90,76 @@
         }
       }
     },
+    "FormattedTime/Minutes" : {
+      "comment" : "(Int) + minutes",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld minute"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld minutes"
+                }
+              }
+            }
+          }
+        },
+        "zh-Hans" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld分钟"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "FormattedTime/Seconds" : {
+      "comment" : "(Int) + seconds",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld second"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld seconds"
+                }
+              }
+            }
+          }
+        },
+        "zh-Hans" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld秒"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "Hidden Bar" : {
       "comment" : "Name for theme 'Hidden Bar'",
       "localizations" : {
@@ -88,9 +170,6 @@
           }
         }
       }
-    },
-    "If the mouse is hovering over spare area, temporarily disables Auto Shows." : {
-
     },
     "Metres Away" : {
       "comment" : "Name for theme 'Metres Away'",
@@ -103,19 +182,6 @@
         }
       }
     },
-    "Minutes" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "minutes"
-          }
-        }
-      }
-    },
-    "Modifier keys to make the separators visible." : {
-
-    },
     "Not So Happy" : {
       "comment" : "Name for theme 'Not So Happy'",
       "localizations" : {
@@ -127,24 +193,76 @@
         }
       }
     },
-    "Seconds" : {
+    "Tip/ButtonAppVersion" : {
+      "comment" : "Button app version",
+      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "seconds"
+            "state" : "new",
+            "value" : "An update is available."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "秒"
+            "value" : "有可用更新。"
           }
         }
       }
     },
-    "Time to countdown before disabling Auto Idling." : {
-
+    "Tip/SliderTimeout" : {
+      "comment" : "Slider timeout",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Time to countdown before disabling Auto Idling."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "取消「自动闲置」之前的等待时间。"
+          }
+        }
+      }
+    },
+    "Tip/ViewModifier/1" : {
+      "comment" : "View modifier",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Modifier keys to make the separators visible."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "按下修饰键以显示分隔符。"
+          }
+        }
+      }
+    },
+    "Tip/ViewModifier/2" : {
+      "comment" : "(if Data.autoShows): View modifier",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "If the mouse is hovering over spare area, temporarily disables Auto Shows."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "当光标移动到闲置位置时按下修饰键，将暂时禁用「自动显示」。"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
