@@ -76,6 +76,10 @@ class Themes {
         
     }
     
+}
+
+extension Themes {
+    
     static var themes: [Theme] {
         [
             abyssal,
@@ -96,6 +100,10 @@ class Themes {
     static var themeNames: [String] {
         return themes.map { $0.name }
     }
+    
+}
+
+extension Themes {
     
     static let abyssal: Theme = Theme(
         String(

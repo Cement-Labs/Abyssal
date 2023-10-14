@@ -299,6 +299,11 @@ extension MenuController {
     
 }
 
+var tip = Tips.Tip(
+    dataString: "Data",
+    tipString: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+)
+
 extension MenuController {
     
     func openUrl(
@@ -369,6 +374,8 @@ extension MenuController {
     ) {
         Data.timeout = sender.integerValue
         updateTimeoutEnabled()
+        
+        tip?.reposition(timeout.rectOfTickMark(at: timeout.integerValue).offsetBy(dx: 0, dy: 8))
     }
     
     @IBAction func toggleTips(
@@ -376,12 +383,17 @@ extension MenuController {
     ) {
         Data.tips = sender.flag
         updateButtons()
-        Tips.show(
-            timeout.cell!.controlView!,
-            timeout.rectOfTickMark(at: timeout.integerValue).offsetBy(dx: 0, dy: 8),
-            dataString: "Data",
-            tipString: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-        )
+        
+        if tip != nil {
+            if tip!.isShown {
+                tip?.close()
+            } else {
+                tip?.show(
+                    timeout.cell!.controlView!,
+                    timeout.rectOfTickMark(at: timeout.integerValue).offsetBy(dx: 0, dy: 8)
+                )
+            }
+        }
     }
     
     

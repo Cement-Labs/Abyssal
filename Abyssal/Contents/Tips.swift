@@ -10,6 +10,153 @@ import AppKit
 
 class Tips {
     
+    class Tip {
+        
+        var popover: NSPopover
+        
+        var dataString: String? = nil
+        
+        var tipString: String? = nil
+        
+        var isShown: Bool {
+            popover.isShown
+        }
+        
+        init?(
+            dataString: String? = nil,
+            tipString: String? = nil
+        ) {
+            self.popover = Tips.createPopover()
+            self.dataString = dataString
+            self.tipString = tipString
+        }
+        
+        func update() {
+            Tips.bindViewController(popover)
+            
+            let hasData = dataString != nil
+            let hasTip = Data.tips && tipString != nil
+            guard hasData || hasTip else { return }
+            
+            var data: NSTextField?
+            var tip: NSTextField?
+            
+            guard popover.contentViewController != nil else { return }
+            
+            if (hasData) {
+                data = Tips.createTextField(
+                    NSFont.systemFont(ofSize: Tips.DATA_SIZE, weight: .bold),
+                    dataString!
+                )
+                data?.alignment = .center
+                
+                popover.contentViewController!.view.addSubview(data!)
+                
+                Tips.addHorizontalMargins(
+                    parent: popover.contentViewController!.view,
+                    child: data,
+                    relatedBy: .equal
+                )
+                
+                if (!hasTip) {
+                    Tips.addVerticalMargins(
+                        parent: popover.contentViewController!.view,
+                        child: data,
+                        relatedBy: .equal
+                    )
+                }
+            }
+            
+            if (hasTip) {
+                tip = Tips.createTextField(
+                    NSFont.systemFont(ofSize: Tips.TIP_SIZE, weight: .regular),
+                    tipString!
+                )
+                tip?.alphaValue = 0.65
+                
+                popover.contentViewController?.view.addSubview(tip!)
+                
+                Tips.addHorizontalMargins(
+                    parent: popover.contentViewController!.view,
+                    child: tip,
+                    relatedBy: .equal
+                )
+                
+                if (!hasData) {
+                    Tips.addVerticalMargins(
+                        parent: popover.contentViewController!.view,
+                        child: tip,
+                        relatedBy: .equal
+                    )
+                }
+            }
+            
+            if (hasData && hasTip) {
+                popover.contentViewController!.view.addConstraint(NSLayoutConstraint(
+                    item: popover.contentViewController!.view,
+                    attribute: .top,
+                    relatedBy: .equal,
+                    toItem: data,
+                    attribute: .top,
+                    multiplier: 1,
+                    constant: -Tips.MARGIN.height
+                ))
+                popover.contentViewController!.view.addConstraint(NSLayoutConstraint(
+                    item: data!,
+                    attribute: .bottom,
+                    relatedBy: .equal,
+                    toItem: tip,
+                    attribute: .top,
+                    multiplier: 1,
+                    constant: -Tips.MARGIN.height
+                ))
+                popover.contentViewController!.view.addConstraint(NSLayoutConstraint(
+                    item: popover.contentViewController!.view,
+                    attribute: .bottom,
+                    relatedBy: .equal,
+                    toItem: tip,
+                    attribute: .bottom,
+                    multiplier: 1,
+                    constant: Tips.MARGIN.height
+                ))
+            }
+        }
+        
+        func show(
+            _ sender: NSView,
+            _ rect: NSRect? = nil
+        ) {
+            update()
+            
+            popover.show(
+                relativeTo:     rect ?? sender.bounds,
+                of:             sender,
+                preferredEdge:  NSRectEdge.maxY
+            )
+        }
+        
+        func reposition(
+            _ rect: NSRect
+        ) {
+            popover.positioningRect = rect
+        }
+        
+        func transform(
+            _ transform: CGAffineTransform
+        ) {
+            reposition(popover.positioningRect.applying(transform))
+        }
+        
+        func close() {
+            popover.performClose(self)
+        }
+        
+    }
+    
+}
+
+extension Tips {
+    
     public static let DATA_SIZE: CGFloat = 14.5
     
     public static let TIP_SIZE: CGFloat = 10
@@ -22,21 +169,25 @@ class Tips {
 
 extension Tips {
     
-    private static func createPopover() -> (controller: NSViewController, popover: NSPopover) {
-        let controller = NSViewController()
-        controller.view = NSView(frame: NSRect.zero)
-        
+    static func createPopover() -> NSPopover {
         let popover = NSPopover()
-        popover.contentViewController = controller
-        popover.contentSize = controller.view.frame.size
         
-        popover.behavior = .semitransient
+        popover.behavior = .applicationDefined
         popover.animates = true
         
-        return (controller, popover)
+        return popover
     }
     
-    private static func createTextField(
+    static func bindViewController(
+        _ popover: NSPopover
+    ) {
+        let controller = NSViewController()
+        controller.view = NSView()
+        
+        popover.contentViewController = controller
+    }
+    
+    static func createTextField(
         _ font: NSFont,
         _ message: String
     ) -> NSTextField {
@@ -64,7 +215,7 @@ extension Tips {
 
 extension Tips {
     
-    private static func addHorizontalMargins(
+    static func addHorizontalMargins(
         parent: NSView,
         child: NSView?,
         relatedBy: NSLayoutConstraint.Relation
@@ -89,7 +240,7 @@ extension Tips {
         ))
     }
     
-    private static func addVerticalMargins(
+    static func addVerticalMargins(
         parent: NSView,
         child: NSView?,
         relatedBy: NSLayoutConstraint.Relation
@@ -112,109 +263,6 @@ extension Tips {
             multiplier: 1,
             constant: MARGIN.height
         ))
-    }
-    
-}
-
-extension Tips {
-    
-    static func show(
-        _ sender: NSView,
-        _ rect: NSRect? = nil,
-        dataString: String? = nil,
-        tipString: String? = nil
-    ) {
-        let hasData = dataString != nil
-        let hasTip = Data.tips && tipString != nil
-        guard hasData || hasTip else { return }
-        
-        let p = createPopover()
-        var data: NSTextField?
-        var tip: NSTextField?
-        
-        if (hasData) {
-            data = createTextField(
-                NSFont.systemFont(ofSize: DATA_SIZE, weight: .bold),
-                dataString!
-            )
-            data?.alignment = .center
-            
-            p.controller.view.addSubview(data!)
-            
-            addHorizontalMargins(
-                parent: p.controller.view,
-                child: data,
-                relatedBy: .equal
-            )
-            
-            if (!hasTip) {
-                addVerticalMargins(
-                    parent: p.controller.view,
-                    child: data,
-                    relatedBy: .equal
-                )
-            }
-        }
-        
-        if (hasTip) {
-            tip = createTextField(
-                NSFont.systemFont(ofSize: TIP_SIZE, weight: .regular),
-                tipString!
-            )
-            tip?.alphaValue = 0.65
-            
-            p.controller.view.addSubview(tip!)
-            
-            addHorizontalMargins(
-                parent: p.controller.view,
-                child: tip,
-                relatedBy: .equal
-            )
-            
-            if (!hasData) {
-                addVerticalMargins(
-                    parent: p.controller.view,
-                    child: tip,
-                    relatedBy: .equal
-                )
-            }
-        }
-        
-        if (hasData && hasTip) {
-            p.controller.view.addConstraint(NSLayoutConstraint(
-                item: p.controller.view,
-                attribute: .top,
-                relatedBy: .equal,
-                toItem: data,
-                attribute: .top,
-                multiplier: 1,
-                constant: -MARGIN.height
-            ))
-            p.controller.view.addConstraint(NSLayoutConstraint(
-                item: data!,
-                attribute: .bottom,
-                relatedBy: .equal,
-                toItem: tip,
-                attribute: .top,
-                multiplier: 1,
-                constant: -MARGIN.height
-            ))
-            p.controller.view.addConstraint(NSLayoutConstraint(
-                item: p.controller.view,
-                attribute: .bottom,
-                relatedBy: .equal,
-                toItem: tip,
-                attribute: .bottom,
-                multiplier: 1,
-                constant: MARGIN.height
-            ))
-        }
-        
-        p.popover.show(
-            relativeTo:     rect ?? sender.bounds.offsetBy(dx: 0, dy: 8),
-            of:             sender,
-            preferredEdge:  NSRectEdge.maxY
-        )
     }
     
 }

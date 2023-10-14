@@ -232,7 +232,7 @@
                                                                                 </textField>
                                                                                 <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wm6-Pi-1s2" userLabel="Timeout">
                                                                                     <rect key="frame" x="69" y="-4" width="146" height="28"/>
-                                                                                    <sliderCell key="cell" state="on" alignment="left" maxValue="10" doubleValue="3" tickMarkPosition="below" numberOfTickMarks="11" allowsTickMarkValuesOnly="YES" sliderType="linear" id="w2n-yZ-8gj">
+                                                                                    <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="10" doubleValue="3" tickMarkPosition="below" numberOfTickMarks="11" allowsTickMarkValuesOnly="YES" sliderType="linear" id="w2n-yZ-8gj">
                                                                                         <font key="font" size="12" name="Helvetica"/>
                                                                                     </sliderCell>
                                                                                     <connections>
@@ -301,7 +301,7 @@
                                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                     </textFieldCell>
                                                                                 </textField>
-                                                                                <switch horizontalHuggingPriority="750" verticalHuggingPriority="750" baseWritingDirection="leftToRight" alignment="left" translatesAutoresizingMaskIntoConstraints="NO" id="LZw-uQ-YQE" userLabel="Starts With macOS">
+                                                                                <switch horizontalHuggingPriority="750" verticalHuggingPriority="750" continuous="YES" baseWritingDirection="leftToRight" alignment="left" translatesAutoresizingMaskIntoConstraints="NO" id="LZw-uQ-YQE" userLabel="Starts With macOS">
                                                                                     <rect key="frame" x="173" y="-1" width="42" height="25"/>
                                                                                     <connections>
                                                                                         <action selector="toggleStartsWithMacos:" target="crA-Or-uDV" id="ZV1-Y0-mfV"/>
@@ -617,7 +617,7 @@
                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
                                                                         </textField>
-                                                                        <switch horizontalHuggingPriority="750" verticalHuggingPriority="750" baseWritingDirection="leftToRight" alignment="left" state="on" translatesAutoresizingMaskIntoConstraints="NO" id="C8P-qk-mj3">
+                                                                        <switch horizontalHuggingPriority="750" verticalHuggingPriority="750" continuous="YES" baseWritingDirection="leftToRight" alignment="left" state="on" translatesAutoresizingMaskIntoConstraints="NO" id="C8P-qk-mj3">
                                                                             <rect key="frame" x="243" y="-1" width="42" height="25"/>
                                                                             <connections>
                                                                                 <action selector="toggleAutoShows:" target="crA-Or-uDV" id="jcu-si-MoM"/>
@@ -651,7 +651,7 @@
                                                                         </textField>
                                                                         <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hXa-jz-GTN">
                                                                             <rect key="frame" x="139" y="-4" width="146" height="28"/>
-                                                                            <sliderCell key="cell" state="on" alignment="left" maxValue="3" doubleValue="1" tickMarkPosition="below" numberOfTickMarks="4" allowsTickMarkValuesOnly="YES" sliderType="linear" id="fNe-wu-zqv">
+                                                                            <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="3" doubleValue="1" tickMarkPosition="below" numberOfTickMarks="4" allowsTickMarkValuesOnly="YES" sliderType="linear" id="fNe-wu-zqv">
                                                                                 <font key="font" size="12" name="Helvetica"/>
                                                                             </sliderCell>
                                                                             <connections>
@@ -723,7 +723,7 @@
                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
                                                                         </textField>
-                                                                        <switch horizontalHuggingPriority="750" verticalHuggingPriority="750" baseWritingDirection="leftToRight" alignment="left" state="on" translatesAutoresizingMaskIntoConstraints="NO" id="sQ8-l7-Qi6">
+                                                                        <switch horizontalHuggingPriority="750" verticalHuggingPriority="750" continuous="YES" baseWritingDirection="leftToRight" alignment="left" state="on" translatesAutoresizingMaskIntoConstraints="NO" id="sQ8-l7-Qi6">
                                                                             <rect key="frame" x="243" y="-1" width="42" height="25"/>
                                                                             <connections>
                                                                                 <action selector="toggleUseAlwaysHideArea:" target="crA-Or-uDV" id="lEC-dS-AUQ"/>
@@ -755,7 +755,7 @@
                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
                                                                         </textField>
-                                                                        <switch horizontalHuggingPriority="750" verticalHuggingPriority="750" baseWritingDirection="leftToRight" alignment="left" translatesAutoresizingMaskIntoConstraints="NO" id="Gtp-g1-P2a">
+                                                                        <switch horizontalHuggingPriority="750" verticalHuggingPriority="750" continuous="YES" baseWritingDirection="leftToRight" alignment="left" translatesAutoresizingMaskIntoConstraints="NO" id="Gtp-g1-P2a">
                                                                             <rect key="frame" x="243" y="-1" width="42" height="25"/>
                                                                             <connections>
                                                                                 <action selector="toggleReduceAnimation:" target="crA-Or-uDV" id="u86-pg-mSt"/>
