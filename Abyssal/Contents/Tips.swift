@@ -10,36 +10,7 @@ import AppKit
 
 class Tip {
     
-    private enum PopoverAttribute {
-        
-        case onlyData
-        
-        case onlyTip
-        
-        case both
-        
-        static func getAttribute(
-            data: Bool,
-            tip: Bool
-        ) -> PopoverAttribute? {
-            if data && tip {
-                return .both
-            }
-            
-            if data {
-                return .onlyData
-            }
-            
-            if tip {
-                return .onlyTip
-            }
-            
-            return nil
-        }
-        
-    }
-    
-    var popover: NSPopover?
+    var popover: NSPopover
     
     var dataString: () -> String?
     
@@ -48,14 +19,14 @@ class Tip {
     var rect: () -> NSRect = { NSRect.zero }
     
     var isShown: Bool {
-        popover?.isShown ?? false
+        popover.isShown
     }
     
     var has: (data: Bool, tip: Bool, tipRuntime: Bool) {
         (data: dataString() != nil, tip: tipString() != nil, tipRuntime: Data.tips && tipString() != nil)
     }
     
-    private var lastPopoverAttribute: PopoverAttribute?
+    var lastHas: (data: Bool, tip: Bool, tipRuntime: Bool)?
     
     private var willShow: DispatchWorkItem?
     
@@ -66,6 +37,7 @@ class Tip {
         tipString: (() -> String?)? = nil,
         rect: (() -> NSRect)? = nil
     ) {
+        self.popover = Tips.createPopover()
         self.dataString = dataString ?? { nil }
         self.tipString = tipString ?? { nil }
         if (rect != nil) {
@@ -89,7 +61,7 @@ class Tip {
             NSAnimationContext.runAnimationGroup() { context in
                 context.allowsImplicitAnimation = true
                 
-                popover?.positioningRect = rect()
+                popover.positioningRect = rect()
             }
         }
         
@@ -97,35 +69,29 @@ class Tip {
             views.data.attributedStringValue = Tips.formatData(dataString()!)
         }
         
-        if has.tipRuntime {
+        if has.tip {
             views.tip.attributedStringValue = Tips.formatTip(tipString()!)
         }
         
-        popover?.contentViewController?.updateViewConstraints()
+        popover.contentViewController?.updateViewConstraints()
         
-        if lastPopoverAttribute == PopoverAttribute.getAttribute(data: has.data, tip: has.tipRuntime) {
-            print(1)
-            return false
-        }
-        
-        if has.data && has.tipRuntime {
+        if lastHas == nil || lastHas! != has {
+            lastHas = has
             close()
-            popover = switchToBoth()
-        } else if has.data {
-            close()
-            popover = switchToOnlyData()
-        } else if has.tipRuntime {
-            close()
-            popover = switchToOnlyTip()
-        } else {
-            return false
+            
+            if has.data && has.tipRuntime {
+                switchToBoth()
+            } else if has.data {
+                switchToOnlyData()
+            } else if has.tipRuntime {
+                switchToOnlyTip()
+            } else { return false }
         }
         
         return true
     }
     
-    private func switchToOnlyData() -> NSPopover {
-        let popover = Tips.createPopover()
+    private func switchToOnlyData() {
         let controller = Tips.createViewController()
         
         popover.contentViewController = controller
@@ -141,12 +107,9 @@ class Tip {
             child: views.data,
             relatedBy: .equal
         )
-        
-        return popover
     }
     
-    private func switchToOnlyTip() -> NSPopover {
-        let popover = Tips.createPopover()
+    private func switchToOnlyTip() {
         let controller = Tips.createViewController()
         
         popover.contentViewController = controller
@@ -162,12 +125,9 @@ class Tip {
             child: views.tip,
             relatedBy: .equal
         )
-        
-        return popover
     }
     
-    private func switchToBoth() -> NSPopover {
-        let popover = Tips.createPopover()
+    private func switchToBoth() {
         let controller = Tips.createViewController()
         
         popover.contentViewController = controller
@@ -176,14 +136,18 @@ class Tip {
         
         Tips.addHorizontalMargins(
             parent: controller.view,
-            child: views.data,
-            relatedBy: .equal
-        )
-        Tips.addHorizontalMargins(
-            parent: controller.view,
             child: views.tip,
             relatedBy: .equal
         )
+        controller.view.addConstraint(NSLayoutConstraint(
+            item: controller.view,
+            attribute: .centerX,
+            relatedBy: .equal,
+            toItem: views.data,
+            attribute: .centerX,
+            multiplier: 1,
+            constant: 0
+        ))
         
         controller.view.addConstraint(NSLayoutConstraint(
             item: controller.view,
@@ -212,20 +176,15 @@ class Tip {
             multiplier: 1,
             constant: Tips.MARGIN.height
         ))
-        
-        controller.updateViewConstraints()
-        
-        return popover
     }
     
     func show(
         _ sender: NSView
     ) {
-        lastPopoverAttribute = PopoverAttribute.getAttribute(data: has.data, tip: has.tipRuntime)
         guard isShown || (!isShown && update()) else { return }
         
         willShow = DispatchWorkItem {
-            self.popover?.show(
+            self.popover.show(
                 relativeTo:     self.rect(),
                 of:             sender,
                 preferredEdge:  NSRectEdge.maxY
@@ -237,7 +196,7 @@ class Tip {
     
     func close() {
         willShow?.cancel()
-        popover?.performClose(self)
+        popover.performClose(self)
     }
     
     func offset(
