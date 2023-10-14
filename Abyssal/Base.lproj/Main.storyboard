@@ -866,6 +866,7 @@
                         <outlet property="buttonQuitApp" destination="HAQ-jG-9LD" id="szA-Fz-tTm"/>
                         <outlet property="buttonThemes" destination="wot-IO-iPn" id="eMq-mn-zZV"/>
                         <outlet property="buttonTips" destination="PEB-0e-PWh" id="lM6-Ah-xHd"/>
+                        <outlet property="labelAppTitle" destination="3oE-Id-0vv" id="Vr7-8v-lpY"/>
                         <outlet property="labelFeedbackIntensity" destination="r9u-Pv-knm" id="okM-tr-7zN"/>
                         <outlet property="labelTimeout" destination="YlR-tX-45k" id="FKs-2A-6d1"/>
                         <outlet property="sliderFeedbackIntensity" destination="hXa-jz-GTN" id="jba-pN-6Te"/>
@@ -874,7 +875,6 @@
                         <outlet property="switchReduceAnimation" destination="Gtp-g1-P2a" id="xlD-oN-huE"/>
                         <outlet property="switchStartsWithMacOS" destination="LZw-uQ-YQE" id="ecU-1k-k4N"/>
                         <outlet property="switchUseAlwaysHideArea" destination="sQ8-l7-Qi6" id="CH6-Rb-4Nz"/>
-                        <outlet property="textAppTitle" destination="3oE-Id-0vv" id="Vr7-8v-lpY"/>
                         <outlet property="viewMain" destination="N9w-5A-9hS" id="cnO-Ur-cyv"/>
                         <outlet property="viewModifiers" destination="IFo-av-mg0" id="BdB-gr-liv"/>
                     </connections>

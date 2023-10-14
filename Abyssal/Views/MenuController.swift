@@ -39,7 +39,7 @@ class MenuController: NSViewController, NSMenuDelegate {
     
 
     
-    @IBOutlet weak var textAppTitle: NSTextField!
+    @IBOutlet weak var labelAppTitle: NSTextField!
     
     @IBOutlet weak var buttonAppVersion: NSButton!
     
@@ -146,22 +146,33 @@ extension MenuController {
         definedTips = [
             buttonAppVersion: (
                 tip: Tip(tipString: {
-                    !Helper.versionComponent.needsUpdate ? nil : String(localized: """
-    An update is available.
-    """)
-                })!,
+                    Helper.versionComponent.needsUpdate ? nil : String(localized: """
+An update is available.
+""")
+                }, rect: { self.buttonAppVersion.bounds.offsetBy(dx: 0, dy: 8) })!,
                 trackingArea: buttonAppVersion.visibleRect.getTrackingArea(self, viewToAdd: buttonAppVersion)
             ),
             
             viewModifiers: (
                 tip: Tip(tipString: {
                     String(localized: """
-    Modifier keys to make the separators visible.
-    """) + (!Data.autoShows ? "" : Data.SPACE + String(localized: """
-    If the mouse is hovering over spare area, temporarily disables Auto Shows.
-    """))
-                })!,
+Modifier keys to make the separators visible.
+""") + (!Data.autoShows ? "" : Data.SPACE + String(localized: """
+If the mouse is hovering over spare area, temporarily disables Auto Shows.
+"""))
+                }, rect: { self.viewModifiers.bounds.offsetBy(dx: 0, dy: -12) })!,
                 trackingArea: viewModifiers.visibleRect.getTrackingArea(self, viewToAdd: viewModifiers)
+            ),
+            sliderTimeout: (
+                tip: Tip(
+                    dataString: { Data.timeoutAttribute.label },
+                    tipString: {
+                        String(localized: """
+Time to countdown before disabling Auto Idling.
+""")
+                    }, rect: { self.sliderTimeout.rectOfTickMark(at: self.sliderTimeout.integerValue).offsetBy(dx: 0, dy: 8) }
+                )!,
+                trackingArea: sliderTimeout.thumbRect.getTrackingArea(self, viewToAdd: sliderTimeout)
             )
         ]
         
@@ -341,7 +352,6 @@ extension MenuController {
     }
     
     func updateTimeoutEnabled() {
-        setSliderEnabled(sliderTimeout, Data.autoShows)
         setSliderLabelEnabled(labelTimeout, Data.timeoutAttribute.attr != nil)
     }
     

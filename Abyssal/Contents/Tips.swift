@@ -16,21 +16,35 @@ class Tip {
     
     var tipString: () -> String?
     
+    var rect: () -> NSRect = { NSRect.zero }
+    
     var isShown: Bool {
         popover.isShown
     }
     
     init?(
         dataString: (() -> String?)? = nil,
-        tipString: (() -> String?)? = nil
+        tipString: (() -> String?)? = nil,
+        rect: (() -> NSRect)? = nil
     ) {
         self.popover = Tips.createPopover()
         self.dataString = dataString ?? { nil }
         self.tipString = tipString ?? { nil }
+        if (rect != nil) {
+            self.rect = rect!
+        }
     }
     
     func update() -> Bool {
         Tips.bindViewController(popover)
+        
+        if isShown {
+            NSAnimationContext.runAnimationGroup() { context in
+                context.allowsImplicitAnimation = true
+                
+                popover.positioningRect = rect()
+            }
+        }
         
         let hasData = dataString() != nil
         let hasTip = Data.tips && (tipString() != nil)
@@ -123,34 +137,15 @@ class Tip {
     }
     
     func show(
-        _ sender: NSView,
-        _ rect: NSRect? = nil
+        _ sender: NSView
     ) {
-        guard update() else { return }
+        guard isShown || (!isShown && update()) else { return }
         
         popover.show(
-            relativeTo:     rect ?? sender.bounds.offsetBy(dx: 0, dy: -Tips.MARGIN.height),
+            relativeTo:     rect(),
             of:             sender,
             preferredEdge:  NSRectEdge.maxY
         )
-    }
-    
-    func reposition(
-        _ rect: NSRect
-    ) {
-        guard isShown else { return }
-        
-        NSAnimationContext.runAnimationGroup() { context in
-            context.allowsImplicitAnimation = true
-            
-            popover.positioningRect = rect
-        }
-    }
-    
-    func transform(
-        _ transform: CGAffineTransform
-    ) {
-        reposition(popover.positioningRect.applying(transform))
     }
     
     func close() {

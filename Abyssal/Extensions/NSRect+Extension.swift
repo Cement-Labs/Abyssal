@@ -20,7 +20,8 @@ extension NSRect {
     ) -> NSTrackingArea {
         let trackingArea = NSTrackingArea(
             rect: self,
-            options: [.activeInActiveApp,
+            options: [.activeAlways,
+                      .inVisibleRect,
                       .mouseEnteredAndExited],
             owner: owner
         )

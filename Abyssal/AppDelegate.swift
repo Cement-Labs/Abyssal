@@ -129,7 +129,7 @@ extension AppDelegate {
             popover.show(
                 relativeTo: 	invisiblePanel.contentView!.frame,
                 of: 			invisiblePanel.contentView!,
-                preferredEdge: 	.minY
+                preferredEdge: 	.maxY
             )
             
             popover.contentViewController?.view.window?.makeKey()

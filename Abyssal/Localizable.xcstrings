@@ -63,7 +63,20 @@
       }
     },
     "Forever" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forever"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "永远"
+          }
+        }
+      }
     },
     "Hidden Bar" : {
       "comment" : "Name for theme 'Hidden Bar'",
@@ -91,7 +104,14 @@
       }
     },
     "Minutes" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "minutes"
+          }
+        }
+      }
     },
     "Modifier keys to make the separators visible." : {
 
@@ -108,6 +128,22 @@
       }
     },
     "Seconds" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "seconds"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "秒"
+          }
+        }
+      }
+    },
+    "Time to countdown before disabling Auto Idling." : {
 
     }
   },

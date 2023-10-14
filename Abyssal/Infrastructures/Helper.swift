@@ -165,7 +165,7 @@ class Helper {
         
         static func orElseForever(_ number: Any?, unit: String) -> String {
             if let number = number as? LosslessStringConvertible {
-                String(number) + unit
+                String(number) + Data.SPACE + unit
             } else {
                 FOREVER
             }
