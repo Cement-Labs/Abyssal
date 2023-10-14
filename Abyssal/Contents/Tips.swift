@@ -10,11 +10,11 @@ import AppKit
 
 class Tips {
     
-    public static let DATA_SIZE: CGFloat = 17.5
+    public static let DATA_SIZE: CGFloat = 14.5
     
-    public static let TIP_SIZE: CGFloat = 12
+    public static let TIP_SIZE: CGFloat = 10
     
-    public static let MARGIN: (width: CGFloat, height: CGFloat) = (width: 20, height: 16)
+    public static let MARGIN: (width: CGFloat, height: CGFloat) = (width: 16, height: 12)
     
     public static let MAX_WIDTH: CGFloat = 350
     
@@ -211,7 +211,7 @@ extension Tips {
         }
         
         p.popover.show(
-            relativeTo:     rect ?? sender.bounds,
+            relativeTo:     rect ?? sender.bounds.offsetBy(dx: 0, dy: 8),
             of:             sender,
             preferredEdge:  NSRectEdge.maxY
         )
