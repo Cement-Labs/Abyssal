@@ -158,7 +158,7 @@ An update is available.
                     NSLocalizedString("Tip/ViewModifier/1", value: """
 Modifier keys to make the separators visible.
 """, comment: "View modifier") + (!Data.autoShows ? "" : Data.SPACE + NSLocalizedString("Tip/ViewModifier/2", value: """
-If the mouse is hovering over spare area, temporarily disables Auto Shows.
+If the mouse is hovering over spare area, temporarily disables **Auto Shows.**
 """, comment: "(if Data.autoShows): View modifier"))
                 }, rect: { self.viewModifiers.bounds.offsetBy(dx: 0, dy: -12) })!,
                 trackingArea: viewModifiers.visibleRect.getTrackingArea(self, viewToAdd: viewModifiers)
@@ -168,7 +168,7 @@ If the mouse is hovering over spare area, temporarily disables Auto Shows.
                     dataString: { Data.timeoutAttribute.label },
                     tipString: {
                         NSLocalizedString("Tip/SliderTimeout", value: """
-Time to countdown before disabling Auto Idling.
+Time to countdown before disabling **Auto Idling.**
 """, comment: "Slider timeout")
                     }, rect: { self.sliderTimeout.rectOfTickMark(at: self.sliderTimeout.integerValue).offsetBy(dx: 0, dy: 8) }
                 )!,

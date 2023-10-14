@@ -213,17 +213,12 @@
     },
     "Tip/SliderTimeout" : {
       "comment" : "Slider timeout",
+      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Time to countdown before disabling Auto Idling."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "取消「自动闲置」之前的等待时间。"
+            "state" : "new",
+            "value" : "Time to countdown before disabling **Auto Idling.**"
           }
         }
       }
@@ -253,13 +248,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "If the mouse is hovering over spare area, temporarily disables Auto Shows."
+            "value" : "If the mouse is hovering over spare area, temporarily disables **Auto Shows.**"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "当光标移动到闲置位置时按下修饰键，将暂时禁用「自动显示」。"
+            "state" : "needs_review",
+            "value" : "当光标移动到闲置位置时按下修饰键，将暂时禁用**自动显示。**"
           }
         }
       }

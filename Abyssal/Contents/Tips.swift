@@ -23,7 +23,7 @@ class Tip {
     }
     
     var has: (data: Bool, tip: Bool, tipRuntime: Bool) {
-        (data: dataString() != nil, tip: tipString() != nil, tipRuntime: Data.tips && self.has.tip)
+        (data: dataString() != nil, tip: tipString() != nil, tipRuntime: Data.tips && tipString() != nil)
     }
     
     private var willShow: DispatchWorkItem?
@@ -52,8 +52,6 @@ class Tip {
                 ""
             )
             views.data.alignment = .center
-            controllers.onlyData.view.addSubview(views.data)
-            controllers.both.view.addSubview(views.data)
             
             Tips.addHorizontalMargins(
                 parent: controllers.onlyData.view,
@@ -81,8 +79,6 @@ class Tip {
                 ""
             )
             views.tip.alphaValue = 0.65
-            controllers.onlyTip.view.addSubview(views.tip)
-            controllers.both.view.addSubview(views.tip)
             
             Tips.addHorizontalMargins(
                 parent: controllers.onlyTip.view,
@@ -147,19 +143,21 @@ class Tip {
         }
         
         if has.data {
-            views.data.stringValue = dataString()!
+            views.data.attributedStringValue
+            views.data.sizeToFit()
         }
         
         if has.tip {
             views.tip.stringValue = tipString()!
+            views.tip.sizeToFit()
         }
         
         if has.data && has.tipRuntime {
-            popover.contentViewController = controllers.both
+            switchToBoth()
         } else if has.data {
-            popover.contentViewController = controllers.onlyData
+            switchToOnlyData()
         } else if has.tipRuntime {
-            popover.contentViewController = controllers.onlyTip
+            switchToOnlyTip()
         } else {
             popover.contentViewController = nil
             return false
@@ -168,6 +166,22 @@ class Tip {
         popover.contentViewController?.updateViewConstraints()
         
         return true
+    }
+    
+    private func switchToOnlyData() {
+        controllers.onlyData.view.addSubview(views.data)
+        popover.contentViewController = controllers.onlyData
+    }
+    
+    private func switchToOnlyTip() {
+        controllers.onlyTip.view.addSubview(views.tip)
+        popover.contentViewController = controllers.onlyTip
+    }
+    
+    private func switchToBoth() {
+        controllers.both.view.addSubview(views.data)
+        controllers.both.view.addSubview(views.tip)
+        popover.contentViewController = controllers.both
     }
     
     func show(
@@ -300,8 +314,7 @@ extension Tips {
         textField.lineBreakMode = .byWordWrapping
         
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.sizeToFit()
-        
+        textField.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         textField.widthAnchor.constraint(lessThanOrEqualToConstant: MAX_WIDTH).isActive = true
         
         return textField
