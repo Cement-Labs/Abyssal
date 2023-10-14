@@ -59,6 +59,8 @@ public enum Data {
         UserDefaults.standard.register(defaults: [Keys.REDUCE_ANIMATION: false])
     }
     
+    static let SPACE = String(localized: " ", comment: "Language-specified space between sentences.")
+    
     static var modifiers: (option: Bool, command: Bool, shift: Bool) {
         get {
             let defaultTuple = (option: true, command: true, shift: false)
@@ -137,7 +139,7 @@ public enum Data {
     
     
     
-    static var theme: Themes.Theme {
+    static var theme: Theme {
         get {
             let index = UserDefaults.standard.integer(forKey: Keys.THEME)
             

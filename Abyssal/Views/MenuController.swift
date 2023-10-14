@@ -9,77 +9,86 @@ import Cocoa
 
 class MenuController: NSViewController, NSMenuDelegate {
     
-    let themesMenu: NSMenu = NSMenu()
+    let themesMenu = NSMenu()
+    
+    let tips = Tips()
     
     // MARK: - Outlets
     
-    @IBOutlet var main: NSView!
+    @IBOutlet var viewMain: NSView!
     
     
     
-    @IBOutlet weak var modifierShift: NSBox!
+    @IBOutlet weak var viewModifiers: NSStackView!
     
-    @IBOutlet weak var modifierShiftButton: NSButton!
+    @IBOutlet weak var boxModifierShift: NSBox!
     
-    @IBOutlet weak var modifierOption: NSBox!
+    @IBOutlet weak var buttonModifierShift: NSButton!
     
-    @IBOutlet weak var modifierOptionButton: NSButton!
+    @IBOutlet weak var boxModifierOption: NSBox!
     
-    @IBOutlet weak var modifierCommand: NSBox!
+    @IBOutlet weak var buttonModifierOption: NSButton!
     
-    @IBOutlet weak var modifierCommandButton: NSButton!
+    @IBOutlet weak var boxModifierCommand: NSBox!
     
-    @IBOutlet weak var timeoutLabel: NSTextField!
+    @IBOutlet weak var buttonModifierCommand: NSButton!
     
-    @IBOutlet weak var timeout: NSSlider!
+    @IBOutlet weak var labelTimeout: NSTextField!
+    
+    @IBOutlet weak var sliderTimeout: NSSlider!
     
 
     
-    @IBOutlet weak var appTitle: NSTextField!
+    @IBOutlet weak var textAppTitle: NSTextField!
     
-    @IBOutlet weak var appVersion: NSButton!
+    @IBOutlet weak var buttonAppVersion: NSButton!
     
-    @IBOutlet weak var startsWithMacOS: NSSwitch!
-    
-    
-    
-    @IBOutlet weak var quitApp: FillOnHoverBox!
-    
-    @IBOutlet weak var quitAppButton: NSButton!
-    
-    @IBOutlet weak var link: FillOnHoverBox!
-    
-    @IBOutlet weak var linkButton: NSButton!
-    
-    @IBOutlet weak var minimize: FillOnHoverBox!
-    
-    @IBOutlet weak var minimizeButton: NSButton!
-    
-    @IBOutlet weak var tips: FillOnHoverBox!
-    
-    @IBOutlet weak var tipsButton: NSButton!
+    @IBOutlet weak var switchStartsWithMacOS: NSSwitch!
     
     
     
-    @IBOutlet weak var autoShows: NSSwitch!
+    @IBOutlet weak var boxQuitApp: FillOnHoverBox!
     
-    @IBOutlet weak var feedbackIntensityLabel: NSTextField!
+    @IBOutlet weak var buttonQuitApp: NSButton!
     
-    @IBOutlet weak var feedbackIntensity: NSSlider!
+    @IBOutlet weak var boxLink: FillOnHoverBox!
+    
+    @IBOutlet weak var buttonLink: NSButton!
+    
+    @IBOutlet weak var boxMinimize: FillOnHoverBox!
+    
+    @IBOutlet weak var buttonMinimize: NSButton!
+    
+    @IBOutlet weak var boxTips: FillOnHoverBox!
+    
+    @IBOutlet weak var buttonTips: NSButton!
     
     
     
-    @IBOutlet weak var themes: NSPopUpButton!
+    @IBOutlet weak var switchAutoShows: NSSwitch!
     
-    @IBOutlet weak var useAlwaysHideArea: NSSwitch!
+    @IBOutlet weak var labelFeedbackIntensity: NSTextField!
     
-    @IBOutlet weak var reduceAnimation: NSSwitch!
+    @IBOutlet weak var sliderFeedbackIntensity: NSSlider!
+    
+    
+    
+    @IBOutlet weak var buttonThemes: NSPopUpButton!
+    
+    @IBOutlet weak var switchUseAlwaysHideArea: NSSwitch!
+    
+    @IBOutlet weak var switchReduceAnimation: NSSwitch!
+    
+    // MARK: - Tips
+    
+    var definedTips: [NSView: (tip: Tip, trackingArea: NSTrackingArea)] = [:]
     
     // MARK: - View Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initData()
+        initTips()
     }
     
     override func viewDidAppear() {
@@ -131,6 +140,36 @@ extension MenuController {
     
 }
 
+extension MenuController {
+    
+    func initTips() {
+        definedTips = [
+            buttonAppVersion: (
+                tip: Tip(tipString: {
+                    !Helper.versionComponent.needsUpdate ? nil : String(localized: """
+    An update is available.
+    """)
+                })!,
+                trackingArea: buttonAppVersion.visibleRect.getTrackingArea(self, viewToAdd: buttonAppVersion)
+            ),
+            
+            viewModifiers: (
+                tip: Tip(tipString: {
+                    String(localized: """
+    Modifier keys to make the separators visible.
+    """) + (!Data.autoShows ? "" : Data.SPACE + String(localized: """
+    If the mouse is hovering over spare area, temporarily disables Auto Shows.
+    """))
+                })!,
+                trackingArea: viewModifiers.visibleRect.getTrackingArea(self, viewToAdd: viewModifiers)
+            )
+        ]
+        
+        definedTips.forEach { tips.bind($0.key, trackingArea: $0.value.trackingArea, tip: $0.value.tip) }
+    }
+    
+}
+
 var themeIndexKey = UnsafeRawPointer(bitPattern: "themeIndexKey".hashValue)
 
 extension MenuController {
@@ -149,14 +188,14 @@ extension MenuController {
     func initData() {
         // Version info
         
-        appVersion.title = Helper.versionComponent.version
+        buttonAppVersion.title = Helper.versionComponent.version
         
         if Helper.versionComponent.needsUpdate {
-            appVersion.isEnabled = true
-            appVersion.image = NSImage(systemSymbolName: "shift.fill", accessibilityDescription: nil)
+            buttonAppVersion.isEnabled = true
+            buttonAppVersion.image = NSImage(systemSymbolName: "shift.fill", accessibilityDescription: nil)
         } else {
-            appVersion.isEnabled = false
-            appVersion.image = nil
+            buttonAppVersion.isEnabled = false
+            buttonAppVersion.image = nil
         }
         
         // Themes menu
@@ -172,55 +211,55 @@ extension MenuController {
                 item.image = theme.icon
                 objc_setAssociatedObject(item, &themeIndexKey, index, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
                 
-                self.themesMenu.addItem(item)
+                themesMenu.addItem(item)
             }
             
-            self.themes.removeAllItems()
-            self.themes.menu = self.themesMenu
-            self.themes.menu?.delegate = self
+            buttonThemes.removeAllItems()
+            buttonThemes.menu = themesMenu
+            buttonThemes.menu?.delegate = self
             
             if let index = Themes.themes.firstIndex(of: Data.theme) {
-                self.themes.selectItem(at: index)
+                buttonThemes.selectItem(at: index)
             }
         }
         
         // Controls
         
-        timeout.minValue = 0
-        timeout.maxValue = Double(Data.timeoutTickMarks - 1)
-        timeout.numberOfTickMarks = Data.timeoutTickMarks
+        sliderTimeout.minValue = 0
+        sliderTimeout.maxValue = Double(Data.timeoutTickMarks - 1)
+        sliderTimeout.numberOfTickMarks = Data.timeoutTickMarks
         
-        feedbackIntensity.minValue = 0
-        feedbackIntensity.maxValue = Double(Data.feedbackIntensityTickMarks - 1)
-        feedbackIntensity.numberOfTickMarks = Data.feedbackIntensityTickMarks
+        sliderFeedbackIntensity.minValue = 0
+        sliderFeedbackIntensity.maxValue = Double(Data.feedbackIntensityTickMarks - 1)
+        sliderFeedbackIntensity.numberOfTickMarks = Data.feedbackIntensityTickMarks
         
         
         
-        modifierShiftButton.flag = Data.modifiers.shift
-        modifierOptionButton.flag = Data.modifiers.option
-        modifierCommandButton.flag = Data.modifiers.command
+        buttonModifierShift.flag = Data.modifiers.shift
+        buttonModifierOption.flag = Data.modifiers.option
+        buttonModifierCommand.flag = Data.modifiers.command
         updateModifiers()
         
-        timeout.objectValue = Data.timeout
+        sliderTimeout.objectValue = Data.timeout
         updateTimeoutEnabled()
         
-        startsWithMacOS.flag = Data.startsWithMacos
+        switchStartsWithMacOS.flag = Data.startsWithMacos
         
-        autoShows.flag = Data.autoShows
-        feedbackIntensity.objectValue = Data.feedbackIntensity
+        switchAutoShows.flag = Data.autoShows
+        sliderFeedbackIntensity.objectValue = Data.feedbackIntensity
         updateFeedbackIntensityEnabled()
         
-        useAlwaysHideArea.flag = Data.useAlwaysHideArea
-        reduceAnimation.flag = Data.reduceAnimation
+        switchUseAlwaysHideArea.flag = Data.useAlwaysHideArea
+        switchReduceAnimation.flag = Data.reduceAnimation
         
         updateColoredWidgets()
     }
     
     func updateColoredWidgets() {
         if Helper.versionComponent.needsUpdate {
-            appVersion.contentTintColor = Colors.Opaque.accent
+            buttonAppVersion.contentTintColor = Colors.Opaque.accent
         } else {
-            appVersion.contentTintColor = NSColor.tertiaryLabelColor
+            buttonAppVersion.contentTintColor = NSColor.tertiaryLabelColor
         }
         
         updateModifiers()
@@ -231,9 +270,9 @@ extension MenuController {
         NSAnimationContext.runAnimationGroup({ context in
             context.duration = 0.1
             
-            updateModifier(modifierShift, Data.modifiers.shift)
-            updateModifier(modifierOption, Data.modifiers.option)
-            updateModifier(modifierCommand, Data.modifiers.command)
+            updateModifier(boxModifierShift, Data.modifiers.shift)
+            updateModifier(boxModifierOption, Data.modifiers.option)
+            updateModifier(boxModifierCommand, Data.modifiers.command)
         })
     }
     
@@ -248,25 +287,39 @@ extension MenuController {
     }
     
     func updateButtons() {
-        quitApp.setOriginlalFillColor(Colors.Translucent.DANGER)
-        quitApp.animator().borderColor = Colors.Translucent.DANGER
-        quitAppButton.animator().contentTintColor = Colors.Opaque.DANGER
+        boxQuitApp.setOriginlalFillColor(Colors.Translucent.DANGER)
+        boxQuitApp.animator().borderColor = Colors.Translucent.DANGER
+        buttonQuitApp.animator().contentTintColor = Colors.Opaque.DANGER
         
-        tips.setOriginlalFillColor(Colors.Translucent.accent)
-        tips.overrideFillColor(Data.tips ? Colors.Opaque.accent : nil)
-        tips.animator().borderColor = Colors.Translucent.accent
-        tipsButton.animator().contentTintColor = Data.tips ? NSColor.white : Colors.Opaque.accent
-        tipsButton.image = Data.tips
+        boxTips.setOriginlalFillColor(Colors.Translucent.accent)
+        boxTips.overrideFillColor(Data.tips ? Colors.Opaque.accent : nil)
+        boxTips.animator().borderColor = Colors.Translucent.accent
+        buttonTips.animator().contentTintColor = Data.tips ? NSColor.white : Colors.Opaque.accent
+        buttonTips.image = Data.tips
         ? NSImage(systemSymbolName: "tag.fill", accessibilityDescription: nil)
         : NSImage(systemSymbolName: "tag.slash", accessibilityDescription: nil)
         
-        link.setOriginlalFillColor(Colors.Translucent.accent)
-        link.animator().borderColor = Colors.Translucent.accent
-        linkButton.animator().contentTintColor = Colors.Opaque.accent
+        boxLink.setOriginlalFillColor(Colors.Translucent.accent)
+        boxLink.animator().borderColor = Colors.Translucent.accent
+        buttonLink.animator().contentTintColor = Colors.Opaque.accent
         
-        minimize.setOriginlalFillColor(Colors.Translucent.SAFE)
-        minimize.animator().borderColor = Colors.Translucent.SAFE
-        minimizeButton.animator().contentTintColor = Colors.Opaque.SAFE
+        boxMinimize.setOriginlalFillColor(Colors.Translucent.SAFE)
+        boxMinimize.animator().borderColor = Colors.Translucent.SAFE
+        buttonMinimize.animator().contentTintColor = Colors.Opaque.SAFE
+    }
+    
+}
+
+extension MenuController {
+    
+    override func mouseEntered(with event: NSEvent) {
+        super.mouseEntered(with: event)
+        tips.mouseEntered(with: event)
+    }
+    
+    override func mouseExited(with event: NSEvent) {
+        super.mouseExited(with: event)
+        tips.mouseExited(with: event)
     }
     
 }
@@ -288,21 +341,16 @@ extension MenuController {
     }
     
     func updateTimeoutEnabled() {
-        setSliderEnabled(timeout, Data.autoShows)
-        setSliderLabelEnabled(timeoutLabel, Data.timeoutAttribute.attr != nil)
+        setSliderEnabled(sliderTimeout, Data.autoShows)
+        setSliderLabelEnabled(labelTimeout, Data.timeoutAttribute.attr != nil)
     }
     
     func updateFeedbackIntensityEnabled() {
-        setSliderEnabled(feedbackIntensity, Data.autoShows)
-        setSliderLabelEnabled(feedbackIntensityLabel, Data.autoShows && Data.feedbackIntensity != 0)
+        setSliderEnabled(sliderFeedbackIntensity, Data.autoShows)
+        setSliderLabelEnabled(labelFeedbackIntensity, Data.autoShows && Data.feedbackIntensity != 0)
     }
     
 }
-
-var tip = Tips.Tip(
-    dataString: "Data",
-    tipString: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-)
 
 extension MenuController {
     
@@ -320,6 +368,7 @@ extension MenuController {
         _ sender: Any?
     ) {
         minimize(sender)
+        
         if !(Helper.delegate?.popover.isShown ?? false) {
             NSApplication.shared.terminate(sender)
         } else {
@@ -374,8 +423,6 @@ extension MenuController {
     ) {
         Data.timeout = sender.integerValue
         updateTimeoutEnabled()
-        
-        tip?.reposition(timeout.rectOfTickMark(at: timeout.integerValue).offsetBy(dx: 0, dy: 8))
     }
     
     @IBAction func toggleTips(
@@ -383,17 +430,6 @@ extension MenuController {
     ) {
         Data.tips = sender.flag
         updateButtons()
-        
-        if tip != nil {
-            if tip!.isShown {
-                tip?.close()
-            } else {
-                tip?.show(
-                    timeout.cell!.controlView!,
-                    timeout.rectOfTickMark(at: timeout.integerValue).offsetBy(dx: 0, dy: 8)
-                )
-            }
-        }
     }
     
     

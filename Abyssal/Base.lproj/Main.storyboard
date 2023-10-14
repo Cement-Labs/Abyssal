@@ -95,7 +95,7 @@
                                                                                 <stackView distribution="fillEqually" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IFo-av-mg0">
                                                                                     <rect key="frame" x="98" y="0.0" width="115" height="24"/>
                                                                                     <subviews>
-                                                                                        <box boxType="custom" borderWidth="0.0" cornerRadius="12" title="Command" titlePosition="noTitle" transparent="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ys5-8l-bsx">
+                                                                                        <box boxType="custom" borderWidth="0.0" cornerRadius="12" title="Command" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="ys5-8l-bsx">
                                                                                             <rect key="frame" x="0.0" y="0.0" width="33" height="24"/>
                                                                                             <view key="contentView" id="fIO-ps-fir">
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="33" height="24"/>
@@ -850,32 +850,33 @@
                         </constraints>
                     </customView>
                     <connections>
-                        <outlet property="appTitle" destination="3oE-Id-0vv" id="Vr7-8v-lpY"/>
-                        <outlet property="appVersion" destination="Fj0-aa-Z4F" id="9Cp-xo-eNl"/>
-                        <outlet property="autoShows" destination="C8P-qk-mj3" id="gbY-jx-LRW"/>
-                        <outlet property="feedbackIntensity" destination="hXa-jz-GTN" id="jba-pN-6Te"/>
-                        <outlet property="feedbackIntensityLabel" destination="r9u-Pv-knm" id="okM-tr-7zN"/>
-                        <outlet property="link" destination="e3U-gc-FYv" id="nP0-vy-yyb"/>
-                        <outlet property="linkButton" destination="g26-46-pvb" id="DR9-Ya-KD7"/>
-                        <outlet property="main" destination="N9w-5A-9hS" id="cnO-Ur-cyv"/>
-                        <outlet property="minimize" destination="oPU-r1-7qb" id="8WT-g3-syl"/>
-                        <outlet property="minimizeButton" destination="qZD-db-A8v" id="6SB-jU-RqI"/>
-                        <outlet property="modifierCommand" destination="SFf-Jy-pSC" id="eLD-jM-apX"/>
-                        <outlet property="modifierCommandButton" destination="jAc-NH-1Qe" id="EOy-zR-41b"/>
-                        <outlet property="modifierOption" destination="TDg-JT-8w0" id="WqG-W0-vZV"/>
-                        <outlet property="modifierOptionButton" destination="5xq-3Q-O2J" id="1d8-SM-Tc4"/>
-                        <outlet property="modifierShift" destination="ys5-8l-bsx" id="de3-Ly-rMO"/>
-                        <outlet property="modifierShiftButton" destination="dRB-pC-5Qd" id="GRM-Cc-RJa"/>
-                        <outlet property="quitApp" destination="mER-wL-Lkb" id="7wJ-9I-Q9I"/>
-                        <outlet property="quitAppButton" destination="HAQ-jG-9LD" id="szA-Fz-tTm"/>
-                        <outlet property="reduceAnimation" destination="Gtp-g1-P2a" id="xlD-oN-huE"/>
-                        <outlet property="startsWithMacOS" destination="LZw-uQ-YQE" id="ecU-1k-k4N"/>
-                        <outlet property="themes" destination="wot-IO-iPn" id="eMq-mn-zZV"/>
-                        <outlet property="timeout" destination="wm6-Pi-1s2" id="LhJ-Gu-KhP"/>
-                        <outlet property="timeoutLabel" destination="YlR-tX-45k" id="FKs-2A-6d1"/>
-                        <outlet property="tips" destination="BfR-ev-j7B" id="YeB-SY-VBc"/>
-                        <outlet property="tipsButton" destination="PEB-0e-PWh" id="lM6-Ah-xHd"/>
-                        <outlet property="useAlwaysHideArea" destination="sQ8-l7-Qi6" id="CH6-Rb-4Nz"/>
+                        <outlet property="boxLink" destination="e3U-gc-FYv" id="nP0-vy-yyb"/>
+                        <outlet property="boxMinimize" destination="oPU-r1-7qb" id="8WT-g3-syl"/>
+                        <outlet property="boxModifierCommand" destination="SFf-Jy-pSC" id="eLD-jM-apX"/>
+                        <outlet property="boxModifierOption" destination="TDg-JT-8w0" id="WqG-W0-vZV"/>
+                        <outlet property="boxModifierShift" destination="ys5-8l-bsx" id="de3-Ly-rMO"/>
+                        <outlet property="boxQuitApp" destination="mER-wL-Lkb" id="7wJ-9I-Q9I"/>
+                        <outlet property="boxTips" destination="BfR-ev-j7B" id="YeB-SY-VBc"/>
+                        <outlet property="buttonAppVersion" destination="Fj0-aa-Z4F" id="9Cp-xo-eNl"/>
+                        <outlet property="buttonLink" destination="g26-46-pvb" id="DR9-Ya-KD7"/>
+                        <outlet property="buttonMinimize" destination="qZD-db-A8v" id="6SB-jU-RqI"/>
+                        <outlet property="buttonModifierCommand" destination="jAc-NH-1Qe" id="EOy-zR-41b"/>
+                        <outlet property="buttonModifierOption" destination="5xq-3Q-O2J" id="1d8-SM-Tc4"/>
+                        <outlet property="buttonModifierShift" destination="dRB-pC-5Qd" id="GRM-Cc-RJa"/>
+                        <outlet property="buttonQuitApp" destination="HAQ-jG-9LD" id="szA-Fz-tTm"/>
+                        <outlet property="buttonThemes" destination="wot-IO-iPn" id="eMq-mn-zZV"/>
+                        <outlet property="buttonTips" destination="PEB-0e-PWh" id="lM6-Ah-xHd"/>
+                        <outlet property="labelFeedbackIntensity" destination="r9u-Pv-knm" id="okM-tr-7zN"/>
+                        <outlet property="labelTimeout" destination="YlR-tX-45k" id="FKs-2A-6d1"/>
+                        <outlet property="sliderFeedbackIntensity" destination="hXa-jz-GTN" id="jba-pN-6Te"/>
+                        <outlet property="sliderTimeout" destination="wm6-Pi-1s2" id="LhJ-Gu-KhP"/>
+                        <outlet property="switchAutoShows" destination="C8P-qk-mj3" id="gbY-jx-LRW"/>
+                        <outlet property="switchReduceAnimation" destination="Gtp-g1-P2a" id="xlD-oN-huE"/>
+                        <outlet property="switchStartsWithMacOS" destination="LZw-uQ-YQE" id="ecU-1k-k4N"/>
+                        <outlet property="switchUseAlwaysHideArea" destination="sQ8-l7-Qi6" id="CH6-Rb-4Nz"/>
+                        <outlet property="textAppTitle" destination="3oE-Id-0vv" id="Vr7-8v-lpY"/>
+                        <outlet property="viewMain" destination="N9w-5A-9hS" id="cnO-Ur-cyv"/>
+                        <outlet property="viewModifiers" destination="IFo-av-mg0" id="BdB-gr-liv"/>
                     </connections>
                 </viewController>
                 <customObject id="9TD-gh-VyW" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

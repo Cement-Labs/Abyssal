@@ -8,77 +8,73 @@
 import Foundation
 import AppKit
 
-class Themes {
+class Theme: Equatable {
     
-    class Theme: Equatable {
+    let name: String
+    
+    let identifier: String
+    
+    let icon: NSImage
+    
+    
+    
+    let headUncollapsed: 	NSImage
+    
+    let headCollapsed: 		NSImage
+    
+    let separator: 			NSImage
+    
+    let tail:				NSImage
+    
+    
+    
+    let iconWidth: 		CGFloat
+    
+    let iconWidthAlt:	CGFloat
+    
+    let autoHideIcons: 	Bool
+    
+    init(
+        _ name: String,
+        _ identifier: String,
+        _ icon: String? = nil,
         
-        let name: String
+        headUncollapsed: 	String,
+        headCollapsed: 		String? = nil,
+        separator: 			String,
+        tail: 				String,
         
-        let identifier: String
+        iconWidth:		CGFloat,
+        iconWidthAlt:	CGFloat,
+        autoHideIcons: 	Bool
+    ) {
+        let prefix = "Themes/\(identifier)/"
         
-        let icon: NSImage
+        self.name = name
+        self.identifier = identifier
         
+        self.headUncollapsed 	= NSImage(named: NSImage.Name(prefix + headUncollapsed))!
+        self.headCollapsed 		= NSImage(named: NSImage.Name(prefix + (headCollapsed ?? headUncollapsed)))!
+        self.separator 			= NSImage(named: NSImage.Name(prefix + separator))!
+        self.tail 				= NSImage(named: NSImage.Name(prefix + tail))!
         
+        self.iconWidth 		= iconWidth
+        self.iconWidthAlt 	= iconWidthAlt
+        self.autoHideIcons 	= autoHideIcons
         
-        let headUncollapsed: 	NSImage
-        
-        let headCollapsed: 		NSImage
-        
-        let separator: 			NSImage
-        
-        let tail:				NSImage
-        
-        
-        
-        let iconWidth: 		CGFloat
-        
-        let iconWidthAlt:	CGFloat
-        
-        let autoHideIcons: 	Bool
-        
-        init(
-            _ name: String,
-            _ identifier: String,
-            _ icon: String? = nil,
-            
-            headUncollapsed: 	String,
-            headCollapsed: 		String? = nil,
-            separator: 			String,
-            tail: 				String,
-            
-            iconWidth:		CGFloat,
-            iconWidthAlt:	CGFloat,
-            autoHideIcons: 	Bool
-        ) {
-            let prefix = "Themes/\(identifier)/"
-            
-            self.name = name
-            self.identifier = identifier
-            
-            self.headUncollapsed 	= NSImage(named: NSImage.Name(prefix + headUncollapsed))!
-            self.headCollapsed 		= NSImage(named: NSImage.Name(prefix + (headCollapsed ?? headUncollapsed)))!
-            self.separator 			= NSImage(named: NSImage.Name(prefix + separator))!
-            self.tail 				= NSImage(named: NSImage.Name(prefix + tail))!
-            
-            self.iconWidth 		= iconWidth
-            self.iconWidthAlt 	= iconWidthAlt
-            self.autoHideIcons 	= autoHideIcons
-            
-            self.icon = NSImage(named: NSImage.Name(prefix + (icon ?? headUncollapsed)))!
-        }
-        
-        static func == (
-            lhs: Themes.Theme,
-            rhs: Themes.Theme
-        ) -> Bool {
-            lhs.name == rhs.name
-        }
-        
+        self.icon = NSImage(named: NSImage.Name(prefix + (icon ?? headUncollapsed)))!
+    }
+    
+    static func == (
+        lhs: Theme,
+        rhs: Theme
+    ) -> Bool {
+        lhs.name == rhs.name
     }
     
 }
 
-extension Themes {
+class Themes {
     
     static var themes: [Theme] {
         [

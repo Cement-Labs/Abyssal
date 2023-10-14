@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    " " : {
+      "comment" : "Language-specified space between sentences."
+    },
     "Abyssal" : {
       "comment" : "Name for theme 'Abyssal'",
       "localizations" : {
@@ -11,6 +14,9 @@
           }
         }
       }
+    },
+    "An update is available." : {
+
     },
     "Approaching" : {
       "comment" : "Name for theme 'Approaching'",
@@ -70,6 +76,9 @@
         }
       }
     },
+    "If the mouse is hovering over spare area, temporarily disables Auto Shows." : {
+
+    },
     "Metres Away" : {
       "comment" : "Name for theme 'Metres Away'",
       "localizations" : {
@@ -82,6 +91,9 @@
       }
     },
     "Minutes" : {
+
+    },
+    "Modifier keys to make the separators visible." : {
 
     },
     "Not So Happy" : {
