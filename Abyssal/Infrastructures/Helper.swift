@@ -155,48 +155,6 @@ class Helper {
         return .orderedSame
     }
     
-    static func parseSimpleMarkdown(
-        _ text: String,
-        size: CGFloat
-    ) -> NSAttributedString {
-        let attributedString = NSMutableAttributedString(string: text)
-        
-        // Apply bold monospace style to **`bold monospace text`**
-        let boldMonospaceRegex = try! NSRegularExpression(pattern: "\\*\\*`([^\\*]*)`\\*\\*")
-        let boldMonospaceMatches = boldMonospaceRegex.matches(in: text, range: NSRange(text.startIndex..., in: text))
-        
-        for match in boldMonospaceMatches {
-            let range = match.range(at: 1)
-            attributedString.addAttribute(.font, value: NSFont.monospacedSystemFont(
-                ofSize: size,
-                weight: .bold
-            ), range: range)
-        }
-        
-        // Apply bold style to **bold text**
-        let boldRegex = try! NSRegularExpression(pattern: "\\*\\*([^\\*]*)\\*\\*")
-        let boldMatches = boldRegex.matches(in: text, range: NSRange(text.startIndex..., in: text))
-        
-        for match in boldMatches {
-            let range = match.range(at: 1)
-            attributedString.addAttribute(.font, value: NSFont.boldSystemFont(ofSize: size), range: range)
-        }
-        
-        // Apply monospace style to `monospace text`
-        let monospaceRegex = try! NSRegularExpression(pattern: "`([^\\*]*)`")
-        let monospaceMatches = monospaceRegex.matches(in: text, range: NSRange(text.startIndex..., in: text))
-        
-        for match in monospaceMatches {
-            let range = match.range(at: 1)
-            attributedString.addAttribute(.font, value: NSFont.monospacedSystemFont(
-                ofSize: size,
-                weight: .regular
-            ), range: range)
-        }
-        
-        return attributedString
-    }
-    
     class FormattedTime {
         
         static let SECOND = NSLocalizedString("FormattedTime/Seconds", value: "%lld seconds", comment: "(Int) + seconds")
