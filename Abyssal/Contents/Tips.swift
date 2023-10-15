@@ -57,24 +57,6 @@ class Tip {
     func update() -> Bool {
         guard has.data || has.tipRuntime else { return false }
         
-        if isShown {
-            NSAnimationContext.runAnimationGroup() { context in
-                context.allowsImplicitAnimation = true
-                
-                popover.positioningRect = rect()
-            }
-        }
-        
-        if has.data {
-            views.data.attributedStringValue = Tips.formatData(dataString()!)
-        }
-        
-        if has.tip {
-            views.tip.attributedStringValue = Tips.formatTip(tipString()!)
-        }
-        
-        popover.contentViewController?.updateViewConstraints()
-        
         if lastHas == nil || lastHas! != has {
             lastHas = has
             close()
@@ -86,6 +68,22 @@ class Tip {
             } else if has.tipRuntime {
                 switchToOnlyTip()
             } else { return false }
+        }
+        
+        if has.data {
+            views.data.attributedStringValue = Tips.formatData(dataString()!)
+        }
+        
+        if has.tip {
+            views.tip.attributedStringValue = Tips.formatTip(tipString()!)
+        }
+        
+        if isShown {
+            NSAnimationContext.runAnimationGroup() { context in
+                context.allowsImplicitAnimation = true
+                
+                popover.positioningRect = rect()
+            }
         }
         
         return true
