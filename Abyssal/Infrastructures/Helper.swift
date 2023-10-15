@@ -157,11 +157,11 @@ class Helper {
     
     class FormattedTime {
         
-        static let SECOND = NSLocalizedString("FormattedTime/Seconds", value: "%lld seconds", comment: "(Int) + seconds")
+        static let SECOND = NSLocalizedString("FormattedTime/Seconds", value: "%lld seconds", comment: "(int) + seconds")
         
-        static let MINUTE = NSLocalizedString("FormattedTime/Minutes", value: "%lld minutes", comment: "(Int) + minutes")
+        static let MINUTE = NSLocalizedString("FormattedTime/Minutes", value: "%lld minutes", comment: "(int) + minutes")
         
-        static let FOREVER = NSLocalizedString("FormattedTime/Forever", comment: "Forever")
+        static let FOREVER = NSLocalizedString("FormattedTime/Forever", value: "Forever", comment: "forever")
         
         static func orElseForever(
             _ number: Any?,

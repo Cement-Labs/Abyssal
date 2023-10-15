@@ -104,7 +104,7 @@ extension Themes {
     static let abyssal: Theme = Theme(
         String(
             localized: 	"Abyssal",
-            comment: 	"Name for theme 'Abyssal'"
+            comment: 	"name for theme 'Abyssal'"
         ), "Abyssal", "DottedLine",
         headUncollapsed: 	"Dot",
         separator: 			"Line",
@@ -117,7 +117,7 @@ extension Themes {
     static let hiddenBar: Theme = Theme(
         String(
             localized: 	"Hidden Bar",
-            comment: 	"Name for theme 'Hidden Bar'"
+            comment: 	"name for theme 'Hidden Bar'"
         ), "HiddenBar",
         headUncollapsed: 	"ic_left",
         headCollapsed: 		"ic_right",
@@ -131,7 +131,7 @@ extension Themes {
     static let approaching: Theme = Theme(
         String(
             localized: 	"Approaching",
-            comment: 	"Name for theme 'Approaching'"
+            comment: 	"name for theme 'Approaching'"
         ), "Approaching",
         headUncollapsed: 	"Primary",
         headCollapsed: 		"Primary",
@@ -145,7 +145,7 @@ extension Themes {
     static let metresAway: Theme = Theme(
         String(
             localized: 	"Metres Away",
-            comment: 	"Name for theme 'Metres Away'"
+            comment: 	"name for theme 'Metres Away'"
         ), "MetresAway",
         headUncollapsed: 	"Line",
         separator: 			"MetreLine",
@@ -158,7 +158,7 @@ extension Themes {
     static let electrodiagram: Theme = Theme(
         String(
             localized: 	"Electrodiagram",
-            comment: 	"Name for theme 'Electrodiagram'"
+            comment: 	"name for theme 'Electrodiagram'"
         ), "Electrodiagram",
         headUncollapsed: 	"DiagramHead",
         headCollapsed: 		"DiagramHead",
@@ -172,7 +172,7 @@ extension Themes {
     static let droplets: Theme = Theme(
         String(
             localized: 	"Droplets",
-            comment: 	"Name for theme 'Droplets'"
+            comment: 	"name for theme 'Droplets'"
         ), "Droplets",
         headUncollapsed: 	"Drops",
         headCollapsed: 		"Drops",
@@ -186,7 +186,7 @@ extension Themes {
     static let codec: Theme = Theme(
         String(
             localized: 	"Codec",
-            comment: 	"Name for theme 'Codec'"
+            comment: 	"name for theme 'Codec'"
         ), "Codec",
         headUncollapsed: 	"R",
         headCollapsed: 		"R",
@@ -200,7 +200,7 @@ extension Themes {
     static let notSoHappy: Theme = Theme(
         String(
             localized: 	"Not So Happy",
-            comment: 	"Name for theme 'Not So Happy'"
+            comment: 	"name for theme 'Not So Happy'"
         ), "NotSoHappy",
         headUncollapsed: 	"Sad",
         headCollapsed: 		"Happy",

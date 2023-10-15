@@ -73,7 +73,7 @@ class MenuController: NSViewController, NSMenuDelegate {
     
     
     
-    @IBOutlet weak var buttonThemes: NSPopUpButton!
+    @IBOutlet weak var popUpButtonThemes: NSPopUpButton!
     
     @IBOutlet weak var switchUseAlwaysHideArea: NSSwitch!
     
@@ -145,23 +145,25 @@ extension MenuController {
     func initTips() {
         definedTips = [
             buttonAppVersion: (
-                tip: Tip(tipString: {
-                    Helper.versionComponent.needsUpdate ? nil : NSLocalizedString("Tip/ButtonAppVersion", value: """
+                tip: Tip(
+                    tipString: {
+                        !Helper.versionComponent.needsUpdate ? nil : NSLocalizedString("Tip/ButtonAppVersion", value: """
 An update is available.
 """, comment: "if (update available) -> (button) app version")
-                }, rect: { self.buttonAppVersion.bounds.offsetBy(dx: 0, dy: 8) })!,
-                trackingArea: buttonAppVersion.visibleRect.getTrackingArea(self, viewToAdd: buttonAppVersion)
+                    }, preferredEdge: .minX
+                )!, trackingArea: buttonAppVersion.visibleRect.getTrackingArea(self, viewToAdd: buttonAppVersion)
             ),
             
             viewModifiers: (
-                tip: Tip(tipString: {
-                    NSLocalizedString("Tip/ViewModifier/1", value: """
+                tip: Tip(
+                    tipString: {
+                        NSLocalizedString("Tip/ViewModifier/1", value: """
 Modifier keys to make the separators visible.
 """, comment: "(view) modifier") + (!Data.autoShows ? "" : Data.SPACE + NSLocalizedString("Tip/ViewModifier/2", value: """
 If the mouse is hovering over spare area, temporarily disables **Auto Shows.**
 """, comment: "if (auto shows) -> (view) modifier"))
-                }, rect: { self.viewModifiers.bounds.offsetBy(dx: 0, dy: -12) })!,
-                trackingArea: viewModifiers.visibleRect.getTrackingArea(self, viewToAdd: viewModifiers)
+                    }
+                )!, trackingArea: viewModifiers.visibleRect.getTrackingArea(self, viewToAdd: viewModifiers)
             ),
             sliderTimeout: (
                 tip: Tip(
@@ -171,8 +173,94 @@ If the mouse is hovering over spare area, temporarily disables **Auto Shows.**
 Time to countdown before disabling **Auto Idling.**
 """, comment: "(slider) timeout")
                     }, rect: { self.sliderTimeout.rectOfTickMark(at: self.sliderTimeout.integerValue).offsetBy(dx: 0, dy: 8) }
-                )!,
-                trackingArea: sliderTimeout.thumbRect.getTrackingArea(self, viewToAdd: sliderTimeout)
+                )!, trackingArea: sliderTimeout.thumbRect.getTrackingArea(self, viewToAdd: sliderTimeout)
+            ),
+            switchStartsWithMacOS: (
+                tip: Tip(
+                    tipString: {
+                        NSLocalizedString("Tip/SwitchStartsWithMacOS", value: """
+Run **Abyssal** when macOS starts.
+""", comment: "(switch) starts with macOS")
+                    }
+                )!, trackingArea: switchStartsWithMacOS.visibleRect.getTrackingArea(self, viewToAdd: switchStartsWithMacOS)
+            ),
+            
+            buttonTips: (
+                tip: Tip(
+                    tipString: {
+                        NSLocalizedString("Tip/ButtonTips", value: """
+Click to hide tips.
+""", comment: "(button) tips")
+                    }
+                )!, trackingArea: buttonTips.visibleRect.getTrackingArea(self, viewToAdd: buttonTips)
+            ),
+            buttonLink: (
+                tip: Tip(
+                    tipString: {
+                        NSLocalizedString("Tip/ButtonLink", value: """
+**Abyssal** is open sourced. Click to view the source code repository.
+""", comment: "(button) link")
+                    }
+                )!, trackingArea: buttonLink.visibleRect.getTrackingArea(self, viewToAdd: buttonLink)
+            ),
+            buttonMinimize: (
+                tip: Tip(
+                    tipString: {
+                        NSLocalizedString("Tip/ButtonMinimize", value: """
+Minimize this window.
+""", comment: "(button) minimize")
+                    }
+                )!, trackingArea: buttonMinimize.visibleRect.getTrackingArea(self, viewToAdd: buttonMinimize)
+            ),
+            
+            popUpButtonThemes: (
+                tip: Tip(
+                    tipString: {
+                        NSLocalizedString("Tip/PopUpButtonThemes", value: """
+Choose a theme.
+""", comment: "(pop up button) themes")
+                    }, preferredEdge: .minX
+                )!, trackingArea: popUpButtonThemes.visibleRect.getTrackingArea(self, viewToAdd: popUpButtonThemes)
+            ),
+            switchAutoShows: (
+                tip: Tip(
+                    tipString: {
+                        NSLocalizedString("Tip/SwitchAutoShows", value: """
+Whether to auto show the hidden status items when mouse hovering over spare area.
+""", comment: "(switch) auto shows")
+                    }
+                )!, trackingArea: switchAutoShows.visibleRect.getTrackingArea(self, viewToAdd: switchAutoShows)
+            ),
+            sliderFeedbackIntensity: (
+                tip: Tip(
+                    dataString: {
+                        Data.feedbackAttribute.label
+                    },
+                    tipString: {
+                        NSLocalizedString("Tip/SliderFeedbackIntensity", value: """
+Feedback intensity given while triggering **Auto Shows.**
+""", comment: "(slider) feedback intensity")
+                    }, rect: { self.sliderFeedbackIntensity.rectOfTickMark(at: self.sliderFeedbackIntensity.integerValue).offsetBy(dx: 0, dy: 8) }
+                )!, trackingArea: sliderFeedbackIntensity.thumbRect.getTrackingArea(self, viewToAdd: sliderFeedbackIntensity)
+            ),
+            
+            switchUseAlwaysHideArea: (
+                tip: Tip(
+                    tipString: {
+                        NSLocalizedString("Tip/SwitchUseAlwaysHideArea", value: """
+Hide certain status items permanently.
+""", comment: "(switch) use always hide area")
+                    }
+                )!, trackingArea: switchUseAlwaysHideArea.visibleRect.getTrackingArea(self, viewToAdd: switchUseAlwaysHideArea)
+            ),
+            switchReduceAnimation: (
+                tip: Tip(
+                    tipString: {
+                        NSLocalizedString("Tip/SwitchReduceAnimations", value: """
+Reduce animations to gain a more performant experience.
+""", comment: "(switch) reduce animations")
+                    }
+                )!, trackingArea: switchReduceAnimation.visibleRect.getTrackingArea(self, viewToAdd: switchReduceAnimation)
             )
         ]
         
@@ -225,12 +313,12 @@ extension MenuController {
                 themesMenu.addItem(item)
             }
             
-            buttonThemes.removeAllItems()
-            buttonThemes.menu = themesMenu
-            buttonThemes.menu?.delegate = self
+            popUpButtonThemes.removeAllItems()
+            popUpButtonThemes.menu = themesMenu
+            popUpButtonThemes.menu?.delegate = self
             
             if let index = Themes.themes.firstIndex(of: Data.theme) {
-                buttonThemes.selectItem(at: index)
+                popUpButtonThemes.selectItem(at: index)
             }
         }
         
@@ -309,6 +397,7 @@ extension MenuController {
         buttonTips.image = Data.tips
         ? NSImage(systemSymbolName: "tag.fill", accessibilityDescription: nil)
         : NSImage(systemSymbolName: "tag.slash", accessibilityDescription: nil)
+        definedTips[buttonTips]?.tip.update()
         
         boxLink.setOriginlalFillColor(Colors.Translucent.accent)
         boxLink.animator().borderColor = Colors.Translucent.accent
@@ -353,12 +442,15 @@ extension MenuController {
     
     func updateTimeoutEnabled() {
         setSliderLabelEnabled(labelTimeout, Data.timeoutAttribute.attr != nil)
+        
         definedTips[sliderTimeout]?.tip.update()
     }
     
     func updateFeedbackIntensityEnabled() {
         setSliderEnabled(sliderFeedbackIntensity, Data.autoShows)
         setSliderLabelEnabled(labelFeedbackIntensity, Data.autoShows && Data.feedbackIntensity != 0)
+        
+        definedTips[sliderFeedbackIntensity]?.tip.update()
     }
     
 }

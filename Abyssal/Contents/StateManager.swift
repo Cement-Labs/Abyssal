@@ -115,14 +115,14 @@ extension StatusBarController {
             ) { [weak self] _ in
                 guard let strongSelf = self else { return }
                 
-                guard feedbackCount < Data.feedbackAttribute.count else {
+                guard feedbackCount < Data.feedbackAttribute.feedback.count else {
                     feedbackCount = 0
                     strongSelf.stopTimer(&feedbackTimer)
                     
                     return
                 }
                 
-                if let pattern = Data.feedbackAttribute[feedbackCount] {
+                if let pattern = Data.feedbackAttribute.feedback[feedbackCount] {
                     NSHapticFeedbackManager.defaultPerformer.perform(pattern, performanceTime: .now)
                 }
                 

@@ -18,6 +18,8 @@ class Tip {
     
     var rect: () -> NSRect = { NSRect.zero }
     
+    var preferredEdge: NSRectEdge
+    
     var isShown: Bool {
         popover.isShown
     }
@@ -35,7 +37,8 @@ class Tip {
     init?(
         dataString: (() -> String?)? = nil,
         tipString: (() -> String?)? = nil,
-        rect: (() -> NSRect)? = nil
+        rect: (() -> NSRect)? = nil,
+        preferredEdge: NSRectEdge = .maxY
     ) {
         self.popover = Tips.createPopover()
         self.dataString = dataString ?? { nil }
@@ -43,6 +46,7 @@ class Tip {
         if (rect != nil) {
             self.rect = rect!
         }
+        self.preferredEdge = preferredEdge
         
         // Data
         
@@ -192,7 +196,7 @@ class Tip {
             self.popover.show(
                 relativeTo:     self.rect(),
                 of:             sender,
-                preferredEdge:  NSRectEdge.maxY
+                preferredEdge:  self.preferredEdge
             )
         }
         

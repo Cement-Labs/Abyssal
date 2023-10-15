@@ -864,11 +864,11 @@
                         <outlet property="buttonModifierOption" destination="5xq-3Q-O2J" id="1d8-SM-Tc4"/>
                         <outlet property="buttonModifierShift" destination="dRB-pC-5Qd" id="GRM-Cc-RJa"/>
                         <outlet property="buttonQuitApp" destination="HAQ-jG-9LD" id="szA-Fz-tTm"/>
-                        <outlet property="buttonThemes" destination="wot-IO-iPn" id="eMq-mn-zZV"/>
                         <outlet property="buttonTips" destination="PEB-0e-PWh" id="lM6-Ah-xHd"/>
                         <outlet property="labelAppTitle" destination="3oE-Id-0vv" id="Vr7-8v-lpY"/>
                         <outlet property="labelFeedbackIntensity" destination="r9u-Pv-knm" id="okM-tr-7zN"/>
                         <outlet property="labelTimeout" destination="YlR-tX-45k" id="FKs-2A-6d1"/>
+                        <outlet property="popUpButtonThemes" destination="wot-IO-iPn" id="eMq-mn-zZV"/>
                         <outlet property="sliderFeedbackIntensity" destination="hXa-jz-GTN" id="jba-pN-6Te"/>
                         <outlet property="sliderTimeout" destination="wm6-Pi-1s2" id="LhJ-Gu-KhP"/>
                         <outlet property="switchAutoShows" destination="C8P-qk-mj3" id="gbY-jx-LRW"/>

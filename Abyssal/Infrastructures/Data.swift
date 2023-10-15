@@ -190,16 +190,28 @@ public enum Data {
     
     public static let feedbackIntensityTickMarks: Int = 4
     
-    public static var feedbackAttribute: [NSHapticFeedbackManager.FeedbackPattern?] {
+    public static var feedbackAttribute: (feedback: [NSHapticFeedbackManager.FeedbackPattern?], label: String) {
         switch feedbackIntensity {
         case 1:
-            return [.levelChange]
+            return (
+                feedback: [.levelChange],
+                label: String(localized: "Light", comment: "feedback intensity light")
+            )
         case 2:
-            return [.generic, nil, nil, .alignment]
+            return (
+                feedback: [.generic, nil, nil, .alignment],
+                label: String(localized: "Medium", comment: "feedback intensity medium")
+            )
         case 3:
-            return [.levelChange, .alignment, nil, nil, nil, nil, .levelChange]
+            return (
+                feedback: [.levelChange, .alignment, nil, nil, nil, nil, .levelChange],
+                label: String(localized: "Hard", comment: "feedback intensity hard")
+            )
         default:
-            return []
+            return (
+                feedback: [],
+                label: String(localized: "Disabled", comment: "feedback intensity disabled")
+            )
         }
     }
     

@@ -2,7 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "Abyssal" : {
-      "comment" : "Name for theme 'Abyssal'",
+      "comment" : "name for theme 'Abyssal'",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -13,7 +13,7 @@
       }
     },
     "Approaching" : {
-      "comment" : "Name for theme 'Approaching'",
+      "comment" : "name for theme 'Approaching'",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -24,7 +24,7 @@
       }
     },
     "Codec" : {
-      "comment" : "Name for theme 'Codec'",
+      "comment" : "name for theme 'Codec'",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -51,8 +51,19 @@
         }
       }
     },
+    "Disabled" : {
+      "comment" : "feedback intensity disabled",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "禁用"
+          }
+        }
+      }
+    },
     "Droplets" : {
-      "comment" : "Name for theme 'Droplets'",
+      "comment" : "name for theme 'Droplets'",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -63,7 +74,7 @@
       }
     },
     "Electrodiagram" : {
-      "comment" : "Name for theme 'Electrodiagram'",
+      "comment" : "name for theme 'Electrodiagram'",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -74,7 +85,7 @@
       }
     },
     "FormattedTime/Forever" : {
-      "comment" : "Forever",
+      "comment" : "forever",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -91,7 +102,7 @@
       }
     },
     "FormattedTime/Minutes" : {
-      "comment" : "(Int) + minutes",
+      "comment" : "(int) + minutes",
       "localizations" : {
         "en" : {
           "variations" : {
@@ -126,7 +137,7 @@
       }
     },
     "FormattedTime/Seconds" : {
-      "comment" : "(Int) + seconds",
+      "comment" : "(int) + seconds",
       "localizations" : {
         "en" : {
           "variations" : {
@@ -160,8 +171,19 @@
         }
       }
     },
+    "Hard" : {
+      "comment" : "feedback intensity hard",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "重"
+          }
+        }
+      }
+    },
     "Hidden Bar" : {
-      "comment" : "Name for theme 'Hidden Bar'",
+      "comment" : "name for theme 'Hidden Bar'",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -171,8 +193,30 @@
         }
       }
     },
+    "Light" : {
+      "comment" : "feedback intensity light",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "轻"
+          }
+        }
+      }
+    },
+    "Medium" : {
+      "comment" : "feedback intensity medium",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "中"
+          }
+        }
+      }
+    },
     "Metres Away" : {
-      "comment" : "Name for theme 'Metres Away'",
+      "comment" : "name for theme 'Metres Away'",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -183,7 +227,7 @@
       }
     },
     "Not So Happy" : {
-      "comment" : "Name for theme 'Not So Happy'",
+      "comment" : "name for theme 'Not So Happy'",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -211,6 +255,96 @@
         }
       }
     },
+    "Tip/ButtonLink" : {
+      "comment" : "(button) link",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "**Abyssal** is open sourced. Click to view the source code repository."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Abyssal**是开源软件。单击以查看源代码仓库。"
+          }
+        }
+      }
+    },
+    "Tip/ButtonMinimize" : {
+      "comment" : "(button) minimize",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Minimize this window."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最小化此窗口。"
+          }
+        }
+      }
+    },
+    "Tip/ButtonTips" : {
+      "comment" : "(button) tips",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Click to hide tips."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "单击隐藏提示。"
+          }
+        }
+      }
+    },
+    "Tip/PopUpButtonThemes" : {
+      "comment" : "(pop up button) themes",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Choose a theme."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择一个主题。"
+          }
+        }
+      }
+    },
+    "Tip/SliderFeedbackIntensity" : {
+      "comment" : "(slider) feedback intensity",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Feedback intensity given while triggering **Auto Shows.**"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "触发**自动显示**时的震动反馈强度。"
+          }
+        }
+      }
+    },
     "Tip/SliderTimeout" : {
       "comment" : "(slider) timeout",
       "extractionState" : "extracted_with_value",
@@ -218,13 +352,85 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Time to countdown before disabling **`Auto Idling`.**"
+            "value" : "Time to countdown before disabling **Auto Idling.**"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "关闭**自动闲置**之前的等待时间。"
+          }
+        }
+      }
+    },
+    "Tip/SwitchAutoShows" : {
+      "comment" : "(switch) auto shows",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Whether to auto show the hidden status items when mouse hovering over spare area."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "是否在光标移动到闲置位置时自动显示隐藏的状态栏图标。"
+          }
+        }
+      }
+    },
+    "Tip/SwitchReduceAnimations" : {
+      "comment" : "(switch) reduce animations",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Reduce animations to gain a more performant experience."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "减少动画以增加性能。"
+          }
+        }
+      }
+    },
+    "Tip/SwitchStartsWithMacOS" : {
+      "comment" : "(switch) starts with macOS",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Run **Abyssal** when macOS starts."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在macOS启动时启动**Abyssal。**"
+          }
+        }
+      }
+    },
+    "Tip/SwitchUseAlwaysHideArea" : {
+      "comment" : "(switch) use always hide area",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Hide certain status items permanently."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "将一些状态栏图标永久隐藏。"
           }
         }
       }
@@ -254,13 +460,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "If the mouse is hovering over spare area, temporarily disables **Auto Shows`.**"
+            "value" : "If the mouse is hovering over spare area, temporarily disables **Auto Shows.**"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "当光标移动到闲置位置时按下修饰键，将暂时禁用**`自动显示`。**"
+            "state" : "translated",
+            "value" : "当光标移动到闲置位置时按下修饰键，将暂时禁用**自动显示。**"
           }
         }
       }
