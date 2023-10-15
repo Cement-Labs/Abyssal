@@ -78,11 +78,18 @@ class Tip {
             views.tip.attributedStringValue = Tips.formatTip(tipString()!)
         }
         
+        popover.contentViewController?.view.layoutSubtreeIfNeeded()
+        let size: NSSize? = popover.contentViewController?.view.frame.size
+        
         if isShown {
             NSAnimationContext.runAnimationGroup() { context in
                 context.allowsImplicitAnimation = true
                 
-                popover.positioningRect = rect()
+                self.popover.positioningRect = self.rect()
+                if let size = size {
+                    print(size)
+                    self.popover.contentSize = size
+                }
             }
         }
         

@@ -148,7 +148,7 @@ extension MenuController {
                 tip: Tip(tipString: {
                     Helper.versionComponent.needsUpdate ? nil : NSLocalizedString("Tip/ButtonAppVersion", value: """
 An update is available.
-""", comment: "Button app version")
+""", comment: "if (update available) -> (button) app version")
                 }, rect: { self.buttonAppVersion.bounds.offsetBy(dx: 0, dy: 8) })!,
                 trackingArea: buttonAppVersion.visibleRect.getTrackingArea(self, viewToAdd: buttonAppVersion)
             ),
@@ -157,9 +157,9 @@ An update is available.
                 tip: Tip(tipString: {
                     NSLocalizedString("Tip/ViewModifier/1", value: """
 Modifier keys to make the separators visible.
-""", comment: "View modifier") + (!Data.autoShows ? "" : Data.SPACE + NSLocalizedString("Tip/ViewModifier/2", value: """
+""", comment: "(view) modifier") + (!Data.autoShows ? "" : Data.SPACE + NSLocalizedString("Tip/ViewModifier/2", value: """
 If the mouse is hovering over spare area, temporarily disables **Auto Shows.**
-""", comment: "(if Data.autoShows): View modifier"))
+""", comment: "if (auto shows) -> (view) modifier"))
                 }, rect: { self.viewModifiers.bounds.offsetBy(dx: 0, dy: -12) })!,
                 trackingArea: viewModifiers.visibleRect.getTrackingArea(self, viewToAdd: viewModifiers)
             ),
@@ -169,7 +169,7 @@ If the mouse is hovering over spare area, temporarily disables **Auto Shows.**
                     tipString: {
                         NSLocalizedString("Tip/SliderTimeout", value: """
 Time to countdown before disabling **Auto Idling.**
-""", comment: "Slider timeout")
+""", comment: "(slider) timeout")
                     }, rect: { self.sliderTimeout.rectOfTickMark(at: self.sliderTimeout.integerValue).offsetBy(dx: 0, dy: 8) }
                 )!,
                 trackingArea: sliderTimeout.thumbRect.getTrackingArea(self, viewToAdd: sliderTimeout)

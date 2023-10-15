@@ -194,7 +194,7 @@
       }
     },
     "Tip/ButtonAppVersion" : {
-      "comment" : "Button app version",
+      "comment" : "if (update available) -> (button) app version",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
@@ -212,19 +212,25 @@
       }
     },
     "Tip/SliderTimeout" : {
-      "comment" : "Slider timeout",
+      "comment" : "(slider) timeout",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Time to countdown before disabling **Auto Idling.**"
+            "value" : "Time to countdown before disabling **`Auto Idling`.**"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "关闭**自动闲置**之前的等待时间。"
           }
         }
       }
     },
     "Tip/ViewModifier/1" : {
-      "comment" : "View modifier",
+      "comment" : "(view) modifier",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
@@ -242,19 +248,19 @@
       }
     },
     "Tip/ViewModifier/2" : {
-      "comment" : "(if Data.autoShows): View modifier",
+      "comment" : "if (auto shows) -> (view) modifier",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "If the mouse is hovering over spare area, temporarily disables **Auto Shows.**"
+            "value" : "If the mouse is hovering over spare area, temporarily disables **Auto Shows`.**"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "当光标移动到闲置位置时按下修饰键，将暂时禁用**自动显示。**"
+            "value" : "当光标移动到闲置位置时按下修饰键，将暂时禁用**`自动显示`。**"
           }
         }
       }
