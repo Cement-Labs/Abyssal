@@ -533,6 +533,15 @@ extension MenuController {
     ) {
         Data.tips = sender.flag
         updateButtons()
+        
+        // It works!!!
+        NSAnimationContext.runAnimationGroup() { context in
+            context.allowsImplicitAnimation = true
+            context.duration = 1
+            context.timingFunction = CAMediaTimingFunction(controlPoints: 0.16, 1.24, 0.86, -0.01)
+            
+            (NSApp.delegate as? AppDelegate)?.statusBarController.head.length = 200
+        }
     }
     
     

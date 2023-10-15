@@ -91,7 +91,6 @@ class Tip {
                 
                 self.popover.positioningRect = self.rect()
                 if let size = size {
-                    print(size)
                     self.popover.contentSize = size
                 }
             }
