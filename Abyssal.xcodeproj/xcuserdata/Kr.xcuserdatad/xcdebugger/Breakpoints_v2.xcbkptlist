@@ -3,4 +3,84 @@
    uuid = "28E18FED-8B9A-4BE4-AD07-3969B5689F5D"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0D492FF7-0AC3-4113-8F62-188A6D2D2ECB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Abyssal/Infrastructures/Colors.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "Translucent"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "0D492FF7-0AC3-4113-8F62-188A6D2D2ECB - 7d8254bbcde98de8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Abyssal.Colors.Translucent.deinit"
+                  moduleName = "Abyssal"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Kr/Documents/Swift/Abyssal/Abyssal/Infrastructures/Colors.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "0D492FF7-0AC3-4113-8F62-188A6D2D2ECB - ac1be014573c5f13"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Abyssal.Colors.Translucent.__deallocating_deinit"
+                  moduleName = "Abyssal"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Kr/Documents/Swift/Abyssal/Abyssal/Infrastructures/Colors.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "0D492FF7-0AC3-4113-8F62-188A6D2D2ECB - 36136987cee608d9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Abyssal.Colors.Translucent.__allocating_init() -&gt; Abyssal.Colors.Translucent"
+                  moduleName = "Abyssal"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Kr/Documents/Swift/Abyssal/Abyssal/Infrastructures/Colors.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  uuid = "0D492FF7-0AC3-4113-8F62-188A6D2D2ECB - b7b90625161183a8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Abyssal.Colors.Translucent.init() -&gt; Abyssal.Colors.Translucent"
+                  moduleName = "Abyssal"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Kr/Documents/Swift/Abyssal/Abyssal/Infrastructures/Colors.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

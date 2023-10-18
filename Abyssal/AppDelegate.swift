@@ -133,7 +133,7 @@ extension AppDelegate {
                 preferredEdge: 	.maxY
             )
             
-            popover.contentViewController?.view.window?.makeKey()
+            popover.contentViewController?.view.window?.makeKeyAndOrderFront(nil)
         }
         
         mouseEventMonitor?.start()

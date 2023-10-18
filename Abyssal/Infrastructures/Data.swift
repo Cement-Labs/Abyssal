@@ -59,11 +59,6 @@ public enum Data {
         UserDefaults.standard.register(defaults: [Keys.REDUCE_ANIMATION: false])
     }
     
-    static var SPACE: String {
-        let string = NSLocalizedString("Data/Space", comment: "Language-specified space between sentences.")
-        return string == "nil" ? "" : string
-    }
-    
     static var modifiers: (option: Bool, command: Bool, shift: Bool) {
         get {
             let defaultTuple = (option: true, command: true, shift: false)

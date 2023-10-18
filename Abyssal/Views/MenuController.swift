@@ -148,7 +148,7 @@ extension MenuController {
                 tip: Tip(
                     tipString: {
                         !Helper.versionComponent.needsUpdate ? nil : NSLocalizedString("Tip/ButtonAppVersion", value: """
-An update is available.
+An update is available. Click to access the download page.
 """, comment: "if (update available) -> (button) app version")
                     }, preferredEdge: .minX
                 )!, trackingArea: buttonAppVersion.visibleRect.getTrackingArea(self, viewToAdd: buttonAppVersion)
@@ -158,10 +158,8 @@ An update is available.
                 tip: Tip(
                     tipString: {
                         NSLocalizedString("Tip/ViewModifier/1", value: """
-Modifier keys to make the separators visible.
-""", comment: "(view) modifier") + (!Data.autoShows ? "" : Data.SPACE + NSLocalizedString("Tip/ViewModifier/2", value: """
-If the mouse is hovering over spare area, temporarily disables **Auto Shows.**
-""", comment: "if (auto shows) -> (view) modifier"))
+The modifier keys to use. Pressing only one of the chosen keys is enough to trigger the functions.
+""", comment: "(view) modifier")
                     }
                 )!, trackingArea: viewModifiers.visibleRect.getTrackingArea(self, viewToAdd: viewModifiers)
             ),
@@ -171,6 +169,7 @@ If the mouse is hovering over spare area, temporarily disables **Auto Shows.**
                     tipString: {
                         NSLocalizedString("Tip/SliderTimeout", value: """
 Time to countdown before disabling **Auto Idling.**
+After interacting with status items that will be automatically hidden, for example, status items inside the **Always Hidden Area,** **Auto Idling** will keep them visible until this timeout is reached.
 """, comment: "(slider) timeout")
                     }, rect: { self.sliderTimeout.rectOfTickMark(at: self.sliderTimeout.integerValue).offsetBy(dx: 0, dy: 8) }
                 )!, trackingArea: sliderTimeout.thumbRect.getTrackingArea(self, viewToAdd: sliderTimeout)
@@ -189,7 +188,7 @@ Run **Abyssal** when macOS starts.
                 tip: Tip(
                     tipString: {
                         NSLocalizedString("Tip/ButtonTips", value: """
-Click to hide tips.
+The tips are currently shown. Click to hide them.
 """, comment: "(button) tips")
                     }
                 )!, trackingArea: buttonTips.visibleRect.getTrackingArea(self, viewToAdd: buttonTips)
@@ -198,7 +197,7 @@ Click to hide tips.
                 tip: Tip(
                     tipString: {
                         NSLocalizedString("Tip/ButtonLink", value: """
-**Abyssal** is open sourced. Click to view the source code repository.
+**Abyssal** is open sourced. Click to access the source code repository.
 """, comment: "(button) link")
                     }
                 )!, trackingArea: buttonLink.visibleRect.getTrackingArea(self, viewToAdd: buttonLink)
@@ -207,7 +206,7 @@ Click to hide tips.
                 tip: Tip(
                     tipString: {
                         NSLocalizedString("Tip/ButtonMinimize", value: """
-Minimize this window.
+Minimize this window. Right click on the leading separator to open this window again.
 """, comment: "(button) minimize")
                     }
                 )!, trackingArea: buttonMinimize.visibleRect.getTrackingArea(self, viewToAdd: buttonMinimize)
@@ -217,7 +216,8 @@ Minimize this window.
                 tip: Tip(
                     tipString: {
                         NSLocalizedString("Tip/PopUpButtonThemes", value: """
-Choose a theme.
+Some themes will hide the separators automatically, while others not.
+Themes that automatically hide the separators will only show the separators when the status items inside the **Hide Area** are manually set to visible, while other themes indicate this by reducing the separators' opacity.
 """, comment: "(pop up button) themes")
                     }, preferredEdge: .minX
                 )!, trackingArea: popUpButtonThemes.visibleRect.getTrackingArea(self, viewToAdd: popUpButtonThemes)
@@ -226,7 +226,9 @@ Choose a theme.
                 tip: Tip(
                     tipString: {
                         NSLocalizedString("Tip/SwitchAutoShows", value: """
-Whether to auto show the hidden status items when mouse hovering over spare area.
+Auto shows the status items inside the **Hide Area** which is at the left of the second-lefty separator whiile the mouse is hovering over the spare area.
+If **Auto Shows** enabled, the status items inside the **Hide Area** will be hidden and kept invisible until the mouse hovers over the spare area which the status items in **Hide Area** used to stay. Otherwise, the status items will be hidden until you switch their hidden state manually.
+By left clicking on the leading separator, or clicking using either of the mouse buttons on the other separators, you can manually switch the hidden state of the status items inside the **Hide Area.**
 """, comment: "(switch) auto shows")
                     }
                 )!, trackingArea: switchAutoShows.visibleRect.getTrackingArea(self, viewToAdd: switchAutoShows)
@@ -238,7 +240,7 @@ Whether to auto show the hidden status items when mouse hovering over spare area
                     },
                     tipString: {
                         NSLocalizedString("Tip/SliderFeedbackIntensity", value: """
-Feedback intensity given while triggering **Auto Shows.**
+Feedback intensity given when triggering functions such as **Auto Shows** and **Auto Idling.**
 """, comment: "(slider) feedback intensity")
                     }, rect: { self.sliderFeedbackIntensity.rectOfTickMark(at: self.sliderFeedbackIntensity.integerValue).offsetBy(dx: 0, dy: 8) }
                 )!, trackingArea: sliderFeedbackIntensity.thumbRect.getTrackingArea(self, viewToAdd: sliderFeedbackIntensity)
@@ -248,7 +250,8 @@ Feedback intensity given while triggering **Auto Shows.**
                 tip: Tip(
                     tipString: {
                         NSLocalizedString("Tip/SwitchUseAlwaysHideArea", value: """
-Hide certain status items permanently.
+Hide certain status items permanently by moving them left of the trailing separator to the **Always Hide Area.**
+The status items inside the **Always Hide Area** will be hidden and invisible until the mouse hovers over the spare area with a modifier key down, or while this window is opened.
 """, comment: "(switch) use always hide area")
                     }
                 )!, trackingArea: switchUseAlwaysHideArea.visibleRect.getTrackingArea(self, viewToAdd: switchUseAlwaysHideArea)
@@ -386,9 +389,9 @@ extension MenuController {
     }
     
     func updateButtons() {
-        boxQuitApp.setOriginlalFillColor(Colors.Translucent.DANGER)
-        boxQuitApp.animator().borderColor = Colors.Translucent.DANGER
-        buttonQuitApp.animator().contentTintColor = Colors.Opaque.DANGER
+        boxQuitApp.setOriginlalFillColor(Colors.Translucent.danger)
+        boxQuitApp.animator().borderColor = Colors.Translucent.danger
+        buttonQuitApp.animator().contentTintColor = Colors.Opaque.danger
         
         boxTips.setOriginlalFillColor(Colors.Translucent.accent)
         boxTips.overrideFillColor(Data.tips ? Colors.Opaque.accent : nil)
@@ -397,15 +400,14 @@ extension MenuController {
         buttonTips.image = Data.tips
         ? NSImage(systemSymbolName: "tag.fill", accessibilityDescription: nil)
         : NSImage(systemSymbolName: "tag.slash", accessibilityDescription: nil)
-        definedTips[buttonTips]?.tip.update()
         
         boxLink.setOriginlalFillColor(Colors.Translucent.accent)
         boxLink.animator().borderColor = Colors.Translucent.accent
         buttonLink.animator().contentTintColor = Colors.Opaque.accent
         
-        boxMinimize.setOriginlalFillColor(Colors.Translucent.SAFE)
-        boxMinimize.animator().borderColor = Colors.Translucent.SAFE
-        buttonMinimize.animator().contentTintColor = Colors.Opaque.SAFE
+        boxMinimize.setOriginlalFillColor(Colors.Translucent.safe)
+        boxMinimize.animator().borderColor = Colors.Translucent.safe
+        buttonMinimize.animator().contentTintColor = Colors.Opaque.safe
     }
     
 }
@@ -496,7 +498,24 @@ extension MenuController {
     @IBAction func minimize(
         _ sender: Any?
     ) {
-        Helper.delegate?.closePopover(sender)
+        if (
+            definedTips.values
+                .filter { $0.tip.isShown }
+                .count > 0
+        ) {
+            // Containing nested popover(s).
+            definedTips.values
+                .map { $0.tip }
+                .filter { $0.isShown }
+                .forEach { $0.close() }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                Helper.delegate?.closePopover(sender)
+            }
+        } else {
+            // Containing none nested popover.
+            Helper.delegate?.closePopover(sender)
+        }
     }
     
     // MARK: - Data Actions
@@ -534,13 +553,10 @@ extension MenuController {
         Data.tips = sender.flag
         updateButtons()
         
-        // It works!!!
-        NSAnimationContext.runAnimationGroup() { context in
-            context.allowsImplicitAnimation = true
-            context.duration = 1
-            context.timingFunction = CAMediaTimingFunction(controlPoints: 0.16, 1.24, 0.86, -0.01)
-            
-            (NSApp.delegate as? AppDelegate)?.statusBarController.head.length = 200
+        if sender.flag {
+            definedTips[buttonTips]?.tip.show(buttonTips)
+        } else {
+            definedTips[buttonTips]?.tip.close()
         }
     }
     

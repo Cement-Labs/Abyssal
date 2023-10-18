@@ -281,47 +281,56 @@ extension Tips {
 
 extension Tips {
     
-    static func formatData(
-        _ text: String
-    ) -> NSAttributedString {
-        let result = try! NSAttributedString.init(
+    static func generateMarkdown(
+        _ text: String,
+        font: NSFont,
+        alignment: NSTextAlignment = .natural
+    ) -> NSMutableAttributedString {
+        let markdown = try! NSAttributedString.init(
             markdown: text.data(using: .utf8)!,
-            options: .init(allowsExtendedAttributes: true)
+            options: .init(
+                allowsExtendedAttributes: true,
+                interpretedSyntax: .inlineOnlyPreservingWhitespace
+            )
         ) as! NSMutableAttributedString
         
         let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = .center
+        paragraphStyle.alignment = alignment
+        paragraphStyle.allowsDefaultTighteningForTruncation = true
+        paragraphStyle.paragraphSpacing = font.pointSize * 0.4
         
-        result.addAttribute(
+        markdown.addAttribute(
             .paragraphStyle,
             value: paragraphStyle,
-            range: NSRange(location: 0, length: result.length)
+            range: NSRange(location: 0, length: markdown.length)
         )
         
-        result.addAttribute(
+        markdown.addAttribute(
             .font,
-            value: NSFont.boldSystemFont(ofSize: DATA_SIZE),
-            range: NSRange(location: 0, length: result.length)
+            value: font,
+            range: NSRange(location: 0, length: markdown.length)
         )
         
-        return result
+        return markdown
+    }
+    
+    static func formatData(
+        _ text: String
+    ) -> NSAttributedString {
+        return generateMarkdown(
+            text,
+            font: NSFont.boldSystemFont(ofSize: DATA_SIZE),
+            alignment: .center
+        )
     }
     
     static func formatTip(
         _ text: String
     ) -> NSAttributedString {
-        let result = try! NSAttributedString.init(
-            markdown: text.data(using: .utf8)!,
-            options: .init(allowsExtendedAttributes: true)
-        ) as! NSMutableAttributedString
-        
-        result.addAttribute(
-            .font,
-            value: NSFont.systemFont(ofSize: TIP_SIZE),
-            range: NSRange(location: 0, length: result.length)
+        return generateMarkdown(
+            text,
+            font: NSFont.systemFont(ofSize: TIP_SIZE)
         )
-        
-        return result
     }
     
 }

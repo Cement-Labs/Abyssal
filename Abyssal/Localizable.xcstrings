@@ -34,23 +34,6 @@
         }
       }
     },
-    "Data/Space" : {
-      "comment" : "Language-specified space between sentences.",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : " "
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "nil"
-          }
-        }
-      }
-    },
     "Disabled" : {
       "comment" : "feedback intensity disabled",
       "localizations" : {
@@ -176,7 +159,7 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "重"
           }
         }
@@ -244,7 +227,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "An update is available."
+            "value" : "An update is available. Click to access the download page."
           }
         },
         "zh-Hans" : {
@@ -262,13 +245,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "**Abyssal** is open sourced. Click to view the source code repository."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "**Abyssal**是开源软件。单击以查看源代码仓库。"
+            "value" : "**Abyssal** is open sourced. Click to access the source code repository."
           }
         }
       }
@@ -280,13 +257,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Minimize this window."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "最小化此窗口。"
+            "value" : "Minimize this window. Right click on the leading separator to open this window again."
           }
         }
       }
@@ -298,13 +269,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Click to hide tips."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "单击隐藏提示。"
+            "value" : "The tips are currently shown. Click to hide them."
           }
         }
       }
@@ -316,13 +281,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Choose a theme."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "选择一个主题。"
+            "value" : "Some themes will hide the separators automatically, while others not.\nThemes that automatically hide the separators will only show the separators when the status items inside the **Hide Area** are manually set to visible, while other themes indicate this by reducing the separators' opacity."
           }
         }
       }
@@ -334,13 +293,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Feedback intensity given while triggering **Auto Shows.**"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "触发**自动显示**时的震动反馈强度。"
+            "value" : "Feedback intensity given when triggering functions such as **Auto Shows** and **Auto Idling.**"
           }
         }
       }
@@ -352,13 +305,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Time to countdown before disabling **Auto Idling.**"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "关闭**自动闲置**之前的等待时间。"
+            "value" : "Time to countdown before disabling **Auto Idling.**\nAfter interacting with status items that will be automatically hidden, for example, status items inside the **Always Hidden Area,** **Auto Idling** will keep them visible until this timeout is reached."
           }
         }
       }
@@ -370,13 +317,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Whether to auto show the hidden status items when mouse hovering over spare area."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "是否在光标移动到闲置位置时自动显示隐藏的状态栏图标。"
+            "value" : "Auto shows the status items inside the **Hide Area** which is at the left of the second-lefty separator whiile the mouse is hovering over the spare area.\nIf **Auto Shows** enabled, the status items inside the **Hide Area** will be hidden and kept invisible until the mouse hovers over the spare area which the status items in **Hide Area** used to stay. Otherwise, the status items will be hidden until you switch their hidden state manually.\nBy left clicking on the leading separator, or clicking using either of the mouse buttons on the other separators, you can manually switch the hidden state of the status items inside the **Hide Area.**"
           }
         }
       }
@@ -412,7 +353,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "在macOS启动时启动**Abyssal。**"
+            "value" : "在macOS启动的同时启动**Abyssal。**"
           }
         }
       }
@@ -424,13 +365,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Hide certain status items permanently."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "将一些状态栏图标永久隐藏。"
+            "value" : "Hide certain status items permanently by moving them left of the trailing separator to the **Always Hide Area.**\nThe status items inside the **Always Hide Area** will be hidden and invisible until the mouse hovers over the spare area with a modifier key down, or while this window is opened."
           }
         }
       }
@@ -442,31 +377,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Modifier keys to make the separators visible."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "按下修饰键以显示分隔符。"
-          }
-        }
-      }
-    },
-    "Tip/ViewModifier/2" : {
-      "comment" : "if (auto shows) -> (view) modifier",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "If the mouse is hovering over spare area, temporarily disables **Auto Shows.**"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "当光标移动到闲置位置时按下修饰键，将暂时禁用**自动显示。**"
+            "value" : "The modifier keys to use. Pressing only one of the chosen keys is enough to trigger the functions."
           }
         }
       }

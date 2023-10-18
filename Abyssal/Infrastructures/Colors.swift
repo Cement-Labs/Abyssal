@@ -24,25 +24,31 @@ class Colors {
     
     class Translucent {
         
-        public static let DANGER = Colors.getOrClear("Translucent/Danger")
+        public static let OPACITY = 0.07
         
-        public static let SAFE = Colors.getOrClear("Translucent/Safe")
+        public static var danger: NSColor {
+            Opaque.danger.withAlphaComponent(OPACITY)
+        }
         
-        public static let UNSAFE = Colors.getOrClear("Translucent/Unsafe")
+        public static var safe: NSColor {
+            Opaque.safe.withAlphaComponent(OPACITY)
+        }
         
         public static var accent: NSColor {
-            NSColor.controlAccentColor.withAlphaComponent(0.07)
+            Opaque.accent.withAlphaComponent(OPACITY)
         }
         
     }
     
     class Opaque {
         
-        public static let DANGER = Colors.getOrClear("Opaque/Danger")
+        public static var danger: NSColor {
+            NSColor.systemRed
+        }
         
-        public static let SAFE = Colors.getOrClear("Opaque/Safe")
-        
-        public static let UNSAFE = Colors.getOrClear("Opaque/Unsafe")
+        public static var safe: NSColor {
+            NSColor.systemGreen
+        }
         
         public static var accent: NSColor {
             NSColor.controlAccentColor
