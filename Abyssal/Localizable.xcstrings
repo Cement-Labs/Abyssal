@@ -339,12 +339,12 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Time to countdown before disabling **Auto Idling.**\nAfter interacting with status items that will be automatically hidden, for example, status items inside the **Always Hidden Area,** **Auto Idling** will keep them visible until this timeout is reached or the mouse hovered over the `Hide Separator` or `Always Hide Separator`."
+            "value" : "Time to countdown before disabling **Auto Idling.**\nAfter interacting with status items that will be automatically hidden, for example, status items inside the **Always Hidden Area,** **Auto Idling** will keep them visible until this timeout is reached or the cursor hovered over the `Hide Separator` or `Always Hide Separator`."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "自动取消**自动闲置**之前的等待时间。\n在与将会被自动隐藏的状态栏图标（例如**永远隐藏区域**内的图标）交互后，**自动闲置**功能将会自动启用以保持这些图标可见，直到达到此时间限制或光标移过`隐藏分隔符`或`永远隐藏分隔符`时。"
           }
         }
@@ -357,12 +357,12 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Auto shows the status items inside the **Hide Area** while the mouse is hovering over the spare area.\nIf this option is enabled, the status items inside the **Hide Area,** which is between the `Hide Separator` (the middle one) and the `Always Hide Separator` (the trailing one), will be hidden and kept invisible, until the mouse hovers over the spare area, where the status items in **Hide Area** used to stay. Otherwise the status items will be hidden until you switch their visibility state manually.\nBy left clicking on the `Menu Separator` (the leading one), or clicking using either of the mouse buttons on the other separators, you can manually switch the visibility state of the status items inside the **Hide Area.** If you set them visible, they will never be hidden again until you manually switch their visibility state. Otherwise they will follow the behavior defined above."
+            "value" : "Auto shows the status items inside the **Hide Area** while the cursor is hovering over the spare area.\nIf this option is enabled, the status items inside the **Hide Area,** which is between the `Hide Separator` (the middle one) and the `Always Hide Separator` (the trailing one), will be hidden and kept invisible, until the cursor hovers over the spare area, where the status items in **Hide Area** used to stay. Otherwise the status items will be hidden until you switch their visibility state manually.\nBy left clicking on the `Menu Separator` (the leading one), or clicking using either of the mouse buttons on the other separators, you can manually switch the visibility state of the status items inside the **Hide Area.** If you set them visible, they will never be hidden again until you manually switch their visibility state. Otherwise they will follow the behavior defined above."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "在光标移过空白区域时自动显示**隐藏区域**内的状态栏图标。\n此选项启用时，处在`隐藏分隔符`（中间）和`永远隐藏分隔符`（尾部）之间的**隐藏区域**内的状态栏图标将会被隐藏，直到光标移到空白区域（状态栏图标被隐藏后的状态栏空白处）中。在此选项禁用时，你需要手动切换状态栏图标的显示状态。\n通过左键单击`菜单分隔符`（头部）或任何鼠标按键单击其它分隔符，你可以手动切换状态栏图标的显示状态。当你选择显示状态栏图标时，它们会一直保持可见；当你选择隐藏状态栏图标时，它们才会遵循上方定义的行为规则。"
           }
         }
@@ -411,12 +411,12 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Hide certain status items permanently by moving them left of the `Always Hide Separator` to the **Always Hide Area.**\nThe status items inside the **Always Hide Area** will be hidden and invisible until the mouse hovers over the spare area with a modifier key down, or while this window is opened."
+            "value" : "Hide certain status items permanently by moving them left of the `Always Hide Separator` to the **Always Hide Area.**\nThe status items inside the **Always Hide Area** will be hidden and invisible until the cursor hovers over the spare area with a modifier key down, or while this window is opened."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "通过将一些状态栏图标移到**永远隐藏区域**（位于`永远隐藏分隔符`的左侧）以永远隐藏它们。\n**永远隐藏区域**内的图标将会一直不可见，直到光标移到空白区域内的同时按下修饰键或此窗口打开时。"
           }
         }
