@@ -200,7 +200,7 @@ public enum Data {
         case 3:
             return (
                 feedback: [.levelChange, .alignment, .alignment, nil, nil, nil, .levelChange],
-                label: String(localized: "Hard", comment: "feedback intensity hard")
+                label: String(localized: "Heavy", comment: "feedback intensity heavy")
             )
         default:
             return (
