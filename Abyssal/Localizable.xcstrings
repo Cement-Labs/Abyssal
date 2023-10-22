@@ -154,9 +154,8 @@
         }
       }
     },
-    "Hard" : {
-      "comment" : "feedback intensity hard",
-      "extractionState" : "stale",
+    "Heavy" : {
+      "comment" : "feedback intensity heavy",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -165,9 +164,6 @@
           }
         }
       }
-    },
-    "Heavy" : {
-      "comment" : "feedback intensity heavy"
     },
     "Hidden Bar" : {
       "comment" : "name for theme 'Hidden Bar'",
@@ -344,7 +340,7 @@
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "自动取消**自动闲置**之前的等待时间。\n在与将会被自动隐藏的状态栏图标（例如**永远隐藏区域**内的图标）交互后，**自动闲置**功能将会自动启用以保持这些图标可见，直到达到此时间限制或光标移过`隐藏分隔符`或`永远隐藏分隔符`时。"
           }
         }
@@ -362,7 +358,7 @@
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "在光标移过空白区域时自动显示**隐藏区域**内的状态栏图标。\n此选项启用时，处在`隐藏分隔符`（中间）和`永远隐藏分隔符`（尾部）之间的**隐藏区域**内的状态栏图标将会被隐藏，直到光标移到空白区域（状态栏图标被隐藏后的状态栏空白处）中。在此选项禁用时，你需要手动切换状态栏图标的显示状态。\n通过左键单击`菜单分隔符`（头部）或任何鼠标按键单击其它分隔符，你可以手动切换状态栏图标的显示状态。当你选择显示状态栏图标时，它们会一直保持可见；当你选择隐藏状态栏图标时，它们才会遵循上方定义的行为规则。"
           }
         }
@@ -416,7 +412,7 @@
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "通过将一些状态栏图标移到**永远隐藏区域**（位于`永远隐藏分隔符`的左侧）以永远隐藏它们。\n**永远隐藏区域**内的图标将会一直不可见，直到光标移到空白区域内的同时按下修饰键或此窗口打开时。"
           }
         }
