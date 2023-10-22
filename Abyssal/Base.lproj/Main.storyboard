@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="22146" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22146"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22155"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -102,8 +102,8 @@
                                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                                 <subviews>
                                                                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dRB-pC-5Qd" userLabel="Shift">
-                                                                                                        <rect key="frame" x="0.0" y="-2.5" width="33.5" height="30"/>
-                                                                                                        <buttonCell key="cell" type="bevel" title="Command" bezelStyle="rounded" image="shift" catalog="system" imagePosition="only" alignment="center" inset="2" id="ugu-DQ-ax1">
+                                                                                                        <rect key="frame" x="0.0" y="2.5" width="33" height="24"/>
+                                                                                                        <buttonCell key="cell" type="bevel" title="Command" bezelStyle="rounded" image="control" catalog="system" imagePosition="only" alignment="center" inset="2" id="ugu-DQ-ax1">
                                                                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                                             <font key="font" metaFont="system"/>
                                                                                                         </buttonCell>
@@ -111,7 +111,7 @@
                                                                                                             <nil key="locale"/>
                                                                                                         </symbolConfiguration>
                                                                                                         <connections>
-                                                                                                            <action selector="toggleModifierShift:" target="crA-Or-uDV" id="hFp-Ve-zX0"/>
+                                                                                                            <action selector="toggleModifierControl:" target="crA-Or-uDV" id="hFp-Ve-zX0"/>
                                                                                                         </connections>
                                                                                                     </button>
                                                                                                 </subviews>
@@ -851,16 +851,16 @@
                         <outlet property="boxLink" destination="e3U-gc-FYv" id="nP0-vy-yyb"/>
                         <outlet property="boxMinimize" destination="oPU-r1-7qb" id="8WT-g3-syl"/>
                         <outlet property="boxModifierCommand" destination="SFf-Jy-pSC" id="eLD-jM-apX"/>
+                        <outlet property="boxModifierControl" destination="ys5-8l-bsx" id="de3-Ly-rMO"/>
                         <outlet property="boxModifierOption" destination="TDg-JT-8w0" id="WqG-W0-vZV"/>
-                        <outlet property="boxModifierShift" destination="ys5-8l-bsx" id="de3-Ly-rMO"/>
                         <outlet property="boxQuitApp" destination="mER-wL-Lkb" id="7wJ-9I-Q9I"/>
                         <outlet property="boxTips" destination="BfR-ev-j7B" id="YeB-SY-VBc"/>
                         <outlet property="buttonAppVersion" destination="Fj0-aa-Z4F" id="9Cp-xo-eNl"/>
                         <outlet property="buttonLink" destination="g26-46-pvb" id="DR9-Ya-KD7"/>
                         <outlet property="buttonMinimize" destination="qZD-db-A8v" id="6SB-jU-RqI"/>
                         <outlet property="buttonModifierCommand" destination="jAc-NH-1Qe" id="EOy-zR-41b"/>
+                        <outlet property="buttonModifierControl" destination="dRB-pC-5Qd" id="GRM-Cc-RJa"/>
                         <outlet property="buttonModifierOption" destination="5xq-3Q-O2J" id="1d8-SM-Tc4"/>
-                        <outlet property="buttonModifierShift" destination="dRB-pC-5Qd" id="GRM-Cc-RJa"/>
                         <outlet property="buttonQuitApp" destination="HAQ-jG-9LD" id="szA-Fz-tTm"/>
                         <outlet property="buttonTips" destination="PEB-0e-PWh" id="lM6-Ah-xHd"/>
                         <outlet property="labelAppTitle" destination="3oE-Id-0vv" id="Vr7-8v-lpY"/>
@@ -887,8 +887,8 @@
         <image name="arrow.down.right.and.arrow.up.left" catalog="system" width="16" height="15"/>
         <image name="chevron.left.forwardslash.chevron.right" catalog="system" width="21" height="15"/>
         <image name="command" catalog="system" width="15" height="14"/>
+        <image name="control" catalog="system" width="15" height="9"/>
         <image name="option" catalog="system" width="16" height="14"/>
-        <image name="shift" catalog="system" width="17" height="14"/>
         <image name="shift.fill" catalog="system" width="17" height="14"/>
         <image name="tag.fill" catalog="system" width="17" height="17"/>
         <image name="xmark" catalog="system" width="14" height="13"/>

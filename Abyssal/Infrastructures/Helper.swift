@@ -44,7 +44,7 @@ class Helper {
         Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     }
     
-    static var _latestTag: String = ""
+    private static var _latestTag: String = ""
     
     static var latestTag: String {
         get {
@@ -235,20 +235,24 @@ class Helper {
     
     class Keyboard {
         
-        static var command: Bool {
-            NSEvent.modifierFlags.contains(.command)
+        static var shift: Bool {
+            NSEvent.modifierFlags.contains(.shift)
+        }
+        
+        static var control: Bool {
+            NSEvent.modifierFlags.contains(.control)
         }
         
         static var option: Bool {
             NSEvent.modifierFlags.contains(.option)
         }
         
-        static var shift: Bool {
-            NSEvent.modifierFlags.contains(.shift)
+        static var command: Bool {
+            NSEvent.modifierFlags.contains(.command)
         }
         
         static var modifiers: Bool {
-            (Data.modifiers.command && command)
+            (Data.modifiers.control && control)
             || (Data.modifiers.option && option)
             || (Data.modifiers.command && command)
         }

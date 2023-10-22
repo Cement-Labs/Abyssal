@@ -146,6 +146,7 @@ extension AppDelegate {
         
         mouseEventMonitor?.stop()
         statusBarController.startFunctionalTimers()
+        Helper.delegate?.statusBarController.triggerIgnoring()
     }
     
 }

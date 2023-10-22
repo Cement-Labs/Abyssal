@@ -7,32 +7,6 @@
 
 import AppKit
 
-// Timers
-
-var animationTimer: Timer?
-
-var actionTimer: Timer?
-
-var feedbackTimer: Timer?
-
-var triggerTimer: Timer?
-
-var timeoutTimer: Timer?
-
-// Event monitors
-
-var mouseEventMonitor: EventMonitor?
-
-
-
-var timeout: Bool = false
-
-var shouldEdgeUpdate: (now: Bool, will: Bool) = (now: false, will: false)
-
-var shouldPresentFeedback: Bool {
-    return !timeout && Helper.Mouse.none
-}
-
 extension StatusBarController {
     
     // MARK: - Icon Visibilities
@@ -58,10 +32,6 @@ extension StatusBarController {
     }
     
 }
-
-var feedbackCount: Int = 0
-
-var was: (mouseSpare: Bool, modifiers: Bool) = (mouseSpare: false, modifiers: false)
 
 extension StatusBarController {
     
@@ -115,18 +85,18 @@ extension StatusBarController {
             ) { [weak self] _ in
                 guard let strongSelf = self else { return }
                 
-                guard feedbackCount < Data.feedbackAttribute.feedback.count else {
-                    feedbackCount = 0
-                    strongSelf.stopTimer(&feedbackTimer)
+                guard strongSelf.feedbackCount < Data.feedbackAttribute.feedback.count else {
+                    strongSelf.feedbackCount = 0
+                    strongSelf.stopTimer(&strongSelf.feedbackTimer)
                     
                     return
                 }
                 
-                if let pattern = Data.feedbackAttribute.feedback[feedbackCount] {
+                if let pattern = Data.feedbackAttribute.feedback[strongSelf.feedbackCount] {
                     NSHapticFeedbackManager.defaultPerformer.perform(pattern, performanceTime: .now)
                 }
                 
-                feedbackCount += 1
+                strongSelf.feedbackCount += 1
             }
         }
     }
@@ -142,24 +112,24 @@ extension StatusBarController {
                 
                 strongSelf.checkIdleStates()
                 
-                if shouldEdgeUpdate.will {
-                    shouldEdgeUpdate.now = true
+                if strongSelf.shouldEdgeUpdate.will {
+                    strongSelf.shouldEdgeUpdate.now = true
                 }
                 
-                if shouldEdgeUpdate.now {
+                if strongSelf.shouldEdgeUpdate.now {
                     strongSelf.updateEdge()
                 }
                 
-                if !shouldEdgeUpdate.will {
-                    shouldEdgeUpdate.now = false
+                if !strongSelf.shouldEdgeUpdate.will {
+                    strongSelf.shouldEdgeUpdate.now = false
                 }
                 
-                let mouseNeedsUpdate = was.mouseSpare != strongSelf.mouseSpare
-                let keyNeedsUpdate = was.modifiers != Helper.Keyboard.modifiers
+                let mouseNeedsUpdate = strongSelf.was.mouseSpare != strongSelf.mouseSpare
+                let keyNeedsUpdate = strongSelf.was.modifiers != Helper.Keyboard.modifiers
                 
                 if mouseNeedsUpdate {
-                    if was.mouseSpare {
-                        strongSelf.stopMonitor(&mouseEventMonitor)
+                    if strongSelf.was.mouseSpare {
+                        strongSelf.stopMonitor(&strongSelf.mouseEventMonitor)
                     } else {
                         strongSelf.startMouseEventMonitor()
                     }
@@ -174,7 +144,7 @@ extension StatusBarController {
                     strongSelf.map()
                 }
                 
-                was = (
+                strongSelf.was = (
                     mouseSpare: strongSelf.mouseSpare,
                     modifiers: Helper.Keyboard.modifiers
                 )
@@ -188,14 +158,26 @@ extension StatusBarController {
         if timeoutTimer == nil && timeoutAttribute.attr != nil {
             timeoutTimer = Timer.scheduledTimer(
                 withTimeInterval: Double(timeoutAttribute.attr!),
-                repeats: false,
-                block: { [weak self] _ in
-                    guard let strongSelf = self else { return }
-                    
-                    strongSelf.unidleHideArea()
-                    strongSelf.stopTimer(&timeoutTimer) { timeout = true }
-                }
-            )
+                repeats: false
+            ) { [weak self] _ in
+                guard let strongSelf = self else { return }
+                
+                strongSelf.unidleHideArea()
+                strongSelf.stopTimer(&strongSelf.timeoutTimer) { strongSelf.timeout = true }
+            }
+        }
+    }
+    
+    func startIgnoringTimer() {
+        if ignoringTimer == nil && ignoring {
+            ignoringTimer = Timer.scheduledTimer(
+                withTimeInterval: 1,
+                repeats: false
+            ) { [weak self] _ in
+                guard let strongSelf = self else { return }
+                
+                strongSelf.stopTimer(&strongSelf.ignoringTimer) { strongSelf.ignoring = false }
+            }
         }
     }
     

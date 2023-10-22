@@ -21,9 +21,9 @@ class MenuController: NSViewController, NSMenuDelegate {
     
     @IBOutlet weak var viewModifiers: NSStackView!
     
-    @IBOutlet weak var boxModifierShift: NSBox!
+    @IBOutlet weak var boxModifierControl: NSBox!
     
-    @IBOutlet weak var buttonModifierShift: NSButton!
+    @IBOutlet weak var buttonModifierControl: NSButton!
     
     @IBOutlet weak var boxModifierOption: NSBox!
     
@@ -148,7 +148,7 @@ extension MenuController {
                 tip: Tip(
                     tipString: {
                         !Helper.versionComponent.needsUpdate ? nil : NSLocalizedString("Tip/ButtonAppVersion", value: """
-An update is available. Click to access the download page.
+An update is available, click to access the download page.
 """, comment: "if (update available) -> (button) app version")
                     }, preferredEdge: .minX
                 )!, trackingArea: buttonAppVersion.visibleRect.getTrackingArea(self, viewToAdd: buttonAppVersion)
@@ -158,7 +158,7 @@ An update is available. Click to access the download page.
                 tip: Tip(
                     tipString: {
                         NSLocalizedString("Tip/ViewModifier/1", value: """
-The modifier keys to use. Pressing only one of the chosen keys is enough to trigger the functions.
+The modifier keys to use. Pressing only one of the chosen keys is enough to trigger the functions. It is recommended to keep modifier key ⌘ enabled.
 """, comment: "(view) modifier")
                     }
                 )!, trackingArea: viewModifiers.visibleRect.getTrackingArea(self, viewToAdd: viewModifiers)
@@ -169,7 +169,7 @@ The modifier keys to use. Pressing only one of the chosen keys is enough to trig
                     tipString: {
                         NSLocalizedString("Tip/SliderTimeout", value: """
 Time to countdown before disabling **Auto Idling.**
-After interacting with status items that will be automatically hidden, for example, status items inside the **Always Hidden Area,** **Auto Idling** will keep them visible until this timeout is reached.
+After interacting with status items that will be automatically hidden, for example, status items inside the **Always Hidden Area,** **Auto Idling** will keep them visible until this timeout is reached or the mouse hovered over the middle or trailing separator.
 """, comment: "(slider) timeout")
                     }, rect: { self.sliderTimeout.rectOfTickMark(at: self.sliderTimeout.integerValue).offsetBy(dx: 0, dy: 8) }
                 )!, trackingArea: sliderTimeout.thumbRect.getTrackingArea(self, viewToAdd: sliderTimeout)
@@ -208,7 +208,7 @@ The tips are currently shown. Click to hide them.
                         NSLocalizedString("Tip/ButtonMinimize", value: """
 Minimize this window. Right click on the leading separator to open this window again.
 """, comment: "(button) minimize")
-                    }
+                    }, delay: 0.8
                 )!, trackingArea: buttonMinimize.visibleRect.getTrackingArea(self, viewToAdd: buttonMinimize)
             ),
             
@@ -216,8 +216,8 @@ Minimize this window. Right click on the leading separator to open this window a
                 tip: Tip(
                     tipString: {
                         NSLocalizedString("Tip/PopUpButtonThemes", value: """
-Some themes will hide the separators automatically, while others not.
-Themes that automatically hide the separators will only show the separators when the status items inside the **Hide Area** are manually set to visible, while other themes indicate this by reducing the separators' opacity.
+Some themes will hide the icons inside the separators automatically, while others not.
+Themes that automatically hide the icons will only show them when the status items inside the **Hide Area** are manually set to visible, while other themes indicate this by reducing the separators' opacity.
 """, comment: "(pop up button) themes")
                     }, preferredEdge: .minX
                 )!, trackingArea: popUpButtonThemes.visibleRect.getTrackingArea(self, viewToAdd: popUpButtonThemes)
@@ -226,9 +226,9 @@ Themes that automatically hide the separators will only show the separators when
                 tip: Tip(
                     tipString: {
                         NSLocalizedString("Tip/SwitchAutoShows", value: """
-Auto shows the status items inside the **Hide Area** which is at the left of the second-lefty separator whiile the mouse is hovering over the spare area.
-If **Auto Shows** enabled, the status items inside the **Hide Area** will be hidden and kept invisible until the mouse hovers over the spare area which the status items in **Hide Area** used to stay. Otherwise, the status items will be hidden until you switch their hidden state manually.
-By left clicking on the leading separator, or clicking using either of the mouse buttons on the other separators, you can manually switch the hidden state of the status items inside the **Hide Area.**
+Auto shows the status items inside the **Hide Area** while the mouse is hovering over the spare area.
+If this option is enabled, the status items inside the **Hide Area,** which is between the middle separator and the trailing separator, will be hidden and kept invisible, until the mouse hovers over the spare area, where the status items in **Hide Area** used to stay. Otherwise the status items will be hidden until you switch their visibility state manually.
+By left clicking on the leading separator, or clicking using either of the mouse buttons on the other separators, you can manually switch the visibility state of the status items inside the **Hide Area.** If you set them visible, they will never be hidden again until you manually switch their visibility state. Otherwise they will follow the behavior defined above.
 """, comment: "(switch) auto shows")
                     }
                 )!, trackingArea: switchAutoShows.visibleRect.getTrackingArea(self, viewToAdd: switchAutoShows)
@@ -240,7 +240,7 @@ By left clicking on the leading separator, or clicking using either of the mouse
                     },
                     tipString: {
                         NSLocalizedString("Tip/SliderFeedbackIntensity", value: """
-Feedback intensity given when triggering functions such as **Auto Shows** and **Auto Idling.**
+Feedback intensity given when triggering actions such as 'enabling **Auto Shows**' or 'canceling **Auto Idling**'.
 """, comment: "(slider) feedback intensity")
                     }, rect: { self.sliderFeedbackIntensity.rectOfTickMark(at: self.sliderFeedbackIntensity.integerValue).offsetBy(dx: 0, dy: 8) }
                 )!, trackingArea: sliderFeedbackIntensity.thumbRect.getTrackingArea(self, viewToAdd: sliderFeedbackIntensity)
@@ -337,15 +337,15 @@ extension MenuController {
         
         
         
-        buttonModifierShift.flag = Data.modifiers.shift
+        buttonModifierControl.flag = Data.modifiers.control
         buttonModifierOption.flag = Data.modifiers.option
         buttonModifierCommand.flag = Data.modifiers.command
-        updateModifiers()
         
         sliderTimeout.objectValue = Data.timeout
         updateTimeoutEnabled()
         
         switchStartsWithMacOS.flag = Data.startsWithMacos
+        buttonTips.flag = Data.tips
         
         switchAutoShows.flag = Data.autoShows
         sliderFeedbackIntensity.objectValue = Data.feedbackIntensity
@@ -364,21 +364,21 @@ extension MenuController {
             buttonAppVersion.contentTintColor = NSColor.tertiaryLabelColor
         }
         
-        updateModifiers()
-        updateButtons()
+        updateColoredModifiers()
+        updateColoredButtons()
     }
     
-    func updateModifiers() {
+    func updateColoredModifiers() {
         NSAnimationContext.runAnimationGroup({ context in
             context.duration = 0.1
             
-            updateModifier(boxModifierShift, Data.modifiers.shift)
-            updateModifier(boxModifierOption, Data.modifiers.option)
-            updateModifier(boxModifierCommand, Data.modifiers.command)
+            updateColoredModifier(boxModifierControl, Data.modifiers.control)
+            updateColoredModifier(boxModifierOption, Data.modifiers.option)
+            updateColoredModifier(boxModifierCommand, Data.modifiers.command)
         })
     }
     
-    private func updateModifier(
+    private func updateColoredModifier(
         _ box: NSBox,
         _ flag: Bool
     ) {
@@ -388,7 +388,7 @@ extension MenuController {
         box.animator().fillColor = flag ? colorOn : colorOff
     }
     
-    func updateButtons() {
+    func updateColoredButtons() {
         boxQuitApp.setOriginlalFillColor(Colors.Translucent.danger)
         boxQuitApp.animator().borderColor = Colors.Translucent.danger
         buttonQuitApp.animator().contentTintColor = Colors.Opaque.danger
@@ -519,25 +519,25 @@ extension MenuController {
     }
     
     // MARK: - Data Actions
-    @IBAction func toggleModifierShift(
+    @IBAction func toggleModifierControl(
         _ sender: NSButton
     ) {
-        Data.modifiers.shift = sender.flag
-        updateModifiers()
+        Data.modifiers.control = sender.flag
+        updateColoredModifiers()
     }
     
     @IBAction func toggleModifierOption(
         _ sender: NSButton
     ) {
         Data.modifiers.option = sender.flag
-        updateModifiers()
+        updateColoredModifiers()
     }
     
     @IBAction func toggleModifierCommand(
         _ sender: NSButton
     ) {
         Data.modifiers.command = sender.flag
-        updateModifiers()
+        updateColoredModifiers()
     }
     
     @IBAction func toggleTimeout(
@@ -551,7 +551,7 @@ extension MenuController {
         _ sender: NSButton
     ) {
         Data.tips = sender.flag
-        updateButtons()
+        updateColoredButtons()
         
         if sender.flag {
             definedTips[buttonTips]?.tip.show(buttonTips)
@@ -575,7 +575,7 @@ extension MenuController {
         Data.feedbackIntensity = sender.integerValue
         updateFeedbackIntensityEnabled()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+        DispatchQueue.main.asyncAfter(wallDeadline: .now()) {
             Helper.delegate?.statusBarController.triggerFeedback()
         }
     }

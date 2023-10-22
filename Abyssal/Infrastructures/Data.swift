@@ -10,39 +10,39 @@ import LaunchAtLogin
 
 public enum Data {
     
-    public class Keys {
-
-        public static let MODIFIERS: String = "Modifiers"
-
-        public static let TIMEOUT: String = "Timeout"
+    class Keys {
         
-        public static let TIPS: String = "Tips"
-
-
+        static let MODIFIERS: String = "Modifiers"
         
-        public static let THEME: String = "Theme"
+        static let TIMEOUT: String = "Timeout"
+        
+        static let TIPS: String = "Tips"
         
         
         
-        public static let SEPS_ORDER: 			String = "SepsOrder"
-        
-        public static let FEEDBACK_INTENSITY: 	String = "FeedbackIntensity"
+        static let THEME: String = "Theme"
         
         
         
-        public static let COLLAPSED: String = "Collapsed"
+        static let SEPS_ORDER: 			String = "SepsOrder"
+        
+        static let FEEDBACK_INTENSITY: 	String = "FeedbackIntensity"
         
         
         
-        public static let AUTO_SHOWS:			String = "AutoShows"
+        static let COLLAPSED: String = "Collapsed"
         
-        public static let USE_ALWAYS_HIDE_AREA: String = "AlwaysHide"
         
-        public static let REDUCE_ANIMATION: 	String = "ReduceAnimation"
+        
+        static let AUTO_SHOWS:			String = "AutoShows"
+        
+        static let USE_ALWAYS_HIDE_AREA: String = "AlwaysHide"
+        
+        static let REDUCE_ANIMATION: 	String = "ReduceAnimation"
         
     }
     
-    public static func registerDefaults() {
+    static func registerDefaults() {
         UserDefaults.standard.register(defaults: [Keys.MODIFIERS: [true, true, false]])
         UserDefaults.standard.register(defaults: [Keys.TIMEOUT: 3])
         UserDefaults.standard.register(defaults: [Keys.TIPS: true])
@@ -59,9 +59,9 @@ public enum Data {
         UserDefaults.standard.register(defaults: [Keys.REDUCE_ANIMATION: false])
     }
     
-    static var modifiers: (option: Bool, command: Bool, shift: Bool) {
+    static var modifiers: (control: Bool, option: Bool, command: Bool) {
         get {
-            let defaultTuple = (option: true, command: true, shift: false)
+            let defaultTuple = (control: true, option: true, command: true)
             
             if let array = UserDefaults.standard.array(forKey: Keys.MODIFIERS) as? [Bool] {
                 guard array.count == Mirror(reflecting: defaultTuple).children.count
@@ -69,7 +69,7 @@ public enum Data {
                     return defaultTuple
                 }
                         
-                return (option: array[0], command: array[1], shift: array[2])
+                return (control: array[0], option: array[1], command: array[2])
             } else {
                 return defaultTuple
             }
@@ -77,7 +77,7 @@ public enum Data {
         
         set(modifiers) {
             UserDefaults.standard.set(
-                [modifiers.option, modifiers.command, modifiers.shift],
+                [modifiers.control, modifiers.option, modifiers.command],
                 forKey: Keys.MODIFIERS
             )
         }
@@ -158,7 +158,7 @@ public enum Data {
     
     
     
-    public static var sepsOrder: [Int?]? {
+    static var sepsOrder: [Int?]? {
         get {
             return UserDefaults.standard.array(
                 forKey: Keys.SEPS_ORDER
@@ -173,7 +173,7 @@ public enum Data {
         }
     }
     
-    public static var feedbackIntensity: Int {
+    static var feedbackIntensity: Int {
         get {
             return UserDefaults.standard.integer(forKey: Keys.FEEDBACK_INTENSITY)
         }
@@ -183,9 +183,9 @@ public enum Data {
         }
     }
     
-    public static let feedbackIntensityTickMarks: Int = 4
+    static let feedbackIntensityTickMarks: Int = 4
     
-    public static var feedbackAttribute: (feedback: [NSHapticFeedbackManager.FeedbackPattern?], label: String) {
+    static var feedbackAttribute: (feedback: [NSHapticFeedbackManager.FeedbackPattern?], label: String) {
         switch feedbackIntensity {
         case 1:
             return (
@@ -194,12 +194,12 @@ public enum Data {
             )
         case 2:
             return (
-                feedback: [.generic, nil, nil, .alignment],
+                feedback: [.generic, nil, .alignment],
                 label: String(localized: "Medium", comment: "feedback intensity medium")
             )
         case 3:
             return (
-                feedback: [.levelChange, .alignment, nil, nil, nil, nil, .levelChange],
+                feedback: [.levelChange, .alignment, .alignment, nil, nil, nil, .levelChange],
                 label: String(localized: "Hard", comment: "feedback intensity hard")
             )
         default:
@@ -212,7 +212,7 @@ public enum Data {
     
     
     
-    public static var collapsed: Bool {
+    static var collapsed: Bool {
         get {
             return UserDefaults.standard.bool(forKey: Keys.COLLAPSED)
         }
@@ -224,7 +224,7 @@ public enum Data {
     
     
     
-    public static var autoShows: Bool {
+    static var autoShows: Bool {
         get {
             return UserDefaults.standard.bool(forKey: Keys.AUTO_SHOWS)
         }
@@ -234,7 +234,7 @@ public enum Data {
         }
     }
     
-    public static var useAlwaysHideArea: Bool {
+    static var useAlwaysHideArea: Bool {
         get {
             return UserDefaults.standard.bool(forKey: Keys.USE_ALWAYS_HIDE_AREA)
         }
@@ -244,7 +244,7 @@ public enum Data {
         }
     }
     
-    public static var startsWithMacos: Bool {
+    static var startsWithMacos: Bool {
         get {
             return LaunchAtLogin.isEnabled
         }
@@ -254,7 +254,7 @@ public enum Data {
         }
     }
     
-    public static var reduceAnimation: Bool {
+    static var reduceAnimation: Bool {
         get {
             return UserDefaults.standard.bool(forKey: Keys.REDUCE_ANIMATION)
         }

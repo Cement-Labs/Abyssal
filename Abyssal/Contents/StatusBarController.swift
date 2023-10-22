@@ -11,15 +11,17 @@ class StatusBarController {
     
     // MARK: - States
     
-    var available: Bool = false
+    var available = false
     
-    var edge: CGFloat = 0
+    var edge = 0.0
     
-    var alphaValues: (h: CGFloat, b: CGFloat, t: CGFloat) = (h: 0, b: 0, t: 0)
+    var alphaValues = (h: 0.0, b: 0.0, t: 0.0)
     
-    var lengths: (h: CGFloat, b: CGFloat, t: CGFloat) = (h: 0, b: 0, t: 0)
+    var lengths = (h: 0.0, b: 0.0, t: 0.0)
     
-    var idling: (hide: Bool, alwaysHide: Bool) = (hide: false, alwaysHide: false)
+    var idling = (hide: false, alwaysHide: false)
+    
+    var ignoring = false
     
     
     
@@ -43,7 +45,7 @@ class StatusBarController {
     }
     
     var mouseSpare: Bool {
-        return mouseOnStatusBar && NSEvent.mouseLocation.x <= edge
+        return !ignoring && mouseOnStatusBar && NSEvent.mouseLocation.x <= edge
     }
     
     var mouseOverHead: Bool {
@@ -69,6 +71,65 @@ class StatusBarController {
         else { return false }
         return mouseOnStatusBar && NSEvent.mouseLocation.x >= origin.x && NSEvent.mouseLocation.x <= origin.x + width
     }
+    
+    
+    
+    var timeout = false
+
+    var shouldEdgeUpdate = (now: false, will: false)
+
+    var shouldPresentFeedback: Bool {
+        return !timeout && Helper.Mouse.none
+    }
+    
+    var feedbackCount: Int = 0
+
+    var was = (mouseSpare: false, modifiers: false)
+    
+    
+    // MARK: - Animations
+    
+    var lastOriginXs = (b: 0.0, t: 0.0)
+
+    var lastFlags = (b: false, t: false)
+
+    var wasUnstable = (b: true, t: true)
+
+    var mouseWasSpareOrUnidled = false
+
+
+
+    var shouldTimersStop: (flag: Bool, count: Int) = (flag: false, count: 0)
+
+    var maxLength: CGFloat {
+        return Helper.Screen.maxWidth ?? 10000 // To cover all screens
+    }
+
+    var popoverShown: Bool {
+        return Helper.delegate?.popover.isShown ?? false
+    }
+    
+    
+    
+    // MARK: - Timers & Event Monitors
+
+    var animationTimer: Timer?
+
+    var actionTimer: Timer?
+
+    var feedbackTimer: Timer?
+
+    var triggerTimer: Timer?
+
+    var timeoutTimer: Timer?
+    
+    var ignoringTimer: Timer?
+
+
+
+    var mouseEventMonitor: EventMonitor?
+    
+    
     
     // MARK: - Icons
     
@@ -164,6 +225,9 @@ class StatusBarController {
         stopTimer(&actionTimer)
         
         stopTimer(&triggerTimer)
+        
+        stopTimer(&timeoutTimer)
+        stopTimer(&ignoringTimer)
     }
     
 }

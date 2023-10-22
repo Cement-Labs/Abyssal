@@ -20,6 +20,8 @@ class Tip {
     
     var preferredEdge: NSRectEdge
     
+    var delay = 0.2
+    
     var isShown: Bool {
         popover.isShown
     }
@@ -38,7 +40,8 @@ class Tip {
         dataString: (() -> String?)? = nil,
         tipString: (() -> String?)? = nil,
         rect: (() -> NSRect)? = nil,
-        preferredEdge: NSRectEdge = .maxY
+        preferredEdge: NSRectEdge = .maxY,
+        delay: CGFloat = 0.2
     ) {
         self.popover = Tips.createPopover()
         self.dataString = dataString ?? { nil }
@@ -47,6 +50,7 @@ class Tip {
             self.rect = rect!
         }
         self.preferredEdge = preferredEdge
+        self.delay = delay
         
         // Data
         
@@ -199,7 +203,7 @@ class Tip {
             )
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: willShow!)
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: willShow!)
     }
     
     func close() {
@@ -269,13 +273,13 @@ class Tips {
 
 extension Tips {
     
-    public static let DATA_SIZE: CGFloat = 14.5
+    static let DATA_SIZE: CGFloat = 14.5
     
-    public static let TIP_SIZE: CGFloat = 10
+    static let TIP_SIZE: CGFloat = 10
     
-    public static let MARGIN: (width: CGFloat, height: CGFloat) = (width: 16, height: 12)
+    static let MARGIN: (width: CGFloat, height: CGFloat) = (width: 16, height: 12)
     
-    public static let MAX_WIDTH: CGFloat = 300
+    static let MAX_WIDTH: CGFloat = 300
     
 }
 
