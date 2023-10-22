@@ -93,7 +93,7 @@ extension StatusBarController {
                 }
                 
                 if let pattern = Data.feedbackAttribute.feedback[strongSelf.feedbackCount] {
-                    NSHapticFeedbackManager.defaultPerformer.perform(pattern, performanceTime: .now)
+                    NSHapticFeedbackManager.defaultPerformer.perform(pattern, performanceTime: .default)
                 }
                 
                 strongSelf.feedbackCount += 1

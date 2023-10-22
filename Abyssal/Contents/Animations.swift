@@ -67,7 +67,7 @@ extension StatusBarController {
         
     map: do {
         head.button?.image = Data.collapsed ? Data.theme.headCollapsed : Data.theme.headUncollapsed
-        body.button?.image = Data.theme.separator
+        body.button?.image = Data.theme.body
         tail.button?.image = Data.theme.tail
         
         guard !popoverShown else {
@@ -119,7 +119,7 @@ extension StatusBarController {
     head: do {
         let flag = !popoverShown && Data.collapsed && !(idling.hide || idling.alwaysHide) && !(Data.autoShows && mouseSpare)
         
-        lengths.h = flag ? Data.theme.iconWidthAlt : Data.theme.iconWidth
+        lengths.h = flag ? Data.theme.iconWidthExpanded : Data.theme.iconWidth
         
         head.length = Helper.lerp(
             a: head.length,
@@ -251,7 +251,7 @@ extension StatusBarController {
         guard available else { return }
         
         head.button?.image = Data.collapsed ? Data.theme.headCollapsed : Data.theme.headUncollapsed
-        body.button?.image = Data.theme.separator
+        body.button?.image = Data.theme.body
         tail.button?.image = Data.theme.tail
         
         guard Data.autoShows || !Data.collapsed || !Data.theme.autoHideIcons else {

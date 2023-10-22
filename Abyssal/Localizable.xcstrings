@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "【=◈︿◈=】" : {
+      "comment" : "name for theme 'TheFace'"
+    },
     "Abyssal" : {
       "comment" : "name for theme 'Abyssal'",
       "localizations" : {
@@ -166,7 +169,7 @@
       }
     },
     "Hidden Bar" : {
-      "comment" : "name for theme 'Hidden Bar'",
+      "comment" : "name for theme 'HiddenBar'",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -187,6 +190,9 @@
         }
       }
     },
+    "macOS" : {
+      "comment" : "name for theme 'macOS'"
+    },
     "Medium" : {
       "comment" : "feedback intensity medium",
       "localizations" : {
@@ -199,7 +205,7 @@
       }
     },
     "Metres Away" : {
-      "comment" : "name for theme 'Metres Away'",
+      "comment" : "name for theme 'MetresAway'",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -210,12 +216,34 @@
       }
     },
     "Not So Happy" : {
-      "comment" : "name for theme 'Not So Happy'",
+      "comment" : "name for theme 'NotSoHappy'",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "坏心情"
+          }
+        }
+      }
+    },
+    "Play Pause" : {
+      "comment" : "name for theme 'PlayPause'",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "暂停播放"
+          }
+        }
+      }
+    },
+    "The Implied" : {
+      "comment" : "name for theme 'TheImplied'",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已推导"
           }
         }
       }
@@ -430,7 +458,7 @@
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "选择要使用的行为修饰键。按下已选择的任一修饰键都可以触发相同效果。建议保持 ⌘ 修饰键启用。"
           }
         }
