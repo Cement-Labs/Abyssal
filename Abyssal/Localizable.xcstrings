@@ -425,12 +425,12 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "The modifier keys to use. Pressing only one of the chosen keys is enough to trigger the functions. It is recommended to keep modifier key ⌘ enabled."
+            "value" : "The modifier keys to use. Pressing only one of the chosen keys is enough to trigger the functions. It is recommended to keep the modifier key ⌘ enabled."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "选择要使用的行为修饰键。按下已选择的任一修饰键都可以触发相同效果。建议保持 ⌘ 修饰键启用。"
           }
         }

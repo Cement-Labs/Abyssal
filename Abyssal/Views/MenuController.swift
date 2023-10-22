@@ -158,7 +158,7 @@ An update is available, click to access the download page.
                 tip: Tip(
                     tipString: {
                         NSLocalizedString("Tip/ViewModifier/1", value: """
-The modifier keys to use. Pressing only one of the chosen keys is enough to trigger the functions. It is recommended to keep modifier key ⌘ enabled.
+The modifier keys to use. Pressing only one of the chosen keys is enough to trigger the functions. It is recommended to keep the modifier key ⌘ enabled.
 """, comment: "(view) modifier")
                     }
                 )!, trackingArea: viewModifiers.visibleRect.getTrackingArea(self, viewToAdd: viewModifiers)
