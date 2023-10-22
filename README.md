@@ -97,7 +97,7 @@ You can perform different actions by clicking on the separators of **Abyssal,** 
 
 <br />
 
-### Preferences & Customizations
+## Preferences & Customizations
 
 Let's take a look at how to customize **Abyssal**. Still remember? You can open the preferences menu by <kbd>right click</kbd>&ensp;/&ensp;<kbd>⌥ option</kbd> <kbd>click</kbd> on the `Menu Separator`.
 
@@ -105,7 +105,7 @@ The preferences are explained as follows:
 
 <br />
 
-#### Theme
+### Theme
 
 `Style: Pop Up Button`
   
@@ -113,7 +113,7 @@ Separators' appearances differ from theme to theme, and some themes will automat
 
 <br />
 
-#### Auto Shows
+### Auto Shows
 
 `Style: Switch`&ensp;`Default: On`
   
@@ -127,7 +127,7 @@ Separators' appearances differ from theme to theme, and some themes will automat
 
 <br />
 
-#### Feedback Intensity
+### Feedback Intensity
 
 `Style: Step Slider`&ensp;`Default: • · · · Disabled`
 
@@ -152,7 +152,7 @@ Separators' appearances differ from theme to theme, and some themes will automat
 
 <br />
 
-#### Use Always Hide Area
+### Use Always Hide Area
 
 `Style: Switch`&emsp;`Default: On`
 
@@ -166,7 +166,7 @@ Separators' appearances differ from theme to theme, and some themes will automat
 
 <br />
 
-#### Modifiers
+### Modifiers
 
 `Style: List of Switches`&emsp;`Default: ⌥ ⌘`
 
@@ -187,7 +187,7 @@ Separators' appearances differ from theme to theme, and some themes will automat
 
 <br />
 
-#### Timeout
+### Timeout
 
 `Style: Step Slider`&emsp;`Default: · · · • · · · · · · · 30 seconds`
 
@@ -199,7 +199,7 @@ Set an optional timeout for `Auto Idling` to cancel automatically, ranging from 
 
 <br />
 
-#### Reduce Animation
+### Reduce Animation
 
 `Style: Switch`&emsp;`Default: Off`
 
@@ -218,7 +218,7 @@ Set an optional timeout for `Auto Idling` to cancel automatically, ranging from 
 
 <br />
 
-#### Starts with macOS
+### Starts with macOS
 
 `Style: Switch`&emsp;`Default: Off`
 
@@ -232,17 +232,17 @@ Set an optional timeout for `Auto Idling` to cancel automatically, ranging from 
 
 <br />
 
-### Auto Idling
+### What's More: Auto Idling
 
-Due to the limitations of macOS, **Abyssal** cannot know whether you have opened a menu in the **Always Hide Area** or the **Hide Area**. If the `Auto Hide` function hides these status icons rashly, their menus will also move away. Therefore, **Abyssal** adopts an approach to avoid similar situations to the greatest extent.
+Due to the limitations of macOS, **Abyssal** cannot know whether you have opened a menu in the **Always Hide Area** or the **Hide Area.** If the **Auto Hide** function hides these status icons rashly, their menus will also move away. Therefore, **Abyssal** adopts an approach to avoid similar situations to the greatest extent.
 
-Speaking generally, when you click on a place in the menu bar **where there is likely to have other status icons, and the status icon is likely to be inside the Hide Area or the Always Hide Area**, **Abyssal** will choose to pause the `Auto Hide` and enter the `Auto Idling` state. When you finish the operation, just move the cursor **over** the `Always Hide Separator` or the `Hide Separator`, and you can cancel the `Auto Idling` state and resume `Auto Hide` to hide the status icons. **Abyssal** also provides an optional timeout to automatically disable the `Auto Idling` state, which can be configured in the preferences menu.
+Speaking generally, when you click on a place in the menu bar **where there is likely to have other status icons, and the status icon is likely to be inside the Hide Area or the Always Hide Area,** **Abyssal** will choose to pause the **Auto Hide** and enter the **Auto Idling** state. When you finish the operation, just move the cursor **over** the `Always Hide Separator` or the `Hide Separator`, and you can cancel the **Auto Idling** state and resume **Auto Hide** to hide the status icons. **Abyssal** also provides an optional timeout to automatically disable the **Auto Idling** state, which can be configured in the preferences menu.
 
-`Auto Idling` will enable automatically accordng to your clicking position, and it will distinguish between the **Always Hide Area** and the **Hide Area.** It will only be activated when `Auto Hide` is enabled.
+**Auto Idling** will enable automatically accordng to your clicking position, and it will distinguish between the **Always Hide Area** and the **Hide Area.** It will only be activated when **Auto Hide** is enabled.
 
-After you **triggered** `Auto Hide`, **canceled** `Auto Hide`, **triggered** `Auto Idling` and **canceled** `Auto Idling`, **Abyssal** will give a haptic feedback[^haptic_feedback_support_needed].
+After you **triggered or canceled** **Auto Hide or Auto Idling,** **Abyssal** will give a haptic feedback[^haptic_feedback_support_needed].
 
-[^haptic_feedback_support_needed]: Your device must support *Haptic Feedback.*
+[^haptic_feedback_support_needed]: Your device must support *haptic feedback.*
 
 <br />
 
@@ -252,93 +252,5 @@ After you **triggered** `Auto Hide`, **canceled** `Auto Hide`, **triggered** `Au
 
 As an open-source and free software, **Abyssal** has no ability to pay for [Apple Developer Account.](https://developer.apple.com/help/account/)Thus, you can't install **Abyssal** from App Store, and you may need to allow **Abyssal** to run as an unidentified app.
 
-### Steps
-
 > [!NOTE]
 > You can download the installing disk image of **Abyssal** only from [Releases](https://github.com?KrLite/Abyssal/releases) page manually for now.
-
-<h6>
-
-<blockquote>
-1
-<div align="center">
-  <!--Mount DMG-->
-  <picture>
-    <source
-      media="(prefers-color-scheme: dark)"
-      srcset="/Docs/Contents/English/Dark/1.png?raw=true"
-     />
-    <img
-      width="562"
-      src="/Docs/Contents/English/Light/1.png?raw=true"
-     />
-  </picture>
-</div>
-Mount the <code>.dmg</code> disk image
-<br />
-Drag Abyssal to the Applications Folder
-</blockquote>
-
-<br />
-
-<blockquote>
-2
-<div align="center">
-  <!--Show in Finder-->
-  <picture>
-    <source
-      media="(prefers-color-scheme: dark)"
-      srcset="/Docs/Contents/English/Dark/2.png?raw=true"
-     />
-    <img
-      width="372"
-      src="/Docs/Contents/English/Light/2.png?raw=true"
-     />
-  </picture>
-</div>
-If a pop-up window appears, choose <code>Show in Finder</code>
-</blockquote>
-
-<br />
-
-<blockquote>
-3
-<div align="center">
-  <!--Right Click and Open-->
-  <picture>
-    <source
-      media="(prefers-color-scheme: dark)"
-      srcset="/Docs/Contents/English/Dark/3.png?raw=true"
-     />
-    <img
-      width="1149"
-      src="/Docs/Contents/English/Light/3.png?raw=true"
-     />
-  </picture>
-</div>
-<kbd>Right Click</kbd> Abyssal
-<br />
-Choose <code>Open</code>
-</blockquote>
-
-<br />
-
-<blockquote>
-4
-<div align="center">
-  <!--Open-->
-  <picture>
-    <source
-      media="(prefers-color-scheme: dark)"
-      srcset="/Docs/Contents/English/Dark/4.png?raw=true"
-     />
-    <img
-      width="372"
-      src="/Docs/Contents/English/Light/4.png?raw=true"
-     />
-  </picture>
-</div>
-Choose <code>Open</code>
-</blockquote>
-
-</h6>
