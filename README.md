@@ -197,6 +197,8 @@ Set an optional timeout for `Auto Idling` to cancel automatically, ranging from 
 
   **Disable** timeout for `Auto Idling`.
 
+<br />
+
 #### Reduce Animation
 
 `Style: Switch`&emsp;`Default: Off`
