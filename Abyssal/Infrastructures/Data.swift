@@ -43,7 +43,7 @@ public enum Data {
     }
     
     static func registerDefaults() {
-        UserDefaults.standard.register(defaults: [Keys.MODIFIERS: [true, true, false]])
+        UserDefaults.standard.register(defaults: [Keys.MODIFIERS: [false, true, true]])
         UserDefaults.standard.register(defaults: [Keys.TIMEOUT: 3])
         UserDefaults.standard.register(defaults: [Keys.TIPS: true])
 
@@ -61,7 +61,7 @@ public enum Data {
     
     static var modifiers: (control: Bool, option: Bool, command: Bool) {
         get {
-            let defaultTuple = (control: true, option: true, command: true)
+            let defaultTuple = (control: false, option: true, command: true)
             
             if let array = UserDefaults.standard.array(forKey: Keys.MODIFIERS) as? [Bool] {
                 guard array.count == Mirror(reflecting: defaultTuple).children.count
