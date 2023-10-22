@@ -156,6 +156,7 @@
     },
     "Hard" : {
       "comment" : "feedback intensity hard",
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -164,6 +165,9 @@
           }
         }
       }
+    },
+    "Heavy" : {
+      "comment" : "feedback intensity heavy"
     },
     "Hidden Bar" : {
       "comment" : "name for theme 'Hidden Bar'",
