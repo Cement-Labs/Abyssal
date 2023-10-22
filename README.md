@@ -244,7 +244,7 @@ After you **triggered** `Auto Hide`, **canceled** `Auto Hide`, **triggered** `Au
 
 [^haptic_feedback_support_needed]: Your device must support *Haptic Feedback.*
 
-### <div><!--Empty Lines--><br /><br /></div>
+<br />
 
 ## Install & Run[^install_and_run]
 
@@ -252,7 +252,7 @@ After you **triggered** `Auto Hide`, **canceled** `Auto Hide`, **triggered** `Au
 
 As an open-source and free software, **Abyssal** has no ability to pay for [Apple Developer Account.](https://developer.apple.com/help/account/)Thus, you can't install **Abyssal** from App Store, and you may need to allow **Abyssal** to run as an unidentified app.
 
-### Steps to Follow
+### Steps
 
 > [!NOTE]
 > You can download the installing disk image of **Abyssal** only from [Releases](https://github.com?KrLite/Abyssal/releases) page manually for now.
