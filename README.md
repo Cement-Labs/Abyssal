@@ -59,7 +59,7 @@ In themes including the default theme, separators will be hidden by default. And
 
 [^cursor_onto_status_bar]: You need to move your cursor to the left of `Menu Separator` in order to trigger something. On monitors with notches, you may also need to move your cursor *between the the screen notch and the `Menu Separator`.*
 
-Dragging the icons while holding <kbd>⌘ Command</kbd> can change the order of the separators. For example, to put more icons into or out of the **Hide Area.**
+Dragging the icons while holding <kbd>⌘ command</kbd> can change the order of the separators. For example, to put more icons into or out of the **Hide Area.**
 
 <br />
 
