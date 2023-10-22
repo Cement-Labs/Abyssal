@@ -4,7 +4,7 @@
       <code>あ ←→ A</code>
     </summary>
     <!--Head-->
-    &emsp;&ensp;<sub><b>Stalker</b> supports the following languages. <a href="/Docs/ADD_A_LOCALIZATION.md"><code>↗ Add a localization</code></a></sub>
+    &emsp;&ensp;<sub><b>Abyssal</b> supports the following languages. <a href="/Docs/ADD_A_LOCALIZATION.md"><code>↗ Add a localization</code></a></sub>
     <br />
     <!--Body-->
     <br />
@@ -16,7 +16,7 @@
 
 ### <div><!--Empty Lines--><br /><br /></div>
 
-# <p align="center"><img width="172" src="/Stalker/Assets.xcassets/AppIcon.appiconset/icon_512x512@2x@2x.png?raw=true" /><br />Stalker</p><br />
+# <p align="center"><img width="172" src="/Abyssal/Assets.xcassets/AppIcon.appiconset/icon_512x512@2x@2x.png?raw=true" /><br />Abyssal</p><br />
 
 ###### <p align="center">Simplify, Tidy and Master Your macOS Menu Bar[^menu_bar].</p>
 
@@ -24,8 +24,8 @@
 
 ### <div><!--Empty Lines--><br /><br /></div>
 
-> [!NOTE]
-> **Stalker** requires **macOS 12.0 Monterey**[^check_your_macos_version] and above.
+> [!IMPORTANT]
+> **Abyssal** requires **macOS 13.0 Ventura**[^check_your_macos_version] and above to run.
 
 [^check_your_macos_version]: [`↗ Find out which macOS your Mac is using`](https://support.apple.com/en-us/HT201260)
 
@@ -35,248 +35,210 @@
   <img width="700" src="/Docs/Contents/English/Overview.png?raw=true" />
 </div>
 
-### Basic Stuffs
+### Fundamentals
 
-**Stalker** divides your menu bar into three areas - <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Always Hide Area-5C167F" /><img src="https://img.shields.io/badge/Always Hide Area-EFD9FF" /></picture></sub>, <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Hide Area-903150" /><img src="https://img.shields.io/badge/Hide Area-FFC9D9" /></picture></sub> and <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Visible Area-3A659E" /><img src="https://img.shields.io/badge/Visible Area-BADDFF" /></picture></sub>：
+**Abyssal** divides your menu bar into three areas - the **Always Hide Area,** the **Hide Area** and the **Visible Area:**
 
-- <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Always Hide Area-5C167F" /><img src="https://img.shields.io/badge/Always Hide Area-EFD9FF" /></picture></sub>&emsp;Icons inside this area will be *hided forever,* unless you menually check them.
-- <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Hide Area-903150" /><img src="https://img.shields.io/badge/Hide Area-FFC9D9" /></picture></sub>&emsp;Icons inside this area follow certain rules. More often than not, you *don't see them.*
-- <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Visible Area-3A659E" /><img src="https://img.shields.io/badge/Visible Area-BADDFF" /></picture></sub>&emsp;Icons inside this area suffer no restrictions. You can see them *all the time.*
+- The **Always Hide Area**&emsp;Icons inside this area will be *hided forever,* unless you menually check them.
+- The **Hide Area**&emsp;Icons inside this area follow certain rules. More often than not, you *don't see them.*
+- The **Visible Area**&emsp;Icons inside this area suffer no restrictions. You can see them *all the time.*
 
 
-The three areas are separated by two separators - `Always Hide Separator`&ensp;<sub><picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Icons/Dark/DottedLine.png?raw=true" /><img height="17" src="/Docs/Contents/Icons/Light/DottedLine.png?raw=true" /></picture></sub> and `Hide Separator`&ensp;<sub><picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Icons/Dark/Line.png?raw=true" /><img height="17" src="/Docs/Contents/Icons/Light/Line.png?raw=true" /></picture></sub>. Apart from this, there's another icon on the right - `Menu Icon`&ensp;<sub><picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Icons/Dark/Dot.png?raw=true" /><img height="17" src="/Docs/Contents/Icons/Light/Dot.png?raw=true" /></picture></sub>, its position doesn't matter, but it plays an important role.
+The three areas are separated by two separators - the `Always Hide Separator`&ensp;<sub><picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Icons/Dark/DottedLine.png?raw=true" /><img height="17" src="/Docs/Contents/Icons/Light/DottedLine.png?raw=true" /></picture></sub> (the trailing one) and the `Hide Separator`&ensp;<sub><picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Icons/Dark/Line.png?raw=true" /><img height="17" src="/Docs/Contents/Icons/Light/Line.png?raw=true" /></picture></sub> (the middle one). Apart from this, there's another icon on the right - the `Menu Separator`&ensp;<sub><picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Icons/Dark/Dot.png?raw=true" /><img height="17" src="/Docs/Contents/Icons/Light/Dot.png?raw=true" /></picture></sub> (the leading one), its position doesn't matter, but it plays an important role.
 
-> **Stalker** will judge the order of the three separators, which means you don't need to care much about their position. For example, you are allowed to put `Menu Icon`&ensp;<sub><picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Icons/Dark/Dot.png?raw=true" /><img height="17" src="/Docs/Contents/Icons/Light/Dot.png?raw=true" /></picture></sub> to the left of `Always Hide Separator`&ensp;<sub><picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Icons/Dark/DottedLine.png?raw=true" /><img height="17" src="/Docs/Contents/Icons/Light/DottedLine.png?raw=true" /></picture></sub> as it will turn into the new `Always Hide Separator`&ensp;<sub><picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Icons/Dark/DottedLine.png?raw=true" /><img height="17" src="/Docs/Contents/Icons/Light/DottedLine.png?raw=true" /></picture></sub> automatically.
-
-### Show & Move Separators
-
-In themes including the default theme, separators will be hidden by default. And when you open the menu, or move your cursor onto the menu bar[^cursor_onto_status_bar] and press <kbd>⌘ Command</kbd> or <Kbd>⌥ Option</kbd>, **Stalker** will show all the separators. In the rest of the themes, separators won't be hidden, but their appearance will change automatically according to the status of the app. The show and hide of the separators also follow some special rules:
-
-- When using themes that hide separators, `Menu Icon`&ensp;<sub><picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Icons/Dark/Dot.png?raw=true" /><img height="17" src="/Docs/Contents/Icons/Light/Dot.png?raw=true" /></picture></sub> will indicate the visibility of icons inside <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Hide Area-903150" /><img src="https://img.shields.io/badge/Hide Area-FFC9D9" /></picture></sub>. If `Menu Icon`&ensp;<sub><picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Icons/Dark/Dot.png?raw=true" /><img height="17" src="/Docs/Contents/Icons/Light/Dot.png?raw=true" /></picture></sub> **is visible,** it represents icons inside <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Hide Area-903150" /><img src="https://img.shields.io/badge/Hide Area-FFC9D9" /></picture></sub> are **visible.** Otherwise, it represents icons inside <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Hide Area-903150" /><img src="https://img.shields.io/badge/Hide Area-FFC9D9" /></picture></sub> are **hidden.**
-- When using other themes, all the separators will indicate the visibility of icons inside <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Hide Area-903150" /><img src="https://img.shields.io/badge/Hide Area-FFC9D9" /></picture></sub> together. If all the separators are **translucent,** it represents icons inside <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Hide Area-903150" /><img src="https://img.shields.io/badge/Hide Area-FFC9D9" /></picture></sub> are **visible.** Otherwise, it represents icons inside <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Hide Area-903150" /><img src="https://img.shields.io/badge/Hide Area-FFC9D9" /></picture></sub> are **hidden.**
-
-[^cursor_onto_status_bar]: You need to move your cursor to the left of `Menu Icon` in order to trigger something. On monitors with notches, you may also need to move your cursor *to the right of the screen notch.*
-
-Dragging the icons while holding <kbd>⌘ Command</kbd> can change the order of the icons. For example, to put more icons into or out of <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Hide Area-903150" /><img src="https://img.shields.io/badge/Hide Area-FFC9D9" /></picture></sub>.
-
-### Click on the Icons
-
-You can perform different actions by clicking on the separators of **Stalker**, no matter whether they are visible:
-
-###### Always Hide Separator&ensp;<sub><picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Icons/Dark/DottedLine.png?raw=true" /><img height="17" src="/Docs/Contents/Icons/Light/DottedLine.png?raw=true" /></picture></sub>
-
-<table>
-  <tr>
-    <th colspan="2">
-      <kbd>Click</kbd> and <kbd>Right Click</kbd>
-    </th>
-  </tr>
-  <tr>
-    <td>
-      <b>Hide</b> icons inside <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Hide Area-903150" /><img src="https://img.shields.io/badge/Hide Area-FFC9D9" /></picture></sub>
-    </td>
-    <td>
-      <b>Show</b> icons inside <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Hide Area-903150" /><img src="https://img.shields.io/badge/Hide Area-FFC9D9" /></picture></sub>
-    </td>
-  </tr>
-</table>
-
-###### Hide Separator&ensp;<sub><picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Icons/Dark/Line.png?raw=true" /><img height="17" src="/Docs/Contents/Icons/Light/Line.png?raw=true" /></picture></sub>
-
-<table>
-  <tr>
-    <th colspan="2">
-      <kbd>Click</kbd> and <kbd>Right Click</kbd>
-    </th>
-  </tr>
-  <tr>
-    <td>
-      <b>Hide</b> icons inside <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Hide Area-903150" /><img src="https://img.shields.io/badge/Hide Area-FFC9D9" /></picture></sub>
-    </td>
-    <td>
-      <b>Show</b> icons inside <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Hide Area-903150" /><img src="https://img.shields.io/badge/Hide Area-FFC9D9" /></picture></sub>
-    </td>
-  </tr>
-</table>
-
-###### Menu Icon&ensp;<sub><picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Icons/Dark/Dot.png?raw=true" /><img height="17" src="/Docs/Contents/Icons/Light/Dot.png?raw=true" /></picture></sub>
-
-<table>
-  <tr>
-    <th colspan="2">
-      <kbd>Click</kbd>
-    </th>
-    <th colspan="2">
-      <kbd>Right Click</kbd> and <kbd>⌥ Option</kbd> <kbd>Click</kbd>
-    </th>
-  </tr>
-  <tr>
-    <td>
-      <b>Hide</b> icons inside <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Hide Area-903150" /><img src="https://img.shields.io/badge/Hide Area-FFC9D9" /></picture></sub>
-    </td>
-    <td>
-      <b>Show</b> icons inside <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Hide Area-903150" /><img src="https://img.shields.io/badge/Hide Area-FFC9D9" /></picture></sub>
-    </td>
-    <td>
-      <b>Open</b> the preferences menu
-    </td>
-    <td>
-      <b>Close</b> the preferences menu
-    </td>
-  </tr>
-</table>
-
-### Preferences & Customizations
-
-Let's take a look at how to customize **Stalker**. You can open the preferences menu by:
-
-- <kbd>Right Click</kbd> `Menu Icon`&ensp;<sub><picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Icons/Dark/Dot.png?raw=true" /><img height="17" src="/Docs/Contents/Icons/Light/Dot.png?raw=true" /></picture></sub>.
-- <kbd>⌥ Option</kbd> <kbd>Click</kbd> `Menu Icon`&ensp;<sub><picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Icons/Dark/Dot.png?raw=true" /><img height="17" src="/Docs/Contents/Icons/Light/Dot.png?raw=true" /></picture></sub>.
-
-The menu items are explained as follows:
+> **Abyssal** will judge the order of the three separators, which means you don't need to care much about their position. For example, you are allowed to put the `Menu Separator` to the left of the `Always Hide Separator`, as they will swap their roles back automatically after your operation.
 
 <br />
 
-<table>
-  <tr>
-    <th align="left">
-      <h6>Theme<sup><picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Theme.png?raw=true" /><img align="right" height="18" alt="Default: Stalker" src="/Docs/Contents/Preferences/Light/Theme.png?raw=true" /></picture></sup></h6>
-    </th>
-  </tr>
-  <tr>
-    <td>
-      Separator's appearances differ from theme to theme, and some themes will automatically hide separators, while others will not.
-    </td>
-  </tr>
-</table>
+### Showing & Moving the Separators
 
-<table>
-  <tr>
-    <th align="left">
-      <h6>Auto Shows<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-Off.png?raw=true" /><img align="right" height="12" alt="Default: Off" src="/Docs/Contents/Preferences/Light/Switch-Off.png?raw=true" /></picture></h6>
-    </th>
-  </tr>
-  <tr>
-    <td>
-      <picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-Off.png?raw=true" /><img height="12" alt="Off" src="/Docs/Contents/Preferences/Light/Switch-Off.png?raw=true" /></picture>
-      &emsp;
-      You will need to control the visibility of icons inside <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Hide Area-903150" /><img src="https://img.shields.io/badge/Hide Area-FFC9D9" /></picture></sub> manually.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-On.png?raw=true" /><img height="12" alt="On" src="/Docs/Contents/Preferences/Light/Switch-On.png?raw=true" /></picture>
-      &emsp;
-      <b>Stalker</b> will hide icons inside <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Hide Area-903150" /><img src="https://img.shields.io/badge/Hide Area-FFC9D9" /></picture></sub> automatically when you are not using them, and show them when you need.
-    </td>
-  </tr>
-</table>
+In themes including the default theme, separators will be hidden by default. And when you open the menu, or move your cursor onto the menu bar[^cursor_onto_status_bar] and press the chosen modifiers, **Abyssal** will show all the separators. In the rest of the themes, separators won't be hidden, but their appearance will change automatically according to the status of the app. The show and hide of the separators also follow some special rules:
 
-<table>
-  <tr>
-    <th align="left">
-      <h6>Feedback Intensity<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Slider-0.png?raw=true" /><img align="right" height="12" alt="Default: Disabled" src="/Docs/Contents/Preferences/Light/Slider-0.png?raw=true" /></picture></h6>
-    </th>
-  </tr>
-  <tr>
-    <td>
-      <picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Slider-0.png?raw=true" /><img height="12" alt="Disabled" src="/Docs/Contents/Preferences/Light/Slider-0.png?raw=true" /></picture>&emsp;Haptic feedback <b>Disabled.</b>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Slider-1.png?raw=true" /><img height="12" alt="Light" src="/Docs/Contents/Preferences/Light/Slider-1.png?raw=true" /></picture>&emsp;<b>Light</b> haptic feedback intensity.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Slider-2.png?raw=true" /><img height="12" alt="Medium" src="/Docs/Contents/Preferences/Light/Slider-2.png?raw=true" /></picture>&emsp;<b>Medium</b> haptic feedback intensity.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Slider-3.png?raw=true" /><img height="12" alt="Heavy" src="/Docs/Contents/Preferences/Light/Slider-3.png?raw=true" /></picture>&emsp;<b>Heavy</b> haptic feedback intensity.
-    </td>
-  </tr>
-</table>
+- When using themes that automatically hide the icons inside the separators, the `Menu Separator` will indicate the visibility of the status icons inside the **Hide Area**. If the `Menu Separator` **is visible,** it indicates that the status icons inside the **Hide Area** are **visible.** Otherwise the icons are **hidden.**
+- When using other themes, all the separators perform together. If all of them are **translucent,** it indicates that the status icons inside the **Hide Area** are **visible.** Otherwise the icons are **hidden.**
 
+[^cursor_onto_status_bar]: You need to move your cursor to the left of `Menu Separator` in order to trigger something. On monitors with notches, you may also need to move your cursor *between the the screen notch and the `Menu Separator`.*
+
+Dragging the icons while holding <kbd>⌘ Command</kbd> can change the order of the separators. For example, to put more icons into or out of the **Hide Area.**
+
+<br />
+
+### Clicking on the Separators
+
+You can perform different actions by clicking on the separators of **Abyssal,** no matter whether they are visible:
+
+<br />
+
+#### The Always Hide Separator
+
+- **<kbd>click</kbd>&emsp;/&emsp;<kbd>right click</kbd>**
+  
+  **Show / hide** the status icons inside the **Hide Area.**
+
+<br />
+
+#### The Hide Separator
+
+- **<kbd>click</kbd>&emsp;/&emsp;<kbd>right click</kbd>**
+  
+  **Show / hide** the status icons inside the **Hide Area.**
+
+<br />
+
+#### The Menu Separator
+
+- **<kbd>click</kbd>**
+  
+  **Show / hide** the status icons inside the **Hide Area.**
+
+- **<kbd>⌥ option</kbd> <kbd>click</kbd>**
+  
+  **Open / close** the preferences menu.
+
+<br />
+
+### Preferences & Customizations
+
+Let's take a look at how to customize **Abyssal**. Still remember? You can open the preferences menu by <kbd>right click</kbd>&ensp;/&ensp;<kbd>⌥ option</kbd> <kbd>click</kbd> on the `Menu Separator`.
+
+The preferences are explained as follows:
+
+<br />
+
+#### Theme
+
+`Style: Pop Up Button`
+  
+Separators' appearances differ from theme to theme, and some themes will automatically hide separators, while others will not.
+
+<br />
+
+#### Auto Shows
+
+`Style: Switch`&ensp;`Default: On`
+  
+- **On**
+    
+  **Abyssal** will hide the status icons inside the **Hide Area** automatically when you are not using them, and show them when you need.
+    
+- **Off**
+    
+  You will need to control the visibility of the status icons manually.
+
+<br />
+
+#### Feedback Intensity
+
+`Style: Step Slider`&ensp;`Default: • · · · Disabled`
+
+- **`• · · ·`&emsp;Disabled**
+  
+  Haptic feedback **Disabled.**
+  
+- **`· • · ·`&emsp;Light**
+  
+  **Light** haptic feedback intensity.
+  
+- **`· · • ·`&emsp;Medium**
+  
+  **Medium** haptic feedback intensity.
+  
+- **`· · · •`&emsp;Heavy**
+  
+  **Heavy** haptic feedback intensity.
+
+> [!NOTE]
 > Due to the limitations of macOS, you may not feel a strong haptic feedback.
 
 <br />
 
-<table>
-  <tr>
-    <th align="left">
-      <h6>Use Always Hide Area<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-Off.png?raw=true" /><img align="right" height="12" alt="Default: Off" src="/Docs/Contents/Preferences/Light/Switch-Off.png?raw=true" /></picture></h6>
-    </th>
-  </tr>
-  <tr>
-    <td>
-      <picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-Off.png?raw=true" /><img height="12" alt="Off" src="/Docs/Contents/Preferences/Light/Switch-Off.png?raw=true" /></picture>&emsp;<b>Completely disable</b> <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Always Hide Area-5C167F" /><img src="https://img.shields.io/badge/Always Hide Area-EFD9FF" /></picture></sub> and <b>completely hide</b> <code>Always Hide Separator</code>&ensp;<sub><picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Icons/Dark/DottedLine.png?raw=true" /><img height="17" src="/Docs/Contents/Icons/Light/DottedLine.png?raw=true" /></picture></sub>.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-On.png?raw=true" /><img height="12" alt="On" src="/Docs/Contents/Preferences/Light/Switch-On.png?raw=true" /></picture>&emsp;<b>Enable</b> <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Always Hide Area-5C167F" /><img src="https://img.shields.io/badge/Always Hide Area-EFD9FF" /></picture></sub> and <b>show</b> <code>Always Hide Separator</code>&ensp;<sub><picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Icons/Dark/DottedLine.png?raw=true" /><img height="17" src="/Docs/Contents/Icons/Light/DottedLine.png?raw=true" /></picture></sub>.
-    </td>
-  </tr>
-</table>
+#### Use Always Hide Area
 
-<table>
-  <tr>
-    <th align="left">
-      <h6>Reduce Animation<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-Off.png?raw=true" /><img align="right" height="12" alt="Default: Off" src="/Docs/Contents/Preferences/Light/Switch-Off.png?raw=true" /></picture></h6>
-    </th>
-  </tr>
-  <tr>
-    <td>
-      <picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-Off.png?raw=true" /><img height="12" alt="Off" src="/Docs/Contents/Preferences/Light/Switch-Off.png?raw=true" /></picture>&emsp;Reduce the animation in order to make <b>Stalker</b> run more smoothly.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-On.png?raw=true" /><img height="12" alt="On" src="/Docs/Contents/Preferences/Light/Switch-On.png?raw=true" /></picture>&emsp;Show the animation to make <b>Stalker</b> prettier.
-    </td>
-  </tr>
-</table>
+`Style: Switch`&emsp;`Default: On`
 
-> If you are using an Intel chip Mac, it is recommended to keep the `Reduce Animation` option as&emsp;<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-On.png?raw=true" /><img height="12" alt="On" src="/Docs/Contents/Preferences/Light/Switch-On.png?raw=true" /></picture>&emsp;to ensure the smoothness of **Stalker.**
+- **On**
+  
+  **Completely disable** the **Always Hide Area** and **hide** the `Always Hide Separator`.
+
+- **Off**
+
+  **Enable** the **Always Hide Area** and **show** the `Always Hide Separator`.
 
 <br />
 
-<table>
-  <tr>
-    <th align="left">
-      <h6>Starts with macOS<picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-Off.png?raw=true" /><img align="right" height="12" alt="Default: Off" src="/Docs/Contents/Preferences/Light/Switch-Off.png?raw=true" /></picture></h6>
-    </th>
-  </tr>
-  <tr>
-    <td>
-      <picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-Off.png?raw=true" /><img height="12" alt="Off" src="/Docs/Contents/Preferences/Light/Switch-Off.png?raw=true" /></picture>&emsp;You need to manually open <b>Stalker</b> every time you start macOS.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Preferences/Dark/Switch-On.png?raw=true" /><img height="12" alt="On" src="/Docs/Contents/Preferences/Light/Switch-On.png?raw=true" /></picture>&emsp;<b>Stalker</b> will automatically start when you start macOS.
-    </td>
-  </tr>
-</table>
+#### Modifiers
 
-### Attention Required
+`Style: List of Switches`&emsp;`Default: ⌥ ⌘`
 
-###### Auto Idling
+- **`⌃`**
 
-Due to the limitations of macOS, **Stalker** cannot know whether you have opened a menu in <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Always Hide Area-5C167F" /><img src="https://img.shields.io/badge/Always Hide Area-EFD9FF" /></picture></sub> or <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Hide Area-903150" /><img src="https://img.shields.io/badge/Hide Area-FFC9D9" /></picture></sub>. If the `Auto Hide` function hides these icons rashly, the menu will also move with it. Therefore, **Stalker** adopts a detection method to avoid similar situations to the greatest extent.
+  Whether to use <kbd>⌃ control</kbd> as a modifier key.
 
-Speaking generally, when you click on a place in the menu bar **where there is likely to be other icons, and the icon is likely to be inside <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Hide Area-903150" /><img src="https://img.shields.io/badge/Hide Area-FFC9D9" /></picture></sub> or <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Always Hide Area-5C167F" /><img src="https://img.shields.io/badge/Always Hide Area-EFD9FF" /></picture></sub>**, **Stalker** will choose to pause `Auto Hide` and enter the `Auto Idle` state. When you finish the operation, just move the cursor gently **over** any separator of **Stalker**, and you can cancel `Auto Idle` and resume `Auto Hide`.
+- **`⌥`**
 
-`Auto Idle` will enable automatically accordng to your clicking position, and it will distinguish <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Always Hide Area-5C167F" /><img src="https://img.shields.io/badge/Always Hide Area-EFD9FF" /></picture></sub> and <sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Hide Area-903150" /><img src="https://img.shields.io/badge/Hide Area-FFC9D9" /></picture></sub>. When you **move your cursor over** any separator of **Stalker**, both `Auto Idle` states will be canceled.
+  Whether to use <kbd>⌥ option</kbd> as a modifier key.
 
-`Auto Idle` will only be activated when `Auto Hide` is activated.
+- **`⌘`**
 
-###### Haptic Feedback
+  Whether to use <kbd>⌘ command</kbd> as a modifier key.
 
-As you **trigger** `Auto Hide`, **cancel** `Auto Hide`, **trigger** `Auto Idle` and **cancel** `Auto Idle`, **Stalker** will provide a haptic feedback[^haptic_feedback_support_needed].
+> [!NOTE]
+> Pressing only one of the chosen keys is enough to trigger the functions. It is recommended to keep the modifier key <kbd>⌘ command</kbd> enabled.
+
+<br />
+
+#### Timeout
+
+`Style: Step Slider`&emsp;`Default: · · · • · · · · · · · 30 seconds`
+
+Set an optional timeout for `Auto Idling` to cancel automatically, ranging from `5 seconds` to `10 minutes`.
+
+- **`· · · · · · · · · · •`&emsp;Disabled**
+
+  **Disable** timeout for `Auto Idling`.
+
+#### Reduce Animation
+
+`Style: Switch`&emsp;`Default: Off`
+
+- **On**
+
+  Animate the moves of **Abyssal.**
+
+- **Off**
+
+  Reduce animations to gain a more performant experience.
+
+<br />
+
+> [!WARNING]
+> If you are using an **Intel** chip Mac, it is recommended to keep the `Reduce Animation` option **on** to ensure the smoothness of **Abyssal.**
+
+<br />
+
+#### Starts with macOS
+
+`Style: Switch`&emsp;`Default: Off`
+
+- **Off**
+
+  **Abyssal** will run in background after macOS launched.
+
+- **On**
+
+  You need to manually run **Abyssal** after macOS launched.
+
+<br />
+
+### Auto Idling
+
+Due to the limitations of macOS, **Abyssal** cannot know whether you have opened a menu in the **Always Hide Area** or the **Hide Area**. If the `Auto Hide` function hides these status icons rashly, their menus will also move away. Therefore, **Abyssal** adopts an approach to avoid similar situations to the greatest extent.
+
+Speaking generally, when you click on a place in the menu bar **where there is likely to have other status icons, and the status icon is likely to be inside the Hide Area or the Always Hide Area**, **Abyssal** will choose to pause the `Auto Hide` and enter the `Auto Idling` state. When you finish the operation, just move the cursor **over** the `Always Hide Separator` or the `Hide Separator`, and you can cancel the `Auto Idling` state and resume `Auto Hide` to hide the status icons. **Abyssal** also provides an optional timeout to automatically disable the `Auto Idling` state, which can be configured in the preferences menu.
+
+`Auto Idling` will enable automatically accordng to your clicking position, and it will distinguish between the **Always Hide Area** and the **Hide Area.** It will only be activated when `Auto Hide` is enabled.
+
+After you **triggered** `Auto Hide`, **canceled** `Auto Hide`, **triggered** `Auto Idling` and **canceled** `Auto Idling`, **Abyssal** will give a haptic feedback[^haptic_feedback_support_needed].
 
 [^haptic_feedback_support_needed]: Your device must support *Haptic Feedback.*
 
@@ -286,12 +248,12 @@ As you **trigger** `Auto Hide`, **cancel** `Auto Hide`, **trigger** `Auto Idle` 
 
 [^install_and_run]: [`↗ Open a Mac app from an unidentified developer`](https://support.apple.com/guide/mac-help/mh40616/mac)
 
-As an open-source and free software, **Stalker** has no ability to pay for [Apple Developer Account.](https://developer.apple.com/help/account/)Thus, you can't install **Stalker** from App Store, and you may need to allow **Stalker** to run as an unidentified app.
+As an open-source and free software, **Abyssal** has no ability to pay for [Apple Developer Account.](https://developer.apple.com/help/account/)Thus, you can't install **Abyssal** from App Store, and you may need to allow **Abyssal** to run as an unidentified app.
 
 ### Steps to Follow
 
 > [!NOTE]
-> You can download the installing disk image of **Stalker** only from [Releases](https://github.com?KrLite/Stalker/releases) page manually for now.
+> You can download the installing disk image of **Abyssal** only from [Releases](https://github.com?KrLite/Abyssal/releases) page manually for now.
 
 <h6>
 
@@ -312,7 +274,7 @@ As an open-source and free software, **Stalker** has no ability to pay for [Appl
 </div>
 Mount the <code>.dmg</code> disk image
 <br />
-Drag Stalker to the Applications Folder
+Drag Abyssal to the Applications Folder
 </blockquote>
 
 <br />
@@ -352,7 +314,7 @@ If a pop-up window appears, choose <code>Show in Finder</code>
      />
   </picture>
 </div>
-<kbd>Right Click</kbd> Stalker
+<kbd>Right Click</kbd> Abyssal
 <br />
 Choose <code>Open</code>
 </blockquote>
@@ -378,42 +340,3 @@ Choose <code>Open</code>
 </blockquote>
 
 </h6>
-
-### <div><!--Empty Lines--><br /><br /></div>
-
-<blockquote>
-  <details>
-    <summary>
-      <code>Contributors</code>
-    </summary>
-    <br />
-    <table>
-      <tr>
-        <td>
-          <!--KrLite-->
-          <a href="https://github.com/KrLite">
-            <img src="https://github.com/KrLite.png?size=125" />
-          </a>
-          <br />
-          <b>KrLite</b>
-          <br />
-          <sup>
-            Project Leader
-          </sup>
-        </td>
-        <td>
-          <!--芯梢-->
-          <a href="https://github.com/Xinshao-air">
-            <img src="https://github.com/Xinshao-air.png?size=125" />
-          </a>
-          <br />
-          <b>芯梢</b>
-          <br />
-          <sup>
-            Tests & Screenshots
-          </sup>
-        </td>
-      </tr>
-    </table>
-  </details>
-</blockquote>
