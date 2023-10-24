@@ -112,6 +112,7 @@ extension StatusBarController {
                 
                 strongSelf.checkIdleStates()
                 
+                // Update edge
                 if strongSelf.shouldEdgeUpdate.will {
                     strongSelf.shouldEdgeUpdate.now = true
                 }
@@ -124,29 +125,36 @@ extension StatusBarController {
                     strongSelf.shouldEdgeUpdate.now = false
                 }
                 
+                // Update mouse and key
                 let mouseNeedsUpdate = strongSelf.was.mouseSpare != strongSelf.mouseSpare
                 let keyNeedsUpdate = strongSelf.was.modifiers != Helper.Keyboard.modifiers
                 
-                if mouseNeedsUpdate {
-                    if strongSelf.was.mouseSpare {
-                        strongSelf.stopMonitor(&strongSelf.mouseEventMonitor)
-                    } else {
-                        strongSelf.startMouseEventMonitor()
+                if !Helper.Mouse.dragging {
+                    if mouseNeedsUpdate {
+                        if strongSelf.mouseSpare {
+                            // Mouse entered spare area
+                            strongSelf.startMouseEventMonitor()
+                        } else {
+                            // Mouse left spare area
+                            strongSelf.stopMonitor(&strongSelf.mouseEventMonitor)
+                        }
+                    }
+                    
+                    if mouseNeedsUpdate || keyNeedsUpdate {
+                        // Resolve animation and function updates
+                        strongSelf.startFunctionalTimers()
                     }
                 }
                 
-                if mouseNeedsUpdate || keyNeedsUpdate {
-                    strongSelf.startFunctionalTimers()
-                }
-                
-                if keyNeedsUpdate {
+                if keyNeedsUpdate || Helper.Mouse.dragging {
+                    // Key pressed || mouse dragging -> sort separators and map appearances
                     strongSelf.sort()
                     strongSelf.map()
                 }
                 
                 strongSelf.was = (
-                    mouseSpare: strongSelf.mouseSpare,
-                    modifiers: Helper.Keyboard.modifiers
+                    strongSelf.mouseSpare,
+                    Helper.Keyboard.modifiers
                 )
             }
         }
@@ -182,6 +190,7 @@ extension StatusBarController {
     }
     
     func startFunctionalTimers() {
+        guard !Helper.Mouse.dragging else { return }
         startAnimationTimer()
         startActionTimer()
         
@@ -201,7 +210,7 @@ extension StatusBarController {
         if mouseEventMonitor == nil {
             mouseEventMonitor = EventMonitor(
                 mask: [.leftMouseDown,
-                       .rightMouseDown]
+                       .rightMouseDown,]
             ) { [weak self] event in
                 guard
                     let strongSelf = self,

@@ -103,6 +103,8 @@ extension StatusBarController {
         }
     } // End of map
         
+        // Note: to collapse means to hide the status items and to expand the separators.
+        
         // Head
         
         if let alpha = head.button?.alphaValue {
@@ -117,9 +119,9 @@ extension StatusBarController {
         }
         
     head: do {
-        let flag = !popoverShown && Data.collapsed && !(idling.hide || idling.alwaysHide) && !(Data.autoShows && mouseSpare)
+        let collapse = !popoverShown && Data.collapsed && !(idling.hide || idling.alwaysHide) && !(Data.autoShows && mouseSpare)
         
-        lengths.h = flag ? Data.theme.iconWidthExpanded : Data.theme.iconWidth
+        lengths.h = collapse ? Data.theme.iconWidthExpanded : Data.theme.iconWidth
         
         head.length = Helper.lerp(
             a: head.length,
@@ -144,13 +146,13 @@ extension StatusBarController {
         }
         
     body: do {
-        let flag = !popoverShown && Data.collapsed && !(idling.hide || idling.alwaysHide) && !(Data.autoShows && mouseSpare)
-        
         guard let x = body.origin?.x else { break body }
+        
+        let collapse = !popoverShown && Data.collapsed && !(idling.hide || idling.alwaysHide) && !(Data.autoShows && mouseSpare)
         let length = body.length
         
         do {
-            if !flag && !wasUnstable.b {
+            if !collapse && !wasUnstable.b {
                 if lengths.b <= 0 { lengths.b = x + length - Helper.menuBarLeftEdge }
                 
                 body.length = lengths.b
@@ -159,20 +161,20 @@ extension StatusBarController {
                 if !Data.reduceAnimation {
                     return
                 }
-            } else if flag && !wasUnstable.b {
+            } else if collapse && !wasUnstable.b {
                 body.length = maxLength
                 return
             } else if wasUnstable.b {
-                wasUnstable.b = !flag || wasUnstable.b && x > Helper.menuBarLeftEdge + 5
+                wasUnstable.b = !collapse || wasUnstable.b && x > Helper.menuBarLeftEdge + 5
             }
             
             if
                 let origin = body.origin,
-                lastFlags.b != flag || origin.x != lastOriginXs.b
+                lastFlags.b != collapse || origin.x != lastOriginXs.b
             {
-                lengths.b = flag ? max(0, x + length - Helper.menuBarLeftEdge) : Data.theme.iconWidth
+                lengths.b = collapse ? max(0, x + length - Helper.menuBarLeftEdge) : Data.theme.iconWidth
                 lastOriginXs.b = origin.x
-                lastFlags.b = flag
+                lastFlags.b = collapse
             }
             
             if Data.reduceAnimation {
@@ -203,33 +205,33 @@ extension StatusBarController {
         }
         
     tail: do {
-        let flag = !popoverShown && !(Helper.Keyboard.modifiers && ((Data.collapsed && !idling.hide) || mouseSpare)) && !idling.alwaysHide
-        
         guard let x = tail.origin?.x else { break tail }
+        
+        let collapse = !popoverShown && !(Helper.Keyboard.modifiers && ((Data.collapsed && !idling.hide) || mouseSpare)) && !idling.alwaysHide
         let length = tail.length
         
         do {
-            if !flag && !wasUnstable.t {
+            if !collapse && !wasUnstable.t {
                 if lengths.t <= 0 { lengths.t = x + length - Helper.menuBarLeftEdge }
                 
                 tail.length = lengths.t
                 wasUnstable.t = true
                 
                 if !Data.reduceAnimation { break tail }
-            } else if flag && !wasUnstable.t {
+            } else if collapse && !wasUnstable.t {
                 tail.length = maxLength
                 return
             } else if wasUnstable.t {
-                wasUnstable.t = !flag || wasUnstable.t && x > Helper.menuBarLeftEdge + 5
+                wasUnstable.t = !collapse || wasUnstable.t && x > Helper.menuBarLeftEdge + 5
             }
             
             if
                 let origin = tail.origin,
-                lastFlags.t != flag || origin.x != lastOriginXs.t
+                lastFlags.t != collapse || origin.x != lastOriginXs.t
             {
-                lengths.t = flag ? max(0, x + length - Helper.menuBarLeftEdge) : Data.theme.iconWidth
+                lengths.t = collapse ? max(0, x + length - Helper.menuBarLeftEdge) : Data.theme.iconWidth
                 lastOriginXs.t = origin.x
-                lastFlags.t = flag
+                lastFlags.t = collapse
             }
             
             if Data.reduceAnimation {

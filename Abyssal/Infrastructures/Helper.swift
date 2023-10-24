@@ -269,6 +269,10 @@ class Helper {
             NSEvent.pressedMouseButtons & 0x1 == 1
         }
         
+        static var dragging: Bool {
+            Keyboard.command && left
+        }
+        
         static func inside(
             _ rect: NSRect?
         ) -> Bool {

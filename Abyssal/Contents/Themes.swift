@@ -137,7 +137,7 @@ extension Themes {
         tail: 				"DottedLine",
         
         iconWidth: 2, iconWidthExpanded: 10,
-        autoHideIcons: true
+        autoHideIcons: false
     )
     
     static let hiddenBar = Theme(

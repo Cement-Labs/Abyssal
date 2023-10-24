@@ -66,6 +66,11 @@ extension AppDelegate {
     @objc func toggle(
         _ sender: Any?
     ) {
+        guard sender as? NSStatusBarButton == Helper.delegate?.statusBarController.head.button else {
+            toggleCollapse(sender)
+            return
+        }
+        
         if Helper.Keyboard.option {
             togglePopover(sender)
         } else {

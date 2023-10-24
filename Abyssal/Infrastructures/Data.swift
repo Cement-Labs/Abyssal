@@ -12,6 +12,10 @@ public enum Data {
     
     class Keys {
         
+        static let COLLAPSED: String = "Collapsed"
+        
+        
+        
         static let MODIFIERS: String = "Modifiers"
         
         static let TIMEOUT: String = "Timeout"
@@ -22,15 +26,7 @@ public enum Data {
         
         static let THEME: String = "Theme"
         
-        
-        
-        static let SEPS_ORDER: 			String = "SepsOrder"
-        
         static let FEEDBACK_INTENSITY: 	String = "FeedbackIntensity"
-        
-        
-        
-        static let COLLAPSED: String = "Collapsed"
         
         
         
@@ -43,16 +39,14 @@ public enum Data {
     }
     
     static func registerDefaults() {
+        UserDefaults.standard.register(defaults: [Keys.COLLAPSED: false])
+        
         UserDefaults.standard.register(defaults: [Keys.MODIFIERS: [false, true, true]])
         UserDefaults.standard.register(defaults: [Keys.TIMEOUT: 3])
         UserDefaults.standard.register(defaults: [Keys.TIPS: true])
 
         UserDefaults.standard.register(defaults: [Keys.THEME: Themes.abyssal.name])
-        
-        UserDefaults.standard.register(defaults: [Keys.SEPS_ORDER: [0, 1, 2]])
         UserDefaults.standard.register(defaults: [Keys.FEEDBACK_INTENSITY: 0])
-        
-        UserDefaults.standard.register(defaults: [Keys.COLLAPSED: false])
         
         UserDefaults.standard.register(defaults: [Keys.AUTO_SHOWS: true])
         UserDefaults.standard.register(defaults: [Keys.USE_ALWAYS_HIDE_AREA: true])
@@ -157,21 +151,6 @@ public enum Data {
     }
     
     
-    
-    static var sepsOrder: [Int?]? {
-        get {
-            return UserDefaults.standard.array(
-                forKey: Keys.SEPS_ORDER
-            ) as? [Int?]
-        }
-        
-        set(sepsOrder) {
-            UserDefaults.standard.set(
-                sepsOrder,
-                forKey: Keys.SEPS_ORDER
-            )
-        }
-    }
     
     static var feedbackIntensity: Int {
         get {

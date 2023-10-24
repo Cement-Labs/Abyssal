@@ -97,12 +97,12 @@ class StatusBarController {
 
     var mouseWasSpareOrUnidled = false
 
-
+    
 
     var shouldTimersStop: (flag: Bool, count: Int) = (flag: false, count: 0)
 
     var maxLength: CGFloat {
-        return Helper.Screen.maxWidth ?? 10000 // To cover all screens
+        return Helper.Screen.maxWidth ?? 10000 // To cover all possible screens
     }
 
     var popoverShown: Bool {
@@ -135,15 +135,15 @@ class StatusBarController {
     
     // Separator instances
     
+    private let _sep0: NSStatusItem = NSStatusBar.system.statusItem(
+        withLength: NSStatusItem.variableLength
+    )
+    
     private let _sep1: NSStatusItem = NSStatusBar.system.statusItem(
         withLength: NSStatusItem.variableLength
     )
     
     private let _sep2: NSStatusItem = NSStatusBar.system.statusItem(
-        withLength: NSStatusItem.variableLength
-    )
-    
-    private let _sep3: NSStatusItem = NSStatusBar.system.statusItem(
         withLength: NSStatusItem.variableLength
     )
     
@@ -154,59 +154,44 @@ class StatusBarController {
     // Pointers specifying the separators' positions
     
     var head: NSStatusItem {
-        var order: Int = 2
-        
-        if let savedSepsOrder = Data.sepsOrder, let savedOrder = savedSepsOrder[order] {
-            order = savedOrder
-        }
-        
-        return _seps[order]
+        return _seps[2]
     }
     
     var body: NSStatusItem {
-        var order: Int = 1
-        
-        if let savedSepsOrder = Data.sepsOrder, let savedOrder = savedSepsOrder[order] {
-            order = savedOrder
-        }
-        
-        return _seps[order]
+        return _seps[1]
     }
     
     var tail: NSStatusItem {
-        var order: Int = 0
-        
-        if let savedSepsOrder = Data.sepsOrder, let savedOrder = savedSepsOrder[order] {
-            order = savedOrder
-        }
-        
-        return _seps[order]
+        return _seps[0]
     }
     
     // MARK: - Inits
     
     init() {
-        // _sep1 is the most left while _sep2 is the most right
-        _seps = [_sep1, _sep2, _sep3]
+        // Init separators
         
-        // Init status icons
+        // By default, _sep0 is the most left while _sep2 is the most right.
+        // However this will change to conserve the relative position of the separators.
+        _seps = [_sep0, _sep1, _sep2]
+        
+        sort()
         
         head.length = lengths.h
         body.length = lengths.b
         tail.length = lengths.t
         
-        if let button = self.head.button {
+        if let button = self._sep0.button {
             button.action = #selector(AppDelegate.toggle(_:))
             button.sendAction(on: [.leftMouseUp, .rightMouseUp])
         }
         
-        if let button = self.body.button {
-            button.action = #selector(AppDelegate.toggleCollapse(_:))
+        if let button = self._sep1.button {
+            button.action = #selector(AppDelegate.toggle(_:))
             button.sendAction(on: [.leftMouseUp, .rightMouseUp])
         }
         
-        if let button = self.tail.button {
-            button.action = #selector(AppDelegate.toggleCollapse(_:))
+        if let button = self._sep2.button {
+            button.action = #selector(AppDelegate.toggle(_:))
             button.sendAction(on: [.leftMouseUp, .rightMouseUp])
         }
         
@@ -228,6 +213,8 @@ class StatusBarController {
         
         stopTimer(&timeoutTimer)
         stopTimer(&ignoringTimer)
+        
+        stopMonitor(&mouseEventMonitor)
     }
     
 }
@@ -242,20 +229,19 @@ extension StatusBarController {
             return
         }
         
-        saveSepsOrder(
-            _seps.sorted {
-                $0.isVisible && $1.isVisible && $0.origin?.x ?? 0 <= $1.origin?.x ?? 0
-            }
-        )
-    }
-    
-    func saveSepsOrder(
-        _ currentSeps: [NSStatusItem]
-    ) {
-        let sepsOrder: [Int?] = [_seps.firstIndex(of: currentSeps[0]),
-                                 _seps.firstIndex(of: currentSeps[1]),
-                                 _seps.firstIndex(of: currentSeps[2])]
-        Data.sepsOrder = sepsOrder
+        // Make sure the rightmost separator is positioned further back in the array
+        _seps.sort { (first, second) in
+            if !first.isVisible {
+                // The first one is invisible -> the first one is more lefty
+                return true
+            } else if !second.isVisible {
+                // The first one is visible while the second one is invisible -> the second one is more lefty
+                return false
+            } else if let x1 = first.origin?.x, let x2 = second.origin?.x {
+                // Both have reasonable x positions -> the leftmost one is more lefty
+                return x1 <= x2
+            } else { return true }
+        }
     }
     
     func updateEdge() {
