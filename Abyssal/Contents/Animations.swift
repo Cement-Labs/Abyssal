@@ -34,11 +34,11 @@ extension StatusBarController {
         
         if shouldTimersStop.flag {
             // Make abundant for completing animations
-            if shouldTimersStop.count >= 5 {
+            if !Data.reduceAnimation && shouldTimersStop.count < 5 {
+                shouldTimersStop.count += 1
+            } else {
                 shouldTimersStop = (flag: false, count: 0)
                 stopFunctionalTimers()
-            } else {
-                shouldTimersStop.count += 1
             }
         } else {
             shouldTimersStop.count = 0
