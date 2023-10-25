@@ -16,26 +16,26 @@ class Colors {
         NSColor(named: NSColor.Name("Colors/\(name)")) ?? NSColor.clear
     }
     
-    public static let BACKGROUND = getOrClear("Background")
+    public static let background = getOrClear("Background")
     
-    public static let BORDER = getOrClear("Border")
+    public static let border = getOrClear("Border")
     
-    public static let BORDER_SECONDARY = getOrClear("BorderSecondary")
+    public static let borderSecondary = getOrClear("BorderSecondary")
     
     class Translucent {
         
-        public static let OPACITY = 0.07
+        public static let opacity = 0.07
         
         public static var danger: NSColor {
-            Opaque.danger.withAlphaComponent(OPACITY)
+            Opaque.danger.withAlphaComponent(opacity)
         }
         
         public static var safe: NSColor {
-            Opaque.safe.withAlphaComponent(OPACITY)
+            Opaque.safe.withAlphaComponent(opacity)
         }
         
         public static var accent: NSColor {
-            Opaque.accent.withAlphaComponent(OPACITY)
+            Opaque.accent.withAlphaComponent(opacity)
         }
         
     }

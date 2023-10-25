@@ -11,15 +11,15 @@ import AppKit
 
 class Helper {
     
-    static let REPO_PATH: String = "NNN-Studio/Abyssal"
+    static let repoPath: String = "NNN-Studio/Abyssal"
     
-    static let SOURCE_CODE_URL: URL 	= URL(string: "https://github.com/\(REPO_PATH)")!
+    static let urlSourceCode: URL 	= URL(string: "https://github.com/\(repoPath)")!
     
-    static let RELEASE_URL: URL 		= URL(string: "https://github.com/\(REPO_PATH)/releases")!
+    static let urlRelease: URL 		= URL(string: "https://github.com/\(repoPath)/releases")!
     
-    static let RELEASE_TAGS_URL: URL 	= URL(string: "https://api.github.com/repos/\(REPO_PATH)/tags")!
+    static let urlReleaseTags: URL 	= URL(string: "https://api.github.com/repos/\(repoPath)/tags")!
     
-    static let CHECK_NEWER_VERSION_TASK = URLSession.shared.dataTask(with: RELEASE_TAGS_URL) { (data, response, error) in
+    static let checkNewVersionsTask = URLSession.shared.dataTask(with: urlReleaseTags) { (data, response, error) in
         guard let data = data else { return }
         
         do {
@@ -38,6 +38,11 @@ class Helper {
         } catch {
             print(error.localizedDescription)
         }
+    }
+    
+    static var lerpRatio: CGFloat {
+        let baseValue = 0.42
+        return baseValue * (Helper.Keyboard.shift ? 0.25 : 1) // Slow down when shift key is down
     }
     
     static var version: String? {

@@ -11,13 +11,7 @@ class StatusBarController {
     
     // MARK: - States
     
-    var available = false
-    
     var edge = CGFloat.zero
-    
-    var alphaValues = (h: CGFloat.zero, b: CGFloat.zero, t: CGFloat.zero)
-    
-    var lengths = (h: CGFloat.zero, b: CGFloat.zero, t: CGFloat.zero)
     
     var idling = (hide: false, alwaysHide: false)
     
@@ -92,16 +86,8 @@ class StatusBarController {
     
     
     // MARK: - Animations
-    
-    var lastOriginXs = (b: CGFloat.zero, t: CGFloat.zero)
-
-    var lastFlags = (b: false, t: false)
-
-    var wasUnstable = (b: true, t: true)
 
     var mouseWasSpareOrUnidled = false
-
-    
 
     var shouldTimersStop = (flag: false, count: Int.zero)
     
@@ -141,35 +127,29 @@ class StatusBarController {
     
     // Separator instances
     
-    private let _sep0: NSStatusItem = NSStatusBar.system.statusItem(
+    private static let _sep0 = NSStatusBar.system.statusItem(
         withLength: NSStatusItem.variableLength
     )
     
-    private let _sep1: NSStatusItem = NSStatusBar.system.statusItem(
+    private static let _sep1 = NSStatusBar.system.statusItem(
         withLength: NSStatusItem.variableLength
     )
     
-    private let _sep2: NSStatusItem = NSStatusBar.system.statusItem(
+    private static let _sep2 = NSStatusBar.system.statusItem(
         withLength: NSStatusItem.variableLength
     )
     
     // Separators list
     
-    private var _seps: [NSStatusItem]
+    private static var _seps = [_sep0, _sep1, _sep2]
     
     // Pointers specifying the separators' positions
     
-    var head: NSStatusItem {
-        return _seps[2]
-    }
+    var head = Separator(order: 2) { StatusBarController._seps }
     
-    var body: NSStatusItem {
-        return _seps[1]
-    }
+    var body = Separator(order: 1) { StatusBarController._seps }
     
-    var tail: NSStatusItem {
-        return _seps[0]
-    }
+    var tail = Separator(order: 0) { StatusBarController._seps }
     
     // MARK: - Inits
     
@@ -178,25 +158,19 @@ class StatusBarController {
         
         // By default, _sep0 is the most left while _sep2 is the most right.
         // However this will change to conserve the relative position of the separators.
-        _seps = [_sep0, _sep1, _sep2]
-        
         sort()
         
-        head.length = lengths.h
-        body.length = lengths.b
-        tail.length = lengths.t
-        
-        if let button = self._sep0.button {
+        if let button = StatusBarController._sep0.button {
             button.action = #selector(AppDelegate.toggle(_:))
             button.sendAction(on: [.leftMouseUp, .rightMouseUp])
         }
         
-        if let button = self._sep1.button {
+        if let button = StatusBarController._sep1.button {
             button.action = #selector(AppDelegate.toggle(_:))
             button.sendAction(on: [.leftMouseUp, .rightMouseUp])
         }
         
-        if let button = self._sep2.button {
+        if let button = StatusBarController._sep2.button {
             button.action = #selector(AppDelegate.toggle(_:))
             button.sendAction(on: [.leftMouseUp, .rightMouseUp])
         }
@@ -231,15 +205,8 @@ class StatusBarController {
 extension StatusBarController {
     
     func sort() {
-        guard available else {
-            available = !(available && _seps.allSatisfy { sep in
-                !sep.isVisible || sep.origin?.x ?? 0 != 0
-            })
-            return
-        }
-        
         // Make sure the rightmost separator is positioned further back in the array
-        _seps.sort { (first, second) in
+        StatusBarController._seps.sort { (first, second) in
             if !first.isVisible {
                 // The first one is invisible -> the first one is more lefty
                 return true

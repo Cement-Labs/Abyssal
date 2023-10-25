@@ -12,52 +12,52 @@ public enum Data {
     
     class Keys {
         
-        static let COLLAPSED: String = "Collapsed"
+        static let collapsed = "Collapsed"
         
         
         
-        static let MODIFIERS: String = "Modifiers"
+        static let modifiers = "Modifiers"
         
-        static let TIMEOUT: String = "Timeout"
+        static let timeout = "Timeout"
         
-        static let TIPS: String = "Tips"
-        
-        
-        
-        static let THEME: String = "Theme"
-        
-        static let FEEDBACK_INTENSITY: 	String = "FeedbackIntensity"
+        static let tips = "Tips"
         
         
         
-        static let AUTO_SHOWS:			String = "AutoShows"
+        static let theme = "Theme"
         
-        static let USE_ALWAYS_HIDE_AREA: String = "AlwaysHide"
+        static let feedbackIntensity = "FeedbackIntensity"
         
-        static let REDUCE_ANIMATION: 	String = "ReduceAnimation"
+        
+        
+        static let autoShows = "AutoShows"
+        
+        static let useAlwaysHideArea = "AlwaysHide"
+        
+        static let reduceAnimation = "ReduceAnimation"
         
     }
     
     static func registerDefaults() {
-        UserDefaults.standard.register(defaults: [Keys.COLLAPSED: false])
+        UserDefaults.standard.register(defaults: [Keys.collapsed: false])
         
-        UserDefaults.standard.register(defaults: [Keys.MODIFIERS: [false, true, true]])
-        UserDefaults.standard.register(defaults: [Keys.TIMEOUT: 3])
-        UserDefaults.standard.register(defaults: [Keys.TIPS: true])
+        UserDefaults.standard.register(defaults: [Keys.modifiers: [false, true, true]])
+        UserDefaults.standard.register(defaults: [Keys.timeout: 3])
+        UserDefaults.standard.register(defaults: [Keys.tips: true])
 
-        UserDefaults.standard.register(defaults: [Keys.THEME: Themes.abyssal.name])
-        UserDefaults.standard.register(defaults: [Keys.FEEDBACK_INTENSITY: 0])
+        UserDefaults.standard.register(defaults: [Keys.theme: Themes.abyssal.name])
+        UserDefaults.standard.register(defaults: [Keys.feedbackIntensity: 0])
         
-        UserDefaults.standard.register(defaults: [Keys.AUTO_SHOWS: true])
-        UserDefaults.standard.register(defaults: [Keys.USE_ALWAYS_HIDE_AREA: true])
-        UserDefaults.standard.register(defaults: [Keys.REDUCE_ANIMATION: false])
+        UserDefaults.standard.register(defaults: [Keys.autoShows: true])
+        UserDefaults.standard.register(defaults: [Keys.useAlwaysHideArea: true])
+        UserDefaults.standard.register(defaults: [Keys.reduceAnimation: false])
     }
     
     static var modifiers: (control: Bool, option: Bool, command: Bool) {
         get {
             let defaultTuple = (control: false, option: true, command: true)
             
-            if let array = UserDefaults.standard.array(forKey: Keys.MODIFIERS) as? [Bool] {
+            if let array = UserDefaults.standard.array(forKey: Keys.modifiers) as? [Bool] {
                 guard array.count == Mirror(reflecting: defaultTuple).children.count
                 else {
                     return defaultTuple
@@ -72,20 +72,20 @@ public enum Data {
         set(modifiers) {
             UserDefaults.standard.set(
                 [modifiers.control, modifiers.option, modifiers.command],
-                forKey: Keys.MODIFIERS
+                forKey: Keys.modifiers
             )
         }
     }
     
     static var timeout: Int {
         get {
-            return UserDefaults.standard.integer(forKey: Keys.TIMEOUT)
+            return UserDefaults.standard.integer(forKey: Keys.timeout)
         }
         
         set(timeout) {
             UserDefaults.standard.set(
                 timeout,
-                forKey: Keys.TIMEOUT
+                forKey: Keys.timeout
             )
         }
     }
@@ -121,11 +121,11 @@ public enum Data {
     
     static var tips: Bool {
         get {
-            return UserDefaults.standard.bool(forKey: Keys.TIPS)
+            return UserDefaults.standard.bool(forKey: Keys.tips)
         }
         
         set(flag) {
-            UserDefaults.standard.set(flag, forKey: Keys.TIPS)
+            UserDefaults.standard.set(flag, forKey: Keys.tips)
         }
     }
     
@@ -133,7 +133,7 @@ public enum Data {
     
     static var theme: Theme {
         get {
-            let index = UserDefaults.standard.integer(forKey: Keys.THEME)
+            let index = UserDefaults.standard.integer(forKey: Keys.theme)
             
             guard index < Themes.themes.count else {
                 return Themes.defaultTheme
@@ -145,7 +145,7 @@ public enum Data {
         set(theme) {
             UserDefaults.standard.set(
                 Themes.themes.firstIndex(of: theme),
-                forKey: Keys.THEME
+                forKey: Keys.theme
             )
         }
     }
@@ -154,11 +154,11 @@ public enum Data {
     
     static var feedbackIntensity: Int {
         get {
-            return UserDefaults.standard.integer(forKey: Keys.FEEDBACK_INTENSITY)
+            return UserDefaults.standard.integer(forKey: Keys.feedbackIntensity)
         }
         
         set(intensity) {
-            UserDefaults.standard.set(intensity, forKey: Keys.FEEDBACK_INTENSITY)
+            UserDefaults.standard.set(intensity, forKey: Keys.feedbackIntensity)
         }
     }
     
@@ -193,11 +193,11 @@ public enum Data {
     
     static var collapsed: Bool {
         get {
-            return UserDefaults.standard.bool(forKey: Keys.COLLAPSED)
+            return UserDefaults.standard.bool(forKey: Keys.collapsed)
         }
         
         set(flag) {
-            UserDefaults.standard.set(flag, forKey: Keys.COLLAPSED)
+            UserDefaults.standard.set(flag, forKey: Keys.collapsed)
         }
     }
     
@@ -205,21 +205,21 @@ public enum Data {
     
     static var autoShows: Bool {
         get {
-            return UserDefaults.standard.bool(forKey: Keys.AUTO_SHOWS)
+            return UserDefaults.standard.bool(forKey: Keys.autoShows)
         }
         
         set(flag) {
-            UserDefaults.standard.set(flag, forKey: Keys.AUTO_SHOWS)
+            UserDefaults.standard.set(flag, forKey: Keys.autoShows)
         }
     }
     
     static var useAlwaysHideArea: Bool {
         get {
-            return UserDefaults.standard.bool(forKey: Keys.USE_ALWAYS_HIDE_AREA)
+            return UserDefaults.standard.bool(forKey: Keys.useAlwaysHideArea)
         }
         
         set(flag) {
-            UserDefaults.standard.set(flag, forKey: Keys.USE_ALWAYS_HIDE_AREA)
+            UserDefaults.standard.set(flag, forKey: Keys.useAlwaysHideArea)
         }
     }
     
@@ -235,11 +235,11 @@ public enum Data {
     
     static var reduceAnimation: Bool {
         get {
-            return UserDefaults.standard.bool(forKey: Keys.REDUCE_ANIMATION)
+            return UserDefaults.standard.bool(forKey: Keys.reduceAnimation)
         }
         
         set(flag) {
-            UserDefaults.standard.set(flag, forKey: Keys.REDUCE_ANIMATION)
+            UserDefaults.standard.set(flag, forKey: Keys.reduceAnimation)
         }
     }
     

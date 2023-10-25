@@ -12,6 +12,7 @@
 		2852BDE72AD957B100AA8AD1 /* FillOnHoverBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2852BDE62AD957B100AA8AD1 /* FillOnHoverBox.swift */; };
 		2852BDE92AD97A0E00AA8AD1 /* NSSlider+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2852BDE82AD97A0E00AA8AD1 /* NSSlider+Extension.swift */; };
 		2852BDEB2AD97AEC00AA8AD1 /* Tips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2852BDEA2AD97AEC00AA8AD1 /* Tips.swift */; };
+		28ACE7872AE9490700DC8C1A /* Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28ACE7862AE9490700DC8C1A /* Separator.swift */; };
 		C63B40532A4060E400BCAE79 /* NSStatusItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63B40522A4060E400BCAE79 /* NSStatusItem+Extension.swift */; };
 		C66CABA42A38871500E4D8E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CABA32A38871500E4D8E6 /* AppDelegate.swift */; };
 		C66CABB32A388FBD00E4D8E6 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CABB22A388FBD00E4D8E6 /* MenuController.swift */; };
@@ -35,6 +36,7 @@
 		2852BDE62AD957B100AA8AD1 /* FillOnHoverBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillOnHoverBox.swift; sourceTree = "<group>"; };
 		2852BDE82AD97A0E00AA8AD1 /* NSSlider+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSlider+Extension.swift"; sourceTree = "<group>"; };
 		2852BDEA2AD97AEC00AA8AD1 /* Tips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tips.swift; sourceTree = "<group>"; };
+		28ACE7862AE9490700DC8C1A /* Separator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Separator.swift; sourceTree = "<group>"; };
 		C63B40522A4060E400BCAE79 /* NSStatusItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSStatusItem+Extension.swift"; sourceTree = "<group>"; };
 		C66CABA02A38871500E4D8E6 /* Abyssal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Abyssal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C66CABA32A38871500E4D8E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -72,8 +74,19 @@
 			isa = PBXGroup;
 			children = (
 				2852BDE62AD957B100AA8AD1 /* FillOnHoverBox.swift */,
+				28ACE7862AE9490700DC8C1A /* Separator.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		28ACE7852AE948EF00DC8C1A /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				C6DEC53C2A3A0E8900943448 /* Animations.swift */,
+				C6DEC5292A38BF6C00943448 /* StatusBarController.swift */,
+				C6E2C02F2A3EE9F1007D4E1B /* StateManager.swift */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 		C66CAB972A38871500E4D8E6 = {
@@ -151,10 +164,8 @@
 		C6DEC5392A3A0B2300943448 /* Contents */ = {
 			isa = PBXGroup;
 			children = (
+				28ACE7852AE948EF00DC8C1A /* Core */,
 				2852BDEA2AD97AEC00AA8AD1 /* Tips.swift */,
-				C6DEC53C2A3A0E8900943448 /* Animations.swift */,
-				C6DEC5292A38BF6C00943448 /* StatusBarController.swift */,
-				C6E2C02F2A3EE9F1007D4E1B /* StateManager.swift */,
 				C6CDD0612A3F2F9000ED97F0 /* Themes.swift */,
 			);
 			path = Contents;
@@ -255,6 +266,7 @@
 				C6DEC5332A3A048B00943448 /* NSSwitch+Extension.swift in Sources */,
 				C6DEC5352A3A052700943448 /* NSButton+Extension.swift in Sources */,
 				2852BDE92AD97A0E00AA8AD1 /* NSSlider+Extension.swift in Sources */,
+				28ACE7872AE9490700DC8C1A /* Separator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -92,7 +92,7 @@ class MenuController: NSViewController, NSMenuDelegate {
     }
     
     override func viewDidAppear() {
-        Helper.CHECK_NEWER_VERSION_TASK.resume()
+        Helper.checkNewVersionsTask.resume()
         Helper.delegate?.statusBarController.startFunctionalTimers()
     }
     
@@ -109,7 +109,7 @@ extension MenuController {
     // MARK: - Storyboard Instantiation
     
     static func freshController() -> MenuController {
-        Helper.CHECK_NEWER_VERSION_TASK.resume()
+        Helper.checkNewVersionsTask.resume()
         
         let storyboard = NSStoryboard(
             name: NSStoryboard.Name("Main"),
@@ -486,13 +486,13 @@ extension MenuController {
     @IBAction func goToRelease(
         _ sender: Any?
     ) {
-        openUrl(sender, Helper.RELEASE_URL)
+        openUrl(sender, Helper.urlRelease)
     }
     
     @IBAction func sourceCode(
         _ sender: Any?
     ) {
-        openUrl(sender, Helper.SOURCE_CODE_URL)
+        openUrl(sender, Helper.urlSourceCode)
     }
     
     @IBAction func minimize(
