@@ -13,11 +13,11 @@ class StatusBarController {
     
     var available = false
     
-    var edge = 0.0
+    var edge = CGFloat.zero
     
-    var alphaValues = (h: 0.0, b: 0.0, t: 0.0)
+    var alphaValues = (h: CGFloat.zero, b: CGFloat.zero, t: CGFloat.zero)
     
-    var lengths = (h: 0.0, b: 0.0, t: 0.0)
+    var lengths = (h: CGFloat.zero, b: CGFloat.zero, t: CGFloat.zero)
     
     var idling = (hide: false, alwaysHide: false)
     
@@ -72,6 +72,10 @@ class StatusBarController {
         return mouseOnStatusBar && NSEvent.mouseLocation.x >= origin.x && NSEvent.mouseLocation.x <= origin.x + width
     }
     
+    var mouseDragging: Bool {
+        Helper.Mouse.dragging && mouseOnStatusBar
+    }
+    
     
     
     var timeout = false
@@ -82,14 +86,14 @@ class StatusBarController {
         return !timeout && Helper.Mouse.none
     }
     
-    var feedbackCount: Int = 0
+    var feedbackCount = Int.zero
 
     var was = (mouseSpare: false, modifiers: false)
     
     
     // MARK: - Animations
     
-    var lastOriginXs = (b: 0.0, t: 0.0)
+    var lastOriginXs = (b: CGFloat.zero, t: CGFloat.zero)
 
     var lastFlags = (b: false, t: false)
 
@@ -99,7 +103,9 @@ class StatusBarController {
 
     
 
-    var shouldTimersStop: (flag: Bool, count: Int) = (flag: false, count: 0)
+    var shouldTimersStop = (flag: false, count: Int.zero)
+    
+    var draggedToUncollapse = (dragging: false, shouldCollapse: false, shouldEnableAnimation: false, count: Int(0))
 
     var maxLength: CGFloat {
         return Helper.Screen.maxWidth ?? 10000 // To cover all possible screens
@@ -201,6 +207,9 @@ class StatusBarController {
         startActionTimer()
         
         startTriggerTimer()
+        
+        draggedToUncollapse.shouldCollapse = Data.collapsed
+        draggedToUncollapse.shouldEnableAnimation = !Data.reduceAnimation
     }
     
     deinit {

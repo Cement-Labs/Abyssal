@@ -112,6 +112,50 @@ extension StatusBarController {
                 
                 strongSelf.checkIdleStates()
                 
+                // Update dragging state
+                
+                if strongSelf.draggedToUncollapse.dragging && !strongSelf.mouseDragging {
+                    strongSelf.draggedToUncollapse.dragging = false
+                    
+                    if strongSelf.draggedToUncollapse.shouldCollapse {
+                        strongSelf.collapse()
+                    }
+                    
+                    if strongSelf.draggedToUncollapse.shouldEnableAnimation {
+                        Data.reduceAnimation = false
+                    }
+                    
+                    strongSelf.unidleAlwaysHideArea()
+                    strongSelf.startAnimationTimer()
+                }
+                
+                else if strongSelf.mouseDragging && !strongSelf.draggedToUncollapse.dragging {
+                    if strongSelf.draggedToUncollapse.count < 3 {
+                        strongSelf.draggedToUncollapse.count += 1
+                    } else {
+                        strongSelf.draggedToUncollapse.dragging = true
+                        strongSelf.draggedToUncollapse.shouldCollapse = Data.collapsed
+                        strongSelf.draggedToUncollapse.count = 0
+                        
+                        if Data.collapsed {
+                            strongSelf.draggedToUncollapse.shouldCollapse = true
+                            strongSelf.uncollapse()
+                        } else {
+                            strongSelf.draggedToUncollapse.shouldCollapse = false
+                        }
+                        
+                        if !Data.reduceAnimation {
+                            strongSelf.draggedToUncollapse.shouldEnableAnimation = true
+                            Data.reduceAnimation = true
+                        } else {
+                            strongSelf.draggedToUncollapse.shouldEnableAnimation = false
+                        }
+                        
+                        strongSelf.idleAlwaysHideArea()
+                        strongSelf.startAnimationTimer()
+                    }
+                }
+                
                 // Update edge
                 if strongSelf.shouldEdgeUpdate.will {
                     strongSelf.shouldEdgeUpdate.now = true
@@ -146,7 +190,7 @@ extension StatusBarController {
                     }
                 }
                 
-                if keyNeedsUpdate || Helper.Mouse.dragging {
+                if keyNeedsUpdate || strongSelf.mouseDragging {
                     // Key pressed || mouse dragging -> sort separators and map appearances
                     strongSelf.sort()
                     strongSelf.map()
