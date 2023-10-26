@@ -11,14 +11,6 @@ class StatusBarController {
     
     // MARK: - States
     
-    var edge = CGFloat.zero
-    
-    var idling = (hide: false, alwaysHide: false)
-    
-    var ignoring = false
-    
-    
-    
     var mouseOnStatusBar: Bool {
         guard let origin = head.button?.window?.frame.origin else { return false }
         return NSEvent.mouseLocation.x >= Helper.menuBarLeftEdge && NSEvent.mouseLocation.y >= origin.y
@@ -70,36 +62,41 @@ class StatusBarController {
         Helper.Mouse.dragging && mouseOnStatusBar
     }
     
-    
-    
-    var timeout = false
-
-    var shouldEdgeUpdate = (now: false, will: false)
-
     var shouldPresentFeedback: Bool {
         return !timeout && Helper.Mouse.none
     }
     
-    var feedbackCount = Int.zero
-
-    var was = (mouseSpare: false, modifiers: false)
-    
-    
-    // MARK: - Animations
-
-    var mouseWasSpareOrUnidled = false
-
-    var shouldTimersStop = (flag: false, count: Int.zero)
-    
-    var draggedToUncollapse = (dragging: false, shouldCollapse: false, shouldEnableAnimation: false, count: Int(0))
-
     var maxLength: CGFloat {
         return Helper.Screen.maxWidth ?? 10000 // To cover all possible screens
     }
-
+    
     var popoverShown: Bool {
         return Helper.delegate?.popover.isShown ?? false
     }
+    
+    
+    
+    var edge = CGFloat.zero
+    
+    var shouldEdgeUpdate = (now: false, will: false)
+    
+    var idling = (hide: false, alwaysHide: false)
+    
+    var ignoring = false
+    
+    var timeout = false
+    
+    
+    
+    var feedbackCount = Int.zero
+    
+    var shouldTimersStop = (flag: false, count: Int.zero)
+
+    var mouseWasSpareOrUnidled = false
+    
+    var was = (mouseSpare: false, modifiers: false)
+    
+    var draggedToUncollapse = (dragging: false, shouldCollapse: false, shouldEnableAnimation: false, count: Int.zero)
     
     
     

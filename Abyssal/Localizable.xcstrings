@@ -1,45 +1,16 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "【=◈︿◈=】" : {
-      "comment" : "name for theme 'TheFace'"
-    },
-    "Abyssal" : {
-      "comment" : "name for theme 'Abyssal'",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "深渊"
-          }
-        }
-      }
-    },
-    "Approaching" : {
-      "comment" : "name for theme 'Approaching'",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "降临"
-          }
-        }
-      }
-    },
-    "Codec" : {
-      "comment" : "name for theme 'Codec'",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "调制、解调"
-          }
-        }
-      }
-    },
-    "Disabled" : {
+    "FeedbackIntensity/Disabled" : {
       "comment" : "feedback intensity disabled",
+      "extractionState" : "extracted_with_value",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Disabled"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -48,24 +19,56 @@
         }
       }
     },
-    "Droplets" : {
-      "comment" : "name for theme 'Droplets'",
+    "FeedbackIntensity/Heavy" : {
+      "comment" : "feedback intensity heavy",
+      "extractionState" : "extracted_with_value",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Heavy"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "点与滴 "
+            "value" : "重"
           }
         }
       }
     },
-    "Electrodiagram" : {
-      "comment" : "name for theme 'Electrodiagram'",
+    "FeedbackIntensity/Light" : {
+      "comment" : "feedback intensity light",
+      "extractionState" : "extracted_with_value",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Light"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "心电图"
+            "value" : "轻"
+          }
+        }
+      }
+    },
+    "FeedbackIntensity/Medium" : {
+      "comment" : "feedback intensity medium",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Medium"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "中"
           }
         }
       }
@@ -157,20 +160,106 @@
         }
       }
     },
-    "Heavy" : {
-      "comment" : "feedback intensity heavy",
+    "Theme/Abyssal" : {
+      "comment" : "name for theme 'Abyssal'",
+      "extractionState" : "extracted_with_value",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Abyssal"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "重"
+            "value" : "深渊"
           }
         }
       }
     },
-    "Hidden Bar" : {
-      "comment" : "name for theme 'HiddenBar'",
+    "Theme/Approaching" : {
+      "comment" : "name for theme 'Approaching'",
+      "extractionState" : "extracted_with_value",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Approaching"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "降临"
+          }
+        }
+      }
+    },
+    "Theme/Codec" : {
+      "comment" : "name for theme 'Codec'",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Codec"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "调制、解调"
+          }
+        }
+      }
+    },
+    "Theme/Droplets" : {
+      "comment" : "name for theme 'Droplets'",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Droplets"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "点与滴 "
+          }
+        }
+      }
+    },
+    "Theme/Electrodiagram" : {
+      "comment" : "name for theme 'Electrodiagram'",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Electrodiagram"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "心电图"
+          }
+        }
+      }
+    },
+    "Theme/HiddenBar" : {
+      "comment" : "name for theme 'Hidden Bar'",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Hidden Bar"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -179,34 +268,52 @@
         }
       }
     },
-    "Light" : {
-      "comment" : "feedback intensity light",
+    "Theme/Implication" : {
+      "comment" : "name for theme 'Implication'",
+      "extractionState" : "extracted_with_value",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Implication"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "轻"
+            "value" : "已推导"
           }
         }
       }
     },
-    "macOS" : {
-      "comment" : "name for theme 'macOS'"
-    },
-    "Medium" : {
-      "comment" : "feedback intensity medium",
+    "Theme/MacOS" : {
+      "comment" : "name for theme 'macOS'",
+      "extractionState" : "extracted_with_value",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "macOS"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "中"
+            "value" : "macOS"
           }
         }
       }
     },
-    "Metres Away" : {
-      "comment" : "name for theme 'MetresAway'",
+    "Theme/MetresAway" : {
+      "comment" : "name for theme 'Metres Away'",
+      "extractionState" : "extracted_with_value",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Metres Away"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -215,9 +322,16 @@
         }
       }
     },
-    "Not So Happy" : {
-      "comment" : "name for theme 'NotSoHappy'",
+    "Theme/NotSoHappy" : {
+      "comment" : "name for theme 'Not So Happy'",
+      "extractionState" : "extracted_with_value",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Not So Happy"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -226,9 +340,16 @@
         }
       }
     },
-    "Play Pause" : {
-      "comment" : "name for theme 'PlayPause'",
+    "Theme/PlayPause" : {
+      "comment" : "name for theme 'Play Pause'",
+      "extractionState" : "extracted_with_value",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Play Pause"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -237,13 +358,38 @@
         }
       }
     },
-    "The Implied" : {
-      "comment" : "name for theme 'TheImplied'",
+    "Theme/Quoted" : {
+      "comment" : "name for theme 'Quoted'",
+      "extractionState" : "extracted_with_value",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Quoted"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "已推导"
+            "value" : "引用"
+          }
+        }
+      }
+    },
+    "Theme/TheFace" : {
+      "comment" : "name for theme '【=◈︿◈=】'",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "【=◈︿◈=】"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "【=◈︿◈=】"
           }
         }
       }

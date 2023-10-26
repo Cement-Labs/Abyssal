@@ -8,56 +8,80 @@
 import AppKit
 import LaunchAtLogin
 
-public enum Data {
+struct Data {
     
-    class Keys {
+    enum Key: String {
         
-        static let collapsed = "Collapsed"
-        
-        
-        
-        static let modifiers = "Modifiers"
-        
-        static let timeout = "Timeout"
-        
-        static let tips = "Tips"
+        case collapsed = "Collapsed"
         
         
         
-        static let theme = "Theme"
+        case modifiers = "Modifiers"
         
-        static let feedbackIntensity = "FeedbackIntensity"
+        case timeout = "Timeout"
+        
+        case tips = "Tips"
         
         
         
-        static let autoShows = "AutoShows"
+        case theme = "Theme"
         
-        static let useAlwaysHideArea = "AlwaysHide"
+        case feedbackIntensity = "FeedbackIntensity"
         
-        static let reduceAnimation = "ReduceAnimation"
+        
+        
+        case autoShows = "AutoShows"
+        
+        case useAlwaysHideArea = "AlwaysHide"
+        
+        case reduceAnimation = "ReduceAnimation"
+        
+        func register(
+            _ value: Any
+        ) {
+            UserDefaults.standard.register(defaults: [rawValue: value])
+        }
+        
+        func set(
+            _ value: Any?
+        ) {
+            UserDefaults.standard.set(value, forKey: rawValue)
+        }
+        
+        func array() -> [Any]? {
+            UserDefaults.standard.array(forKey: rawValue)
+        }
+        
+        func bool() -> Bool {
+            UserDefaults.standard.bool(forKey: rawValue)
+        }
+        
+        func integer() -> Int {
+            UserDefaults.standard.integer(forKey: rawValue)
+        }
         
     }
     
     static func registerDefaults() {
-        UserDefaults.standard.register(defaults: [Keys.collapsed: false])
+        Key.collapsed.register(false)
         
-        UserDefaults.standard.register(defaults: [Keys.modifiers: [false, true, true]])
-        UserDefaults.standard.register(defaults: [Keys.timeout: 3])
-        UserDefaults.standard.register(defaults: [Keys.tips: true])
+        Key.modifiers.register([false, true, true])
+        Key.timeout.register(3)
+        Key.tips.register(true)
 
-        UserDefaults.standard.register(defaults: [Keys.theme: Themes.abyssal.name])
-        UserDefaults.standard.register(defaults: [Keys.feedbackIntensity: 0])
+        Key.theme.register(Themes.abyssal.name)
+        Key.feedbackIntensity.register(0)
         
-        UserDefaults.standard.register(defaults: [Keys.autoShows: true])
-        UserDefaults.standard.register(defaults: [Keys.useAlwaysHideArea: true])
-        UserDefaults.standard.register(defaults: [Keys.reduceAnimation: false])
+        Key.autoShows.register(true)
+        Key.useAlwaysHideArea.register(true)
+        Key.reduceAnimation.register(false)
     }
     
     static var modifiers: (control: Bool, option: Bool, command: Bool) {
         get {
             let defaultTuple = (control: false, option: true, command: true)
             
-            if let array = UserDefaults.standard.array(forKey: Keys.modifiers) as? [Bool] {
+            if let array = Key.modifiers.array() as? [Bool] {
                 guard array.count == Mirror(reflecting: defaultTuple).children.count
                 else {
                     return defaultTuple
@@ -70,23 +94,17 @@ public enum Data {
         }
         
         set(modifiers) {
-            UserDefaults.standard.set(
-                [modifiers.control, modifiers.option, modifiers.command],
-                forKey: Keys.modifiers
-            )
+            Key.modifiers.set([modifiers.control, modifiers.option, modifiers.command])
         }
     }
     
     static var timeout: Int {
         get {
-            return UserDefaults.standard.integer(forKey: Keys.timeout)
+            Key.timeout.integer()
         }
         
         set(timeout) {
-            UserDefaults.standard.set(
-                timeout,
-                forKey: Keys.timeout
-            )
+            Key.timeout.set(timeout)
         }
     }
     
@@ -95,37 +113,69 @@ public enum Data {
     static var timeoutAttribute: (attr: Int?, label: String) {
         switch timeout {
         case 0:
-            return (attr: 5, label: Helper.FormattedTime.inSeconds(5))
+            return (
+                attr: 5,
+                label: Localizations.FormattedTime.inSeconds(5)
+            )
         case 1:
-            return (attr: 10, label: Helper.FormattedTime.inSeconds(10))
+            return (
+                attr: 10, 
+                label: Localizations.FormattedTime.inSeconds(10)
+            )
         case 2:
-            return (attr: 15, label: Helper.FormattedTime.inSeconds(15))
+            return (
+                attr: 15, 
+                label: Localizations.FormattedTime.inSeconds(15)
+            )
         case 3:
-            return (attr: 30, label: Helper.FormattedTime.inSeconds(30))
+            return (
+                attr: 30, 
+                label: Localizations.FormattedTime.inSeconds(30)
+            )
         case 4:
-            return (attr: 45, label: Helper.FormattedTime.inSeconds(45))
+            return (
+                attr: 45, 
+                label: Localizations.FormattedTime.inSeconds(45)
+            )
         case 5:
-            return (attr: 60, label: Helper.FormattedTime.inMinutes(1))
+            return (
+                attr: 60, 
+                label: Localizations.FormattedTime.inMinutes(1)
+            )
         case 6:
-            return (attr: 60 * 2, label: Helper.FormattedTime.inMinutes(2))
+            return (
+                attr: 60 * 2, 
+                label: Localizations.FormattedTime.inMinutes(2)
+            )
         case 7:
-            return (attr: 60 * 3, label: Helper.FormattedTime.inMinutes(3))
+            return (
+                attr: 60 * 3, 
+                label: Localizations.FormattedTime.inMinutes(3)
+            )
         case 8:
-            return (attr: 60 * 5, label: Helper.FormattedTime.inMinutes(5))
+            return (
+                attr: 60 * 5, 
+                label: Localizations.FormattedTime.inMinutes(5)
+            )
         case 9:
-            return (attr: 60 * 10, label: Helper.FormattedTime.inMinutes(10))
+            return (
+                attr: 60 * 10, 
+                label: Localizations.FormattedTime.inMinutes(10)
+            )
         default:
-            return (attr: nil, label: Helper.FormattedTime.FOREVER)
+            return (
+                attr: nil,
+                label: Localizations.FormattedTime.forever)
         }
     }
     
     static var tips: Bool {
         get {
-            return UserDefaults.standard.bool(forKey: Keys.tips)
+            Key.tips.bool()
         }
         
         set(flag) {
-            UserDefaults.standard.set(flag, forKey: Keys.tips)
+            Key.tips.set(flag)
         }
     }
     
@@ -133,7 +183,7 @@ public enum Data {
     
     static var theme: Theme {
         get {
-            let index = UserDefaults.standard.integer(forKey: Keys.theme)
+            let index = Key.theme.integer()
             
             guard index < Themes.themes.count else {
                 return Themes.defaultTheme
@@ -143,10 +193,7 @@ public enum Data {
         }
         
         set(theme) {
-            UserDefaults.standard.set(
-                Themes.themes.firstIndex(of: theme),
-                forKey: Keys.theme
-            )
+            Key.theme.set(Themes.themes.firstIndex(of: theme))
         }
     }
     
@@ -154,11 +201,11 @@ public enum Data {
     
     static var feedbackIntensity: Int {
         get {
-            return UserDefaults.standard.integer(forKey: Keys.feedbackIntensity)
+            Key.feedbackIntensity.integer()
         }
         
         set(intensity) {
-            UserDefaults.standard.set(intensity, forKey: Keys.feedbackIntensity)
+            Key.feedbackIntensity.set(intensity)
         }
     }
     
@@ -169,22 +216,22 @@ public enum Data {
         case 1:
             return (
                 feedback: [.levelChange],
-                label: String(localized: "Light", comment: "feedback intensity light")
+                label: Localizations.FeedbackIntensity.light
             )
         case 2:
             return (
                 feedback: [.generic, nil, .alignment],
-                label: String(localized: "Medium", comment: "feedback intensity medium")
+                label: Localizations.FeedbackIntensity.medium
             )
         case 3:
             return (
                 feedback: [.levelChange, .alignment, .alignment, nil, nil, nil, .levelChange],
-                label: String(localized: "Heavy", comment: "feedback intensity heavy")
+                label: Localizations.FeedbackIntensity.heavy
             )
         default:
             return (
                 feedback: [],
-                label: String(localized: "Disabled", comment: "feedback intensity disabled")
+                label: Localizations.FeedbackIntensity.disabled
             )
         }
     }
@@ -193,11 +240,11 @@ public enum Data {
     
     static var collapsed: Bool {
         get {
-            return UserDefaults.standard.bool(forKey: Keys.collapsed)
+            Key.collapsed.bool()
         }
         
         set(flag) {
-            UserDefaults.standard.set(flag, forKey: Keys.collapsed)
+            Key.collapsed.set(flag)
         }
     }
     
@@ -205,27 +252,27 @@ public enum Data {
     
     static var autoShows: Bool {
         get {
-            return UserDefaults.standard.bool(forKey: Keys.autoShows)
+            Key.autoShows.bool()
         }
         
         set(flag) {
-            UserDefaults.standard.set(flag, forKey: Keys.autoShows)
+            Key.autoShows.set(flag)
         }
     }
     
     static var useAlwaysHideArea: Bool {
         get {
-            return UserDefaults.standard.bool(forKey: Keys.useAlwaysHideArea)
+            Key.useAlwaysHideArea.bool()
         }
         
         set(flag) {
-            UserDefaults.standard.set(flag, forKey: Keys.useAlwaysHideArea)
+            Key.useAlwaysHideArea.set(flag)
         }
     }
     
     static var startsWithMacos: Bool {
         get {
-            return LaunchAtLogin.isEnabled
+            LaunchAtLogin.isEnabled
         }
         
         set(flag) {
@@ -235,11 +282,11 @@ public enum Data {
     
     static var reduceAnimation: Bool {
         get {
-            return UserDefaults.standard.bool(forKey: Keys.reduceAnimation)
+            Key.reduceAnimation.bool()
         }
         
         set(flag) {
-            UserDefaults.standard.set(flag, forKey: Keys.reduceAnimation)
+            Key.reduceAnimation.set(flag)
         }
     }
     

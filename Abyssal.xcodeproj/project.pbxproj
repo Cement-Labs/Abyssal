@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		282D880A2AD58BEA0015111C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C66CABA72A38871500E4D8E6 /* Assets.xcassets */; };
 		2838D6B22AD842DB0087A5DE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2838D6B12AD842DB0087A5DE /* Colors.swift */; };
+		283ADC422AEA791C00C06146 /* Localizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283ADC412AEA791C00C06146 /* Localizations.swift */; };
 		2852BDE72AD957B100AA8AD1 /* FillOnHoverBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2852BDE62AD957B100AA8AD1 /* FillOnHoverBox.swift */; };
 		2852BDE92AD97A0E00AA8AD1 /* NSSlider+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2852BDE82AD97A0E00AA8AD1 /* NSSlider+Extension.swift */; };
 		2852BDEB2AD97AEC00AA8AD1 /* Tips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2852BDEA2AD97AEC00AA8AD1 /* Tips.swift */; };
@@ -27,12 +28,13 @@
 		C6DEC5312A39EE0A00943448 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DEC5302A39EE0A00943448 /* Data.swift */; };
 		C6DEC5332A3A048B00943448 /* NSSwitch+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DEC5322A3A048B00943448 /* NSSwitch+Extension.swift */; };
 		C6DEC5352A3A052700943448 /* NSButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DEC5342A3A052700943448 /* NSButton+Extension.swift */; };
-		C6DEC53D2A3A0E8900943448 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DEC53C2A3A0E8900943448 /* Animations.swift */; };
-		C6E2C0302A3EE9F1007D4E1B /* StateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E2C02F2A3EE9F1007D4E1B /* StateManager.swift */; };
+		C6DEC53D2A3A0E8900943448 /* StatusBarController+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DEC53C2A3A0E8900943448 /* StatusBarController+Animations.swift */; };
+		C6E2C0302A3EE9F1007D4E1B /* StatusBarController+StateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E2C02F2A3EE9F1007D4E1B /* StatusBarController+StateManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2838D6B12AD842DB0087A5DE /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		283ADC412AEA791C00C06146 /* Localizations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizations.swift; sourceTree = "<group>"; };
 		2852BDE62AD957B100AA8AD1 /* FillOnHoverBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillOnHoverBox.swift; sourceTree = "<group>"; };
 		2852BDE82AD97A0E00AA8AD1 /* NSSlider+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSlider+Extension.swift"; sourceTree = "<group>"; };
 		2852BDEA2AD97AEC00AA8AD1 /* Tips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tips.swift; sourceTree = "<group>"; };
@@ -54,8 +56,8 @@
 		C6DEC5302A39EE0A00943448 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		C6DEC5322A3A048B00943448 /* NSSwitch+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSwitch+Extension.swift"; sourceTree = "<group>"; };
 		C6DEC5342A3A052700943448 /* NSButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSButton+Extension.swift"; sourceTree = "<group>"; };
-		C6DEC53C2A3A0E8900943448 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
-		C6E2C02F2A3EE9F1007D4E1B /* StateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateManager.swift; sourceTree = "<group>"; };
+		C6DEC53C2A3A0E8900943448 /* StatusBarController+Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatusBarController+Animations.swift"; sourceTree = "<group>"; };
+		C6E2C02F2A3EE9F1007D4E1B /* StatusBarController+StateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatusBarController+StateManager.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,9 +84,9 @@
 		28ACE7852AE948EF00DC8C1A /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				C6DEC53C2A3A0E8900943448 /* Animations.swift */,
+				C6DEC53C2A3A0E8900943448 /* StatusBarController+Animations.swift */,
 				C6DEC5292A38BF6C00943448 /* StatusBarController.swift */,
-				C6E2C02F2A3EE9F1007D4E1B /* StateManager.swift */,
+				C6E2C02F2A3EE9F1007D4E1B /* StatusBarController+StateManager.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -157,6 +159,7 @@
 				C6DEC52B2A38CDE500943448 /* Helper.swift */,
 				C6DEC5302A39EE0A00943448 /* Data.swift */,
 				2838D6B12AD842DB0087A5DE /* Colors.swift */,
+				283ADC412AEA791C00C06146 /* Localizations.swift */,
 			);
 			path = Infrastructures;
 			sourceTree = "<group>";
@@ -251,15 +254,16 @@
 			files = (
 				2852BDE72AD957B100AA8AD1 /* FillOnHoverBox.swift in Sources */,
 				C6B3E79B2A3D83C400B650BC /* NSRect+Extension.swift in Sources */,
-				C6DEC53D2A3A0E8900943448 /* Animations.swift in Sources */,
+				C6DEC53D2A3A0E8900943448 /* StatusBarController+Animations.swift in Sources */,
 				C6DEC5312A39EE0A00943448 /* Data.swift in Sources */,
 				2838D6B22AD842DB0087A5DE /* Colors.swift in Sources */,
 				C66CABB72A389F2500E4D8E6 /* EventMonitor.swift in Sources */,
 				C6DEC52A2A38BF6C00943448 /* StatusBarController.swift in Sources */,
 				C6DEC52C2A38CDE500943448 /* Helper.swift in Sources */,
+				283ADC422AEA791C00C06146 /* Localizations.swift in Sources */,
 				C63B40532A4060E400BCAE79 /* NSStatusItem+Extension.swift in Sources */,
 				C66CABB32A388FBD00E4D8E6 /* MenuController.swift in Sources */,
-				C6E2C0302A3EE9F1007D4E1B /* StateManager.swift in Sources */,
+				C6E2C0302A3EE9F1007D4E1B /* StatusBarController+StateManager.swift in Sources */,
 				2852BDEB2AD97AEC00AA8AD1 /* Tips.swift in Sources */,
 				C6CDD0622A3F2F9000ED97F0 /* Themes.swift in Sources */,
 				C66CABA42A38871500E4D8E6 /* AppDelegate.swift in Sources */,

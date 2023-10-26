@@ -10,9 +10,9 @@ import AppKit
 
 class Theme: Equatable {
     
-    let name: String
-    
     let identifier: String
+    
+    let name: String
     
     let icon: NSImage
     
@@ -35,14 +35,25 @@ class Theme: Equatable {
     let autoHideIcons: 	    Bool
     
     init(
-        _ name: String,
         _ identifier: String,
+        _ name: String,
         icon: String? = nil, _ iconUseSystemImage: Bool = false,
         
-        headUncollapsed: 	String,         _ headUncollapsedUseSystemImage: Bool = false,
-        headCollapsed: 		String? = nil,  _ headCollapsedUseSystemImage: Bool = false,
-        body: 			    String,         _ bodyUseSystemImage: Bool = false,
-        tail: 				String,         _ tailUseSystemImage: Bool = false,
+        headUncollapsed: String,
+        _ headUncollapsedUseSystemImage: Bool = false,
+        _ headUncollapsedSymbolConfiguration: NSImage.SymbolConfiguration? = nil,
+        
+        headCollapsed: String? = nil,
+        _ headCollapsedUseSystemImage: Bool = false,
+        _ headCollapsedSymbolConfiguration: NSImage.SymbolConfiguration? = nil,
+        
+        body: String,
+        _ bodyUseSystemImage: Bool = false,
+        _ bodySymbolConfiguration: NSImage.SymbolConfiguration? = nil,
+        
+        tail: String,
+        _ tailUseSystemImage: Bool = false,
+        _ tailSymbolConfiguration: NSImage.SymbolConfiguration? = nil,
         
         iconWidth:		    CGFloat,
         iconWidthExpanded:  CGFloat,
@@ -50,17 +61,33 @@ class Theme: Equatable {
     ) {
         let prefix = "Themes/\(identifier)/"
         
-        self.name = name
         self.identifier = identifier
+        self.name = name
         
-        self.headUncollapsed 	= Theme.processImageName(prefix, headUncollapsed, useSystemImage: headUncollapsedUseSystemImage)!
-        self.headCollapsed 		= Theme.processImageName(
+        self.headUncollapsed = Theme.processImageName(
+            prefix,
+            headUncollapsed,
+            useSystemImage: headUncollapsedUseSystemImage,
+            headUncollapsedSymbolConfiguration
+        )!
+        self.headCollapsed = Theme.processImageName(
             prefix,
             headCollapsed ?? headUncollapsed,
-            useSystemImage: headCollapsed != nil ? headCollapsedUseSystemImage : headUncollapsedUseSystemImage
+            useSystemImage: headCollapsed != nil ? headCollapsedUseSystemImage : headUncollapsedUseSystemImage,
+            headCollapsed != nil ? headCollapsedSymbolConfiguration : headUncollapsedSymbolConfiguration
         )!
-        self.body 			    = Theme.processImageName(prefix, body, useSystemImage: bodyUseSystemImage)!
-        self.tail 				= Theme.processImageName(prefix, tail, useSystemImage: tailUseSystemImage)!
+        self.body = Theme.processImageName(
+            prefix,
+            body,
+            useSystemImage: bodyUseSystemImage,
+            bodySymbolConfiguration
+        )!
+        self.tail = Theme.processImageName(
+            prefix,
+            tail,
+            useSystemImage: tailUseSystemImage,
+            tailSymbolConfiguration
+        )!
         
         self.iconWidth 		    = iconWidth
         self.iconWidthExpanded 	= iconWidthExpanded
@@ -68,7 +95,7 @@ class Theme: Equatable {
         
         self.icon = Theme.processImageName(
             prefix,
-            icon ?? headUncollapsed, 
+            icon ?? headUncollapsed,
             useSystemImage: icon != nil ? iconUseSystemImage : headUncollapsedUseSystemImage
         )!
     }
@@ -76,12 +103,19 @@ class Theme: Equatable {
     private static func processImageName(
         _ prefix: String,
         _ name: String?,
-        useSystemImage: Bool = false
+        useSystemImage: Bool = false,
+        _ symbolConfiguration: NSImage.SymbolConfiguration? = nil
     ) -> NSImage? {
         guard name != nil else { return nil }
         
         if useSystemImage {
-            return NSImage(systemSymbolName: name!, accessibilityDescription: nil)
+            let image = NSImage(systemSymbolName: name!, accessibilityDescription: nil)
+            
+            if let symbolConfiguration {
+                return image?.withSymbolConfiguration(symbolConfiguration)
+            } else {
+                return image
+            }
         }
         
         return NSImage(named: NSImage.Name(prefix + name!))
@@ -111,7 +145,8 @@ class Themes {
             playPause,
             theFace,
             theImplied,
-            macOS
+            macOS,
+            quoted
         ].sorted(by: { $0.identifier < $1.identifier })
     }
     
@@ -128,10 +163,8 @@ class Themes {
 extension Themes {
     
     static let abyssal = Theme(
-        String(
-            localized: 	"Abyssal",
-            comment: 	"name for theme 'Abyssal'"
-        ), "Abyssal", icon: "DottedLine",
+        "Abyssal", NSLocalizedString("Theme/Abyssal", value: "Abyssal", comment: "name for theme 'Abyssal'"),
+        icon:               "DottedLine",
         headUncollapsed: 	"Dot",
         body: 			    "Line",
         tail: 				"DottedLine",
@@ -141,10 +174,7 @@ extension Themes {
     )
     
     static let hiddenBar = Theme(
-        String(
-            localized: 	"Hidden Bar",
-            comment: 	"name for theme 'HiddenBar'"
-        ), "HiddenBar",
+        "HiddenBar", NSLocalizedString("Theme/HiddenBar", value: "Hidden Bar", comment: "name for theme 'Hidden Bar'"),
         headUncollapsed: 	"ic_left",
         headCollapsed: 		"ic_right",
         body: 			    "ic_line",
@@ -155,10 +185,7 @@ extension Themes {
     )
     
     static let approaching = Theme(
-        String(
-            localized: 	"Approaching",
-            comment: 	"name for theme 'Approaching'"
-        ), "Approaching",
+        "Approaching", NSLocalizedString("Theme/Approaching", value: "Approaching", comment: "name for theme 'Approaching'"),
         headUncollapsed: 	"Primary",
         body: 			    "Secondary",
         tail: 				"Tertiary",
@@ -168,10 +195,7 @@ extension Themes {
     )
     
     static let metresAway = Theme(
-        String(
-            localized: 	"Metres Away",
-            comment: 	"name for theme 'MetresAway'"
-        ), "MetresAway",
+        "MetresAway", NSLocalizedString("Theme/MetresAway", value: "Metres Away", comment: "name for theme 'Metres Away'"),
         headUncollapsed: 	"Line",
         body: 			    "MetreLine",
         tail: 				"MetreLine",
@@ -181,10 +205,7 @@ extension Themes {
     )
     
     static let electrodiagram = Theme(
-        String(
-            localized: 	"Electrodiagram",
-            comment: 	"name for theme 'Electrodiagram'"
-        ), "Electrodiagram",
+        "Electrodiagram", NSLocalizedString("Theme/Electrodiagram", value: "Electrodiagram", comment: "name for theme 'Electrodiagram'"),
         headUncollapsed: 	"DiagramHead",
         body: 			    "Diagram",
         tail: 				"DiagramTail",
@@ -194,10 +215,7 @@ extension Themes {
     )
     
     static let droplets = Theme(
-        String(
-            localized: 	"Droplets",
-            comment: 	"name for theme 'Droplets'"
-        ), "Droplets",
+        "Droplets", NSLocalizedString("Theme/Droplets", value: "Droplets", comment: "name for theme 'Droplets'"),
         headUncollapsed: 	"Drops",
         body: 			    "LDrop",
         tail: 				"MDrop",
@@ -207,24 +225,18 @@ extension Themes {
     )
     
     static let codec = Theme(
-        String(
-            localized: 	"Codec",
-            comment: 	"name for theme 'Codec'"
-        ), "Codec",
+        "Codec", NSLocalizedString("Theme/Codec", value: "Codec", comment: "name for theme 'Codec'"),
         headUncollapsed: 	"curlybraces", true,
-        headCollapsed:      "ellipsis.curlybraces", true,
-        body: 			    "sum", true,
-        tail: 				"plus", true,
+        headCollapsed:      "ellipsis.curlybraces", true, .preferringHierarchical(),
+        body: 			    "ellipsis", true,
+        tail: 				"ellipsis", true,
         
-        iconWidth: 12, iconWidthExpanded: 24,
+        iconWidth: 16, iconWidthExpanded: 24,
         autoHideIcons: false
     )
     
     static let notSoHappy = Theme(
-        String(
-            localized: 	"Not So Happy",
-            comment: 	"name for theme 'NotSoHappy'"
-        ), "NotSoHappy",
+        "NotSoHappy", NSLocalizedString("Theme/NotSoHappy", value: "Not So Happy", comment: "name for theme 'Not So Happy'"),
         headUncollapsed: 	"Sad",
         headCollapsed: 		"Happy",
         body: 			    "Pale",
@@ -235,10 +247,7 @@ extension Themes {
     )
     
     static let playPause = Theme(
-        String(
-            localized:  "Play Pause",
-            comment:    "name for theme 'PlayPause'"
-        ), "PlayPause",
+        "PlayPause", NSLocalizedString("Theme/PlayPause", value: "Play Pause", comment: "name for theme 'Play Pause'"),
         headUncollapsed:    "play.fill", true,
         headCollapsed:      "pause.fill", true,
         body:               "stop.fill", true,
@@ -248,10 +257,8 @@ extension Themes {
     )
     
     static let theFace = Theme(
-        String(
-            localized:  "【=◈︿◈=】",
-            comment:    "name for theme 'TheFace'"
-        ), "TheFace", icon: "lines.measurement.horizontal", true,
+        "TheFace", NSLocalizedString("Theme/TheFace", value: "【=◈︿◈=】", comment: "name for theme '【=◈︿◈=】'"),
+        icon:               "lines.measurement.horizontal", true,
         headUncollapsed:    "Face",
         body:               "lines.measurement.horizontal", true,
         tail:               "lines.measurement.horizontal", true,
@@ -260,10 +267,8 @@ extension Themes {
     )
     
     static let theImplied = Theme(
-        String(
-            localized:  "The Implied",
-            comment:    "name for theme 'TheImplied'"
-        ), "TheImplied", icon: "Therefore",
+        "Implication", NSLocalizedString("Theme/Implication", value: "Implication", comment: "name for theme 'Implication'"),
+        icon:               "Therefore",
         headUncollapsed:    "Implies",
         body:               "Since",
         tail:               "Therefore",
@@ -272,15 +277,22 @@ extension Themes {
     )
     
     static let macOS = Theme(
-        String(
-            localized:  "macOS",
-            comment:    "name for theme 'macOS'"
-        ), "macOS", icon: "apple.logo", true,
-        headUncollapsed:    "chevron.compact.left", true,
-        headCollapsed:      "chevron.compact.right", true,
-        body:               "chevron.backward.2", true,
-        tail:               "chevron.backward.2", true,
-        iconWidth: 12, iconWidthExpanded: 20,
+        "macOS", NSLocalizedString("Theme/MacOS", value: "macOS", comment: "name for theme 'macOS'"),
+        icon:               "apple.logo", true,
+        headUncollapsed:    "chevron.backward.2", true,
+        headCollapsed:      "chevron.forward.2", true,
+        body:               "chevron.backward", true,
+        tail:               "poweron", true,
+        iconWidth: 20, iconWidthExpanded: 20,
+        autoHideIcons: false
+    )
+    
+    static let quoted = Theme(
+        "macOS", NSLocalizedString("Theme/Quoted", value: "Quoted", comment: "name for theme 'Quoted'"),
+        headUncollapsed:    "quote.closing", true,
+        body:               "quote.opening", true,
+        tail:               "quote.closing", true,
+        iconWidth: 16, iconWidthExpanded: 32,
         autoHideIcons: false
     )
     

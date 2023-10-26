@@ -9,7 +9,7 @@ import Foundation
 import ApplicationServices
 import AppKit
 
-class Helper {
+struct Helper {
     
     static let repoPath: String = "NNN-Studio/Abyssal"
     
@@ -160,36 +160,7 @@ class Helper {
         return .orderedSame
     }
     
-    class FormattedTime {
-        
-        static let SECOND = NSLocalizedString("FormattedTime/Seconds", value: "%lld seconds", comment: "(int) + seconds")
-        
-        static let MINUTE = NSLocalizedString("FormattedTime/Minutes", value: "%lld minutes", comment: "(int) + minutes")
-        
-        static let FOREVER = NSLocalizedString("FormattedTime/Forever", value: "Forever", comment: "forever")
-        
-        static func orElseForever(
-            _ number: Any?,
-            unit: String
-        ) -> String {
-            if let number = number as? Int {
-                String(format: unit, number)
-            } else {
-                FOREVER
-            }
-        }
-        
-        static func inSeconds(_ number: Any?) -> String {
-            orElseForever(number, unit: SECOND)
-        }
-        
-        static func inMinutes(_ number: Any?) -> String {
-            orElseForever(number, unit: MINUTE)
-        }
-        
-    }
-    
-    class Screen {
+    struct Screen {
         
         static var frame: NSRect? {
             NSScreen.main?.frame
@@ -238,7 +209,7 @@ class Helper {
         
     }
     
-    class Keyboard {
+    struct Keyboard {
         
         static var shift: Bool {
             NSEvent.modifierFlags.contains(.shift)
@@ -264,7 +235,7 @@ class Helper {
         
     }
     
-    class Mouse {
+    struct Mouse {
         
         static var none: Bool {
             NSEvent.pressedMouseButtons == 0;
