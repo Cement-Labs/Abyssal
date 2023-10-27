@@ -92,7 +92,7 @@ class MenuController: NSViewController, NSMenuDelegate {
     }
     
     override func viewDidAppear() {
-        Helper.checkNewVersionsTask.resume()
+        VersionHelper.checkNewVersionsTask.resume()
         Helper.delegate?.statusBarController.startFunctionalTimers()
     }
     
@@ -109,7 +109,7 @@ extension MenuController {
     // MARK: - Storyboard Instantiation
     
     static func freshController() -> MenuController {
-        Helper.checkNewVersionsTask.resume()
+        VersionHelper.checkNewVersionsTask.resume()
         
         let storyboard = NSStoryboard(
             name: NSStoryboard.Name("Main"),
@@ -147,7 +147,7 @@ extension MenuController {
             buttonAppVersion: (
                 tip: Tip(
                     tipString: {
-                        !Helper.versionComponent.needsUpdate ? nil : NSLocalizedString("Tip/ButtonAppVersion", value: """
+                        !VersionHelper.versionComponent.needsUpdate ? nil : NSLocalizedString("Tip/ButtonAppVersion", value: """
 An update is available, click to access the download page.
 """, comment: "if (update available) -> (button) app version")
                     }, preferredEdge: .minX
@@ -290,9 +290,9 @@ extension MenuController {
     func initData() {
         // Version info
         
-        buttonAppVersion.title = Helper.versionComponent.version
+        buttonAppVersion.title = VersionHelper.versionComponent.version
         
-        if Helper.versionComponent.needsUpdate {
+        if VersionHelper.versionComponent.needsUpdate {
             buttonAppVersion.isEnabled = true
             buttonAppVersion.image = NSImage(systemSymbolName: "shift.fill", accessibilityDescription: nil)
         } else {
@@ -358,7 +358,7 @@ extension MenuController {
     }
     
     func updateColoredWidgets() {
-        if Helper.versionComponent.needsUpdate {
+        if VersionHelper.versionComponent.needsUpdate {
             buttonAppVersion.contentTintColor = Colors.Opaque.accent
         } else {
             buttonAppVersion.contentTintColor = NSColor.tertiaryLabelColor

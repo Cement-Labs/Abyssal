@@ -71,7 +71,7 @@ extension AppDelegate {
             return
         }
         
-        if Helper.Keyboard.option {
+        if KeyboardHelper.option {
             togglePopover(sender)
         } else {
             if let event = NSApp.currentEvent, event.type == .rightMouseUp {

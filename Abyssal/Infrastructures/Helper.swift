@@ -13,72 +13,15 @@ struct Helper {
     
     static let repoPath: String = "NNN-Studio/Abyssal"
     
-    static let urlSourceCode: URL 	= URL(string: "https://github.com/\(repoPath)")!
+    static let urlSourceCode: URL     = URL(string: "https://github.com/\(repoPath)")!
     
-    static let urlRelease: URL 		= URL(string: "https://github.com/\(repoPath)/releases")!
+    static let urlRelease: URL         = URL(string: "https://github.com/\(repoPath)/releases")!
     
-    static let urlReleaseTags: URL 	= URL(string: "https://api.github.com/repos/\(repoPath)/tags")!
-    
-    static let checkNewVersionsTask = URLSession.shared.dataTask(with: urlReleaseTags) { (data, response, error) in
-        guard let data = data else { return }
-        
-        do {
-            if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] {
-                let tags = json.sorted { (v1, v2) -> Bool in
-                    let name1 = v1["name"] as? String ?? ""
-                    let name2 = v2["name"] as? String ?? ""
-                    
-                    return name2.compare(name1, options: .numeric) == .orderedAscending
-                }
-                
-                if let latestTag = tags.first?["name"] as? String {
-                    Helper.latestTag = latestTag
-                }
-            }
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
+    static let urlReleaseTags: URL     = URL(string: "https://api.github.com/repos/\(repoPath)/tags")!
     
     static var lerpRatio: CGFloat {
         let baseValue = 0.42
-        return baseValue * (Helper.Keyboard.shift ? 0.25 : 1) // Slow down when shift key is down
-    }
-    
-    static var version: String? {
-        Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
-    }
-    
-    private static var _latestTag: String = ""
-    
-    static var latestTag: String {
-        get {
-            _latestTag
-        }
-        
-        set(version) {
-            let regex = /\d+\.\d+\.\d+/
-            let nsVersion = version
-            
-            if let match = nsVersion.firstMatch(of: regex) {
-                Helper._latestTag = String(match.output)
-            }
-        }
-    }
-    
-    static var versionComponent: (needsUpdate: Bool, version: String) {
-        if let version = version {
-            switch compareVersions(version, latestTag) {
-            case .orderedAscending:
-                // Needs an update
-                return (true, latestTag)
-            default:
-                return (false, version)
-            }
-        } else {
-            debugPrint("Version check failed!")
-            return (false, "")
-        }
+        return baseValue * (KeyboardHelper.shift ? 0.25 : 1) // Slow down when shift key is down
     }
     
     static var delegate: AppDelegate? {
@@ -86,9 +29,9 @@ struct Helper {
     }
     
     static var menuBarLeftEdge: CGFloat {
-        guard let width = Screen.maxWidth else { return 0 }
+        guard let width = ScreenHelper.maxWidth else { return 0 }
         
-        if Screen.hasNotch {
+        if ScreenHelper.hasNotch {
             let notchWidth = 250.0
             return width / 2.0 + notchWidth / 2.0
         } else {
@@ -120,6 +63,67 @@ struct Helper {
         
         Helper.delegate?.statusBarController.map()
         Helper.delegate?.statusBarController.startFunctionalTimers()
+    }
+    
+}
+
+struct VersionHelper {
+    
+    static let checkNewVersionsTask = URLSession.shared.dataTask(with: Helper.urlReleaseTags) { (data, response, error) in
+        guard let data = data else { return }
+        
+        do {
+            if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] {
+                let tags = json.sorted { (v1, v2) -> Bool in
+                    let name1 = v1["name"] as? String ?? ""
+                    let name2 = v2["name"] as? String ?? ""
+                    
+                    return name2.compare(name1, options: .numeric) == .orderedAscending
+                }
+                
+                if let latestTag = tags.first?["name"] as? String {
+                    VersionHelper.latestTag = latestTag
+                }
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    static var version: String? {
+        Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+    }
+    
+    private static var _latestTag: String = ""
+    
+    static var latestTag: String {
+        get {
+            _latestTag
+        }
+        
+        set(version) {
+            let regex = /\d+\.\d+\.\d+/
+            let nsVersion = version
+            
+            if let match = nsVersion.firstMatch(of: regex) {
+                VersionHelper._latestTag = String(match.output)
+            }
+        }
+    }
+    
+    static var versionComponent: (needsUpdate: Bool, version: String) {
+        if let version = version {
+            switch compareVersions(version, latestTag) {
+            case .orderedAscending:
+                // Needs an update
+                return (true, latestTag)
+            default:
+                return (false, version)
+            }
+        } else {
+            debugPrint("Version check failed!")
+            return (false, "")
+        }
     }
     
     static func compareVersions(
@@ -160,101 +164,100 @@ struct Helper {
         return .orderedSame
     }
     
-    struct Screen {
-        
-        static var frame: NSRect? {
-            NSScreen.main?.frame
-        }
-        
-        static var hasNotch: Bool {
-            guard #available(macOS 12, *) else { return false }
-            return NSScreen.main?.safeAreaInsets.top != 0
-        }
-        
-        static var width: CGFloat? {
-            NSScreen.main?.frame.size.width ?? nil
-        }
-        
-        static var height: CGFloat? {
-            NSScreen.main?.frame.size.height ?? nil
-        }
-        
-        static var maxWidth: CGFloat? {
-            let screens = NSScreen.screens
-            var maxWidth: CGFloat?
-            
-            for screen in screens {
-                let screenFrame = screen.visibleFrame
-                if maxWidth == nil || screenFrame.size.width > maxWidth ?? 0 {
-                    maxWidth = screenFrame.size.width
-                }
-            }
-            
-            return maxWidth
-        }
-        
-        static var maxHeight: CGFloat? {
-            let screens = NSScreen.screens
-            var maxHeight: CGFloat?
-            
-            for screen in screens {
-                let screenFrame = screen.visibleFrame
-                if maxHeight == nil || screenFrame.size.height > maxHeight ?? 0 {
-                    maxHeight = screenFrame.size.height
-                }
-            }
-            
-            return maxHeight
-        }
-        
+}
+
+struct ScreenHelper {
+    
+    static var frame: NSRect? {
+        NSScreen.main?.frame
     }
     
-    struct Keyboard {
-        
-        static var shift: Bool {
-            NSEvent.modifierFlags.contains(.shift)
-        }
-        
-        static var control: Bool {
-            NSEvent.modifierFlags.contains(.control)
-        }
-        
-        static var option: Bool {
-            NSEvent.modifierFlags.contains(.option)
-        }
-        
-        static var command: Bool {
-            NSEvent.modifierFlags.contains(.command)
-        }
-        
-        static var modifiers: Bool {
-            (Data.modifiers.control && control)
-            || (Data.modifiers.option && option)
-            || (Data.modifiers.command && command)
-        }
-        
+    static var hasNotch: Bool {
+        return NSScreen.main?.safeAreaInsets.top != 0
     }
     
-    struct Mouse {
+    static var width: CGFloat? {
+        NSScreen.main?.frame.size.width ?? nil
+    }
+    
+    static var height: CGFloat? {
+        NSScreen.main?.frame.size.height ?? nil
+    }
+    
+    static var maxWidth: CGFloat? {
+        let screens = NSScreen.screens
+        var maxWidth: CGFloat?
         
-        static var none: Bool {
-            NSEvent.pressedMouseButtons == 0;
+        for screen in screens {
+            let screenFrame = screen.visibleFrame
+            if maxWidth == nil || screenFrame.size.width > maxWidth ?? 0 {
+                maxWidth = screenFrame.size.width
+            }
         }
         
-        static var left: Bool {
-            NSEvent.pressedMouseButtons & 0x1 == 1
+        return maxWidth
+    }
+    
+    static var maxHeight: CGFloat? {
+        let screens = NSScreen.screens
+        var maxHeight: CGFloat?
+        
+        for screen in screens {
+            let screenFrame = screen.visibleFrame
+            if maxHeight == nil || screenFrame.size.height > maxHeight ?? 0 {
+                maxHeight = screenFrame.size.height
+            }
         }
         
-        static var dragging: Bool {
-            Keyboard.command && left
-        }
-        
-        static func inside(
-            _ rect: NSRect?
-        ) -> Bool {
-            rect?.contains(NSEvent.mouseLocation) ?? false
-        }
-        
+        return maxHeight
+    }
+    
+}
+
+struct KeyboardHelper {
+    
+    static var shift: Bool {
+        NSEvent.modifierFlags.contains(.shift)
+    }
+    
+    static var control: Bool {
+        NSEvent.modifierFlags.contains(.control)
+    }
+    
+    static var option: Bool {
+        NSEvent.modifierFlags.contains(.option)
+    }
+    
+    static var command: Bool {
+        NSEvent.modifierFlags.contains(.command)
+    }
+    
+    static var modifiers: Bool {
+        (Data.modifiers.control && control)
+        || (Data.modifiers.option && option)
+        || (Data.modifiers.command && command)
+    }
+    
+}
+
+struct MouseHelper {
+    
+    static var none: Bool {
+        NSEvent.pressedMouseButtons == 0;
+    }
+    
+    static var left: Bool {
+        NSEvent.pressedMouseButtons & 0x1 == 1
+    }
+    
+    static var dragging: Bool {
+        KeyboardHelper.command && left
+    }
+    
+    static func inside(
+        _ rect: NSRect?
+    ) -> Bool {
+        rect?.contains(NSEvent.mouseLocation) ?? false
     }
     
 }

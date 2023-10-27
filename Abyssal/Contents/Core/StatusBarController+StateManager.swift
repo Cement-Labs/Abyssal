@@ -171,9 +171,9 @@ extension StatusBarController {
                 
                 // Update mouse and key
                 let mouseNeedsUpdate = strongSelf.was.mouseSpare != strongSelf.mouseSpare
-                let keyNeedsUpdate = strongSelf.was.modifiers != Helper.Keyboard.modifiers
+                let keyNeedsUpdate = strongSelf.was.modifiers != KeyboardHelper.modifiers
                 
-                if !Helper.Mouse.dragging {
+                if !MouseHelper.dragging {
                     if mouseNeedsUpdate {
                         if strongSelf.mouseSpare {
                             // Mouse entered spare area
@@ -198,7 +198,7 @@ extension StatusBarController {
                 
                 strongSelf.was = (
                     strongSelf.mouseSpare,
-                    Helper.Keyboard.modifiers
+                    KeyboardHelper.modifiers
                 )
             }
         }
@@ -234,7 +234,7 @@ extension StatusBarController {
     }
     
     func startFunctionalTimers() {
-        guard !Helper.Mouse.dragging else { return }
+        guard !MouseHelper.dragging else { return }
         startAnimationTimer()
         startActionTimer()
         
@@ -261,7 +261,7 @@ extension StatusBarController {
                     strongSelf.mouseSpare
                 else { return }
                 
-                if Data.collapsed && strongSelf.mouseInHideArea && !(Helper.Keyboard.command && event?.type == .leftMouseDown) {
+                if Data.collapsed && strongSelf.mouseInHideArea && !(KeyboardHelper.command && event?.type == .leftMouseDown) {
                     strongSelf.idleHideArea()
                 }
                 

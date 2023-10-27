@@ -59,15 +59,15 @@ class StatusBarController {
     }
     
     var mouseDragging: Bool {
-        Helper.Mouse.dragging && mouseOnStatusBar
+        MouseHelper.dragging && mouseOnStatusBar
     }
     
     var shouldPresentFeedback: Bool {
-        return !timeout && Helper.Mouse.none
+        return !timeout && MouseHelper.none
     }
     
     var maxLength: CGFloat {
-        return Helper.Screen.maxWidth ?? 10000 // To cover all possible screens
+        return ScreenHelper.maxWidth ?? 10000 // To cover all possible screens
     }
     
     var popoverShown: Bool {
@@ -122,52 +122,50 @@ class StatusBarController {
     
     // MARK: - Icons
     
-    // Separator instances
+    // Status items
     
-    private static let _sep0 = NSStatusBar.system.statusItem(
+    private static let _item0 = NSStatusBar.system.statusItem(
         withLength: NSStatusItem.variableLength
     )
     
-    private static let _sep1 = NSStatusBar.system.statusItem(
+    private static let _item1 = NSStatusBar.system.statusItem(
         withLength: NSStatusItem.variableLength
     )
     
-    private static let _sep2 = NSStatusBar.system.statusItem(
+    private static let _item2 = NSStatusBar.system.statusItem(
         withLength: NSStatusItem.variableLength
     )
     
-    // Separators list
+    private static var _items = [_item0, _item1, _item2]
     
-    private static var _seps = [_sep0, _sep1, _sep2]
+    // Separators
     
-    // Pointers specifying the separators' positions
+    var head = Separator(order: 2) { StatusBarController._items }
     
-    var head = Separator(order: 2) { StatusBarController._seps }
+    var body = Separator(order: 1) { StatusBarController._items }
     
-    var body = Separator(order: 1) { StatusBarController._seps }
-    
-    var tail = Separator(order: 0) { StatusBarController._seps }
+    var tail = Separator(order: 0) { StatusBarController._items }
     
     // MARK: - Inits
     
     init() {
         // Init separators
         
-        // By default, _sep0 is the most left while _sep2 is the most right.
+        // By default, _item0 is the most left while _item2 is the most right.
         // However this will change to conserve the relative position of the separators.
         sort()
         
-        if let button = StatusBarController._sep0.button {
+        if let button = StatusBarController._item0.button {
             button.action = #selector(AppDelegate.toggle(_:))
             button.sendAction(on: [.leftMouseUp, .rightMouseUp])
         }
         
-        if let button = StatusBarController._sep1.button {
+        if let button = StatusBarController._item1.button {
             button.action = #selector(AppDelegate.toggle(_:))
             button.sendAction(on: [.leftMouseUp, .rightMouseUp])
         }
         
-        if let button = StatusBarController._sep2.button {
+        if let button = StatusBarController._item2.button {
             button.action = #selector(AppDelegate.toggle(_:))
             button.sendAction(on: [.leftMouseUp, .rightMouseUp])
         }
@@ -203,7 +201,7 @@ extension StatusBarController {
     
     func sort() {
         // Make sure the rightmost separator is positioned further back in the array
-        StatusBarController._seps.sort { (first, second) in
+        StatusBarController._items.sort { (first, second) in
             if !first.isVisible {
                 // The first one is invisible -> the first one is more lefty
                 return true

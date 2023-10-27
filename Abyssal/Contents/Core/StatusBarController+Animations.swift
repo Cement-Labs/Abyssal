@@ -87,7 +87,7 @@ extension StatusBarController {
             
             tail.targetAlpha = (
                 idling.alwaysHide
-                || (Helper.Keyboard.modifiers && mouseSpare)
+                || (KeyboardHelper.modifiers && mouseSpare)
             ) ? 1 : 0
         }
     } // End of map
@@ -154,7 +154,7 @@ extension StatusBarController {
     tail: do {
         guard let x = tail.origin?.x else { break tail }
         
-        let collapse = !popoverShown && !(Helper.Keyboard.modifiers && ((Data.collapsed && !idling.hide) || mouseSpare)) && !idling.alwaysHide
+        let collapse = !popoverShown && !(KeyboardHelper.modifiers && ((Data.collapsed && !idling.hide) || mouseSpare)) && !idling.alwaysHide
         
         do {
             if !collapse && !tail.wasUnstable {
@@ -204,7 +204,7 @@ extension StatusBarController {
         
         if !Data.theme.autoHideIcons {
             // Special judge. See #update()
-        } else if popoverShown || Helper.Keyboard.modifiers {
+        } else if popoverShown || KeyboardHelper.modifiers {
             head.button?.image = Data.theme.headUncollapsed
             head.targetAlpha = 1
             body.targetAlpha = mouseSpare ? 1 : 0
