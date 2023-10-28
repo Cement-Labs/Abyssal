@@ -55,10 +55,17 @@ extension MenuController {
         sliderTimeout.minValue = 0
         sliderTimeout.maxValue = Double(Data.timeoutTickMarks - 1)
         sliderTimeout.numberOfTickMarks = Data.timeoutTickMarks
+        sliderTimeout.allowsTickMarkValuesOnly = true
         
         sliderFeedbackIntensity.minValue = 0
         sliderFeedbackIntensity.maxValue = Double(Data.feedbackIntensityTickMarks - 1)
         sliderFeedbackIntensity.numberOfTickMarks = Data.feedbackIntensityTickMarks
+        sliderFeedbackIntensity.allowsTickMarkValuesOnly = true
+        
+        sliderDeadZone.minValue = 0
+        sliderDeadZone.maxValue = Data.deadZoneMaxValue
+        sliderDeadZone.numberOfTickMarks = 0
+        sliderDeadZone.allowsTickMarkValuesOnly = false
         
         
         
@@ -204,6 +211,8 @@ Feedback intensity given when triggering actions such as 'enabling **Auto Shows*
                     },
                     tipString: {
                         NSLocalizedString("Tip/SliderDeadZone", value: """
+The ignored width on screens without notches, in percentage.
+Due to the limitations of macOS, **Abyssal** can't judge the available width used for collapsing. Therefore, you may need to toggle it manually in order to acquire a better experience. On screens with notches, the ignored width is set to about 55% of the screen width.
 """, comment: "(slider) dead zone")
                     },
                     rect: { self.sliderDeadZone.knobRect },

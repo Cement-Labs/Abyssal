@@ -56,9 +56,9 @@ extension StatusBarController {
                 withTimeInterval: 1.0 / 30.0,
                 repeats: true
             ) { [weak self] _ in
-                guard let strongSelf = self else { return }
+                guard let self else { return }
                 
-                strongSelf.update()
+                self.update()
             }
         }
     }
@@ -69,10 +69,10 @@ extension StatusBarController {
                 withTimeInterval: 1.0 / 6.0,
                 repeats: true
             ) { [weak self] _ in
-                guard let strongSelf = self else { return }
+                guard let self else { return }
                 
-                strongSelf.sort()
-                strongSelf.map()
+                self.sort()
+                self.map()
             }
         }
     }
@@ -83,20 +83,20 @@ extension StatusBarController {
                 withTimeInterval: 1.0 / 30.0,
                 repeats: true
             ) { [weak self] _ in
-                guard let strongSelf = self else { return }
+                guard let self else { return }
                 
-                guard strongSelf.feedbackCount < Data.feedbackAttribute.feedback.count else {
-                    strongSelf.feedbackCount = 0
-                    strongSelf.stopTimer(&strongSelf.feedbackTimer)
+                guard self.feedbackCount < Data.feedbackAttribute.feedback.count else {
+                    self.feedbackCount = 0
+                    self.stopTimer(&self.feedbackTimer)
                     
                     return
                 }
                 
-                if let pattern = Data.feedbackAttribute.feedback[strongSelf.feedbackCount] {
+                if let pattern = Data.feedbackAttribute.feedback[self.feedbackCount] {
                     NSHapticFeedbackManager.defaultPerformer.perform(pattern, performanceTime: .default)
                 }
                 
-                strongSelf.feedbackCount += 1
+                self.feedbackCount += 1
             }
         }
     }
@@ -107,97 +107,96 @@ extension StatusBarController {
                 withTimeInterval: 1.0 / 6.0,
                 repeats: true
             ) { [weak self] _ in
-                guard let strongSelf = self
-                else { return }
+                guard let self else { return }
                 
-                strongSelf.checkIdleStates()
+                self.checkIdleStates()
                 
                 // Update dragging state
                 
-                if strongSelf.draggedToUncollapse.dragging && !strongSelf.mouseDragging {
-                    strongSelf.draggedToUncollapse.dragging = false
+                if self.draggedToUncollapse.dragging && !self.mouseDragging {
+                    self.draggedToUncollapse.dragging = false
                     
-                    if strongSelf.draggedToUncollapse.shouldCollapse {
-                        strongSelf.collapse()
+                    if self.draggedToUncollapse.shouldCollapse {
+                        self.collapse()
                     }
                     
-                    if strongSelf.draggedToUncollapse.shouldEnableAnimation {
+                    if self.draggedToUncollapse.shouldEnableAnimation {
                         Data.reduceAnimation = false
                     }
                     
-                    strongSelf.unidleAlwaysHideArea()
-                    strongSelf.startAnimationTimer()
+                    self.unidleAlwaysHideArea()
+                    self.startAnimationTimer()
                 }
                 
-                else if strongSelf.mouseDragging && !strongSelf.draggedToUncollapse.dragging {
-                    if strongSelf.draggedToUncollapse.count < 3 {
-                        strongSelf.draggedToUncollapse.count += 1
+                else if self.mouseDragging && !self.draggedToUncollapse.dragging {
+                    if self.draggedToUncollapse.count < 3 {
+                        self.draggedToUncollapse.count += 1
                     } else {
-                        strongSelf.draggedToUncollapse.dragging = true
-                        strongSelf.draggedToUncollapse.shouldCollapse = Data.collapsed
-                        strongSelf.draggedToUncollapse.count = 0
+                        self.draggedToUncollapse.dragging = true
+                        self.draggedToUncollapse.shouldCollapse = Data.collapsed
+                        self.draggedToUncollapse.count = 0
                         
                         if Data.collapsed {
-                            strongSelf.draggedToUncollapse.shouldCollapse = true
-                            strongSelf.uncollapse()
+                            self.draggedToUncollapse.shouldCollapse = true
+                            self.uncollapse()
                         } else {
-                            strongSelf.draggedToUncollapse.shouldCollapse = false
+                            self.draggedToUncollapse.shouldCollapse = false
                         }
                         
                         if !Data.reduceAnimation {
-                            strongSelf.draggedToUncollapse.shouldEnableAnimation = true
+                            self.draggedToUncollapse.shouldEnableAnimation = true
                             Data.reduceAnimation = true
                         } else {
-                            strongSelf.draggedToUncollapse.shouldEnableAnimation = false
+                            self.draggedToUncollapse.shouldEnableAnimation = false
                         }
                         
-                        strongSelf.idleAlwaysHideArea()
-                        strongSelf.startAnimationTimer()
+                        self.idleAlwaysHideArea()
+                        self.startAnimationTimer()
                     }
                 }
                 
                 // Update edge
-                if strongSelf.shouldEdgeUpdate.will {
-                    strongSelf.shouldEdgeUpdate.now = true
+                if self.shouldEdgeUpdate.will {
+                    self.shouldEdgeUpdate.now = true
                 }
                 
-                if strongSelf.shouldEdgeUpdate.now {
-                    strongSelf.updateEdge()
+                if self.shouldEdgeUpdate.now {
+                    self.updateEdge()
                 }
                 
-                if !strongSelf.shouldEdgeUpdate.will {
-                    strongSelf.shouldEdgeUpdate.now = false
+                if !self.shouldEdgeUpdate.will {
+                    self.shouldEdgeUpdate.now = false
                 }
                 
                 // Update mouse and key
-                let mouseNeedsUpdate = strongSelf.was.mouseSpare != strongSelf.mouseSpare
-                let keyNeedsUpdate = strongSelf.was.modifiers != KeyboardHelper.modifiers
+                let mouseNeedsUpdate = self.was.mouseSpare != self.mouseSpare
+                let keyNeedsUpdate = self.was.modifiers != KeyboardHelper.modifiers
                 
                 if !MouseHelper.dragging {
                     if mouseNeedsUpdate {
-                        if strongSelf.mouseSpare {
+                        if self.mouseSpare {
                             // Mouse entered spare area
-                            strongSelf.startMouseEventMonitor()
+                            self.startMouseEventMonitor()
                         } else {
                             // Mouse left spare area
-                            strongSelf.stopMonitor(&strongSelf.mouseEventMonitor)
+                            self.stopMonitor(&self.mouseEventMonitor)
                         }
                     }
                     
                     if mouseNeedsUpdate || keyNeedsUpdate {
                         // Resolve animation and function updates
-                        strongSelf.startFunctionalTimers()
+                        self.startFunctionalTimers()
                     }
                 }
                 
-                if keyNeedsUpdate || strongSelf.mouseDragging {
+                if keyNeedsUpdate || self.mouseDragging {
                     // Key pressed || mouse dragging -> sort separators and map appearances
-                    strongSelf.sort()
-                    strongSelf.map()
+                    self.sort()
+                    self.map()
                 }
                 
-                strongSelf.was = (
-                    strongSelf.mouseSpare,
+                self.was = (
+                    self.mouseSpare,
                     KeyboardHelper.modifiers
                 )
             }
@@ -212,10 +211,10 @@ extension StatusBarController {
                 withTimeInterval: Double(timeoutAttribute.attr!),
                 repeats: false
             ) { [weak self] _ in
-                guard let strongSelf = self else { return }
+                guard let self else { return }
                 
-                strongSelf.unidleHideArea()
-                strongSelf.stopTimer(&strongSelf.timeoutTimer) { strongSelf.timeout = true }
+                self.unidleHideArea()
+                self.stopTimer(&self.timeoutTimer) { self.timeout = true }
             }
         }
     }
@@ -226,9 +225,9 @@ extension StatusBarController {
                 withTimeInterval: 1,
                 repeats: false
             ) { [weak self] _ in
-                guard let strongSelf = self else { return }
+                guard let self else { return }
                 
-                strongSelf.stopTimer(&strongSelf.ignoringTimer) { strongSelf.ignoring = false }
+                self.stopTimer(&self.ignoringTimer) { self.ignoring = false }
             }
         }
     }
@@ -257,16 +256,16 @@ extension StatusBarController {
                        .rightMouseDown,]
             ) { [weak self] event in
                 guard
-                    let strongSelf = self,
-                    strongSelf.mouseSpare
+                    let self,
+                    self.mouseSpare
                 else { return }
                 
-                if Data.collapsed && strongSelf.mouseInHideArea && !(KeyboardHelper.command && event?.type == .leftMouseDown) {
-                    strongSelf.idleHideArea()
+                if Data.collapsed && self.mouseInHideArea && !(KeyboardHelper.command && event?.type == .leftMouseDown) {
+                    self.idleHideArea()
                 }
                 
-                if strongSelf.mouseInAlwaysHideArea {
-                    strongSelf.idleAlwaysHideArea()
+                if self.mouseInAlwaysHideArea {
+                    self.idleAlwaysHideArea()
                 }
             }
             

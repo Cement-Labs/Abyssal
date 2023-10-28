@@ -283,6 +283,8 @@ struct Data {
         }
     }
     
+    static let deadZoneMaxValue = 0.75
+    
     static var deadZonePercentage: String {
         String(format: "%d%%", Int(deadZone * 100))
     }

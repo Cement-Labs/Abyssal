@@ -30,7 +30,7 @@ class Tip {
         positionRect().offsetBy(dx: positionOffset().x, dy: positionOffset().y)
     }
     
-    var positionUpdateDispatch: DispatchWorkItem?
+    var positionUpdateTimer: Timer?
     
     
     
@@ -110,6 +110,8 @@ class Tip {
         let size: NSSize? = popover.contentViewController?.view.frame.size
         
         if isShown {
+            updatePosition()
+            
             if let size {
                 NSAnimationContext.runAnimationGroup() { context in
                     context.allowsImplicitAnimation = true
@@ -120,6 +122,12 @@ class Tip {
         }
         
         return true
+    }
+    
+    func updatePosition() {
+        if isShown {
+            popover.positioningRect = position
+        }
     }
     
     private func switchToOnlyData() {
@@ -224,22 +232,18 @@ class Tip {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: willShow!)
         
-        positionUpdateDispatch = DispatchWorkItem { [self] in
-            while true {
-                if !isShown {
-                    break
-                }
-                
-                popover.positioningRect = position
-            }
-        }
-        if let positionUpdateDispatch {
-            DispatchQueue.main.async(execute: positionUpdateDispatch)
+        positionUpdateTimer = Timer.scheduledTimer(
+            withTimeInterval: 1.0 / 60.0,
+            repeats: true
+        ) { [weak self] _ in
+            guard let self else { return }
+            
+            self.updatePosition()
         }
     }
     
     func close() {
-        positionUpdateDispatch?.cancel()
+        positionUpdateTimer?.invalidate()
         willShow?.cancel()
         popover.performClose(self)
     }

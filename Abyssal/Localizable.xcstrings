@@ -491,7 +491,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "\n"
+            "value" : "The ignored width on screens without notches, in percentage.\nDue to the limitations of macOS, **Abyssal** can't judge the available width used for collapsing. Therefore, you may need to toggle it manually in order to acquire a better experience. On screens with notches, the ignored width is set to about 55% of the screen width."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在无刘海的屏幕上忽略的盲区长度，以百分比计算。\n因为macOS的限制，**Abyssal**无法判断可用区域的长度。因此，你可能需要手动调整它以获得最佳体验。在有刘海的屏幕上，此长度约为屏幕宽度的55%。"
           }
         }
       }
@@ -607,18 +613,6 @@
     "Tip/ViewModifier" : {
       "comment" : "(view) modifier",
       "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "The modifier keys to use. Pressing only one of the chosen keys is enough to trigger the functions. It is recommended to keep the modifier key ⌘ enabled."
-          }
-        }
-      }
-    },
-    "Tip/ViewModifier/1" : {
-      "comment" : "(view) modifier",
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

@@ -249,20 +249,20 @@ extension MenuController {
     func updateSliderTimeout() {
         setSliderLabelEnabled(labelTimeout, Data.timeoutAttribute.attr != nil)
         
-        definedTips[sliderTimeout]?.tip.update()
+        let _ = definedTips[sliderTimeout]?.tip.update()
     }
     
     func updateSliderFeedbackIntensity() {
         setSliderEnabled(sliderFeedbackIntensity, Data.autoShows)
         setSliderLabelEnabled(labelFeedbackIntensity, Data.autoShows && Data.feedbackIntensity != 0)
         
-        definedTips[sliderFeedbackIntensity]?.tip.update()
+        let _ = definedTips[sliderFeedbackIntensity]?.tip.update()
     }
     
     func updateSliderDeadZone() {
-        viewDeadZone.isHidden = !ScreenHelper.hasNotch
+        viewDeadZone.isHidden = ScreenHelper.hasNotch
         
-        definedTips[sliderDeadZone]?.tip.update()
+        let _ = definedTips[sliderDeadZone]?.tip.update()
     }
     
 }

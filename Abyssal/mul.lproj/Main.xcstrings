@@ -298,6 +298,12 @@
             "state" : "new",
             "value" : "Dead zone"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "盲区宽度"
+          }
         }
       }
     },
