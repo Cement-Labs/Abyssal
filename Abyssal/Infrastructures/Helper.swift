@@ -11,13 +11,13 @@ import AppKit
 
 struct Helper {
     
-    static let repoPath: String = "NNN-Studio/Abyssal"
+    static let repoPath = "NNN-Studio/Abyssal"
     
-    static let urlSourceCode: URL     = URL(string: "https://github.com/\(repoPath)")!
+    static let urlSourceCode = URL(string: "https://github.com/\(repoPath)")!
     
-    static let urlRelease: URL         = URL(string: "https://github.com/\(repoPath)/releases")!
+    static let urlRelease = URL(string: "https://github.com/\(repoPath)/releases")!
     
-    static let urlReleaseTags: URL     = URL(string: "https://api.github.com/repos/\(repoPath)/tags")!
+    static let urlReleaseTags = URL(string: "https://api.github.com/repos/\(repoPath)/tags")!
     
     static var lerpRatio: CGFloat {
         let baseValue = 0.42
