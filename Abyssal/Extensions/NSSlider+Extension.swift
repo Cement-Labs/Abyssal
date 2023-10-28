@@ -11,7 +11,11 @@ import AppKit
 extension NSSlider {
     
     var thumbRect: NSRect {
-        return rectOfTickMark(at: integerValue)
+        if numberOfTickMarks > 0 {
+            return rectOfTickMark(at: integerValue)
+        } else {
+            return visibleRect
+        }
     }
     
 }

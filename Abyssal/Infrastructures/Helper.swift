@@ -24,10 +24,6 @@ struct Helper {
         return baseValue * (KeyboardHelper.shift ? 0.25 : 1) // Slow down when shift key is down
     }
     
-    static var delegate: AppDelegate? {
-        NSApplication.shared.delegate as? AppDelegate
-    }
-    
     static var menuBarLeftEdge: CGFloat {
         let origin = ScreenHelper.origin ?? NSPoint.zero
         guard let width = ScreenHelper.width else { return origin.x }
@@ -36,7 +32,8 @@ struct Helper {
             let notchWidth = 250.0
             return origin.x + width / 2.0 + notchWidth / 2.0
         } else {
-            return origin.x + 50 // Apple icon + App name should be at least 50.
+            let rightEdge = AppDelegate.instance?.statusBarController.edge ?? width
+            return origin.x + 50 + (rightEdge - 50) * Data.deadZone // Apple icon + App name should be at least 50 pixels wide.
         }
     }
     
@@ -62,8 +59,8 @@ struct Helper {
     ) {
         Data.theme = Themes.themes[index]
         
-        Helper.delegate?.statusBarController.map()
-        Helper.delegate?.statusBarController.startFunctionalTimers()
+        AppDelegate.instance?.statusBarController.map()
+        AppDelegate.instance?.statusBarController.startFunctionalTimers()
     }
     
 }

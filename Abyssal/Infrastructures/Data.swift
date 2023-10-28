@@ -26,11 +26,13 @@ struct Data {
         
         case theme = "Theme"
         
+        case autoShows = "AutoShows"
+        
         case feedbackIntensity = "FeedbackIntensity"
         
+        case deadZone = "DeadZone"
         
         
-        case autoShows = "AutoShows"
         
         case useAlwaysHideArea = "AlwaysHide"
         
@@ -60,6 +62,10 @@ struct Data {
             UserDefaults.standard.integer(forKey: rawValue)
         }
         
+        func float() -> Float {
+            UserDefaults.standard.float(forKey: rawValue)
+        }
+        
     }
     
     static func registerDefaults() {
@@ -70,11 +76,22 @@ struct Data {
         Key.tips.register(true)
 
         Key.theme.register(Themes.abyssal.name)
-        Key.feedbackIntensity.register(0)
-        
         Key.autoShows.register(true)
+        Key.feedbackIntensity.register(0)
+        Key.deadZone.register(0.25)
+        
         Key.useAlwaysHideArea.register(true)
         Key.reduceAnimation.register(false)
+    }
+    
+    static var collapsed: Bool {
+        get {
+            Key.collapsed.bool()
+        }
+        
+        set(flag) {
+            Key.collapsed.set(flag)
+        }
     }
     
     static var modifiers: (control: Bool, option: Bool, command: Bool) {
@@ -108,7 +125,7 @@ struct Data {
         }
     }
     
-    static let timeoutTickMarks: Int = 11
+    static let timeoutTickMarks = 11
     
     static var timeoutAttribute: (attr: Int?, label: String) {
         switch timeout {
@@ -169,6 +186,18 @@ struct Data {
         }
     }
     
+    static var startsWithMacos: Bool {
+        get {
+            LaunchAtLogin.isEnabled
+        }
+        
+        set(flag) {
+            LaunchAtLogin.isEnabled = flag
+        }
+    }
+    
+    
+    
     static var tips: Bool {
         get {
             Key.tips.bool()
@@ -197,7 +226,15 @@ struct Data {
         }
     }
     
-    
+    static var autoShows: Bool {
+        get {
+            Key.autoShows.bool()
+        }
+        
+        set(flag) {
+            Key.autoShows.set(flag)
+        }
+    }
     
     static var feedbackIntensity: Int {
         get {
@@ -209,7 +246,7 @@ struct Data {
         }
     }
     
-    static let feedbackIntensityTickMarks: Int = 4
+    static let feedbackIntensityTickMarks = 4
     
     static var feedbackAttribute: (feedback: [NSHapticFeedbackManager.FeedbackPattern?], label: String) {
         switch feedbackIntensity {
@@ -236,29 +273,21 @@ struct Data {
         }
     }
     
-    
-    
-    static var collapsed: Bool {
+    static var deadZone: CGFloat {
         get {
-            Key.collapsed.bool()
+            CGFloat(Key.deadZone.float())
         }
         
-        set(flag) {
-            Key.collapsed.set(flag)
+        set(deadZone) {
+            Key.deadZone.set(deadZone)
         }
     }
     
-    
-    
-    static var autoShows: Bool {
-        get {
-            Key.autoShows.bool()
-        }
-        
-        set(flag) {
-            Key.autoShows.set(flag)
-        }
+    static var deadZonePercentage: String {
+        String(format: "%d%%", Int(deadZone * 100))
     }
+    
+    
     
     static var useAlwaysHideArea: Bool {
         get {
@@ -267,16 +296,6 @@ struct Data {
         
         set(flag) {
             Key.useAlwaysHideArea.set(flag)
-        }
-    }
-    
-    static var startsWithMacos: Bool {
-        get {
-            LaunchAtLogin.isEnabled
-        }
-        
-        set(flag) {
-            LaunchAtLogin.isEnabled = flag
         }
     }
     

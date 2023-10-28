@@ -484,6 +484,18 @@
         }
       }
     },
+    "Tip/SliderDeadZone" : {
+      "comment" : "(slider) dead zone",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "\n"
+          }
+        }
+      }
+    },
     "Tip/SliderFeedbackIntensity" : {
       "comment" : "(slider) feedback intensity",
       "extractionState" : "extracted_with_value",
@@ -592,9 +604,21 @@
         }
       }
     },
-    "Tip/ViewModifier/1" : {
+    "Tip/ViewModifier" : {
       "comment" : "(view) modifier",
       "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "The modifier keys to use. Pressing only one of the chosen keys is enough to trigger the functions. It is recommended to keep the modifier key ⌘ enabled."
+          }
+        }
+      }
+    },
+    "Tip/ViewModifier/1" : {
+      "comment" : "(view) modifier",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

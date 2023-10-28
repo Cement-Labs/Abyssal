@@ -289,6 +289,18 @@
         }
       }
     },
+    "MUA-YQ-vfC.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Dead zone\"; ObjectID = \"MUA-YQ-vfC\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Dead zone"
+          }
+        }
+      }
+    },
     "oPU-r1-7qb.title" : {
       "comment" : "Class = \"NSBox\"; title = \"Main/Body 2/Buttons/Minimize\"; ObjectID = \"oPU-r1-7qb\";",
       "extractionState" : "extracted_with_value",

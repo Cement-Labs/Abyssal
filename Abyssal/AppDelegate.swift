@@ -11,6 +11,10 @@ import AppKit
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
     
+    static var instance: AppDelegate? {
+        NSApplication.shared.delegate as? AppDelegate
+    }
+    
     let popover: NSPopover = NSPopover()
     
     let statusBarController = StatusBarController()
@@ -66,7 +70,7 @@ extension AppDelegate {
     @objc func toggle(
         _ sender: Any?
     ) {
-        guard sender as? NSStatusBarButton == Helper.delegate?.statusBarController.head.button else {
+        guard sender as? NSStatusBarButton == AppDelegate.instance?.statusBarController.head.button else {
             toggleCollapse(sender)
             return
         }
@@ -152,7 +156,7 @@ extension AppDelegate {
         
         mouseEventMonitor?.stop()
         statusBarController.startFunctionalTimers()
-        Helper.delegate?.statusBarController.triggerIgnoring()
+        AppDelegate.instance?.statusBarController.triggerIgnoring()
     }
     
 }

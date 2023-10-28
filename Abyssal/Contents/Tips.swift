@@ -63,6 +63,7 @@ class Tip {
     }
     
     func update() -> Bool {
+        guard AppDelegate.instance?.popover.isShown ?? false else { return false }
         guard has.data || has.tipRuntime else { return false }
         
         if lastHas == nil || lastHas! != has {

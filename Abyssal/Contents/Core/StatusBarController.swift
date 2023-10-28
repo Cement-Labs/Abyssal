@@ -71,7 +71,7 @@ class StatusBarController {
     }
     
     var popoverShown: Bool {
-        return Helper.delegate?.popover.isShown ?? false
+        return AppDelegate.instance?.popover.isShown ?? false
     }
     
     

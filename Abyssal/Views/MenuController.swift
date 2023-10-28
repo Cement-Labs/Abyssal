@@ -13,6 +13,8 @@ class MenuController: NSViewController, NSMenuDelegate {
     
     let tips = Tips()
     
+    var themeIndexKey = UnsafeRawPointer(bitPattern: "themeIndexKey".hashValue)
+    
     private static var menuAppearanceObservation: NSKeyValueObservation?
     
     // MARK: - Outlets
@@ -73,6 +75,10 @@ class MenuController: NSViewController, NSMenuDelegate {
     
     @IBOutlet weak var sliderFeedbackIntensity: NSSlider!
     
+    @IBOutlet weak var sliderDeadZone: NSSlider!
+    
+    @IBOutlet weak var viewDeadZone: NSStackView!
+    
     
     
     @IBOutlet weak var popUpButtonThemes: NSPopUpButton!
@@ -93,13 +99,15 @@ class MenuController: NSViewController, NSMenuDelegate {
         initTips()
     }
     
-    override func viewDidAppear() {
+    override func viewWillAppear() {
         VersionHelper.checkNewVersionsTask.resume()
-        Helper.delegate?.statusBarController.startFunctionalTimers()
+        AppDelegate.instance?.statusBarController.startFunctionalTimers()
+        
+        updateSliderDeadZone()
     }
     
-    override func viewWillDisappear() {
-        Helper.delegate?.statusBarController.startFunctionalTimers()
+    override func viewDidDisappear() {
+        AppDelegate.instance?.statusBarController.startFunctionalTimers()
     }
     
 }
@@ -142,140 +150,6 @@ extension MenuController {
 
 extension MenuController {
     
-    func initTips() {
-        definedTips = [
-            buttonAppVersion: (
-                tip: Tip(
-                    tipString: {
-                        !VersionHelper.versionComponent.needsUpdate ? nil : NSLocalizedString("Tip/ButtonAppVersion", value: """
-An update is available, click to access the download page.
-""", comment: "if (update available) -> (button) app version")
-                    }, preferredEdge: .minX
-                )!, trackingArea: buttonAppVersion.visibleRect.getTrackingArea(self, viewToAdd: buttonAppVersion)
-            ),
-            
-            viewModifiers: (
-                tip: Tip(
-                    tipString: {
-                        NSLocalizedString("Tip/ViewModifier/1", value: """
-The modifier keys to use. Pressing only one of the chosen keys is enough to trigger the functions. It is recommended to keep the modifier key ⌘ enabled.
-""", comment: "(view) modifier")
-                    }
-                )!, trackingArea: viewModifiers.visibleRect.getTrackingArea(self, viewToAdd: viewModifiers)
-            ),
-            sliderTimeout: (
-                tip: Tip(
-                    dataString: { Data.timeoutAttribute.label },
-                    tipString: {
-                        NSLocalizedString("Tip/SliderTimeout", value: """
-Time to countdown before disabling **Auto Idling.**
-After interacting with status items that will be automatically hidden, for example, status items inside the **Always Hidden Area,** **Auto Idling** will keep them visible until this timeout is reached or the cursor hovered over the `Hide Separator` or `Always Hide Separator`.
-""", comment: "(slider) timeout")
-                    }, rect: { self.sliderTimeout.rectOfTickMark(at: self.sliderTimeout.integerValue).offsetBy(dx: 0, dy: 8) }
-                )!, trackingArea: sliderTimeout.thumbRect.getTrackingArea(self, viewToAdd: sliderTimeout)
-            ),
-            switchStartsWithMacOS: (
-                tip: Tip(
-                    tipString: {
-                        NSLocalizedString("Tip/SwitchStartsWithMacOS", value: """
-Run **Abyssal** when macOS starts.
-""", comment: "(switch) starts with macOS")
-                    }
-                )!, trackingArea: switchStartsWithMacOS.visibleRect.getTrackingArea(self, viewToAdd: switchStartsWithMacOS)
-            ),
-            
-            buttonTips: (
-                tip: Tip(
-                    tipString: {
-                        NSLocalizedString("Tip/ButtonTips", value: """
-The tips are currently shown. Click to hide them.
-""", comment: "(button) tips")
-                    }
-                )!, trackingArea: buttonTips.visibleRect.getTrackingArea(self, viewToAdd: buttonTips)
-            ),
-            buttonLink: (
-                tip: Tip(
-                    tipString: {
-                        NSLocalizedString("Tip/ButtonLink", value: """
-**Abyssal** is open sourced. Click to access the source code repository.
-""", comment: "(button) link")
-                    }
-                )!, trackingArea: buttonLink.visibleRect.getTrackingArea(self, viewToAdd: buttonLink)
-            ),
-            buttonMinimize: (
-                tip: Tip(
-                    tipString: {
-                        NSLocalizedString("Tip/ButtonMinimize", value: """
-Minimize this window. Right click on the `Menu Separator` to open this window again.
-""", comment: "(button) minimize")
-                    }, delay: 0.8
-                )!, trackingArea: buttonMinimize.visibleRect.getTrackingArea(self, viewToAdd: buttonMinimize)
-            ),
-            
-            popUpButtonThemes: (
-                tip: Tip(
-                    tipString: {
-                        NSLocalizedString("Tip/PopUpButtonThemes", value: """
-Some themes will hide the icons inside the separators automatically, while others not.
-Themes that automatically hide the icons will only show them when the status items inside the **Hide Area** are manually set to visible, while other themes indicate this by reducing the separators' opacity.
-""", comment: "(pop up button) themes")
-                    }, preferredEdge: .minX
-                )!, trackingArea: popUpButtonThemes.visibleRect.getTrackingArea(self, viewToAdd: popUpButtonThemes)
-            ),
-            switchAutoShows: (
-                tip: Tip(
-                    tipString: {
-                        NSLocalizedString("Tip/SwitchAutoShows", value: """
-Auto shows the status items inside the **Hide Area** while the cursor is hovering over the spare area.
-If this option is enabled, the status items inside the **Hide Area,** which is between the `Hide Separator` (the middle one) and the `Always Hide Separator` (the trailing one), will be hidden and kept invisible, until the cursor hovers over the spare area, where the status items in **Hide Area** used to stay. Otherwise the status items will be hidden until you switch their visibility state manually.
-By left clicking on the `Menu Separator` (the leading one), or clicking using either of the mouse buttons on the other separators, you can manually switch the visibility state of the status items inside the **Hide Area.** If you set them visible, they will never be hidden again until you manually switch their visibility state. Otherwise they will follow the behavior defined above.
-""", comment: "(switch) auto shows")
-                    }
-                )!, trackingArea: switchAutoShows.visibleRect.getTrackingArea(self, viewToAdd: switchAutoShows)
-            ),
-            sliderFeedbackIntensity: (
-                tip: Tip(
-                    dataString: {
-                        Data.feedbackAttribute.label
-                    },
-                    tipString: {
-                        NSLocalizedString("Tip/SliderFeedbackIntensity", value: """
-Feedback intensity given when triggering actions such as 'enabling **Auto Shows**' or 'canceling **Auto Idling**'.
-""", comment: "(slider) feedback intensity")
-                    }, rect: { self.sliderFeedbackIntensity.rectOfTickMark(at: self.sliderFeedbackIntensity.integerValue).offsetBy(dx: 0, dy: 8) }
-                )!, trackingArea: sliderFeedbackIntensity.thumbRect.getTrackingArea(self, viewToAdd: sliderFeedbackIntensity)
-            ),
-            
-            switchUseAlwaysHideArea: (
-                tip: Tip(
-                    tipString: {
-                        NSLocalizedString("Tip/SwitchUseAlwaysHideArea", value: """
-Hide certain status items permanently by moving them left of the `Always Hide Separator` to the **Always Hide Area.**
-The status items inside the **Always Hide Area** will be hidden and invisible until the cursor hovers over the spare area with a modifier key down, or while this window is opened.
-""", comment: "(switch) use always hide area")
-                    }
-                )!, trackingArea: switchUseAlwaysHideArea.visibleRect.getTrackingArea(self, viewToAdd: switchUseAlwaysHideArea)
-            ),
-            switchReduceAnimation: (
-                tip: Tip(
-                    tipString: {
-                        NSLocalizedString("Tip/SwitchReduceAnimations", value: """
-Reduce animations to gain a more performant experience.
-""", comment: "(switch) reduce animations")
-                    }
-                )!, trackingArea: switchReduceAnimation.visibleRect.getTrackingArea(self, viewToAdd: switchReduceAnimation)
-            )
-        ]
-        
-        definedTips.forEach { tips.bind($0.key, trackingArea: $0.value.trackingArea, tip: $0.value.tip) }
-    }
-    
-}
-
-var themeIndexKey = UnsafeRawPointer(bitPattern: "themeIndexKey".hashValue)
-
-extension MenuController {
-    
     @objc func switchToTheme(
         _ sender: Any
     ) {
@@ -285,76 +159,6 @@ extension MenuController {
         {
             Helper.switchToTheme(index)
         }
-    }
-    
-    func initData() {
-        // Version info
-        
-        buttonAppVersion.title = VersionHelper.versionComponent.version
-        
-        if VersionHelper.versionComponent.needsUpdate {
-            buttonAppVersion.isEnabled = true
-            buttonAppVersion.image = NSImage(systemSymbolName: "shift.fill", accessibilityDescription: nil)
-        } else {
-            buttonAppVersion.isEnabled = false
-            buttonAppVersion.image = nil
-        }
-        
-        // Themes menu
-        
-        do {
-            for (index, theme) in Themes.themes.enumerated() {
-                let item: NSMenuItem = NSMenuItem(
-                    title: Themes.themeNames[index],
-                    action: #selector(self.switchToTheme(_:)),
-                    keyEquivalent: ""
-                )
-                
-                item.image = theme.icon
-                objc_setAssociatedObject(item, &themeIndexKey, index, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-                
-                themesMenu.addItem(item)
-            }
-            
-            popUpButtonThemes.removeAllItems()
-            popUpButtonThemes.menu = themesMenu
-            popUpButtonThemes.menu?.delegate = self
-            
-            if let index = Themes.themes.firstIndex(of: Data.theme) {
-                popUpButtonThemes.selectItem(at: index)
-            }
-        }
-        
-        // Controls
-        
-        sliderTimeout.minValue = 0
-        sliderTimeout.maxValue = Double(Data.timeoutTickMarks - 1)
-        sliderTimeout.numberOfTickMarks = Data.timeoutTickMarks
-        
-        sliderFeedbackIntensity.minValue = 0
-        sliderFeedbackIntensity.maxValue = Double(Data.feedbackIntensityTickMarks - 1)
-        sliderFeedbackIntensity.numberOfTickMarks = Data.feedbackIntensityTickMarks
-        
-        
-        
-        buttonModifierControl.flag = Data.modifiers.control
-        buttonModifierOption.flag = Data.modifiers.option
-        buttonModifierCommand.flag = Data.modifiers.command
-        
-        sliderTimeout.objectValue = Data.timeout
-        updateTimeoutEnabled()
-        
-        switchStartsWithMacOS.flag = Data.startsWithMacos
-        buttonTips.flag = Data.tips
-        
-        switchAutoShows.flag = Data.autoShows
-        sliderFeedbackIntensity.objectValue = Data.feedbackIntensity
-        updateFeedbackIntensityEnabled()
-        
-        switchUseAlwaysHideArea.flag = Data.useAlwaysHideArea
-        switchReduceAnimation.flag = Data.reduceAnimation
-        
-        updateColoredWidgets()
     }
     
     func updateColoredWidgets() {
@@ -442,17 +246,23 @@ extension MenuController {
         label.textColor = flag ? NSColor.labelColor : NSColor.disabledControlTextColor
     }
     
-    func updateTimeoutEnabled() {
+    func updateSliderTimeout() {
         setSliderLabelEnabled(labelTimeout, Data.timeoutAttribute.attr != nil)
         
         definedTips[sliderTimeout]?.tip.update()
     }
     
-    func updateFeedbackIntensityEnabled() {
+    func updateSliderFeedbackIntensity() {
         setSliderEnabled(sliderFeedbackIntensity, Data.autoShows)
         setSliderLabelEnabled(labelFeedbackIntensity, Data.autoShows && Data.feedbackIntensity != 0)
         
         definedTips[sliderFeedbackIntensity]?.tip.update()
+    }
+    
+    func updateSliderDeadZone() {
+        viewDeadZone.isHidden = ScreenHelper.hasNotch
+        
+        definedTips[sliderDeadZone]?.tip.update()
     }
     
 }
@@ -474,7 +284,7 @@ extension MenuController {
     ) {
         minimize(sender)
         
-        if !(Helper.delegate?.popover.isShown ?? false) {
+        if !(AppDelegate.instance?.popover.isShown ?? false) {
             NSApplication.shared.terminate(sender)
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
@@ -510,11 +320,11 @@ extension MenuController {
                 .forEach { $0.close() }
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-                Helper.delegate?.closePopover(sender)
+                AppDelegate.instance?.closePopover(sender)
             }
         } else {
             // Containing none nested popover.
-            Helper.delegate?.closePopover(sender)
+            AppDelegate.instance?.closePopover(sender)
         }
     }
     
@@ -544,7 +354,7 @@ extension MenuController {
         _ sender: NSSlider
     ) {
         Data.timeout = sender.integerValue
-        updateTimeoutEnabled()
+        updateSliderTimeout()
     }
     
     @IBAction func toggleTips(
@@ -566,18 +376,25 @@ extension MenuController {
         _ sender: NSSwitch
     ) {
         Data.autoShows = sender.flag
-        updateFeedbackIntensityEnabled()
+        updateSliderFeedbackIntensity()
     }
     
     @IBAction func toggleFeedbackIntensity(
         _ sender: NSSlider
     ) {
         Data.feedbackIntensity = sender.integerValue
-        updateFeedbackIntensityEnabled()
+        updateSliderFeedbackIntensity()
         
         DispatchQueue.main.asyncAfter(wallDeadline: .now()) {
-            Helper.delegate?.statusBarController.triggerFeedback()
+            AppDelegate.instance?.statusBarController.triggerFeedback()
         }
+    }
+    
+    @IBAction func toggleDeadZone(
+        _ sender: NSSlider
+    ) {
+        Data.deadZone = CGFloat(sender.floatValue)
+        updateSliderDeadZone()
     }
     
     
@@ -586,7 +403,7 @@ extension MenuController {
         _ sender: NSSwitch
     ) {
         Data.useAlwaysHideArea = sender.flag
-        Helper.delegate?.statusBarController.untilTailVisible(sender.flag)
+        AppDelegate.instance?.statusBarController.untilTailVisible(sender.flag)
     }
     
     @IBAction func toggleReduceAnimation(
