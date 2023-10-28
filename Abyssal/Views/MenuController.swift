@@ -260,7 +260,7 @@ extension MenuController {
     }
     
     func updateSliderDeadZone() {
-        viewDeadZone.isHidden = ScreenHelper.hasNotch
+        viewDeadZone.isHidden = !ScreenHelper.hasNotch
         
         definedTips[sliderDeadZone]?.tip.update()
     }

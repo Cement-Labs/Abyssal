@@ -16,11 +16,23 @@ class Tip {
     
     var tipString: () -> String?
     
-    var rect: () -> NSRect = { NSRect.zero }
-    
     var preferredEdge: NSRectEdge
     
-    var delay = 0.2
+    var delay: CGFloat
+    
+    
+    
+    var positionRect = { NSRect.zero }
+    
+    var positionOffset = { NSPoint.zero }
+    
+    var position: NSRect {
+        positionRect().offsetBy(dx: positionOffset().x, dy: positionOffset().y)
+    }
+    
+    var positionUpdateDispatch: DispatchWorkItem?
+    
+    
     
     var isShown: Bool {
         popover.isShown
@@ -39,18 +51,25 @@ class Tip {
     init?(
         dataString: (() -> String?)? = nil,
         tipString: (() -> String?)? = nil,
-        rect: (() -> NSRect)? = nil,
         preferredEdge: NSRectEdge = .maxY,
-        delay: CGFloat = 0.2
+        delay: CGFloat = 0.2,
+        
+        rect positionRect: (() -> NSRect)? = nil,
+        offset positionOffset: (() -> NSPoint)? = nil
     ) {
         self.popover = Tips.createPopover()
         self.dataString = dataString ?? { nil }
         self.tipString = tipString ?? { nil }
-        if (rect != nil) {
-            self.rect = rect!
-        }
         self.preferredEdge = preferredEdge
         self.delay = delay
+        
+        if let positionRect {
+            self.positionRect = positionRect
+        }
+        
+        if let positionOffset {
+            self.positionOffset = positionOffset
+        }
         
         // Data
         
@@ -91,11 +110,10 @@ class Tip {
         let size: NSSize? = popover.contentViewController?.view.frame.size
         
         if isShown {
-            NSAnimationContext.runAnimationGroup() { context in
-                context.allowsImplicitAnimation = true
-                
-                self.popover.positioningRect = self.rect()
-                if let size = size {
+            if let size {
+                NSAnimationContext.runAnimationGroup() { context in
+                    context.allowsImplicitAnimation = true
+                    
                     self.popover.contentSize = size
                 }
             }
@@ -198,25 +216,32 @@ class Tip {
         
         willShow = DispatchWorkItem {
             self.popover.show(
-                relativeTo:     self.rect(),
+                relativeTo:     self.position,
                 of:             sender,
                 preferredEdge:  self.preferredEdge
             )
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: willShow!)
+        
+        positionUpdateDispatch = DispatchWorkItem { [self] in
+            while true {
+                if !isShown {
+                    break
+                }
+                
+                popover.positioningRect = position
+            }
+        }
+        if let positionUpdateDispatch {
+            DispatchQueue.main.async(execute: positionUpdateDispatch)
+        }
     }
     
     func close() {
+        positionUpdateDispatch?.cancel()
         willShow?.cancel()
         popover.performClose(self)
-    }
-    
-    func offset(
-        _ dx: CGFloat,
-        _ dy: CGFloat
-    ) {
-        rect = { self.rect().offsetBy(dx: dx, dy: dy) }
     }
     
 }

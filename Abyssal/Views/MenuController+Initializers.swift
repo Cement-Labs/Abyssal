@@ -119,8 +119,10 @@ The modifier keys to use. Pressing only one of the chosen keys is enough to trig
 Time to countdown before disabling **Auto Idling.**
 After interacting with status items that will be automatically hidden, for example, status items inside the **Always Hidden Area,** **Auto Idling** will keep them visible until this timeout is reached or the cursor hovered over the `Hide Separator` or `Always Hide Separator`.
 """, comment: "(slider) timeout")
-                    }, rect: { self.sliderTimeout.thumbRect.offsetBy(dx: 0, dy: 8) }
-                )!, trackingArea: sliderTimeout.thumbRect.getTrackingArea(self, viewToAdd: sliderTimeout)
+                    },
+                    rect: { self.sliderTimeout.knobRect },
+                    offset: { NSPoint(x: 0, y: 8) }
+                )!, trackingArea: sliderTimeout.knobRect.getTrackingArea(self, viewToAdd: sliderTimeout)
             ),
             switchStartsWithMacOS: (
                 tip: Tip(
@@ -190,8 +192,10 @@ By left clicking on the `Menu Separator` (the leading one), or clicking using ei
                         NSLocalizedString("Tip/SliderFeedbackIntensity", value: """
 Feedback intensity given when triggering actions such as 'enabling **Auto Shows**' or 'canceling **Auto Idling**'.
 """, comment: "(slider) feedback intensity")
-                    }, rect: { self.sliderFeedbackIntensity.thumbRect.offsetBy(dx: 0, dy: 8) }
-                )!, trackingArea: sliderFeedbackIntensity.thumbRect.getTrackingArea(self, viewToAdd: sliderFeedbackIntensity)
+                    },
+                    rect: { self.sliderFeedbackIntensity.knobRect },
+                    offset: { NSPoint(x: 0, y: 8) }
+                )!, trackingArea: sliderFeedbackIntensity.knobRect.getTrackingArea(self, viewToAdd: sliderFeedbackIntensity)
             ),
             sliderDeadZone: (
                 tip: Tip(
@@ -201,8 +205,10 @@ Feedback intensity given when triggering actions such as 'enabling **Auto Shows*
                     tipString: {
                         NSLocalizedString("Tip/SliderDeadZone", value: """
 """, comment: "(slider) dead zone")
-                    }, rect: { self.sliderDeadZone.visibleRect.offsetBy(dx: 0, dy: 8) }
-                )!, trackingArea: sliderDeadZone.visibleRect.getTrackingArea(self, viewToAdd: sliderDeadZone)
+                    },
+                    rect: { self.sliderDeadZone.knobRect },
+                    offset: { NSPoint(x: 0, y: 8) }
+                )!, trackingArea: sliderDeadZone.knobRect.getTrackingArea(self, viewToAdd: sliderDeadZone)
             ),
             
             switchUseAlwaysHideArea: (

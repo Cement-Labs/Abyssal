@@ -10,12 +10,8 @@ import AppKit
 
 extension NSSlider {
     
-    var thumbRect: NSRect {
-        if numberOfTickMarks > 0 {
-            return rectOfTickMark(at: integerValue)
-        } else {
-            return visibleRect
-        }
+    @objc dynamic var knobRect: NSRect {
+        (cell as? NSSliderCell)?.knobRect(flipped: false) ?? visibleRect
     }
     
 }
