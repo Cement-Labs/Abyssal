@@ -53,7 +53,7 @@ extension StatusBarController {
     func startAnimationTimer() {
         if animationTimer == nil {
             animationTimer = Timer.scheduledTimer(
-                withTimeInterval: 1.0 / 30.0,
+                withTimeInterval: 1.0 / 60.0,
                 repeats: true
             ) { [weak self] _ in
                 guard let self else { return }

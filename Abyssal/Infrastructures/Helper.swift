@@ -19,6 +19,11 @@ struct Helper {
     
     static let urlReleaseTags = URL(string: "https://api.github.com/repos/\(repoPath)/tags")!
     
+    static var lerpThreshold: CGFloat {
+        guard let width = ScreenHelper.width else { return 75 }
+        return width / 25
+    }
+    
     static var lerpRatio: CGFloat {
         let baseValue = 0.42
         return baseValue * (KeyboardHelper.shift ? 0.25 : 1) // Slow down when shift key is down
@@ -51,7 +56,22 @@ struct Helper {
         _ ignoreSmallValues: Bool = true
     ) -> CGFloat {
         guard !ignoreSmallValues || !approaching(a, b, ignoreSmallValues) else { return b }
-        return a + (b - a) * ratio
+        let diff = b - a
+        
+        return a + log10ClampWithThreshold(diff, threshold: lerpThreshold) * ratio
+    }
+    
+    static func log10ClampWithThreshold(
+        _ x: CGFloat,
+        threshold: CGFloat
+    ) -> CGFloat {
+        if x < -threshold {
+            return -(threshold + log10(-x / threshold) * threshold)
+        } else if x > threshold {
+            return threshold + log10(x / threshold) * threshold
+        } else {
+            return x
+        }
     }
     
     static func switchToTheme(
