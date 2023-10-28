@@ -139,6 +139,7 @@ extension AppDelegate {
             )
             
             popover.contentViewController?.view.window?.makeKeyAndOrderFront(nil)
+            NSRunningApplication.current.activate()
         }
         
         mouseEventMonitor?.start()

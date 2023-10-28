@@ -13,6 +13,8 @@ class MenuController: NSViewController, NSMenuDelegate {
     
     let tips = Tips()
     
+    private static var menuAppearanceObservation: NSKeyValueObservation?
+    
     // MARK: - Outlets
     
     @IBOutlet var viewMain: NSView!
@@ -101,8 +103,6 @@ class MenuController: NSViewController, NSMenuDelegate {
     }
     
 }
-
-var menuAppearanceObservation: NSKeyValueObservation?
 
 extension MenuController {
     

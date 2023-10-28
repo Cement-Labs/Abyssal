@@ -23,7 +23,7 @@ extension StatusBarController {
     func update() {
         if shouldTimersStop.flag {
             // Make abundant for completing animations
-            if !Data.reduceAnimation && shouldTimersStop.count < 5 {
+            if !Data.reduceAnimation && shouldTimersStop.count < 10 {
                 shouldTimersStop.count += 1
             } else {
                 shouldTimersStop = (flag: false, count: 0)

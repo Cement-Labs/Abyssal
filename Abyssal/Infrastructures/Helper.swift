@@ -29,13 +29,14 @@ struct Helper {
     }
     
     static var menuBarLeftEdge: CGFloat {
-        guard let width = ScreenHelper.maxWidth else { return 0 }
+        let origin = ScreenHelper.origin ?? NSPoint.zero
+        guard let width = ScreenHelper.width else { return origin.x }
         
         if ScreenHelper.hasNotch {
             let notchWidth = 250.0
-            return width / 2.0 + notchWidth / 2.0
+            return origin.x + width / 2.0 + notchWidth / 2.0
         } else {
-            return 50 // Apple icon + App name should be at least 50.
+            return origin.x + 50 // Apple icon + App name should be at least 50.
         }
     }
     
@@ -182,6 +183,10 @@ struct ScreenHelper {
     
     static var height: CGFloat? {
         NSScreen.main?.frame.size.height ?? nil
+    }
+    
+    static var origin: CGPoint? {
+        frame?.origin
     }
     
     static var maxWidth: CGFloat? {
