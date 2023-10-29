@@ -24,9 +24,9 @@ class StatusBarController {
         guard
             let bodyOrigin = body.button?.window?.frame.origin,
             let tailOrigin = tail.button?.window?.frame.origin,
-            let tailWidth = tail.button?.window?.frame.width
+            let tailSize = tail.button?.window?.frame.size
         else { return false }
-        return mouseOnStatusBar && NSEvent.mouseLocation.x >= tailOrigin.x + tailWidth && NSEvent.mouseLocation.x <= bodyOrigin.x
+        return mouseOnStatusBar && NSEvent.mouseLocation.x >= tailOrigin.x + tailSize.width && NSEvent.mouseLocation.x <= bodyOrigin.x
     }
     
     var mouseInAlwaysHideArea: Bool {
