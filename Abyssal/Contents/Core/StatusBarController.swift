@@ -12,8 +12,12 @@ class StatusBarController {
     // MARK: - States
     
     var mouseOnStatusBar: Bool {
-        guard let origin = head.button?.window?.frame.origin else { return false }
-        return NSEvent.mouseLocation.x >= Helper.menuBarLeftEdge && NSEvent.mouseLocation.y >= origin.y
+        guard
+            let headOrigin = head.button?.window?.frame.origin,
+            let headSize = head.button?.window?.frame.size
+        else { return false }
+        let mouseLocation = NSEvent.mouseLocation
+        return mouseLocation.x >= Helper.menuBarLeftEdge && mouseLocation.y >= headOrigin.y && mouseLocation.y <= headOrigin.y + headSize.height
     }
     
     var mouseInHideArea: Bool {
