@@ -211,8 +211,8 @@ Feedback intensity given when triggering actions such as 'enabling **Auto Shows*
                     },
                     tipString: {
                         NSLocalizedString("Tip/SliderDeadZone", value: """
-The ignored width on screens without notches, in percentage.
-Due to the limitations of macOS, **Abyssal** can't judge the available width used for collapsing. Therefore, you may need to toggle it manually in order to acquire a better experience. On screens with notches, the ignored width is set to about 55% of the screen width.
+The ignored status bar width on screens without notches, in percentage.
+Due to the limitations of macOS, **Abyssal** can't infer the available width used for collapsing. Therefore, you may need to toggle it manually in order to acquire a better experience. On screens with notches, the ignored width is set to about 55% of the screen width.
 """, comment: "(slider) dead zone")
                     },
                     rect: { self.sliderDeadZone.knobRect },
