@@ -129,26 +129,36 @@ Separators' appearances differ from theme to theme, and some themes will automat
 
 ### Feedback Intensity
 
-`Style: Step Slider`&ensp;`Default: • · · · Disabled`
+`Style: Step Slider`&ensp;`Default: ● · · · Disabled`
 
-- **`• · · ·`&emsp;Disabled**
+- **`● · · ·`&emsp;Disabled**
   
   Haptic feedback **Disabled.**
   
-- **`· • · ·`&emsp;Light**
+- **`· ● · ·`&emsp;Light**
   
   **Light** haptic feedback intensity.
   
-- **`· · • ·`&emsp;Medium**
+- **`· · ● ·`&emsp;Medium**
   
   **Medium** haptic feedback intensity.
   
-- **`· · · •`&emsp;Heavy**
+- **`· · · ●`&emsp;Heavy**
   
   **Heavy** haptic feedback intensity.
 
 > [!NOTE]
 > Due to the limitations of macOS, you may not feel a strong haptic feedback.
+
+<br />
+
+### Dead Zone
+
+`Style: Slider`&ensp;`Default: ——●—————— 25%`
+
+This option appears only on screen without notches and configures the ignored status bar width on these screens in percentage.
+
+Due to the limitations of macOS, **Abyssal** can't infer the available width used for collapsing. You may need to toggle it manually in order to acquire a better experience.
 
 <br />
 
@@ -189,11 +199,11 @@ Separators' appearances differ from theme to theme, and some themes will automat
 
 ### Timeout
 
-`Style: Step Slider`&emsp;`Default: · · · • · · · · · · · 30 seconds`
+`Style: Step Slider`&emsp;`Default: · · · ● · · · · · · · 30 seconds`
 
 Set an optional timeout for `Auto Idling` to cancel automatically, ranging from `5 seconds` to `10 minutes`.
 
-- **`· · · · · · · · · · •`&emsp;Disabled**
+- **`· · · · · · · · · · ●`&emsp;Disabled**
 
   **Disable** timeout for `Auto Idling`.
 
@@ -246,11 +256,11 @@ After you **triggered or canceled** **Auto Hide or Auto Idling,** **Abyssal** wi
 
 <br />
 
-## Install & Run[^install_and_run]
+## Install & Run
 
-[^install_and_run]: [`↗ Open a Mac app from an unidentified developer`](https://support.apple.com/guide/mac-help/mh40616/mac)
+As an open-source and free software, **Abyssal** has no ability to pay for [Apple Developer Account.](https://developer.apple.com/help/account/)Thus, you can't install **Abyssal** from App Store, and you may need to allow **Abyssal** to run as an unidentified app[^open_as_unidentified].
 
-As an open-source and free software, **Abyssal** has no ability to pay for [Apple Developer Account.](https://developer.apple.com/help/account/)Thus, you can't install **Abyssal** from App Store, and you may need to allow **Abyssal** to run as an unidentified app.
+[^open_as_unidentified]: [`↗ Open a Mac app from an unidentified developer`](https://support.apple.com/guide/mac-help/mh40616/mac)
 
 > [!NOTE]
 > You can download the installing disk image of **Abyssal** only from [Releases](https://github.com?KrLite/Abyssal/releases) page manually for now.
