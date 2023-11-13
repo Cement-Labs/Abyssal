@@ -220,7 +220,8 @@ extension StatusBarController {
     }
     
     func updateEdge() {
-        edge = (body.button?.window?.frame.origin.x ?? 0) + (body.button?.window?.frame.width ?? 0) + (mouseSpare ? 4 : -8)
+        edge = (body.origin?.x ?? 0) + body.length
+        print(edge)
     }
     
 }

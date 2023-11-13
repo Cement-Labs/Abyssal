@@ -117,6 +117,8 @@ extension AppDelegate {
         _ sender: Any?
     ) {
         if let button = statusBarController.head.button ?? sender as? NSButton {
+            let buttonRect = button.convert(button.bounds, to: nil)
+            let screenRect = button.window!.convertToScreen(buttonRect)
             
             let invisiblePanel = NSPanel(
                 contentRect: NSMakeRect(0, 0, 1, 5),
@@ -126,9 +128,6 @@ extension AppDelegate {
             )
             invisiblePanel.isFloatingPanel = true
             invisiblePanel.alphaValue = 0
-            
-            let buttonRect = button.convert(button.bounds, to: nil)
-            let screenRect = button.window!.convertToScreen(buttonRect)
 
             invisiblePanel.setFrameOrigin(NSPoint(
                 x: screenRect.maxX,

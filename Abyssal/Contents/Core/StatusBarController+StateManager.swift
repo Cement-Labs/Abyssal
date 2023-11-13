@@ -158,14 +158,12 @@ extension StatusBarController {
                 // Update edge
                 if self.shouldEdgeUpdate.will {
                     self.shouldEdgeUpdate.now = true
+                } else {
+                    self.shouldEdgeUpdate.now = false
                 }
                 
                 if self.shouldEdgeUpdate.now {
                     self.updateEdge()
-                }
-                
-                if !self.shouldEdgeUpdate.will {
-                    self.shouldEdgeUpdate.now = false
                 }
                 
                 // Update mouse and key
