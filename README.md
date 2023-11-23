@@ -258,9 +258,9 @@ After you **triggered or canceled** **Auto Hide or Auto Idling,** **Abyssal** wi
 
 ## Install & Run
 
-As an open-source and free software, **Abyssal** has no ability to pay for [Apple Developer Account.](https://developer.apple.com/help/account/)Thus, you can't install **Abyssal** from App Store, and you may need to allow **Abyssal** to run as an unidentified app[^open_as_unidentified].
+>[!NOTE]
+> As an open-source and free software, **Abyssal** can't afford an [Apple Developer Account.](https://developer.apple.com/help/account/) Therefore, you can't install **Abyssal** directly from App Store, and you may need to allow **Abyssal** to run as an unidentified app[^open_as_unidentified].
+>
+> You can download the installing disk image of **Abyssal** only from [Releases](https://github.com?KrLite/Abyssal/releases) page manually for now.
 
 [^open_as_unidentified]: [`↗ Open a Mac app from an unidentified developer`](https://support.apple.com/guide/mac-help/mh40616/mac)
-
-> [!NOTE]
-> You can download the installing disk image of **Abyssal** only from [Releases](https://github.com?KrLite/Abyssal/releases) page manually for now.
