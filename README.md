@@ -18,7 +18,7 @@
 
 # <p align="center"><img width="172" src="/Abyssal/Assets.xcassets/AppIcon.appiconset/icon_512x512@2x@2x.png?raw=true" /><br />Abyssal</p><br />
 
-###### <p align="center">Simplify, Tidy and Master Your macOS Menu Bar[^menu_bar].</p>
+###### <p align="center">Simplify, tidy and master your macOS menu bar[^menu_bar].</p>
 
 [^menu_bar]: Also known as *Status Bar.*
 
