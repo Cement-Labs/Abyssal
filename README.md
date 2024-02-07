@@ -44,20 +44,22 @@
 - The **Visible Area**&emsp;Icons inside this area suffer no restrictions. You can see them *all the time.*
 
 
-The three areas are separated by two separators - the `Always Hide Separator`&ensp;<sub><picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Icons/Dark/DottedLine.png?raw=true" /><img height="17" src="/Docs/Contents/Icons/Light/DottedLine.png?raw=true" /></picture></sub> (the farthest one from the screen corner) and the `Hide Separator`&ensp;<sub><picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Icons/Dark/Line.png?raw=true" /><img height="17" src="/Docs/Contents/Icons/Light/Line.png?raw=true" /></picture></sub> (the middle one). Apart from these, there's another separator on the closest side - the `Menu Separator`&ensp;<sub><picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Icons/Dark/Dot.png?raw=true" /><img height="17" src="/Docs/Contents/Icons/Light/Dot.png?raw=true" /></picture></sub> (the leading one), its position doesn't matter, but it plays an important role.
+The three areas are separated by two separators - the `Always Hide Separator`&ensp;<sub><picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Icons/Dark/DottedLine.png?raw=true" /><img height="17" src="/Docs/Contents/Icons/Light/DottedLine.png?raw=true" /></picture></sub> (the furthest one from the screen corner) and the `Hide Separator`&ensp;<sub><picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Icons/Dark/Line.png?raw=true" /><img height="17" src="/Docs/Contents/Icons/Light/Line.png?raw=true" /></picture></sub> (the middle one). Apart from these, there's another separator on the nearest side to the screen corner - the `Menu Separator`&ensp;<sub><picture><source media="(prefers-color-scheme: dark)" srcset="/Docs/Contents/Icons/Dark/Dot.png?raw=true" /><img height="17" src="/Docs/Contents/Icons/Light/Dot.png?raw=true" /></picture></sub>, which's position doesn't matter, but plays an important role.
 
-> **Abyssal** will judge the order of the three separators, which means you don't need to care much about their position. For example, you are allowed to put the `Menu Separator` to the left of the `Always Hide Separator`, as they will swap their roles back automatically after your operation.
+> **Abyssal** will judge the order of the three separators, which means you don't need to care much about their position. For example, you are allowed to put the `Menu Separator` to the other side of the `Always Hide Separator`, as they will automatically swap their roles to the correct ones after your operation.
 
 <br />
 
 ### Showing & Moving the Separators
 
-In themes including the default theme, separators will be hidden by default. And when you open the menu, or move your cursor onto the menu bar[^cursor_onto_status_bar] and press the chosen modifiers, **Abyssal** will show all the separators. In the rest of the themes, separators won't be hidden, but their appearance will change automatically according to the status of the app. The show and hide of the separators also follow some special rules:
+In many themes including the default theme, the separators are invisible (transparent) by default. If you <u>open the menu,</u> or <u>move your cursor onto the menu bar[^cursor_onto_status_bar] and press the chosen modifiers,</u> the separators will be visible (partly opaque). In the rest of the themes, the separators will always be visible, but their appearance may change automatically according to the status of **Abyssal**
 
-- When using themes that automatically hide the icons inside the separators, the `Menu Separator` will indicate the visibility of the status icons inside the **Hide Area**. If the `Menu Separator` **is visible,** it indicates that the status icons inside the **Hide Area** are **visible.** Otherwise the icons are **hidden.**
-- When using other themes, all the separators perform together. If all of them are **translucent,** it indicates that the status icons inside the **Hide Area** are **visible.** Otherwise the icons are **hidden.**
+The visibilities of the separators can also indicate:
 
-[^cursor_onto_status_bar]: You need to move your cursor to the left of `Menu Separator` in order to trigger something. On monitors with notches, you may also need to move your cursor *between the the screen notch and the `Menu Separator`.*
+- When using themes that automatically hide the separators, the `Menu Separator` will indicate the visibility of the status icons inside the **Hide Area**. If the `Menu Separator` **is visible,** then the status icons inside the **Hide Area** are **visible.** Otherwise the icons are **hidden.**
+- When using other themes, all the separators perform together. If all of them are **translucent,** then the status icons inside the **Hide Area** are **visible.** Otherwise the icons are **hidden.**
+
+[^cursor_onto_status_bar]: You need to move your cursor further away from the screen corner than the `Menu Separator` in order to trigger something. On monitors with notches, you may also need to move your cursor *between the the screen notch and the `Menu Separator`.*
 
 Dragging the icons while holding <kbd>⌘ command</kbd> can change the order of the separators. For example, to put more icons into or out of the **Hide Area.**
 
