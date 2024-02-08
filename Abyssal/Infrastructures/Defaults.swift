@@ -7,6 +7,7 @@
 
 import Foundation
 import Defaults
+import LaunchAtLogin
 
 extension Defaults.Keys {
     
@@ -14,9 +15,15 @@ extension Defaults.Keys {
     
     
     
-    static let modifiers = Key<[Bool]>("modifiers", default: [false, true, true])
+    static let modifiers = Key<ModifiersAttribute>(
+        "modifiers",
+        default: ModifiersAttribute(control: false, option: true, command: true)
+    )
     
-    static let timeoutAttribute = Key<TimeoutAttribute>("timeoutAttribute", default: .sec30)
+    static let timeout = Key<TimeoutAttribute>(
+        "timeout",
+        default: .sec30
+    )
     
     static let tipsEnabled = Key<Bool>("tipsEnabled", default: true)
     
@@ -26,9 +33,15 @@ extension Defaults.Keys {
     
     static let autoShowsEnabled = Key<Bool>("autoShowsEnabled", default: true)
     
-    static let feedbackAttribute = Key<FeedbackAttribute>("feedbackAttribute", default: .medium)
+    static let feedback = Key<FeedbackAttribute>(
+        "feedback",
+        default: .medium
+    )
     
-    static let deadZone = Key<>()
+    static let deadZone = Key<DeadZoneAttribute>(
+        "deadZone",
+        default: DeadZoneAttribute(percentage: 0.25)
+    )
     
     
     
@@ -40,8 +53,14 @@ extension Defaults.Keys {
 
 extension Defaults {
     
-    static let timeoutSliderRange = NSRange(location: 0, length: 11)
-    
-    static let feedbackIntensitySliderRange = NSRange(location: 0, length: 4)
+    static var launchAtLogin: Bool {
+        get {
+            LaunchAtLogin.isEnabled
+        }
+        
+        set(flag) {
+            LaunchAtLogin.isEnabled = flag
+        }
+    }
     
 }

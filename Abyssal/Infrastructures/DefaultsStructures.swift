@@ -9,6 +9,44 @@ import Foundation
 import Defaults
 import AppKit
 
+struct ModifiersAttribute: Defaults.Serializable {
+    
+    let control: Bool
+    let option: Bool
+    let command: Bool
+    
+    struct Bridge: Defaults.Bridge {
+        
+        typealias Value = ModifiersAttribute
+        
+        typealias Serializable = (control: Bool, option: Bool, command: Bool)
+        
+        func serialize(_ value: ModifiersAttribute?) -> (control: Bool, option: Bool, command: Bool)? {
+            guard let value else {
+                return nil
+            }
+            
+            return (
+                control: value.control,
+                option: value.option,
+                command: value.command
+            )
+        }
+        
+        func deserialize(_ object: (control: Bool, option: Bool, command: Bool)?) -> ModifiersAttribute? {
+            guard let object else {
+                return nil
+            }
+            
+            return .init(control: object.control, option: object.option, command: object.command)
+        }
+        
+    }
+    
+    static let bridge = Bridge()
+    
+}
+
 enum TimeoutAttribute: Int, Defaults.Serializable {
     
     case sec5 = 0
@@ -117,35 +155,68 @@ enum FeedbackAttribute: Int, Defaults.Serializable {
     }
 }
 
-struct ThemeBridge: Defaults.Bridge {
+struct DeadZoneAttribute: Defaults.Serializable {
     
-    typealias Value = Theme
+    let percentage: Double
     
-    typealias Serializable = Int
+    static let range = 0.0...1.0
     
-    func serialize(_ value: Theme?) -> Int? {
-        guard let value else {
-            return Themes.themes.firstIndex(of: Themes.defaultTheme)
+    struct Bridge: Defaults.Bridge {
+        
+        typealias Value = DeadZoneAttribute
+        
+        typealias Serializable = Double
+        
+        func serialize(_ value: DeadZoneAttribute?) -> Double? {
+            guard let value else {
+                return nil
+            }
+            
+            return value.percentage
         }
         
-        return Themes.themes.firstIndex(of: value)
-    }
-    
-    func deserialize(_ object: Int?) -> Theme? {
-        guard
-            let index = object,
-            index < Themes.themes.count
-        else {
-            return Themes.defaultTheme
+        func deserialize(_ object: Double?) -> DeadZoneAttribute? {
+            guard let object, DeadZoneAttribute.range.contains(object) else {
+                return nil
+            }
+            
+            return .init(percentage: object)
         }
         
-        return Themes.themes[index]
     }
+    
+    static let bridge = Bridge()
     
 }
 
 extension Theme: Defaults.Serializable {
     
-    static let bridge = ThemeBridge()
+    struct Bridge: Defaults.Bridge {
+        
+        typealias Value = Theme
+        typealias Serializable = Int
+        
+        func serialize(_ value: Theme?) -> Int? {
+            guard let value else {
+                return nil
+            }
+            
+            return Themes.themes.firstIndex(of: value)
+        }
+        
+        func deserialize(_ object: Int?) -> Theme? {
+            guard
+                let index = object,
+                index < Themes.themes.count
+            else {
+                return nil
+            }
+            
+            return Themes.themes[index]
+        }
+        
+    }
+    
+    static let bridge = Bridge()
     
 }
