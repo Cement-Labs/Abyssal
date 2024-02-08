@@ -24,7 +24,8 @@
 
 ### <div><!--Empty Lines--><br /><br /></div>
 
-> [!IMPORTANT] > **Abyssal** requires **macOS 13.0 Ventura**[^check_your_macos_version] and above to run.
+> [!IMPORTANT]
+> **Abyssal** requires **macOS 13.0 Ventura**[^check_your_macos_version] and above to run.
 
 [^check_your_macos_version]: [`↗ Find out which macOS your Mac is using`](https://support.apple.com/en-us/HT201260)
 
