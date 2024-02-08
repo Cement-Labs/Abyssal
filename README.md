@@ -217,7 +217,7 @@ Set an optional timeout for `Auto Idling` to cancel automatically, ranging from 
 
 - **Off**
 
-  Reduce animations to gain a more performant experience.
+  Reduce the use of animation in **Abyssal** to gain a more performant experience.
 
 <br />
 
@@ -242,13 +242,13 @@ Set an optional timeout for `Auto Idling` to cancel automatically, ranging from 
 
 ### What's More: Auto Idling
 
-Due to the limitations of macOS, **Abyssal** cannot know whether you have opened a menu in the **Always Hide Area** or the **Hide Area.** If the **Auto Hide** function hides these status icons rashly, their menus will also move away. Therefore, **Abyssal** adopts an approach to avoid similar situations to the greatest extent.
+Due to the limitations of macOS, **Abyssal** cannot know whether you have opened a menu in the **Always Hide Area** or the **Hide Area.** If the **Auto Hide** function hides these status icons rashly after your cursor leave the menu bar, their menus will also move away. Therefore, **Abyssal** adopts an approach to avoid similar situations to the greatest extent.
 
-Speaking generally, when you click on a place in the menu bar **where there is likely to have other status icons, and the status icon is likely to be inside the Hide Area or the Always Hide Area,** **Abyssal** will choose to pause the **Auto Hide** and enter the **Auto Idling** state. When you finish the operation, just move the cursor **over** the `Always Hide Separator` or the `Hide Separator`, and you can cancel the **Auto Idling** state and resume **Auto Hide** to hide the status icons. **Abyssal** also provides an optional timeout to automatically disable the **Auto Idling** state, which can be configured in the preferences menu.
+Speaking specifically, when you click on a place in the menu bar **where there is likely to have other status icons, and the status icon is likely to be inside the Hide Area or the Always Hide Area,** **Abyssal** will choose to pause the **Auto Hide** and enter the **Auto Idling** state. When you finish the operation, just move the cursor **over** the `Always Hide Separator` or the `Hide Separator`, and you can cancel the **Auto Idling** state and resume **Auto Hide** to hide the status icons. **Abyssal** also provides an optional timeout to automatically disable the **Auto Idling** state, which can be configured in the preferences menu.
 
-**Auto Idling** will enable automatically accordng to your clicking position, and it will distinguish between the **Always Hide Area** and the **Hide Area.** It will only be activated when **Auto Hide** is enabled.
+**Auto Idling** will enable automatically accordng to your clicking position, and it will distinguish between the **Always Hide Area** and the **Hide Area** - different areas trigger different reactions. It will only be activated when **Auto Hide** is enabled.
 
-After you **triggered or canceled** **Auto Hide or Auto Idling,** **Abyssal** will give a haptic feedback[^haptic_feedback_support_needed].
+After you **triggered or canceled** **Auto Hide or Auto Idling,** **Abyssal** will generate a haptic feedback[^haptic_feedback_support_needed].
 
 [^haptic_feedback_support_needed]: Your device must support _haptic feedback._
 
@@ -257,7 +257,7 @@ After you **triggered or canceled** **Auto Hide or Auto Idling,** **Abyssal** wi
 ## Install & Run
 
 > [!NOTE]
-> As an open-source and free software, **Abyssal** can't afford an [Apple Developer Account.](https://developer.apple.com/help/account/) Therefore, you can't install **Abyssal** directly from App Store, and you may need to allow **Abyssal** to run as an unidentified app[^open_as_unidentified].
+> As an open-source and free software, **Abyssal** can't afford an [Apple Developer Account.](https://developer.apple.com/help/account) Therefore, you can't install **Abyssal** directly from App Store, and you may need to allow **Abyssal** to run as an unidentified app[^open_as_unidentified].
 >
 > You can download the installing disk image of **Abyssal** only from [Releases](https://github.com?KrLite/Abyssal/releases) page manually for now.
 
