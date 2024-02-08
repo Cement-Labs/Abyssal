@@ -51,7 +51,7 @@ The three areas are separated by two separators - the `Always Hide Separator`&en
 
 ### Showing & Moving the Separators
 
-In many themes including the default theme, the separators are invisible (transparent) by default. If you <u>open the menu,</u> or <u>move your cursor onto the menu bar[^cursor_onto_status_bar] and press the chosen modifiers,</u> the separators will be visible (partly opaque). In the rest of the themes, the separators will always be visible, but their appearance may change automatically according to the status of **Abyssal**
+In many themes including the default theme, the separators are invisible (transparent) by default. If you _open the menu,_ or _move your cursor onto the menu bar[^cursor_onto_status_bar] and press the chosen modifiers,_ the separators will be visible (partly opaque). In the rest of the themes, the separators will always be visible, but their appearance may change automatically according to the status of **Abyssal**
 
 The visibilities of the separators can also indicate:
 
