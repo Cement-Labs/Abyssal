@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		282D880A2AD58BEA0015111C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C66CABA72A38871500E4D8E6 /* Assets.xcassets */; };
+		2831B15C2B751B7F0020DECD /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 2831B15B2B751B7F0020DECD /* Defaults */; };
+		2831B15E2B751B990020DECD /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2831B15D2B751B990020DECD /* Defaults.swift */; };
+		2831B1602B7521890020DECD /* DefaultsStructures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2831B15F2B7521890020DECD /* DefaultsStructures.swift */; };
 		2838D6B22AD842DB0087A5DE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2838D6B12AD842DB0087A5DE /* Colors.swift */; };
 		283ADC422AEA791C00C06146 /* Localizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283ADC412AEA791C00C06146 /* Localizations.swift */; };
 		2852BDE72AD957B100AA8AD1 /* FillOnHoverBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2852BDE62AD957B100AA8AD1 /* FillOnHoverBox.swift */; };
@@ -34,6 +37,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2831B15D2B751B990020DECD /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
+		2831B15F2B7521890020DECD /* DefaultsStructures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsStructures.swift; sourceTree = "<group>"; };
 		2838D6B12AD842DB0087A5DE /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		283ADC412AEA791C00C06146 /* Localizations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizations.swift; sourceTree = "<group>"; };
 		2852BDE62AD957B100AA8AD1 /* FillOnHoverBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillOnHoverBox.swift; sourceTree = "<group>"; };
@@ -67,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2831B15C2B751B7F0020DECD /* Defaults in Frameworks */,
 				C66F02AF2A3B5B4D00077CE3 /* LaunchAtLogin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -163,6 +169,8 @@
 				C6DEC5302A39EE0A00943448 /* Data.swift */,
 				2838D6B12AD842DB0087A5DE /* Colors.swift */,
 				283ADC412AEA791C00C06146 /* Localizations.swift */,
+				2831B15D2B751B990020DECD /* Defaults.swift */,
+				2831B15F2B7521890020DECD /* DefaultsStructures.swift */,
 			);
 			path = Infrastructures;
 			sourceTree = "<group>";
@@ -195,6 +203,7 @@
 			name = Abyssal;
 			packageProductDependencies = (
 				C66F02AE2A3B5B4D00077CE3 /* LaunchAtLogin */,
+				2831B15B2B751B7F0020DECD /* Defaults */,
 			);
 			productName = BarStalker;
 			productReference = C66CABA02A38871500E4D8E6 /* Abyssal.app */;
@@ -227,6 +236,7 @@
 			mainGroup = C66CAB972A38871500E4D8E6;
 			packageReferences = (
 				C66F02AD2A3B5B4D00077CE3 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
+				2831B15A2B751B7F0020DECD /* XCRemoteSwiftPackageReference "Defaults" */,
 			);
 			productRefGroup = C66CABA12A38871500E4D8E6 /* Products */;
 			projectDirPath = "";
@@ -262,6 +272,7 @@
 				2838D6B22AD842DB0087A5DE /* Colors.swift in Sources */,
 				C66CABB72A389F2500E4D8E6 /* EventMonitor.swift in Sources */,
 				C6DEC52A2A38BF6C00943448 /* StatusBarController.swift in Sources */,
+				2831B1602B7521890020DECD /* DefaultsStructures.swift in Sources */,
 				C6DEC52C2A38CDE500943448 /* Helper.swift in Sources */,
 				283ADC422AEA791C00C06146 /* Localizations.swift in Sources */,
 				C63B40532A4060E400BCAE79 /* NSStatusItem+Extension.swift in Sources */,
@@ -270,6 +281,7 @@
 				2852BDEB2AD97AEC00AA8AD1 /* Tips.swift in Sources */,
 				C6CDD0622A3F2F9000ED97F0 /* Themes.swift in Sources */,
 				C66CABA42A38871500E4D8E6 /* AppDelegate.swift in Sources */,
+				2831B15E2B751B990020DECD /* Defaults.swift in Sources */,
 				C6DEC5332A3A048B00943448 /* NSSwitch+Extension.swift in Sources */,
 				288E8E722AECEC9F00A74EFE /* MenuController+Initializers.swift in Sources */,
 				C6DEC5352A3A052700943448 /* NSButton+Extension.swift in Sources */,
@@ -503,6 +515,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2831B15A2B751B7F0020DECD /* XCRemoteSwiftPackageReference "Defaults" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/Defaults";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		C66F02AD2A3B5B4D00077CE3 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin";
@@ -514,6 +534,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2831B15B2B751B7F0020DECD /* Defaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2831B15A2B751B7F0020DECD /* XCRemoteSwiftPackageReference "Defaults" */;
+			productName = Defaults;
+		};
 		C66F02AE2A3B5B4D00077CE3 /* LaunchAtLogin */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C66F02AD2A3B5B4D00077CE3 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */;
