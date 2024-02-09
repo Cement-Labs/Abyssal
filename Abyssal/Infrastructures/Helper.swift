@@ -16,7 +16,7 @@ struct Helper {
     
     static let urlSourceCode = URL(string: "https://github.com/\(repoPath)")!
     
-    static let urlRelease = URL(string: "https://github.com/\(repoPath)/releases")!
+    static let urlRelease = URL(string: "https://github.com/\(repoPath)/releases/\(VersionHelper.latestTag)")!
     
     static let urlReleaseTags = URL(string: "https://api.github.com/repos/\(repoPath)/tags")!
     
@@ -88,14 +88,18 @@ struct Helper {
 
 struct VersionHelper {
     
+    static func normalizeVersion(_ version: String) -> String {
+        return version.replacing(/^v/, with: "")
+    }
+    
     static let checkNewVersionsTask = URLSession.shared.dataTask(with: Helper.urlReleaseTags) { (data, response, error) in
         guard let data = data else { return }
         
         do {
             if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] {
                 let tags = json.sorted { (v1, v2) -> Bool in
-                    let name1 = v1["name"] as? String ?? ""
-                    let name2 = v2["name"] as? String ?? ""
+                    let name1 = normalizeVersion(v1["name"] as? String ?? "")
+                    let name2 = normalizeVersion(v2["name"] as? String ?? "")
                     
                     return name2.compare(name1, options: .numeric) == .orderedAscending
                 }
