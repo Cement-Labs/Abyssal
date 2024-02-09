@@ -6,6 +6,7 @@
 //
 
 import Cocoa
+import Defaults
 
 class MenuController: NSViewController, NSMenuDelegate {
     
@@ -176,9 +177,9 @@ extension MenuController {
         NSAnimationContext.runAnimationGroup({ context in
             context.duration = 0.1
             
-            updateColoredModifier(boxModifierControl, Data.modifiers.control)
-            updateColoredModifier(boxModifierOption, Data.modifiers.option)
-            updateColoredModifier(boxModifierCommand, Data.modifiers.command)
+            updateColoredModifier(boxModifierControl, Defaults[.modifiers].control)
+            updateColoredModifier(boxModifierOption, Defaults[.modifiers].option)
+            updateColoredModifier(boxModifierCommand, Defaults[.modifiers].command)
         })
     }
     
@@ -198,10 +199,10 @@ extension MenuController {
         buttonQuitApp.animator().contentTintColor = Colors.Opaque.danger
         
         boxTips.setOriginlalFillColor(Colors.Translucent.accent)
-        boxTips.overrideFillColor(Data.tips ? Colors.Opaque.accent : nil)
+        boxTips.overrideFillColor(Defaults[.tipsEnabled] ? Colors.Opaque.accent : nil)
         boxTips.animator().borderColor = Colors.Translucent.accent
-        buttonTips.animator().contentTintColor = Data.tips ? NSColor.white : Colors.Opaque.accent
-        buttonTips.image = Data.tips
+        buttonTips.animator().contentTintColor = Defaults[.tipsEnabled] ? NSColor.white : Colors.Opaque.accent
+        buttonTips.image = Defaults[.tipsEnabled]
         ? NSImage(systemSymbolName: "tag.fill", accessibilityDescription: nil)
         : NSImage(systemSymbolName: "tag.slash", accessibilityDescription: nil)
         
@@ -247,14 +248,14 @@ extension MenuController {
     }
     
     func updateSliderTimeout() {
-        setSliderLabelEnabled(labelTimeout, Data.timeoutAttribute.attr != nil)
+        setSliderLabelEnabled(labelTimeout, Defaults[.timeout].attribute.attr != nil)
         
         let _ = definedTips[sliderTimeout]?.tip.update()
     }
     
     func updateSliderFeedbackIntensity() {
-        setSliderEnabled(sliderFeedbackIntensity, Data.autoShows)
-        setSliderLabelEnabled(labelFeedbackIntensity, Data.autoShows && Data.feedbackIntensity != 0)
+        setSliderEnabled(sliderFeedbackIntensity, Defaults[.autoShowsEnabled])
+        setSliderLabelEnabled(labelFeedbackIntensity, Defaults[.autoShowsEnabled] && Defaults[.feedback] != .none)
         
         let _ = definedTips[sliderFeedbackIntensity]?.tip.update()
     }
@@ -332,35 +333,35 @@ extension MenuController {
     @IBAction func toggleModifierControl(
         _ sender: NSButton
     ) {
-        Data.modifiers.control = sender.flag
+        Defaults[.modifiers].control = sender.flag
         updateColoredModifiers()
     }
     
     @IBAction func toggleModifierOption(
         _ sender: NSButton
     ) {
-        Data.modifiers.option = sender.flag
+        Defaults[.modifiers].option = sender.flag
         updateColoredModifiers()
     }
     
     @IBAction func toggleModifierCommand(
         _ sender: NSButton
     ) {
-        Data.modifiers.command = sender.flag
+        Defaults[.modifiers].command = sender.flag
         updateColoredModifiers()
     }
     
     @IBAction func toggleTimeout(
         _ sender: NSSlider
     ) {
-        Data.timeout = sender.integerValue
+        Defaults[.timeout] = TimeoutAttribute(rawValue: sender.integerValue)!
         updateSliderTimeout()
     }
     
     @IBAction func toggleTips(
         _ sender: NSButton
     ) {
-        Data.tips = sender.flag
+        Defaults[.tipsEnabled] = sender.flag
         updateColoredButtons()
         
         if sender.flag {
@@ -375,14 +376,14 @@ extension MenuController {
     @IBAction func toggleAutoShows(
         _ sender: NSSwitch
     ) {
-        Data.autoShows = sender.flag
+        Defaults[.autoShowsEnabled] = sender.flag
         updateSliderFeedbackIntensity()
     }
     
     @IBAction func toggleFeedbackIntensity(
         _ sender: NSSlider
     ) {
-        Data.feedbackIntensity = sender.integerValue
+        Defaults[.feedback] = FeedbackAttribute(rawValue: sender.integerValue)!
         updateSliderFeedbackIntensity()
         
         DispatchQueue.main.asyncAfter(wallDeadline: .now()) {
@@ -393,7 +394,7 @@ extension MenuController {
     @IBAction func toggleDeadZone(
         _ sender: NSSlider
     ) {
-        Data.deadZone = CGFloat(sender.floatValue)
+        Defaults[.deadZone].percentage = CGFloat(sender.floatValue)
         updateSliderDeadZone()
     }
     
@@ -402,14 +403,14 @@ extension MenuController {
     @IBAction func toggleUseAlwaysHideArea(
         _ sender: NSSwitch
     ) {
-        Data.useAlwaysHideArea = sender.flag
+        Defaults[.alwaysHideAreaEnabled] = sender.flag
         AppDelegate.instance?.statusBarController.untilTailVisible(sender.flag)
     }
     
     @IBAction func toggleReduceAnimation(
         _ sender: NSSwitch
     ) {
-        Data.reduceAnimation = sender.flag
+        Defaults[.reduceAnimationEnabled] = sender.flag
     }
     
     
@@ -417,7 +418,7 @@ extension MenuController {
     @IBAction func toggleStartsWithMacos(
         _ sender: NSSwitch
     ) {
-        Data.startsWithMacos = sender.flag
+        Defaults.launchAtLogin = sender.flag
     }
     
 }

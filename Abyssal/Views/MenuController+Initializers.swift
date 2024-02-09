@@ -7,6 +7,7 @@
 
 import Foundation
 import AppKit
+import Defaults
 
 extension MenuController {
     
@@ -45,7 +46,7 @@ extension MenuController {
             popUpButtonThemes.menu = themesMenu
             popUpButtonThemes.menu?.delegate = self
             
-            if let index = Themes.themes.firstIndex(of: Data.theme) {
+            if let index = Themes.themes.firstIndex(of: Defaults[.theme]) {
                 popUpButtonThemes.selectItem(at: index)
             }
         }
@@ -53,7 +54,7 @@ extension MenuController {
         // Controls
         
         sliderTimeout.minValue = 0
-        sliderTimeout.maxValue = Double(Data.timeoutTickMarks - 1)
+        sliderTimeout.maxValue = Double(TimeoutAttribute. - 1)
         sliderTimeout.numberOfTickMarks = Data.timeoutTickMarks
         sliderTimeout.allowsTickMarkValuesOnly = true
         

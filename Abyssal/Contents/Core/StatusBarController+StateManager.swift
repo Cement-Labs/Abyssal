@@ -6,6 +6,7 @@
 //
 
 import AppKit
+import Defaults
 
 extension StatusBarController {
     
@@ -39,7 +40,7 @@ extension StatusBarController {
     
     func collapse() {
         unidleHideArea()
-        Data.collapsed = true
+        Defaults[.isCollapsed] = true
     }
     
     func idleHideArea() {
@@ -85,14 +86,14 @@ extension StatusBarController {
             ) { [weak self] _ in
                 guard let self else { return }
                 
-                guard self.feedbackCount < Data.feedbackAttribute.feedback.count else {
+                guard self.feedbackCount < Defaults[.feedback].attribute.feedback.count else {
                     self.feedbackCount = 0
                     self.stopTimer(&self.feedbackTimer)
                     
                     return
                 }
                 
-                if let pattern = Data.feedbackAttribute.feedback[self.feedbackCount] {
+                if let pattern = Defaults[.feedback].attribute.feedback[self.feedbackCount] {
                     NSHapticFeedbackManager.defaultPerformer.perform(pattern, performanceTime: .default)
                 }
                 
@@ -121,7 +122,7 @@ extension StatusBarController {
                     }
                     
                     if self.draggedToUncollapse.shouldEnableAnimation {
-                        Data.reduceAnimation = false
+                        Defaults[.reduceAnimationEnabled] = false
                     }
                     
                     self.unidleAlwaysHideArea()
@@ -133,19 +134,19 @@ extension StatusBarController {
                         self.draggedToUncollapse.count += 1
                     } else {
                         self.draggedToUncollapse.dragging = true
-                        self.draggedToUncollapse.shouldCollapse = Data.collapsed
+                        self.draggedToUncollapse.shouldCollapse = Defaults[.isCollapsed]
                         self.draggedToUncollapse.count = 0
                         
-                        if Data.collapsed {
+                        if Defaults[.isCollapsed] {
                             self.draggedToUncollapse.shouldCollapse = true
                             self.uncollapse()
                         } else {
                             self.draggedToUncollapse.shouldCollapse = false
                         }
                         
-                        if !Data.reduceAnimation {
+                        if !Defaults[.reduceAnimationEnabled] {
                             self.draggedToUncollapse.shouldEnableAnimation = true
-                            Data.reduceAnimation = true
+                            Defaults[.reduceAnimationEnabled] = true
                         } else {
                             self.draggedToUncollapse.shouldEnableAnimation = false
                         }
@@ -202,11 +203,11 @@ extension StatusBarController {
     }
     
     func startTimeoutTimer() {
-        let timeoutAttribute = Data.timeoutAttribute
+        let timeout = Defaults[.timeout].attribute
         
-        if timeoutTimer == nil && timeoutAttribute.attr != nil {
+        if timeoutTimer == nil && timeout.attr != nil {
             timeoutTimer = Timer.scheduledTimer(
-                withTimeInterval: Double(timeoutAttribute.attr!),
+                withTimeInterval: Double(timeout.attr!),
                 repeats: false
             ) { [weak self] _ in
                 guard let self else { return }
@@ -258,7 +259,7 @@ extension StatusBarController {
                     self.mouseSpare
                 else { return }
                 
-                if Data.collapsed && self.mouseInHideArea && !(KeyboardHelper.command && event?.type == .leftMouseDown) {
+                if Defaults[.isCollapsed] && self.mouseInHideArea && !(KeyboardHelper.command && event?.type == .leftMouseDown) {
                     self.idleHideArea()
                 }
                 
@@ -274,7 +275,7 @@ extension StatusBarController {
     // MARK: - Disables
     
     func uncollapse() {
-        Data.collapsed = false
+        Defaults[.isCollapsed] = false
         unidleHideArea()
     }
     

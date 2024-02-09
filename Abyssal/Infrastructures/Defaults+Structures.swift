@@ -1,5 +1,5 @@
 //
-//  DefaultsStructures.swift
+//  Defaults+Structures.swift
 //  Abyssal
 //
 //  Created by KrLite on 2024/2/8.
@@ -11,9 +11,11 @@ import AppKit
 
 struct ModifiersAttribute: Defaults.Serializable {
     
-    let control: Bool
-    let option: Bool
-    let command: Bool
+    var control: Bool
+    
+    var option: Bool
+    
+    var command: Bool
     
     struct Bridge: Defaults.Bridge {
         
@@ -49,74 +51,48 @@ struct ModifiersAttribute: Defaults.Serializable {
 
 enum TimeoutAttribute: Int, Defaults.Serializable {
     
-    case sec5 = 0
-    case sec10 = 1
-    case sec15 = 2
-    case sec30 = 3
-    case sec45 = 4
-    case sec60 = 5
-    case sec60_2 = 6
-    case sec60_3 = 7
-    case sec60_5 = 8
-    case sec60_10 = 9
-    case forever = 10
+    case sec5 = 5
     
-    var value: (attr: Int?, label: String) {
-        return switch self {
-        case .sec5:
-            (
-                attr: 5,
-                label: Localizations.FormattedTime.inSeconds(5)
-            )
-        case .sec10:
-            (
-                attr: 10,
-                label: Localizations.FormattedTime.inSeconds(10)
-            )
-        case .sec15:
-            (
-                attr: 15,
-                label: Localizations.FormattedTime.inSeconds(15)
-            )
-        case .sec30:
-            (
-                attr: 30,
-                label: Localizations.FormattedTime.inSeconds(30)
-            )
-        case .sec45:
-            (
-                attr: 45,
-                label: Localizations.FormattedTime.inSeconds(45)
-            )
-        case .sec60:
-            (
-                attr: 60,
-                label: Localizations.FormattedTime.inMinutes(1)
-            )
-        case .sec60_2:
-            (
-                attr: 60 * 2,
-                label: Localizations.FormattedTime.inMinutes(2)
-            )
-        case .sec60_3:
-            (
-                attr: 60 * 3,
-                label: Localizations.FormattedTime.inMinutes(3)
-            )
-        case .sec60_5:
-            (
-                attr: 60 * 5,
-                label: Localizations.FormattedTime.inMinutes(5)
-            )
-        case .sec60_10:
-            (
-                attr: 60 * 10,
-                label: Localizations.FormattedTime.inMinutes(10)
-            )
-        default:
-            (
-                attr: nil,
-                label: Localizations.FormattedTime.forever)
+    case sec10 = 10
+    
+    case sec15 = 15
+    
+    case sec30 = 30
+    
+    case sec45 = 45
+    
+    case sec60 = 60
+    
+    case min2 = 120
+    
+    case min3 = 180
+    
+    case min5 = 300
+    
+    case min10 = 600
+    
+    case forever = 0
+    
+    var attribute: Int? {
+        switch self {
+        case .forever: nil
+        default: self.rawValue
+        }
+    }
+    
+    var label: String {
+        switch self {
+        case .sec5: Localizations.FormattedTime.inSeconds(5)
+        case .sec10: Localizations.FormattedTime.inSeconds(10)
+        case .sec15: Localizations.FormattedTime.inSeconds(15)
+        case .sec30: Localizations.FormattedTime.inSeconds(30)
+        case .sec45: Localizations.FormattedTime.inSeconds(45)
+        case .sec60: Localizations.FormattedTime.inMinutes(1)
+        case .min2: Localizations.FormattedTime.inMinutes(2)
+        case .min3: Localizations.FormattedTime.inMinutes(3)
+        case .min5: Localizations.FormattedTime.inMinutes(5)
+        case .min10: Localizations.FormattedTime.inMinutes(10)
+        default: Localizations.FormattedTime.forever
         }
     }
     
@@ -125,41 +101,41 @@ enum TimeoutAttribute: Int, Defaults.Serializable {
 enum FeedbackAttribute: Int, Defaults.Serializable {
     
     case none = 0
+    
     case light = 1
+    
     case medium = 2
+    
     case heavy = 3
     
-    var value: (feedback: [NSHapticFeedbackManager.FeedbackPattern?], label: String) {
-        return switch self {
-        case .none:
-            (
-                feedback: [.levelChange],
-                label: Localizations.FeedbackIntensity.light
-            )
-        case .light:
-            (
-                feedback: [.generic, nil, .alignment],
-                label: Localizations.FeedbackIntensity.medium
-            )
-        case .medium:
-            (
-                feedback: [.levelChange, .alignment, .alignment, nil, nil, nil, .levelChange],
-                label: Localizations.FeedbackIntensity.heavy
-            )
-        default:
-            (
-                feedback: [],
-                label: Localizations.FeedbackIntensity.disabled
-            )
+    var pattern: [NSHapticFeedbackManager.FeedbackPattern?] {
+        switch self {
+        case .none: [.levelChange]
+        case .light: [.generic, nil, .alignment]
+        case .medium: [.levelChange, .alignment, .alignment, nil, nil, nil, .levelChange]
+        default: []
+        }
+    }
+    
+    var label: String {
+        switch self {
+        case .none: Localizations.FeedbackIntensity.light
+        case .light: Localizations.FeedbackIntensity.medium
+        case .medium: Localizations.FeedbackIntensity.heavy
+        default: Localizations.FeedbackIntensity.disabled
         }
     }
 }
 
 struct DeadZoneAttribute: Defaults.Serializable {
     
-    let percentage: Double
+    var percentage: Double
     
-    static let range = 0.0...1.0
+    static let range = 0.0...0.75
+    
+    var semantic: String {
+        String(format: "%d%%", Int(percentage * 100))
+    }
     
     struct Bridge: Defaults.Bridge {
         

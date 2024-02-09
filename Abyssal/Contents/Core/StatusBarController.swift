@@ -6,6 +6,7 @@
 //
 
 import AppKit
+import Defaults
 
 class StatusBarController {
     
@@ -181,8 +182,8 @@ class StatusBarController {
         
         startTriggerTimer()
         
-        draggedToUncollapse.shouldCollapse = Data.collapsed
-        draggedToUncollapse.shouldEnableAnimation = !Data.reduceAnimation
+        draggedToUncollapse.shouldCollapse = Defaults[.isCollapsed]
+        draggedToUncollapse.shouldEnableAnimation = !Defaults[.reduceAnimationEnabled]
     }
     
     deinit {
