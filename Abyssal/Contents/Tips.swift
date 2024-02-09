@@ -31,6 +31,8 @@ class Tip {
         positionRect().offsetBy(dx: positionOffset().x, dy: positionOffset().y)
     }
     
+    var hasReactivePosition = false
+    
     var positionUpdateTimer: Timer?
     
     
@@ -66,6 +68,7 @@ class Tip {
         
         if let positionRect {
             self.positionRect = positionRect
+            self.hasReactivePosition = true
         }
         
         if let positionOffset {
@@ -227,12 +230,16 @@ class Tip {
             self.willShow = nil
         }
         
-        positionUpdateTimer = Timer.scheduledTimer(
-            withTimeInterval: 1.0 / 60.0,
-            repeats: true
-        ) { [weak self] _ in
-            guard let self else { return }
-            
+        if hasReactivePosition {
+            positionUpdateTimer = Timer.scheduledTimer(
+                withTimeInterval: 1.0 / 60.0,
+                repeats: true
+            ) { [weak self] _ in
+                guard let self else { return }
+                
+                self.updatePosition()
+            }
+        } else {
             self.updatePosition()
         }
     }

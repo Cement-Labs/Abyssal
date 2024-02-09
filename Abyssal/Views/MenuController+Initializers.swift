@@ -104,7 +104,8 @@ extension MenuController {
                         !VersionHelper.versionComponent.needsUpdate ? nil : NSLocalizedString("Tip/ButtonAppVersion", value: """
 An update is available, click to access the download page.
 """, comment: "if (update available) -> (button) app version")
-                    }, preferredEdge: .minX
+                    }, 
+                    preferredEdge: .minX
                 )!, trackingArea: buttonAppVersion.visibleRect.getTrackingArea(self, viewToAdd: buttonAppVersion)
             ),
             
@@ -136,7 +137,8 @@ After interacting with status items that will be automatically hidden, for examp
                         NSLocalizedString("Tip/SwitchStartsWithMacOS", value: """
 Run **Abyssal** when macOS starts.
 """, comment: "(switch) starts with macOS")
-                    }
+                    },
+                    preferredEdge: .maxX
                 )!, trackingArea: switchStartsWithMacOS.visibleRect.getTrackingArea(self, viewToAdd: switchStartsWithMacOS)
             ),
             
@@ -186,7 +188,8 @@ Auto shows the status items inside the **Hide Area** while the cursor is hoverin
 If this option is enabled, the status items inside the **Hide Area,** which is between the `Hide Separator` (the middle one) and the `Always Hide Separator` (the furthest one from the screen corner), will be hidden and kept invisible, until the cursor hovers over the spare area, where the status items in **Hide Area** used to stay. Otherwise the status items will be hidden until you switch their visibility state manually.
 By left clicking on the `Menu Separator` (the nearest one to the screen corner), or clicking using either of the mouse buttons on the other separators, you can manually switch the visibility state of the status items inside the **Hide Area.** If you set them visible, they will never be hidden again until you manually switch their visibility state. Otherwise they will follow the behavior defined above.
 """, comment: "(switch) auto shows")
-                    }
+                    },
+                    preferredEdge: .maxX
                 )!, trackingArea: switchAutoShows.visibleRect.getTrackingArea(self, viewToAdd: switchAutoShows)
             ),
             sliderFeedbackIntensity: (
@@ -226,7 +229,8 @@ Due to the limitations of macOS, **Abyssal** can't infer the available width use
 Hide certain status items permanently by moving them left of the `Always Hide Separator` to the **Always Hide Area.**
 The status items inside the **Always Hide Area** will be hidden and invisible until the cursor hovers over the spare area with a modifier key down, or while this window is opened.
 """, comment: "(switch) use always hide area")
-                    }
+                    },
+                    preferredEdge: .maxX
                 )!, trackingArea: switchUseAlwaysHideArea.visibleRect.getTrackingArea(self, viewToAdd: switchUseAlwaysHideArea)
             ),
             switchReduceAnimation: (
@@ -235,7 +239,8 @@ The status items inside the **Always Hide Area** will be hidden and invisible un
                         NSLocalizedString("Tip/SwitchReduceAnimations", value: """
 Reduce animations to gain a more performant experience.
 """, comment: "(switch) reduce animations")
-                    }
+                    },
+                    preferredEdge: .maxX
                 )!, trackingArea: switchReduceAnimation.visibleRect.getTrackingArea(self, viewToAdd: switchReduceAnimation)
             )
         ]
