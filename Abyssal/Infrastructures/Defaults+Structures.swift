@@ -170,6 +170,7 @@ extension Theme: Defaults.Serializable {
     struct Bridge: Defaults.Bridge {
         
         typealias Value = Theme
+        
         typealias Serializable = Int
         
         func serialize(_ value: Theme?) -> Int? {
