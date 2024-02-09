@@ -53,7 +53,7 @@ class Tip {
         dataString: (() -> String?)? = nil,
         tipString: (() -> String?)? = nil,
         preferredEdge: NSRectEdge = .maxY,
-        delay: CGFloat = 0.2,
+        delay: CGFloat = 0.5,
         
         rect positionRect: (() -> NSRect)? = nil,
         offset positionOffset: (() -> NSPoint)? = nil
@@ -108,18 +108,9 @@ class Tip {
         }
         
         popover.contentViewController?.view.layoutSubtreeIfNeeded()
-        let size: NSSize? = popover.contentViewController?.view.frame.size
         
         if isShown {
             updatePosition()
-            
-            if let size {
-                NSAnimationContext.runAnimationGroup() { context in
-                    context.allowsImplicitAnimation = true
-                    
-                    self.popover.contentSize = size
-                }
-            }
         }
         
         return true

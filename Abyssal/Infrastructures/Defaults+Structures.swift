@@ -110,9 +110,9 @@ enum FeedbackAttribute: Int, CaseIterable, Defaults.Serializable {
     
     var pattern: [NSHapticFeedbackManager.FeedbackPattern?] {
         switch self {
-        case .none: [.levelChange]
-        case .light: [.generic, nil, .alignment]
-        case .medium: [.levelChange, .alignment, .alignment, nil, nil, nil, .levelChange]
+        case .light: [.levelChange]
+        case .medium: [.generic, nil, .alignment]
+        case .heavy: [.levelChange, .alignment, .alignment, nil, nil, nil, .levelChange]
         default: []
         }
     }
