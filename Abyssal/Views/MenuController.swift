@@ -14,8 +14,6 @@ class MenuController: NSViewController, NSMenuDelegate {
     
     let tips = Tips()
     
-    var themeIndexKey = UnsafeRawPointer(bitPattern: "themeIndexKey".hashValue)
-    
     private static var menuAppearanceObservation: NSKeyValueObservation?
     
     // MARK: - Outlets
@@ -156,7 +154,7 @@ extension MenuController {
     ) {
         if
             let button = sender as? NSMenuItem,
-            let index = objc_getAssociatedObject(button, &themeIndexKey) as? Int
+            let index = themesMenu.items.firstIndex(of: button)
         {
             Helper.switchToTheme(index)
         }
