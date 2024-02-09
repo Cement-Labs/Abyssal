@@ -7,6 +7,7 @@
 
 import Foundation
 import AppKit
+import Defaults
 
 struct Separator {
     
@@ -97,7 +98,7 @@ extension Separator {
     }
     
     mutating func lerpLength() -> Bool {
-        if Data.reduceAnimation {
+        if Defaults[.reduceAnimationEnabled] {
             length = targetLength
             return true
         } else {

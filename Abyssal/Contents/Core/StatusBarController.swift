@@ -222,7 +222,6 @@ extension StatusBarController {
     
     func updateEdge() {
         edge = (body.origin?.x ?? 0) + body.length
-        print(edge)
     }
     
 }

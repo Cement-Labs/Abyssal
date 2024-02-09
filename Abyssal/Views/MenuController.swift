@@ -248,7 +248,7 @@ extension MenuController {
     }
     
     func updateSliderTimeout() {
-        setSliderLabelEnabled(labelTimeout, Defaults[.timeout].attribute.attr != nil)
+        setSliderLabelEnabled(labelTimeout, Defaults[.timeout].attribute != nil)
         
         let _ = definedTips[sliderTimeout]?.tip.update()
     }
@@ -354,7 +354,7 @@ extension MenuController {
     @IBAction func toggleTimeout(
         _ sender: NSSlider
     ) {
-        Defaults[.timeout] = TimeoutAttribute(rawValue: sender.integerValue)!
+        Defaults[.timeout] = TimeoutAttribute.allCases[sender.integerValue]
         updateSliderTimeout()
     }
     
@@ -383,7 +383,7 @@ extension MenuController {
     @IBAction func toggleFeedbackIntensity(
         _ sender: NSSlider
     ) {
-        Defaults[.feedback] = FeedbackAttribute(rawValue: sender.integerValue)!
+        Defaults[.feedback] = FeedbackAttribute.allCases[sender.integerValue]
         updateSliderFeedbackIntensity()
         
         DispatchQueue.main.asyncAfter(wallDeadline: .now()) {

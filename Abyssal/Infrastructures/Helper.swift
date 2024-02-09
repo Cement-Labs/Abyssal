@@ -8,6 +8,7 @@
 import Foundation
 import ApplicationServices
 import AppKit
+import Defaults
 
 struct Helper {
     
@@ -38,7 +39,7 @@ struct Helper {
             return origin.x + width / 2.0 + notchWidth / 2.0
         } else {
             let rightEdge = AppDelegate.instance?.statusBarController.edge ?? width
-            return origin.x + 50 + (rightEdge - 50) * Data.deadZone // Apple icon + App name should be at least 50 pixels wide.
+            return origin.x + 50 + (rightEdge - 50) * Defaults[.deadZone].percentage // Apple icon + App name should be at least 50 pixels wide.
         }
     }
     
@@ -77,7 +78,7 @@ struct Helper {
     static func switchToTheme(
         _ index: Int
     ) {
-        Data.theme = Themes.themes[index]
+        Defaults[.theme] = Themes.themes[index]
         
         AppDelegate.instance?.statusBarController.map()
         AppDelegate.instance?.statusBarController.startFunctionalTimers()
@@ -255,9 +256,9 @@ struct KeyboardHelper {
     }
     
     static var modifiers: Bool {
-        (Data.modifiers.control && control)
-        || (Data.modifiers.option && option)
-        || (Data.modifiers.command && command)
+        (Defaults[.modifiers].control && control)
+        || (Defaults[.modifiers].option && option)
+        || (Defaults[.modifiers].command && command)
     }
     
 }

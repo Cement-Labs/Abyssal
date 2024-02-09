@@ -86,14 +86,14 @@ extension StatusBarController {
             ) { [weak self] _ in
                 guard let self else { return }
                 
-                guard self.feedbackCount < Defaults[.feedback].attribute.feedback.count else {
+                guard self.feedbackCount < Defaults[.feedback].pattern.count else {
                     self.feedbackCount = 0
                     self.stopTimer(&self.feedbackTimer)
                     
                     return
                 }
                 
-                if let pattern = Defaults[.feedback].attribute.feedback[self.feedbackCount] {
+                if let pattern = Defaults[.feedback].pattern[self.feedbackCount] {
                     NSHapticFeedbackManager.defaultPerformer.perform(pattern, performanceTime: .default)
                 }
                 
@@ -203,11 +203,11 @@ extension StatusBarController {
     }
     
     func startTimeoutTimer() {
-        let timeout = Defaults[.timeout].attribute
+        let timeout = Defaults[.timeout]
         
-        if timeoutTimer == nil && timeout.attr != nil {
+        if timeoutTimer == nil && timeout.attribute != nil {
             timeoutTimer = Timer.scheduledTimer(
-                withTimeInterval: Double(timeout.attr!),
+                withTimeInterval: Double(timeout.attribute!),
                 repeats: false
             ) { [weak self] _ in
                 guard let self else { return }

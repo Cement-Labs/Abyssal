@@ -7,6 +7,7 @@
 
 import Foundation
 import AppKit
+import Defaults
 
 class Tip {
     
@@ -39,7 +40,7 @@ class Tip {
     }
     
     var has: (data: Bool, tip: Bool, tipRuntime: Bool) {
-        (data: dataString() != nil, tip: tipString() != nil, tipRuntime: Data.tips && tipString() != nil)
+        (data: dataString() != nil, tip: tipString() != nil, tipRuntime: Defaults[.tipsEnabled] && tipString() != nil)
     }
     
     var lastHas: (data: Bool, tip: Bool, tipRuntime: Bool)?
@@ -230,7 +231,10 @@ class Tip {
             )
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: willShow!)
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+            self.willShow?.perform()
+            self.willShow = nil
+        }
         
         positionUpdateTimer = Timer.scheduledTimer(
             withTimeInterval: 1.0 / 60.0,
@@ -244,8 +248,13 @@ class Tip {
     
     func close() {
         positionUpdateTimer?.invalidate()
-        willShow?.cancel()
-        popover.performClose(self)
+        
+        guard let willShow else {
+            popover.performClose(self)
+            return
+        }
+        
+        willShow.cancel()
     }
     
 }

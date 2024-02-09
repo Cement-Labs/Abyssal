@@ -54,40 +54,40 @@ extension MenuController {
         // Controls
         
         sliderTimeout.minValue = 0
-        sliderTimeout.maxValue = Double(TimeoutAttribute. - 1)
-        sliderTimeout.numberOfTickMarks = Data.timeoutTickMarks
+        sliderTimeout.maxValue = Double(TimeoutAttribute.allCases.count - 1)
+        sliderTimeout.numberOfTickMarks = TimeoutAttribute.allCases.count
         sliderTimeout.allowsTickMarkValuesOnly = true
         
         sliderFeedbackIntensity.minValue = 0
-        sliderFeedbackIntensity.maxValue = Double(Data.feedbackIntensityTickMarks - 1)
-        sliderFeedbackIntensity.numberOfTickMarks = Data.feedbackIntensityTickMarks
+        sliderFeedbackIntensity.maxValue = Double(FeedbackAttribute.allCases.count - 1)
+        sliderFeedbackIntensity.numberOfTickMarks = FeedbackAttribute.allCases.count
         sliderFeedbackIntensity.allowsTickMarkValuesOnly = true
         
         sliderDeadZone.minValue = 0
-        sliderDeadZone.maxValue = Data.deadZoneMaxValue
+        sliderDeadZone.maxValue = DeadZoneAttribute.range.upperBound
         sliderDeadZone.numberOfTickMarks = 0
         sliderDeadZone.allowsTickMarkValuesOnly = false
         
         
         
-        buttonModifierControl.flag = Data.modifiers.control
-        buttonModifierOption.flag = Data.modifiers.option
-        buttonModifierCommand.flag = Data.modifiers.command
+        buttonModifierControl.flag = Defaults[.modifiers].control
+        buttonModifierOption.flag = Defaults[.modifiers].option
+        buttonModifierCommand.flag = Defaults[.modifiers].command
         
-        sliderTimeout.objectValue = Data.timeout
+        sliderTimeout.objectValue = TimeoutAttribute.allCases.firstIndex(of: Defaults[.timeout])
         updateSliderTimeout()
         
-        switchStartsWithMacOS.flag = Data.startsWithMacos
-        buttonTips.flag = Data.tips
+        switchStartsWithMacOS.flag = Defaults.launchAtLogin
+        buttonTips.flag = Defaults[.tipsEnabled]
         
-        switchAutoShows.flag = Data.autoShows
-        sliderFeedbackIntensity.objectValue = Data.feedbackIntensity
-        sliderDeadZone.objectValue = Data.deadZone
+        switchAutoShows.flag = Defaults[.autoShowsEnabled]
+        sliderFeedbackIntensity.objectValue = FeedbackAttribute.allCases.firstIndex(of: Defaults[.feedback])
+        sliderDeadZone.objectValue = Defaults[.deadZone].percentage
         updateSliderFeedbackIntensity()
         updateSliderDeadZone()
         
-        switchUseAlwaysHideArea.flag = Data.useAlwaysHideArea
-        switchReduceAnimation.flag = Data.reduceAnimation
+        switchUseAlwaysHideArea.flag = Defaults[.alwaysHideAreaEnabled]
+        switchReduceAnimation.flag = Defaults[.reduceAnimationEnabled]
         
         updateColoredWidgets()
     }
@@ -121,7 +121,7 @@ The modifier keys to use. Pressing only one of the chosen keys is enough to trig
             ),
             sliderTimeout: (
                 tip: Tip(
-                    dataString: { Data.timeoutAttribute.label },
+                    dataString: { Defaults[.timeout].label },
                     tipString: {
                         NSLocalizedString("Tip/SliderTimeout", value: """
 Time to countdown before disabling **Auto Idling.**
@@ -194,7 +194,7 @@ By left clicking on the `Menu Separator` (the nearest one to the screen corner),
             sliderFeedbackIntensity: (
                 tip: Tip(
                     dataString: {
-                        Data.feedbackAttribute.label
+                        Defaults[.feedback].label
                     },
                     tipString: {
                         NSLocalizedString("Tip/SliderFeedbackIntensity", value: """
@@ -208,7 +208,7 @@ Feedback intensity given when triggering actions such as 'enabling **Auto Shows*
             sliderDeadZone: (
                 tip: Tip(
                     dataString: {
-                        Data.deadZonePercentage
+                        Defaults[.deadZone].semantic
                     },
                     tipString: {
                         NSLocalizedString("Tip/SliderDeadZone", value: """

@@ -21,26 +21,26 @@ struct ModifiersAttribute: Defaults.Serializable {
         
         typealias Value = ModifiersAttribute
         
-        typealias Serializable = (control: Bool, option: Bool, command: Bool)
+        typealias Serializable = [Bool]
         
-        func serialize(_ value: ModifiersAttribute?) -> (control: Bool, option: Bool, command: Bool)? {
+        func serialize(_ value: ModifiersAttribute?) -> [Bool]? {
             guard let value else {
                 return nil
             }
             
-            return (
-                control: value.control,
-                option: value.option,
-                command: value.command
-            )
+            return [
+                value.control,
+                value.option,
+                value.command
+            ]
         }
         
-        func deserialize(_ object: (control: Bool, option: Bool, command: Bool)?) -> ModifiersAttribute? {
+        func deserialize(_ object: [Bool]?) -> ModifiersAttribute? {
             guard let object else {
                 return nil
             }
             
-            return .init(control: object.control, option: object.option, command: object.command)
+            return .init(control: object[0], option: object[1], command: object[2])
         }
         
     }
@@ -49,7 +49,7 @@ struct ModifiersAttribute: Defaults.Serializable {
     
 }
 
-enum TimeoutAttribute: Int, Defaults.Serializable {
+enum TimeoutAttribute: Int, CaseIterable, Defaults.Serializable {
     
     case sec5 = 5
     
@@ -98,7 +98,7 @@ enum TimeoutAttribute: Int, Defaults.Serializable {
     
 }
 
-enum FeedbackAttribute: Int, Defaults.Serializable {
+enum FeedbackAttribute: Int, CaseIterable, Defaults.Serializable {
     
     case none = 0
     
@@ -119,9 +119,9 @@ enum FeedbackAttribute: Int, Defaults.Serializable {
     
     var label: String {
         switch self {
-        case .none: Localizations.FeedbackIntensity.light
-        case .light: Localizations.FeedbackIntensity.medium
-        case .medium: Localizations.FeedbackIntensity.heavy
+        case .light: Localizations.FeedbackIntensity.light
+        case .medium: Localizations.FeedbackIntensity.medium
+        case .heavy: Localizations.FeedbackIntensity.heavy
         default: Localizations.FeedbackIntensity.disabled
         }
     }

@@ -7,6 +7,7 @@
 
 import Cocoa
 import AppKit
+import Defaults
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -28,7 +29,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(
         _ aNotification: Notification
     ) {
-        Data.registerDefaults()
         popover.contentViewController = MenuController.freshController()
         popover.behavior = .transient
         
@@ -96,7 +96,7 @@ extension AppDelegate {
             return
         }
         
-        if Data.collapsed {
+        if Defaults[.isCollapsed] {
             statusBarController.uncollapse()
         } else {
             statusBarController.collapse()
