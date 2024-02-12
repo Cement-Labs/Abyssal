@@ -416,7 +416,7 @@ extension MenuController {
     @IBAction func toggleStartsWithMacos(
         _ sender: NSSwitch
     ) {
-        Defaults.launchAtLogin = sender.flag
+        Defaults[.launchAtLogin] = sender.flag
     }
     
 }

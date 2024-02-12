@@ -75,7 +75,7 @@ extension MenuController {
         sliderTimeout.objectValue = TimeoutAttribute.allCases.firstIndex(of: Defaults[.timeout])
         updateSliderTimeout()
         
-        switchStartsWithMacOS.flag = Defaults.launchAtLogin
+        switchStartsWithMacOS.flag = Defaults[.launchAtLogin]
         buttonTips.flag = Defaults[.tipsEnabled]
         
         switchAutoShows.flag = Defaults[.autoShowsEnabled]
