@@ -8,6 +8,7 @@
 import Cocoa
 import AppKit
 import Defaults
+import LaunchAtLogin
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -158,4 +159,12 @@ extension AppDelegate {
         AppDelegate.instance?.statusBarController.triggerIgnoring()
     }
     
+}
+
+func runTasks() {
+    Task {
+        for await value in Defaults.updates(.launchAtLogin) {
+            LaunchAtLogin.isEnabled = value
+        }
+    }
 }

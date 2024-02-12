@@ -49,18 +49,8 @@ extension Defaults.Keys {
     
     static let reduceAnimationEnabled = Key<Bool>("reduceAnimationEnabled", default: false)
     
-}
-
-extension Defaults {
     
-    static var launchAtLogin: Bool {
-        get {
-            LaunchAtLogin.isEnabled
-        }
-        
-        set(flag) {
-            LaunchAtLogin.isEnabled = flag
-        }
-    }
+    
+    static let launchAtLogin = Key<Bool>("launchAtLogin", default: false)
     
 }
