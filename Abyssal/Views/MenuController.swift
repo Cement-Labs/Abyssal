@@ -278,7 +278,7 @@ extension MenuController {
     
     // MARK: - Global Actions
     
-    @IBAction func quit(
+    @IBAction func quitApp(
         _ sender: Any?
     ) {
         minimize(sender)

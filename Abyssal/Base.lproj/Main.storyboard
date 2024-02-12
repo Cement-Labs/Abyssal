@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -403,7 +402,7 @@
                                                                         <nil key="locale"/>
                                                                     </symbolConfiguration>
                                                                     <connections>
-                                                                        <action selector="quit:" target="crA-Or-uDV" id="qzQ-bs-Nme"/>
+                                                                        <action selector="quitApp:" target="crA-Or-uDV" id="qzQ-bs-Nme"/>
                                                                     </connections>
                                                                 </button>
                                                             </subviews>
