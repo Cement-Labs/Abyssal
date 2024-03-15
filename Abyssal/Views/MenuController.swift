@@ -103,6 +103,7 @@ class MenuController: NSViewController, NSMenuDelegate {
         AppDelegate.instance?.statusBarController.startFunctionalTimers()
         
         updateSliderDeadZone()
+        updateColors()
     }
     
     override func viewDidDisappear() {
@@ -137,7 +138,7 @@ extension MenuController {
                 let menuController = ((app.delegate as? AppDelegate)?.popover.contentViewController as? MenuController)
                 
                 if menuController?.isViewLoaded ?? false {
-                    menuController?.updateColoredWidgets()
+                    menuController?.updateColors()
                 }
             }
         }
@@ -160,15 +161,18 @@ extension MenuController {
         }
     }
     
-    func updateColoredWidgets() {
+    func updateColors() {
+        updateColoredVersionInfo()
+        updateColoredModifiers()
+        updateColoredButtons()
+    }
+    
+    func updateColoredVersionInfo() {
         if VersionHelper.versionComponent.needsUpdate {
             buttonAppVersion.contentTintColor = Colors.Opaque.accent
         } else {
             buttonAppVersion.contentTintColor = NSColor.tertiaryLabelColor
         }
-        
-        updateColoredModifiers()
-        updateColoredButtons()
     }
     
     func updateColoredModifiers() {
@@ -191,6 +195,14 @@ extension MenuController {
         buttonTips.image = Defaults[.tipsEnabled]
         ? NSImage(systemSymbolName: "tag.fill", accessibilityDescription: nil)
         : NSImage(systemSymbolName: "tag.slash", accessibilityDescription: nil)
+    }
+    
+    func minimizeAndDo(
+        _ sender: Any?, execute: @escaping () -> Void
+    ) {
+        minimize(sender)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: execute)
     }
     
 }
@@ -275,13 +287,17 @@ extension MenuController {
     @IBAction func goToRelease(
         _ sender: Any?
     ) {
-        openUrl(sender, Helper.urlRelease)
+        minimizeAndDo(sender) {
+            self.openUrl(sender, Helper.urlRelease)
+        }
     }
     
     @IBAction func sourceCode(
         _ sender: Any?
     ) {
-        openUrl(sender, Helper.urlSourceCode)
+        minimizeAndDo(sender) {
+            self.openUrl(sender, Helper.urlSourceCode)
+        }
     }
     
     @IBAction func minimize(

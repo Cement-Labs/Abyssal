@@ -121,18 +121,6 @@
         }
       }
     },
-    "crA-Or-uDV.title" : {
-      "comment" : "Class = \"NSViewController\"; title = \"Layer 0\"; ObjectID = \"crA-Or-uDV\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Layer 0"
-          }
-        }
-      }
-    },
     "dJV-pr-4Ds.title" : {
       "comment" : "Class = \"NSBox\"; title = \"Main/Heading\"; ObjectID = \"dJV-pr-4Ds\";",
       "extractionState" : "extracted_with_value",

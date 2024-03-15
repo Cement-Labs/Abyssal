@@ -49,7 +49,8 @@ extension MenuController {
             }
         }
         
-        // Controls        
+        // Controls
+        
         boxModifiersControl.setHoverColor(Colors.Translucent.accent)
         boxModifiersControl.setBorderHoverColor(Colors.Opaque.accent)
         
@@ -138,7 +139,7 @@ extension MenuController {
         switchUseAlwaysHideArea.flag = Defaults[.alwaysHideAreaEnabled]
         switchReduceAnimation.flag = Defaults[.reduceAnimationEnabled]
         
-        updateColoredWidgets()
+        updateColors()
     }
     
 }

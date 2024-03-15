@@ -31,7 +31,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         _ aNotification: Notification
     ) {
         popover.contentViewController = MenuController.freshController()
-        popover.behavior = .transient
+        popover.behavior = .applicationDefined
         popover.delegate = self
         
         mouseEventMonitor = EventMonitor(

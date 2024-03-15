@@ -23,7 +23,7 @@
         <!--Menu-->
         <scene sceneID="z1P-vU-hrd">
             <objects>
-                <viewController title="Layer 0" storyboardIdentifier="MenuController" id="crA-Or-uDV" userLabel="Menu" customClass="MenuController" customModule="Abyssal" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MenuController" id="crA-Or-uDV" userLabel="Menu" customClass="MenuController" customModule="Abyssal" customModuleProvider="target" sceneMemberID="viewController">
                     <customView key="view" wantsLayer="YES" horizontalCompressionResistancePriority="500" verticalCompressionResistancePriority="500" translatesAutoresizingMaskIntoConstraints="NO" id="N9w-5A-9hS" userLabel="Menu">
                         <rect key="frame" x="0.0" y="0.0" width="660" height="445"/>
                         <subviews>
