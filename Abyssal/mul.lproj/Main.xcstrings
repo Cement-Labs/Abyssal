@@ -43,6 +43,18 @@
         }
       }
     },
+    "827-6G-l7o.title" : {
+      "comment" : "Class = \"NSBox\"; title = \"Main/Body 1/Modifiers/Command\"; ObjectID = \"827-6G-l7o\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Main/Body 1/Modifiers/Command"
+          }
+        }
+      }
+    },
     "AYu-sK-qS6.title" : {
       "comment" : "Class = \"NSMenu\"; title = \"Main Menu\"; ObjectID = \"AYu-sK-qS6\";",
       "extractionState" : "extracted_with_value",
@@ -367,6 +379,30 @@
         }
       }
     },
+    "Uio-1V-qOn.title" : {
+      "comment" : "Class = \"NSBox\"; title = \"Main/Body 1/Modifiers/Control\"; ObjectID = \"Uio-1V-qOn\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Main/Body 1/Modifiers/Control"
+          }
+        }
+      }
+    },
+    "wmR-e3-2td.title" : {
+      "comment" : "Class = \"NSBox\"; title = \"Main/Body 1/Modifiers/Option\"; ObjectID = \"wmR-e3-2td\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Main/Body 1/Modifiers/Option"
+          }
+        }
+      }
+    },
     "YHc-dN-U9E.title" : {
       "comment" : "Class = \"NSButtonCell\"; title = \"Link\"; ObjectID = \"YHc-dN-U9E\";",
       "extractionState" : "extracted_with_value",
@@ -381,7 +417,7 @@
     },
     "zX5-Vr-1M7.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Modifiers\"; ObjectID = \"zX5-Vr-1M7\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

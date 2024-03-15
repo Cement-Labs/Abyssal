@@ -22,7 +22,19 @@ class MenuController: NSViewController, NSMenuDelegate {
     
     
     
-    @IBOutlet weak var segmentedControlModifiers: NSSegmentedControl!
+    @IBOutlet weak var viewModifiers: NSStackView!
+    
+    @IBOutlet weak var boxModifiersControl: FillOnHoverBox!
+    
+    @IBOutlet weak var buttonModifiersControl: NSButton!
+    
+    @IBOutlet weak var boxModifiersOption: FillOnHoverBox!
+    
+    @IBOutlet weak var buttonModifiersOption: NSButton!
+    
+    @IBOutlet weak var boxModifiersCommand: FillOnHoverBox!
+    
+    @IBOutlet weak var buttonModifiersCommand: NSButton!
     
     @IBOutlet weak var labelTimeout: NSTextField!
     
@@ -155,46 +167,33 @@ extension MenuController {
             buttonAppVersion.contentTintColor = NSColor.tertiaryLabelColor
         }
         
+        updateColoredModifiers()
         updateColoredButtons()
     }
     
-    func updateColoredButtons() {
-        boxQuitApp.setHoverColor(Colors.Translucent.danger)
-        boxQuitApp.setBorderHoverColor(Colors.Opaque.danger)
+    func updateColoredModifiers() {
+        let modifiers = Defaults[.modifiers]
         
-        boxQuitApp.setBorderFallbackColor(.systemFill.withAlphaComponent(0.1))
+        boxModifiersControl.setOverrideColor(modifiers.control ? Colors.Opaque.accent : nil)
+        boxModifiersOption.setOverrideColor(modifiers.option ? Colors.Opaque.accent : nil)
+        boxModifiersCommand.setOverrideColor(modifiers.command ? Colors.Opaque.accent : nil)
         
+        buttonModifiersControl.animator().contentTintColor = modifiers.control ? .white : Colors.Opaque.accent
+        buttonModifiersOption.animator().contentTintColor = modifiers.option ? .white : Colors.Opaque.accent
+        buttonModifiersCommand.animator().contentTintColor = modifiers.command ? .white : Colors.Opaque.accent
+    }
+    
+    func updateColoredButtons() {        
         buttonQuitApp.animator().contentTintColor = Colors.Opaque.danger
-        
-        
-        
-        boxTips.setHoverColor(Colors.Translucent.accent)
-        boxTips.setBorderHoverColor(Colors.Opaque.accent)
-        
-        boxTips.setBorderFallbackColor(.systemFill.withAlphaComponent(0.1))
         
         boxTips.setOverrideColor(Defaults[.tipsEnabled] ? Colors.Opaque.accent : nil)
         
-        buttonTips.animator().contentTintColor = Defaults[.tipsEnabled] ? NSColor.white : Colors.Opaque.accent
+        buttonTips.animator().contentTintColor = Defaults[.tipsEnabled] ? .white : Colors.Opaque.accent
         buttonTips.image = Defaults[.tipsEnabled]
         ? NSImage(systemSymbolName: "tag.fill", accessibilityDescription: nil)
         : NSImage(systemSymbolName: "tag.slash", accessibilityDescription: nil)
         
-        
-        
-        boxLink.setHoverColor(Colors.Translucent.accent)
-        boxLink.setBorderHoverColor(Colors.Opaque.accent)
-        
-        boxLink.setBorderFallbackColor(.systemFill.withAlphaComponent(0.1))
-        
         buttonLink.animator().contentTintColor = Colors.Opaque.accent
-        
-        
-        
-        boxMinimize.setHoverColor(Colors.Translucent.safe)
-        boxMinimize.setBorderHoverColor(Colors.Opaque.safe)
-        
-        boxMinimize.setBorderFallbackColor(.systemFill.withAlphaComponent(0.1))
         
         buttonMinimize.animator().contentTintColor = Colors.Opaque.safe
     }
@@ -314,12 +313,25 @@ extension MenuController {
     }
     
     // MARK: - Data Actions
-    @IBAction func toggleModifiers(
-        _ sender: NSSegmentedControl
+    @IBAction func toggleModifiersControl(
+        _ sender: NSButton
     ) {
-        Defaults[.modifiers].control = sender.isSelected(forSegment: 0)
-        Defaults[.modifiers].option = sender.isSelected(forSegment: 1)
-        Defaults[.modifiers].command = sender.isSelected(forSegment: 2)
+        Defaults[.modifiers].control = sender.flag
+        updateColoredModifiers()
+    }
+    
+    @IBAction func toggleModifiersOption(
+        _ sender: NSButton
+    ) {
+        Defaults[.modifiers].option = sender.flag
+        updateColoredModifiers()
+    }
+    
+    @IBAction func toggleModifiersCommand(
+        _ sender: NSButton
+    ) {
+        Defaults[.modifiers].command = sender.flag
+        updateColoredModifiers()
     }
     
     @IBAction func toggleTimeout(

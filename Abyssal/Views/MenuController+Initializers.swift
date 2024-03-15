@@ -51,6 +51,45 @@ extension MenuController {
         
         // Controls
         
+        boxModifiersControl.setHoverColor(Colors.Translucent.accent)
+        boxModifiersControl.setBorderHoverColor(Colors.Opaque.accent)
+        
+        boxModifiersControl.setBorderFallbackColor(.systemFill.withAlphaComponent(0.1))
+        
+        boxModifiersOption.setHoverColor(Colors.Translucent.accent)
+        boxModifiersOption.setBorderHoverColor(Colors.Opaque.accent)
+        
+        boxModifiersOption.setBorderFallbackColor(.systemFill.withAlphaComponent(0.1))
+        
+        boxModifiersCommand.setHoverColor(Colors.Translucent.accent)
+        boxModifiersCommand.setBorderHoverColor(Colors.Opaque.accent)
+        
+        boxModifiersCommand.setBorderFallbackColor(.systemFill.withAlphaComponent(0.1))
+        
+        
+        
+        boxQuitApp.setHoverColor(Colors.Translucent.danger)
+        boxQuitApp.setBorderHoverColor(Colors.Opaque.danger)
+        
+        boxQuitApp.setBorderFallbackColor(.systemFill.withAlphaComponent(0.1))
+        
+        boxTips.setHoverColor(Colors.Translucent.accent)
+        boxTips.setBorderHoverColor(Colors.Opaque.accent)
+        
+        boxTips.setBorderFallbackColor(.systemFill.withAlphaComponent(0.1))
+        
+        boxLink.setHoverColor(Colors.Translucent.accent)
+        boxLink.setBorderHoverColor(Colors.Opaque.accent)
+        
+        boxLink.setBorderFallbackColor(.systemFill.withAlphaComponent(0.1))
+        
+        boxMinimize.setHoverColor(Colors.Translucent.safe)
+        boxMinimize.setBorderHoverColor(Colors.Opaque.safe)
+        
+        boxMinimize.setBorderFallbackColor(.systemFill.withAlphaComponent(0.1))
+        
+        
+        
         sliderTimeout.minValue = 0
         sliderTimeout.maxValue = Double(TimeoutAttribute.allCases.count - 1)
         sliderTimeout.numberOfTickMarks = TimeoutAttribute.allCases.count
@@ -68,15 +107,9 @@ extension MenuController {
         
         
         
-        segmentedControlModifiers.segmentCount = 3
-        
-        segmentedControlModifiers.setImage(NSImage(systemSymbolName: "control", accessibilityDescription: nil), forSegment: 0)
-        segmentedControlModifiers.setImage(NSImage(systemSymbolName: "option", accessibilityDescription: nil), forSegment: 1)
-        segmentedControlModifiers.setImage(NSImage(systemSymbolName: "command", accessibilityDescription: nil), forSegment: 2)
-        
-        segmentedControlModifiers.setSelected(Defaults[.modifiers].control, forSegment: 0)
-        segmentedControlModifiers.setSelected(Defaults[.modifiers].option, forSegment: 1)
-        segmentedControlModifiers.setSelected(Defaults[.modifiers].command, forSegment: 2)
+        buttonModifiersControl.flag = Defaults[.modifiers].control
+        buttonModifiersOption.flag = Defaults[.modifiers].option
+        buttonModifiersCommand.flag = Defaults[.modifiers].command
         
         
         
@@ -117,14 +150,14 @@ An update is available, click to access the download page.
                 )!, trackingArea: buttonAppVersion.visibleRect.getTrackingArea(self, viewToAdd: buttonAppVersion)
             ),
             
-            segmentedControlModifiers: (
+            viewModifiers: (
                 tip: Tip(
                     tipString: {
-                        NSLocalizedString("Tip/SegmentedControlModifiers", value: """
+                        NSLocalizedString("Tip/ViewModifiers", value: """
 The modifier keys to use. Pressing only one of the chosen keys is enough to trigger the functions. It is recommended to keep the modifier key ⌘ enabled.
 """, comment: "(segmented control) modifiers")
                     }
-                )!, trackingArea: segmentedControlModifiers.visibleRect.getTrackingArea(self, viewToAdd: segmentedControlModifiers)
+                )!, trackingArea: viewModifiers.visibleRect.getTrackingArea(self, viewToAdd: viewModifiers)
             ),
             sliderTimeout: (
                 tip: Tip(
