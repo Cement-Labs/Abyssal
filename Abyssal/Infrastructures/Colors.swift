@@ -24,7 +24,7 @@ class Colors {
     
     class Translucent {
         
-        public static let opacity = 0.07
+        public static let opacity = 0.175
         
         public static var danger: NSColor {
             Opaque.danger.withAlphaComponent(opacity)

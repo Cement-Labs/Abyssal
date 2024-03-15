@@ -10,24 +10,71 @@ import AppKit
 
 class FillOnHoverBox: NSBox {
     
-    private var originalFillColor: NSColor = NSColor.clear
+    private var hoverColor: NSColor = NSColor.clear
     
-    private var overrideFillColor: NSColor?
+    private var fallbackColor: NSColor?
+    
+    private var overrideColor: NSColor?
+    
+    
+    
+    private var borderHoverColor: NSColor = NSColor.clear
+    
+    private var borderFallbackColor: NSColor?
+    
+    private var borderOverrideColor: NSColor?
+    
+    
     
     private var isHovered: Bool = false
     
-    public func setOriginlalFillColor(
-        _ originalFillColor: NSColor
-    ) {
-        self.originalFillColor = originalFillColor
-    }
     
-    public func overrideFillColor(
-        _ overrideFillColor: NSColor? = nil
+    
+    public func setHoverColor(
+        _ color: NSColor
     ) {
-        self.overrideFillColor = overrideFillColor
+        self.hoverColor = color
         updateFillColor()
     }
+    
+    public func setFallbackColor(
+        _ color: NSColor? = nil
+    ) {
+        self.fallbackColor = color
+        updateFillColor()
+    }
+    
+    public func setOverrideColor(
+        _ color: NSColor? = nil
+    ) {
+        self.overrideColor = color
+        updateFillColor()
+    }
+    
+    
+    
+    public func setBorderHoverColor(
+        _ color: NSColor
+    ) {
+        self.borderHoverColor = color
+        updateFillColor()
+    }
+    
+    public func setBorderFallbackColor(
+        _ color: NSColor? = nil
+    ) {
+        self.borderFallbackColor = color
+        updateFillColor()
+    }
+    
+    public func setBorderOverrideColor(
+        _ color: NSColor? = nil
+    ) {
+        self.borderOverrideColor = color
+        updateFillColor()
+    }
+    
+    
     
     override func awakeFromNib() {
         updateFillColor()
@@ -66,10 +113,16 @@ class FillOnHoverBox: NSBox {
         NSAnimationContext.runAnimationGroup({ context in
             context.duration = 0.1
             
-            if overrideFillColor == nil {
-                animator().fillColor = isHovered ? originalFillColor : originalFillColor.withAlphaComponent(0)
+            if let overrideColor {
+                animator().fillColor = overrideColor
             } else {
-                animator().fillColor = overrideFillColor!
+                animator().fillColor = isHovered ? hoverColor : fallbackColor ?? hoverColor.withAlphaComponent(0)
+            }
+            
+            if let borderOverrideColor {
+                animator().borderColor = borderOverrideColor
+            } else {
+                animator().borderColor = isHovered ? borderHoverColor : borderFallbackColor ?? borderHoverColor.withAlphaComponent(0)
             }
         })
     }

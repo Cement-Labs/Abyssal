@@ -192,24 +192,53 @@ extension MenuController {
     }
     
     func updateColoredButtons() {
-        boxQuitApp.setOriginlalFillColor(Colors.Translucent.danger)
+        boxQuitApp.setHoverColor(Colors.Translucent.danger)
+        boxQuitApp.setBorderHoverColor(Colors.Opaque.danger)
+        
+        boxQuitApp.setFallbackColor(Colors.background)
+        boxQuitApp.setBorderFallbackColor(Colors.border)
+        
         boxQuitApp.animator().borderColor = Colors.Translucent.danger
+        
         buttonQuitApp.animator().contentTintColor = Colors.Opaque.danger
         
-        boxTips.setOriginlalFillColor(Colors.Translucent.accent)
-        boxTips.overrideFillColor(Defaults[.tipsEnabled] ? Colors.Opaque.accent : nil)
+        
+        
+        boxTips.setHoverColor(Colors.Translucent.accent)
+        boxTips.setBorderHoverColor(Colors.Opaque.accent)
+        
+        boxTips.setFallbackColor(Colors.background)
+        boxTips.setBorderFallbackColor(Colors.border)
+        
+        boxTips.setOverrideColor(Defaults[.tipsEnabled] ? Colors.Opaque.accent : nil)
         boxTips.animator().borderColor = Colors.Translucent.accent
+        
         buttonTips.animator().contentTintColor = Defaults[.tipsEnabled] ? NSColor.white : Colors.Opaque.accent
         buttonTips.image = Defaults[.tipsEnabled]
         ? NSImage(systemSymbolName: "tag.fill", accessibilityDescription: nil)
         : NSImage(systemSymbolName: "tag.slash", accessibilityDescription: nil)
         
-        boxLink.setOriginlalFillColor(Colors.Translucent.accent)
+        
+        
+        boxLink.setHoverColor(Colors.Translucent.accent)
+        boxLink.setBorderHoverColor(Colors.Opaque.accent)
+        
+        boxLink.setFallbackColor(Colors.background)
+        boxLink.setBorderFallbackColor(Colors.border)
+        
         boxLink.animator().borderColor = Colors.Translucent.accent
         buttonLink.animator().contentTintColor = Colors.Opaque.accent
         
-        boxMinimize.setOriginlalFillColor(Colors.Translucent.safe)
+        
+        
+        boxMinimize.setHoverColor(Colors.Translucent.safe)
+        boxMinimize.setBorderHoverColor(Colors.Opaque.safe)
+        
+        boxMinimize.setFallbackColor(Colors.background)
+        boxMinimize.setBorderFallbackColor(Colors.border)
+        
         boxMinimize.animator().borderColor = Colors.Translucent.safe
+        
         buttonMinimize.animator().contentTintColor = Colors.Opaque.safe
     }
     
