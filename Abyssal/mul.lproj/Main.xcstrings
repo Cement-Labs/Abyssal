@@ -43,18 +43,6 @@
         }
       }
     },
-    "34L-jV-T7X.title" : {
-      "comment" : "Class = \"NSButtonCell\"; title = \"Command\"; ObjectID = \"34L-jV-T7X\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Command"
-          }
-        }
-      }
-    },
     "AYu-sK-qS6.title" : {
       "comment" : "Class = \"NSMenu\"; title = \"Main Menu\"; ObjectID = \"AYu-sK-qS6\";",
       "extractionState" : "extracted_with_value",
@@ -129,18 +117,6 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Layer 0"
-          }
-        }
-      }
-    },
-    "CYc-8M-0bY.title" : {
-      "comment" : "Class = \"NSButtonCell\"; title = \"Option\"; ObjectID = \"CYc-8M-0bY\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Option"
           }
         }
       }
@@ -385,30 +361,6 @@
         }
       }
     },
-    "SFf-Jy-pSC.title" : {
-      "comment" : "Class = \"NSBox\"; title = \"Command\"; ObjectID = \"SFf-Jy-pSC\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Command"
-          }
-        }
-      }
-    },
-    "TDg-JT-8w0.title" : {
-      "comment" : "Class = \"NSBox\"; title = \"Option\"; ObjectID = \"TDg-JT-8w0\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Option"
-          }
-        }
-      }
-    },
     "tjw-3h-pt1.title" : {
       "comment" : "Class = \"NSBox\"; title = \"Main/Body 1/Preferences 2\"; ObjectID = \"tjw-3h-pt1\";",
       "extractionState" : "extracted_with_value",
@@ -439,18 +391,6 @@
         }
       }
     },
-    "ugu-DQ-ax1.title" : {
-      "comment" : "Class = \"NSButtonCell\"; title = \"Command\"; ObjectID = \"ugu-DQ-ax1\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Command"
-          }
-        }
-      }
-    },
     "YHc-dN-U9E.title" : {
       "comment" : "Class = \"NSButtonCell\"; title = \"Link\"; ObjectID = \"YHc-dN-U9E\";",
       "extractionState" : "extracted_with_value",
@@ -459,18 +399,6 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Link"
-          }
-        }
-      }
-    },
-    "ys5-8l-bsx.title" : {
-      "comment" : "Class = \"NSBox\"; title = \"Command\"; ObjectID = \"ys5-8l-bsx\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Command"
           }
         }
       }
