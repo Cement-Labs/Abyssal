@@ -63,14 +63,22 @@ extension MenuController {
         
         sliderDeadZone.minValue = 0
         sliderDeadZone.maxValue = DeadZoneAttribute.range.upperBound
-        sliderDeadZone.numberOfTickMarks = 0
+        sliderDeadZone.numberOfTickMarks = 2
         sliderDeadZone.allowsTickMarkValuesOnly = false
         
         
         
-        buttonModifierControl.flag = Defaults[.modifiers].control
-        buttonModifierOption.flag = Defaults[.modifiers].option
-        buttonModifierCommand.flag = Defaults[.modifiers].command
+        segmentedControlModifiers.segmentCount = 3
+        
+        segmentedControlModifiers.setImage(NSImage(systemSymbolName: "control", accessibilityDescription: nil), forSegment: 0)
+        segmentedControlModifiers.setImage(NSImage(systemSymbolName: "option", accessibilityDescription: nil), forSegment: 1)
+        segmentedControlModifiers.setImage(NSImage(systemSymbolName: "command", accessibilityDescription: nil), forSegment: 2)
+        
+        segmentedControlModifiers.setSelected(Defaults[.modifiers].control, forSegment: 0)
+        segmentedControlModifiers.setSelected(Defaults[.modifiers].option, forSegment: 1)
+        segmentedControlModifiers.setSelected(Defaults[.modifiers].command, forSegment: 2)
+        
+        
         
         sliderTimeout.objectValue = TimeoutAttribute.allCases.firstIndex(of: Defaults[.timeout])
         updateSliderTimeout()
@@ -109,14 +117,14 @@ An update is available, click to access the download page.
                 )!, trackingArea: buttonAppVersion.visibleRect.getTrackingArea(self, viewToAdd: buttonAppVersion)
             ),
             
-            viewModifiers: (
+            segmentedControlModifiers: (
                 tip: Tip(
                     tipString: {
-                        NSLocalizedString("Tip/ViewModifier", value: """
+                        NSLocalizedString("Tip/SegmentedControlModifiers", value: """
 The modifier keys to use. Pressing only one of the chosen keys is enough to trigger the functions. It is recommended to keep the modifier key ⌘ enabled.
-""", comment: "(view) modifier")
+""", comment: "(segmented control) modifiers")
                     }
-                )!, trackingArea: viewModifiers.visibleRect.getTrackingArea(self, viewToAdd: viewModifiers)
+                )!, trackingArea: segmentedControlModifiers.visibleRect.getTrackingArea(self, viewToAdd: segmentedControlModifiers)
             ),
             sliderTimeout: (
                 tip: Tip(

@@ -484,6 +484,24 @@
         }
       }
     },
+    "Tip/SegmentedControlModifiers" : {
+      "comment" : "(segmented control) modifiers",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "The modifier keys to use. Pressing only one of the chosen keys is enough to trigger the functions. It is recommended to keep the modifier key ⌘ enabled."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择要使用的修饰键。按下已选择的任一修饰键都可以触发相同效果。建议保持 ⌘ 修饰键启用。"
+          }
+        }
+      }
+    },
     "Tip/SliderDeadZone" : {
       "comment" : "(slider) dead zone",
       "extractionState" : "extracted_with_value",
@@ -606,24 +624,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "通过将一些状态栏图标移到**永远隐藏区域**（位于`永远隐藏分隔符`的左侧）以永远隐藏它们。\n**永远隐藏区域**内的图标将会一直不可见，直到光标移到空白区域内的同时按下修饰键或此窗口打开时。"
-          }
-        }
-      }
-    },
-    "Tip/ViewModifier" : {
-      "comment" : "(view) modifier",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "The modifier keys to use. Pressing only one of the chosen keys is enough to trigger the functions. It is recommended to keep the modifier key ⌘ enabled."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "选择要使用的修饰键。按下已选择的任一修饰键都可以触发相同效果。建议保持 ⌘ 修饰键启用。"
           }
         }
       }

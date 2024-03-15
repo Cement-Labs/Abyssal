@@ -10,18 +10,6 @@ import AppKit
 
 class Colors {
     
-    static func getOrClear(
-        _ name: String
-    ) -> NSColor {
-        NSColor(named: NSColor.Name("Colors/\(name)")) ?? NSColor.clear
-    }
-    
-    public static let background = getOrClear("Background")
-    
-    public static let border = getOrClear("Border")
-    
-    public static let borderSecondary = getOrClear("BorderSecondary")
-    
     class Translucent {
         
         public static let opacity = 0.175

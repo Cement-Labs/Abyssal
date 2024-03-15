@@ -22,19 +22,7 @@ class MenuController: NSViewController, NSMenuDelegate {
     
     
     
-    @IBOutlet weak var viewModifiers: NSStackView!
-    
-    @IBOutlet weak var boxModifierControl: NSBox!
-    
-    @IBOutlet weak var buttonModifierControl: NSButton!
-    
-    @IBOutlet weak var boxModifierOption: NSBox!
-    
-    @IBOutlet weak var buttonModifierOption: NSButton!
-    
-    @IBOutlet weak var boxModifierCommand: NSBox!
-    
-    @IBOutlet weak var buttonModifierCommand: NSButton!
+    @IBOutlet weak var segmentedControlModifiers: NSSegmentedControl!
     
     @IBOutlet weak var labelTimeout: NSTextField!
     
@@ -167,51 +155,27 @@ extension MenuController {
             buttonAppVersion.contentTintColor = NSColor.tertiaryLabelColor
         }
         
-        updateColoredModifiers()
         updateColoredButtons()
-    }
-    
-    func updateColoredModifiers() {
-        NSAnimationContext.runAnimationGroup({ context in
-            context.duration = 0.1
-            
-            updateColoredModifier(boxModifierControl, Defaults[.modifiers].control)
-            updateColoredModifier(boxModifierOption, Defaults[.modifiers].option)
-            updateColoredModifier(boxModifierCommand, Defaults[.modifiers].command)
-        })
-    }
-    
-    private func updateColoredModifier(
-        _ box: NSBox,
-        _ flag: Bool
-    ) {
-        let colorOn = NSColor.quaternaryLabelColor.withAlphaComponent(0.07)
-        let colorOff = NSColor.quaternaryLabelColor.withAlphaComponent(0)
-        
-        box.animator().fillColor = flag ? colorOn : colorOff
     }
     
     func updateColoredButtons() {
         boxQuitApp.setHoverColor(Colors.Translucent.danger)
-        boxQuitApp.setBorderHoverColor(Colors.Opaque.danger)
+        //boxQuitApp.setBorderHoverColor(Colors.Opaque.danger)
         
-        boxQuitApp.setFallbackColor(Colors.background)
-        boxQuitApp.setBorderFallbackColor(Colors.border)
-        
-        boxQuitApp.animator().borderColor = Colors.Translucent.danger
+        //boxQuitApp.setFallbackColor(Colors.background)
+        //boxQuitApp.setBorderFallbackColor(Colors.border)
         
         buttonQuitApp.animator().contentTintColor = Colors.Opaque.danger
         
         
         
         boxTips.setHoverColor(Colors.Translucent.accent)
-        boxTips.setBorderHoverColor(Colors.Opaque.accent)
+        //boxTips.setBorderHoverColor(Colors.Opaque.accent)
         
-        boxTips.setFallbackColor(Colors.background)
-        boxTips.setBorderFallbackColor(Colors.border)
+        //boxTips.setFallbackColor(Colors.background)
+        //boxTips.setBorderFallbackColor(Colors.border)
         
         boxTips.setOverrideColor(Defaults[.tipsEnabled] ? Colors.Opaque.accent : nil)
-        boxTips.animator().borderColor = Colors.Translucent.accent
         
         buttonTips.animator().contentTintColor = Defaults[.tipsEnabled] ? NSColor.white : Colors.Opaque.accent
         buttonTips.image = Defaults[.tipsEnabled]
@@ -221,23 +185,20 @@ extension MenuController {
         
         
         boxLink.setHoverColor(Colors.Translucent.accent)
-        boxLink.setBorderHoverColor(Colors.Opaque.accent)
+        //boxLink.setBorderHoverColor(Colors.Opaque.accent)
         
-        boxLink.setFallbackColor(Colors.background)
-        boxLink.setBorderFallbackColor(Colors.border)
+        //boxLink.setFallbackColor(Colors.background)
+        //boxLink.setBorderFallbackColor(Colors.border)
         
-        boxLink.animator().borderColor = Colors.Translucent.accent
         buttonLink.animator().contentTintColor = Colors.Opaque.accent
         
         
         
         boxMinimize.setHoverColor(Colors.Translucent.safe)
-        boxMinimize.setBorderHoverColor(Colors.Opaque.safe)
+        //boxMinimize.setBorderHoverColor(Colors.Opaque.safe)
         
-        boxMinimize.setFallbackColor(Colors.background)
-        boxMinimize.setBorderFallbackColor(Colors.border)
-        
-        boxMinimize.animator().borderColor = Colors.Translucent.safe
+        //boxMinimize.setFallbackColor(Colors.background)
+        //boxMinimize.setBorderFallbackColor(Colors.border)
         
         buttonMinimize.animator().contentTintColor = Colors.Opaque.safe
     }
@@ -357,25 +318,12 @@ extension MenuController {
     }
     
     // MARK: - Data Actions
-    @IBAction func toggleModifierControl(
-        _ sender: NSButton
+    @IBAction func toggleModifiers(
+        _ sender: NSSegmentedControl
     ) {
-        Defaults[.modifiers].control = sender.flag
-        updateColoredModifiers()
-    }
-    
-    @IBAction func toggleModifierOption(
-        _ sender: NSButton
-    ) {
-        Defaults[.modifiers].option = sender.flag
-        updateColoredModifiers()
-    }
-    
-    @IBAction func toggleModifierCommand(
-        _ sender: NSButton
-    ) {
-        Defaults[.modifiers].command = sender.flag
-        updateColoredModifiers()
+        Defaults[.modifiers].control = sender.isSelected(forSegment: 0)
+        Defaults[.modifiers].option = sender.isSelected(forSegment: 1)
+        Defaults[.modifiers].command = sender.isSelected(forSegment: 2)
     }
     
     @IBAction func toggleTimeout(
