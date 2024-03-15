@@ -160,20 +160,18 @@ extension MenuController {
     
     func updateColoredButtons() {
         boxQuitApp.setHoverColor(Colors.Translucent.danger)
-        //boxQuitApp.setBorderHoverColor(Colors.Opaque.danger)
+        boxQuitApp.setBorderHoverColor(Colors.Opaque.danger)
         
-        //boxQuitApp.setFallbackColor(Colors.background)
-        //boxQuitApp.setBorderFallbackColor(Colors.border)
+        boxQuitApp.setBorderFallbackColor(.systemFill.withAlphaComponent(0.1))
         
         buttonQuitApp.animator().contentTintColor = Colors.Opaque.danger
         
         
         
         boxTips.setHoverColor(Colors.Translucent.accent)
-        //boxTips.setBorderHoverColor(Colors.Opaque.accent)
+        boxTips.setBorderHoverColor(Colors.Opaque.accent)
         
-        //boxTips.setFallbackColor(Colors.background)
-        //boxTips.setBorderFallbackColor(Colors.border)
+        boxTips.setBorderFallbackColor(.systemFill.withAlphaComponent(0.1))
         
         boxTips.setOverrideColor(Defaults[.tipsEnabled] ? Colors.Opaque.accent : nil)
         
@@ -185,20 +183,18 @@ extension MenuController {
         
         
         boxLink.setHoverColor(Colors.Translucent.accent)
-        //boxLink.setBorderHoverColor(Colors.Opaque.accent)
+        boxLink.setBorderHoverColor(Colors.Opaque.accent)
         
-        //boxLink.setFallbackColor(Colors.background)
-        //boxLink.setBorderFallbackColor(Colors.border)
+        boxLink.setBorderFallbackColor(.systemFill.withAlphaComponent(0.1))
         
         buttonLink.animator().contentTintColor = Colors.Opaque.accent
         
         
         
         boxMinimize.setHoverColor(Colors.Translucent.safe)
-        //boxMinimize.setBorderHoverColor(Colors.Opaque.safe)
+        boxMinimize.setBorderHoverColor(Colors.Opaque.safe)
         
-        //boxMinimize.setFallbackColor(Colors.background)
-        //boxMinimize.setBorderFallbackColor(Colors.border)
+        boxMinimize.setBorderFallbackColor(.systemFill.withAlphaComponent(0.1))
         
         buttonMinimize.animator().contentTintColor = Colors.Opaque.safe
     }

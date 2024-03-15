@@ -337,18 +337,6 @@
         }
       }
     },
-    "QZS-zG-dv0.title" : {
-      "comment" : "Class = \"NSBox\"; title = \"Main/Body 2/Preferences 2\"; ObjectID = \"QZS-zG-dv0\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Main/Body 2/Preferences 2"
-          }
-        }
-      }
-    },
     "S3l-Th-u8S.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Abyssal\"; ObjectID = \"S3l-Th-u8S\";",
       "extractionState" : "extracted_with_value",
@@ -357,18 +345,6 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Abyssal"
-          }
-        }
-      }
-    },
-    "tjw-3h-pt1.title" : {
-      "comment" : "Class = \"NSBox\"; title = \"Main/Body 1/Preferences 2\"; ObjectID = \"tjw-3h-pt1\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Main/Body 1/Preferences 2"
           }
         }
       }

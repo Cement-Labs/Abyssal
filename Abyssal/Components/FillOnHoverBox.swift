@@ -77,6 +77,8 @@ class FillOnHoverBox: NSBox {
     
     
     override func awakeFromNib() {
+        self.fallbackColor = fillColor
+        self.borderFallbackColor = borderColor
         updateFillColor()
     }
     
