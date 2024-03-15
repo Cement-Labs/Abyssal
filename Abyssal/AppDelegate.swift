@@ -62,7 +62,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 extension AppDelegate: NSPopoverDelegate {
     
     func popoverShouldDetach(_ popover: NSPopover) -> Bool {
-        return true
+        true
     }
     
 }

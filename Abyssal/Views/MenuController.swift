@@ -162,6 +162,10 @@ extension MenuController {
     }
     
     func updateColors() {
+        buttonQuitApp.animator().contentTintColor = Colors.Opaque.danger
+        
+        buttonMinimize.animator().contentTintColor = Colors.Opaque.safe
+        
         updateColoredVersionInfo()
         updateColoredModifiers()
         updateColoredButtons()
@@ -176,25 +180,77 @@ extension MenuController {
     }
     
     func updateColoredModifiers() {
+        boxModifiersControl.setHoverColor(Colors.Translucent.accent)
+        boxModifiersControl.setBorderHoverColor(Colors.Opaque.accent)
+        
+        boxModifiersControl.setFallbackColor(Colors.thinBackgroundColor)
+        boxModifiersControl.setBorderFallbackColor(Colors.thinBackgroundColor)
+        
+        boxModifiersOption.setHoverColor(Colors.Translucent.accent)
+        boxModifiersOption.setBorderHoverColor(Colors.Opaque.accent)
+        
+        boxModifiersOption.setFallbackColor(Colors.thinBackgroundColor)
+        boxModifiersOption.setBorderFallbackColor(Colors.thinBackgroundColor)
+        
+        boxModifiersCommand.setHoverColor(Colors.Translucent.accent)
+        boxModifiersCommand.setBorderHoverColor(Colors.Opaque.accent)
+        
+        boxModifiersCommand.setFallbackColor(Colors.thinBackgroundColor)
+        boxModifiersCommand.setBorderFallbackColor(Colors.thinBackgroundColor)
+        
         let modifiers = Defaults[.modifiers]
         
         boxModifiersControl.setOverrideColor(modifiers.control ? Colors.Opaque.accent : nil)
         boxModifiersControl.setBorderOverrideColor(modifiers.control ? Colors.thinBackgroundColor : nil)
         
+        buttonModifiersControl.animator().contentTintColor = Colors.isDarkMode || !modifiers.control ? .labelColor : .controlColor
+        
         boxModifiersOption.setOverrideColor(modifiers.option ? Colors.Opaque.accent : nil)
         boxModifiersOption.setBorderOverrideColor(modifiers.option ? Colors.thinBackgroundColor : nil)
         
+        buttonModifiersOption.animator().contentTintColor = Colors.isDarkMode || !modifiers.option ? .labelColor : .controlColor
+        
         boxModifiersCommand.setOverrideColor(modifiers.command ? Colors.Opaque.accent : nil)
         boxModifiersCommand.setBorderOverrideColor(modifiers.command ? Colors.thinBackgroundColor : nil)
+        
+        
+        buttonModifiersCommand.animator().contentTintColor = Colors.isDarkMode || !modifiers.command ? .labelColor : .controlColor
     }
     
-    func updateColoredButtons() {        
-        boxTips.setOverrideColor(Defaults[.tipsEnabled] ? Colors.Opaque.accent : nil)
-        boxTips.setBorderOverrideColor(Defaults[.tipsEnabled] ? Colors.thinBackgroundColor : nil)
+    func updateColoredButtons() {
+        boxQuitApp.setHoverColor(Colors.Translucent.danger)
+        boxQuitApp.setBorderHoverColor(Colors.Opaque.danger)
         
-        buttonTips.image = Defaults[.tipsEnabled]
+        boxQuitApp.setFallbackColor(Colors.thinBackgroundColor)
+        boxQuitApp.setBorderFallbackColor(Colors.thinBackgroundColor)
+        
+        boxTips.setHoverColor(Colors.Translucent.accent)
+        boxTips.setBorderHoverColor(Colors.Opaque.accent)
+        
+        boxTips.setFallbackColor(Colors.thinBackgroundColor)
+        boxTips.setBorderFallbackColor(Colors.thinBackgroundColor)
+        
+        boxLink.setHoverColor(Colors.Translucent.accent)
+        boxLink.setBorderHoverColor(Colors.Opaque.accent)
+        
+        boxLink.setFallbackColor(Colors.thinBackgroundColor)
+        boxLink.setBorderFallbackColor(Colors.thinBackgroundColor)
+        
+        boxMinimize.setHoverColor(Colors.Translucent.safe)
+        boxMinimize.setBorderHoverColor(Colors.Opaque.safe)
+        
+        boxMinimize.setFallbackColor(Colors.thinBackgroundColor)
+        boxMinimize.setBorderFallbackColor(Colors.thinBackgroundColor)
+        
+        let tipsEnabled = Defaults[.tipsEnabled]
+        
+        boxTips.setOverrideColor(tipsEnabled ? Colors.Opaque.accent : nil)
+        boxTips.setBorderOverrideColor(tipsEnabled ? Colors.thinBackgroundColor : nil)
+        
+        buttonTips.image = tipsEnabled
         ? NSImage(systemSymbolName: "tag.fill", accessibilityDescription: nil)
         : NSImage(systemSymbolName: "tag.slash", accessibilityDescription: nil)
+        buttonTips.animator().contentTintColor = Colors.isDarkMode || !tipsEnabled ? .labelColor : .controlColor
     }
     
     func minimizeAndDo(

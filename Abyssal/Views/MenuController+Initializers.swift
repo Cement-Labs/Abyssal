@@ -51,54 +51,6 @@ extension MenuController {
         
         // Controls
         
-        boxModifiersControl.setHoverColor(Colors.Translucent.accent)
-        boxModifiersControl.setBorderHoverColor(Colors.Opaque.accent)
-        
-        boxModifiersControl.setFallbackColor(Colors.thinBackgroundColor)
-        boxModifiersControl.setBorderFallbackColor(Colors.thinBackgroundColor)
-        
-        boxModifiersOption.setHoverColor(Colors.Translucent.accent)
-        boxModifiersOption.setBorderHoverColor(Colors.Opaque.accent)
-        
-        boxModifiersOption.setFallbackColor(Colors.thinBackgroundColor)
-        boxModifiersOption.setBorderFallbackColor(Colors.thinBackgroundColor)
-        
-        boxModifiersCommand.setHoverColor(Colors.Translucent.accent)
-        boxModifiersCommand.setBorderHoverColor(Colors.Opaque.accent)
-        
-        boxModifiersCommand.setFallbackColor(Colors.thinBackgroundColor)
-        boxModifiersCommand.setBorderFallbackColor(Colors.thinBackgroundColor)
-        
-        
-        
-        boxQuitApp.setHoverColor(Colors.Translucent.danger)
-        boxQuitApp.setBorderHoverColor(Colors.Opaque.danger)
-        
-        boxQuitApp.setFallbackColor(Colors.thinBackgroundColor)
-        boxQuitApp.setBorderFallbackColor(Colors.thinBackgroundColor)
-        
-        boxTips.setHoverColor(Colors.Translucent.accent)
-        boxTips.setBorderHoverColor(Colors.Opaque.accent)
-        
-        boxTips.setFallbackColor(Colors.thinBackgroundColor)
-        boxTips.setBorderFallbackColor(Colors.thinBackgroundColor)
-        
-        boxLink.setHoverColor(Colors.Translucent.accent)
-        boxLink.setBorderHoverColor(Colors.Opaque.accent)
-        
-        boxLink.setFallbackColor(Colors.thinBackgroundColor)
-        boxLink.setBorderFallbackColor(Colors.thinBackgroundColor)
-        
-        boxMinimize.setHoverColor(Colors.Translucent.safe)
-        boxMinimize.setBorderHoverColor(Colors.Opaque.safe)
-        
-        boxMinimize.setFallbackColor(Colors.thinBackgroundColor)
-        boxMinimize.setBorderFallbackColor(Colors.thinBackgroundColor)
-        
-        buttonQuitApp.animator().contentTintColor = Colors.Opaque.danger
-        
-        buttonMinimize.animator().contentTintColor = Colors.Opaque.safe
-        
         
         
         sliderTimeout.minValue = 0
@@ -138,8 +90,6 @@ extension MenuController {
         
         switchUseAlwaysHideArea.flag = Defaults[.alwaysHideAreaEnabled]
         switchReduceAnimation.flag = Defaults[.reduceAnimationEnabled]
-        
-        updateColors()
     }
     
 }

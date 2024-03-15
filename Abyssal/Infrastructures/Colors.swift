@@ -10,7 +10,13 @@ import AppKit
 
 class Colors {
     
-    public static let thinBackgroundColor = NSColor.systemFill.withAlphaComponent(0.1)
+    public static var isDarkMode: Bool {
+        NSApplication.shared.effectiveAppearance.bestMatch(from: [.darkAqua, .vibrantDark, .accessibilityHighContrastDarkAqua, .accessibilityHighContrastVibrantDark]) == .darkAqua
+    }
+    
+    public static var thinBackgroundColor: NSColor {
+        (isDarkMode ? NSColor.white : NSColor.black).withAlphaComponent(isDarkMode ? 0.08 : 0.06)
+    }
     
     class Translucent {
         
