@@ -49,44 +49,54 @@ extension MenuController {
             }
         }
         
-        // Controls
-        
+        // Controls        
         boxModifiersControl.setHoverColor(Colors.Translucent.accent)
         boxModifiersControl.setBorderHoverColor(Colors.Opaque.accent)
         
-        boxModifiersControl.setBorderFallbackColor(.systemFill.withAlphaComponent(0.1))
+        boxModifiersControl.setFallbackColor(Colors.thinBackgroundColor)
+        boxModifiersControl.setBorderFallbackColor(Colors.thinBackgroundColor)
         
         boxModifiersOption.setHoverColor(Colors.Translucent.accent)
         boxModifiersOption.setBorderHoverColor(Colors.Opaque.accent)
         
-        boxModifiersOption.setBorderFallbackColor(.systemFill.withAlphaComponent(0.1))
+        boxModifiersOption.setFallbackColor(Colors.thinBackgroundColor)
+        boxModifiersOption.setBorderFallbackColor(Colors.thinBackgroundColor)
         
         boxModifiersCommand.setHoverColor(Colors.Translucent.accent)
         boxModifiersCommand.setBorderHoverColor(Colors.Opaque.accent)
         
-        boxModifiersCommand.setBorderFallbackColor(.systemFill.withAlphaComponent(0.1))
+        boxModifiersCommand.setFallbackColor(Colors.thinBackgroundColor)
+        boxModifiersCommand.setBorderFallbackColor(Colors.thinBackgroundColor)
         
         
         
         boxQuitApp.setHoverColor(Colors.Translucent.danger)
         boxQuitApp.setBorderHoverColor(Colors.Opaque.danger)
         
-        boxQuitApp.setBorderFallbackColor(.systemFill.withAlphaComponent(0.1))
+        boxQuitApp.setFallbackColor(Colors.thinBackgroundColor)
+        boxQuitApp.setBorderFallbackColor(Colors.thinBackgroundColor)
         
         boxTips.setHoverColor(Colors.Translucent.accent)
         boxTips.setBorderHoverColor(Colors.Opaque.accent)
         
-        boxTips.setBorderFallbackColor(.systemFill.withAlphaComponent(0.1))
+        boxTips.setFallbackColor(Colors.thinBackgroundColor)
+        boxTips.setBorderFallbackColor(Colors.thinBackgroundColor)
         
         boxLink.setHoverColor(Colors.Translucent.accent)
         boxLink.setBorderHoverColor(Colors.Opaque.accent)
         
-        boxLink.setBorderFallbackColor(.systemFill.withAlphaComponent(0.1))
+        boxLink.setFallbackColor(Colors.thinBackgroundColor)
+        boxLink.setBorderFallbackColor(Colors.thinBackgroundColor)
         
         boxMinimize.setHoverColor(Colors.Translucent.safe)
         boxMinimize.setBorderHoverColor(Colors.Opaque.safe)
         
-        boxMinimize.setBorderFallbackColor(.systemFill.withAlphaComponent(0.1))
+        boxMinimize.setFallbackColor(Colors.thinBackgroundColor)
+        boxMinimize.setBorderFallbackColor(Colors.thinBackgroundColor)
+        
+        buttonQuitApp.animator().contentTintColor = Colors.Opaque.danger
+        
+        buttonMinimize.animator().contentTintColor = Colors.Opaque.safe
         
         
         

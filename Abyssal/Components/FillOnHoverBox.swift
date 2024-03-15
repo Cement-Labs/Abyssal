@@ -34,21 +34,21 @@ class FillOnHoverBox: NSBox {
         _ color: NSColor
     ) {
         self.hoverColor = color
-        updateFillColor()
+        updateColors()
     }
     
     public func setFallbackColor(
         _ color: NSColor? = nil
     ) {
         self.fallbackColor = color
-        updateFillColor()
+        updateColors()
     }
     
     public func setOverrideColor(
         _ color: NSColor? = nil
     ) {
         self.overrideColor = color
-        updateFillColor()
+        updateColors()
     }
     
     
@@ -57,21 +57,21 @@ class FillOnHoverBox: NSBox {
         _ color: NSColor
     ) {
         self.borderHoverColor = color
-        updateFillColor()
+        updateColors()
     }
     
     public func setBorderFallbackColor(
         _ color: NSColor? = nil
     ) {
         self.borderFallbackColor = color
-        updateFillColor()
+        updateColors()
     }
     
     public func setBorderOverrideColor(
         _ color: NSColor? = nil
     ) {
         self.borderOverrideColor = color
-        updateFillColor()
+        updateColors()
     }
     
     
@@ -79,7 +79,7 @@ class FillOnHoverBox: NSBox {
     override func awakeFromNib() {
         self.fallbackColor = fillColor
         self.borderFallbackColor = borderColor
-        updateFillColor()
+        updateColors()
     }
     
     override func updateTrackingAreas() {
@@ -101,17 +101,17 @@ class FillOnHoverBox: NSBox {
         super.mouseEntered(with: event)
         
         isHovered = true
-        updateFillColor()
+        updateColors()
     }
     
     override func mouseExited(with event: NSEvent) {
         super.mouseExited(with: event)
         
         isHovered = false
-        updateFillColor()
+        updateColors()
     }
     
-    private func updateFillColor() {
+    private func updateColors() {
         NSAnimationContext.runAnimationGroup({ context in
             context.duration = 0.1
             

@@ -175,27 +175,22 @@ extension MenuController {
         let modifiers = Defaults[.modifiers]
         
         boxModifiersControl.setOverrideColor(modifiers.control ? Colors.Opaque.accent : nil)
-        boxModifiersOption.setOverrideColor(modifiers.option ? Colors.Opaque.accent : nil)
-        boxModifiersCommand.setOverrideColor(modifiers.command ? Colors.Opaque.accent : nil)
+        boxModifiersControl.setBorderOverrideColor(modifiers.control ? Colors.thinBackgroundColor : nil)
         
-        buttonModifiersControl.animator().contentTintColor = modifiers.control ? .white : Colors.Opaque.accent
-        buttonModifiersOption.animator().contentTintColor = modifiers.option ? .white : Colors.Opaque.accent
-        buttonModifiersCommand.animator().contentTintColor = modifiers.command ? .white : Colors.Opaque.accent
+        boxModifiersOption.setOverrideColor(modifiers.option ? Colors.Opaque.accent : nil)
+        boxModifiersOption.setBorderOverrideColor(modifiers.option ? Colors.thinBackgroundColor : nil)
+        
+        boxModifiersCommand.setOverrideColor(modifiers.command ? Colors.Opaque.accent : nil)
+        boxModifiersCommand.setBorderOverrideColor(modifiers.command ? Colors.thinBackgroundColor : nil)
     }
     
     func updateColoredButtons() {        
-        buttonQuitApp.animator().contentTintColor = Colors.Opaque.danger
-        
         boxTips.setOverrideColor(Defaults[.tipsEnabled] ? Colors.Opaque.accent : nil)
+        boxTips.setBorderOverrideColor(Defaults[.tipsEnabled] ? Colors.thinBackgroundColor : nil)
         
-        buttonTips.animator().contentTintColor = Defaults[.tipsEnabled] ? .white : Colors.Opaque.accent
         buttonTips.image = Defaults[.tipsEnabled]
         ? NSImage(systemSymbolName: "tag.fill", accessibilityDescription: nil)
         : NSImage(systemSymbolName: "tag.slash", accessibilityDescription: nil)
-        
-        buttonLink.animator().contentTintColor = Colors.Opaque.accent
-        
-        buttonMinimize.animator().contentTintColor = Colors.Opaque.safe
     }
     
 }

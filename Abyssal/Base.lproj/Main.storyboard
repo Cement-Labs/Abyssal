@@ -34,13 +34,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="275" height="405"/>
                                         <subviews>
                                             <box horizontalCompressionResistancePriority="825" verticalCompressionResistancePriority="825" boxType="custom" title="Main/Heading" titlePosition="noTitle" transparent="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dJV-pr-4Ds" userLabel="Heading">
-                                                <rect key="frame" x="0.0" y="213" width="275" height="192"/>
+                                                <rect key="frame" x="0.0" y="256" width="275" height="149"/>
                                                 <view key="contentView" wantsLayer="YES" id="Nus-iP-k6G">
-                                                    <rect key="frame" x="1" y="1" width="273" height="190"/>
+                                                    <rect key="frame" x="1" y="1" width="273" height="147"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3oE-Id-0vv">
-                                                            <rect key="frame" x="86" y="89" width="102" height="28"/>
+                                                            <rect key="frame" x="86" y="68" width="102" height="28"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Abyssal" id="S3l-Th-u8S">
                                                                 <font key="font" metaFont="systemHeavy" size="24"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -48,7 +48,7 @@
                                                             </textFieldCell>
                                                         </textField>
                                                         <button translatesAutoresizingMaskIntoConstraints="NO" id="Fj0-aa-Z4F">
-                                                            <rect key="frame" x="86" y="71" width="101" height="16"/>
+                                                            <rect key="frame" x="86" y="50" width="101" height="16"/>
                                                             <buttonCell key="cell" type="bevel" title="App Version" bezelStyle="rounded" image="shift.fill" catalog="system" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" inset="2" id="1vF-An-AOf">
                                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                 <font key="font" metaFont="systemBold"/>
@@ -68,130 +68,147 @@
                                                 </view>
                                             </box>
                                             <stackView distribution="fillEqually" orientation="vertical" alignment="leading" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gEV-ob-7OI" userLabel="Body 1">
-                                                <rect key="frame" x="0.0" y="0.0" width="275" height="205"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="275" height="248"/>
                                                 <subviews>
-                                                    <stackView distribution="fillEqually" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZyK-cL-k3I" userLabel="Modifiers">
-                                                        <rect key="frame" x="0.0" y="173" width="275" height="32"/>
-                                                        <subviews>
-                                                            <box verticalHuggingPriority="750" boxType="custom" cornerRadius="10" title="Main/Body 1/Modifiers/Control" translatesAutoresizingMaskIntoConstraints="NO" id="Uio-1V-qOn" userLabel="Control" customClass="FillOnHoverBox" customModule="Abyssal" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="86" height="32"/>
-                                                                <view key="contentView" id="vUQ-Os-Qzp">
-                                                                    <rect key="frame" x="1" y="1" width="84" height="30"/>
-                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <box boxType="custom" cornerRadius="15" title="Main/Body 1/Preferences 1" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="mHD-qW-Lfh" userLabel="Preferences 1">
+                                                        <rect key="frame" x="0.0" y="174" width="275" height="74"/>
+                                                        <view key="contentView" id="NbX-w8-ipL">
+                                                            <rect key="frame" x="1" y="1" width="273" height="72"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <stackView distribution="fillEqually" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZyK-cL-k3I" userLabel="Modifiers">
+                                                                    <rect key="frame" x="20" y="20" width="233" height="32"/>
                                                                     <subviews>
-                                                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0BO-sM-3fj" userLabel="Control">
-                                                                            <rect key="frame" x="6" y="2.5" width="72" height="30"/>
-                                                                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="control" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="OTx-7c-JZj" userLabel="Tips">
-                                                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
-                                                                                <font key="font" metaFont="system"/>
-                                                                            </buttonCell>
-                                                                            <symbolConfiguration key="symbolConfiguration" scale="medium" weight="bold">
-                                                                                <nil key="locale"/>
-                                                                            </symbolConfiguration>
-                                                                            <connections>
-                                                                                <action selector="toggleModifiersControl:" target="crA-Or-uDV" id="vtN-xD-r2L"/>
-                                                                            </connections>
-                                                                        </button>
+                                                                        <box verticalHuggingPriority="750" boxType="custom" cornerRadius="10" title="Main/Body 1/Modifiers/Control" translatesAutoresizingMaskIntoConstraints="NO" id="Uio-1V-qOn" userLabel="Control" customClass="FillOnHoverBox" customModule="Abyssal" customModuleProvider="target">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="72" height="32"/>
+                                                                            <view key="contentView" id="vUQ-Os-Qzp">
+                                                                                <rect key="frame" x="1" y="1" width="70" height="30"/>
+                                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                                <subviews>
+                                                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0BO-sM-3fj" userLabel="Control">
+                                                                                        <rect key="frame" x="6" y="2.5" width="58" height="30"/>
+                                                                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="control" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="OTx-7c-JZj" userLabel="Tips">
+                                                                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                                                                            <font key="font" metaFont="system"/>
+                                                                                        </buttonCell>
+                                                                                        <symbolConfiguration key="symbolConfiguration" scale="medium" weight="bold">
+                                                                                            <nil key="locale"/>
+                                                                                        </symbolConfiguration>
+                                                                                        <connections>
+                                                                                            <action selector="toggleModifiersControl:" target="crA-Or-uDV" id="vtN-xD-r2L"/>
+                                                                                        </connections>
+                                                                                    </button>
+                                                                                </subviews>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="trailing" secondItem="0BO-sM-3fj" secondAttribute="trailing" constant="6" id="Snc-jn-lgJ"/>
+                                                                                    <constraint firstItem="0BO-sM-3fj" firstAttribute="top" secondItem="vUQ-Os-Qzp" secondAttribute="top" id="USX-Es-7ay"/>
+                                                                                    <constraint firstItem="0BO-sM-3fj" firstAttribute="leading" secondItem="vUQ-Os-Qzp" secondAttribute="leading" constant="6" id="VSL-HK-jv7"/>
+                                                                                    <constraint firstAttribute="bottom" secondItem="0BO-sM-3fj" secondAttribute="bottom" id="tyb-36-xdS"/>
+                                                                                </constraints>
+                                                                            </view>
+                                                                            <color key="borderColor" name="secondarySystemFillColor" catalog="System" colorSpace="catalog"/>
+                                                                        </box>
+                                                                        <box verticalHuggingPriority="750" boxType="custom" cornerRadius="10" title="Main/Body 1/Modifiers/Option" translatesAutoresizingMaskIntoConstraints="NO" id="wmR-e3-2td" userLabel="Option" customClass="FillOnHoverBox" customModule="Abyssal" customModuleProvider="target">
+                                                                            <rect key="frame" x="80" y="0.0" width="73" height="32"/>
+                                                                            <view key="contentView" id="haX-xP-69m">
+                                                                                <rect key="frame" x="1" y="1" width="71" height="30"/>
+                                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                                <subviews>
+                                                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pU4-FK-uTX" userLabel="Option">
+                                                                                        <rect key="frame" x="0.0" y="-2.5" width="71.5" height="35"/>
+                                                                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="option" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="aMk-A5-m8J">
+                                                                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                                                                            <font key="font" metaFont="system"/>
+                                                                                        </buttonCell>
+                                                                                        <symbolConfiguration key="symbolConfiguration" scale="medium" weight="bold">
+                                                                                            <nil key="locale"/>
+                                                                                        </symbolConfiguration>
+                                                                                        <connections>
+                                                                                            <action selector="toggleModifiersOption:" target="crA-Or-uDV" id="2aA-en-HPn"/>
+                                                                                        </connections>
+                                                                                    </button>
+                                                                                </subviews>
+                                                                                <constraints>
+                                                                                    <constraint firstItem="pU4-FK-uTX" firstAttribute="top" secondItem="haX-xP-69m" secondAttribute="top" id="G2W-yW-4Bs"/>
+                                                                                    <constraint firstAttribute="bottom" secondItem="pU4-FK-uTX" secondAttribute="bottom" id="WDG-TF-mbI"/>
+                                                                                    <constraint firstAttribute="trailing" secondItem="pU4-FK-uTX" secondAttribute="trailing" id="hoX-wF-keU"/>
+                                                                                    <constraint firstItem="pU4-FK-uTX" firstAttribute="leading" secondItem="haX-xP-69m" secondAttribute="leading" id="tRg-26-SXa"/>
+                                                                                </constraints>
+                                                                            </view>
+                                                                            <color key="borderColor" name="secondarySystemFillColor" catalog="System" colorSpace="catalog"/>
+                                                                        </box>
+                                                                        <box verticalHuggingPriority="750" boxType="custom" cornerRadius="10" title="Main/Body 1/Modifiers/Command" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="827-6G-l7o" userLabel="Command" customClass="FillOnHoverBox" customModule="Abyssal" customModuleProvider="target">
+                                                                            <rect key="frame" x="161" y="0.0" width="72" height="32"/>
+                                                                            <view key="contentView" id="h3z-aO-d9W">
+                                                                                <rect key="frame" x="1" y="1" width="70" height="30"/>
+                                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                                <subviews>
+                                                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rAS-76-MR1" userLabel="Command">
+                                                                                        <rect key="frame" x="0.0" y="-2.5" width="70.5" height="36"/>
+                                                                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="command" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="NhP-j6-2uL">
+                                                                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                                                                            <font key="font" metaFont="system"/>
+                                                                                        </buttonCell>
+                                                                                        <symbolConfiguration key="symbolConfiguration" scale="medium" weight="bold">
+                                                                                            <nil key="locale"/>
+                                                                                        </symbolConfiguration>
+                                                                                        <connections>
+                                                                                            <action selector="toggleModifiersCommand:" target="crA-Or-uDV" id="oxl-1x-p6u"/>
+                                                                                        </connections>
+                                                                                    </button>
+                                                                                </subviews>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="bottom" secondItem="rAS-76-MR1" secondAttribute="bottom" id="dyK-Ez-cvW"/>
+                                                                                    <constraint firstItem="rAS-76-MR1" firstAttribute="leading" secondItem="h3z-aO-d9W" secondAttribute="leading" id="uCX-VM-CKK"/>
+                                                                                    <constraint firstAttribute="trailing" secondItem="rAS-76-MR1" secondAttribute="trailing" id="vGl-Oo-mm6"/>
+                                                                                    <constraint firstItem="rAS-76-MR1" firstAttribute="top" secondItem="h3z-aO-d9W" secondAttribute="top" id="wlQ-3i-x4h"/>
+                                                                                </constraints>
+                                                                            </view>
+                                                                            <color key="borderColor" name="secondarySystemFillColor" catalog="System" colorSpace="catalog"/>
+                                                                        </box>
                                                                     </subviews>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="trailing" secondItem="0BO-sM-3fj" secondAttribute="trailing" constant="6" id="Snc-jn-lgJ"/>
-                                                                        <constraint firstItem="0BO-sM-3fj" firstAttribute="top" secondItem="vUQ-Os-Qzp" secondAttribute="top" id="USX-Es-7ay"/>
-                                                                        <constraint firstItem="0BO-sM-3fj" firstAttribute="leading" secondItem="vUQ-Os-Qzp" secondAttribute="leading" constant="6" id="VSL-HK-jv7"/>
-                                                                        <constraint firstAttribute="bottom" secondItem="0BO-sM-3fj" secondAttribute="bottom" id="tyb-36-xdS"/>
+                                                                        <constraint firstAttribute="height" constant="32" id="1fJ-kc-xqG"/>
+                                                                        <constraint firstItem="827-6G-l7o" firstAttribute="top" secondItem="ZyK-cL-k3I" secondAttribute="top" id="6bc-x9-5rq"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="827-6G-l7o" secondAttribute="bottom" id="6fm-hd-CIX"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="Uio-1V-qOn" secondAttribute="bottom" id="NUX-QE-QXi"/>
+                                                                        <constraint firstItem="Uio-1V-qOn" firstAttribute="top" secondItem="ZyK-cL-k3I" secondAttribute="top" id="WKt-pE-Ili"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="wmR-e3-2td" secondAttribute="bottom" id="kR4-I9-nce"/>
+                                                                        <constraint firstItem="wmR-e3-2td" firstAttribute="top" secondItem="ZyK-cL-k3I" secondAttribute="top" id="u0p-H6-BE5"/>
                                                                     </constraints>
-                                                                </view>
-                                                                <color key="borderColor" name="secondarySystemFillColor" catalog="System" colorSpace="catalog"/>
-                                                            </box>
-                                                            <box verticalHuggingPriority="750" boxType="custom" cornerRadius="10" title="Main/Body 1/Modifiers/Option" translatesAutoresizingMaskIntoConstraints="NO" id="wmR-e3-2td" userLabel="Option" customClass="FillOnHoverBox" customModule="Abyssal" customModuleProvider="target">
-                                                                <rect key="frame" x="94" y="0.0" width="87" height="32"/>
-                                                                <view key="contentView" id="haX-xP-69m">
-                                                                    <rect key="frame" x="1" y="1" width="85" height="30"/>
-                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                                    <subviews>
-                                                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pU4-FK-uTX" userLabel="Option">
-                                                                            <rect key="frame" x="0.0" y="-2.5" width="85.5" height="35"/>
-                                                                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="option" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="aMk-A5-m8J">
-                                                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
-                                                                                <font key="font" metaFont="system"/>
-                                                                            </buttonCell>
-                                                                            <symbolConfiguration key="symbolConfiguration" scale="medium" weight="bold">
-                                                                                <nil key="locale"/>
-                                                                            </symbolConfiguration>
-                                                                            <connections>
-                                                                                <action selector="toggleModifiersOption:" target="crA-Or-uDV" id="2aA-en-HPn"/>
-                                                                            </connections>
-                                                                        </button>
-                                                                    </subviews>
-                                                                    <constraints>
-                                                                        <constraint firstItem="pU4-FK-uTX" firstAttribute="top" secondItem="haX-xP-69m" secondAttribute="top" id="G2W-yW-4Bs"/>
-                                                                        <constraint firstAttribute="bottom" secondItem="pU4-FK-uTX" secondAttribute="bottom" id="WDG-TF-mbI"/>
-                                                                        <constraint firstAttribute="trailing" secondItem="pU4-FK-uTX" secondAttribute="trailing" id="hoX-wF-keU"/>
-                                                                        <constraint firstItem="pU4-FK-uTX" firstAttribute="leading" secondItem="haX-xP-69m" secondAttribute="leading" id="tRg-26-SXa"/>
-                                                                    </constraints>
-                                                                </view>
-                                                                <color key="borderColor" name="secondarySystemFillColor" catalog="System" colorSpace="catalog"/>
-                                                            </box>
-                                                            <box verticalHuggingPriority="750" boxType="custom" cornerRadius="10" title="Main/Body 1/Modifiers/Command" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="827-6G-l7o" userLabel="Command" customClass="FillOnHoverBox" customModule="Abyssal" customModuleProvider="target">
-                                                                <rect key="frame" x="189" y="0.0" width="86" height="32"/>
-                                                                <view key="contentView" id="h3z-aO-d9W">
-                                                                    <rect key="frame" x="1" y="1" width="84" height="30"/>
-                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                                    <subviews>
-                                                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rAS-76-MR1" userLabel="Command">
-                                                                            <rect key="frame" x="0.0" y="-2.5" width="84.5" height="36"/>
-                                                                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="command" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="NhP-j6-2uL">
-                                                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
-                                                                                <font key="font" metaFont="system"/>
-                                                                            </buttonCell>
-                                                                            <symbolConfiguration key="symbolConfiguration" scale="medium" weight="bold">
-                                                                                <nil key="locale"/>
-                                                                            </symbolConfiguration>
-                                                                            <connections>
-                                                                                <action selector="toggleModifiersCommand:" target="crA-Or-uDV" id="oxl-1x-p6u"/>
-                                                                            </connections>
-                                                                        </button>
-                                                                    </subviews>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="bottom" secondItem="rAS-76-MR1" secondAttribute="bottom" id="dyK-Ez-cvW"/>
-                                                                        <constraint firstItem="rAS-76-MR1" firstAttribute="leading" secondItem="h3z-aO-d9W" secondAttribute="leading" id="uCX-VM-CKK"/>
-                                                                        <constraint firstAttribute="trailing" secondItem="rAS-76-MR1" secondAttribute="trailing" id="vGl-Oo-mm6"/>
-                                                                        <constraint firstItem="rAS-76-MR1" firstAttribute="top" secondItem="h3z-aO-d9W" secondAttribute="top" id="wlQ-3i-x4h"/>
-                                                                    </constraints>
-                                                                </view>
-                                                                <color key="borderColor" name="secondarySystemFillColor" catalog="System" colorSpace="catalog"/>
-                                                            </box>
-                                                        </subviews>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="32" id="1fJ-kc-xqG"/>
-                                                            <constraint firstItem="827-6G-l7o" firstAttribute="top" secondItem="ZyK-cL-k3I" secondAttribute="top" id="6bc-x9-5rq"/>
-                                                            <constraint firstAttribute="bottom" secondItem="827-6G-l7o" secondAttribute="bottom" id="6fm-hd-CIX"/>
-                                                            <constraint firstAttribute="bottom" secondItem="Uio-1V-qOn" secondAttribute="bottom" id="NUX-QE-QXi"/>
-                                                            <constraint firstItem="Uio-1V-qOn" firstAttribute="top" secondItem="ZyK-cL-k3I" secondAttribute="top" id="WKt-pE-Ili"/>
-                                                            <constraint firstAttribute="bottom" secondItem="wmR-e3-2td" secondAttribute="bottom" id="kR4-I9-nce"/>
-                                                            <constraint firstItem="wmR-e3-2td" firstAttribute="top" secondItem="ZyK-cL-k3I" secondAttribute="top" id="u0p-H6-BE5"/>
-                                                        </constraints>
-                                                        <visibilityPriorities>
-                                                            <integer value="1000"/>
-                                                            <integer value="1000"/>
-                                                            <integer value="1000"/>
-                                                        </visibilityPriorities>
-                                                        <customSpacing>
-                                                            <real value="3.4028234663852886e+38"/>
-                                                            <real value="3.4028234663852886e+38"/>
-                                                            <real value="3.4028234663852886e+38"/>
-                                                        </customSpacing>
-                                                    </stackView>
-                                                    <box boxType="custom" cornerRadius="15" title="Main/Body 1/Preferences 1" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="get-yv-9fl" userLabel="Preferences 1">
-                                                        <rect key="frame" x="0.0" y="0.0" width="275" height="153"/>
+                                                                    <visibilityPriorities>
+                                                                        <integer value="1000"/>
+                                                                        <integer value="1000"/>
+                                                                        <integer value="1000"/>
+                                                                    </visibilityPriorities>
+                                                                    <customSpacing>
+                                                                        <real value="3.4028234663852886e+38"/>
+                                                                        <real value="3.4028234663852886e+38"/>
+                                                                        <real value="3.4028234663852886e+38"/>
+                                                                    </customSpacing>
+                                                                </stackView>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="ZyK-cL-k3I" firstAttribute="leading" secondItem="NbX-w8-ipL" secondAttribute="leading" constant="20" id="16z-pJ-Lca"/>
+                                                                <constraint firstAttribute="bottom" secondItem="ZyK-cL-k3I" secondAttribute="bottom" constant="20" id="3wH-9e-Kqe"/>
+                                                                <constraint firstItem="ZyK-cL-k3I" firstAttribute="top" secondItem="NbX-w8-ipL" secondAttribute="top" constant="20" id="IS6-q7-Ttp"/>
+                                                                <constraint firstAttribute="trailing" secondItem="ZyK-cL-k3I" secondAttribute="trailing" constant="20" id="XgB-gd-j2I"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <color key="borderColor" name="secondarySystemFillColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="fillColor" name="quinarySystemFillColor" catalog="System" colorSpace="catalog"/>
+                                                    </box>
+                                                    <box boxType="custom" cornerRadius="15" title="Main/Body 1/Preferences 1" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="get-yv-9fl" userLabel="Preferences 2">
+                                                        <rect key="frame" x="0.0" y="0.0" width="275" height="154"/>
                                                         <view key="contentView" id="zXp-9a-WVc">
-                                                            <rect key="frame" x="1" y="1" width="273" height="151"/>
+                                                            <rect key="frame" x="1" y="1" width="273" height="152"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <stackView distribution="fillEqually" orientation="vertical" alignment="leading" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yeV-fy-KlI">
-                                                                    <rect key="frame" x="20" y="20" width="233" height="111"/>
+                                                                    <rect key="frame" x="20" y="20" width="233" height="112"/>
                                                                     <subviews>
                                                                         <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" verticalHuggingPriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kKm-DS-l8S" userLabel="Timeout">
-                                                                            <rect key="frame" x="0.0" y="64" width="233" height="47"/>
+                                                                            <rect key="frame" x="0.0" y="65" width="233" height="47"/>
                                                                             <subviews>
                                                                                 <textField verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="YlR-tX-45k">
                                                                                     <rect key="frame" x="-2" y="28" width="237" height="19"/>
@@ -227,7 +244,7 @@
                                                                             </customSpacing>
                                                                         </stackView>
                                                                         <box verticalHuggingPriority="1000" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Rnj-eE-Xb8">
-                                                                            <rect key="frame" x="0.0" y="42" width="233" height="4"/>
+                                                                            <rect key="frame" x="0.0" y="42" width="233" height="5"/>
                                                                         </box>
                                                                         <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" verticalCompressionResistancePriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PwC-Mb-mdD" userLabel="Starts with macOS">
                                                                             <rect key="frame" x="0.0" y="0.0" width="233" height="24"/>
@@ -294,10 +311,10 @@
                                                     </box>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="ZyK-cL-k3I" secondAttribute="trailing" id="0KV-6b-DWT"/>
                                                     <constraint firstAttribute="width" constant="275" id="D8L-pi-D8r"/>
-                                                    <constraint firstItem="ZyK-cL-k3I" firstAttribute="leading" secondItem="gEV-ob-7OI" secondAttribute="leading" id="KNc-Rx-gjL"/>
+                                                    <constraint firstAttribute="trailing" secondItem="mHD-qW-Lfh" secondAttribute="trailing" id="NcI-ZF-kPP"/>
                                                     <constraint firstAttribute="trailing" secondItem="get-yv-9fl" secondAttribute="trailing" id="ZIw-aP-vc7"/>
+                                                    <constraint firstItem="mHD-qW-Lfh" firstAttribute="leading" secondItem="gEV-ob-7OI" secondAttribute="leading" id="Za1-db-EX4"/>
                                                     <constraint firstItem="get-yv-9fl" firstAttribute="leading" secondItem="gEV-ob-7OI" secondAttribute="leading" id="qgc-Of-FZo"/>
                                                 </constraints>
                                                 <visibilityPriorities>

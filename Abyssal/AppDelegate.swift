@@ -32,6 +32,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     ) {
         popover.contentViewController = MenuController.freshController()
         popover.behavior = .transient
+        popover.delegate = self
         
         mouseEventMonitor = EventMonitor(
             mask: [.leftMouseDown,
@@ -54,6 +55,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         _ app: NSApplication
     ) -> Bool {
         true
+    }
+    
+}
+
+extension AppDelegate: NSPopoverDelegate {
+    
+    func popoverShouldDetach(_ popover: NSPopover) -> Bool {
+        return true
     }
     
 }

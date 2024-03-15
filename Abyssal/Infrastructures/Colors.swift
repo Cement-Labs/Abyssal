@@ -10,6 +10,8 @@ import AppKit
 
 class Colors {
     
+    public static let thinBackgroundColor = NSColor.systemFill.withAlphaComponent(0.1)
+    
     class Translucent {
         
         public static let opacity = 0.175

@@ -265,6 +265,18 @@
         }
       }
     },
+    "mHD-qW-Lfh.title" : {
+      "comment" : "Class = \"NSBox\"; title = \"Main/Body 1/Preferences 1\"; ObjectID = \"mHD-qW-Lfh\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Main/Body 1/Preferences 1"
+          }
+        }
+      }
+    },
     "MQT-X4-oSO.title" : {
       "comment" : "Class = \"NSMenuItem\"; title = \"Theme\"; ObjectID = \"MQT-X4-oSO\";",
       "extractionState" : "extracted_with_value",
