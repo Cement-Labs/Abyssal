@@ -414,24 +414,6 @@
           }
         }
       }
-    },
-    "zX5-Vr-1M7.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Modifiers\"; ObjectID = \"zX5-Vr-1M7\";",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Modifiers"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "修饰键"
-          }
-        }
-      }
     }
   },
   "version" : "1.0"
