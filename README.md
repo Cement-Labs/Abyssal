@@ -190,7 +190,7 @@ Due to the limitations of macOS, **Abyssal** can't infer the available width use
 
   Whether to use <kbd>⌘ command</kbd> as a modifier key.
 
-> [!NOTE]
+> [!TIP]
 > Pressing only one of the chosen keys is enough to trigger the functions. It is recommended to keep the modifier key <kbd>⌘ command</kbd> enabled.
 
 <br />
