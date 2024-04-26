@@ -9,7 +9,6 @@ import Cocoa
 import Defaults
 
 class MenuController: NSViewController, NSMenuDelegate {
-    
     let themesMenu = NSMenu()
     
     let tips = Tips()
@@ -109,11 +108,9 @@ class MenuController: NSViewController, NSMenuDelegate {
     override func viewDidDisappear() {
         AppDelegate.instance?.statusBarController.startFunctionalTimers()
     }
-    
 }
 
 extension MenuController {
-    
     // MARK: - Storyboard Instantiation
     
     static func freshController() -> MenuController {
@@ -145,11 +142,9 @@ extension MenuController {
         
         return controller
     }
-    
 }
 
 extension MenuController {
-    
     @objc func switchToTheme(
         _ sender: Any
     ) {
@@ -260,11 +255,9 @@ extension MenuController {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: execute)
     }
-    
 }
 
 extension MenuController {
-    
     override func mouseEntered(with event: NSEvent) {
         super.mouseEntered(with: event)
         tips.mouseEntered(with: event)
@@ -274,11 +267,9 @@ extension MenuController {
         super.mouseExited(with: event)
         tips.mouseExited(with: event)
     }
-    
 }
 
 extension MenuController {
-    
     private func setSliderEnabled(
         _ slider: NSSlider,
         _ flag: Bool
@@ -311,11 +302,9 @@ extension MenuController {
         
         let _ = definedTips[sliderDeadZone]?.tip.update()
     }
-    
 }
 
 extension MenuController {
-    
     func openUrl(
         _ sender: Any?,
         _ url: URL
@@ -470,5 +459,4 @@ extension MenuController {
     ) {
         Defaults[.launchAtLogin] = sender.flag
     }
-    
 }

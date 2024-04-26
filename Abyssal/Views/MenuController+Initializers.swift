@@ -10,7 +10,6 @@ import AppKit
 import Defaults
 
 extension MenuController {
-    
     // MARK: - Data
     
     func initData() {
@@ -91,11 +90,9 @@ extension MenuController {
         switchUseAlwaysHideArea.flag = Defaults[.alwaysHideAreaEnabled]
         switchReduceAnimation.flag = Defaults[.reduceAnimationEnabled]
     }
-    
 }
 
 extension MenuController {
-    
     // MARK: - Tips
     
     func initTips() {
@@ -249,5 +246,4 @@ Reduce animations to gain a more performant experience.
         
         definedTips.forEach { tips.bind($0.key, trackingArea: $0.value.trackingArea, tip: $0.value.tip) }
     }
-    
 }

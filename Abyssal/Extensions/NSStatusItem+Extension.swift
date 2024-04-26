@@ -8,9 +8,7 @@
 import AppKit
 
 extension NSStatusItem {
-    
     var origin: CGPoint? {
         return self.button?.window?.frame.origin
     }
-    
 }

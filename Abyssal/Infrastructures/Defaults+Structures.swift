@@ -10,17 +10,12 @@ import Defaults
 import AppKit
 
 struct ModifiersAttribute: Defaults.Serializable {
-    
     var control: Bool
-    
     var option: Bool
-    
     var command: Bool
     
     struct Bridge: Defaults.Bridge {
-        
         typealias Value = ModifiersAttribute
-        
         typealias Serializable = [Bool]
         
         func serialize(_ value: ModifiersAttribute?) -> [Bool]? {
@@ -42,34 +37,23 @@ struct ModifiersAttribute: Defaults.Serializable {
             
             return .init(control: object[0], option: object[1], command: object[2])
         }
-        
     }
     
     static let bridge = Bridge()
-    
 }
 
 enum TimeoutAttribute: Int, CaseIterable, Defaults.Serializable {
+    case sec5   = 5
+    case sec10  = 10
+    case sec15  = 15
+    case sec30  = 30
+    case sec45  = 45
+    case sec60  = 60
     
-    case sec5 = 5
-    
-    case sec10 = 10
-    
-    case sec15 = 15
-    
-    case sec30 = 30
-    
-    case sec45 = 45
-    
-    case sec60 = 60
-    
-    case min2 = 120
-    
-    case min3 = 180
-    
-    case min5 = 300
-    
-    case min10 = 600
+    case min2   = 120
+    case min3   = 180
+    case min5   = 300
+    case min10  = 600
     
     case forever = 0
     
@@ -82,37 +66,35 @@ enum TimeoutAttribute: Int, CaseIterable, Defaults.Serializable {
     
     var label: String {
         switch self {
-        case .sec5: Localizations.FormattedTime.inSeconds(5)
-        case .sec10: Localizations.FormattedTime.inSeconds(10)
-        case .sec15: Localizations.FormattedTime.inSeconds(15)
-        case .sec30: Localizations.FormattedTime.inSeconds(30)
-        case .sec45: Localizations.FormattedTime.inSeconds(45)
-        case .sec60: Localizations.FormattedTime.inMinutes(1)
-        case .min2: Localizations.FormattedTime.inMinutes(2)
-        case .min3: Localizations.FormattedTime.inMinutes(3)
-        case .min5: Localizations.FormattedTime.inMinutes(5)
-        case .min10: Localizations.FormattedTime.inMinutes(10)
+        case .sec5:     Localizations.FormattedTime.inSeconds(5)
+        case .sec10:    Localizations.FormattedTime.inSeconds(10)
+        case .sec15:    Localizations.FormattedTime.inSeconds(15)
+        case .sec30:    Localizations.FormattedTime.inSeconds(30)
+        case .sec45:    Localizations.FormattedTime.inSeconds(45)
+        case .sec60:    Localizations.FormattedTime.inMinutes(1)
+            
+        case .min2:     Localizations.FormattedTime.inMinutes(2)
+        case .min3:     Localizations.FormattedTime.inMinutes(3)
+        case .min5:     Localizations.FormattedTime.inMinutes(5)
+        case .min10:    Localizations.FormattedTime.inMinutes(10)
+            
         default: Localizations.FormattedTime.forever
         }
     }
-    
 }
 
 enum FeedbackAttribute: Int, CaseIterable, Defaults.Serializable {
-    
-    case none = 0
-    
-    case light = 1
-    
+    case none   = 0
+    case light  = 1
     case medium = 2
-    
-    case heavy = 3
+    case heavy  = 3
     
     var pattern: [NSHapticFeedbackManager.FeedbackPattern?] {
         switch self {
         case .light: [.levelChange]
         case .medium: [.generic, nil, .alignment]
         case .heavy: [.levelChange, .alignment, .alignment, nil, nil, nil, .levelChange]
+            
         default: []
         }
     }
@@ -122,13 +104,13 @@ enum FeedbackAttribute: Int, CaseIterable, Defaults.Serializable {
         case .light: Localizations.FeedbackIntensity.light
         case .medium: Localizations.FeedbackIntensity.medium
         case .heavy: Localizations.FeedbackIntensity.heavy
+            
         default: Localizations.FeedbackIntensity.disabled
         }
     }
 }
 
 struct DeadZoneAttribute: Defaults.Serializable {
-    
     var percentage: Double
     
     static let range = 0.0...0.75
@@ -138,9 +120,7 @@ struct DeadZoneAttribute: Defaults.Serializable {
     }
     
     struct Bridge: Defaults.Bridge {
-        
         typealias Value = DeadZoneAttribute
-        
         typealias Serializable = Double
         
         func serialize(_ value: DeadZoneAttribute?) -> Double? {
@@ -158,19 +138,14 @@ struct DeadZoneAttribute: Defaults.Serializable {
             
             return .init(percentage: object)
         }
-        
     }
     
     static let bridge = Bridge()
-    
 }
 
 extension Theme: Defaults.Serializable {
-    
     struct Bridge: Defaults.Bridge {
-        
         typealias Value = Theme
-        
         typealias Serializable = Int
         
         func serialize(_ value: Theme?) -> Int? {
@@ -191,9 +166,7 @@ extension Theme: Defaults.Serializable {
             
             return Themes.themes[index]
         }
-        
     }
     
     static let bridge = Bridge()
-    
 }

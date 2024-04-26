@@ -10,7 +10,6 @@ import AppKit
 import Defaults
 
 struct Separator {
-    
     init(
         order: Int,
         _ itemsProvider: @escaping () -> [NSStatusItem]
@@ -70,19 +69,15 @@ struct Separator {
     }
     
     var targetAlpha = CGFloat.zero
-    
     var targetLength = CGFloat.zero
     
     var wasUnstable = false
     
     var lastOrigin: NSPoint?
-    
     var lastCollapse = false
-    
 }
 
 extension Separator {
-    
     mutating func lerpAlpha() -> Bool {
         if let alpha {
             self.alpha = Helper.lerp(
@@ -110,5 +105,4 @@ extension Separator {
             return Helper.approaching(length, targetLength)
         }
     }
-    
 }

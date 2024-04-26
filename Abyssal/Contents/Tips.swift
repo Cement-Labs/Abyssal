@@ -10,21 +10,15 @@ import AppKit
 import Defaults
 
 class Tip {
-    
     var popover: NSPopover
     
     var dataString: () -> String?
-    
     var tipString: () -> String?
     
     var preferredEdge: NSRectEdge
-    
     var delay: CGFloat
     
-    
-    
     var positionRect = { NSRect.zero }
-    
     var positionOffset = { NSPoint.zero }
     
     var position: NSRect {
@@ -48,7 +42,6 @@ class Tip {
     var lastHas: (data: Bool, tip: Bool, tipRuntime: Bool)?
     
     private var willShow: DispatchWorkItem?
-    
     private var views = (data: NSTextField(), tip: NSTextField())
     
     init?(
@@ -254,11 +247,9 @@ class Tip {
         
         willShow.cancel()
     }
-    
 }
 
 class Tips {
-    
     static let test = Tip(
         dataString: { "Lorem Ipsum" },
         tipString: { "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." }
@@ -305,11 +296,9 @@ class Tips {
     ) -> (tip: Tip, sender: NSView)? {
         map.removeValue(forKey: trackingArea)
     }
-    
 }
 
 extension Tips {
-    
     static let DATA_SIZE: CGFloat = 14.5
     
     static let TIP_SIZE: CGFloat = 10
@@ -317,11 +306,9 @@ extension Tips {
     static let MARGIN: (width: CGFloat, height: CGFloat) = (width: 16, height: 12)
     
     static let MAX_WIDTH: CGFloat = 300
-    
 }
 
 extension Tips {
-    
     static func generateMarkdown(
         _ text: String,
         font: NSFont,
@@ -373,11 +360,9 @@ extension Tips {
             font: NSFont.systemFont(ofSize: TIP_SIZE)
         )
     }
-    
 }
 
 extension Tips {
-    
     static func createPopover() -> NSPopover {
         let popover = NSPopover()
         
@@ -412,11 +397,9 @@ extension Tips {
         
         return textField
     }
-    
 }
 
 extension Tips {
-    
     static func addHorizontalMargins(
         parent: NSView,
         child: NSView?,
@@ -466,5 +449,4 @@ extension Tips {
             constant: MARGIN.height
         ))
     }
-    
 }

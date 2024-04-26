@@ -9,7 +9,6 @@ import Foundation
 import AppKit
 
 class Colors {
-    
     public static var isDarkMode: Bool {
         NSApplication.shared.effectiveAppearance.bestMatch(from: [.darkAqua, .vibrantDark, .accessibilityHighContrastDarkAqua, .accessibilityHighContrastVibrantDark]) == .darkAqua
     }
@@ -19,7 +18,6 @@ class Colors {
     }
     
     class Translucent {
-        
         public static let opacity = 0.175
         
         public static var danger: NSColor {
@@ -33,11 +31,9 @@ class Colors {
         public static var accent: NSColor {
             Opaque.accent.withAlphaComponent(opacity)
         }
-        
     }
     
     class Opaque {
-        
         public static var danger: NSColor {
             NSColor.systemRed
         }
@@ -49,7 +45,5 @@ class Colors {
         public static var accent: NSColor {
             NSColor.controlAccentColor
         }
-        
     }
-    
 }

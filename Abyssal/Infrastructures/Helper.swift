@@ -11,7 +11,6 @@ import AppKit
 import Defaults
 
 struct Helper {
-    
     static let repoPath = "NNN-Studio/Abyssal"
     
     static let urlSourceCode = URL(string: "https://github.com/\(repoPath)")!
@@ -83,11 +82,9 @@ struct Helper {
         AppDelegate.instance?.statusBarController.map()
         AppDelegate.instance?.statusBarController.startFunctionalTimers()
     }
-    
 }
 
 struct VersionHelper {
-    
     static func normalizeVersion(_ version: String) -> String {
         return version.replacing(/^v/, with: "")
     }
@@ -186,11 +183,9 @@ struct VersionHelper {
         
         return .orderedSame
     }
-    
 }
 
 struct ScreenHelper {
-    
     static var frame: NSRect? {
         NSScreen.main?.frame
     }
@@ -238,11 +233,9 @@ struct ScreenHelper {
         
         return maxHeight
     }
-    
 }
 
 struct KeyboardHelper {
-    
     static var shift: Bool {
         NSEvent.modifierFlags.contains(.shift)
     }
@@ -264,11 +257,9 @@ struct KeyboardHelper {
         || (Defaults[.modifiers].option && option)
         || (Defaults[.modifiers].command && command)
     }
-    
 }
 
 struct MouseHelper {
-    
     static var none: Bool {
         NSEvent.pressedMouseButtons == 0;
     }
@@ -286,5 +277,4 @@ struct MouseHelper {
     ) -> Bool {
         rect?.contains(NSEvent.mouseLocation) ?? false
     }
-    
 }

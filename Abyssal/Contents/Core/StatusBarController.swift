@@ -9,7 +9,6 @@ import AppKit
 import Defaults
 
 class StatusBarController {
-    
     // MARK: - States
     
     var mouseOnStatusBar: Bool {
@@ -199,11 +198,9 @@ class StatusBarController {
         
         stopMonitor(&mouseEventMonitor)
     }
-    
 }
 
 extension StatusBarController {
-    
     func sort() {
         // Make sure the rightmost separator is positioned further back in the array
         StatusBarController._items.sort { (first, second) in
@@ -223,5 +220,4 @@ extension StatusBarController {
     func updateEdge() {
         edge = (body.origin?.x ?? 0) + body.length
     }
-    
 }

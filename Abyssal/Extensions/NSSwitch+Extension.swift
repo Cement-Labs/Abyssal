@@ -8,7 +8,6 @@
 import AppKit
 
 extension NSSwitch {
-    
     var flag: Bool {
         get {
             self.state == .on
@@ -18,5 +17,4 @@ extension NSSwitch {
             self.state = flag ? .on : .off
         }
     }
-    
 }

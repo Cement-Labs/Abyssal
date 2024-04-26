@@ -9,7 +9,6 @@ import AppKit
 import Defaults
 
 extension StatusBarController {
-    
     // MARK: - Icon Visibilities
     
     func untilHeadVisible(
@@ -31,11 +30,9 @@ extension StatusBarController {
     ) {
         tail.isVisible = flag
     }
-    
 }
 
 extension StatusBarController {
-    
     // MARK: - Enables
     
     func collapse() {
@@ -314,5 +311,4 @@ extension StatusBarController {
         shouldEdgeUpdate.will = true
         timeout = false
     }
-    
 }

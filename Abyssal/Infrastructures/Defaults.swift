@@ -10,28 +10,27 @@ import Defaults
 import LaunchAtLogin
 
 extension Defaults.Keys {
-    
     static let isCollapsed = Key<Bool>("isCollapsed", default: false)
     
+    static let tipsEnabled = Key<Bool>("tipsEnabled", default: true)
     
+    static let autoShowsEnabled = Key<Bool>("autoShowsEnabled", default: true)
+    
+    
+    
+    static let theme = Key<Theme>("theme", default: Themes.defaultTheme)
     
     static let modifiers = Key<ModifiersAttribute>(
         "modifiers",
         default: ModifiersAttribute(control: false, option: true, command: true)
     )
     
+    
+    
     static let timeout = Key<TimeoutAttribute>(
         "timeout",
         default: .sec30
     )
-    
-    static let tipsEnabled = Key<Bool>("tipsEnabled", default: true)
-    
-    
-    
-    static let theme = Key<Theme>("theme", default: Themes.defaultTheme)
-    
-    static let autoShowsEnabled = Key<Bool>("autoShowsEnabled", default: true)
     
     static let feedback = Key<FeedbackAttribute>(
         "feedback",
@@ -49,8 +48,5 @@ extension Defaults.Keys {
     
     static let reduceAnimationEnabled = Key<Bool>("reduceAnimationEnabled", default: false)
     
-    
-    
     static let launchAtLogin = Key<Bool>("launchAtLogin", default: false)
-    
 }

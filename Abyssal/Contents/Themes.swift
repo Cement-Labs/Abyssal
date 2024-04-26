@@ -10,29 +10,17 @@ import AppKit
 import Defaults
 
 class Theme: Equatable {
-    
     let identifier: String
-    
     let name: String
-    
     let icon: NSImage
     
-    
-    
     let headUncollapsed: 	NSImage
-    
     let headCollapsed: 		NSImage
-    
     let body: 			    NSImage
-    
     let tail:				NSImage
     
-    
-    
     let iconWidth: 		    CGFloat
-    
     let iconWidthExpanded:	CGFloat
-    
     let autoHideIcons: 	    Bool
     
     init(
@@ -128,11 +116,9 @@ class Theme: Equatable {
     ) -> Bool {
         lhs.name == rhs.name
     }
-    
 }
 
 class Themes {
-    
     static var themes: [Theme] {
         [
             abyssal,
@@ -158,11 +144,9 @@ class Themes {
     static var themeNames: [String] {
         return themes.map { $0.name }
     }
-    
 }
 
 extension Themes {
-    
     static let abyssal = Theme(
         "Abyssal", NSLocalizedString("Theme/Abyssal", value: "Abyssal", comment: "name for theme 'Abyssal'"),
         icon:               "DottedLine",
@@ -296,5 +280,4 @@ extension Themes {
         iconWidth: 16, iconWidthExpanded: 32,
         autoHideIcons: false
     )
-    
 }

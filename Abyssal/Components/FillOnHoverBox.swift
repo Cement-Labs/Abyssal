@@ -9,22 +9,13 @@ import Foundation
 import AppKit
 
 class FillOnHoverBox: NSBox {
-    
     private var hoverColor: NSColor = NSColor.clear
-    
     private var fallbackColor: NSColor?
-    
     private var overrideColor: NSColor?
     
-    
-    
     private var borderHoverColor: NSColor = NSColor.clear
-    
     private var borderFallbackColor: NSColor?
-    
     private var borderOverrideColor: NSColor?
-    
-    
     
     private var isHovered: Bool = false
     
@@ -128,5 +119,4 @@ class FillOnHoverBox: NSBox {
             }
         })
     }
-    
 }

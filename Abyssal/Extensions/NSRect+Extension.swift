@@ -9,7 +9,6 @@ import Foundation
 import AppKit
 
 extension NSRect {
-    
     var containsMouse: Bool {
         return MouseHelper.inside(self)
     }
@@ -32,5 +31,4 @@ extension NSRect {
         
         return trackingArea
     }
-    
 }

@@ -9,7 +9,6 @@ import Cocoa
 import AppKit
 
 public class EventMonitor {
-    
     private var monitor: Any?
     
     private let mask: NSEvent.EventTypeMask
@@ -45,5 +44,4 @@ public class EventMonitor {
             monitor = nil
         }
     }
-    
 }

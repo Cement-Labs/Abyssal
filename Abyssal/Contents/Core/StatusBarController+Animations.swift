@@ -10,7 +10,6 @@ import AppKit
 import Defaults
 
 extension StatusBarController {
-    
     func triggerFeedback() {
         feedbackCount = 0
         startFeedbackTimer()
@@ -227,5 +226,4 @@ extension StatusBarController {
             mouseWasSpareOrUnidled = false
         }
     }
-    
 }

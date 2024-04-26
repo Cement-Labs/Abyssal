@@ -12,7 +12,6 @@ import LaunchAtLogin
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
-    
     static var instance: AppDelegate? {
         NSApplication.shared.delegate as? AppDelegate
     }
@@ -56,19 +55,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     ) -> Bool {
         true
     }
-    
 }
 
 extension AppDelegate: NSPopoverDelegate {
-    
     func popoverShouldDetach(_ popover: NSPopover) -> Bool {
         true
     }
-    
 }
 
 extension AppDelegate {
-    
     @objc func quit(
         _ sender: Any?
     ) {
@@ -167,7 +162,6 @@ extension AppDelegate {
         statusBarController.startFunctionalTimers()
         AppDelegate.instance?.statusBarController.triggerIgnoring()
     }
-    
 }
 
 func runTasks() {

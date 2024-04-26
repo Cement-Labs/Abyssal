@@ -8,7 +8,6 @@
 import AppKit
 
 extension NSButton {
-    
     var flag: Bool {
         get {
             self.state == .on
@@ -18,5 +17,4 @@ extension NSButton {
             self.state = flag ? .on : .off
         }
     }
-    
 }

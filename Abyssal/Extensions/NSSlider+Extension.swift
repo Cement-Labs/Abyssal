@@ -9,9 +9,7 @@ import Foundation
 import AppKit
 
 extension NSSlider {
-    
     @objc dynamic var knobRect: NSRect {
         (cell as? NSSliderCell)?.knobRect(flipped: false) ?? visibleRect
     }
-    
 }
