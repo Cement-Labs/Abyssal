@@ -146,25 +146,25 @@ struct DeadZoneAttribute: Defaults.Serializable {
 extension Theme: Defaults.Serializable {
     struct Bridge: Defaults.Bridge {
         typealias Value = Theme
-        typealias Serializable = Int
+        typealias Serializable = String
         
-        func serialize(_ value: Theme?) -> Int? {
+        func serialize(_ value: Theme?) -> String? {
             guard let value else {
                 return nil
             }
             
-            return Themes.themes.firstIndex(of: value)
+            return value.identifier
         }
         
-        func deserialize(_ object: Int?) -> Theme? {
+        func deserialize(_ object: String?) -> Theme? {
             guard
-                let index = object,
-                index < Themes.themes.count
+                let identifier = object,
+                Themes.themeIdentifiers.contains(identifier)
             else {
                 return nil
             }
             
-            return Themes.themes[index]
+            return Themes.themes.first { $0.identifier == identifier }
         }
     }
     

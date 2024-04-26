@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2822C58B2BDC7319009C71DA /* InvisiblePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2822C58A2BDC7319009C71DA /* InvisiblePanel.swift */; };
 		282D880A2AD58BEA0015111C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C66CABA72A38871500E4D8E6 /* Assets.xcassets */; };
 		2831B15C2B751B7F0020DECD /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 2831B15B2B751B7F0020DECD /* Defaults */; };
 		2831B15E2B751B990020DECD /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2831B15D2B751B990020DECD /* Defaults.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2822C58A2BDC7319009C71DA /* InvisiblePanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvisiblePanel.swift; sourceTree = "<group>"; };
 		2831B15D2B751B990020DECD /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		2831B15F2B7521890020DECD /* Defaults+Structures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Defaults+Structures.swift"; sourceTree = "<group>"; };
 		2838D6B12AD842DB0087A5DE /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 			children = (
 				2852BDE62AD957B100AA8AD1 /* FillOnHoverBox.swift */,
 				28ACE7862AE9490700DC8C1A /* Separator.swift */,
+				2822C58A2BDC7319009C71DA /* InvisiblePanel.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				C6B3E79B2A3D83C400B650BC /* NSRect+Extension.swift in Sources */,
 				C6DEC53D2A3A0E8900943448 /* StatusBarController+Animations.swift in Sources */,
 				2838D6B22AD842DB0087A5DE /* Colors.swift in Sources */,
+				2822C58B2BDC7319009C71DA /* InvisiblePanel.swift in Sources */,
 				C66CABB72A389F2500E4D8E6 /* EventMonitor.swift in Sources */,
 				C6DEC52A2A38BF6C00943448 /* StatusBarController.swift in Sources */,
 				2831B1602B7521890020DECD /* Defaults+Structures.swift in Sources */,

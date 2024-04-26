@@ -125,7 +125,7 @@ extension AppDelegate {
             let buttonRect = button.convert(button.bounds, to: nil)
             let screenRect = button.window!.convertToScreen(buttonRect)
             
-            let invisiblePanel = NSPanel(
+            let invisiblePanel = InvisiblePanel(
                 contentRect: NSMakeRect(0, 0, 1, 5),
                 styleMask: [.borderless],
                 backing: .buffered,

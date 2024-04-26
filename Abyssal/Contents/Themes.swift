@@ -114,7 +114,7 @@ class Theme: Equatable {
         lhs: Theme,
         rhs: Theme
     ) -> Bool {
-        lhs.name == rhs.name
+        lhs.identifier == rhs.identifier
     }
 }
 
@@ -139,6 +139,10 @@ class Themes {
     
     static var defaultTheme: Theme {
         return abyssal
+    }
+    
+    static var themeIdentifiers: [String] {
+        return themes.map { $0.identifier }
     }
     
     static var themeNames: [String] {
