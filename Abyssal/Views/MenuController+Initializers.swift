@@ -35,7 +35,7 @@ extension MenuController {
                     keyEquivalent: ""
                 )
                 
-                item.image = theme.icon
+                item.image = theme.icon.image
                 themesMenu.addItem(item)
             }
             

@@ -358,24 +358,6 @@
         }
       }
     },
-    "Theme/Quoted" : {
-      "comment" : "name for theme 'Quoted'",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Quoted"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "引用"
-          }
-        }
-      }
-    },
     "Theme/TheFace" : {
       "comment" : "name for theme '【=◈︿◈=】'",
       "extractionState" : "extracted_with_value",

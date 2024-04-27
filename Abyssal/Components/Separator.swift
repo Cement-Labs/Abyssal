@@ -74,7 +74,7 @@ struct Separator {
     var wasUnstable = false
     
     var lastOrigin: NSPoint?
-    var lastCollapse = false
+    var lastCollapses = false
 }
 
 extension Separator {

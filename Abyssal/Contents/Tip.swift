@@ -1,5 +1,5 @@
 //
-//  Tips.swift
+//  Tip.swift
 //  Abyssal
 //
 //  Created by KrLite on 2023/10/13.

@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2822C58B2BDC7319009C71DA /* InvisiblePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2822C58A2BDC7319009C71DA /* InvisiblePanel.swift */; };
+		2822C58E2BDC75DE009C71DA /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 2822C58D2BDC75DE009C71DA /* SFSafeSymbols */; };
+		2822C5902BDC7748009C71DA /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2822C58F2BDC7748009C71DA /* Icon.swift */; };
 		282D880A2AD58BEA0015111C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C66CABA72A38871500E4D8E6 /* Assets.xcassets */; };
 		2831B15C2B751B7F0020DECD /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 2831B15B2B751B7F0020DECD /* Defaults */; };
 		2831B15E2B751B990020DECD /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2831B15D2B751B990020DECD /* Defaults.swift */; };
@@ -16,7 +17,7 @@
 		283ADC422AEA791C00C06146 /* Localizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283ADC412AEA791C00C06146 /* Localizations.swift */; };
 		2852BDE72AD957B100AA8AD1 /* FillOnHoverBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2852BDE62AD957B100AA8AD1 /* FillOnHoverBox.swift */; };
 		2852BDE92AD97A0E00AA8AD1 /* NSSlider+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2852BDE82AD97A0E00AA8AD1 /* NSSlider+Extension.swift */; };
-		2852BDEB2AD97AEC00AA8AD1 /* Tips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2852BDEA2AD97AEC00AA8AD1 /* Tips.swift */; };
+		2852BDEB2AD97AEC00AA8AD1 /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2852BDEA2AD97AEC00AA8AD1 /* Tip.swift */; };
 		288E8E722AECEC9F00A74EFE /* MenuController+Initializers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288E8E712AECEC9F00A74EFE /* MenuController+Initializers.swift */; };
 		28ACE7872AE9490700DC8C1A /* Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28ACE7862AE9490700DC8C1A /* Separator.swift */; };
 		C63B40532A4060E400BCAE79 /* NSStatusItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63B40522A4060E400BCAE79 /* NSStatusItem+Extension.swift */; };
@@ -27,7 +28,7 @@
 		C69873BC2A42880C00C5E259 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = C69873BB2A42880C00C5E259 /* Localizable.xcstrings */; };
 		C69873C62A4293B600C5E259 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66CABA92A38871500E4D8E6 /* Main.storyboard */; };
 		C6B3E79B2A3D83C400B650BC /* NSRect+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B3E79A2A3D83C400B650BC /* NSRect+Extension.swift */; };
-		C6CDD0622A3F2F9000ED97F0 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CDD0612A3F2F9000ED97F0 /* Themes.swift */; };
+		C6CDD0622A3F2F9000ED97F0 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CDD0612A3F2F9000ED97F0 /* Theme.swift */; };
 		C6DEC52A2A38BF6C00943448 /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DEC5292A38BF6C00943448 /* StatusBarController.swift */; };
 		C6DEC52C2A38CDE500943448 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DEC52B2A38CDE500943448 /* Helper.swift */; };
 		C6DEC5332A3A048B00943448 /* NSSwitch+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DEC5322A3A048B00943448 /* NSSwitch+Extension.swift */; };
@@ -37,14 +38,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2822C58A2BDC7319009C71DA /* InvisiblePanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvisiblePanel.swift; sourceTree = "<group>"; };
+		2822C58F2BDC7748009C71DA /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
 		2831B15D2B751B990020DECD /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		2831B15F2B7521890020DECD /* Defaults+Structures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Defaults+Structures.swift"; sourceTree = "<group>"; };
 		2838D6B12AD842DB0087A5DE /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		283ADC412AEA791C00C06146 /* Localizations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizations.swift; sourceTree = "<group>"; };
 		2852BDE62AD957B100AA8AD1 /* FillOnHoverBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillOnHoverBox.swift; sourceTree = "<group>"; };
 		2852BDE82AD97A0E00AA8AD1 /* NSSlider+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSlider+Extension.swift"; sourceTree = "<group>"; };
-		2852BDEA2AD97AEC00AA8AD1 /* Tips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tips.swift; sourceTree = "<group>"; };
+		2852BDEA2AD97AEC00AA8AD1 /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
 		288E8E712AECEC9F00A74EFE /* MenuController+Initializers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuController+Initializers.swift"; sourceTree = "<group>"; };
 		28ACE7862AE9490700DC8C1A /* Separator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Separator.swift; sourceTree = "<group>"; };
 		C63B40522A4060E400BCAE79 /* NSStatusItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSStatusItem+Extension.swift"; sourceTree = "<group>"; };
@@ -58,7 +59,7 @@
 		C69873BB2A42880C00C5E259 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		C69873C52A42930300C5E259 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/Main.xcstrings; sourceTree = "<group>"; };
 		C6B3E79A2A3D83C400B650BC /* NSRect+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSRect+Extension.swift"; sourceTree = "<group>"; };
-		C6CDD0612A3F2F9000ED97F0 /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
+		C6CDD0612A3F2F9000ED97F0 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		C6DEC5292A38BF6C00943448 /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
 		C6DEC52B2A38CDE500943448 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		C6DEC5322A3A048B00943448 /* NSSwitch+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSwitch+Extension.swift"; sourceTree = "<group>"; };
@@ -72,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2822C58E2BDC75DE009C71DA /* SFSafeSymbols in Frameworks */,
 				2831B15C2B751B7F0020DECD /* Defaults in Frameworks */,
 				C66F02AF2A3B5B4D00077CE3 /* LaunchAtLogin in Frameworks */,
 			);
@@ -85,7 +87,6 @@
 			children = (
 				2852BDE62AD957B100AA8AD1 /* FillOnHoverBox.swift */,
 				28ACE7862AE9490700DC8C1A /* Separator.swift */,
-				2822C58A2BDC7319009C71DA /* InvisiblePanel.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -179,8 +180,9 @@
 			isa = PBXGroup;
 			children = (
 				28ACE7852AE948EF00DC8C1A /* Core */,
-				2852BDEA2AD97AEC00AA8AD1 /* Tips.swift */,
-				C6CDD0612A3F2F9000ED97F0 /* Themes.swift */,
+				2852BDEA2AD97AEC00AA8AD1 /* Tip.swift */,
+				C6CDD0612A3F2F9000ED97F0 /* Theme.swift */,
+				2822C58F2BDC7748009C71DA /* Icon.swift */,
 			);
 			path = Contents;
 			sourceTree = "<group>";
@@ -204,6 +206,7 @@
 			packageProductDependencies = (
 				C66F02AE2A3B5B4D00077CE3 /* LaunchAtLogin */,
 				2831B15B2B751B7F0020DECD /* Defaults */,
+				2822C58D2BDC75DE009C71DA /* SFSafeSymbols */,
 			);
 			productName = BarStalker;
 			productReference = C66CABA02A38871500E4D8E6 /* Abyssal.app */;
@@ -237,6 +240,7 @@
 			packageReferences = (
 				C66F02AD2A3B5B4D00077CE3 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
 				2831B15A2B751B7F0020DECD /* XCRemoteSwiftPackageReference "Defaults" */,
+				2822C58C2BDC75DE009C71DA /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
 			);
 			productRefGroup = C66CABA12A38871500E4D8E6 /* Products */;
 			projectDirPath = "";
@@ -269,7 +273,6 @@
 				C6B3E79B2A3D83C400B650BC /* NSRect+Extension.swift in Sources */,
 				C6DEC53D2A3A0E8900943448 /* StatusBarController+Animations.swift in Sources */,
 				2838D6B22AD842DB0087A5DE /* Colors.swift in Sources */,
-				2822C58B2BDC7319009C71DA /* InvisiblePanel.swift in Sources */,
 				C66CABB72A389F2500E4D8E6 /* EventMonitor.swift in Sources */,
 				C6DEC52A2A38BF6C00943448 /* StatusBarController.swift in Sources */,
 				2831B1602B7521890020DECD /* Defaults+Structures.swift in Sources */,
@@ -278,10 +281,11 @@
 				C63B40532A4060E400BCAE79 /* NSStatusItem+Extension.swift in Sources */,
 				C66CABB32A388FBD00E4D8E6 /* MenuController.swift in Sources */,
 				C6E2C0302A3EE9F1007D4E1B /* StatusBarController+StateManager.swift in Sources */,
-				2852BDEB2AD97AEC00AA8AD1 /* Tips.swift in Sources */,
-				C6CDD0622A3F2F9000ED97F0 /* Themes.swift in Sources */,
+				2852BDEB2AD97AEC00AA8AD1 /* Tip.swift in Sources */,
+				C6CDD0622A3F2F9000ED97F0 /* Theme.swift in Sources */,
 				C66CABA42A38871500E4D8E6 /* AppDelegate.swift in Sources */,
 				2831B15E2B751B990020DECD /* Defaults.swift in Sources */,
+				2822C5902BDC7748009C71DA /* Icon.swift in Sources */,
 				C6DEC5332A3A048B00943448 /* NSSwitch+Extension.swift in Sources */,
 				288E8E722AECEC9F00A74EFE /* MenuController+Initializers.swift in Sources */,
 				C6DEC5352A3A052700943448 /* NSButton+Extension.swift in Sources */,
@@ -515,6 +519,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2822C58C2BDC75DE009C71DA /* XCRemoteSwiftPackageReference "SFSafeSymbols" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SFSafeSymbols/SFSafeSymbols";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.0;
+			};
+		};
 		2831B15A2B751B7F0020DECD /* XCRemoteSwiftPackageReference "Defaults" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sindresorhus/Defaults";
@@ -534,6 +546,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2822C58D2BDC75DE009C71DA /* SFSafeSymbols */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2822C58C2BDC75DE009C71DA /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
+			productName = SFSafeSymbols;
+		};
 		2831B15B2B751B7F0020DECD /* Defaults */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2831B15A2B751B7F0020DECD /* XCRemoteSwiftPackageReference "Defaults" */;

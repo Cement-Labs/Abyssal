@@ -10,6 +10,20 @@ import AppKit
 import Defaults
 
 extension StatusBarController {
+    var disabled: Bool {
+        !Defaults[.theme].autoHideIcons && !Defaults[.isCollapsed]
+    }
+    
+    func icons(collapses: Bool = Defaults[.isCollapsed]) -> (head: Icon, body: Icon, tail: Icon) {
+        (
+            head: collapses ? Defaults[.theme].headCollapsed : Defaults[.theme].headUncollapsed,
+            body: Defaults[.theme].body,
+            tail: Defaults[.theme].tail
+        )
+    }
+    
+    
+    
     func triggerFeedback() {
         feedbackCount = 0
         startFeedbackTimer()
@@ -48,21 +62,27 @@ extension StatusBarController {
         
         // Basic appearances
         
-        head.button?.appearsDisabled = !Defaults[.theme].autoHideIcons && !Defaults[.isCollapsed]
-        body.button?.appearsDisabled = !Defaults[.theme].autoHideIcons && !Defaults[.isCollapsed]
-        tail.button?.appearsDisabled = !Defaults[.theme].autoHideIcons && !Defaults[.isCollapsed]
+        head.button?.appearsDisabled = disabled
+        body.button?.appearsDisabled = disabled
+        tail.button?.appearsDisabled = disabled
+        
+        if disabled {
+            head.targetAlpha = 1
+            body.targetAlpha = 1
+            tail.targetAlpha = 1
+        }
         
         // Special judge for #map()
         
     map: do {
-        head.button?.image = Defaults[.isCollapsed] ? Defaults[.theme].headCollapsed : Defaults[.theme].headUncollapsed
-        body.button?.image = Defaults[.theme].body
-        tail.button?.image = Defaults[.theme].tail
+        head.button?.image = icons().head.image
+        body.button?.image = icons().body.image
+        tail.button?.image = icons().tail.image
         
         guard !popoverShown else {
-            head.targetAlpha = 1
-            body.targetAlpha = 1
-            tail.targetAlpha = 1
+            head.targetAlpha = icons().head.opacity
+            body.targetAlpha = icons().body.opacity
+            tail.targetAlpha = icons().tail.opacity
             break map
         }
         
@@ -74,34 +94,34 @@ extension StatusBarController {
         }
         
         if Defaults[.theme].autoHideIcons {
-            head.targetAlpha = Defaults[.isCollapsed] ? 0 : 1
+            head.targetAlpha = Defaults[.isCollapsed] ? 0 : icons().head.opacity
         } else {
-            head.targetAlpha = 1
+            head.targetAlpha = icons().head.opacity
             
             body.targetAlpha = (
                 !Defaults[.isCollapsed]
                 || idling.hide
                 || idling.alwaysHide
                 || (Defaults[.autoShowsEnabled] && mouseSpare)
-            ) ? 1 : 0
+            ) ? icons().body.opacity : 0
             
             tail.targetAlpha = (
                 idling.alwaysHide
                 || (KeyboardHelper.modifiers && mouseSpare)
-            ) ? 1 : 0
+            ) ? icons().tail.opacity : 0
         }
     } // End of map
         
-        // Note: to collapse means to hide the status items and to expand the separators.
+        // Note: to collapses means to hide the status items and to expand the separators.
         
         // Head
         
         shouldTimersStop.flag = head.lerpAlpha() && shouldTimersStop.flag
         
     head: do {
-        let collapse = !popoverShown && Defaults[.isCollapsed] && !(idling.hide || idling.alwaysHide) && !(Defaults[.autoShowsEnabled] && mouseSpare)
+        let collapses = !popoverShown && Defaults[.isCollapsed] && !(idling.hide || idling.alwaysHide) && !(Defaults[.autoShowsEnabled] && mouseSpare)
         
-        head.targetLength = collapse ? Defaults[.theme].iconWidthExpanded : Defaults[.theme].iconWidth
+        head.targetLength = icons(collapses: collapses).head.width
         shouldTimersStop.flag = head.lerpLength() && shouldTimersStop.flag
     } // End of head
         
@@ -112,10 +132,10 @@ extension StatusBarController {
     body: do {
         guard let x = body.origin?.x else { break body }
         
-        let collapse = !popoverShown && Defaults[.isCollapsed] && !(idling.hide || idling.alwaysHide) && !(Defaults[.autoShowsEnabled] && mouseSpare)
+        let collapses = !popoverShown && Defaults[.isCollapsed] && !(idling.hide || idling.alwaysHide) && !(Defaults[.autoShowsEnabled] && mouseSpare)
         
         do {
-            if !collapse && !body.wasUnstable {
+            if !collapses && !body.wasUnstable {
                 if body.targetLength <= 0 { body.targetLength = x + body.length - Helper.menuBarLeftEdge }
                 
                 body.length = body.targetLength
@@ -124,24 +144,24 @@ extension StatusBarController {
                 if !Defaults[.reduceAnimationEnabled] { break body }
             }
             
-            else if collapse && !body.wasUnstable {
+            else if collapses && !body.wasUnstable {
                 body.length = maxLength
                 break body
             }
             
             else if body.wasUnstable {
-                body.wasUnstable = !collapse || body.wasUnstable && x > Helper.menuBarLeftEdge + 5
+                body.wasUnstable = !collapses || body.wasUnstable && x > Helper.menuBarLeftEdge + 5
             }
             
             
             
             if
                 let lastOrigin = body.lastOrigin,
-                body.lastCollapse != collapse || x != lastOrigin.x
-            { body.targetLength = collapse ? max(0, x + body.length - Helper.menuBarLeftEdge) : Defaults[.theme].iconWidth }
+                body.lastCollapses != collapses || x != lastOrigin.x
+            { body.targetLength = collapses ? max(0, x + body.length - Helper.menuBarLeftEdge) : icons().body.width }
             
             body.lastOrigin = body.origin
-            body.lastCollapse = collapse
+            body.lastCollapses = collapses
             
             shouldTimersStop.flag = body.lerpLength() && shouldTimersStop.flag
         }
@@ -154,10 +174,10 @@ extension StatusBarController {
     tail: do {
         guard let x = tail.origin?.x else { break tail }
         
-        let collapse = !popoverShown && !(KeyboardHelper.modifiers && ((Defaults[.isCollapsed] && !idling.hide) || mouseSpare)) && !idling.alwaysHide
+        let collapses = !popoverShown && !(KeyboardHelper.modifiers && ((Defaults[.isCollapsed] && !idling.hide) || mouseSpare)) && !idling.alwaysHide
         
         do {
-            if !collapse && !tail.wasUnstable {
+            if !collapses && !tail.wasUnstable {
                 if tail.targetLength <= 0 { tail.targetLength = x + tail.length - Helper.menuBarLeftEdge }
                 
                 tail.length = tail.targetLength
@@ -166,24 +186,24 @@ extension StatusBarController {
                 if !Defaults[.reduceAnimationEnabled] { break tail }
             }
             
-            else if collapse && !tail.wasUnstable {
+            else if collapses && !tail.wasUnstable {
                 tail.length = maxLength
                 break tail
             }
             
             else if tail.wasUnstable {
-                tail.wasUnstable = !collapse || tail.wasUnstable && x > Helper.menuBarLeftEdge + 5
+                tail.wasUnstable = !collapses || tail.wasUnstable && x > Helper.menuBarLeftEdge + 5
             }
             
             
             
             if
                 let lastOrigin = tail.lastOrigin,
-                tail.lastCollapse != collapse || x != lastOrigin.x
-            { tail.targetLength = collapse ? max(0, x + tail.length - Helper.menuBarLeftEdge) : Defaults[.theme].iconWidth }
+                tail.lastCollapses != collapses || x != lastOrigin.x
+            { tail.targetLength = collapses ? max(0, x + tail.length - Helper.menuBarLeftEdge) : icons().tail.width }
             
             tail.lastOrigin = tail.origin
-            tail.lastCollapse = collapse
+            tail.lastCollapses = collapses
             
             shouldTimersStop.flag = tail.lerpLength() && shouldTimersStop.flag
         }
@@ -191,9 +211,9 @@ extension StatusBarController {
     }
     
     func map() {
-        head.button?.image = Defaults[.isCollapsed] ? Defaults[.theme].headCollapsed : Defaults[.theme].headUncollapsed
-        body.button?.image = Defaults[.theme].body
-        tail.button?.image = Defaults[.theme].tail
+        head.button?.image = icons().head.image
+        body.button?.image = icons().body.image
+        tail.button?.image = icons().tail.image
         
         guard Defaults[.autoShowsEnabled] || !Defaults[.isCollapsed] || !Defaults[.theme].autoHideIcons else {
             head.targetAlpha = 0
@@ -205,12 +225,12 @@ extension StatusBarController {
         if !Defaults[.theme].autoHideIcons {
             // Special judge. See #update()
         } else if popoverShown || KeyboardHelper.modifiers {
-            head.button?.image = Defaults[.theme].headUncollapsed
-            head.targetAlpha = 1
-            body.targetAlpha = mouseSpare ? 1 : 0
-            tail.targetAlpha = mouseSpare ? 1 : 0
+            head.button?.image = Defaults[.theme].headUncollapsed.image
+            head.targetAlpha = icons().head.opacity
+            body.targetAlpha = mouseSpare ? icons().body.opacity : 0
+            tail.targetAlpha = mouseSpare ? icons().tail.opacity : 0
         } else {
-            head.targetAlpha = !Defaults[.isCollapsed] ? 1 : 0
+            head.targetAlpha = !Defaults[.isCollapsed] ? icons().head.opacity : 0
             body.targetAlpha = 0
             tail.targetAlpha = 0
         }
