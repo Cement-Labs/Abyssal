@@ -13,6 +13,18 @@
         }
       }
     },
+    "3Om-OS-uyx.title" : {
+      "comment" : "Class = \"NSBox\"; title = \"Main/Body 2/Preferences 2\"; ObjectID = \"3Om-OS-uyx\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Main/Body 2/Preferences 2"
+          }
+        }
+      }
+    },
     "3Sg-p9-30K.title" : {
       "comment" : "Class = \"NSMenuItem\"; title = \"Abyssal\"; ObjectID = \"3Sg-p9-30K\";",
       "extractionState" : "extracted_with_value",
