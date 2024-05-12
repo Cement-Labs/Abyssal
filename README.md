@@ -195,6 +195,20 @@ Due to the limitations of macOS, **Abyssal** can't infer the available width use
 
 <br />
 
+### Modifier Mode
+
+`Style: Pop Up Button`&emsp;`Default: Any`
+
+- **`Any`**
+
+  Pressing any of the selected modifiers will trigger the functions.
+
+- **`All`**
+
+  Pressing only all of the selected modifiers will trigger the functions.
+
+<br />
+
 ### Timeout
 
 `Style: Step Slider`&emsp;`Default: · · · ● · · · · · · · 30 seconds`
