@@ -83,17 +83,20 @@ class Themes {
         [
             abyssal,
             hiddenBar,
+            simplicity,
             approaching,
             metresAway,
+            interstellar,
             electrodiagram,
             droplets,
             codec,
+            colons,
             notSoHappy,
             playPause,
             theFace,
             theImplied,
             macOS
-        ].sorted(by: { $0.identifier < $1.identifier })
+        ]
     }
     
     static var defaultTheme: Theme {
@@ -114,8 +117,8 @@ extension Themes {
         "Abyssal", NSLocalizedString("Theme/Abyssal", value: "Abyssal", comment: "name for theme 'Abyssal'"),
         icon: .tail,
         
-        headUncollapsed: 	NamedIconBuilder(name: "Dot", width: 10),
-        headCollapsed:      .headWithWidth(2),
+        headUncollapsed: 	NamedIconBuilder(name: "Dot", width: 2),
+        headCollapsed:      .headWithWidth(10),
         
         body: NamedIconBuilder(name: "Line",          width: 2),
         tail: NamedIconBuilder(name: "DottedLine",    width: 2),
@@ -126,13 +129,25 @@ extension Themes {
     static let hiddenBar = Theme(
         "HiddenBar", NSLocalizedString("Theme/HiddenBar", value: "Hidden Bar", comment: "name for theme 'Hidden Bar'"),
         
-        headUncollapsed: 	NamedIconBuilder(name:"ic_left", width: 20),
-        headCollapsed: 		.custom(NamedIconBuilder(name:"ic_right", width: 20)),
+        headUncollapsed: 	NamedIconBuilder(name: "ic_left", width: 20),
+        headCollapsed: 		.custom(NamedIconBuilder(name: "ic_right", width: 20)),
         
         body: NamedIconBuilder(name:"ic_line",                width: 20),
         tail: NamedIconBuilder(name:"ic_line_translucent",    width: 20),
         
         autoHideIcons: false
+    )
+    
+    static let simplicity = Theme(
+        "Simplicity", NSLocalizedString("Theme/Simplicity", value: "Simplicity", comment: "name for theme 'Simplicity'"),
+        
+        headUncollapsed:    SymbolIconBuilder(symbol: .poweron, width: 4),
+        headCollapsed:      .custom(SymbolIconBuilder(symbol: .poweron, width: 12, opacity: 0.2)),
+        
+        body: SymbolIconBuilder(symbol: .poweron, width: 2),
+        tail: SymbolIconBuilder(symbol: .poweron, width: 2),
+        
+        autoHideIcons: true
     )
     
     static let approaching = Theme(
@@ -157,6 +172,18 @@ extension Themes {
         tail: NamedIconBuilder(name: "MetreLine", width: 3),
         
         autoHideIcons: false
+    )
+    
+    static let interstellar = Theme(
+        "Interstellar", NSLocalizedString("Theme/Interstellar", value: "Interstellar", comment: "name for theme 'Interstellar'"),
+        
+        headUncollapsed:    SymbolIconBuilder(symbol: .globeAmericasFill, configuration: .init(scale: .small), width: 10),
+        headCollapsed:      .custom(SymbolIconBuilder(symbol: .globeAmericas, configuration: .init(scale: .small), width: 32)),
+        
+        body: SymbolIconBuilder(symbol: .sunMaxFill, configuration: .init(scale: .small), width: 10),
+        tail: SymbolIconBuilder(symbol: .moonphaseWaningGibbous, configuration: .init(scale: .small).applying(.preferringHierarchical()), width: 10),
+        
+        autoHideIcons: true
     )
     
     static let electrodiagram = Theme(
@@ -186,11 +213,23 @@ extension Themes {
     static let codec = Theme(
         "Codec", NSLocalizedString("Theme/Codec", value: "Codec", comment: "name for theme 'Codec'"),
         
-        headUncollapsed: 	SymbolIconBuilder(symbol: .curlybraces, width: 16),
-        headCollapsed:      .custom(SymbolIconBuilder(symbol: .ellipsisCurlybraces, configuration: .preferringHierarchical(), width: 22)),
+        headUncollapsed: 	SymbolIconBuilder(symbol: .ellipsisCurlybraces, configuration: .preferringHierarchical(), width: 16),
+        headCollapsed:      .custom(SymbolIconBuilder(symbol: .curlybraces, width: 22)),
         
-        body: SymbolIconBuilder(symbol: .ellipsis, width: 16, opacity: 0.5),
-        tail: SymbolIconBuilder(symbol: .ellipsis, width: 16, opacity: 0.2),
+        body: SymbolIconBuilder(symbol: .ellipsis, width: 16),
+        tail: SymbolIconBuilder(symbol: .ellipsis, width: 16),
+        
+        autoHideIcons: false
+    )
+    
+    static let colons = Theme(
+        "Colons", NSLocalizedString("Theme/Colons", value: "Colons", comment: "name for theme 'Colons'"),
+        
+        headUncollapsed:    NamedIconBuilder(name: "Colon", width: 6),
+        headCollapsed:      .headWithWidth(16),
+        
+        body: NamedIconBuilder(name: "Colon", width: 6),
+        tail: NamedIconBuilder(name: "Colon", width: 6),
         
         autoHideIcons: false
     )
@@ -202,7 +241,7 @@ extension Themes {
         headCollapsed: 		.custom(NamedIconBuilder(name: "Happy", width: 32)),
         
         body: NamedIconBuilder(name: "Pale",   width: 14),
-        tail: NamedIconBuilder(name: "Amazed", width: 14),
+        tail: NamedIconBuilder(name: "Cat", width: 14),
         
         autoHideIcons: false
     )
@@ -226,8 +265,8 @@ extension Themes {
         headUncollapsed:    NamedIconBuilder(name: "Face", width: 25),
         headCollapsed:      .headWithWidth(64),
         
-        body: SymbolIconBuilder(symbol: .musicNote,         width: 16, opacity: 0.5),
-        tail: SymbolIconBuilder(symbol: .musicQuarternote3, width: 16, opacity: 0.2),
+        body: SymbolIconBuilder(symbol: .musicNote,         width: 16),
+        tail: SymbolIconBuilder(symbol: .musicQuarternote3, width: 16),
         
         autoHideIcons: false
     )
@@ -246,7 +285,7 @@ extension Themes {
     )
     
     static let macOS = Theme(
-        "macOS", NSLocalizedString("Theme/MacOS", value: "macOS", comment: "name for theme 'macOS'"),
+        "macOS", NSLocalizedString("Theme/macOS", value: "macOS", comment: "name for theme 'macOS'"),
         icon: .custom(SymbolIconBuilder(symbol: .appleLogo, width: 20)),
         
         headUncollapsed:    SymbolIconBuilder(symbol: .chevronBackward, width: 20),

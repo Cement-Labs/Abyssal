@@ -245,7 +245,25 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "调制、解调"
+            "value" : "调制解调"
+          }
+        }
+      }
+    },
+    "Theme/Colons" : {
+      "comment" : "name for theme 'Colons'",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Colons"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无话可说"
           }
         }
       }
@@ -295,12 +313,6 @@
             "state" : "new",
             "value" : "Hidden Bar"
           }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hidden Bar"
-          }
         }
       }
     },
@@ -322,19 +334,31 @@
         }
       }
     },
-    "Theme/MacOS" : {
+    "Theme/Interstellar" : {
+      "comment" : "name for theme 'Interstellar'",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Interstellar"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "星际穿越"
+          }
+        }
+      }
+    },
+    "Theme/macOS" : {
       "comment" : "name for theme 'macOS'",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "macOS"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
             "value" : "macOS"
           }
         }
@@ -394,6 +418,24 @@
         }
       }
     },
+    "Theme/Simplicity" : {
+      "comment" : "name for theme 'Simplicity'",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Simplicity"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "简简单单"
+          }
+        }
+      }
+    },
     "Theme/TheFace" : {
       "comment" : "name for theme '【=◈︿◈=】'",
       "extractionState" : "extracted_with_value",
@@ -401,12 +443,6 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "【=◈︿◈=】"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
             "value" : "【=◈︿◈=】"
           }
         }

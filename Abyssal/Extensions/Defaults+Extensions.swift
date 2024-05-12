@@ -10,6 +10,8 @@ import Defaults
 import LaunchAtLogin
 
 extension Defaults.Keys {
+    // Collapsed: the expanded state and menu bar itms are hidden
+    // Uncollapsed: the shrunk state and menu bar items are visible
     static let isCollapsed = Key<Bool>("isCollapsed", default: false)
     
     static let tipsEnabled = Key<Bool>("tipsEnabled", default: true)
