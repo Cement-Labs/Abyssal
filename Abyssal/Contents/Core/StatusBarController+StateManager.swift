@@ -166,7 +166,7 @@ extension StatusBarController {
                 
                 // Update mouse and key
                 let mouseNeedsUpdate = self.was.mouseSpare != self.mouseSpare
-                let keyNeedsUpdate = self.was.modifiers != KeyboardHelper.modifiers
+                let keyNeedsUpdate = self.was.modifiers != KeyboardHelper.triggers
                 
                 if !MouseHelper.dragging {
                     if mouseNeedsUpdate {
@@ -193,7 +193,7 @@ extension StatusBarController {
                 
                 self.was = (
                     self.mouseSpare,
-                    KeyboardHelper.modifiers
+                    KeyboardHelper.triggers
                 )
             }
         }

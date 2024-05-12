@@ -39,4 +39,9 @@ struct Localizations {
         static let heavy =      NSLocalizedString("FeedbackIntensity/Heavy",        value: "Heavy",      comment: "feedback intensity heavy")
         static let disabled =   NSLocalizedString("FeedbackIntensity/Disabled",     value: "Disabled",  comment: "feedback intensity disabled")
     }
+    
+    struct ModifiersMode {
+        static let any = NSLocalizedString("ModifiersMode/Any", value: "Any", comment: "modifiers mode any")
+        static let all = NSLocalizedString("ModifiersMode/All", value: "All", comment: "modifiers mode all")
+    }
 }

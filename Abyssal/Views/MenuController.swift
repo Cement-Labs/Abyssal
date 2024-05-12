@@ -35,6 +35,8 @@ class MenuController: NSViewController, NSMenuDelegate {
     
     @IBOutlet weak var buttonModifiersCommand: NSButton!
     
+    @IBOutlet weak var segmentedControlModifiersMode: NSSegmentedControl!
+    
     @IBOutlet weak var labelTimeout: NSTextField!
     
     @IBOutlet weak var sliderTimeout: NSSlider!

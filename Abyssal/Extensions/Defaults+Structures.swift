@@ -9,37 +9,72 @@ import Foundation
 import Defaults
 import AppKit
 
-struct ModifiersAttribute: Defaults.Serializable {
-    var control: Bool
-    var option: Bool
-    var command: Bool
+struct ModifiersAttribute: OptionSet, Defaults.Serializable {
+    let rawValue: UInt8
     
-    struct Bridge: Defaults.Bridge {
-        typealias Value = ModifiersAttribute
-        typealias Serializable = [Bool]
+    static let control  = ModifiersAttribute(rawValue: 1 << 0)
+    static let option   = ModifiersAttribute(rawValue: 1 << 1)
+    static let command  = ModifiersAttribute(rawValue: 1 << 2)
+    
+    static let none:    ModifiersAttribute = []
+    static let all:     ModifiersAttribute = [.control, .option, .command]
+    
+    var flags: NSEvent.ModifierFlags {
+        var result = NSEvent.ModifierFlags()
         
-        func serialize(_ value: ModifiersAttribute?) -> [Bool]? {
-            guard let value else {
-                return nil
-            }
-            
-            return [
-                value.control,
-                value.option,
-                value.command
-            ]
+        if (self.contains(.control)) {
+            result.formUnion(.control)
+        }
+        if (self.contains(.option)) {
+            result.formUnion(.option)
+        }
+        if (self.contains(.command)) {
+            result.formUnion(.command)
         }
         
-        func deserialize(_ object: [Bool]?) -> ModifiersAttribute? {
-            guard let object else {
-                return nil
-            }
-            
-            return .init(control: object[0], option: object[1], command: object[2])
-        }
+        return result
     }
     
-    static let bridge = Bridge()
+    static func fromFlags(_ flags: NSEvent.ModifierFlags) -> ModifiersAttribute {
+        var result = ModifiersAttribute()
+        
+        if (flags.contains(.control)) {
+            result.formUnion(.control)
+        }
+        if (flags.contains(.option)) {
+            result.formUnion(.option)
+        }
+        if (flags.contains(.command)) {
+            result.formUnion(.command)
+        }
+        
+        return result
+    }
+}
+
+extension ModifiersAttribute {
+    enum Mode: Int, CaseIterable, Defaults.Serializable {
+        case any = 0
+        case all = 1
+        
+        var label: String {
+            switch self {
+            case .any: Localizations.ModifiersMode.any
+            case .all: Localizations.ModifiersMode.all
+            }
+        }
+        
+        func triggers(input: ModifiersAttribute) -> Bool {
+            switch self {
+            case .any:
+                // OK if the two sets have any member in common
+                !Defaults[.modifiers].isDisjoint(with: input)
+            case .all:
+                // OK if the input is a superset of the configured
+                input.isSuperset(of: Defaults[.modifiers])
+            }
+        }
+    }
 }
 
 enum TimeoutAttribute: Int, CaseIterable, Defaults.Serializable {

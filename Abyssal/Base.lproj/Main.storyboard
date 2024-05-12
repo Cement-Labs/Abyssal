@@ -34,13 +34,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="275" height="405"/>
                                         <subviews>
                                             <box horizontalCompressionResistancePriority="825" verticalCompressionResistancePriority="825" boxType="custom" title="Main/Heading" titlePosition="noTitle" transparent="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dJV-pr-4Ds" userLabel="Heading">
-                                                <rect key="frame" x="0.0" y="256" width="275" height="149"/>
+                                                <rect key="frame" x="0.0" y="288" width="275" height="117"/>
                                                 <view key="contentView" wantsLayer="YES" id="Nus-iP-k6G">
-                                                    <rect key="frame" x="1" y="1" width="273" height="147"/>
+                                                    <rect key="frame" x="1" y="1" width="273" height="115"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3oE-Id-0vv">
-                                                            <rect key="frame" x="86" y="68" width="102" height="28"/>
+                                                            <rect key="frame" x="86" y="52" width="102" height="28"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Abyssal" id="S3l-Th-u8S">
                                                                 <font key="font" metaFont="systemHeavy" size="24"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -48,7 +48,7 @@
                                                             </textFieldCell>
                                                         </textField>
                                                         <button translatesAutoresizingMaskIntoConstraints="NO" id="Fj0-aa-Z4F">
-                                                            <rect key="frame" x="86" y="50" width="101" height="16"/>
+                                                            <rect key="frame" x="86" y="34" width="101" height="16"/>
                                                             <buttonCell key="cell" type="bevel" title="App Version" bezelStyle="rounded" image="shift.fill" catalog="system" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" inset="2" id="1vF-An-AOf">
                                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                 <font key="font" metaFont="systemBold"/>
@@ -68,131 +68,163 @@
                                                 </view>
                                             </box>
                                             <stackView distribution="fillEqually" orientation="vertical" alignment="leading" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gEV-ob-7OI" userLabel="Body 1">
-                                                <rect key="frame" x="0.0" y="0.0" width="275" height="248"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="275" height="280"/>
                                                 <subviews>
                                                     <box boxType="custom" cornerRadius="15" title="Main/Body 1/Preferences 1" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="mHD-qW-Lfh" userLabel="Preferences 1">
-                                                        <rect key="frame" x="0.0" y="174" width="275" height="74"/>
+                                                        <rect key="frame" x="0.0" y="174" width="275" height="106"/>
                                                         <view key="contentView" id="NbX-w8-ipL">
-                                                            <rect key="frame" x="1" y="1" width="273" height="72"/>
+                                                            <rect key="frame" x="1" y="1" width="273" height="104"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <stackView distribution="fillEqually" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZyK-cL-k3I" userLabel="Modifiers">
-                                                                    <rect key="frame" x="20" y="20" width="233" height="32"/>
+                                                                <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1WN-24-tYW">
+                                                                    <rect key="frame" x="20" y="20" width="233" height="64"/>
                                                                     <subviews>
-                                                                        <box verticalHuggingPriority="750" boxType="custom" cornerRadius="10" title="Main/Body 1/Modifiers/Control" translatesAutoresizingMaskIntoConstraints="NO" id="Uio-1V-qOn" userLabel="Control" customClass="FillOnHoverBox" customModule="Abyssal" customModuleProvider="target">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="72" height="32"/>
-                                                                            <view key="contentView" id="vUQ-Os-Qzp">
-                                                                                <rect key="frame" x="1" y="1" width="70" height="30"/>
-                                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                                                <subviews>
-                                                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0BO-sM-3fj" userLabel="Control">
-                                                                                        <rect key="frame" x="6" y="2.5" width="58" height="30"/>
-                                                                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="control" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="OTx-7c-JZj" userLabel="Tips">
-                                                                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
-                                                                                            <font key="font" metaFont="system"/>
-                                                                                        </buttonCell>
-                                                                                        <symbolConfiguration key="symbolConfiguration" scale="medium" weight="bold">
-                                                                                            <nil key="locale"/>
-                                                                                        </symbolConfiguration>
-                                                                                        <connections>
-                                                                                            <action selector="toggleModifiersControl:" target="crA-Or-uDV" id="vtN-xD-r2L"/>
-                                                                                        </connections>
-                                                                                    </button>
-                                                                                </subviews>
-                                                                                <constraints>
-                                                                                    <constraint firstAttribute="trailing" secondItem="0BO-sM-3fj" secondAttribute="trailing" constant="6" id="Snc-jn-lgJ"/>
-                                                                                    <constraint firstItem="0BO-sM-3fj" firstAttribute="top" secondItem="vUQ-Os-Qzp" secondAttribute="top" id="USX-Es-7ay"/>
-                                                                                    <constraint firstItem="0BO-sM-3fj" firstAttribute="leading" secondItem="vUQ-Os-Qzp" secondAttribute="leading" constant="6" id="VSL-HK-jv7"/>
-                                                                                    <constraint firstAttribute="bottom" secondItem="0BO-sM-3fj" secondAttribute="bottom" id="tyb-36-xdS"/>
-                                                                                </constraints>
-                                                                            </view>
-                                                                            <color key="borderColor" name="secondarySystemFillColor" catalog="System" colorSpace="catalog"/>
-                                                                        </box>
-                                                                        <box verticalHuggingPriority="750" boxType="custom" cornerRadius="10" title="Main/Body 1/Modifiers/Option" translatesAutoresizingMaskIntoConstraints="NO" id="wmR-e3-2td" userLabel="Option" customClass="FillOnHoverBox" customModule="Abyssal" customModuleProvider="target">
-                                                                            <rect key="frame" x="80" y="0.0" width="73" height="32"/>
-                                                                            <view key="contentView" id="haX-xP-69m">
-                                                                                <rect key="frame" x="1" y="1" width="71" height="30"/>
-                                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                                                <subviews>
-                                                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pU4-FK-uTX" userLabel="Option">
-                                                                                        <rect key="frame" x="0.0" y="-2.5" width="71.5" height="35"/>
-                                                                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="option" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="aMk-A5-m8J">
-                                                                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
-                                                                                            <font key="font" metaFont="system"/>
-                                                                                        </buttonCell>
-                                                                                        <symbolConfiguration key="symbolConfiguration" scale="medium" weight="bold">
-                                                                                            <nil key="locale"/>
-                                                                                        </symbolConfiguration>
-                                                                                        <connections>
-                                                                                            <action selector="toggleModifiersOption:" target="crA-Or-uDV" id="2aA-en-HPn"/>
-                                                                                        </connections>
-                                                                                    </button>
-                                                                                </subviews>
-                                                                                <constraints>
-                                                                                    <constraint firstItem="pU4-FK-uTX" firstAttribute="top" secondItem="haX-xP-69m" secondAttribute="top" id="G2W-yW-4Bs"/>
-                                                                                    <constraint firstAttribute="bottom" secondItem="pU4-FK-uTX" secondAttribute="bottom" id="WDG-TF-mbI"/>
-                                                                                    <constraint firstAttribute="trailing" secondItem="pU4-FK-uTX" secondAttribute="trailing" id="hoX-wF-keU"/>
-                                                                                    <constraint firstItem="pU4-FK-uTX" firstAttribute="leading" secondItem="haX-xP-69m" secondAttribute="leading" id="tRg-26-SXa"/>
-                                                                                </constraints>
-                                                                            </view>
-                                                                            <color key="borderColor" name="secondarySystemFillColor" catalog="System" colorSpace="catalog"/>
-                                                                        </box>
-                                                                        <box verticalHuggingPriority="750" boxType="custom" cornerRadius="10" title="Main/Body 1/Modifiers/Command" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="827-6G-l7o" userLabel="Command" customClass="FillOnHoverBox" customModule="Abyssal" customModuleProvider="target">
-                                                                            <rect key="frame" x="161" y="0.0" width="72" height="32"/>
-                                                                            <view key="contentView" id="h3z-aO-d9W">
-                                                                                <rect key="frame" x="1" y="1" width="70" height="30"/>
-                                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                                                <subviews>
-                                                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rAS-76-MR1" userLabel="Command">
-                                                                                        <rect key="frame" x="0.0" y="-2.5" width="70.5" height="36"/>
-                                                                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="command" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="NhP-j6-2uL">
-                                                                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
-                                                                                            <font key="font" metaFont="system"/>
-                                                                                        </buttonCell>
-                                                                                        <symbolConfiguration key="symbolConfiguration" scale="medium" weight="bold">
-                                                                                            <nil key="locale"/>
-                                                                                        </symbolConfiguration>
-                                                                                        <connections>
-                                                                                            <action selector="toggleModifiersCommand:" target="crA-Or-uDV" id="oxl-1x-p6u"/>
-                                                                                        </connections>
-                                                                                    </button>
-                                                                                </subviews>
-                                                                                <constraints>
-                                                                                    <constraint firstAttribute="bottom" secondItem="rAS-76-MR1" secondAttribute="bottom" id="dyK-Ez-cvW"/>
-                                                                                    <constraint firstItem="rAS-76-MR1" firstAttribute="leading" secondItem="h3z-aO-d9W" secondAttribute="leading" id="uCX-VM-CKK"/>
-                                                                                    <constraint firstAttribute="trailing" secondItem="rAS-76-MR1" secondAttribute="trailing" id="vGl-Oo-mm6"/>
-                                                                                    <constraint firstItem="rAS-76-MR1" firstAttribute="top" secondItem="h3z-aO-d9W" secondAttribute="top" id="wlQ-3i-x4h"/>
-                                                                                </constraints>
-                                                                            </view>
-                                                                            <color key="borderColor" name="secondarySystemFillColor" catalog="System" colorSpace="catalog"/>
-                                                                        </box>
+                                                                        <stackView distribution="fillEqually" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZyK-cL-k3I" userLabel="Modifiers">
+                                                                            <rect key="frame" x="0.0" y="32" width="233" height="32"/>
+                                                                            <subviews>
+                                                                                <box verticalHuggingPriority="750" boxType="custom" cornerRadius="10" title="Main/Body 1/Modifiers/Control" translatesAutoresizingMaskIntoConstraints="NO" id="Uio-1V-qOn" userLabel="Control" customClass="FillOnHoverBox" customModule="Abyssal" customModuleProvider="target">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="72" height="32"/>
+                                                                                    <view key="contentView" id="vUQ-Os-Qzp">
+                                                                                        <rect key="frame" x="1" y="1" width="70" height="30"/>
+                                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                                        <subviews>
+                                                                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0BO-sM-3fj" userLabel="Control">
+                                                                                                <rect key="frame" x="6" y="2.5" width="58" height="30"/>
+                                                                                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="control" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="OTx-7c-JZj" userLabel="Tips">
+                                                                                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                                                                                    <font key="font" metaFont="system"/>
+                                                                                                </buttonCell>
+                                                                                                <symbolConfiguration key="symbolConfiguration" scale="medium" weight="bold">
+                                                                                                    <nil key="locale"/>
+                                                                                                </symbolConfiguration>
+                                                                                                <connections>
+                                                                                                    <action selector="toggleModifiersControl:" target="crA-Or-uDV" id="vtN-xD-r2L"/>
+                                                                                                </connections>
+                                                                                            </button>
+                                                                                        </subviews>
+                                                                                        <constraints>
+                                                                                            <constraint firstAttribute="trailing" secondItem="0BO-sM-3fj" secondAttribute="trailing" constant="6" id="Snc-jn-lgJ"/>
+                                                                                            <constraint firstItem="0BO-sM-3fj" firstAttribute="top" secondItem="vUQ-Os-Qzp" secondAttribute="top" id="USX-Es-7ay"/>
+                                                                                            <constraint firstItem="0BO-sM-3fj" firstAttribute="leading" secondItem="vUQ-Os-Qzp" secondAttribute="leading" constant="6" id="VSL-HK-jv7"/>
+                                                                                            <constraint firstAttribute="bottom" secondItem="0BO-sM-3fj" secondAttribute="bottom" id="tyb-36-xdS"/>
+                                                                                        </constraints>
+                                                                                    </view>
+                                                                                    <color key="borderColor" name="secondarySystemFillColor" catalog="System" colorSpace="catalog"/>
+                                                                                </box>
+                                                                                <box verticalHuggingPriority="750" boxType="custom" cornerRadius="10" title="Main/Body 1/Modifiers/Option" translatesAutoresizingMaskIntoConstraints="NO" id="wmR-e3-2td" userLabel="Option" customClass="FillOnHoverBox" customModule="Abyssal" customModuleProvider="target">
+                                                                                    <rect key="frame" x="80" y="0.0" width="73" height="32"/>
+                                                                                    <view key="contentView" id="haX-xP-69m">
+                                                                                        <rect key="frame" x="1" y="1" width="71" height="30"/>
+                                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                                        <subviews>
+                                                                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pU4-FK-uTX" userLabel="Option">
+                                                                                                <rect key="frame" x="0.0" y="-2.5" width="71.5" height="35"/>
+                                                                                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="option" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="aMk-A5-m8J">
+                                                                                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                                                                                    <font key="font" metaFont="system"/>
+                                                                                                </buttonCell>
+                                                                                                <symbolConfiguration key="symbolConfiguration" scale="medium" weight="bold">
+                                                                                                    <nil key="locale"/>
+                                                                                                </symbolConfiguration>
+                                                                                                <connections>
+                                                                                                    <action selector="toggleModifiersOption:" target="crA-Or-uDV" id="2aA-en-HPn"/>
+                                                                                                </connections>
+                                                                                            </button>
+                                                                                        </subviews>
+                                                                                        <constraints>
+                                                                                            <constraint firstItem="pU4-FK-uTX" firstAttribute="top" secondItem="haX-xP-69m" secondAttribute="top" id="G2W-yW-4Bs"/>
+                                                                                            <constraint firstAttribute="bottom" secondItem="pU4-FK-uTX" secondAttribute="bottom" id="WDG-TF-mbI"/>
+                                                                                            <constraint firstAttribute="trailing" secondItem="pU4-FK-uTX" secondAttribute="trailing" id="hoX-wF-keU"/>
+                                                                                            <constraint firstItem="pU4-FK-uTX" firstAttribute="leading" secondItem="haX-xP-69m" secondAttribute="leading" id="tRg-26-SXa"/>
+                                                                                        </constraints>
+                                                                                    </view>
+                                                                                    <color key="borderColor" name="secondarySystemFillColor" catalog="System" colorSpace="catalog"/>
+                                                                                </box>
+                                                                                <box verticalHuggingPriority="750" boxType="custom" cornerRadius="10" title="Main/Body 1/Modifiers/Command" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="827-6G-l7o" userLabel="Command" customClass="FillOnHoverBox" customModule="Abyssal" customModuleProvider="target">
+                                                                                    <rect key="frame" x="161" y="0.0" width="72" height="32"/>
+                                                                                    <view key="contentView" id="h3z-aO-d9W">
+                                                                                        <rect key="frame" x="1" y="1" width="70" height="30"/>
+                                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                                        <subviews>
+                                                                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rAS-76-MR1" userLabel="Command">
+                                                                                                <rect key="frame" x="0.0" y="-2.5" width="70.5" height="36"/>
+                                                                                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="command" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="NhP-j6-2uL">
+                                                                                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                                                                                    <font key="font" metaFont="system"/>
+                                                                                                </buttonCell>
+                                                                                                <symbolConfiguration key="symbolConfiguration" scale="medium" weight="bold">
+                                                                                                    <nil key="locale"/>
+                                                                                                </symbolConfiguration>
+                                                                                                <connections>
+                                                                                                    <action selector="toggleModifiersCommand:" target="crA-Or-uDV" id="oxl-1x-p6u"/>
+                                                                                                </connections>
+                                                                                            </button>
+                                                                                        </subviews>
+                                                                                        <constraints>
+                                                                                            <constraint firstAttribute="bottom" secondItem="rAS-76-MR1" secondAttribute="bottom" id="dyK-Ez-cvW"/>
+                                                                                            <constraint firstItem="rAS-76-MR1" firstAttribute="leading" secondItem="h3z-aO-d9W" secondAttribute="leading" id="uCX-VM-CKK"/>
+                                                                                            <constraint firstAttribute="trailing" secondItem="rAS-76-MR1" secondAttribute="trailing" id="vGl-Oo-mm6"/>
+                                                                                            <constraint firstItem="rAS-76-MR1" firstAttribute="top" secondItem="h3z-aO-d9W" secondAttribute="top" id="wlQ-3i-x4h"/>
+                                                                                        </constraints>
+                                                                                    </view>
+                                                                                    <color key="borderColor" name="secondarySystemFillColor" catalog="System" colorSpace="catalog"/>
+                                                                                </box>
+                                                                            </subviews>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="32" id="1fJ-kc-xqG"/>
+                                                                                <constraint firstItem="827-6G-l7o" firstAttribute="top" secondItem="ZyK-cL-k3I" secondAttribute="top" id="6bc-x9-5rq"/>
+                                                                                <constraint firstAttribute="bottom" secondItem="827-6G-l7o" secondAttribute="bottom" id="6fm-hd-CIX"/>
+                                                                                <constraint firstAttribute="bottom" secondItem="Uio-1V-qOn" secondAttribute="bottom" id="NUX-QE-QXi"/>
+                                                                                <constraint firstItem="Uio-1V-qOn" firstAttribute="top" secondItem="ZyK-cL-k3I" secondAttribute="top" id="WKt-pE-Ili"/>
+                                                                                <constraint firstAttribute="bottom" secondItem="wmR-e3-2td" secondAttribute="bottom" id="kR4-I9-nce"/>
+                                                                                <constraint firstItem="wmR-e3-2td" firstAttribute="top" secondItem="ZyK-cL-k3I" secondAttribute="top" id="u0p-H6-BE5"/>
+                                                                            </constraints>
+                                                                            <visibilityPriorities>
+                                                                                <integer value="1000"/>
+                                                                                <integer value="1000"/>
+                                                                                <integer value="1000"/>
+                                                                            </visibilityPriorities>
+                                                                            <customSpacing>
+                                                                                <real value="3.4028234663852886e+38"/>
+                                                                                <real value="3.4028234663852886e+38"/>
+                                                                                <real value="3.4028234663852886e+38"/>
+                                                                            </customSpacing>
+                                                                        </stackView>
+                                                                        <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tqQ-YE-lvb">
+                                                                            <rect key="frame" x="-2" y="-1" width="237" height="26"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="24" id="Kw1-kB-bQE"/>
+                                                                            </constraints>
+                                                                            <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fill" style="rounded" trackingMode="selectOne" id="e8R-xB-p2O">
+                                                                                <font key="font" metaFont="system"/>
+                                                                                <segments>
+                                                                                    <segment/>
+                                                                                    <segment selected="YES" tag="1"/>
+                                                                                </segments>
+                                                                            </segmentedCell>
+                                                                        </segmentedControl>
                                                                     </subviews>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="32" id="1fJ-kc-xqG"/>
-                                                                        <constraint firstItem="827-6G-l7o" firstAttribute="top" secondItem="ZyK-cL-k3I" secondAttribute="top" id="6bc-x9-5rq"/>
-                                                                        <constraint firstAttribute="bottom" secondItem="827-6G-l7o" secondAttribute="bottom" id="6fm-hd-CIX"/>
-                                                                        <constraint firstAttribute="bottom" secondItem="Uio-1V-qOn" secondAttribute="bottom" id="NUX-QE-QXi"/>
-                                                                        <constraint firstItem="Uio-1V-qOn" firstAttribute="top" secondItem="ZyK-cL-k3I" secondAttribute="top" id="WKt-pE-Ili"/>
-                                                                        <constraint firstAttribute="bottom" secondItem="wmR-e3-2td" secondAttribute="bottom" id="kR4-I9-nce"/>
-                                                                        <constraint firstItem="wmR-e3-2td" firstAttribute="top" secondItem="ZyK-cL-k3I" secondAttribute="top" id="u0p-H6-BE5"/>
+                                                                        <constraint firstItem="tqQ-YE-lvb" firstAttribute="leading" secondItem="1WN-24-tYW" secondAttribute="leading" id="GeU-BA-k61"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="ZyK-cL-k3I" secondAttribute="trailing" id="PmF-4q-Pyi"/>
+                                                                        <constraint firstItem="ZyK-cL-k3I" firstAttribute="leading" secondItem="1WN-24-tYW" secondAttribute="leading" id="g4S-ZX-jP5"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="tqQ-YE-lvb" secondAttribute="trailing" id="t9C-8o-jNL"/>
                                                                     </constraints>
                                                                     <visibilityPriorities>
-                                                                        <integer value="1000"/>
                                                                         <integer value="1000"/>
                                                                         <integer value="1000"/>
                                                                     </visibilityPriorities>
                                                                     <customSpacing>
                                                                         <real value="3.4028234663852886e+38"/>
                                                                         <real value="3.4028234663852886e+38"/>
-                                                                        <real value="3.4028234663852886e+38"/>
                                                                     </customSpacing>
                                                                 </stackView>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstItem="ZyK-cL-k3I" firstAttribute="leading" secondItem="NbX-w8-ipL" secondAttribute="leading" constant="20" id="16z-pJ-Lca"/>
-                                                                <constraint firstAttribute="bottom" secondItem="ZyK-cL-k3I" secondAttribute="bottom" constant="20" id="3wH-9e-Kqe"/>
-                                                                <constraint firstItem="ZyK-cL-k3I" firstAttribute="top" secondItem="NbX-w8-ipL" secondAttribute="top" constant="20" id="IS6-q7-Ttp"/>
-                                                                <constraint firstAttribute="trailing" secondItem="ZyK-cL-k3I" secondAttribute="trailing" constant="20" id="XgB-gd-j2I"/>
+                                                                <constraint firstAttribute="trailing" secondItem="1WN-24-tYW" secondAttribute="trailing" constant="20" id="B0o-V3-AJb"/>
+                                                                <constraint firstItem="1WN-24-tYW" firstAttribute="leading" secondItem="NbX-w8-ipL" secondAttribute="leading" constant="20" id="JK6-ef-6dv"/>
+                                                                <constraint firstAttribute="bottom" secondItem="1WN-24-tYW" secondAttribute="bottom" constant="20" id="fd6-gs-h4H"/>
+                                                                <constraint firstItem="1WN-24-tYW" firstAttribute="top" secondItem="NbX-w8-ipL" secondAttribute="top" constant="20" id="pNI-wZ-xgg"/>
                                                             </constraints>
                                                         </view>
                                                         <color key="borderColor" name="secondarySystemFillColor" catalog="System" colorSpace="catalog"/>
@@ -860,6 +892,7 @@
                         <outlet property="labelFeedbackIntensity" destination="r9u-Pv-knm" id="okM-tr-7zN"/>
                         <outlet property="labelTimeout" destination="YlR-tX-45k" id="FKs-2A-6d1"/>
                         <outlet property="popUpButtonThemes" destination="wot-IO-iPn" id="eMq-mn-zZV"/>
+                        <outlet property="segmentedControlModifiersMode" destination="tqQ-YE-lvb" id="KXd-3x-TO6"/>
                         <outlet property="sliderDeadZone" destination="WBy-a1-b81" id="iOp-qe-9FK"/>
                         <outlet property="sliderFeedbackIntensity" destination="hXa-jz-GTN" id="jba-pN-6Te"/>
                         <outlet property="sliderTimeout" destination="wm6-Pi-1s2" id="LhJ-Gu-KhP"/>

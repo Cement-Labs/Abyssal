@@ -252,10 +252,8 @@ struct KeyboardHelper {
         NSEvent.modifierFlags.contains(.command)
     }
     
-    static var modifiers: Bool {
-        (Defaults[.modifiers].control && control)
-        || (Defaults[.modifiers].option && option)
-        || (Defaults[.modifiers].command && command)
+    static var triggers: Bool {
+        Defaults[.modifiersMode].triggers(input: ModifiersAttribute.fromFlags(NSEvent.modifierFlags))
     }
 }
 
