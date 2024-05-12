@@ -160,6 +160,30 @@
         }
       }
     },
+    "ModifiersMode/All" : {
+      "comment" : "modifiers mode all",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "All"
+          }
+        }
+      }
+    },
+    "ModifiersMode/Any" : {
+      "comment" : "modifiers mode any",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Any"
+          }
+        }
+      }
+    },
     "Theme/Abyssal" : {
       "comment" : "name for theme 'Abyssal'",
       "extractionState" : "extracted_with_value",

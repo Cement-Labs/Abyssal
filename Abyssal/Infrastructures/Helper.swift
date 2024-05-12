@@ -253,7 +253,7 @@ struct KeyboardHelper {
     }
     
     static var triggers: Bool {
-        Defaults[.modifiersMode].triggers(input: ModifiersAttribute.fromFlags(NSEvent.modifierFlags))
+        Defaults[.modifierMode].triggers(input: ModifiersAttribute.fromFlags(NSEvent.modifierFlags))
     }
 }
 

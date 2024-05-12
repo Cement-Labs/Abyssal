@@ -19,16 +19,58 @@ struct ModifiersAttribute: OptionSet, Defaults.Serializable {
     static let none:    ModifiersAttribute = []
     static let all:     ModifiersAttribute = [.control, .option, .command]
     
+    var control: Bool {
+        get {
+            self.contains(.control)
+        }
+        
+        set {
+            if newValue {
+                self.formUnion(.control)
+            } else {
+                self.remove(.control)
+            }
+        }
+    }
+    
+    var option: Bool {
+        get {
+            self.contains(.option)
+        }
+        
+        set {
+            if newValue {
+                self.formUnion(.option)
+            } else {
+                self.remove(.option)
+            }
+        }
+    }
+    
+    var command: Bool {
+        get {
+            self.contains(.command)
+        }
+        
+        set {
+            if newValue {
+                self.formUnion(.command)
+            } else {
+                self.remove(.command)
+            }
+        }
+    }
+    
     var flags: NSEvent.ModifierFlags {
         var result = NSEvent.ModifierFlags()
         
-        if (self.contains(.control)) {
+        if self.contains(.control) {
             result.formUnion(.control)
         }
-        if (self.contains(.option)) {
+        if self.contains(.option) {
             result.formUnion(.option)
         }
-        if (self.contains(.command)) {
+        if self.contains(.command) {
             result.formUnion(.command)
         }
         
@@ -38,13 +80,13 @@ struct ModifiersAttribute: OptionSet, Defaults.Serializable {
     static func fromFlags(_ flags: NSEvent.ModifierFlags) -> ModifiersAttribute {
         var result = ModifiersAttribute()
         
-        if (flags.contains(.control)) {
+        if flags.contains(.control) {
             result.formUnion(.control)
         }
-        if (flags.contains(.option)) {
+        if flags.contains(.option) {
             result.formUnion(.option)
         }
-        if (flags.contains(.command)) {
+        if flags.contains(.command) {
             result.formUnion(.command)
         }
         

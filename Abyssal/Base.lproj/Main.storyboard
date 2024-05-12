@@ -190,25 +190,29 @@
                                                                                 <real value="3.4028234663852886e+38"/>
                                                                             </customSpacing>
                                                                         </stackView>
-                                                                        <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tqQ-YE-lvb">
-                                                                            <rect key="frame" x="-2" y="-1" width="237" height="26"/>
+                                                                        <popUpButton translatesAutoresizingMaskIntoConstraints="NO" id="bH3-d8-gNk">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="233" height="24"/>
+                                                                            <popUpButtonCell key="cell" type="inline" title="Item 1" bezelStyle="inline" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="8gO-OA-hzX" id="1oL-1d-RbK">
+                                                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                                <font key="font" metaFont="smallSystemBold"/>
+                                                                                <menu key="menu" id="skr-7T-R1B">
+                                                                                    <items>
+                                                                                        <menuItem title="Item 1" state="on" id="8gO-OA-hzX"/>
+                                                                                        <menuItem title="Item 2" id="66t-eN-K2o"/>
+                                                                                        <menuItem title="Item 3" id="sek-vP-zYS"/>
+                                                                                    </items>
+                                                                                </menu>
+                                                                            </popUpButtonCell>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="height" constant="24" id="Kw1-kB-bQE"/>
+                                                                                <constraint firstAttribute="height" constant="24" id="qIQ-s8-CdL"/>
                                                                             </constraints>
-                                                                            <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fill" style="rounded" trackingMode="selectOne" id="e8R-xB-p2O">
-                                                                                <font key="font" metaFont="system"/>
-                                                                                <segments>
-                                                                                    <segment/>
-                                                                                    <segment selected="YES" tag="1"/>
-                                                                                </segments>
-                                                                            </segmentedCell>
-                                                                        </segmentedControl>
+                                                                        </popUpButton>
                                                                     </subviews>
                                                                     <constraints>
-                                                                        <constraint firstItem="tqQ-YE-lvb" firstAttribute="leading" secondItem="1WN-24-tYW" secondAttribute="leading" id="GeU-BA-k61"/>
                                                                         <constraint firstAttribute="trailing" secondItem="ZyK-cL-k3I" secondAttribute="trailing" id="PmF-4q-Pyi"/>
+                                                                        <constraint firstItem="bH3-d8-gNk" firstAttribute="leading" secondItem="1WN-24-tYW" secondAttribute="leading" id="QON-Gw-DDv"/>
                                                                         <constraint firstItem="ZyK-cL-k3I" firstAttribute="leading" secondItem="1WN-24-tYW" secondAttribute="leading" id="g4S-ZX-jP5"/>
-                                                                        <constraint firstAttribute="trailing" secondItem="tqQ-YE-lvb" secondAttribute="trailing" id="t9C-8o-jNL"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="bH3-d8-gNk" secondAttribute="trailing" id="jLb-om-534"/>
                                                                     </constraints>
                                                                     <visibilityPriorities>
                                                                         <integer value="1000"/>
@@ -891,8 +895,8 @@
                         <outlet property="labelAppTitle" destination="3oE-Id-0vv" id="Vr7-8v-lpY"/>
                         <outlet property="labelFeedbackIntensity" destination="r9u-Pv-knm" id="okM-tr-7zN"/>
                         <outlet property="labelTimeout" destination="YlR-tX-45k" id="FKs-2A-6d1"/>
-                        <outlet property="popUpButtonThemes" destination="wot-IO-iPn" id="eMq-mn-zZV"/>
-                        <outlet property="segmentedControlModifiersMode" destination="tqQ-YE-lvb" id="KXd-3x-TO6"/>
+                        <outlet property="popUpButtonModifierMode" destination="bH3-d8-gNk" id="WoO-sQ-RgQ"/>
+                        <outlet property="popUpButtonTheme" destination="wot-IO-iPn" id="eMq-mn-zZV"/>
                         <outlet property="sliderDeadZone" destination="WBy-a1-b81" id="iOp-qe-9FK"/>
                         <outlet property="sliderFeedbackIntensity" destination="hXa-jz-GTN" id="jba-pN-6Te"/>
                         <outlet property="sliderTimeout" destination="wm6-Pi-1s2" id="LhJ-Gu-KhP"/>

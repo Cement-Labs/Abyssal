@@ -9,6 +9,7 @@ import Cocoa
 import Defaults
 
 class MenuController: NSViewController, NSMenuDelegate {
+    let modifierModesMenu = NSMenu()
     let themesMenu = NSMenu()
     
     let tips = Tips()
@@ -35,7 +36,7 @@ class MenuController: NSViewController, NSMenuDelegate {
     
     @IBOutlet weak var buttonModifiersCommand: NSButton!
     
-    @IBOutlet weak var segmentedControlModifiersMode: NSSegmentedControl!
+    @IBOutlet weak var popUpButtonModifierMode: NSPopUpButton!
     
     @IBOutlet weak var labelTimeout: NSTextField!
     
@@ -81,7 +82,7 @@ class MenuController: NSViewController, NSMenuDelegate {
     
     
     
-    @IBOutlet weak var popUpButtonThemes: NSPopUpButton!
+    @IBOutlet weak var popUpButtonTheme: NSPopUpButton!
     
     @IBOutlet weak var switchUseAlwaysHideArea: NSSwitch!
     
@@ -147,6 +148,17 @@ extension MenuController {
 }
 
 extension MenuController {
+    @objc func switchToModifierMode(
+        _ sender: Any
+    ) {
+        if
+            let button = sender as? NSMenuItem,
+            let index = modifierModesMenu.items.firstIndex(of: button)
+        {
+            Defaults[.modifierMode] = .init(rawValue: index) ?? .any
+        }
+    }
+    
     @objc func switchToTheme(
         _ sender: Any
     ) {

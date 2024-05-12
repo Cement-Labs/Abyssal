@@ -25,8 +25,8 @@ extension Defaults.Keys {
         default: [.option, .command]
     )
     
-    static let modifiersMode = Key<ModifiersAttribute.Mode>(
-        "modifiersMode",
+    static let modifierMode = Key<ModifiersAttribute.Mode>(
+        "modifierMode",
         default: .any
     )
     

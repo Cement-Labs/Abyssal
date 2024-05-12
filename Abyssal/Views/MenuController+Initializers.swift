@@ -25,12 +25,34 @@ extension MenuController {
             buttonAppVersion.image = nil
         }
         
+        // Modifier modes menu
+        
+        do {
+            for (index, mode) in ModifiersAttribute.Mode.allCases.enumerated() {
+                let item: NSMenuItem = .init(
+                    title: mode.label,
+                    action: #selector(self.switchToModifierMode(_:)),
+                    keyEquivalent: ""
+                )
+                
+                modifierModesMenu.addItem(item)
+            }
+            
+            popUpButtonModifierMode.removeAllItems()
+            popUpButtonModifierMode.menu = modifierModesMenu
+            popUpButtonModifierMode.menu?.delegate = self
+            
+            if let index = ModifiersAttribute.Mode.allCases.firstIndex(of: Defaults[.modifierMode]) {
+                popUpButtonModifierMode.selectItem(at: index)
+            }
+        }
+        
         // Themes menu
         
         do {
             for (index, theme) in Themes.themes.enumerated() {
-                let item: NSMenuItem = NSMenuItem(
-                    title: Themes.themeNames[index],
+                let item: NSMenuItem = .init(
+                    title: theme.name,
                     action: #selector(self.switchToTheme(_:)),
                     keyEquivalent: ""
                 )
@@ -39,18 +61,16 @@ extension MenuController {
                 themesMenu.addItem(item)
             }
             
-            popUpButtonThemes.removeAllItems()
-            popUpButtonThemes.menu = themesMenu
-            popUpButtonThemes.menu?.delegate = self
+            popUpButtonTheme.removeAllItems()
+            popUpButtonTheme.menu = themesMenu
+            popUpButtonTheme.menu?.delegate = self
             
             if let index = Themes.themes.firstIndex(of: Defaults[.theme]) {
-                popUpButtonThemes.selectItem(at: index)
+                popUpButtonTheme.selectItem(at: index)
             }
         }
         
         // Controls
-        
-        
         
         sliderTimeout.minValue = 0
         sliderTimeout.maxValue = Double(TimeoutAttribute.allCases.count - 1)
@@ -69,9 +89,9 @@ extension MenuController {
         
         
         
-        buttonModifiersControl.flag = Defaults[.modifiers].contains(.control)
-        buttonModifiersOption.flag = Defaults[.modifiers].contains(.option)
-        buttonModifiersCommand.flag = Defaults[.modifiers].contains(.command)
+        buttonModifiersControl.flag = Defaults[.modifiers].control
+        buttonModifiersOption.flag = Defaults[.modifiers].option
+        buttonModifiersCommand.flag = Defaults[.modifiers].command
         
         
         
@@ -169,7 +189,7 @@ Minimize this window. Right click on the `Menu Separator` to open this window ag
                 )!, trackingArea: buttonMinimize.visibleRect.getTrackingArea(self, viewToAdd: buttonMinimize)
             ),
             
-            popUpButtonThemes: (
+            popUpButtonTheme: (
                 tip: Tip(
                     tipString: {
                         NSLocalizedString("Tip/PopUpButtonThemes", value: """
@@ -177,7 +197,7 @@ Some themes will hide the icons inside the separators automatically, while other
 Themes that automatically hide the icons will only show them when the status items inside the **Hide Area** are manually set to visible, while other themes indicate this by reducing the separators' opacity.
 """, comment: "(pop up button) themes")
                     }, preferredEdge: .minX
-                )!, trackingArea: popUpButtonThemes.visibleRect.getTrackingArea(self, viewToAdd: popUpButtonThemes)
+                )!, trackingArea: popUpButtonTheme.visibleRect.getTrackingArea(self, viewToAdd: popUpButtonTheme)
             ),
             switchAutoShows: (
                 tip: Tip(

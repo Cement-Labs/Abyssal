@@ -25,6 +25,18 @@
         }
       }
     },
+    "8gO-OA-hzX.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Item 1\"; ObjectID = \"8gO-OA-hzX\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Item 1"
+          }
+        }
+      }
+    },
     "08v-Vw-Cs3.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Starts with macOS\"; ObjectID = \"08v-Vw-Cs3\";",
       "extractionState" : "extracted_with_value",
@@ -39,6 +51,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "随macOS启动"
+          }
+        }
+      }
+    },
+    "66t-eN-K2o.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Item 2\"; ObjectID = \"66t-eN-K2o\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Item 2"
           }
         }
       }
@@ -357,6 +381,18 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Abyssal"
+          }
+        }
+      }
+    },
+    "sek-vP-zYS.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Item 3\"; ObjectID = \"sek-vP-zYS\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Item 3"
           }
         }
       }
