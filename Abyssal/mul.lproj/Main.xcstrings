@@ -340,6 +340,12 @@
             "state" : "new",
             "value" : "to trigger"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "修饰键以触发"
+          }
         }
       }
     },
@@ -351,6 +357,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Press"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "按下"
           }
         }
       }

@@ -169,6 +169,12 @@
             "state" : "new",
             "value" : "All"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "全部"
+          }
         }
       }
     },
@@ -180,6 +186,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Any"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "任一"
           }
         }
       }
@@ -472,6 +484,24 @@
         }
       }
     },
+    "Tip/PopUpButtonModifierModes" : {
+      "comment" : "(pop up button) modifier modes",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Decides how the modifier keys are triggered."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "决定修饰键的触发规则。"
+          }
+        }
+      }
+    },
     "Tip/PopUpButtonThemes" : {
       "comment" : "(pop up button) themes",
       "extractionState" : "extracted_with_value",
@@ -628,8 +658,8 @@
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "选择要使用的修饰键。按下已选择的任一修饰键都可以触发相同效果。建议保持 ⌘ 修饰键启用。"
+            "state" : "translated",
+            "value" : "选择要使用的修饰键。建议保持 ⌘ 修饰键启用。"
           }
         }
       }

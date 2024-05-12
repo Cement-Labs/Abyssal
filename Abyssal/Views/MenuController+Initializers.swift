@@ -189,6 +189,15 @@ Minimize this window. Right click on the `Menu Separator` to open this window ag
                 )!, trackingArea: buttonMinimize.visibleRect.getTrackingArea(self, viewToAdd: buttonMinimize)
             ),
             
+            popUpButtonModifierMode: (
+                tip: Tip(
+                    tipString: {
+                        NSLocalizedString("Tip/PopUpButtonModifierModes", value: """
+Decides how the modifier keys are triggered.
+""", comment: "(pop up button) modifier modes")
+                    }
+                )!, trackingArea: popUpButtonModifierMode.visibleRect.getTrackingArea(self, viewToAdd: popUpButtonModifierMode)
+            ),
             popUpButtonTheme: (
                 tip: Tip(
                     tipString: {
