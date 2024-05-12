@@ -331,6 +331,30 @@
         }
       }
     },
+    "nbo-M8-Xyb.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"to trigger\"; ObjectID = \"nbo-M8-Xyb\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "to trigger"
+          }
+        }
+      }
+    },
+    "o5n-Ec-8Il.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Press\"; ObjectID = \"o5n-Ec-8Il\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Press"
+          }
+        }
+      }
+    },
     "oPU-r1-7qb.title" : {
       "comment" : "Class = \"NSBox\"; title = \"Main/Body 2/Buttons/Minimize\"; ObjectID = \"oPU-r1-7qb\";",
       "extractionState" : "extracted_with_value",
