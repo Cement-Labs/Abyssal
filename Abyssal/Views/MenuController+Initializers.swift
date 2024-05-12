@@ -69,9 +69,9 @@ extension MenuController {
         
         
         
-        buttonModifiersControl.flag = Defaults[.modifiers].control
-        buttonModifiersOption.flag = Defaults[.modifiers].option
-        buttonModifiersCommand.flag = Defaults[.modifiers].command
+        buttonModifiersControl.flag = Defaults[.modifiers].contains(.control)
+        buttonModifiersOption.flag = Defaults[.modifiers].contains(.option)
+        buttonModifiersCommand.flag = Defaults[.modifiers].contains(.command)
         
         
         
