@@ -25,7 +25,7 @@
 ### <div><!--Empty Lines--><br /><br /></div>
 
 > [!IMPORTANT]
-> **Abyssal** requires **macOS 13.0 Ventura**[^check_your_macos_version] or above to run.
+> **Abyssal** requires **macOS 14.0 Sonoma**[^check_your_macos_version] or above to run.
 
 [^check_your_macos_version]: [`↗ Find out which macOS your Mac is using`](https://support.apple.com/en-us/HT201260)
 
@@ -192,6 +192,20 @@ Due to the limitations of macOS, **Abyssal** can't infer the available width use
 
 > [!TIP]
 > Pressing only one of the chosen keys is enough to trigger the functions. It is recommended to keep the modifier key <kbd>⌘ command</kbd> enabled.
+
+<br />
+
+### Modifier Mode
+
+`Style: Pop Up Button`&emsp;`Default: Any`
+
+- **`Any`**
+
+  Pressing any of the selected modifiers will trigger the functions.
+
+- **`All`**
+
+  Pressing only all of the selected modifiers will trigger the functions.
 
 <br />
 
