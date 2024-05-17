@@ -20,7 +20,7 @@ extension Defaults.Keys {
     
     
     
-    static let theme = Key<Theme>("theme", default: Themes.defaultTheme)
+    static let theme = Key<Theme>("theme", default: .defaultTheme)
     
     static let modifiers = Key<ModifiersAttribute>(
         "modifiers",

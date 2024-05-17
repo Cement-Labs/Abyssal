@@ -50,7 +50,7 @@ extension MenuController {
         // Themes menu
         
         do {
-            for (index, theme) in Themes.themes.enumerated() {
+            for (index, theme) in Theme.themes.enumerated() {
                 let item: NSMenuItem = .init(
                     title: theme.name,
                     action: #selector(self.switchToTheme(_:)),
@@ -65,7 +65,7 @@ extension MenuController {
             popUpButtonTheme.menu = themesMenu
             popUpButtonTheme.menu?.delegate = self
             
-            if let index = Themes.themes.firstIndex(of: Defaults[.theme]) {
+            if let index = Theme.themes.firstIndex(of: Defaults[.theme]) {
                 popUpButtonTheme.selectItem(at: index)
             }
         }

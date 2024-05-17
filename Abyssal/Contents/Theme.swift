@@ -78,41 +78,7 @@ class Theme: Equatable {
     }
 }
 
-class Themes {
-    static var themes: [Theme] {
-        [
-            abyssal,
-            hiddenBar,
-            simplicity,
-            approaching,
-            metresAway,
-            interstellar,
-            electrodiagram,
-            droplets,
-            codec,
-            colons,
-            notSoHappy,
-            playPause,
-            theFace,
-            theImplied,
-            macOS
-        ]
-    }
-    
-    static var defaultTheme: Theme {
-        return abyssal
-    }
-    
-    static var themeIdentifiers: [String] {
-        return themes.map { $0.identifier }
-    }
-    
-    static var themeNames: [String] {
-        return themes.map { $0.name }
-    }
-}
-
-extension Themes {
+extension Theme {
     static let abyssal = Theme(
         "Abyssal", NSLocalizedString("Theme/Abyssal", value: "Abyssal", comment: "name for theme 'Abyssal'"),
         icon: .tail,
@@ -295,4 +261,38 @@ extension Themes {
         
         autoHideIcons: true
     )
+}
+
+extension Theme {
+    static var themes: [Theme] {
+        [
+            abyssal,
+            hiddenBar,
+            simplicity,
+            approaching,
+            metresAway,
+            interstellar,
+            electrodiagram,
+            droplets,
+            codec,
+            colons,
+            notSoHappy,
+            playPause,
+            theFace,
+            theImplied,
+            macOS
+        ]
+    }
+    
+    static var defaultTheme: Theme {
+        return abyssal
+    }
+    
+    static var themeIdentifiers: [String] {
+        return themes.map { $0.identifier }
+    }
+    
+    static var themeNames: [String] {
+        return themes.map { $0.name }
+    }
 }

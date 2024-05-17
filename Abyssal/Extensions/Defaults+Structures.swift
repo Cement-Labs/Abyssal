@@ -236,12 +236,12 @@ extension Theme: Defaults.Serializable {
         func deserialize(_ object: String?) -> Theme? {
             guard
                 let identifier = object,
-                Themes.themeIdentifiers.contains(identifier)
+                Theme.themeIdentifiers.contains(identifier)
             else {
                 return nil
             }
             
-            return Themes.themes.first { $0.identifier == identifier }
+            return Theme.themes.first { $0.identifier == identifier }
         }
     }
     

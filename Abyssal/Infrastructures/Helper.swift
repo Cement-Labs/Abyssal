@@ -77,7 +77,7 @@ struct Helper {
     static func switchToTheme(
         _ index: Int
     ) {
-        Defaults[.theme] = Themes.themes[index]
+        Defaults[.theme] = Theme.themes[index]
         
         AppDelegate.instance?.statusBarController.map()
         AppDelegate.instance?.statusBarController.startFunctionalTimers()
