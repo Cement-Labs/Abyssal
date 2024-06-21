@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="23077.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22689"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23077.2"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -118,7 +118,7 @@
                                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                         <subviews>
                                                                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pU4-FK-uTX" userLabel="Option">
-                                                                                                <rect key="frame" x="0.0" y="-2.5" width="71.5" height="35"/>
+                                                                                                <rect key="frame" x="0.0" y="-2" width="71.5" height="35"/>
                                                                                                 <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="option" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="aMk-A5-m8J">
                                                                                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                                                                                     <font key="font" metaFont="system"/>
@@ -196,13 +196,13 @@
                                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Us4-ZG-NuQ">
                                                                                     <rect key="frame" x="-2" y="5" width="36" height="15"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Press" id="o5n-Ec-8Il">
-                                                                                        <font key="font" metaFont="system" size="12"/>
+                                                                                        <font key="font" metaFont="cellTitle"/>
                                                                                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                     </textFieldCell>
                                                                                 </textField>
                                                                                 <popUpButton translatesAutoresizingMaskIntoConstraints="NO" id="bH3-d8-gNk">
-                                                                                    <rect key="frame" x="45" y="0.0" width="127" height="24"/>
+                                                                                    <rect key="frame" x="40" y="0.0" width="132" height="24"/>
                                                                                     <popUpButtonCell key="cell" type="inline" title="Item 1" bezelStyle="inline" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="8gO-OA-hzX" id="1oL-1d-RbK">
                                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                         <font key="font" metaFont="smallSystemBold"/>
@@ -218,7 +218,7 @@
                                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NkA-Rw-0ES">
                                                                                     <rect key="frame" x="178" y="5" width="57" height="15"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="to trigger" id="nbo-M8-Xyb">
-                                                                                        <font key="font" metaFont="system" size="12"/>
+                                                                                        <font key="font" metaFont="cellTitle"/>
                                                                                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                     </textFieldCell>
@@ -520,7 +520,7 @@
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <button translatesAutoresizingMaskIntoConstraints="NO" id="qZD-db-A8v">
-                                                                            <rect key="frame" x="0.0" y="-3" width="30" height="36"/>
+                                                                            <rect key="frame" x="0.0" y="-2.5" width="30" height="36"/>
                                                                             <buttonCell key="cell" type="bevel" title="Minimize" bezelStyle="rounded" image="arrow.down.right.and.arrow.up.left" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="Q2R-pO-mzF">
                                                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                 <font key="font" metaFont="system"/>
