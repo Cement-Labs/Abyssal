@@ -11,7 +11,7 @@ import AppKit
 import Defaults
 
 struct Helper {
-    static let repoPath = "NNN-Studio/Abyssal"
+    static let repoPath = "Cement-Labs/Abyssal"
     
     static let urlSourceCode = URL(string: "https://github.com/\(repoPath)")!
     
