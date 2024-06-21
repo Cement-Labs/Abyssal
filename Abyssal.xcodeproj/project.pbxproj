@@ -15,6 +15,8 @@
 		2831B1602B7521890020DECD /* Defaults+Structures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2831B15F2B7521890020DECD /* Defaults+Structures.swift */; };
 		2838D6B22AD842DB0087A5DE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2838D6B12AD842DB0087A5DE /* Colors.swift */; };
 		283ADC422AEA791C00C06146 /* Localizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283ADC412AEA791C00C06146 /* Localizations.swift */; };
+		284250102C253F79008FEE08 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2842500F2C253F79008FEE08 /* SettingsView.swift */; };
+		284250152C2547F1008FEE08 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284250142C2547F1008FEE08 /* SettingsViewController.swift */; };
 		2852BDE72AD957B100AA8AD1 /* FillOnHoverBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2852BDE62AD957B100AA8AD1 /* FillOnHoverBox.swift */; };
 		2852BDE92AD97A0E00AA8AD1 /* NSSlider+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2852BDE82AD97A0E00AA8AD1 /* NSSlider+Extension.swift */; };
 		2852BDEB2AD97AEC00AA8AD1 /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2852BDEA2AD97AEC00AA8AD1 /* Tip.swift */; };
@@ -43,6 +45,8 @@
 		2831B15F2B7521890020DECD /* Defaults+Structures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Defaults+Structures.swift"; sourceTree = "<group>"; };
 		2838D6B12AD842DB0087A5DE /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		283ADC412AEA791C00C06146 /* Localizations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizations.swift; sourceTree = "<group>"; };
+		2842500F2C253F79008FEE08 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		284250142C2547F1008FEE08 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		2852BDE62AD957B100AA8AD1 /* FillOnHoverBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillOnHoverBox.swift; sourceTree = "<group>"; };
 		2852BDE82AD97A0E00AA8AD1 /* NSSlider+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSlider+Extension.swift"; sourceTree = "<group>"; };
 		2852BDEA2AD97AEC00AA8AD1 /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
@@ -82,6 +86,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2842500E2C253F3E008FEE08 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				2842500F2C253F79008FEE08 /* SettingsView.swift */,
+				284250142C2547F1008FEE08 /* SettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		2852BDEC2AD98E5200AA8AD1 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,13 +134,14 @@
 		C66CABA22A38871500E4D8E6 /* Abyssal */ = {
 			isa = PBXGroup;
 			children = (
+				C66CABA32A38871500E4D8E6 /* AppDelegate.swift */,
+				2842500E2C253F3E008FEE08 /* Settings */,
 				2852BDEC2AD98E5200AA8AD1 /* Components */,
 				C66F02AA2A3B4BEB00077CE3 /* Views */,
 				C6DEC5392A3A0B2300943448 /* Contents */,
 				C6DEC5372A3A05E200943448 /* Infrastructures */,
 				C6DEC5362A3A05D300943448 /* Events */,
 				C6DEC52D2A39C83100943448 /* Extensions */,
-				C66CABA32A38871500E4D8E6 /* AppDelegate.swift */,
 				C66CABA72A38871500E4D8E6 /* Assets.xcassets */,
 				C66CABA92A38871500E4D8E6 /* Main.storyboard */,
 				C69873BB2A42880C00C5E259 /* Localizable.xcstrings */,
@@ -270,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2852BDE72AD957B100AA8AD1 /* FillOnHoverBox.swift in Sources */,
+				284250102C253F79008FEE08 /* SettingsView.swift in Sources */,
 				C6B3E79B2A3D83C400B650BC /* NSRect+Extension.swift in Sources */,
 				C6DEC53D2A3A0E8900943448 /* StatusBarController+Animations.swift in Sources */,
 				2838D6B22AD842DB0087A5DE /* Colors.swift in Sources */,
@@ -291,6 +306,7 @@
 				C6DEC5352A3A052700943448 /* NSButton+Extension.swift in Sources */,
 				2852BDE92AD97A0E00AA8AD1 /* NSSlider+Extension.swift in Sources */,
 				28ACE7872AE9490700DC8C1A /* Separator.swift in Sources */,
+				284250152C2547F1008FEE08 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

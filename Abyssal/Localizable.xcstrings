@@ -160,6 +160,9 @@
         }
       }
     },
+    "Hello, World!" : {
+
+    },
     "ModifiersMode/All" : {
       "comment" : "modifiers mode all",
       "extractionState" : "extracted_with_value",

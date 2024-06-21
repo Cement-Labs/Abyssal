@@ -6,6 +6,7 @@
 //
 
 import Cocoa
+import SwiftUI
 import AppKit
 import Defaults
 import LaunchAtLogin
@@ -29,7 +30,27 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(
         _ aNotification: Notification
     ) {
+        /*
         popover.contentViewController = MenuController.freshController()
+        popover.behavior = .applicationDefined
+        popover.delegate = self
+        
+        mouseEventMonitor = EventMonitor(
+            mask: [.leftMouseDown,
+                   .rightMouseDown]
+        ) { [weak self] event in
+            if let strongSelf = self {
+                if strongSelf.popover.isShown {
+                    strongSelf.closePopover(event)
+                }
+            }
+        }
+         */
+        
+        let controller = SettingsViewController()
+        controller.view = NSHostingView(rootView: SettingsView())
+        popover.contentViewController = controller
+        
         popover.behavior = .applicationDefined
         popover.delegate = self
         
