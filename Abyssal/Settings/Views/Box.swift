@@ -77,7 +77,7 @@ where Content: View {
                     .ifSome(isHovering) { view in
                         view
                             .fill(.tint.opacity(0.1))
-                            .strokeBorder(.tint)
+                            .strokeBorder(.tint.opacity(0.5))
                     } else: { view in
                         view
                             .fill(.fill)

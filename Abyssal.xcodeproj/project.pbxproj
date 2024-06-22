@@ -29,6 +29,7 @@
 		28ACE7872AE9490700DC8C1A /* Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28ACE7862AE9490700DC8C1A /* Separator.swift */; };
 		28C90F6A2C26D394000AC2E3 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C90F692C26D394000AC2E3 /* Box.swift */; };
 		28C90F6C2C26F3A4000AC2E3 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C90F6B2C26F3A4000AC2E3 /* View+Extensions.swift */; };
+		28C90F702C270614000AC2E3 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C90F6F2C270614000AC2E3 /* Bundle+Extensions.swift */; };
 		C63B40532A4060E400BCAE79 /* NSStatusItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63B40522A4060E400BCAE79 /* NSStatusItem+Extension.swift */; };
 		C66CABA42A38871500E4D8E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CABA32A38871500E4D8E6 /* AppDelegate.swift */; };
 		C66CABB32A388FBD00E4D8E6 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CABB22A388FBD00E4D8E6 /* MenuController.swift */; };
@@ -66,6 +67,7 @@
 		28ACE7862AE9490700DC8C1A /* Separator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Separator.swift; sourceTree = "<group>"; };
 		28C90F692C26D394000AC2E3 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		28C90F6B2C26F3A4000AC2E3 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		28C90F6F2C270614000AC2E3 /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
 		C63B40522A4060E400BCAE79 /* NSStatusItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSStatusItem+Extension.swift"; sourceTree = "<group>"; };
 		C66CABA02A38871500E4D8E6 /* Abyssal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Abyssal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C66CABA32A38871500E4D8E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -158,6 +160,23 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		28C90F6D2C2705F9000AC2E3 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				28C90F6B2C26F3A4000AC2E3 /* View+Extensions.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		28C90F6E2C270604000AC2E3 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				2840D70C2C2679F50087EE50 /* Bool+Extensions.swift */,
+				28C90F6F2C270614000AC2E3 /* Bundle+Extensions.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
 		C66CAB972A38871500E4D8E6 = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +223,8 @@
 		C6DEC52D2A39C83100943448 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				28C90F6E2C270604000AC2E3 /* Foundation */,
+				28C90F6D2C2705F9000AC2E3 /* SwiftUI */,
 				2831B15D2B751B990020DECD /* Defaults+Extensions.swift */,
 				2831B15F2B7521890020DECD /* Defaults+Structures.swift */,
 				C6DEC5322A3A048B00943448 /* NSSwitch+Extension.swift */,
@@ -211,8 +232,6 @@
 				C6B3E79A2A3D83C400B650BC /* NSRect+Extension.swift */,
 				C63B40522A4060E400BCAE79 /* NSStatusItem+Extension.swift */,
 				2852BDE82AD97A0E00AA8AD1 /* NSSlider+Extension.swift */,
-				2840D70C2C2679F50087EE50 /* Bool+Extensions.swift */,
-				28C90F6B2C26F3A4000AC2E3 /* View+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -335,6 +354,7 @@
 				C6B3E79B2A3D83C400B650BC /* NSRect+Extension.swift in Sources */,
 				C6DEC53D2A3A0E8900943448 /* StatusBarController+Animations.swift in Sources */,
 				2838D6B22AD842DB0087A5DE /* Colors.swift in Sources */,
+				28C90F702C270614000AC2E3 /* Bundle+Extensions.swift in Sources */,
 				C66CABB72A389F2500E4D8E6 /* EventMonitor.swift in Sources */,
 				2840D7132C267EE90087EE50 /* SettingsGeneralSection.swift in Sources */,
 				C6DEC52A2A38BF6C00943448 /* StatusBarController.swift in Sources */,

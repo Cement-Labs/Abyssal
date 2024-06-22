@@ -208,10 +208,13 @@
         }
       }
     },
-    "of the the the the above to trigger" : {
+    "of the above to trigger" : {
 
     },
     "Press" : {
+
+    },
+    "Quit %@" : {
 
     },
     "Theme/Abyssal" : {
@@ -717,6 +720,9 @@
           }
         }
       }
+    },
+    "Tips" : {
+
     }
   },
   "version" : "1.0"

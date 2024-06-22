@@ -10,6 +10,9 @@ import SwiftUI
 struct SettingsGeneralSection: View {
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        Color.blue
+            .frame(height: 500)
     }
 }
 

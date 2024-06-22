@@ -9,14 +9,16 @@ import SwiftUI
 
 struct SettingsView: View {
     var body: some View {
-        HStack(spacing: -10) {
+        HStack(spacing: -20) {
             VStack {
                 Spacer()
                 
                 Text("Abyssal")
                     .font(.title)
                     .bold()
-                    .padding()
+                    .padding(.vertical, 32)
+                
+                Spacer()
                 
                 Form {
                     SettingsModifiersSection()
@@ -24,6 +26,10 @@ struct SettingsView: View {
                     SettingsAdvancedSection()
                 }
                 .padding(.top, -20)
+                .fixedSize()
+#if DEBUG
+                .overlay(.red.opacity(0.1))
+#endif
             }
             
             VStack {
@@ -34,6 +40,10 @@ struct SettingsView: View {
                     SettingsGeneralSection()
                 }
                 .padding(.top, -20)
+                .fixedSize()
+#if DEBUG
+                .overlay(.green.opacity(0.1))
+#endif
             }
         }
         .formStyle(.grouped)

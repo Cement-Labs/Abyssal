@@ -55,7 +55,7 @@ struct SettingsModifiersSection: View {
                     .foregroundStyle(.secondary)
                     .formStyle(.columns)
                 }
-                .padding(0)
+                .padding(0) // Otherwise the nested Form will cause layout to overflow
                 .formStyle(.columns)
                 .fixedSize()
             }
