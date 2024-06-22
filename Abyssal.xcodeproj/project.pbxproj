@@ -16,9 +16,9 @@
 		2838D6B22AD842DB0087A5DE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2838D6B12AD842DB0087A5DE /* Colors.swift */; };
 		283ADC422AEA791C00C06146 /* Localizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283ADC412AEA791C00C06146 /* Localizations.swift */; };
 		2840D70D2C2679F50087EE50 /* Bool+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2840D70C2C2679F50087EE50 /* Bool+Extensions.swift */; };
-		2840D70F2C267ECB0087EE50 /* SettingsModifiersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2840D70E2C267ECB0087EE50 /* SettingsModifiersView.swift */; };
-		2840D7112C267EE00087EE50 /* SettingsAdvancedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2840D7102C267EE00087EE50 /* SettingsAdvancedView.swift */; };
-		2840D7132C267EE90087EE50 /* SettingsGeneralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2840D7122C267EE90087EE50 /* SettingsGeneralView.swift */; };
+		2840D70F2C267ECB0087EE50 /* SettingsModifiersSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2840D70E2C267ECB0087EE50 /* SettingsModifiersSection.swift */; };
+		2840D7112C267EE00087EE50 /* SettingsAdvancedSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2840D7102C267EE00087EE50 /* SettingsAdvancedSection.swift */; };
+		2840D7132C267EE90087EE50 /* SettingsGeneralSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2840D7122C267EE90087EE50 /* SettingsGeneralSection.swift */; };
 		2840D7152C267F350087EE50 /* SettingsTrafficsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2840D7142C267F350087EE50 /* SettingsTrafficsView.swift */; };
 		284250102C253F79008FEE08 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2842500F2C253F79008FEE08 /* SettingsView.swift */; };
 		284250152C2547F1008FEE08 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284250142C2547F1008FEE08 /* SettingsViewController.swift */; };
@@ -51,9 +51,9 @@
 		2838D6B12AD842DB0087A5DE /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		283ADC412AEA791C00C06146 /* Localizations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizations.swift; sourceTree = "<group>"; };
 		2840D70C2C2679F50087EE50 /* Bool+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+Extensions.swift"; sourceTree = "<group>"; };
-		2840D70E2C267ECB0087EE50 /* SettingsModifiersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModifiersView.swift; sourceTree = "<group>"; };
-		2840D7102C267EE00087EE50 /* SettingsAdvancedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAdvancedView.swift; sourceTree = "<group>"; };
-		2840D7122C267EE90087EE50 /* SettingsGeneralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsGeneralView.swift; sourceTree = "<group>"; };
+		2840D70E2C267ECB0087EE50 /* SettingsModifiersSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModifiersSection.swift; sourceTree = "<group>"; };
+		2840D7102C267EE00087EE50 /* SettingsAdvancedSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAdvancedSection.swift; sourceTree = "<group>"; };
+		2840D7122C267EE90087EE50 /* SettingsGeneralSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsGeneralSection.swift; sourceTree = "<group>"; };
 		2840D7142C267F350087EE50 /* SettingsTrafficsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTrafficsView.swift; sourceTree = "<group>"; };
 		2842500F2C253F79008FEE08 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		284250142C2547F1008FEE08 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -110,10 +110,8 @@
 			children = (
 				2842500F2C253F79008FEE08 /* SettingsView.swift */,
 				284250142C2547F1008FEE08 /* SettingsViewController.swift */,
-				2840D70E2C267ECB0087EE50 /* SettingsModifiersView.swift */,
 				2840D7142C267F350087EE50 /* SettingsTrafficsView.swift */,
-				2840D7122C267EE90087EE50 /* SettingsGeneralView.swift */,
-				2840D7102C267EE00087EE50 /* SettingsAdvancedView.swift */,
+				28C90F672C26CC4D000AC2E3 /* Sections */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -135,6 +133,16 @@
 				C6E2C02F2A3EE9F1007D4E1B /* StatusBarController+StateManager.swift */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		28C90F672C26CC4D000AC2E3 /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				2840D70E2C267ECB0087EE50 /* SettingsModifiersSection.swift */,
+				2840D7122C267EE90087EE50 /* SettingsGeneralSection.swift */,
+				2840D7102C267EE00087EE50 /* SettingsAdvancedSection.swift */,
+			);
+			path = Sections;
 			sourceTree = "<group>";
 		};
 		C66CAB972A38871500E4D8E6 = {
@@ -313,9 +321,9 @@
 				C6DEC53D2A3A0E8900943448 /* StatusBarController+Animations.swift in Sources */,
 				2838D6B22AD842DB0087A5DE /* Colors.swift in Sources */,
 				C66CABB72A389F2500E4D8E6 /* EventMonitor.swift in Sources */,
-				2840D7132C267EE90087EE50 /* SettingsGeneralView.swift in Sources */,
+				2840D7132C267EE90087EE50 /* SettingsGeneralSection.swift in Sources */,
 				C6DEC52A2A38BF6C00943448 /* StatusBarController.swift in Sources */,
-				2840D7112C267EE00087EE50 /* SettingsAdvancedView.swift in Sources */,
+				2840D7112C267EE00087EE50 /* SettingsAdvancedSection.swift in Sources */,
 				2831B1602B7521890020DECD /* Defaults+Structures.swift in Sources */,
 				C6DEC52C2A38CDE500943448 /* Helper.swift in Sources */,
 				283ADC422AEA791C00C06146 /* Localizations.swift in Sources */,
@@ -331,7 +339,7 @@
 				C6DEC5332A3A048B00943448 /* NSSwitch+Extension.swift in Sources */,
 				288E8E722AECEC9F00A74EFE /* MenuController+Initializers.swift in Sources */,
 				C6DEC5352A3A052700943448 /* NSButton+Extension.swift in Sources */,
-				2840D70F2C267ECB0087EE50 /* SettingsModifiersView.swift in Sources */,
+				2840D70F2C267ECB0087EE50 /* SettingsModifiersSection.swift in Sources */,
 				2852BDE92AD97A0E00AA8AD1 /* NSSlider+Extension.swift in Sources */,
 				28ACE7872AE9490700DC8C1A /* Separator.swift in Sources */,
 				284250152C2547F1008FEE08 /* SettingsViewController.swift in Sources */,

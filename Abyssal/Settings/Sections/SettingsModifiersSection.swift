@@ -1,5 +1,5 @@
 //
-//  SettingsModifiersView.swift
+//  SettingsModifiersSection.swift
 //  Abyssal
 //
 //  Created by KrLite on 2024/6/22.
@@ -8,7 +8,7 @@
 import SwiftUI
 import Defaults
 
-struct SettingsModifiersView: View {
+struct SettingsModifiersSection: View {
     @Default(.modifiers) var modifiers
     @Default(.modifierMode) var modifierMode
     
@@ -67,6 +67,6 @@ struct SettingsModifiersView: View {
 }
 
 #Preview {
-    SettingsModifiersView()
+    SettingsModifiersSection()
         .padding()
 }

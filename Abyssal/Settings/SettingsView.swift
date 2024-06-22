@@ -16,21 +16,23 @@ struct SettingsView: View {
                     .bold()
                     .padding()
                 
-                SettingsModifiersView()
-                    .padding()
-                
-                SettingsAdvancedView()
-                    .padding()
+                Form {
+                    SettingsModifiersSection()
+                    
+                    SettingsAdvancedSection()
+                }
             }
             
             VStack {
                 SettingsTrafficsView()
-                    .padding()
                 
-                SettingsGeneralView()
-                    .padding()
+                Form {
+                    SettingsGeneralSection()
+                }
             }
         }
+        .formStyle(.grouped)
+        .scrollDisabled(true)
     }
 }
 
