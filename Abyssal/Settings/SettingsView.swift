@@ -9,8 +9,10 @@ import SwiftUI
 
 struct SettingsView: View {
     var body: some View {
-        HStack {
+        HStack(spacing: -10) {
             VStack {
+                Spacer()
+                
                 Text("Abyssal")
                     .font(.title)
                     .bold()
@@ -21,14 +23,18 @@ struct SettingsView: View {
                     
                     SettingsAdvancedSection()
                 }
+                .frame(minWidth: 300)
+                .padding(.top, -20)
             }
             
             VStack {
                 SettingsTrafficsView()
+                    .padding()
                 
                 Form {
                     SettingsGeneralSection()
                 }
+                .padding(.top, -20)
             }
         }
         .formStyle(.grouped)

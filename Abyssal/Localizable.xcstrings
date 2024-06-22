@@ -172,6 +172,9 @@
     "Hello, World!" : {
 
     },
+    "key to trigger" : {
+
+    },
     "ModifiersMode/All" : {
       "comment" : "modifiers mode all",
       "extractionState" : "extracted_with_value",
@@ -714,9 +717,6 @@
           }
         }
       }
-    },
-    "to trigger" : {
-
     }
   },
   "version" : "1.0"

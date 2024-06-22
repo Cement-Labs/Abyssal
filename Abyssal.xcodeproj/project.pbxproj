@@ -27,6 +27,7 @@
 		2852BDEB2AD97AEC00AA8AD1 /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2852BDEA2AD97AEC00AA8AD1 /* Tip.swift */; };
 		288E8E722AECEC9F00A74EFE /* MenuController+Initializers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288E8E712AECEC9F00A74EFE /* MenuController+Initializers.swift */; };
 		28ACE7872AE9490700DC8C1A /* Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28ACE7862AE9490700DC8C1A /* Separator.swift */; };
+		28C90F6A2C26D394000AC2E3 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C90F692C26D394000AC2E3 /* Box.swift */; };
 		C63B40532A4060E400BCAE79 /* NSStatusItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63B40522A4060E400BCAE79 /* NSStatusItem+Extension.swift */; };
 		C66CABA42A38871500E4D8E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CABA32A38871500E4D8E6 /* AppDelegate.swift */; };
 		C66CABB32A388FBD00E4D8E6 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CABB22A388FBD00E4D8E6 /* MenuController.swift */; };
@@ -62,6 +63,7 @@
 		2852BDEA2AD97AEC00AA8AD1 /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
 		288E8E712AECEC9F00A74EFE /* MenuController+Initializers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuController+Initializers.swift"; sourceTree = "<group>"; };
 		28ACE7862AE9490700DC8C1A /* Separator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Separator.swift; sourceTree = "<group>"; };
+		28C90F692C26D394000AC2E3 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		C63B40522A4060E400BCAE79 /* NSStatusItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSStatusItem+Extension.swift"; sourceTree = "<group>"; };
 		C66CABA02A38871500E4D8E6 /* Abyssal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Abyssal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C66CABA32A38871500E4D8E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				2842500F2C253F79008FEE08 /* SettingsView.swift */,
 				284250142C2547F1008FEE08 /* SettingsViewController.swift */,
 				2840D7142C267F350087EE50 /* SettingsTrafficsView.swift */,
+				28C90F682C26D379000AC2E3 /* Views */,
 				28C90F672C26CC4D000AC2E3 /* Sections */,
 			);
 			path = Settings;
@@ -143,6 +146,14 @@
 				2840D7102C267EE00087EE50 /* SettingsAdvancedSection.swift */,
 			);
 			path = Sections;
+			sourceTree = "<group>";
+		};
+		28C90F682C26D379000AC2E3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				28C90F692C26D394000AC2E3 /* Box.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		C66CAB972A38871500E4D8E6 = {
@@ -323,6 +334,7 @@
 				C66CABB72A389F2500E4D8E6 /* EventMonitor.swift in Sources */,
 				2840D7132C267EE90087EE50 /* SettingsGeneralSection.swift in Sources */,
 				C6DEC52A2A38BF6C00943448 /* StatusBarController.swift in Sources */,
+				28C90F6A2C26D394000AC2E3 /* Box.swift in Sources */,
 				2840D7112C267EE00087EE50 /* SettingsAdvancedSection.swift in Sources */,
 				2831B1602B7521890020DECD /* Defaults+Structures.swift in Sources */,
 				C6DEC52C2A38CDE500943448 /* Helper.swift in Sources */,
