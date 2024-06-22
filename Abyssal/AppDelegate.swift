@@ -13,13 +13,15 @@ import LaunchAtLogin
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
-    static var instance: AppDelegate? {
+    static var shared: AppDelegate? {
         NSApplication.shared.delegate as? AppDelegate
     }
     
     let popover: NSPopover = NSPopover()
     
     let statusBarController = StatusBarController()
+    
+    var deactivationDispatch: DispatchWorkItem?
     
     // MARK: - Event Monitors
     
@@ -46,6 +48,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
          */
+        
+        // Deactivate app after launched
+        NSApplication.shared.setActivationPolicy(.prohibited)
         
         let controller = SettingsViewController()
         controller.view = NSHostingView(rootView: SettingsView())
@@ -96,7 +101,7 @@ extension AppDelegate {
     @objc func toggle(
         _ sender: Any?
     ) {
-        guard sender as? NSStatusBarButton == AppDelegate.instance?.statusBarController.head.button else {
+        guard sender as? NSStatusBarButton == AppDelegate.shared?.statusBarController.head.button else {
             toggleCollapse(sender)
             return
         }
@@ -167,8 +172,13 @@ extension AppDelegate {
                 preferredEdge: 	.maxY
             )
             
-            popover.contentViewController?.view.window?.makeKeyAndOrderFront(nil)
+            // Activate app
+            deactivationDispatch?.cancel()
+            deactivationDispatch = nil
+            NSApplication.shared.setActivationPolicy(.accessory)
+            
             NSRunningApplication.current.activate()
+            popover.contentViewController?.view.window?.makeKeyAndOrderFront(nil)
         }
         
         mouseEventMonitor?.start()
@@ -179,9 +189,17 @@ extension AppDelegate {
     ) {
         popover.performClose(sender)
         
+        // Deactivate app
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            self.deactivationDispatch = .init {
+                NSApplication.shared.setActivationPolicy(.prohibited)
+            }
+            self.deactivationDispatch?.perform()
+        }
+        
         mouseEventMonitor?.stop()
         statusBarController.startFunctionalTimers()
-        AppDelegate.instance?.statusBarController.triggerIgnoring()
+        AppDelegate.shared?.statusBarController.triggerIgnoring()
     }
 }
 

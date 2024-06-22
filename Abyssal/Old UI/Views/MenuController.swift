@@ -102,14 +102,14 @@ class MenuController: NSViewController, NSMenuDelegate {
     
     override func viewWillAppear() {
         VersionHelper.checkNewVersionsTask.resume()
-        AppDelegate.instance?.statusBarController.startFunctionalTimers()
+        AppDelegate.shared?.statusBarController.startFunctionalTimers()
         
         updateSliderDeadZone()
         updateColors()
     }
     
     override func viewDidDisappear() {
-        AppDelegate.instance?.statusBarController.startFunctionalTimers()
+        AppDelegate.shared?.statusBarController.startFunctionalTimers()
     }
 }
 
@@ -334,7 +334,7 @@ extension MenuController {
     ) {
         minimize(sender)
         
-        if !(AppDelegate.instance?.popover.isShown ?? false) {
+        if !(AppDelegate.shared?.popover.isShown ?? false) {
             NSApplication.shared.terminate(sender)
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
@@ -374,11 +374,11 @@ extension MenuController {
                 .forEach { $0.close() }
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-                AppDelegate.instance?.closePopover(sender)
+                AppDelegate.shared?.closePopover(sender)
             }
         } else {
             // Containing none nested popover.
-            AppDelegate.instance?.closePopover(sender)
+            AppDelegate.shared?.closePopover(sender)
         }
     }
     
@@ -440,7 +440,7 @@ extension MenuController {
         updateSliderFeedbackIntensity()
         
         DispatchQueue.main.asyncAfter(wallDeadline: .now()) {
-            AppDelegate.instance?.statusBarController.triggerFeedback()
+            AppDelegate.shared?.statusBarController.triggerFeedback()
         }
     }
     
@@ -457,7 +457,7 @@ extension MenuController {
         _ sender: NSSwitch
     ) {
         Defaults[.alwaysHideAreaEnabled] = sender.flag
-        AppDelegate.instance?.statusBarController.untilTailVisible(sender.flag)
+        AppDelegate.shared?.statusBarController.untilTailVisible(sender.flag)
     }
     
     @IBAction func toggleReduceAnimation(

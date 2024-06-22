@@ -12,14 +12,14 @@ class SettingsViewController: NSViewController {
         VersionHelper.checkNewVersionsTask.resume()
         
         DispatchQueue.main.async {
-            AppDelegate.instance?.popover.contentSize = self.view.fittingSize
-            AppDelegate.instance?.statusBarController.startFunctionalTimers()
+            AppDelegate.shared?.popover.contentSize = self.view.fittingSize
+            AppDelegate.shared?.statusBarController.startFunctionalTimers()
         }
     }
     
     override func viewDidDisappear() {
         DispatchQueue.main.async {
-            AppDelegate.instance?.statusBarController.startFunctionalTimers()
+            AppDelegate.shared?.statusBarController.startFunctionalTimers()
         }
     }
 }

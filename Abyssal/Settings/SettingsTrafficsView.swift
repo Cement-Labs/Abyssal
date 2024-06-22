@@ -11,10 +11,17 @@ import Defaults
 struct SettingsTrafficsView: View {
     @Default(.tipsEnabled) var tipsEnabled
     
+    @Environment(\.openURL) var openUrl
+    
     var body: some View {
         HStack {
             // Quit
             Box(isOn: false) {
+                AppDelegate.shared?.closePopover(nil)
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    AppDelegate.shared?.quit(nil)
+                }
             } content: {
                 HStack {
                     Image(systemSymbol: .xmark)
@@ -48,7 +55,11 @@ struct SettingsTrafficsView: View {
             
             // Source
             Box(isOn: false) {
+                AppDelegate.shared?.closePopover(nil)
                 
+                DispatchQueue.main.async {
+                    openUrl(Helper.urlSourceCode)
+                }
             } content: {
                 Image(systemSymbol: .barcode)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -57,7 +68,7 @@ struct SettingsTrafficsView: View {
             
             // Minimize
             Box(isOn: false) {
-                
+                AppDelegate.shared?.closePopover(nil)
             } content: {
                 Image(systemSymbol: .arrowDownRightAndArrowUpLeft)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)

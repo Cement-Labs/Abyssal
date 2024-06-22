@@ -13,10 +13,15 @@ struct SettingsView: View {
             VStack {
                 Spacer()
                 
-                Text("Abyssal")
-                    .font(.title)
-                    .bold()
-                    .padding(.vertical, 32)
+                VStack {
+                    Text("Abyssal")
+                        .font(.title)
+                        .bold()
+                        .padding(8)
+                    
+                    SettingsVersionView()
+                }
+                .padding(.vertical, 32)
                 
                 Spacer()
                 
@@ -28,7 +33,7 @@ struct SettingsView: View {
                 .padding(.top, -20)
                 .fixedSize()
 #if DEBUG
-                .overlay(.red.opacity(0.1))
+                .border(.red)
 #endif
             }
             
@@ -42,7 +47,7 @@ struct SettingsView: View {
                 .padding(.top, -20)
                 .fixedSize()
 #if DEBUG
-                .overlay(.green.opacity(0.1))
+                .border(.green)
 #endif
             }
         }

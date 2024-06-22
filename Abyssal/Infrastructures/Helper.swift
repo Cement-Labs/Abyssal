@@ -37,7 +37,7 @@ struct Helper {
             let notchWidth = 250.0
             return origin.x + width / 2.0 + notchWidth / 2.0
         } else {
-            let rightEdge = AppDelegate.instance?.statusBarController.edge ?? width
+            let rightEdge = AppDelegate.shared?.statusBarController.edge ?? width
             return origin.x + 50 + (rightEdge - 50) * Defaults[.deadZone].percentage // Apple icon + App name should be at least 50 pixels wide.
         }
     }
@@ -79,8 +79,8 @@ struct Helper {
     ) {
         Defaults[.theme] = Theme.themes[index]
         
-        AppDelegate.instance?.statusBarController.map()
-        AppDelegate.instance?.statusBarController.startFunctionalTimers()
+        AppDelegate.shared?.statusBarController.map()
+        AppDelegate.shared?.statusBarController.startFunctionalTimers()
     }
 }
 
