@@ -15,6 +15,7 @@
 		2831B1602B7521890020DECD /* Defaults+Structures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2831B15F2B7521890020DECD /* Defaults+Structures.swift */; };
 		2838D6B22AD842DB0087A5DE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2838D6B12AD842DB0087A5DE /* Colors.swift */; };
 		283ADC422AEA791C00C06146 /* Localizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283ADC412AEA791C00C06146 /* Localizations.swift */; };
+		2840D70D2C2679F50087EE50 /* Bool+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2840D70C2C2679F50087EE50 /* Bool+Extensions.swift */; };
 		284250102C253F79008FEE08 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2842500F2C253F79008FEE08 /* SettingsView.swift */; };
 		284250152C2547F1008FEE08 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284250142C2547F1008FEE08 /* SettingsViewController.swift */; };
 		2852BDE72AD957B100AA8AD1 /* FillOnHoverBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2852BDE62AD957B100AA8AD1 /* FillOnHoverBox.swift */; };
@@ -45,6 +46,7 @@
 		2831B15F2B7521890020DECD /* Defaults+Structures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Defaults+Structures.swift"; sourceTree = "<group>"; };
 		2838D6B12AD842DB0087A5DE /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		283ADC412AEA791C00C06146 /* Localizations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizations.swift; sourceTree = "<group>"; };
+		2840D70C2C2679F50087EE50 /* Bool+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+Extensions.swift"; sourceTree = "<group>"; };
 		2842500F2C253F79008FEE08 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		284250142C2547F1008FEE08 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		2852BDE62AD957B100AA8AD1 /* FillOnHoverBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillOnHoverBox.swift; sourceTree = "<group>"; };
@@ -86,6 +88,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2840D70A2C2672840087EE50 /* Old UI */ = {
+			isa = PBXGroup;
+			children = (
+				2852BDEC2AD98E5200AA8AD1 /* Components */,
+				C66F02AA2A3B4BEB00077CE3 /* Views */,
+			);
+			path = "Old UI";
+			sourceTree = "<group>";
+		};
 		2842500E2C253F3E008FEE08 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -134,10 +145,9 @@
 		C66CABA22A38871500E4D8E6 /* Abyssal */ = {
 			isa = PBXGroup;
 			children = (
+				2840D70A2C2672840087EE50 /* Old UI */,
 				C66CABA32A38871500E4D8E6 /* AppDelegate.swift */,
 				2842500E2C253F3E008FEE08 /* Settings */,
-				2852BDEC2AD98E5200AA8AD1 /* Components */,
-				C66F02AA2A3B4BEB00077CE3 /* Views */,
 				C6DEC5392A3A0B2300943448 /* Contents */,
 				C6DEC5372A3A05E200943448 /* Infrastructures */,
 				C6DEC5362A3A05D300943448 /* Events */,
@@ -168,6 +178,7 @@
 				C6B3E79A2A3D83C400B650BC /* NSRect+Extension.swift */,
 				C63B40522A4060E400BCAE79 /* NSStatusItem+Extension.swift */,
 				2852BDE82AD97A0E00AA8AD1 /* NSSlider+Extension.swift */,
+				2840D70C2C2679F50087EE50 /* Bool+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -296,6 +307,7 @@
 				C63B40532A4060E400BCAE79 /* NSStatusItem+Extension.swift in Sources */,
 				C66CABB32A388FBD00E4D8E6 /* MenuController.swift in Sources */,
 				C6E2C0302A3EE9F1007D4E1B /* StatusBarController+StateManager.swift in Sources */,
+				2840D70D2C2679F50087EE50 /* Bool+Extensions.swift in Sources */,
 				2852BDEB2AD97AEC00AA8AD1 /* Tip.swift in Sources */,
 				C6CDD0622A3F2F9000ED97F0 /* Theme.swift in Sources */,
 				C66CABA42A38871500E4D8E6 /* AppDelegate.swift in Sources */,

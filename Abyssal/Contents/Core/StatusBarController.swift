@@ -98,7 +98,7 @@ class StatusBarController {
 
     var mouseWasSpareOrUnidled = false
     
-    var was = (mouseSpare: false, modifiers: false)
+    var was = (mouseOnStatusBar: false, mouseSpare: false, mouseOverBody: false, triggers: false)
     
     var draggedToUncollapse = (dragging: false, shouldCollapse: false, shouldEnableAnimation: false, count: Int.zero)
     
