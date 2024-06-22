@@ -9,13 +9,17 @@ import AppKit
 
 class SettingsViewController: NSViewController {
     override func viewWillAppear() {
-        print(AppDelegate.instance?.popover.contentSize, view.fittingSize)
-        AppDelegate.instance?.popover.contentSize = view.fittingSize
         VersionHelper.checkNewVersionsTask.resume()
-        AppDelegate.instance?.statusBarController.startFunctionalTimers()
+        
+        DispatchQueue.main.async {
+            AppDelegate.instance?.popover.contentSize = self.view.fittingSize
+            AppDelegate.instance?.statusBarController.startFunctionalTimers()
+        }
     }
     
     override func viewDidDisappear() {
-        AppDelegate.instance?.statusBarController.startFunctionalTimers()
+        DispatchQueue.main.async {
+            AppDelegate.instance?.statusBarController.startFunctionalTimers()
+        }
     }
 }

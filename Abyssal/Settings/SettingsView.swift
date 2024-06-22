@@ -9,6 +9,31 @@ import SwiftUI
 
 struct SettingsView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            VStack {
+                Text("Abyssal")
+                    .font(.title)
+                    .bold()
+                    .padding()
+                
+                SettingsModifiersView()
+                    .padding()
+                
+                SettingsAdvancedView()
+                    .padding()
+            }
+            
+            VStack {
+                SettingsTrafficsView()
+                    .padding()
+                
+                SettingsGeneralView()
+                    .padding()
+            }
+        }
     }
+}
+
+#Preview {
+    SettingsView()
 }
