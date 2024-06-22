@@ -23,7 +23,6 @@ struct SettingsView: View {
                     
                     SettingsAdvancedSection()
                 }
-                .frame(minWidth: 300)
                 .padding(.top, -20)
             }
             

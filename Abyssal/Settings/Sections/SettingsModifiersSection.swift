@@ -48,19 +48,17 @@ struct SettingsModifiersSection: View {
                         } label: {
                             Text("Press")
                         }
-                        .aspectRatio(contentMode: .fit)
                         
-                        Text("key to trigger")
-                        
-                        Spacer()
+                        Text("of the above to trigger")
+                            .fixedSize()
                     }
                     .foregroundStyle(.secondary)
-                    .padding(4)
-                    .padding(.bottom, -8)
+                    .formStyle(.columns)
                 }
+                .padding(0)
                 .formStyle(.columns)
+                .fixedSize()
             }
-            .padding(8)
         }
     }
 }
