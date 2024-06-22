@@ -62,26 +62,27 @@ where Content: View {
                 isOn.toggle()
             }
         } label: {
-            if isOn {
-                content()
-                    .foregroundStyle(.background)
-            } else {
-                content()
-            }
+            content()
         }
         .buttonStyle(.borderless)
         .buttonBorderShape(.capsule)
         .background {
             if isOn {
                 RoundedRectangle(cornerSize: cornerSize)
-                    .fill(.foreground)
-                    .strokeBorder(.background.opacity(isHovering ? 1 : 0))
+                    .fill(.tint)
+                    .strokeBorder(.fill.opacity(isHovering ? 0.25 : 0))
                     .brightness(isHovering ? -0.05 : 0)
             } else {
                 RoundedRectangle(cornerSize: cornerSize)
-                    .fill(.background.opacity(isHovering ? 1 : 0))
-                    .strokeBorder(.separator.opacity(isHovering ? 0 : 1))
-                    .brightness(isHovering ? -0.05 : 0)
+                    .ifSome(isHovering) { view in
+                        view
+                            .fill(.tint.opacity(0.1))
+                            .strokeBorder(.tint)
+                    } else: { view in
+                        view
+                            .fill(.fill)
+                            .strokeBorder(.fill)
+                    }
             }
         }
         .animation(.default.speed(2), value: isOn)
@@ -91,12 +92,6 @@ where Content: View {
             }
         }
     }
-    
-    @ViewBuilder func defaultStyles() -> some View {
-        self
-            .foregroundStyle(.tint)
-            .backgroundStyle(.ultraThickMaterial)
-    }
 }
 
 #Preview {
@@ -105,13 +100,11 @@ where Content: View {
             Text("On")
                 .padding()
         }
-        .defaultStyles()
         
         Box(isOn: false) {
             Text("Off")
                 .padding()
         }
-        .defaultStyles()
     }
     .padding()
 }

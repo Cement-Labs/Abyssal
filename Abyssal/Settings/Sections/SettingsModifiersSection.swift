@@ -20,19 +20,16 @@ struct SettingsModifiersSection: View {
                         Image(systemSymbol: .control)
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
-                    .defaultStyles()
                     
                     Box(isOn: $modifiers.option, behavior: .toggle) {
                         Image(systemSymbol: .option)
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
-                    .defaultStyles()
                     
                     Box(isOn: $modifiers.command, behavior: .toggle) {
                         Image(systemSymbol: .command)
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
-                    .defaultStyles()
                 }
                 .frame(height: 32)
                 .bold()
