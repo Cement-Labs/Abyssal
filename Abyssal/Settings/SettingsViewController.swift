@@ -8,16 +8,22 @@
 import AppKit
 
 class SettingsViewController: NSViewController {
-    override func viewWillAppear() {
-        VersionHelper.checkNewVersionsTask.resume()
-        
+    func initializeFrame() {
         DispatchQueue.main.async {
             AppDelegate.shared?.popover.contentSize = self.view.fittingSize
+        }
+    }
+    
+    override func viewWillAppear() {
+        VersionHelper.checkNewVersionsTask.resume()
+        initializeFrame()
+        
+        DispatchQueue.main.async {
             AppDelegate.shared?.statusBarController.startFunctionalTimers()
         }
     }
     
-    override func viewDidDisappear() {
+    override func viewWillDisappear() {
         DispatchQueue.main.async {
             AppDelegate.shared?.statusBarController.startFunctionalTimers()
         }

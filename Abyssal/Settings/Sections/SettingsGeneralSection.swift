@@ -12,6 +12,8 @@ struct SettingsGeneralSection: View {
     @Default(.theme) var theme
     @Default(.autoShowsEnabled) var autoShowsEnabled
     @Default(.feedback) var feedback
+    @Default(.alwaysHideAreaEnabled) var alwaysHideAreaEnabled
+    @Default(.reduceAnimationEnabled) var reduceAnimationEnabled
     
     private let feedbackTip = Tip {
         FeedbackTipContent()
@@ -56,6 +58,12 @@ struct SettingsGeneralSection: View {
                     }
                 }
             }
+        }
+        
+        Section {
+            Toggle("Use always hide area", isOn: $alwaysHideAreaEnabled)
+            
+            Toggle("Reduce animation", isOn: $reduceAnimationEnabled)
         }
     }
 }

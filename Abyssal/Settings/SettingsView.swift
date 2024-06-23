@@ -36,7 +36,7 @@ struct SettingsView: View {
                 .border(.orange)
 #endif
             }
-            .frame(maxWidth: 375)
+            .frame(maxWidth: 325)
             
             VStack(spacing: 0) {
                 SettingsTrafficsView()
@@ -51,7 +51,7 @@ struct SettingsView: View {
                 .border(.blue)
 #endif
             }
-            .frame(maxWidth: 425)
+            .frame(maxWidth: 375)
         }
         .formStyle(.grouped)
         .scrollDisabled(true)

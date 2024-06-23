@@ -61,6 +61,8 @@ class Tip<Content> where Content: View {
         
         self.popover = Self.createPopover()
         self.popover.contentViewController = Self.createViewController(content: content)
+        
+        updateFrame()
     }
     
     func update() -> Bool {
@@ -69,6 +71,7 @@ class Tip<Content> where Content: View {
         }
         
         self.updatePosition()
+        self.updateFrame()
         
         return true
     }
@@ -79,7 +82,9 @@ class Tip<Content> where Content: View {
                 self.popover.positioningRect = self.position
             }
         }
-        
+    }
+    
+    func updateFrame() {
         self.popover.contentSize = self.popover.contentViewController?.view.fittingSize ?? .zero
     }
     
@@ -114,9 +119,11 @@ class Tip<Content> where Content: View {
                 guard let self else { return }
                 
                 self.updatePosition()
+                self.updateFrame()
             }
         } else {
             self.updatePosition()
+            self.updateFrame()
         }
     }
     

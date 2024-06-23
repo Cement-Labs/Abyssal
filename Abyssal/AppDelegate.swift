@@ -37,6 +37,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         controller.view = NSHostingView(rootView: SettingsView())
         popover.contentViewController = controller
         
+        // Pre-initialize view frame
+        controller.initializeFrame()
+        
         popover.behavior = .applicationDefined
         popover.delegate = self
         
