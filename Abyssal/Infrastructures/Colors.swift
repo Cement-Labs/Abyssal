@@ -8,6 +8,7 @@
 import Foundation
 import AppKit
 
+@available(*, deprecated)
 class Colors {
     public static var isDarkMode: Bool {
         NSApplication.shared.effectiveAppearance.bestMatch(from: [.darkAqua, .vibrantDark, .accessibilityHighContrastDarkAqua, .accessibilityHighContrastVibrantDark]) == .darkAqua

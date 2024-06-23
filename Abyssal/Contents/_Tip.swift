@@ -1,5 +1,5 @@
 //
-//  Tip.swift
+//  _Tip.swift
 //  Abyssal
 //
 //  Created by KrLite on 2023/10/13.
@@ -9,7 +9,8 @@ import Foundation
 import AppKit
 import Defaults
 
-class Tip {
+@available(*, deprecated)
+class _Tip {
     var popover: NSPopover
     
     var dataString: () -> String?
@@ -250,22 +251,22 @@ class Tip {
 }
 
 class Tips {
-    static let test = Tip(
+    static let test = _Tip(
         dataString: { "Lorem Ipsum" },
         tipString: { "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." }
     )
     
-    static let testData = Tip(
+    static let testData = _Tip(
         dataString: test?.dataString
     )
     
-    static let testTip = Tip(
+    static let testTip = _Tip(
         tipString: test?.tipString
     )
     
     
     
-    private var map: [NSTrackingArea: (tip: Tip, sender: NSView)] = [:]
+    private var map: [NSTrackingArea: (tip: _Tip, sender: NSView)] = [:]
     
     func mouseEntered(with event: NSEvent) {
         if let area = event.trackingArea {
@@ -286,14 +287,14 @@ class Tips {
     func bind(
         _ sender: NSView,
         trackingArea: NSTrackingArea,
-        tip: Tip
+        tip: _Tip
     ) {
         map[trackingArea] = (tip, sender)
     }
     
     func unbind(
         trackingArea: NSTrackingArea
-    ) -> (tip: Tip, sender: NSView)? {
+    ) -> (tip: _Tip, sender: NSView)? {
         map.removeValue(forKey: trackingArea)
     }
 }

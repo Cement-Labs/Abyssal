@@ -24,7 +24,7 @@ struct SettingsAdvancedSection: View {
                 timeout = TimeoutAttribute.allCases[Int(index)]
             }
             
-            Slider(value: binding, in: 0...1, step: 1) {
+            Slider(value: binding, in: 0...Double(maxIndex), step: 1) {
                 Text("Test")
             }
             .introspect(.slider, on: .macOS(.v14, .v15)) { slider in

@@ -10,6 +10,7 @@ import ApplicationServices
 import AppKit
 import Defaults
 
+@available(*, deprecated)
 struct Helper {
     static let repoPath = "Cement-Labs/Abyssal"
     

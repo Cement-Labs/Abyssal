@@ -90,7 +90,7 @@ class MenuController: NSViewController, NSMenuDelegate {
     
     // MARK: - Tips
     
-    var definedTips: [NSView: (tip: Tip, trackingArea: NSTrackingArea)] = [:]
+    var definedTips: [NSView: (tip: _Tip, trackingArea: NSTrackingArea)] = [:]
     
     // MARK: - View Methods
     

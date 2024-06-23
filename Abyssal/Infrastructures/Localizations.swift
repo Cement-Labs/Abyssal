@@ -7,6 +7,7 @@
 
 import Foundation
 
+@available(*, deprecated)
 struct Localizations {
     struct FormattedTime {
         static let seconds = NSLocalizedString("FormattedTime/Seconds", value: "%lld seconds", comment: "(int) + seconds")

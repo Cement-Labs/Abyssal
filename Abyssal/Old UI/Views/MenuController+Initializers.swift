@@ -118,7 +118,7 @@ extension MenuController {
     func initTips() {
         definedTips = [
             buttonAppVersion: (
-                tip: Tip(
+                tip: _Tip(
                     tipString: {
                         !VersionHelper.versionComponent.needsUpdate ? nil : NSLocalizedString("Tip/ButtonAppVersion", value: """
 An update is available, click to access the download page.
@@ -129,7 +129,7 @@ An update is available, click to access the download page.
             ),
             
             viewModifiers: (
-                tip: Tip(
+                tip: _Tip(
                     tipString: {
                         NSLocalizedString("Tip/ViewModifiers", value: """
 The modifier keys to use. It is recommended to keep the modifier key ⌘ enabled.
@@ -138,7 +138,7 @@ The modifier keys to use. It is recommended to keep the modifier key ⌘ enabled
                 )!, trackingArea: viewModifiers.visibleRect.getTrackingArea(self, viewToAdd: viewModifiers)
             ),
             sliderTimeout: (
-                tip: Tip(
+                tip: _Tip(
                     dataString: { Defaults[.timeout].label },
                     tipString: {
                         NSLocalizedString("Tip/SliderTimeout", value: """
@@ -151,7 +151,7 @@ After interacting with status items that will be automatically hidden, for examp
                 )!, trackingArea: sliderTimeout.knobRect.getTrackingArea(self, viewToAdd: sliderTimeout)
             ),
             switchStartsWithMacOS: (
-                tip: Tip(
+                tip: _Tip(
                     tipString: {
                         NSLocalizedString("Tip/SwitchStartsWithMacOS", value: """
 Run **Abyssal** when macOS starts.
@@ -162,7 +162,7 @@ Run **Abyssal** when macOS starts.
             ),
             
             buttonTips: (
-                tip: Tip(
+                tip: _Tip(
                     tipString: {
                         NSLocalizedString("Tip/ButtonTips", value: """
 The tips are currently shown. Click to hide them.
@@ -171,7 +171,7 @@ The tips are currently shown. Click to hide them.
                 )!, trackingArea: buttonTips.visibleRect.getTrackingArea(self, viewToAdd: buttonTips)
             ),
             buttonLink: (
-                tip: Tip(
+                tip: _Tip(
                     tipString: {
                         NSLocalizedString("Tip/ButtonLink", value: """
 **Abyssal** is open sourced. Click to access the source code repository.
@@ -180,7 +180,7 @@ The tips are currently shown. Click to hide them.
                 )!, trackingArea: buttonLink.visibleRect.getTrackingArea(self, viewToAdd: buttonLink)
             ),
             buttonMinimize: (
-                tip: Tip(
+                tip: _Tip(
                     tipString: {
                         NSLocalizedString("Tip/ButtonMinimize", value: """
 Minimize this window. Right click on the `Menu Separator` to open this window again.
@@ -190,7 +190,7 @@ Minimize this window. Right click on the `Menu Separator` to open this window ag
             ),
             
             popUpButtonModifierMode: (
-                tip: Tip(
+                tip: _Tip(
                     tipString: {
                         NSLocalizedString("Tip/PopUpButtonModifierModes", value: """
 Decides how the modifier keys are triggered.
@@ -199,7 +199,7 @@ Decides how the modifier keys are triggered.
                 )!, trackingArea: popUpButtonModifierMode.visibleRect.getTrackingArea(self, viewToAdd: popUpButtonModifierMode)
             ),
             popUpButtonTheme: (
-                tip: Tip(
+                tip: _Tip(
                     tipString: {
                         NSLocalizedString("Tip/PopUpButtonThemes", value: """
 Some themes will hide the icons inside the separators automatically, while others not.
@@ -209,7 +209,7 @@ Themes that automatically hide the icons will only show them when the status ite
                 )!, trackingArea: popUpButtonTheme.visibleRect.getTrackingArea(self, viewToAdd: popUpButtonTheme)
             ),
             switchAutoShows: (
-                tip: Tip(
+                tip: _Tip(
                     tipString: {
                         NSLocalizedString("Tip/SwitchAutoShows", value: """
 Auto shows the status items inside the **Hide Area** while the cursor is hovering over the spare area.
@@ -221,7 +221,7 @@ By left clicking on the `Menu Separator` (the nearest one to the screen corner),
                 )!, trackingArea: switchAutoShows.visibleRect.getTrackingArea(self, viewToAdd: switchAutoShows)
             ),
             sliderFeedbackIntensity: (
-                tip: Tip(
+                tip: _Tip(
                     dataString: {
                         Defaults[.feedback].label
                     },
@@ -235,7 +235,7 @@ Feedback intensity given when triggering actions such as 'enabling **Auto Shows*
                 )!, trackingArea: sliderFeedbackIntensity.knobRect.getTrackingArea(self, viewToAdd: sliderFeedbackIntensity)
             ),
             sliderDeadZone: (
-                tip: Tip(
+                tip: _Tip(
                     dataString: {
                         Defaults[.deadZone].semantic
                     },
@@ -251,7 +251,7 @@ Due to the limitations of macOS, **Abyssal** can't infer the available width use
             ),
             
             switchUseAlwaysHideArea: (
-                tip: Tip(
+                tip: _Tip(
                     tipString: {
                         NSLocalizedString("Tip/SwitchUseAlwaysHideArea", value: """
 Hide certain status items permanently by moving them left of the `Always Hide Separator` to the **Always Hide Area.**
@@ -262,7 +262,7 @@ The status items inside the **Always Hide Area** will be hidden and invisible un
                 )!, trackingArea: switchUseAlwaysHideArea.visibleRect.getTrackingArea(self, viewToAdd: switchUseAlwaysHideArea)
             ),
             switchReduceAnimation: (
-                tip: Tip(
+                tip: _Tip(
                     tipString: {
                         NSLocalizedString("Tip/SwitchReduceAnimations", value: """
 Reduce animations to gain a more performant experience.
