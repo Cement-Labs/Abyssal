@@ -482,6 +482,42 @@
     "This is a description. **Markdown** ~is~ `actually` *supported!*" : {
 
     },
+    "TimeFormat/Forever" : {
+      "comment" : "Forever",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Forever"
+          }
+        }
+      }
+    },
+    "TimeFormat/Minutes" : {
+      "comment" : "(Double) + Minutes",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%g Minutes"
+          }
+        }
+      }
+    },
+    "TimeFormat/Seconds" : {
+      "comment" : "(Double) + Seconds",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%g Seconds"
+          }
+        }
+      }
+    },
     "Timeout" : {
 
     },

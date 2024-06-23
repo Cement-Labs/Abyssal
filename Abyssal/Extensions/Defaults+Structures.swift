@@ -144,19 +144,13 @@ enum TimeoutAttribute: Int, CaseIterable, Defaults.Serializable {
     
     var label: String {
         switch self {
-        case .sec5:     Localizations.FormattedTime.inSeconds(5)
-        case .sec10:    Localizations.FormattedTime.inSeconds(10)
-        case .sec15:    Localizations.FormattedTime.inSeconds(15)
-        case .sec30:    Localizations.FormattedTime.inSeconds(30)
-        case .sec45:    Localizations.FormattedTime.inSeconds(45)
-        case .sec60:    Localizations.FormattedTime.inMinutes(1)
+        case .sec5, .sec10, .sec15, .sec30, .sec45:
+            TimeFormat.inSeconds(Double(self.rawValue))
             
-        case .min2:     Localizations.FormattedTime.inMinutes(2)
-        case .min3:     Localizations.FormattedTime.inMinutes(3)
-        case .min5:     Localizations.FormattedTime.inMinutes(5)
-        case .min10:    Localizations.FormattedTime.inMinutes(10)
+        case .sec60, .min2, .min3, .min5, .min10:
+            TimeFormat.inMinutes(Double(self.rawValue / 60))
             
-        default: Localizations.FormattedTime.forever
+        default: TimeFormat.forever
         }
     }
 }

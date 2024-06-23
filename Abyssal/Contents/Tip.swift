@@ -68,17 +68,17 @@ class Tip<Content> where Content: View {
             return false
         }
         
-        DispatchQueue.main.async {
-            self.popover.contentSize = self.popover.contentViewController?.view.fittingSize ?? .zero
-            self.updatePosition()
-        }
+        self.updatePosition()
         
         return true
     }
     
     func updatePosition() {
         if isShown {
-            popover.positioningRect = position
+            DispatchQueue.main.async {
+                self.popover.positioningRect = self.position
+                self.popover.contentSize = self.popover.contentViewController?.view.fittingSize ?? .zero
+            }
         }
     }
     
