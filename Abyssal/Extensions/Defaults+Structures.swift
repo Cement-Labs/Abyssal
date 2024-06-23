@@ -218,18 +218,18 @@ extension Theme: Defaults.Serializable {
                 return nil
             }
             
-            return value.identifier
+            return value.id
         }
         
         func deserialize(_ object: String?) -> Theme? {
             guard
-                let identifier = object,
-                Theme.themeIdentifiers.contains(identifier)
+                let id = object,
+                Theme.themeIds.contains(id)
             else {
                 return nil
             }
             
-            return Theme.themes.first { $0.identifier == identifier }
+            return Theme.themes.first { $0.id == id }
         }
     }
     

@@ -6,16 +6,31 @@
 //
 
 import SwiftUI
+import Defaults
 
 struct SettingsGeneralSection: View {
+    @Default(.theme) var theme
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-        
-        Color.blue
-            .frame(height: 500)
+        Section {
+            Picker("Theme", selection: $theme) {
+                ForEach(Theme.themes, id: \.self) { theme in
+                    HStack {
+                        Image(nsImage: theme.icon.image)
+                        Text(theme.name)
+                    }
+                }
+            }
+            .onChange(of: theme) { _, _ in
+                AppDelegate.shared?.statusBarController.startFunctionalTimers()
+            }
+        }
     }
 }
 
 #Preview {
-    SettingsGeneralSection()
+    Form {
+        SettingsGeneralSection()
+    }
+    .formStyle(.grouped)
 }

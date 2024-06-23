@@ -49,9 +49,11 @@ struct SettingsTrafficsView: View {
                     Text("Tips")
                         .fixedSize()
                 }
+                .contentTransition(.symbolEffect(.replace))
+                .animation(.bouncy, value: tipsEnabled)
+                
                 .padding(.horizontal, 12)
                 .frame(maxHeight: .infinity)
-                .contentTransition(.symbolEffect(.replace))
             }
             
             // Source

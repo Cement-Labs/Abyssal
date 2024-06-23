@@ -10,11 +10,11 @@ import SwiftUI
 struct SettingsView: View {
     var body: some View {
         HStack(spacing: -20) {
-            VStack {
+            VStack(spacing: 0) {
                 Spacer()
                 
                 VStack {
-                    Text("Abyssal")
+                    Text(Bundle.main.appName)
                         .font(.title)
                         .bold()
                         .padding(8)
@@ -30,26 +30,28 @@ struct SettingsView: View {
                     
                     SettingsAdvancedSection()
                 }
+                .defaultScrollAnchor(.bottom)
                 .padding(.top, -20)
-                .fixedSize()
 #if DEBUG
-                .border(.red)
+                .border(.orange)
 #endif
             }
+            .frame(maxWidth: 375)
             
-            VStack {
+            VStack(spacing: 0) {
                 SettingsTrafficsView()
-                    .padding()
+                    .padding(20)
                 
                 Form {
                     SettingsGeneralSection()
                 }
+                .defaultScrollAnchor(.bottom)
                 .padding(.top, -20)
-                .fixedSize()
 #if DEBUG
-                .border(.green)
+                .border(.blue)
 #endif
             }
+            .frame(maxWidth: 425)
         }
         .formStyle(.grouped)
         .scrollDisabled(true)

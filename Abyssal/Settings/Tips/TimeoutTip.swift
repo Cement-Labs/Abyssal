@@ -16,7 +16,7 @@ struct TimeoutTip: View {
         SimpleTip {
             VStack {
                 Text(timeout.label)
-                    .font(.title)
+                    .font(.title2)
                     .bold()
                 
                 if tipsEnabled {

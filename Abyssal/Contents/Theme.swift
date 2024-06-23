@@ -23,8 +23,8 @@ enum SelectFromHeadUncollapsedIconBuilder {
     case custom(any IconBuilder)
 }
 
-class Theme: Equatable {
-    let identifier: String
+class Theme: Equatable, Identifiable {
+    let id: String
     let name: String
     let icon: Icon
     
@@ -47,7 +47,7 @@ class Theme: Equatable {
         
         autoHideIcons: Bool
     ) {
-        self.identifier = identifier
+        self.id = identifier
         self.name = name
         
         self.headUncollapsed = headUncollapsed.build(identifier: identifier)
@@ -74,7 +74,7 @@ class Theme: Equatable {
         lhs: Theme,
         rhs: Theme
     ) -> Bool {
-        lhs.identifier == rhs.identifier
+        lhs.id == rhs.id
     }
 }
 
@@ -288,11 +288,17 @@ extension Theme {
         return abyssal
     }
     
-    static var themeIdentifiers: [String] {
-        return themes.map { $0.identifier }
+    static var themeIds: [String] {
+        return themes.map { $0.id }
     }
     
     static var themeNames: [String] {
         return themes.map { $0.name }
+    }
+}
+
+extension Theme: Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 }

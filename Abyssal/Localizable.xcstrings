@@ -11,9 +11,6 @@
         }
       }
     },
-    "Abyssal" : {
-
-    },
     "all" : {
 
     },
@@ -182,9 +179,6 @@
         }
       }
     },
-    "Hello, World!" : {
-
-    },
     "ModifiersMode/All" : {
       "comment" : "modifiers mode all",
       "extractionState" : "stale",
@@ -228,6 +222,9 @@
 
     },
     "Quit %@" : {
+
+    },
+    "Theme" : {
 
     },
     "Theme/Abyssal" : {
