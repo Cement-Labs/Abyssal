@@ -482,6 +482,9 @@
         }
       }
     },
+    "This is a description. **Markdown** ~is~ `actually` *supported!*" : {
+
+    },
     "Tip/ButtonAppVersion" : {
       "comment" : "if (update available) -> (button) app version",
       "extractionState" : "extracted_with_value",

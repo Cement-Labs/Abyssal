@@ -10,6 +10,7 @@
 		2822C58E2BDC75DE009C71DA /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 2822C58D2BDC75DE009C71DA /* SFSafeSymbols */; };
 		2822C5902BDC7748009C71DA /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2822C58F2BDC7748009C71DA /* Icon.swift */; };
 		282D880A2AD58BEA0015111C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C66CABA72A38871500E4D8E6 /* Assets.xcassets */; };
+		282E928A2C27C25000C21EE5 /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282E92892C27C25000C21EE5 /* Tip.swift */; };
 		2831B15C2B751B7F0020DECD /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 2831B15B2B751B7F0020DECD /* Defaults */; };
 		2831B15E2B751B990020DECD /* Defaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2831B15D2B751B990020DECD /* Defaults+Extensions.swift */; };
 		2831B1602B7521890020DECD /* Defaults+Structures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2831B15F2B7521890020DECD /* Defaults+Structures.swift */; };
@@ -52,6 +53,7 @@
 
 /* Begin PBXFileReference section */
 		2822C58F2BDC7748009C71DA /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
+		282E92892C27C25000C21EE5 /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
 		2831B15D2B751B990020DECD /* Defaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Defaults+Extensions.swift"; sourceTree = "<group>"; };
 		2831B15F2B7521890020DECD /* Defaults+Structures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Defaults+Structures.swift"; sourceTree = "<group>"; };
 		2838D6B12AD842DB0087A5DE /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 				2852BDEA2AD97AEC00AA8AD1 /* _Tip.swift */,
 				C6CDD0612A3F2F9000ED97F0 /* Theme.swift */,
 				2822C58F2BDC7748009C71DA /* Icon.swift */,
+				282E92892C27C25000C21EE5 /* Tip.swift */,
 			);
 			path = Contents;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				C6DEC52C2A38CDE500943448 /* Helper.swift in Sources */,
 				283ADC422AEA791C00C06146 /* Localizations.swift in Sources */,
 				C63B40532A4060E400BCAE79 /* NSStatusItem+Extension.swift in Sources */,
+				282E928A2C27C25000C21EE5 /* Tip.swift in Sources */,
 				C66CABB32A388FBD00E4D8E6 /* MenuController.swift in Sources */,
 				C6E2C0302A3EE9F1007D4E1B /* StatusBarController+StateManager.swift in Sources */,
 				28C4AC032C270C9B006AFF87 /* SettingsVersionView.swift in Sources */,
