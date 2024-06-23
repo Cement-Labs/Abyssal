@@ -11,10 +11,19 @@
         }
       }
     },
+    "%g Minutes" : {
+
+    },
+    "%g Seconds" : {
+
+    },
     "all" : {
 
     },
     "any" : {
+
+    },
+    "Auto shows" : {
 
     },
     "FeedbackIntensity/Disabled" : {
@@ -88,6 +97,9 @@
           }
         }
       }
+    },
+    "Forever" : {
+
     },
     "FormattedTime/Forever" : {
       "comment" : "forever",
@@ -179,6 +191,18 @@
         }
       }
     },
+    "Haptic feedback" : {
+
+    },
+    "Heavy" : {
+
+    },
+    "Light" : {
+
+    },
+    "Medium" : {
+
+    },
     "ModifiersMode/All" : {
       "comment" : "modifiers mode all",
       "extractionState" : "stale",
@@ -214,6 +238,9 @@
           }
         }
       }
+    },
+    "None" : {
+
     },
     "of the above to trigger" : {
 
@@ -484,42 +511,6 @@
     },
     "This is a simple tip." : {
 
-    },
-    "TimeFormat/Forever" : {
-      "comment" : "Forever",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Forever"
-          }
-        }
-      }
-    },
-    "TimeFormat/Minutes" : {
-      "comment" : "(Double) + Minutes",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%g Minutes"
-          }
-        }
-      }
-    },
-    "TimeFormat/Seconds" : {
-      "comment" : "(Double) + Seconds",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%g Seconds"
-          }
-        }
-      }
     },
     "Timeout" : {
 

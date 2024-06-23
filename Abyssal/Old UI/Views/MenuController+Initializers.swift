@@ -223,7 +223,7 @@ By left clicking on the `Menu Separator` (the nearest one to the screen corner),
             sliderFeedbackIntensity: (
                 tip: _Tip(
                     dataString: {
-                        Defaults[.feedback].label
+                        ""
                     },
                     tipString: {
                         NSLocalizedString("Tip/SliderFeedbackIntensity", value: """

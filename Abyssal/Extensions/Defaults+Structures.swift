@@ -163,16 +163,6 @@ enum FeedbackAttribute: Int, CaseIterable, Defaults.Serializable {
         default: []
         }
     }
-    
-    var label: String {
-        switch self {
-        case .light: Localizations.FeedbackIntensity.light
-        case .medium: Localizations.FeedbackIntensity.medium
-        case .heavy: Localizations.FeedbackIntensity.heavy
-            
-        default: Localizations.FeedbackIntensity.disabled
-        }
-    }
 }
 
 struct DeadZoneAttribute: Defaults.Serializable {

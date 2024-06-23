@@ -14,7 +14,7 @@ struct SettingsAdvancedSection: View {
     @Default(.timeout) var timeout
     
     private let timeoutTip = Tip {
-        TimeoutTip()
+        TimeoutTipContent()
     }
     
     private let startsWithMacOSTip = Tip {
@@ -25,23 +25,25 @@ struct SettingsAdvancedSection: View {
     
     var body: some View {
         Section {
-            let maxIndex = TimeoutAttribute.allCases.count - 1
-            let binding = Binding<Double> {
-                Double(TimeoutAttribute.allCases.firstIndex(of: timeout) ?? maxIndex)
-            } set: { index in
-                timeout = TimeoutAttribute.allCases[Int(index)]
-            }
-            
-            TipWrapper(alwaysVisible: true, value: $timeout, tip: timeoutTip) { tip in
-                Slider(value: binding, in: 0...Double(maxIndex), step: 1) {
-                    Text("Timeout")
+            timeout: do {
+                let maxIndex = TimeoutAttribute.allCases.endIndex - 1
+                let binding = Binding<Double> {
+                    Double(TimeoutAttribute.allCases.firstIndex(of: timeout) ?? maxIndex)
+                } set: { index in
+                    timeout = TimeoutAttribute.allCases[Int(index)]
                 }
-                .introspect(.slider, on: .macOS(.v14, .v15)) { slider in
-                    tip.positionRect = {
-                        slider.knobRect
+                
+                TipWrapper(alwaysVisible: true, value: $timeout, tip: timeoutTip) { tip in
+                    Slider(value: binding, in: 0...Double(maxIndex), step: 1) {
+                        Text("Timeout")
                     }
-                    tip.hasReactivePosition = true
-                    tip.cache(slider)
+                    .introspect(.slider, on: .macOS(.v14, .v15)) { slider in
+                        tip.positionRect = {
+                            slider.knobRect
+                        }
+                        tip.hasReactivePosition = true
+                        tip.cache(slider)
+                    }
                 }
             }
             

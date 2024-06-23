@@ -8,9 +8,9 @@
 import Foundation
 
 struct TimeFormat {
-    static let second = NSLocalizedString("TimeFormat/Seconds", value: "%g Seconds", comment: "(Double) + Seconds")
-    static let minute = NSLocalizedString("TimeFormat/Minutes", value: "%g Minutes", comment: "(Double) + Minutes")
-    static let forever = NSLocalizedString("TimeFormat/Forever", value: "Forever", comment: "Forever")
+    static let second = String(localized: "%g Seconds")
+    static let minute = String(localized: "%g Minutes")
+    static let forever = String(localized: "Forever")
     
     static func inSeconds(_ number: Double) -> String {
         String(format: second, number)
