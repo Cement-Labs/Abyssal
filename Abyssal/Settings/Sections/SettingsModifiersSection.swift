@@ -12,10 +12,10 @@ struct SettingsModifiersSection: View {
     @Default(.modifiers) private var modifiers
     @Default(.modifierMode) private var modifierMode
     
-    private let modifierTip = Tip {
+    private let modifierTip = Tip(preferredEdge: .maxY) {
         SimpleTipContent {
             Text("""
-The modifier keys to use. It is recommended to keep `⌘` enabled.
+The modifier keys to use for showing the **Auto Hide Area.** It is recommended to keep `⌘` enabled.
 """)
         }
     }
@@ -23,25 +23,27 @@ The modifier keys to use. It is recommended to keep `⌘` enabled.
     var body: some View {
         Section("Modifiers") {
             VStack(spacing: 8) {
-                HStack(spacing: 8) {
-                    Box(isOn: $modifiers.control, behavior: .toggle) {
-                        Image(systemSymbol: .control)
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                TipWrapper(tip: modifierTip) { tip in
+                    HStack(spacing: 8) {
+                        Box(isOn: $modifiers.control, behavior: .toggle) {
+                            Image(systemSymbol: .control)
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        }
+                        
+                        Box(isOn: $modifiers.option, behavior: .toggle) {
+                            Image(systemSymbol: .option)
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        }
+                        
+                        Box(isOn: $modifiers.command, behavior: .toggle) {
+                            Image(systemSymbol: .command)
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        }
                     }
-                    
-                    Box(isOn: $modifiers.option, behavior: .toggle) {
-                        Image(systemSymbol: .option)
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    }
-                    
-                    Box(isOn: $modifiers.command, behavior: .toggle) {
-                        Image(systemSymbol: .command)
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    }
+                    .frame(height: 32)
+                    .bold()
+                    .controlSize(.large)
                 }
-                .frame(height: 32)
-                .bold()
-                .controlSize(.large)
                 
                 HStack {
                     // Use a column styled Form to diminish the Picker's empty label

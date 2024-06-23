@@ -47,23 +47,12 @@ struct SettingsGeneralSection: View {
                 
                 EmptyFormWrapper {
                     Text("Haptic feedback")
-                        .foregroundStyle(
-                            feedback == .none
-                            ? AnyShapeStyle(PlaceholderTextShapeStyle())
-                            : AnyShapeStyle(ForegroundStyle())
-                        )
+                        .opacity(feedback == .none ? 0.45 : 1)
                         .animation(.default, value: feedback)
                     
                     TipWrapper(alwaysVisible: true, value: $feedback, tip: feedbackTip) { tip in
                         Slider(value: binding, in: 0...Double(maxIndex), step: 1) {
                             EmptyView()
-                        }
-                        .introspect(.slider, on: .macOS(.v14, .v15)) { slider in
-                            tip.positionRect = {
-                                slider.knobRect
-                            }
-                            tip.hasReactivePosition = true
-                            tip.cache(slider)
                         }
                     }
                 }

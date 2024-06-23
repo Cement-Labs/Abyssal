@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Defaults
+import SwiftUIIntrospect
 
 struct TipWrapper<Content, TipContent, Value>: View
 where Content: View, TipContent: View, Value: Equatable {
@@ -43,6 +44,7 @@ where Content: View, TipContent: View, Value: Equatable {
     
     var body: some View {
         content(tip)
+        // Show on hover
             .onHover { isHovering in
                 self.isHovering = isHovering
                 
@@ -50,8 +52,26 @@ where Content: View, TipContent: View, Value: Equatable {
                     tip.toggle(show: isHovering)
                 }
             }
+        
+        // Update when value changes
             .onChange(of: value) { _, _ in
                 tip.updatePosition()
+            }
+        
+        // Cache view
+            .introspect(.slider, on: .macOS(.v14, .v15)) { slider in
+                tip.cache(slider)
+                
+                tip.positionRect = {
+                    slider.knobRect
+                }
+                tip.hasReactivePosition = true
+            }
+            .introspect(.toggle(style: .switch), on: .macOS(.v14, .v15)) { toggle in
+                tip.cache(toggle)
+            }
+            .introspect(.view, on: .macOS(.v14, .v15)) { view in
+                tip.cache(view)
             }
     }
 }

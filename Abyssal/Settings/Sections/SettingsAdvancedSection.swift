@@ -35,32 +35,17 @@ struct SettingsAdvancedSection: View {
                 
                 EmptyFormWrapper {
                     Text("Timeout")
-                        .foregroundStyle(
-                            timeout == .forever
-                            ? AnyShapeStyle(PlaceholderTextShapeStyle())
-                            : AnyShapeStyle(ForegroundStyle())
-                        )
+                        .opacity(timeout == .forever ? 0.45 : 1)
                         .animation(.default, value: timeout)
                     
                     TipWrapper(alwaysVisible: true, value: $timeout, tip: timeoutTip) { tip in
                         Slider(value: binding, in: 0...Double(maxIndex), step: 1)
-                            .introspect(.slider, on: .macOS(.v14, .v15)) { slider in
-                                tip.positionRect = {
-                                    slider.knobRect
-                                }
-                                tip.hasReactivePosition = true
-                                tip.cache(slider)
-                            }
                     }
                 }
             }
             
             TipWrapper(tip: startsWithMacOSTip) { tip in
                 LaunchAtLogin.Toggle("Starts with macOS")
-                    .introspect(.toggle(style: .switch), on: .macOS(.v14, .v15)) { toggle in
-                        tip.updatePosition()
-                        tip.cache(toggle)
-                    }
             }
         }
     }
