@@ -8,6 +8,7 @@
 import Foundation
 import Defaults
 import AppKit
+import SwiftUI
 
 struct ModifiersAttribute: OptionSet, Defaults.Serializable {
     let rawValue: UInt8

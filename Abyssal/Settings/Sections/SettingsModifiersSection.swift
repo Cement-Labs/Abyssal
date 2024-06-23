@@ -14,7 +14,7 @@ struct SettingsModifiersSection: View {
     
     var body: some View {
         Section {
-            VStack {
+            VStack(spacing: 8) {
                 HStack(spacing: 8) {
                     Box(isOn: $modifiers.control, behavior: .toggle) {
                         Image(systemSymbol: .control)
@@ -35,29 +35,35 @@ struct SettingsModifiersSection: View {
                 .bold()
                 .controlSize(.large)
                 
-                // Use a column styled Form to diminish the Picker's empty label
-                Form {
-                    HStack(alignment: .firstTextBaseline) {
-                        Picker(selection: $modifierMode) {
-                            ForEach(ModifiersAttribute.Mode.allCases, id: \.self) { mode in
-                                switch mode {
-                                case .all: Text("all")
-                                case .any: Text("any")
+                HStack {
+                    // Use a column styled Form to diminish the Picker's empty label
+                    Form {
+                        HStack(alignment: .firstTextBaseline) {
+                            Picker(selection: $modifierMode) {
+                                ForEach(ModifiersAttribute.Mode.allCases, id: \.self) { mode in
+                                    switch mode {
+                                    case .all: Text("all")
+                                    case .any: Text("any")
+                                    }
                                 }
+                            } label: {
+                                Text("Press")
                             }
-                        } label: {
-                            Text("Press")
+                            
+                            Text("of the above to trigger")
+                                .fixedSize()
                         }
-                        
-                        Text("of the above to trigger")
-                            .fixedSize()
+                        .foregroundStyle(.secondary)
+                        .formStyle(.columns)
                     }
-                    .foregroundStyle(.secondary)
+                    .padding(0) // Otherwise the nested Form will cause layout to overflow
+                    .padding(.bottom, -2)
                     .formStyle(.columns)
+                    .fixedSize()
+                    
+                    Spacer()
                 }
-                .padding(0) // Otherwise the nested Form will cause layout to overflow
-                .formStyle(.columns)
-                .fixedSize()
+                .padding(.horizontal, 2)
             }
         }
     }

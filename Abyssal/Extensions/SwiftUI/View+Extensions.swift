@@ -8,6 +8,7 @@
 import SwiftUI
 
 extension View {
+    /*
     func `if`(
         _ condition: Bool,
         trueCase: (Self) -> Self,
@@ -36,8 +37,9 @@ extension View {
         _ condition: Bool,
         trueCase: (Self) -> some View
     ) -> some View {
-        if condition {
-            trueCase(self)
+        ifSome(condition, trueCase: trueCase) { view in
+            view
         }
     }
+     */
 }

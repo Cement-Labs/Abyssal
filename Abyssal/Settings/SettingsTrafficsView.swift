@@ -36,6 +36,7 @@ struct SettingsTrafficsView: View {
             }
             .tint(.red)
             .foregroundStyle(.red)
+            .keyboardShortcut("q", modifiers: .command)
             
             Spacer(minLength: 32)
             
@@ -44,13 +45,13 @@ struct SettingsTrafficsView: View {
                 HStack {
                     Image(systemSymbol: tipsEnabled ? .tagFill : .tagSlashFill)
                         .bold()
-                        .contentTransition(.symbolEffect(.replace))
                     
                     Text("Tips")
                         .fixedSize()
                 }
                 .padding(.horizontal, 12)
                 .frame(maxHeight: .infinity)
+                .contentTransition(.symbolEffect(.replace))
             }
             
             // Source
@@ -76,6 +77,7 @@ struct SettingsTrafficsView: View {
             .frame(width: 32)
             .tint(.green)
             .foregroundStyle(.green)
+            .keyboardShortcut("w", modifiers: .command)
         }
         .frame(height: 32)
     }

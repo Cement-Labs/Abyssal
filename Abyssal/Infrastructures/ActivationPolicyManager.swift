@@ -13,14 +13,18 @@ struct ActivationPolicyManager {
     
     static func set(
         _ activationPolicy: NSApplication.ActivationPolicy,
-        deadline: DispatchTime = .now()
+        deadline: DispatchTime
     ) {
-        cancel()
         dispatch = .init() {
-            NSApplication.shared.setActivationPolicy(activationPolicy)
+            set(activationPolicy)
         }
         
         DispatchQueue.main.asyncAfter(deadline: deadline, execute: dispatch!)
+    }
+    
+    static func set(_ activationPolicy: NSApplication.ActivationPolicy) {
+        cancel()
+        NSApplication.shared.setActivationPolicy(activationPolicy)
     }
     
     static func cancel() {

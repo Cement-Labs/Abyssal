@@ -63,6 +63,11 @@ where Content: View {
             }
         } label: {
             content()
+                .foregroundStyle(
+                    isOn
+                    ? AnyShapeStyle(BackgroundStyle.background)
+                    : AnyShapeStyle(HierarchicalShapeStyle.primary)
+                )
         }
         .buttonStyle(.borderless)
         .buttonBorderShape(.capsule)
@@ -74,15 +79,16 @@ where Content: View {
                     .brightness(isHovering ? -0.05 : 0)
             } else {
                 RoundedRectangle(cornerSize: cornerSize)
-                    .ifSome(isHovering) { view in
-                        view
-                            .fill(.tint.opacity(0.1))
-                            .strokeBorder(.tint.opacity(0.5))
-                    } else: { view in
-                        view
-                            .fill(.fill)
-                            .strokeBorder(.fill)
-                    }
+                    .fill(
+                        isHovering
+                        ? AnyShapeStyle(TintShapeStyle.tint.opacity(0.1))
+                        : AnyShapeStyle(FillShapeStyle.fill.opacity(0.1))
+                    )
+                    .strokeBorder((
+                        isHovering
+                        ? AnyShapeStyle(TintShapeStyle.tint)
+                        : AnyShapeStyle(FillShapeStyle.fill)
+                    ).opacity(0.5))
             }
         }
         .animation(.default.speed(2), value: isOn)

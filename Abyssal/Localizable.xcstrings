@@ -227,6 +227,9 @@
     "Quit %@" : {
 
     },
+    "Test" : {
+
+    },
     "Theme/Abyssal" : {
       "comment" : "name for theme 'Abyssal'",
       "extractionState" : "extracted_with_value",

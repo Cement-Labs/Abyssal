@@ -6,16 +6,37 @@
 //
 
 import SwiftUI
+import Defaults
+import LaunchAtLogin
+import SwiftUIIntrospect
 
 struct SettingsAdvancedSection: View {
+    @Default(.timeout) var timeout
+    
+    @State private var isHoveringTimeout: Bool = false
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Section {
+            let maxIndex = TimeoutAttribute.allCases.count - 1
+            let binding = Binding<Double> {
+                Double(TimeoutAttribute.allCases.firstIndex(of: timeout) ?? maxIndex)
+            } set: { index in
+                timeout = TimeoutAttribute.allCases[Int(index)]
+            }
+            
+            Slider(value: binding, in: 0...1, step: 1) {
+                Text("Test")
+            }
+            .introspect(.slider, on: .macOS(.v14, .v15)) { slider in
+                print(slider)
+            }
+        }
     }
 }
 
 #Preview {
-    SettingsAdvancedSection()
+    Form {
+        SettingsAdvancedSection()
+    }
+    .formStyle(.grouped)
 }
