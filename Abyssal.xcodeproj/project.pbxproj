@@ -22,6 +22,7 @@
 		2840D7152C267F350087EE50 /* SettingsTrafficsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2840D7142C267F350087EE50 /* SettingsTrafficsView.swift */; };
 		284250102C253F79008FEE08 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2842500F2C253F79008FEE08 /* SettingsView.swift */; };
 		284250152C2547F1008FEE08 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284250142C2547F1008FEE08 /* SettingsViewController.swift */; };
+		284630132C27A5B500A44198 /* ActivationPolicyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284630122C27A5B500A44198 /* ActivationPolicyManager.swift */; };
 		2852BDE72AD957B100AA8AD1 /* FillOnHoverBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2852BDE62AD957B100AA8AD1 /* FillOnHoverBox.swift */; };
 		2852BDE92AD97A0E00AA8AD1 /* NSSlider+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2852BDE82AD97A0E00AA8AD1 /* NSSlider+Extension.swift */; };
 		2852BDEB2AD97AEC00AA8AD1 /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2852BDEA2AD97AEC00AA8AD1 /* Tip.swift */; };
@@ -61,6 +62,7 @@
 		2840D7142C267F350087EE50 /* SettingsTrafficsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTrafficsView.swift; sourceTree = "<group>"; };
 		2842500F2C253F79008FEE08 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		284250142C2547F1008FEE08 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		284630122C27A5B500A44198 /* ActivationPolicyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivationPolicyManager.swift; sourceTree = "<group>"; };
 		2852BDE62AD957B100AA8AD1 /* FillOnHoverBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillOnHoverBox.swift; sourceTree = "<group>"; };
 		2852BDE82AD97A0E00AA8AD1 /* NSSlider+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSlider+Extension.swift"; sourceTree = "<group>"; };
 		2852BDEA2AD97AEC00AA8AD1 /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 				C6DEC52B2A38CDE500943448 /* Helper.swift */,
 				2838D6B12AD842DB0087A5DE /* Colors.swift */,
 				283ADC412AEA791C00C06146 /* Localizations.swift */,
+				284630122C27A5B500A44198 /* ActivationPolicyManager.swift */,
 			);
 			path = Infrastructures;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 				C6DEC5352A3A052700943448 /* NSButton+Extension.swift in Sources */,
 				2840D70F2C267ECB0087EE50 /* SettingsModifiersSection.swift in Sources */,
 				2852BDE92AD97A0E00AA8AD1 /* NSSlider+Extension.swift in Sources */,
+				284630132C27A5B500A44198 /* ActivationPolicyManager.swift in Sources */,
 				28ACE7872AE9490700DC8C1A /* Separator.swift in Sources */,
 				284250152C2547F1008FEE08 /* SettingsViewController.swift in Sources */,
 			);

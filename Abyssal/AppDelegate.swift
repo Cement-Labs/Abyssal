@@ -21,8 +21,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     let statusBarController = StatusBarController()
     
-    var deactivationDispatch: DispatchWorkItem?
-    
     // MARK: - Event Monitors
     
     var mouseEventMonitor: EventMonitor?
@@ -50,7 +48,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
          */
         
         // Deactivate app after launched
-        NSApplication.shared.setActivationPolicy(.prohibited)
+        ActivationPolicyManager.set(.prohibited)
         
         let controller = SettingsViewController()
         controller.view = NSHostingView(rootView: SettingsView())
@@ -173,9 +171,7 @@ extension AppDelegate {
             )
             
             // Activate app
-            deactivationDispatch?.cancel()
-            deactivationDispatch = nil
-            NSApplication.shared.setActivationPolicy(.accessory)
+            ActivationPolicyManager.set(.accessory)
             
             NSRunningApplication.current.activate()
             popover.contentViewController?.view.window?.makeKeyAndOrderFront(nil)
@@ -190,12 +186,7 @@ extension AppDelegate {
         popover.performClose(sender)
         
         // Deactivate app
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            self.deactivationDispatch = .init {
-                NSApplication.shared.setActivationPolicy(.prohibited)
-            }
-            self.deactivationDispatch?.perform()
-        }
+        ActivationPolicyManager.set(.prohibited)
         
         mouseEventMonitor?.stop()
         statusBarController.startFunctionalTimers()
