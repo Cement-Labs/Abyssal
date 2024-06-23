@@ -9,11 +9,11 @@ import SwiftUI
 import Defaults
 
 struct SettingsGeneralSection: View {
-    @Default(.theme) var theme
-    @Default(.autoShowsEnabled) var autoShowsEnabled
-    @Default(.feedback) var feedback
-    @Default(.alwaysHideAreaEnabled) var alwaysHideAreaEnabled
-    @Default(.reduceAnimationEnabled) var reduceAnimationEnabled
+    @Default(.theme) private var theme
+    @Default(.autoShowsEnabled) private var autoShowsEnabled
+    @Default(.feedback) private var feedback
+    @Default(.alwaysHideAreaEnabled) private var alwaysHideAreaEnabled
+    @Default(.reduceAnimationEnabled) private var reduceAnimationEnabled
     
     private let feedbackTip = Tip {
         FeedbackTipContent()
@@ -21,7 +21,7 @@ struct SettingsGeneralSection: View {
     
     var body: some View {
         Section {
-            SectionVStack {
+            SpacingVStack {
                 Picker("Theme", selection: $theme) {
                     ForEach(Theme.themes, id: \.self) { theme in
                         HStack {
@@ -71,7 +71,7 @@ struct SettingsGeneralSection: View {
         }
          
         Section("Functions") {
-            SectionVStack {
+            SpacingVStack {
                 Toggle("Auto shows", isOn: $autoShowsEnabled)
                 
                 Toggle("Use always hide area", isOn: $alwaysHideAreaEnabled)
@@ -79,7 +79,7 @@ struct SettingsGeneralSection: View {
         }
          
         Section {
-            SectionVStack {
+            SpacingVStack {
                 Picker("Auto idling", selection: .constant(1)) {
                     Text("Test 1").tag(1)
                     Text("Test 2").tag(2)

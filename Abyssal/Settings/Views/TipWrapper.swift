@@ -12,7 +12,7 @@ struct TipWrapper<Content, TipContent, Value>: View
 where Content: View, TipContent: View, Value: Equatable {
     typealias Tip = Abyssal.Tip<TipContent>
     
-    @Default(.tipsEnabled) var tipsEnabled
+    @Default(.tipsEnabled) private var tipsEnabled
     
     var alwaysVisible: Bool = false
     @Binding var value: Value

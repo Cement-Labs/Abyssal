@@ -9,10 +9,10 @@ import SwiftUI
 import Defaults
 
 struct TimeoutTipContent: View {
-    @Default(.timeout) var timeout
+    @Default(.timeout) private var timeout
     
     var body: some View {
-        ComposedTip {
+        ComposedTipContent {
             Text("This is a description. **Markdown** ~is~ `actually` *supported!*")
         } title: {
             Text(timeout.label)

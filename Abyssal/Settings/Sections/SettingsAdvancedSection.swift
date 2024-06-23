@@ -11,14 +11,14 @@ import LaunchAtLogin
 import SwiftUIIntrospect
 
 struct SettingsAdvancedSection: View {
-    @Default(.timeout) var timeout
+    @Default(.timeout) private var timeout
     
     private let timeoutTip = Tip {
         TimeoutTipContent()
     }
     
     private let startsWithMacOSTip = Tip {
-        SimpleTip {
+        SimpleTipContent {
             Text("This is a simple tip.")
         }
     }

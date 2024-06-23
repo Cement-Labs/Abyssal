@@ -1,5 +1,5 @@
 //
-//  ComposedTip.swift
+//  ComposedTipContent.swift
 //  Abyssal
 //
 //  Created by KrLite on 2024/6/23.
@@ -8,14 +8,14 @@
 import SwiftUI
 import Defaults
 
-struct ComposedTip<Title, Content>: View where Title: View, Content: View {
-    @Default(.tipsEnabled) var tipsEnabled
+struct ComposedTipContent<Title, Content>: View where Title: View, Content: View {
+    @Default(.tipsEnabled) private var tipsEnabled
     
     @ViewBuilder var content: () -> Content
     @ViewBuilder var title: () -> Title
     
     var body: some View {
-        SimpleTip {
+        SimpleTipContent {
             VStack {
                 title()
                     .font(.title3)

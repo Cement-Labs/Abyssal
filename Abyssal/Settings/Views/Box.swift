@@ -20,8 +20,6 @@ where Content: View {
     
     @State private var isHovering: Bool = false
     
-    @Namespace var colorTransition
-    
     var cornerSize: CGSize = .init(width: 8, height: 8)
     var behavior: Behavior = .button
     var action: () -> Void = {}

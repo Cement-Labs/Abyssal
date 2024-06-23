@@ -9,8 +9,16 @@ import SwiftUI
 import Defaults
 
 struct SettingsModifiersSection: View {
-    @Default(.modifiers) var modifiers
-    @Default(.modifierMode) var modifierMode
+    @Default(.modifiers) private var modifiers
+    @Default(.modifierMode) private var modifierMode
+    
+    private let modifierTip = Tip {
+        SimpleTipContent {
+            Text("""
+The modifier keys to use. It is recommended to keep `⌘` enabled.
+""")
+        }
+    }
     
     var body: some View {
         Section("Modifiers") {

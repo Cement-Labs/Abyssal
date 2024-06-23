@@ -9,10 +9,10 @@ import SwiftUI
 import Defaults
 
 struct FeedbackTipContent: View {
-    @Default(.feedback) var feedback
+    @Default(.feedback) private var feedback
     
     var body: some View {
-        ComposedTip {
+        ComposedTipContent {
             Text("This is a description. **Markdown** ~is~ `actually` *supported!*")
         } title: {
             let label: String = switch feedback {

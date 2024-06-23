@@ -9,9 +9,9 @@ import SwiftUI
 import Defaults
 
 struct SettingsTrafficsView: View {
-    @Default(.tipsEnabled) var tipsEnabled
+    @Default(.tipsEnabled) private var tipsEnabled
     
-    @Environment(\.openURL) var openUrl
+    @Environment(\.openURL) private var openUrl
     
     var body: some View {
         HStack {
