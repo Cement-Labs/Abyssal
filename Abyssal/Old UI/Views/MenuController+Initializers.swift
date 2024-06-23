@@ -30,7 +30,7 @@ extension MenuController {
         do {
             for (index, mode) in ModifiersAttribute.Mode.allCases.enumerated() {
                 let item: NSMenuItem = .init(
-                    title: mode.label,
+                    title: "",
                     action: #selector(self.switchToModifierMode(_:)),
                     keyEquivalent: ""
                 )

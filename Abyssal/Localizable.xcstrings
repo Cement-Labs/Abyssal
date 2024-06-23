@@ -94,6 +94,7 @@
     },
     "FormattedTime/Forever" : {
       "comment" : "forever",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -111,6 +112,7 @@
     },
     "FormattedTime/Minutes" : {
       "comment" : "(int) + minutes",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "variations" : {
@@ -146,6 +148,7 @@
     },
     "FormattedTime/Seconds" : {
       "comment" : "(int) + seconds",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "variations" : {
@@ -184,7 +187,7 @@
     },
     "ModifiersMode/All" : {
       "comment" : "modifiers mode all",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -202,7 +205,7 @@
     },
     "ModifiersMode/Any" : {
       "comment" : "modifiers mode any",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

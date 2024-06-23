@@ -30,23 +30,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(
         _ aNotification: Notification
     ) {
-        /*
-        popover.contentViewController = MenuController.freshController()
-        popover.behavior = .applicationDefined
-        popover.delegate = self
-        
-        mouseEventMonitor = EventMonitor(
-            mask: [.leftMouseDown,
-                   .rightMouseDown]
-        ) { [weak self] event in
-            if let strongSelf = self {
-                if strongSelf.popover.isShown {
-                    strongSelf.closePopover(event)
-                }
-            }
-        }
-         */
-        
         // Deactivate app after launched
         ActivationPolicyManager.set(.prohibited)
         
@@ -172,9 +155,11 @@ extension AppDelegate {
             
             // Activate app
             ActivationPolicyManager.set(.accessory)
-            
             NSRunningApplication.current.activate()
-            popover.contentViewController?.view.window?.makeKeyAndOrderFront(nil)
+            
+            DispatchQueue.main.async {
+                self.popover.contentViewController?.view.window?.makeKeyAndOrderFront(nil)
+            }
         }
         
         mouseEventMonitor?.start()
@@ -183,10 +168,12 @@ extension AppDelegate {
     func closePopover(
         _ sender: Any?
     ) {
-        popover.performClose(sender)
+        DispatchQueue.main.async {
+            self.popover.performClose(sender)
+        }
         
         // Deactivate app
-        ActivationPolicyManager.set(.prohibited)
+        ActivationPolicyManager.set(.prohibited, deadline: .now() + 0.2)
         
         mouseEventMonitor?.stop()
         statusBarController.startFunctionalTimers()

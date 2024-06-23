@@ -100,13 +100,6 @@ extension ModifiersAttribute {
         case any = 0
         case all = 1
         
-        var label: String {
-            switch self {
-            case .any: Localizations.ModifiersMode.any
-            case .all: Localizations.ModifiersMode.all
-            }
-        }
-        
         func triggers(input: ModifiersAttribute) -> Bool {
             switch self {
             case .any:
