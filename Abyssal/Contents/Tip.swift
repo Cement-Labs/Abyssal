@@ -77,9 +77,10 @@ class Tip<Content> where Content: View {
         if isShown {
             DispatchQueue.main.async {
                 self.popover.positioningRect = self.position
-                self.popover.contentSize = self.popover.contentViewController?.view.fittingSize ?? .zero
             }
         }
+        
+        self.popover.contentSize = self.popover.contentViewController?.view.fittingSize ?? .zero
     }
     
     func cache(_ sender: NSView?) {
@@ -105,8 +106,8 @@ class Tip<Content> where Content: View {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: showDispatch!)
         
-        if hasReactivePosition {
-            positionUpdateTimer = Timer.scheduledTimer(
+        if self.hasReactivePosition {
+            self.positionUpdateTimer = Timer.scheduledTimer(
                 withTimeInterval: 1.0 / 60.0,
                 repeats: true
             ) { [weak self] _ in

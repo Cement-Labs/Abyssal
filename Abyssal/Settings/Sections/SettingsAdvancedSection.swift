@@ -13,10 +13,14 @@ import SwiftUIIntrospect
 struct SettingsAdvancedSection: View {
     @Default(.timeout) var timeout
     
-    @State private var isHoveringTimeout: Bool = false
-    
-    private let tipTimeout = Tip {
+    private let timeoutTip = Tip {
         TimeoutTip()
+    }
+    
+    private let startsWithMacOSTip = Tip {
+        SimpleTip {
+            Text("This is a simple tip.")
+        }
     }
     
     var body: some View {
@@ -28,22 +32,25 @@ struct SettingsAdvancedSection: View {
                 timeout = TimeoutAttribute.allCases[Int(index)]
             }
             
-            Slider(value: binding, in: 0...Double(maxIndex), step: 1) {
-                Text("Timeout")
-            }
-            .onHover { isHovering in
-                isHoveringTimeout = isHovering
-                tipTimeout.toggle(show: isHovering)
-            }
-            .introspect(.slider, on: .macOS(.v14, .v15)) { slider in
-                tipTimeout.positionRect = {
-                    slider.knobRect
+            TipWrapper(alwaysVisible: true, value: $timeout, tip: timeoutTip) { tip in
+                Slider(value: binding, in: 0...Double(maxIndex), step: 1) {
+                    Text("Timeout")
                 }
-                tipTimeout.hasReactivePosition = true
-                tipTimeout.cache(slider)
+                .introspect(.slider, on: .macOS(.v14, .v15)) { slider in
+                    tip.positionRect = {
+                        slider.knobRect
+                    }
+                    tip.hasReactivePosition = true
+                    tip.cache(slider)
+                }
             }
-            .onChange(of: timeout) { oldValue, newValue in
-                tipTimeout.updatePosition()
+            
+            TipWrapper(tip: startsWithMacOSTip) { tip in
+                LaunchAtLogin.Toggle("Starts with macOS")
+                    .introspect(.toggle(style: .switch), on: .macOS(.v14, .v15)) { toggle in
+                        tip.updatePosition()
+                        tip.cache(toggle)
+                    }
             }
         }
     }

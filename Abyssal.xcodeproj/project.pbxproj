@@ -12,7 +12,6 @@
 		282D880A2AD58BEA0015111C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C66CABA72A38871500E4D8E6 /* Assets.xcassets */; };
 		282E928A2C27C25000C21EE5 /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282E92892C27C25000C21EE5 /* Tip.swift */; };
 		282E928C2C27CA9100C21EE5 /* ObservationTrackingStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282E928B2C27CA9100C21EE5 /* ObservationTrackingStream.swift */; };
-		282E928F2C27D03600C21EE5 /* TimeoutTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282E928E2C27D03600C21EE5 /* TimeoutTip.swift */; };
 		282E92912C27D75E00C21EE5 /* TimeFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282E92902C27D75E00C21EE5 /* TimeFormat.swift */; };
 		2831B15C2B751B7F0020DECD /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 2831B15B2B751B7F0020DECD /* Defaults */; };
 		2831B15E2B751B990020DECD /* Defaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2831B15D2B751B990020DECD /* Defaults+Extensions.swift */; };
@@ -32,6 +31,9 @@
 		2852BDEB2AD97AEC00AA8AD1 /* _Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2852BDEA2AD97AEC00AA8AD1 /* _Tip.swift */; };
 		287EADA52C27B48F00D64BED /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = 287EADA42C27B48F00D64BED /* SwiftUIIntrospect */; };
 		288E8E722AECEC9F00A74EFE /* MenuController+Initializers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288E8E712AECEC9F00A74EFE /* MenuController+Initializers.swift */; };
+		28925BAE2C27F00C008FCC69 /* TipWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28925BAD2C27F00C008FCC69 /* TipWrapper.swift */; };
+		28925BB02C27F605008FCC69 /* SimpleTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28925BAF2C27F605008FCC69 /* SimpleTip.swift */; };
+		28925BB22C27F65F008FCC69 /* TimeoutTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28925BB12C27F65F008FCC69 /* TimeoutTip.swift */; };
 		28ACE7872AE9490700DC8C1A /* Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28ACE7862AE9490700DC8C1A /* Separator.swift */; };
 		28C4AC032C270C9B006AFF87 /* SettingsVersionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4AC022C270C9B006AFF87 /* SettingsVersionView.swift */; };
 		28C90F6A2C26D394000AC2E3 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C90F692C26D394000AC2E3 /* Box.swift */; };
@@ -58,7 +60,6 @@
 		2822C58F2BDC7748009C71DA /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
 		282E92892C27C25000C21EE5 /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
 		282E928B2C27CA9100C21EE5 /* ObservationTrackingStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationTrackingStream.swift; sourceTree = "<group>"; };
-		282E928E2C27D03600C21EE5 /* TimeoutTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeoutTip.swift; sourceTree = "<group>"; };
 		282E92902C27D75E00C21EE5 /* TimeFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormat.swift; sourceTree = "<group>"; };
 		2831B15D2B751B990020DECD /* Defaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Defaults+Extensions.swift"; sourceTree = "<group>"; };
 		2831B15F2B7521890020DECD /* Defaults+Structures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Defaults+Structures.swift"; sourceTree = "<group>"; };
@@ -76,6 +77,9 @@
 		2852BDE82AD97A0E00AA8AD1 /* NSSlider+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSlider+Extension.swift"; sourceTree = "<group>"; };
 		2852BDEA2AD97AEC00AA8AD1 /* _Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _Tip.swift; sourceTree = "<group>"; };
 		288E8E712AECEC9F00A74EFE /* MenuController+Initializers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuController+Initializers.swift"; sourceTree = "<group>"; };
+		28925BAD2C27F00C008FCC69 /* TipWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipWrapper.swift; sourceTree = "<group>"; };
+		28925BAF2C27F605008FCC69 /* SimpleTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTip.swift; sourceTree = "<group>"; };
+		28925BB12C27F65F008FCC69 /* TimeoutTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeoutTip.swift; sourceTree = "<group>"; };
 		28ACE7862AE9490700DC8C1A /* Separator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Separator.swift; sourceTree = "<group>"; };
 		28C4AC022C270C9B006AFF87 /* SettingsVersionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVersionView.swift; sourceTree = "<group>"; };
 		28C90F692C26D394000AC2E3 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
@@ -119,7 +123,8 @@
 		282E928D2C27D01000C21EE5 /* Tips */ = {
 			isa = PBXGroup;
 			children = (
-				282E928E2C27D03600C21EE5 /* TimeoutTip.swift */,
+				28925BAF2C27F605008FCC69 /* SimpleTip.swift */,
+				28925BB12C27F65F008FCC69 /* TimeoutTip.swift */,
 			);
 			path = Tips;
 			sourceTree = "<group>";
@@ -180,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				28C90F692C26D394000AC2E3 /* Box.swift */,
+				28925BAD2C27F00C008FCC69 /* TipWrapper.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -378,11 +384,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2852BDE72AD957B100AA8AD1 /* FillOnHoverBox.swift in Sources */,
+				28925BB02C27F605008FCC69 /* SimpleTip.swift in Sources */,
 				28C90F6C2C26F3A4000AC2E3 /* View+Extensions.swift in Sources */,
 				2840D7152C267F350087EE50 /* SettingsTrafficsView.swift in Sources */,
 				284250102C253F79008FEE08 /* SettingsView.swift in Sources */,
 				C6B3E79B2A3D83C400B650BC /* NSRect+Extension.swift in Sources */,
 				C6DEC53D2A3A0E8900943448 /* StatusBarController+Animations.swift in Sources */,
+				28925BB22C27F65F008FCC69 /* TimeoutTip.swift in Sources */,
 				2838D6B22AD842DB0087A5DE /* Colors.swift in Sources */,
 				28C90F702C270614000AC2E3 /* Bundle+Extensions.swift in Sources */,
 				C66CABB72A389F2500E4D8E6 /* EventMonitor.swift in Sources */,
@@ -393,6 +401,7 @@
 				2831B1602B7521890020DECD /* Defaults+Structures.swift in Sources */,
 				C6DEC52C2A38CDE500943448 /* Helper.swift in Sources */,
 				283ADC422AEA791C00C06146 /* Localizations.swift in Sources */,
+				28925BAE2C27F00C008FCC69 /* TipWrapper.swift in Sources */,
 				C63B40532A4060E400BCAE79 /* NSStatusItem+Extension.swift in Sources */,
 				282E928A2C27C25000C21EE5 /* Tip.swift in Sources */,
 				C66CABB32A388FBD00E4D8E6 /* MenuController.swift in Sources */,
@@ -400,7 +409,6 @@
 				28C4AC032C270C9B006AFF87 /* SettingsVersionView.swift in Sources */,
 				282E928C2C27CA9100C21EE5 /* ObservationTrackingStream.swift in Sources */,
 				2840D70D2C2679F50087EE50 /* Bool+Extensions.swift in Sources */,
-				282E928F2C27D03600C21EE5 /* TimeoutTip.swift in Sources */,
 				2852BDEB2AD97AEC00AA8AD1 /* _Tip.swift in Sources */,
 				C6CDD0622A3F2F9000ED97F0 /* Theme.swift in Sources */,
 				C66CABA42A38871500E4D8E6 /* AppDelegate.swift in Sources */,

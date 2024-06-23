@@ -13,21 +13,19 @@ struct TimeoutTip: View {
     @Default(.timeout) var timeout
     
     var body: some View {
-        VStack {
-            Text(timeout.label)
-                .font(.title)
-                .bold()
-            
-            if tipsEnabled {
-                Text("This is a description. **Markdown** ~is~ `actually` *supported!*")
+        SimpleTip {
+            VStack {
+                Text(timeout.label)
+                    .font(.title)
+                    .bold()
+                
+                if tipsEnabled {
+                    Text("This is a description. **Markdown** ~is~ `actually` *supported!*")
+                }
             }
+            .contentTransition(.numericText(countsDown: true))
+            .animation(.smooth, value: timeout)
         }
-        .contentTransition(.numericText(countsDown: true))
-        .animation(.smooth, value: timeout)
-        
-        .padding()
-        .frame(maxWidth: 450)
-        .fixedSize()
     }
 }
 

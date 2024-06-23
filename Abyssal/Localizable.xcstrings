@@ -485,6 +485,9 @@
     "This is a description. **Markdown** ~is~ `actually` *supported!*" : {
 
     },
+    "This is a simple tip." : {
+
+    },
     "TimeFormat/Forever" : {
       "comment" : "Forever",
       "extractionState" : "extracted_with_value",
