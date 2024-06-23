@@ -16,13 +16,7 @@ struct SettingsAdvancedSection: View {
     @State private var isHoveringTimeout: Bool = false
     
     private let tipTimeout = Tip {
-        VStack {
-            Text("Test")
-                .font(.title)
-                .bold()
-            
-            Text("This is a description. **Markdown** ~is~ `actually` *supported!*")
-        }
+        TimeoutTip()
     }
     
     var body: some View {
@@ -35,17 +29,21 @@ struct SettingsAdvancedSection: View {
             }
             
             Slider(value: binding, in: 0...Double(maxIndex), step: 1) {
-                Text("Test")
+                Text("Timeout")
             }
             .onHover { isHovering in
                 isHoveringTimeout = isHovering
+                tipTimeout.toggle(show: isHovering)
             }
             .introspect(.slider, on: .macOS(.v14, .v15)) { slider in
                 tipTimeout.positionRect = {
                     slider.knobRect
                 }
-                tipTimeout.show(slider)
-                print(tipTimeout)
+                tipTimeout.hasReactivePosition = true
+                tipTimeout.cache(slider)
+            }
+            .onChange(of: timeout) { oldValue, newValue in
+                tipTimeout.updatePosition()
             }
         }
     }

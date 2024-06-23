@@ -17,7 +17,10 @@ class Tip<Content> where Content: View {
     var positionRect = { CGRect.zero }
     var positionOffset = { CGPoint.zero }
     
+    var hasReactivePosition = false
+    
     private var popover: NSPopover
+    private var cachedSender: NSView?
     
     private var position: CGRect {
         positionRect().offsetBy(
@@ -26,7 +29,6 @@ class Tip<Content> where Content: View {
         )
     }
     
-    private var hasReactivePosition = false
     private var positionUpdateTimer: Timer?
     
     private var showDispatch: DispatchWorkItem?
@@ -42,7 +44,7 @@ class Tip<Content> where Content: View {
         delay: CGFloat = 0.5,
         rect positionRect: (() -> CGRect)? = nil,
         offset positionOffset: (() -> CGPoint)? = nil,
-        content: @escaping () -> Content
+        @ViewBuilder content: @escaping () -> Content
     ) {
         self.content = content
         self.preferredEdge = preferredEdge
@@ -61,34 +63,46 @@ class Tip<Content> where Content: View {
         self.popover.contentViewController = Self.createViewController(content: content)
     }
     
-    private func update() -> Bool {
+    func update() -> Bool {
         guard AppDelegate.shared?.popover.isShown ?? false else {
             return false
         }
         
-        updatePosition()
+        DispatchQueue.main.async {
+            self.popover.contentSize = self.popover.contentViewController?.view.fittingSize ?? .zero
+            self.updatePosition()
+        }
         
         return true
     }
     
-    private func updatePosition() {
+    func updatePosition() {
         if isShown {
             popover.positioningRect = position
         }
     }
     
-    func show(_ sender: NSView) {
-        guard isShown || (!isShown && update()) else {
-            return
+    func cache(_ sender: NSView?) {
+        cachedSender = sender
+    }
+    
+    func show(_ sender: NSView?) {
+        guard isShown || (!isShown && update()) else { return }
+        
+        if let sender {
+            cachedSender = sender
         }
+        
+        guard let cachedSender else { return }
         
         showDispatch = .init {
             self.popover.show(
                 relativeTo:     self.position,
-                of:             sender,
+                of:             cachedSender,
                 preferredEdge:  self.preferredEdge
             )
         }
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: showDispatch!)
         
         if hasReactivePosition {
@@ -114,7 +128,7 @@ class Tip<Content> where Content: View {
         popover.performClose(self)
     }
     
-    func toggle(_ sender: NSView, show: Bool) {
+    func toggle(_ sender: NSView? = nil, show: Bool) {
         if show {
             self.show(sender)
         } else {
