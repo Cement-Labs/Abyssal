@@ -17,13 +17,25 @@
     "%g Seconds" : {
 
     },
+    "Advanced" : {
+
+    },
     "all" : {
 
     },
     "any" : {
 
     },
+    "Auto idling" : {
+
+    },
     "Auto shows" : {
+
+    },
+    "Dead zone" : {
+
+    },
+    "Edge behavior" : {
 
     },
     "FeedbackIntensity/Disabled" : {
@@ -191,6 +203,9 @@
         }
       }
     },
+    "Functions" : {
+
+    },
     "Haptic feedback" : {
 
     },
@@ -201,6 +216,9 @@
 
     },
     "Medium" : {
+
+    },
+    "Modifiers" : {
 
     },
     "ModifiersMode/All" : {
@@ -245,6 +263,12 @@
     "of the above to trigger" : {
 
     },
+    "Percentage" : {
+
+    },
+    "Pixel" : {
+
+    },
     "Press" : {
 
     },
@@ -252,6 +276,12 @@
 
     },
     "Reduce animation" : {
+
+    },
+    "Test 1" : {
+
+    },
+    "Test 2" : {
 
     },
     "Theme" : {

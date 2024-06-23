@@ -24,7 +24,7 @@ struct SettingsAdvancedSection: View {
     }
     
     var body: some View {
-        Section {
+        Section("Advanced") {
             timeout: do {
                 let maxIndex = TimeoutAttribute.allCases.endIndex - 1
                 let binding = Binding<Double> {
@@ -33,16 +33,24 @@ struct SettingsAdvancedSection: View {
                     timeout = TimeoutAttribute.allCases[Int(index)]
                 }
                 
-                TipWrapper(alwaysVisible: true, value: $timeout, tip: timeoutTip) { tip in
-                    Slider(value: binding, in: 0...Double(maxIndex), step: 1) {
-                        Text("Timeout")
-                    }
-                    .introspect(.slider, on: .macOS(.v14, .v15)) { slider in
-                        tip.positionRect = {
-                            slider.knobRect
-                        }
-                        tip.hasReactivePosition = true
-                        tip.cache(slider)
+                EmptyFormWrapper {
+                    Text("Timeout")
+                        .foregroundStyle(
+                            timeout == .forever
+                            ? AnyShapeStyle(PlaceholderTextShapeStyle())
+                            : AnyShapeStyle(ForegroundStyle())
+                        )
+                        .animation(.default, value: timeout)
+                    
+                    TipWrapper(alwaysVisible: true, value: $timeout, tip: timeoutTip) { tip in
+                        Slider(value: binding, in: 0...Double(maxIndex), step: 1)
+                            .introspect(.slider, on: .macOS(.v14, .v15)) { slider in
+                                tip.positionRect = {
+                                    slider.knobRect
+                                }
+                                tip.hasReactivePosition = true
+                                tip.cache(slider)
+                            }
                     }
                 }
             }

@@ -11,19 +11,18 @@ struct SettingsView: View {
     var body: some View {
         HStack(spacing: -20) {
             VStack(spacing: 0) {
-                Spacer()
-                
-                VStack {
-                    Text(Bundle.main.appName)
-                        .font(.title)
-                        .bold()
-                        .padding(8)
-                    
-                    SettingsVersionView()
+                EmptyFormWrapper(normalizePadding: false) {
+                    VStack {
+                        Text(Bundle.main.appName)
+                            .font(.title)
+                            .bold()
+                            .padding(8)
+                        
+                        SettingsVersionView()
+                    }
+                    .padding(.vertical, 42)
                 }
-                .padding(.vertical, 32)
-                
-                Spacer()
+                .defaultScrollAnchor(.bottom)
                 
                 Form {
                     SettingsModifiersSection()
@@ -31,9 +30,8 @@ struct SettingsView: View {
                     SettingsAdvancedSection()
                 }
                 .defaultScrollAnchor(.bottom)
-                .padding(.top, -20)
 #if DEBUG
-                .border(.orange)
+                .border(.orange.opacity(0.1))
 #endif
             }
             .frame(maxWidth: 325)
@@ -48,7 +46,7 @@ struct SettingsView: View {
                 .defaultScrollAnchor(.bottom)
                 .padding(.top, -20)
 #if DEBUG
-                .border(.blue)
+                .border(.blue.opacity(0.1))
 #endif
             }
             .frame(maxWidth: 375)

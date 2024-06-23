@@ -21,22 +21,22 @@ struct SettingsGeneralSection: View {
     
     var body: some View {
         Section {
-            Picker("Theme", selection: $theme) {
-                ForEach(Theme.themes, id: \.self) { theme in
-                    HStack {
-                        Image(nsImage: theme.icon.image)
-                        Text(theme.name)
+            SectionVStack {
+                Picker("Theme", selection: $theme) {
+                    ForEach(Theme.themes, id: \.self) { theme in
+                        HStack {
+                            Image(nsImage: theme.icon.image)
+                            Text(theme.name)
+                        }
                     }
                 }
-            }
-            .onChange(of: theme) { _, _ in
-                AppDelegate.shared?.statusBarController.startFunctionalTimers()
+                .onChange(of: theme) { _, _ in
+                    AppDelegate.shared?.statusBarController.startFunctionalTimers()
+                }
+                
+                Toggle("Reduce animation", isOn: $reduceAnimationEnabled)
             }
             
-            Toggle("Auto shows", isOn: $autoShowsEnabled)
-        }
-        
-        Section {
             feedback: do {
                 let maxIndex = FeedbackAttribute.allCases.endIndex - 1
                 let binding = Binding<Double> {
@@ -45,25 +45,81 @@ struct SettingsGeneralSection: View {
                     feedback = FeedbackAttribute.allCases[Int(index)]
                 }
                 
-                TipWrapper(alwaysVisible: true, value: $feedback, tip: feedbackTip) { tip in
-                    Slider(value: binding, in: 0...Double(maxIndex), step: 1) {
-                        Text("Haptic feedback")
-                    }
-                    .introspect(.slider, on: .macOS(.v14, .v15)) { slider in
-                        tip.positionRect = {
-                            slider.knobRect
+                EmptyFormWrapper {
+                    Text("Haptic feedback")
+                        .foregroundStyle(
+                            feedback == .none
+                            ? AnyShapeStyle(PlaceholderTextShapeStyle())
+                            : AnyShapeStyle(ForegroundStyle())
+                        )
+                        .animation(.default, value: feedback)
+                    
+                    TipWrapper(alwaysVisible: true, value: $feedback, tip: feedbackTip) { tip in
+                        Slider(value: binding, in: 0...Double(maxIndex), step: 1) {
+                            EmptyView()
                         }
-                        tip.hasReactivePosition = true
-                        tip.cache(slider)
+                        .introspect(.slider, on: .macOS(.v14, .v15)) { slider in
+                            tip.positionRect = {
+                                slider.knobRect
+                            }
+                            tip.hasReactivePosition = true
+                            tip.cache(slider)
+                        }
                     }
                 }
             }
         }
-        
+         
+        Section("Functions") {
+            SectionVStack {
+                Toggle("Auto shows", isOn: $autoShowsEnabled)
+                
+                Toggle("Use always hide area", isOn: $alwaysHideAreaEnabled)
+            }
+        }
+         
         Section {
-            Toggle("Use always hide area", isOn: $alwaysHideAreaEnabled)
+            SectionVStack {
+                Picker("Auto idling", selection: .constant(1)) {
+                    Text("Test 1").tag(1)
+                    Text("Test 2").tag(2)
+                }
+                
+                Picker("Edge behavior", selection: .constant(1)) {
+                    Text("Test 1").tag(1)
+                    Text("Test 2").tag(2)
+                }
+            }
             
-            Toggle("Reduce animation", isOn: $reduceAnimationEnabled)
+            VStack {
+                Picker(selection: .constant(1)) {
+                    Text("Percentage").tag(1)
+                    Text("Pixel").tag(2)
+                } label: {
+                    HStack(alignment: .firstTextBaseline) {
+                        Text("Dead zone")
+                        
+                        Spacer()
+                        
+                        if autoShowsEnabled {
+                            Stepper(value: .constant(42), in: 0...Int.max) {
+                                TextField(text: .constant("42")) {
+                                    EmptyView()
+                                }
+                                .multilineTextAlignment(.trailing)
+                                .lineLimit(1)
+                                .monospaced()
+                            }
+                        }
+                    }
+                }
+                
+                EmptyFormWrapper {
+                    Slider(value: .constant(0.25), in: 0...1) {
+                        EmptyView()
+                    }
+                }
+            }
         }
     }
 }

@@ -13,7 +13,7 @@ struct SettingsModifiersSection: View {
     @Default(.modifierMode) var modifierMode
     
     var body: some View {
-        Section {
+        Section("Modifiers") {
             VStack(spacing: 8) {
                 HStack(spacing: 8) {
                     Box(isOn: $modifiers.control, behavior: .toggle) {
@@ -37,7 +37,7 @@ struct SettingsModifiersSection: View {
                 
                 HStack {
                     // Use a column styled Form to diminish the Picker's empty label
-                    Form {
+                    EmptyFormWrapper(normalizePadding: false) {
                         HStack(alignment: .firstTextBaseline) {
                             Picker(selection: $modifierMode) {
                                 ForEach(ModifiersAttribute.Mode.allCases, id: \.self) { mode in
@@ -53,12 +53,8 @@ struct SettingsModifiersSection: View {
                             Text("of the above to trigger")
                                 .fixedSize()
                         }
-                        .foregroundStyle(.secondary)
-                        .formStyle(.columns)
+                        .foregroundStyle(.placeholder)
                     }
-                    .formStyle(.columns)
-                    .padding(0) // Otherwise the nested Form will cause layout to overflow
-                    .padding(.bottom, -2)
                     .fixedSize()
                     
                     Spacer()
