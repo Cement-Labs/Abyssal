@@ -9,6 +9,7 @@ import Foundation
 import AppKit
 import SwiftUI
 import Defaults
+import SwiftUIIntrospect
 
 class Tip {
     static var margin: CGSize = .init(width: 20, height: 20)
@@ -93,6 +94,30 @@ class Tip {
         self.content = content
     }
     
+    convenience init(
+        preferredEdge: NSRectEdge = .minX,
+        delay: CGFloat = 0.5,
+        title: (() -> String)? = nil,
+        content: (() -> String)? = nil
+    ) {
+        self.init(
+            preferredEdge: preferredEdge, delay: delay,
+            rect: nil, offset: nil,
+            title: title, content: content
+        )
+    }
+    
+    convenience init(
+        preferredEdge: NSRectEdge = .minX,
+        delay: CGFloat = 0.5,
+        content: (() -> String)? = nil
+    ) {
+        self.init(
+            preferredEdge: preferredEdge, delay: delay,
+            title: nil, content: content
+        )
+    }
+    
     @discardableResult
     func update() -> Bool {
         guard AppDelegate.shared?.popover.isShown ?? false else {
@@ -100,17 +125,17 @@ class Tip {
         }
         
         if let title {
-            self.views.title.attributedStringValue = Tip.formatTitle(title())
+            views.title.attributedStringValue = Tip.formatTitle(title())
         }
-        self.views.title.isHidden = !has.title
+        views.title.isHidden = !has.title
         
         if let content {
-            self.views.content.attributedStringValue = Tip.formatContent(content())
+            views.content.attributedStringValue = Tip.formatContent(content())
         }
-        self.views.content.isHidden = !has.content
+        views.content.isHidden = !has.content
         
-        self.updateFrame()
-        self.updatePosition()
+        updateFrame()
+        updatePosition()
         
         return true
     }

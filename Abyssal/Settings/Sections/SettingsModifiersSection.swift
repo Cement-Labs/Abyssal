@@ -12,11 +12,11 @@ struct SettingsModifiersSection: View {
     @Default(.modifiers) private var modifiers
     @Default(.modifierMode) private var modifierMode
     
-    private let modifierTip = Tip(content:  {
+    private let modifierTip = Tip {
 """
 The modifier keys to use for showing the **Auto Hide Area.** It is recommended to keep `⌘` enabled.
 """
-    })
+    }
     
     var body: some View {
         Section("Modifiers") {

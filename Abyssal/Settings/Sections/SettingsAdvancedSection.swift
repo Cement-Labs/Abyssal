@@ -13,15 +13,15 @@ import SwiftUIIntrospect
 struct SettingsAdvancedSection: View {
     @Default(.timeout) private var timeout
     
-    private let timeoutTip = Tip(content: {
-        "Test"
-    })
+    private let timeoutTip = Tip(preferredEdge: .minY) {
+"Test"
+    }
     
-    private let startsWithMacOSTip = Tip(content: {
+    private let startsWithMacOSTip = Tip {
 """
 Launch **\(Bundle.main.appName)** right after macOS starts.
 """
-    })
+    }
     
     var body: some View {
         Section("Advanced") {

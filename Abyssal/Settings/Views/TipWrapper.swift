@@ -65,12 +65,6 @@ where Content: View, Value: Equatable {
                 }
                 tip.hasReactivePosition = true
             }
-            .introspect(.picker(style: .menu), on: .macOS(.v14, .v15)) { picker in
-                tip.cache(picker)
-            }
-            .introspect(.toggle(style: .switch), on: .macOS(.v14, .v15)) { toggle in
-                tip.cache(toggle)
-            }
             .introspect(.view, on: .macOS(.v14, .v15)) { view in
                 tip.cache(view)
             }

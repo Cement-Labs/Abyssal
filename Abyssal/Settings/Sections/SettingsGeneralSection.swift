@@ -13,25 +13,25 @@ struct SettingsGeneralSection: View {
     @Default(.reduceAnimationEnabled) private var reduceAnimationEnabled
     @Default(.feedback) private var feedback
     
-    private let feedbackTip = Tip(title: {
-        "Title"
-    }, content: {
-        "Content"
-    })
+    private let feedbackTip = Tip(preferredEdge: .minY) {
+"Title"
+    } content: {
+"Content"
+    }
     
-    private let themeTip = Tip(content: {
+    private let themeTip = Tip {
 """
 Some themes will hide the icons inside the separators automatically, while others not.
 
 Themes that automatically hide the icons will only show them when the status items inside the **Hide Area** are manually set to visible, while other themes indicate this by reducing the separators' opacity.
 """
-    })
+    }
     
-    private let reduceAnimationTip = Tip(content: {
+    private let reduceAnimationTip = Tip {
 """
 Reduce animation to gain a more performant experience.
 """
-    })
+    }
     
     var body: some View {
         Section {
