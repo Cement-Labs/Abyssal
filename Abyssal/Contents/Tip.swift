@@ -13,7 +13,7 @@ import Defaults
 class Tip {
     static var margin: CGSize = .init(width: 20, height: 20)
     
-    var preferredEdge: NSRectEdge = .minY
+    var preferredEdge: NSRectEdge = .minX
     var delay: CGFloat = 0.5
     
     var positionRect = { CGRect.zero }
@@ -64,7 +64,7 @@ class Tip {
     }
     
     init(
-        preferredEdge: NSRectEdge = .minY,
+        preferredEdge: NSRectEdge = .minX,
         delay: CGFloat = 0.5,
         rect positionRect: (() -> CGRect)? = nil,
         offset positionOffset: (() -> CGPoint)? = nil,
@@ -84,18 +84,13 @@ class Tip {
         }
         
         self.views.vstack.addArrangedSubview(self.views.title)
-        Tip.addHorizontalMargins(parent: self.views.vstack, child: self.views.title, relatedBy: .equal)
-        
         self.views.vstack.addArrangedSubview(self.views.content)
-        Tip.addHorizontalMargins(parent: self.views.vstack, child: self.views.content, relatedBy: .equal)
         
         self.popover = Tip.createPopover()
         self.popover.contentViewController = Tip.createViewController(self.views.vstack)
         
         self.title = title
         self.content = content
-        
-        update()
     }
     
     @discardableResult
@@ -114,10 +109,17 @@ class Tip {
         }
         self.views.content.isHidden = !has.content
         
-        self.updatePosition()
         self.updateFrame()
+        self.updatePosition()
         
         return true
+    }
+    
+    func updateFrame() {
+        DispatchQueue.main.async {
+            self.views.vstack.layoutSubtreeIfNeeded()
+            self.popover.contentSize = self.views.vstack.fittingSize
+        }
     }
     
     func updatePosition() {
@@ -126,11 +128,6 @@ class Tip {
                 self.popover.positioningRect = self.position
             }
         }
-    }
-    
-    func updateFrame() {
-        popover.contentSize = viewController?.view.fittingSize ?? .zero
-        viewController?.view.layoutSubtreeIfNeeded()
     }
     
     func cache(_ sender: NSView?) {
@@ -148,6 +145,9 @@ class Tip {
         guard let cachedSender else { return }
         
         showDispatch = .init {
+            self.updateFrame()
+            self.updatePosition()
+            
             self.popover.show(
                 relativeTo:     self.position,
                 of:             cachedSender,
@@ -157,19 +157,16 @@ class Tip {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: showDispatch!)
         
-        if self.hasReactivePosition {
-            self.positionUpdateTimer = Timer.scheduledTimer(
+        if hasReactivePosition {
+            positionUpdateTimer = Timer.scheduledTimer(
                 withTimeInterval: 1.0 / 60.0,
                 repeats: true
             ) { [weak self] _ in
                 guard let self else { return }
                 
-                self.updatePosition()
                 self.updateFrame()
+                self.updatePosition()
             }
-        } else {
-            self.updatePosition()
-            self.updateFrame()
         }
     }
     
@@ -287,45 +284,5 @@ extension Tip {
         _ text: String
     ) -> NSAttributedString {
         generateMarkdown(text, font: NSFont.systemFont(ofSize: 11))
-    }
-}
-
-extension Tip {
-    static func addHorizontalMargins(
-        parent: NSView,
-        child: NSView?,
-        relatedBy: NSLayoutConstraint.Relation
-    ) {
-        parent.addConstraint(NSLayoutConstraint(
-            item: parent, attribute: .leading,
-            relatedBy: relatedBy,
-            toItem: child, attribute: .leading,
-            multiplier: 1, constant: -margin.width
-        ))
-        parent.addConstraint(NSLayoutConstraint(
-            item: parent, attribute: .trailing,
-            relatedBy: relatedBy,
-            toItem: child, attribute: .trailing,
-            multiplier: 1, constant: margin.width
-        ))
-    }
-    
-    static func addVerticalMargins(
-        parent: NSView,
-        child: NSView?,
-        relatedBy: NSLayoutConstraint.Relation
-    ) {
-        parent.addConstraint(NSLayoutConstraint(
-            item: parent, attribute: .top,
-            relatedBy: relatedBy,
-            toItem: child, attribute: .top,
-            multiplier: 1, constant: -margin.height
-        ))
-        parent.addConstraint(NSLayoutConstraint(
-            item: parent, attribute: .bottom,
-            relatedBy: relatedBy,
-            toItem: child, attribute: .bottom,
-            multiplier: 1, constant: margin.height
-        ))
     }
 }
