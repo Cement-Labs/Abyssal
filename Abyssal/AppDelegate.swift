@@ -11,6 +11,8 @@ import AppKit
 import Defaults
 import LaunchAtLogin
 
+let repository = "Cement-Labs/Abyssal"
+
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
     static var shared: AppDelegate? {
@@ -90,7 +92,7 @@ extension AppDelegate {
             return
         }
         
-        if KeyboardHelper.option {
+        if KeyboardManager.option {
             togglePopover(sender)
         } else {
             if let event = NSApp.currentEvent, event.type == .rightMouseUp {

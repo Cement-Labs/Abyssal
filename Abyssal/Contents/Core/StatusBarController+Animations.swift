@@ -17,8 +17,8 @@ extension StatusBarController {
     
     var triggers: (body: Bool, tail: Bool) {
         (
-            body: mouseOnStatusBar && KeyboardHelper.triggers,
-            tail: (mouseSpare || mouseOverBody) && KeyboardHelper.triggers
+            body: mouseOnStatusBar && KeyboardManager.triggers,
+            tail: (mouseSpare || mouseOverBody) && KeyboardManager.triggers
         )
         
     }
@@ -170,7 +170,7 @@ extension StatusBarController {
             do {
                 if !collapses && !body.wasUnstable {
                     if body.targetLength <= 0 {
-                        body.targetLength = x + body.length - Helper.menuBarLeftEdge
+                        body.targetLength = x + body.length - ScreenManager.menuBarLeftEdge
                     }
                     
                     body.length = body.targetLength
@@ -187,7 +187,7 @@ extension StatusBarController {
                 }
                 
                 else if body.wasUnstable {
-                    body.wasUnstable = !collapses || body.wasUnstable && x > Helper.menuBarLeftEdge + 5
+                    body.wasUnstable = !collapses || body.wasUnstable && x > ScreenManager.menuBarLeftEdge + 5
                 }
                 
                 
@@ -196,7 +196,7 @@ extension StatusBarController {
                     let lastOrigin = body.lastOrigin,
                     body.lastCollapses != collapses || x != lastOrigin.x
                 {
-                    body.targetLength = collapses ? max(0, x + body.length - Helper.menuBarLeftEdge) : icons().body.width
+                    body.targetLength = collapses ? max(0, x + body.length - ScreenManager.menuBarLeftEdge) : icons().body.width
                 }
                 
                 body.lastOrigin = body.origin
@@ -221,7 +221,7 @@ extension StatusBarController {
             do {
                 if !collapses && !tail.wasUnstable {
                     if tail.targetLength <= 0 {
-                        tail.targetLength = x + tail.length - Helper.menuBarLeftEdge
+                        tail.targetLength = x + tail.length - ScreenManager.menuBarLeftEdge
                     }
                     
                     tail.length = tail.targetLength
@@ -236,7 +236,7 @@ extension StatusBarController {
                 }
                 
                 else if tail.wasUnstable {
-                    tail.wasUnstable = !collapses || tail.wasUnstable && x > Helper.menuBarLeftEdge + 5
+                    tail.wasUnstable = !collapses || tail.wasUnstable && x > ScreenManager.menuBarLeftEdge + 5
                 }
                 
                 
@@ -245,7 +245,7 @@ extension StatusBarController {
                     let lastOrigin = tail.lastOrigin,
                     tail.lastCollapses != collapses || x != lastOrigin.x
                 {
-                    tail.targetLength = collapses ? max(0, x + tail.length - Helper.menuBarLeftEdge) : icons().tail.width
+                    tail.targetLength = collapses ? max(0, x + tail.length - ScreenManager.menuBarLeftEdge) : icons().tail.width
                 }
                 
                 tail.lastOrigin = tail.origin
@@ -277,7 +277,7 @@ extension StatusBarController {
             head.targetAlpha = icons().head.opacity
             body.targetAlpha = icons().body.opacity
             tail.targetAlpha = icons().tail.opacity
-        } else if KeyboardHelper.triggers {
+        } else if KeyboardManager.triggers {
             head.button?.image = Defaults[.theme].headUncollapsed.image
             head.targetAlpha = icons().head.opacity
             body.targetAlpha = triggers.body ? icons().body.opacity : 0

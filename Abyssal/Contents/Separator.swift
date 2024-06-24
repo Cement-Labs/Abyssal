@@ -80,14 +80,14 @@ struct Separator {
 extension Separator {
     mutating func lerpAlpha() -> Bool {
         if let alpha {
-            self.alpha = Helper.lerp(
+            self.alpha = MathHelper.lerp(
                 a: alpha,
                 b: targetAlpha,
-                ratio: Helper.lerpRatio,
+                ratio: MathHelper.lerpRatio,
                 false
             )
             
-            return Helper.approaching(alpha, targetAlpha, false)
+            return MathHelper.approaching(alpha, targetAlpha, false)
         } else {
             return true
         }
@@ -98,13 +98,13 @@ extension Separator {
             length = targetLength
             return true
         } else {
-            length = Helper.lerp(
+            length = MathHelper.lerp(
                 a: length,
                 b: targetLength,
-                ratio: Helper.lerpRatio
+                ratio: MathHelper.lerpRatio
             )
             
-            return Helper.approaching(length, targetLength)
+            return MathHelper.approaching(length, targetLength)
         }
     }
 }

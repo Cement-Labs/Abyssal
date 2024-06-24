@@ -15,7 +15,7 @@ class SettingsViewController: NSViewController {
     }
     
     override func viewWillAppear() {
-        VersionHelper.checkNewVersionsTask.resume()
+        VersionManager.fetchLatest.resume()
         initializeFrame()
         
         DispatchQueue.main.async {

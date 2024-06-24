@@ -19,7 +19,8 @@
             "value" : "%1$@ %2$@ %3$@"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "%g Minutes" : {
       "localizations" : {

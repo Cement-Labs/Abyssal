@@ -17,7 +17,7 @@ class StatusBarController {
             let headSize = head.button?.window?.frame.size
         else { return false }
         let mouseLocation = NSEvent.mouseLocation
-        return mouseLocation.x >= Helper.menuBarLeftEdge && mouseLocation.y >= headOrigin.y && mouseLocation.y <= headOrigin.y + headSize.height
+        return mouseLocation.x >= ScreenManager.menuBarLeftEdge && mouseLocation.y >= headOrigin.y && mouseLocation.y <= headOrigin.y + headSize.height
     }
     
     var mouseInHideArea: Bool {
@@ -63,15 +63,15 @@ class StatusBarController {
     }
     
     var mouseDragging: Bool {
-        MouseHelper.dragging && mouseOnStatusBar
+        MouseManager.dragging && mouseOnStatusBar
     }
     
     var shouldPresentFeedback: Bool {
-        return !timeout && MouseHelper.none
+        return !timeout && MouseManager.none
     }
     
     var maxLength: CGFloat {
-        return ScreenHelper.maxWidth ?? 10000 // To cover all possible screens
+        return ScreenManager.maxWidth ?? 10000 // To cover all possible screens
     }
     
     var popoverShown: Bool {

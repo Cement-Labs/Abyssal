@@ -168,9 +168,9 @@ extension StatusBarController {
                 (self.was.mouseOnStatusBar != self.mouseOnStatusBar)
                 || (self.was.mouseSpare != self.mouseSpare)
                 || (self.was.mouseOverBody != self.mouseOverBody)
-                let keyNeedsUpdate = self.was.triggers != KeyboardHelper.triggers
+                let keyNeedsUpdate = self.was.triggers != KeyboardManager.triggers
                 
-                if !MouseHelper.dragging {
+                if !MouseManager.dragging {
                     if mouseNeedsUpdate {
                         if 
                             self.mouseOnStatusBar || self.mouseSpare || self.mouseOverBody
@@ -197,7 +197,7 @@ extension StatusBarController {
                     self.mouseOnStatusBar,
                     self.mouseSpare,
                     self.mouseOverBody,
-                    KeyboardHelper.triggers
+                    KeyboardManager.triggers
                 )
             }
         }
@@ -233,7 +233,7 @@ extension StatusBarController {
     }
     
     func startFunctionalTimers() {
-        guard !MouseHelper.dragging else { return }
+        guard !MouseManager.dragging else { return }
         startAnimationTimer()
         startActionTimer()
         
@@ -260,7 +260,7 @@ extension StatusBarController {
                     self.mouseSpare
                 else { return }
                 
-                if Defaults[.isCollapsed] && self.mouseInHideArea && !(KeyboardHelper.command && event?.type == .leftMouseDown) {
+                if Defaults[.isCollapsed] && self.mouseInHideArea && !(KeyboardManager.command && event?.type == .leftMouseDown) {
                     self.idleHideArea()
                 }
                 

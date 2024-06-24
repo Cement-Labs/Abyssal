@@ -10,7 +10,7 @@ import AppKit
 
 extension NSRect {
     var containsMouse: Bool {
-        return MouseHelper.inside(self)
+        return MouseManager.inside(self)
     }
     
     func getTrackingArea(
