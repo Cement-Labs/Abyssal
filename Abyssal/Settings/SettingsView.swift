@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUIIntrospect
 
 struct SettingsView: View {
     var body: some View {
@@ -23,12 +24,16 @@ struct SettingsView: View {
                     .padding(.vertical, 42)
                 }
                 .defaultScrollAnchor(.bottom)
+#if DEBUG
+                .border(.green.opacity(0.1))
+#endif
                 
                 Form {
                     SettingsModifiersSection()
                     
                     SettingsAdvancedSection()
                 }
+                .padding(1)
                 .defaultScrollAnchor(.bottom)
 #if DEBUG
                 .border(.orange.opacity(0.1))
@@ -48,6 +53,7 @@ struct SettingsView: View {
                     SettingsBehaviorsSection()
                 }
                 .defaultScrollAnchor(.bottom)
+                .padding(1)
                 .padding(.top, -20)
 #if DEBUG
                 .border(.blue.opacity(0.1))
@@ -57,6 +63,7 @@ struct SettingsView: View {
         }
         .formStyle(.grouped)
         .scrollDisabled(true)
+        .padding(.horizontal, -12) // Don't know why, but needed
     }
 }
 
