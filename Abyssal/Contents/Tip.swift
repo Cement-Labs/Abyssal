@@ -189,8 +189,7 @@ class Tip {
             ) { [weak self] _ in
                 guard let self else { return }
                 
-                self.updateFrame()
-                self.updatePosition()
+                self.update()
             }
         }
     }

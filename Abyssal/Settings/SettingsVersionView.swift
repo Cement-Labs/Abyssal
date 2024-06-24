@@ -9,9 +9,9 @@ import SwiftUI
 
 struct SettingsVersionView: View {
     private let updateTip = Tip {
-"""
+        .init(localized: """
 An update is available. Click to access the download page.
-"""
+""")
     }
     
     var body: some View {

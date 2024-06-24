@@ -14,23 +14,34 @@ struct SettingsGeneralSection: View {
     @Default(.feedback) private var feedback
     
     private let feedbackTip = Tip(preferredEdge: .minY) {
-"Title"
+        switch Defaults[.feedback] {
+        case .none:
+                .init(localized: "None")
+        case .light:
+                .init(localized: "Light")
+        case .medium:
+                .init(localized: "Medium")
+        case .heavy:
+                .init(localized: "Heavy")
+        }
     } content: {
-"Content"
+        .init(localized: """
+The intensity of feedback given when triggering actions such as _enabling **Auto Shows**_ or _canceling **Auto Idling.**_
+""")
     }
     
     private let themeTip = Tip {
-"""
+        .init(localized: """
 Some themes will hide the icons inside the separators automatically, while others not.
 
 Themes that automatically hide the icons will only show them when the status items inside the **Hide Area** are manually set to visible, while other themes indicate this by reducing the separators' opacity.
-"""
+""")
     }
     
     private let reduceAnimationTip = Tip {
-"""
+        .init(localized: """
 Reduce animation to gain a more performant experience.
-"""
+""")
     }
     
     var body: some View {

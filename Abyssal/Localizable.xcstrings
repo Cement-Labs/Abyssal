@@ -1,6 +1,16 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "**%@** is open source. Click to access the source code." : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**%@**是开源软件。单击以访问源代码仓库。"
+          }
+        }
+      }
+    },
     "%@ %@ %@" : {
       "localizations" : {
         "en" : {
@@ -12,16 +22,64 @@
       }
     },
     "%g Minutes" : {
-
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%g Minute"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "new",
+                  "value" : "%g Minutes"
+                }
+              }
+            }
+          }
+        }
+      }
     },
     "%g Seconds" : {
-
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%g Second"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "new",
+                  "value" : "%g Seconds"
+                }
+              }
+            }
+          }
+        }
+      }
     },
     "Advanced" : {
 
     },
     "all" : {
 
+    },
+    "An update is available. Click to access the download page." : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "有可用更新。单击前往下载。"
+          }
+        }
+      }
     },
     "any" : {
 
@@ -30,6 +88,9 @@
 
     },
     "Auto shows" : {
+
+    },
+    "Auto shows the status items inside the **Hide Area** while the cursor is hovering over the spare area.\n\nIf this option is enabled, the status items inside the **Hide Area,** which is between the `Hide Separator` (the middle one) and the `Always Hide Separator` (the furthest one from the screen corner), will be hidden and kept invisible, until the cursor hovers over the spare area, where the status items in **Hide Area** used to stay. Otherwise the status items will be hidden until you switch their visibility state manually.\n\nBy left clicking on the `Menu Separator` (the nearest one to the screen corner), or clicking using either of the mouse buttons on the other separators, you can manually switch the visibility state of the status items inside the **Hide Area.** If you set them visible, they will never be hidden again until you manually switch their visibility state. Otherwise they will follow the behavior defined above." : {
 
     },
     "Dead zone" : {
@@ -113,140 +174,32 @@
     "Forever" : {
 
     },
-    "FormattedTime/Forever" : {
-      "comment" : "forever",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Forever"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "永不"
-          }
-        }
-      }
-    },
-    "FormattedTime/Minutes" : {
-      "comment" : "(int) + minutes",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld minute"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld minutes"
-                }
-              }
-            }
-          }
-        },
-        "zh-Hans" : {
-          "variations" : {
-            "plural" : {
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld分钟"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "FormattedTime/Seconds" : {
-      "comment" : "(int) + seconds",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld second"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld seconds"
-                }
-              }
-            }
-          }
-        },
-        "zh-Hans" : {
-          "variations" : {
-            "plural" : {
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld秒"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "Functions" : {
 
     },
     "Haptic feedback" : {
 
     },
+    "Heavy" : {
+
+    },
+    "Hide certain status items permanently by moving them left of the `Always Hide Separator` to the **Always Hide Area.**\n\nThe status items inside the **Always Hide Area** will be hidden and invisible until the cursor hovers over the spare area with a modifier key down, or while this window is opened." : {
+
+    },
+    "Launch **%@** right after macOS starts." : {
+
+    },
+    "Light" : {
+
+    },
+    "Medium" : {
+
+    },
     "Modifiers" : {
 
     },
-    "ModifiersMode/All" : {
-      "comment" : "modifiers mode all",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "All"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "全部"
-          }
-        }
-      }
-    },
-    "ModifiersMode/Any" : {
-      "comment" : "modifiers mode any",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Any"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "任一"
-          }
-        }
-      }
+    "None" : {
+
     },
     "of the above to trigger" : {
 
@@ -266,10 +219,25 @@
     "Reduce animation" : {
 
     },
+    "Reduce animation to gain a more performant experience." : {
+
+    },
+    "Some themes will hide the icons inside the separators automatically, while others not.\n\nThemes that automatically hide the icons will only show them when the status items inside the **Hide Area** are manually set to visible, while other themes indicate this by reducing the separators' opacity." : {
+
+    },
+    "Test" : {
+
+    },
     "Test 1" : {
 
     },
     "Test 2" : {
+
+    },
+    "The intensity of feedback given when triggering actions such as _enabling **Auto Shows**_ or _canceling **Auto Idling.**_" : {
+
+    },
+    "The modifier keys to use for showing the **Auto Hide Area.** It is recommended to keep `⌘` enabled." : {
 
     },
     "Theme" : {
@@ -529,96 +497,6 @@
     },
     "Timeout" : {
 
-    },
-    "Tip/ButtonAppVersion" : {
-      "comment" : "if (update available) -> (button) app version",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "An update is available, click to access the download page."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "有可用更新，单击前往下载。"
-          }
-        }
-      }
-    },
-    "Tip/ButtonLink" : {
-      "comment" : "(button) link",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "**(value)** is open sourced. Click to access the source code repository."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "**Abyssal**是开源软件。单击以访问源代码仓库。"
-          }
-        }
-      }
-    },
-    "Tip/ButtonMinimize" : {
-      "comment" : "(button) minimize",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Minimize this window. Right click on the `Menu Separator` to open this window again."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "最小化此窗口。右键单击`菜单分隔符`以再次显示此窗口。"
-          }
-        }
-      }
-    },
-    "Tip/ButtonTips" : {
-      "comment" : "(button) tips",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "The tips are currently shown. Click to hide them."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "正在显示操作提示。单击以隐藏。"
-          }
-        }
-      }
-    },
-    "Tip/PopUpButtonModifierModes" : {
-      "comment" : "(pop up button) modifier modes",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Decides how the modifier keys are triggered."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "决定修饰键的触发规则。"
-          }
-        }
-      }
     },
     "Tip/PopUpButtonThemes" : {
       "comment" : "(pop up button) themes",

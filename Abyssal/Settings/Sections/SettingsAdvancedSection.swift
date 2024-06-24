@@ -14,13 +14,13 @@ struct SettingsAdvancedSection: View {
     @Default(.timeout) private var timeout
     
     private let timeoutTip = Tip(preferredEdge: .minY) {
-"Test"
+        .init(localized: "Test")
     }
     
     private let startsWithMacOSTip = Tip {
-"""
+        .init(localized: """
 Launch **\(Bundle.main.appName)** right after macOS starts.
-"""
+""")
     }
     
     var body: some View {

@@ -14,9 +14,9 @@ struct SettingsTrafficsView: View {
     @Environment(\.openURL) private var openUrl
     
     private let sourceTip = Tip {
-"""
+        .init(localized: """
 **\(Bundle.main.appName)** is open source. Click to access the source code.
-"""
+""")
     }
     
     var body: some View {
