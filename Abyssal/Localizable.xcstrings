@@ -580,7 +580,7 @@
     },
     "Tip/ButtonAppVersion" : {
       "comment" : "if (update available) -> (button) app version",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -598,7 +598,7 @@
     },
     "Tip/ButtonLink" : {
       "comment" : "(button) link",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -616,7 +616,7 @@
     },
     "Tip/ButtonMinimize" : {
       "comment" : "(button) minimize",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -634,7 +634,7 @@
     },
     "Tip/ButtonTips" : {
       "comment" : "(button) tips",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -652,7 +652,7 @@
     },
     "Tip/PopUpButtonModifierModes" : {
       "comment" : "(pop up button) modifier modes",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -670,7 +670,7 @@
     },
     "Tip/PopUpButtonThemes" : {
       "comment" : "(pop up button) themes",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -688,7 +688,7 @@
     },
     "Tip/SliderDeadZone" : {
       "comment" : "(slider) dead zone",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -706,7 +706,7 @@
     },
     "Tip/SliderFeedbackIntensity" : {
       "comment" : "(slider) feedback intensity",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -724,7 +724,7 @@
     },
     "Tip/SliderTimeout" : {
       "comment" : "(slider) timeout",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -742,7 +742,7 @@
     },
     "Tip/SwitchAutoShows" : {
       "comment" : "(switch) auto shows",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -760,7 +760,7 @@
     },
     "Tip/SwitchReduceAnimations" : {
       "comment" : "(switch) reduce animations",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -778,7 +778,7 @@
     },
     "Tip/SwitchStartsWithMacOS" : {
       "comment" : "(switch) starts with macOS",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -796,7 +796,7 @@
     },
     "Tip/SwitchUseAlwaysHideArea" : {
       "comment" : "(switch) use always hide area",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -814,7 +814,7 @@
     },
     "Tip/ViewModifiers" : {
       "comment" : "(segmented control) modifiers",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
