@@ -34,7 +34,6 @@ class Tip<Title> where Title: View {
     }
     
     private var positionUpdateTimer: Timer?
-    
     private var showDispatch: DispatchWorkItem?
     
     private var has: (title: Bool, content: Bool) {
@@ -43,8 +42,6 @@ class Tip<Title> where Title: View {
             content: content != nil && Defaults[.tipsEnabled]
         )
     }
-    
-    
     
     private var views: (vstack: NSStackView, title: NSHostingView<Title?>, content: NSTextField) = (
         vstack: Tip.createStackView(),
@@ -56,8 +53,6 @@ class Tip<Title> where Title: View {
         popover.contentViewController
     }
     
-    
-    
     var isAvailable: Bool {
         has.title || has.content
     }
@@ -65,6 +60,8 @@ class Tip<Title> where Title: View {
     var isShown: Bool {
         popover.isShown
     }
+    
+    
     
     init(
         preferredEdge: NSRectEdge = .minX,
@@ -86,16 +83,12 @@ class Tip<Title> where Title: View {
             self.positionOffset = positionOffset
         }
         
-        self.views.vstack.addArrangedSubview(self.views.title)
-        self.views.vstack.addArrangedSubview(self.views.content)
-        
-        Tip.addHorizontalMargins(parent: self.views.vstack, child: self.views.content, relatedBy: .equal)
-        
-        self.popover = Tip.createPopover()
-        self.popover.contentViewController = Tip.createViewController(self.views.vstack)
-        
         self.title = title
         self.content = content
+        
+        self.popover = Tip.createPopover()
+        
+        initLayout()
     }
     
     convenience init(
@@ -122,6 +115,22 @@ class Tip<Title> where Title: View {
         )
     }
     
+    private func initLayout() {
+        views.vstack.subviews.removeAll()
+        views.vstack.addArrangedSubview(views.title)
+        views.vstack.addArrangedSubview(views.content)
+        
+        let view = NSView(frame: .zero)
+        view.addSubview(views.vstack)
+        
+        view.topAnchor.constraint(equalToSystemSpacingBelow: views.vstack.topAnchor, multiplier: -1).isActive = true
+        view.leadingAnchor.constraint(equalToSystemSpacingAfter: views.vstack.leadingAnchor, multiplier: -1).isActive = true
+        view.bottomAnchor.constraint(equalToSystemSpacingBelow: views.vstack.bottomAnchor, multiplier: 1).isActive = true
+        view.trailingAnchor.constraint(equalToSystemSpacingAfter: views.vstack.trailingAnchor, multiplier: 1).isActive = true
+        
+        popover.contentViewController = Tip.createViewController(view)
+    }
+    
     @discardableResult
     func update() -> Bool {
         guard AppDelegate.shared?.popover.isShown ?? false else {
@@ -131,11 +140,12 @@ class Tip<Title> where Title: View {
         if let title {
             views.title.rootView = title()
         }
-        views.title.isHidden = !has.title
         
         if let content {
             views.content.attributedStringValue = Tip.formatMarkdown(content())
         }
+        
+        views.title.isHidden = !has.title
         views.content.isHidden = !has.content
         
         updateFrame()
@@ -146,8 +156,8 @@ class Tip<Title> where Title: View {
     
     func updateFrame() {
         DispatchQueue.main.async {
-            self.views.vstack.layoutSubtreeIfNeeded()
-            self.popover.contentSize = self.views.vstack.fittingSize
+            self.viewController?.view.layoutSubtreeIfNeeded()
+            self.popover.contentSize = self.viewController?.view.fittingSize ?? .zero
         }
     }
     
@@ -174,9 +184,6 @@ class Tip<Title> where Title: View {
         guard let cachedSender else { return }
         
         showDispatch = .init {
-            self.updateFrame()
-            self.updatePosition()
-            
             self.popover.show(
                 relativeTo:     self.position,
                 of:             cachedSender,
@@ -195,6 +202,9 @@ class Tip<Title> where Title: View {
                 
                 self.update()
             }
+        } else {
+            updateFrame()
+            updatePosition()
         }
     }
     
@@ -260,7 +270,6 @@ extension Tip {
         
         stackView.orientation = .vertical
         stackView.spacing = 8
-        stackView.edgeInsets = .init(top: 20, left: 0, bottom: 20, right: 0)
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -300,32 +309,5 @@ extension Tip {
         )
         
         return markdown
-    }
-}
-
-extension Tip {
-    static func addHorizontalMargins(
-        parent: NSView,
-        child: NSView?,
-        relatedBy: NSLayoutConstraint.Relation
-    ) {
-        parent.addConstraint(NSLayoutConstraint(
-            item: parent,
-            attribute: .leading,
-            relatedBy: relatedBy,
-            toItem: child,
-            attribute: .leading,
-            multiplier: 1,
-            constant: -20
-        ))
-        parent.addConstraint(NSLayoutConstraint(
-            item: parent,
-            attribute: .trailing,
-            relatedBy: relatedBy,
-            toItem: child,
-            attribute: .trailing,
-            multiplier: 1,
-            constant: 20
-        ))
     }
 }
