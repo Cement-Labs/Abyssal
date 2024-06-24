@@ -21,11 +21,11 @@ An update is available. Click to access the download page.
                     .controlSize(.small)
                 
                 Button {
-                    
+                    VersionManager.fetchLatest()
                 } label: {
                     Image(systemSymbol: .shiftFill)
                     
-                    let version = (false ? Text(Bundle.main.appVersion) : Text("\(Bundle.main.appVersion) \(Image(systemSymbol: .arrowRight)) \(Bundle.main.appVersion)"))
+                    let version = (false ? Text(Version.app.string) : Text("\(Version.app.string) \(Image(systemSymbol: .arrowRight)) \(Version.remote.string)"))
                         .monospaced()
                     
                     Text("Version \(version)")

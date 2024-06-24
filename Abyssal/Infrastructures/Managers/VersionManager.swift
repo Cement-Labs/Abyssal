@@ -66,9 +66,10 @@ extension Version: Comparable {
 }
 
 struct VersionManager {
-    static var remoteVersion: Version = .empty
+    fileprivate static var remoteVersion: Version = .app
     
-    static let fetchLatest = URLSession.shared.dataTask(with: .releaseTags) { (data, response, error) in
+    private static let task = URLSession.shared.dataTask(with: .releaseTags) { (data, response, error) in
+        print(data, response, error)
         guard let data else { return }
         
         do {
@@ -80,12 +81,21 @@ struct VersionManager {
                     .compactMap { Version(from: $0) }
                     .sorted(by: >)
                 
-                if let remote = tags.first {
+                if let remote = tags.first, remote > .app {
                     VersionManager.remoteVersion = remote
+                    print("Fetched latest version: \(remote)")
+                } else {
+                    print("No newer version available.")
                 }
             }
         } catch {
             print(error.localizedDescription)
         }
+    }
+    
+    static func fetchLatest() {
+        task.cancel()
+        print("Started fetching latest version...")
+        task.resume()
     }
 }

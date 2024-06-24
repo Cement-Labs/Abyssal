@@ -70,7 +70,7 @@ struct SettingsTrafficsView: View {
                     }
                     
                     DispatchQueue.main.async {
-                        self.openUrl(.sourceCode)
+                        self.openUrl(.source)
                     }
                 } content: {
                     Image(systemSymbol: .barcode)

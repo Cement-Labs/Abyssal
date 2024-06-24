@@ -11,7 +11,7 @@ import AppKit
 import Defaults
 import LaunchAtLogin
 
-let repository = "Cement-Labs/Abyssal"
+let repository = "NNN-Studio/Abyssal"//"Cement-Labs/Abyssal"
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -38,6 +38,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let controller = SettingsViewController()
         controller.view = NSHostingView(rootView: SettingsView())
         popover.contentViewController = controller
+        
+        // Fetch latest version
+        VersionManager.fetchLatest()
         
         // Pre-initialize view frame
         controller.initializeFrame()
