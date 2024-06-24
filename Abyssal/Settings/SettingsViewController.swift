@@ -11,7 +11,6 @@ class SettingsViewController: NSViewController {
     func initializeFrame() {
         DispatchQueue.main.async {
             AppDelegate.shared?.popover.contentSize = self.view.intrinsicContentSize
-            print(self.view.fittingSize)
         }
     }
     
