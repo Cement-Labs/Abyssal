@@ -180,25 +180,13 @@
     "Haptic feedback" : {
 
     },
-    "Heavy" : {
-
-    },
     "Hide certain status items permanently by moving them left of the `Always Hide Separator` to the **Always Hide Area.**\n\nThe status items inside the **Always Hide Area** will be hidden and invisible until the cursor hovers over the spare area with a modifier key down, or while this window is opened." : {
 
     },
     "Launch **%@** right after macOS starts." : {
 
     },
-    "Light" : {
-
-    },
-    "Medium" : {
-
-    },
     "Modifiers" : {
-
-    },
-    "None" : {
 
     },
     "of the above to trigger" : {
@@ -661,6 +649,9 @@
       }
     },
     "Tips" : {
+
+    },
+    "Title" : {
 
     },
     "Use always hide area" : {

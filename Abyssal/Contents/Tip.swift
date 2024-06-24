@@ -11,9 +11,7 @@ import SwiftUI
 import Defaults
 import SwiftUIIntrospect
 
-class Tip {
-    static var margin: CGSize = .init(width: 20, height: 20)
-    
+class Tip<Title> where Title: View {
     var preferredEdge: NSRectEdge = .minX
     var delay: CGFloat = 0.5
     
@@ -22,7 +20,7 @@ class Tip {
     
     var hasReactivePosition = false
     
-    var title: (() -> String)? = nil
+    var title: (() -> Title)? = nil
     var content: (() -> String)? = nil
     
     private var popover: NSPopover
@@ -48,7 +46,11 @@ class Tip {
     
     
     
-    private var views = (vstack: Tip.createStackView(), title: Tip.createTextField(), content: Tip.createTextField())
+    private var views: (vstack: NSStackView, title: NSHostingView<Title?>, content: NSTextField) = (
+        vstack: Tip.createStackView(),
+        title: .init(rootView: nil),
+        content: Tip.createTextField()
+    )
     
     private var viewController: NSViewController? {
         popover.contentViewController
@@ -69,7 +71,7 @@ class Tip {
         delay: CGFloat = 0.5,
         rect positionRect: (() -> CGRect)? = nil,
         offset positionOffset: (() -> CGPoint)? = nil,
-        title: (() -> String)? = nil,
+        title: (() -> Title)? = nil,
         content: (() -> String)? = nil
     ) {
         self.preferredEdge = preferredEdge
@@ -87,6 +89,8 @@ class Tip {
         self.views.vstack.addArrangedSubview(self.views.title)
         self.views.vstack.addArrangedSubview(self.views.content)
         
+        Tip.addHorizontalMargins(parent: self.views.vstack, child: self.views.content, relatedBy: .equal)
+        
         self.popover = Tip.createPopover()
         self.popover.contentViewController = Tip.createViewController(self.views.vstack)
         
@@ -97,7 +101,7 @@ class Tip {
     convenience init(
         preferredEdge: NSRectEdge = .minX,
         delay: CGFloat = 0.5,
-        title: (() -> String)? = nil,
+        title: (() -> Title)? = nil,
         content: (() -> String)? = nil
     ) {
         self.init(
@@ -111,7 +115,7 @@ class Tip {
         preferredEdge: NSRectEdge = .minX,
         delay: CGFloat = 0.5,
         content: (() -> String)? = nil
-    ) {
+    ) where Title == EmptyView {
         self.init(
             preferredEdge: preferredEdge, delay: delay,
             title: nil, content: content
@@ -125,12 +129,12 @@ class Tip {
         }
         
         if let title {
-            views.title.attributedStringValue = Tip.formatTitle(title())
+            views.title.rootView = title()
         }
         views.title.isHidden = !has.title
         
         if let content {
-            views.content.attributedStringValue = Tip.formatContent(content())
+            views.content.attributedStringValue = Tip.formatMarkdown(content())
         }
         views.content.isHidden = !has.content
         
@@ -256,7 +260,7 @@ extension Tip {
         
         stackView.orientation = .vertical
         stackView.spacing = 8
-        stackView.edgeInsets = .init(top: margin.height, left: margin.width, bottom: margin.height, right: margin.width)
+        stackView.edgeInsets = .init(top: 20, left: 0, bottom: 20, right: 0)
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -265,9 +269,9 @@ extension Tip {
 }
 
 extension Tip {
-    static func generateMarkdown(
+    static func formatMarkdown(
         _ text: String,
-        font: NSFont,
+        font: NSFont = .systemFont(ofSize: NSFont.systemFontSize),
         alignment: NSTextAlignment = .natural
     ) -> NSMutableAttributedString {
         let markdown = try! NSAttributedString.init(
@@ -297,16 +301,31 @@ extension Tip {
         
         return markdown
     }
-    
-    static func formatTitle(
-        _ text: String
-    ) -> NSAttributedString {
-        generateMarkdown(text, font: NSFont.boldSystemFont(ofSize: 20), alignment: .center)
-    }
-    
-    static func formatContent(
-        _ text: String
-    ) -> NSAttributedString {
-        generateMarkdown(text, font: NSFont.systemFont(ofSize: 11))
+}
+
+extension Tip {
+    static func addHorizontalMargins(
+        parent: NSView,
+        child: NSView?,
+        relatedBy: NSLayoutConstraint.Relation
+    ) {
+        parent.addConstraint(NSLayoutConstraint(
+            item: parent,
+            attribute: .leading,
+            relatedBy: relatedBy,
+            toItem: child,
+            attribute: .leading,
+            multiplier: 1,
+            constant: -20
+        ))
+        parent.addConstraint(NSLayoutConstraint(
+            item: parent,
+            attribute: .trailing,
+            relatedBy: relatedBy,
+            toItem: child,
+            attribute: .trailing,
+            multiplier: 1,
+            constant: 20
+        ))
     }
 }

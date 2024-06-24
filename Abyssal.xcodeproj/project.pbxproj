@@ -37,6 +37,7 @@
 		28C90F6A2C26D394000AC2E3 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C90F692C26D394000AC2E3 /* Box.swift */; };
 		28C90F6C2C26F3A4000AC2E3 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C90F6B2C26F3A4000AC2E3 /* View+Extensions.swift */; };
 		28C90F702C270614000AC2E3 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C90F6F2C270614000AC2E3 /* Bundle+Extensions.swift */; };
+		28CAF5552C297093002BD78C /* TipTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CAF5542C297093002BD78C /* TipTitle.swift */; };
 		C63B40532A4060E400BCAE79 /* NSStatusItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63B40522A4060E400BCAE79 /* NSStatusItem+Extension.swift */; };
 		C66CABA42A38871500E4D8E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CABA32A38871500E4D8E6 /* AppDelegate.swift */; };
 		C66CABB72A389F2500E4D8E6 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CABB62A389F2500E4D8E6 /* EventMonitor.swift */; };
@@ -80,6 +81,7 @@
 		28C90F692C26D394000AC2E3 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		28C90F6B2C26F3A4000AC2E3 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		28C90F6F2C270614000AC2E3 /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
+		28CAF5542C297093002BD78C /* TipTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipTitle.swift; sourceTree = "<group>"; };
 		C63B40522A4060E400BCAE79 /* NSStatusItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSStatusItem+Extension.swift"; sourceTree = "<group>"; };
 		C66CABA02A38871500E4D8E6 /* Abyssal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Abyssal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C66CABA32A38871500E4D8E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				284250142C2547F1008FEE08 /* SettingsViewController.swift */,
 				2840D7142C267F350087EE50 /* SettingsTrafficsView.swift */,
 				28C4AC022C270C9B006AFF87 /* SettingsVersionView.swift */,
+				28CAF5532C297081002BD78C /* Tips */,
 				28C90F682C26D379000AC2E3 /* Views */,
 				28C90F672C26CC4D000AC2E3 /* Sections */,
 			);
@@ -174,6 +177,14 @@
 				28C90F6F2C270614000AC2E3 /* Bundle+Extensions.swift */,
 			);
 			path = Foundation;
+			sourceTree = "<group>";
+		};
+		28CAF5532C297081002BD78C /* Tips */ = {
+			isa = PBXGroup;
+			children = (
+				28CAF5542C297093002BD78C /* TipTitle.swift */,
+			);
+			path = Tips;
 			sourceTree = "<group>";
 		};
 		C66CAB972A38871500E4D8E6 = {
@@ -377,6 +388,7 @@
 				284630132C27A5B500A44198 /* ActivationPolicyManager.swift in Sources */,
 				28ACE7872AE9490700DC8C1A /* Separator.swift in Sources */,
 				284250152C2547F1008FEE08 /* SettingsViewController.swift in Sources */,
+				28CAF5552C297093002BD78C /* TipTitle.swift in Sources */,
 				282E92912C27D75E00C21EE5 /* TimeFormat.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
