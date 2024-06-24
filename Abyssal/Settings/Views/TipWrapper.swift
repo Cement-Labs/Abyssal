@@ -9,10 +9,8 @@ import SwiftUI
 import Defaults
 import SwiftUIIntrospect
 
-struct TipWrapper<Content, TipContent, Value>: View
-where Content: View, TipContent: View, Value: Equatable {
-    typealias Tip = Abyssal.Tip<TipContent>
-    
+struct TipWrapper<Content, Value>: View
+where Content: View, Value: Equatable {
     @Default(.tipsEnabled) private var tipsEnabled
     
     var alwaysVisible: Bool = false

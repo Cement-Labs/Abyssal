@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUIIntrospect
 
 struct SimpleTipContent<Content>: View where Content: View {
     @ViewBuilder var content: () -> Content
@@ -14,8 +15,6 @@ struct SimpleTipContent<Content>: View where Content: View {
     
     var body: some View {
         content()
-            .frame(maxWidth: 400)
-            .fixedSize()
-        .padding()
+            .padding()
     }
 }

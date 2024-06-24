@@ -8,13 +8,11 @@
 import SwiftUI
 
 struct SettingsVersionView: View {
-    private let updateTip = Tip {
-        SimpleTipContent {
-            Text("""
+    private let updateTip = Tip(content: {
+"""
 An update is available. Click to access the download page.
-""")
-        }
-    }
+"""
+    })
     
     var body: some View {
         TipWrapper(tip: updateTip) { tip in
