@@ -83,11 +83,14 @@ class Tip {
             self.positionOffset = positionOffset
         }
         
-        self.views.vstack.addSubview(self.views.title)
-        self.views.vstack.addSubview(self.views.content)
+        self.views.vstack.addArrangedSubview(self.views.title)
+        Tip.addHorizontalMargins(parent: self.views.vstack, child: self.views.title, relatedBy: .equal)
         
-        self.popover = Self.createPopover()
-        self.popover.contentViewController = Self.createViewController(self.views.vstack)
+        self.views.vstack.addArrangedSubview(self.views.content)
+        Tip.addHorizontalMargins(parent: self.views.vstack, child: self.views.content, relatedBy: .equal)
+        
+        self.popover = Tip.createPopover()
+        self.popover.contentViewController = Tip.createViewController(self.views.vstack)
         
         self.title = title
         self.content = content
@@ -102,14 +105,14 @@ class Tip {
         }
         
         if let title {
-            self.views.title.attributedStringValue = Self.formatTitle(title())
+            self.views.title.attributedStringValue = Tip.formatTitle(title())
         }
-        self.views.title.isHidden = title != nil
+        self.views.title.isHidden = !has.title
         
         if let content {
-            self.views.content.attributedStringValue = Self.formatTitle(content())
+            self.views.content.attributedStringValue = Tip.formatContent(content())
         }
-        self.views.content.isHidden = content != nil
+        self.views.content.isHidden = !has.content
         
         self.updatePosition()
         self.updateFrame()
@@ -126,8 +129,8 @@ class Tip {
     }
     
     func updateFrame() {
-        self.viewController?.view.layoutSubtreeIfNeeded()
-        self.popover.contentSize = self.popover.contentViewController?.view.fittingSize ?? .zero
+        popover.contentSize = viewController?.view.fittingSize ?? .zero
+        viewController?.view.layoutSubtreeIfNeeded()
     }
     
     func cache(_ sender: NSView?) {
@@ -136,6 +139,7 @@ class Tip {
     
     func show(_ sender: NSView?) {
         guard isShown || (!isShown && update()) else { return }
+        guard isAvailable else { return }
         
         if let sender {
             cachedSender = sender
@@ -211,18 +215,16 @@ extension Tip {
     
     static func createTextField() -> NSTextField {
         let textField = NSTextField(frame: .zero)
-        textField.cell?.truncatesLastVisibleLine = false
         
         textField.isEditable = false
         textField.isSelectable = false
         textField.isBezeled = false
         textField.drawsBackground = false
         
+        textField.cell?.truncatesLastVisibleLine = false
         textField.lineBreakMode = .byWordWrapping
         
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        textField.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         textField.widthAnchor.constraint(lessThanOrEqualToConstant: 400).isActive = true
         
         return textField
@@ -230,10 +232,12 @@ extension Tip {
     
     static func createStackView() -> NSStackView {
         let stackView = NSStackView(frame: .zero)
-        stackView.orientation = .vertical
         
+        stackView.orientation = .vertical
         stackView.spacing = 8
         stackView.edgeInsets = .init(top: margin.height, left: margin.width, bottom: margin.height, right: margin.width)
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         
         return stackView
     }
