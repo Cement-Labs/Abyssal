@@ -86,6 +86,7 @@ extension Separator {
                 ratio: Helper.lerpRatio,
                 false
             )
+            
             return Helper.approaching(alpha, targetAlpha, false)
         } else {
             return true
@@ -102,6 +103,7 @@ extension Separator {
                 b: targetLength,
                 ratio: Helper.lerpRatio
             )
+            
             return Helper.approaching(length, targetLength)
         }
     }

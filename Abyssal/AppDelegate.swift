@@ -6,13 +6,14 @@
 //
 
 import Cocoa
+import SwiftUI
 import AppKit
 import Defaults
 import LaunchAtLogin
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
-    static var instance: AppDelegate? {
+    static var shared: AppDelegate? {
         NSApplication.shared.delegate as? AppDelegate
     }
     
@@ -29,7 +30,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(
         _ aNotification: Notification
     ) {
-        popover.contentViewController = MenuController.freshController()
+        // Deactivate app after launched
+        ActivationPolicyManager.set(.prohibited)
+        
+        let controller = SettingsViewController()
+        controller.view = NSHostingView(rootView: SettingsView())
+        popover.contentViewController = controller
+        
+        // Pre-initialize view frame
+        controller.initializeFrame()
+        
         popover.behavior = .applicationDefined
         popover.delegate = self
         
@@ -75,7 +85,7 @@ extension AppDelegate {
     @objc func toggle(
         _ sender: Any?
     ) {
-        guard sender as? NSStatusBarButton == AppDelegate.instance?.statusBarController.head.button else {
+        guard sender as? NSStatusBarButton == AppDelegate.shared?.statusBarController.head.button else {
             toggleCollapse(sender)
             return
         }
@@ -146,8 +156,13 @@ extension AppDelegate {
                 preferredEdge: 	.maxY
             )
             
-            popover.contentViewController?.view.window?.makeKeyAndOrderFront(nil)
+            // Activate app
+            ActivationPolicyManager.set(.accessory)
             NSRunningApplication.current.activate()
+            
+            DispatchQueue.main.async {
+                self.popover.contentViewController?.view.window?.makeKeyAndOrderFront(nil)
+            }
         }
         
         mouseEventMonitor?.start()
@@ -156,11 +171,16 @@ extension AppDelegate {
     func closePopover(
         _ sender: Any?
     ) {
-        popover.performClose(sender)
+        DispatchQueue.main.async {
+            self.popover.close() // Force it to close, thus closing all nested popovers
+        }
+        
+        // Deactivate app
+        ActivationPolicyManager.set(.prohibited, deadline: .now() + 0.2)
         
         mouseEventMonitor?.stop()
         statusBarController.startFunctionalTimers()
-        AppDelegate.instance?.statusBarController.triggerIgnoring()
+        AppDelegate.shared?.statusBarController.triggerIgnoring()
     }
 }
 

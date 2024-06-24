@@ -110,7 +110,6 @@ extension StatusBarController {
                 self.checkIdleStates()
                 
                 // Update dragging state
-                
                 if self.draggedToUncollapse.dragging && !self.mouseDragging {
                     self.draggedToUncollapse.dragging = false
                     
@@ -165,16 +164,19 @@ extension StatusBarController {
                 }
                 
                 // Update mouse and key
-                let mouseNeedsUpdate = self.was.mouseSpare != self.mouseSpare
-                let keyNeedsUpdate = self.was.modifiers != KeyboardHelper.triggers
+                let mouseNeedsUpdate = 
+                (self.was.mouseOnStatusBar != self.mouseOnStatusBar)
+                || (self.was.mouseSpare != self.mouseSpare)
+                || (self.was.mouseOverBody != self.mouseOverBody)
+                let keyNeedsUpdate = self.was.triggers != KeyboardHelper.triggers
                 
                 if !MouseHelper.dragging {
                     if mouseNeedsUpdate {
-                        if self.mouseSpare {
-                            // Mouse entered spare area
+                        if 
+                            self.mouseOnStatusBar || self.mouseSpare || self.mouseOverBody
+                        {
                             self.startMouseEventMonitor()
                         } else {
-                            // Mouse left spare area
                             self.stopMonitor(&self.mouseEventMonitor)
                         }
                     }
@@ -192,7 +194,9 @@ extension StatusBarController {
                 }
                 
                 self.was = (
+                    self.mouseOnStatusBar,
                     self.mouseSpare,
+                    self.mouseOverBody,
                     KeyboardHelper.triggers
                 )
             }

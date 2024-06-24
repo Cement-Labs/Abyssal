@@ -8,6 +8,7 @@
 import Foundation
 import Defaults
 import AppKit
+import SwiftUI
 
 struct ModifiersAttribute: OptionSet, Defaults.Serializable {
     let rawValue: UInt8
@@ -99,13 +100,6 @@ extension ModifiersAttribute {
         case any = 0
         case all = 1
         
-        var label: String {
-            switch self {
-            case .any: Localizations.ModifiersMode.any
-            case .all: Localizations.ModifiersMode.all
-            }
-        }
-        
         func triggers(input: ModifiersAttribute) -> Bool {
             switch self {
             case .any:
@@ -140,24 +134,6 @@ enum TimeoutAttribute: Int, CaseIterable, Defaults.Serializable {
         default: self.rawValue
         }
     }
-    
-    var label: String {
-        switch self {
-        case .sec5:     Localizations.FormattedTime.inSeconds(5)
-        case .sec10:    Localizations.FormattedTime.inSeconds(10)
-        case .sec15:    Localizations.FormattedTime.inSeconds(15)
-        case .sec30:    Localizations.FormattedTime.inSeconds(30)
-        case .sec45:    Localizations.FormattedTime.inSeconds(45)
-        case .sec60:    Localizations.FormattedTime.inMinutes(1)
-            
-        case .min2:     Localizations.FormattedTime.inMinutes(2)
-        case .min3:     Localizations.FormattedTime.inMinutes(3)
-        case .min5:     Localizations.FormattedTime.inMinutes(5)
-        case .min10:    Localizations.FormattedTime.inMinutes(10)
-            
-        default: Localizations.FormattedTime.forever
-        }
-    }
 }
 
 enum FeedbackAttribute: Int, CaseIterable, Defaults.Serializable {
@@ -173,16 +149,6 @@ enum FeedbackAttribute: Int, CaseIterable, Defaults.Serializable {
         case .heavy: [.levelChange, .alignment, .alignment, nil, nil, nil, .levelChange]
             
         default: []
-        }
-    }
-    
-    var label: String {
-        switch self {
-        case .light: Localizations.FeedbackIntensity.light
-        case .medium: Localizations.FeedbackIntensity.medium
-        case .heavy: Localizations.FeedbackIntensity.heavy
-            
-        default: Localizations.FeedbackIntensity.disabled
         }
     }
 }
@@ -230,18 +196,18 @@ extension Theme: Defaults.Serializable {
                 return nil
             }
             
-            return value.identifier
+            return value.id
         }
         
         func deserialize(_ object: String?) -> Theme? {
             guard
-                let identifier = object,
-                Theme.themeIdentifiers.contains(identifier)
+                let id = object,
+                Theme.themeIds.contains(id)
             else {
                 return nil
             }
             
-            return Theme.themes.first { $0.identifier == identifier }
+            return Theme.themes.first { $0.id == id }
         }
     }
     

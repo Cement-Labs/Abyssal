@@ -1,97 +1,27 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "FeedbackIntensity/Disabled" : {
-      "comment" : "feedback intensity disabled",
-      "extractionState" : "extracted_with_value",
+    "**%@** is open source. Click to access the source code." : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**%@**是开源软件。单击以访问源代码仓库。"
+          }
+        }
+      }
+    },
+    "%@ %@ %@" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Disabled"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "禁用"
+            "value" : "%1$@ %2$@ %3$@"
           }
         }
       }
     },
-    "FeedbackIntensity/Heavy" : {
-      "comment" : "feedback intensity heavy",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Heavy"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "重"
-          }
-        }
-      }
-    },
-    "FeedbackIntensity/Light" : {
-      "comment" : "feedback intensity light",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Light"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "轻"
-          }
-        }
-      }
-    },
-    "FeedbackIntensity/Medium" : {
-      "comment" : "feedback intensity medium",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Medium"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "中"
-          }
-        }
-      }
-    },
-    "FormattedTime/Forever" : {
-      "comment" : "forever",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Forever"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "永不"
-          }
-        }
-      }
-    },
-    "FormattedTime/Minutes" : {
-      "comment" : "(int) + minutes",
+    "%g Minutes" : {
       "localizations" : {
         "en" : {
           "variations" : {
@@ -99,13 +29,13 @@
               "one" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%lld minute"
+                  "value" : "%g Minute"
                 }
               },
               "other" : {
                 "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld minutes"
+                  "state" : "new",
+                  "value" : "%g Minutes"
                 }
               }
             }
@@ -117,7 +47,7 @@
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%lld分钟"
+                  "value" : "%g分钟"
                 }
               }
             }
@@ -125,8 +55,7 @@
         }
       }
     },
-    "FormattedTime/Seconds" : {
-      "comment" : "(int) + seconds",
+    "%g Seconds" : {
       "localizations" : {
         "en" : {
           "variations" : {
@@ -134,13 +63,13 @@
               "one" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%lld second"
+                  "value" : "%g Second"
                 }
               },
               "other" : {
                 "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld seconds"
+                  "state" : "new",
+                  "value" : "%g Seconds"
                 }
               }
             }
@@ -152,7 +81,7 @@
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%lld秒"
+                  "value" : "%g秒钟"
                 }
               }
             }
@@ -160,16 +89,18 @@
         }
       }
     },
-    "ModifiersMode/All" : {
-      "comment" : "modifiers mode all",
-      "extractionState" : "extracted_with_value",
+    "Advanced" : {
       "localizations" : {
-        "en" : {
+        "zh-Hans" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "All"
+            "state" : "translated",
+            "value" : "高级"
           }
-        },
+        }
+      }
+    },
+    "all" : {
+      "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -178,20 +109,253 @@
         }
       }
     },
-    "ModifiersMode/Any" : {
-      "comment" : "modifiers mode any",
-      "extractionState" : "extracted_with_value",
+    "An update is available. Click to access the download page." : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Any"
-          }
-        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "任一"
+            "value" : "有可用更新。单击前往下载。"
+          }
+        }
+      }
+    },
+    "any" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "任意"
+          }
+        }
+      }
+    },
+    "Auto idling" : {
+
+    },
+    "Auto shows" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自动显示"
+          }
+        }
+      }
+    },
+    "Auto shows the status items inside the **Hide Area** while the cursor is hovering over the spare area.\n\nIf this option is enabled, the status items inside the **Hide Area,** which is between the `Hide Separator` (the middle one) and the `Always Hide Separator` (the furthest one from the screen corner), will be hidden and kept invisible, until the cursor hovers over the spare area, where the status items in **Hide Area** used to stay. Otherwise the status items will be hidden until you switch their visibility state manually.\n\nBy left clicking on the `Menu Separator` (the nearest one to the screen corner), or clicking using either of the mouse buttons on the other separators, you can manually switch the visibility state of the status items inside the **Hide Area.** If you set them visible, they will never be hidden again until you manually switch their visibility state. Otherwise they will follow the behavior defined above." : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在光标移过空白区域时自动显示**隐藏区域**内的状态栏图标。\n\n此选项启用时，处在`隐藏分隔符`（位于中间）和`永远隐藏分隔符`（位于离屏幕角落最远的一侧）之间的**隐藏区域**内的状态栏图标将会被隐藏，直到光标移到空白区域（状态栏图标被隐藏后的状态栏空白处）中。在此选项禁用时，你需要手动切换状态栏图标的显示状态。\n\n通过左键单击`菜单分隔符`（位于离屏幕角落最近的一侧）或任何鼠标按键单击其它分隔符，你可以手动切换状态栏图标的显示状态。当你选择显示状态栏图标时，它们会一直保持可见；当你选择隐藏状态栏图标时，它们才会遵循上方定义的行为规则。"
+          }
+        }
+      }
+    },
+    "Dead zone" : {
+
+    },
+    "Edge behavior" : {
+
+    },
+    "Forever" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "永不"
+          }
+        }
+      }
+    },
+    "Functions" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "功能"
+          }
+        }
+      }
+    },
+    "Haptic feedback" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "震感反馈"
+          }
+        }
+      }
+    },
+    "Heavy" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重"
+          }
+        }
+      }
+    },
+    "Hide certain status items permanently by moving them left of the `Always Hide Separator` to the **Always Hide Area.**\n\nThe status items inside the **Always Hide Area** will be hidden and invisible until the cursor hovers over the spare area with a modifier key down, or while this window is opened." : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通过将一些状态栏图标移到**永远隐藏区域**（位于`永远隐藏分隔符`的左侧）以永远隐藏它们。\n\n**永远隐藏区域**内的图标将会一直不可见，直到光标移到空白区域内的同时按下修饰键或此窗口打开时。"
+          }
+        }
+      }
+    },
+    "Launch **%@** right after macOS starts." : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在macOS启动后自动运行**%@。**"
+          }
+        }
+      }
+    },
+    "Light" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "轻"
+          }
+        }
+      }
+    },
+    "Medium" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "中"
+          }
+        }
+      }
+    },
+    "Modifiers" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "修饰键"
+          }
+        }
+      }
+    },
+    "None" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无"
+          }
+        }
+      }
+    },
+    "of the above to trigger" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "键以触发。"
+          }
+        }
+      }
+    },
+    "Percentage" : {
+
+    },
+    "Pixel" : {
+
+    },
+    "Press" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "按下以上"
+          }
+        }
+      }
+    },
+    "Quit %@" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "退出%@"
+          }
+        }
+      }
+    },
+    "Reduce animation" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "减少动画"
+          }
+        }
+      }
+    },
+    "Reduce animation to gain a more performant experience." : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "减少动画以增加性能。"
+          }
+        }
+      }
+    },
+    "Some themes will hide the icons inside the separators automatically, while others not.\n\nThemes that automatically hide the icons will only show them when the status items inside the **Hide Area** are manually set to visible, while other themes indicate this by reducing the separators' opacity." : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一些主题会自动隐藏分隔符中的图标，另一些则不会。\n\n当**隐藏区域**内的状态栏图标被手动设为可见的时候，这些主题才会显示分隔符中的图标。对于其它不隐藏分隔符中图标的主题，分隔符会在同样情况下变为半透明。"
+          }
+        }
+      }
+    },
+    "Test 1" : {
+
+    },
+    "Test 2" : {
+
+    },
+    "The intensity of feedback given when triggering actions such as _enabling **Auto Shows**_ or _canceling **Auto Idling.**_" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在触发例如「启用**自动显示**」和「取消**自动闲置**」等动作时产生的震动反馈强度。"
+          }
+        }
+      }
+    },
+    "The modifier keys to use for showing the **Always Hide Area.** It is recommended to keep `⌘` enabled." : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "显示**永久隐藏区域**时需要按下的修饰键。建议保持 `⌘` 修饰键启用。"
+          }
+        }
+      }
+    },
+    "Theme" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "主题"
           }
         }
       }
@@ -313,6 +477,12 @@
             "state" : "new",
             "value" : "Hidden Bar"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hidden Bar"
+          }
         }
       }
     },
@@ -359,6 +529,12 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
+            "value" : "macOS"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "macOS"
           }
         }
@@ -445,120 +621,38 @@
             "state" : "new",
             "value" : "【=◈︿◈=】"
           }
-        }
-      }
-    },
-    "Tip/ButtonAppVersion" : {
-      "comment" : "if (update available) -> (button) app version",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "An update is available, click to access the download page."
-          }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "有可用更新，单击前往下载。"
+            "value" : "【=◈︿◈=】"
           }
         }
       }
     },
-    "Tip/ButtonLink" : {
-      "comment" : "(button) link",
-      "extractionState" : "extracted_with_value",
+    "Time to countdown before disabling **Auto Idling.**\n\nAfter interacting with status items that will be automatically hidden, for example, status items inside the **Always Hidden Area,** **Auto Idling** will keep them visible until this timeout is reached or the cursor hovered over the `Hide Separator` or `Always Hide Separator`." : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "**Abyssal** is open sourced. Click to access the source code repository."
-          }
-        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "**Abyssal**是开源软件。单击以访问源代码仓库。"
+            "value" : "在自动取消**自动闲置**之前等待的时间。\n\n在与将会被自动隐藏的状态栏图标（例如**永远隐藏区域**内的图标）交互后，**自动闲置**功能将会自动启用以保持这些图标可见，直到达到此时间限制或光标移过`隐藏分隔符`或`永远隐藏分隔符`时。"
           }
         }
       }
     },
-    "Tip/ButtonMinimize" : {
-      "comment" : "(button) minimize",
-      "extractionState" : "extracted_with_value",
+    "Timeout" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Minimize this window. Right click on the `Menu Separator` to open this window again."
-          }
-        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "最小化此窗口。右键单击`菜单分隔符`以再次显示此窗口。"
-          }
-        }
-      }
-    },
-    "Tip/ButtonTips" : {
-      "comment" : "(button) tips",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "The tips are currently shown. Click to hide them."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "正在显示操作提示。单击以隐藏。"
-          }
-        }
-      }
-    },
-    "Tip/PopUpButtonModifierModes" : {
-      "comment" : "(pop up button) modifier modes",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Decides how the modifier keys are triggered."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "决定修饰键的触发规则。"
-          }
-        }
-      }
-    },
-    "Tip/PopUpButtonThemes" : {
-      "comment" : "(pop up button) themes",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Some themes will hide the icons inside the separators automatically, while others not.\nThemes that automatically hide the icons will only show them when the status items inside the **Hide Area** are manually set to visible, while other themes indicate this by reducing the separators' opacity."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "一些主题会自动隐藏分隔符中的图标，另一些则不会。\n当**隐藏区域**内的状态栏图标被手动设为可见的时候，这些主题才会显示分隔符中的图标。对于其它不隐藏分隔符中图标的主题，分隔符会在同样情况下变为半透明。"
+            "value" : "超时"
           }
         }
       }
     },
     "Tip/SliderDeadZone" : {
       "comment" : "(slider) dead zone",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -574,128 +668,32 @@
         }
       }
     },
-    "Tip/SliderFeedbackIntensity" : {
-      "comment" : "(slider) feedback intensity",
-      "extractionState" : "extracted_with_value",
+    "Tips" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Feedback intensity given when triggering actions such as 'enabling **Auto Shows**' or 'canceling **Auto Idling**'."
-          }
-        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "触发例如“启用**自动显示**”和“取消**自动闲置**”等动作时产生的震动反馈强度。"
+            "value" : "提示"
           }
         }
       }
     },
-    "Tip/SliderTimeout" : {
-      "comment" : "(slider) timeout",
-      "extractionState" : "extracted_with_value",
+    "Use always hide area" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Time to countdown before disabling **Auto Idling.**\nAfter interacting with status items that will be automatically hidden, for example, status items inside the **Always Hidden Area,** **Auto Idling** will keep them visible until this timeout is reached or the cursor hovered over the `Hide Separator` or `Always Hide Separator`."
-          }
-        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "自动取消**自动闲置**之前的等待时间。\n在与将会被自动隐藏的状态栏图标（例如**永远隐藏区域**内的图标）交互后，**自动闲置**功能将会自动启用以保持这些图标可见，直到达到此时间限制或光标移过`隐藏分隔符`或`永远隐藏分隔符`时。"
+            "value" : "使用自动隐藏区域"
           }
         }
       }
     },
-    "Tip/SwitchAutoShows" : {
-      "comment" : "(switch) auto shows",
-      "extractionState" : "extracted_with_value",
+    "Version %@" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Auto shows the status items inside the **Hide Area** while the cursor is hovering over the spare area.\nIf this option is enabled, the status items inside the **Hide Area,** which is between the `Hide Separator` (the middle one) and the `Always Hide Separator` (the furthest one from the screen corner), will be hidden and kept invisible, until the cursor hovers over the spare area, where the status items in **Hide Area** used to stay. Otherwise the status items will be hidden until you switch their visibility state manually.\nBy left clicking on the `Menu Separator` (the nearest one to the screen corner), or clicking using either of the mouse buttons on the other separators, you can manually switch the visibility state of the status items inside the **Hide Area.** If you set them visible, they will never be hidden again until you manually switch their visibility state. Otherwise they will follow the behavior defined above."
-          }
-        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "在光标移过空白区域时自动显示**隐藏区域**内的状态栏图标。\n此选项启用时，处在`隐藏分隔符`（位于中间）和`永远隐藏分隔符`（位于离屏幕角落最远的一侧）之间的**隐藏区域**内的状态栏图标将会被隐藏，直到光标移到空白区域（状态栏图标被隐藏后的状态栏空白处）中。在此选项禁用时，你需要手动切换状态栏图标的显示状态。\n通过左键单击`菜单分隔符`（位于离屏幕角落最近的一侧）或任何鼠标按键单击其它分隔符，你可以手动切换状态栏图标的显示状态。当你选择显示状态栏图标时，它们会一直保持可见；当你选择隐藏状态栏图标时，它们才会遵循上方定义的行为规则。"
-          }
-        }
-      }
-    },
-    "Tip/SwitchReduceAnimations" : {
-      "comment" : "(switch) reduce animations",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Reduce animations to gain a more performant experience."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "减少动画以增加性能。"
-          }
-        }
-      }
-    },
-    "Tip/SwitchStartsWithMacOS" : {
-      "comment" : "(switch) starts with macOS",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Run **Abyssal** when macOS starts."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "在macOS启动的同时启动**Abyssal。**"
-          }
-        }
-      }
-    },
-    "Tip/SwitchUseAlwaysHideArea" : {
-      "comment" : "(switch) use always hide area",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Hide certain status items permanently by moving them left of the `Always Hide Separator` to the **Always Hide Area.**\nThe status items inside the **Always Hide Area** will be hidden and invisible until the cursor hovers over the spare area with a modifier key down, or while this window is opened."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "通过将一些状态栏图标移到**永远隐藏区域**（位于`永远隐藏分隔符`的左侧）以永远隐藏它们。\n**永远隐藏区域**内的图标将会一直不可见，直到光标移到空白区域内的同时按下修饰键或此窗口打开时。"
-          }
-        }
-      }
-    },
-    "Tip/ViewModifiers" : {
-      "comment" : "(segmented control) modifiers",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "The modifier keys to use. It is recommended to keep the modifier key ⌘ enabled."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "选择要使用的修饰键。建议保持 ⌘ 修饰键启用。"
+            "value" : "%@版本"
           }
         }
       }

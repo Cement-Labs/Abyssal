@@ -1,57 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "1vF-An-AOf.title" : {
-      "comment" : "Class = \"NSButtonCell\"; title = \"App Version\"; ObjectID = \"1vF-An-AOf\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "App Version"
-          }
-        }
-      }
-    },
-    "3Om-OS-uyx.title" : {
-      "comment" : "Class = \"NSBox\"; title = \"Main/Body 2/Preferences 2\"; ObjectID = \"3Om-OS-uyx\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Main/Body 2/Preferences 2"
-          }
-        }
-      }
-    },
-    "3Sg-p9-30K.title" : {
-      "comment" : "Class = \"NSMenuItem\"; title = \"Abyssal\"; ObjectID = \"3Sg-p9-30K\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Abyssal"
-          }
-        }
-      }
-    },
-    "8gO-OA-hzX.title" : {
-      "comment" : "Class = \"NSMenuItem\"; title = \"Item 1\"; ObjectID = \"8gO-OA-hzX\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Item 1"
-          }
-        }
-      }
-    },
     "08v-Vw-Cs3.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Starts with macOS\"; ObjectID = \"08v-Vw-Cs3\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -63,30 +15,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "随macOS启动"
-          }
-        }
-      }
-    },
-    "66t-eN-K2o.title" : {
-      "comment" : "Class = \"NSMenuItem\"; title = \"Item 2\"; ObjectID = \"66t-eN-K2o\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Item 2"
-          }
-        }
-      }
-    },
-    "827-6G-l7o.title" : {
-      "comment" : "Class = \"NSBox\"; title = \"Main/Body 1/Modifiers/Command\"; ObjectID = \"827-6G-l7o\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Main/Body 1/Modifiers/Command"
           }
         }
       }
@@ -111,7 +39,7 @@
     },
     "BCa-un-ZBt.title" : {
       "comment" : "Class = \"NSButtonCell\"; title = \"Quit app\"; ObjectID = \"BCa-un-ZBt\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -127,21 +55,9 @@
         }
       }
     },
-    "BfR-ev-j7B.title" : {
-      "comment" : "Class = \"NSBox\"; title = \"Main/Body 2/Buttons/Link\"; ObjectID = \"BfR-ev-j7B\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Main/Body 2/Buttons/Link"
-          }
-        }
-      }
-    },
     "CAQ-b2-2Ky.title" : {
       "comment" : "Class = \"NSButtonCell\"; title = \"Tips\"; ObjectID = \"CAQ-b2-2Ky\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -157,33 +73,9 @@
         }
       }
     },
-    "dJV-pr-4Ds.title" : {
-      "comment" : "Class = \"NSBox\"; title = \"Main/Heading\"; ObjectID = \"dJV-pr-4Ds\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Main/Heading"
-          }
-        }
-      }
-    },
-    "e3U-gc-FYv.title" : {
-      "comment" : "Class = \"NSBox\"; title = \"Main/Body 2/Buttons/Link\"; ObjectID = \"e3U-gc-FYv\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Main/Body 2/Buttons/Link"
-          }
-        }
-      }
-    },
     "E4B-vn-v6T.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Feedback intensity\"; ObjectID = \"E4B-vn-v6T\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -199,21 +91,9 @@
         }
       }
     },
-    "ehV-zN-An1.title" : {
-      "comment" : "Class = \"NSBox\"; title = \"Main/Body 2/Preferences 1\"; ObjectID = \"ehV-zN-An1\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Main/Body 2/Preferences 1"
-          }
-        }
-      }
-    },
     "f3z-uV-2YB.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Reduce animation\"; ObjectID = \"f3z-uV-2YB\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -229,21 +109,9 @@
         }
       }
     },
-    "get-yv-9fl.title" : {
-      "comment" : "Class = \"NSBox\"; title = \"Main/Body 1/Preferences 1\"; ObjectID = \"get-yv-9fl\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Main/Body 1/Preferences 1"
-          }
-        }
-      }
-    },
     "H6v-Qm-J1v.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Theme\"; ObjectID = \"H6v-Qm-J1v\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -261,7 +129,7 @@
     },
     "hml-Gq-OgY.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Timeout\"; ObjectID = \"hml-Gq-OgY\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -277,45 +145,9 @@
         }
       }
     },
-    "mER-wL-Lkb.title" : {
-      "comment" : "Class = \"NSBox\"; title = \"Main/Body 2/Buttons/Quit App\"; ObjectID = \"mER-wL-Lkb\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Main/Body 2/Buttons/Quit App"
-          }
-        }
-      }
-    },
-    "mHD-qW-Lfh.title" : {
-      "comment" : "Class = \"NSBox\"; title = \"Main/Body 1/Preferences 1\"; ObjectID = \"mHD-qW-Lfh\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Main/Body 1/Preferences 1"
-          }
-        }
-      }
-    },
-    "MQT-X4-oSO.title" : {
-      "comment" : "Class = \"NSMenuItem\"; title = \"Theme\"; ObjectID = \"MQT-X4-oSO\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Theme"
-          }
-        }
-      }
-    },
     "MUA-YQ-vfC.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Dead zone\"; ObjectID = \"MUA-YQ-vfC\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -333,7 +165,7 @@
     },
     "nbo-M8-Xyb.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"to trigger\"; ObjectID = \"nbo-M8-Xyb\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -351,7 +183,7 @@
     },
     "o5n-Ec-8Il.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Press\"; ObjectID = \"o5n-Ec-8Il\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -367,21 +199,9 @@
         }
       }
     },
-    "oPU-r1-7qb.title" : {
-      "comment" : "Class = \"NSBox\"; title = \"Main/Body 2/Buttons/Minimize\"; ObjectID = \"oPU-r1-7qb\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Main/Body 2/Buttons/Minimize"
-          }
-        }
-      }
-    },
     "ots-RU-Cm0.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Auto shows\"; ObjectID = \"ots-RU-Cm0\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -397,57 +217,9 @@
         }
       }
     },
-    "Q2R-pO-mzF.title" : {
-      "comment" : "Class = \"NSButtonCell\"; title = \"Minimize\"; ObjectID = \"Q2R-pO-mzF\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Minimize"
-          }
-        }
-      }
-    },
-    "Qzp-Dk-chW.title" : {
-      "comment" : "Class = \"NSMenuItem\"; title = \"Theme\"; ObjectID = \"Qzp-Dk-chW\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Theme"
-          }
-        }
-      }
-    },
-    "S3l-Th-u8S.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Abyssal\"; ObjectID = \"S3l-Th-u8S\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Abyssal"
-          }
-        }
-      }
-    },
-    "sek-vP-zYS.title" : {
-      "comment" : "Class = \"NSMenuItem\"; title = \"Item 3\"; ObjectID = \"sek-vP-zYS\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Item 3"
-          }
-        }
-      }
-    },
     "TpP-gd-jMY.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Use always hide area\"; ObjectID = \"TpP-gd-jMY\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -459,42 +231,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "使用永远隐藏区域"
-          }
-        }
-      }
-    },
-    "Uio-1V-qOn.title" : {
-      "comment" : "Class = \"NSBox\"; title = \"Main/Body 1/Modifiers/Control\"; ObjectID = \"Uio-1V-qOn\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Main/Body 1/Modifiers/Control"
-          }
-        }
-      }
-    },
-    "wmR-e3-2td.title" : {
-      "comment" : "Class = \"NSBox\"; title = \"Main/Body 1/Modifiers/Option\"; ObjectID = \"wmR-e3-2td\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Main/Body 1/Modifiers/Option"
-          }
-        }
-      }
-    },
-    "YHc-dN-U9E.title" : {
-      "comment" : "Class = \"NSButtonCell\"; title = \"Link\"; ObjectID = \"YHc-dN-U9E\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Link"
           }
         }
       }

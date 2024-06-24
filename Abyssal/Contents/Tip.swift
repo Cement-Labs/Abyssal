@@ -2,60 +2,75 @@
 //  Tip.swift
 //  Abyssal
 //
-//  Created by KrLite on 2023/10/13.
+//  Created by KrLite on 2024/6/23.
 //
 
 import Foundation
 import AppKit
+import SwiftUI
 import Defaults
+import SwiftUIIntrospect
 
-class Tip {
-    var popover: NSPopover
+class Tip<Title> where Title: View {
+    var preferredEdge: NSRectEdge = .minX
+    var delay: CGFloat = 0.5
     
-    var dataString: () -> String?
-    var tipString: () -> String?
-    
-    var preferredEdge: NSRectEdge
-    var delay: CGFloat
-    
-    var positionRect = { NSRect.zero }
-    var positionOffset = { NSPoint.zero }
-    
-    var position: NSRect {
-        positionRect().offsetBy(dx: positionOffset().x, dy: positionOffset().y)
-    }
+    var positionRect = { CGRect.zero }
+    var positionOffset = { CGPoint.zero }
     
     var hasReactivePosition = false
     
-    var positionUpdateTimer: Timer?
+    var title: (() -> Title)? = nil
+    var content: (() -> String)? = nil
     
+    private var popover: NSPopover
+    private var cachedSender: NSView?
     
+    private var position: CGRect {
+        positionRect().offsetBy(
+            dx: positionOffset().x,
+            dy: positionOffset().y
+        )
+    }
+    
+    private var positionUpdateTimer: Timer?
+    private var showDispatch: DispatchWorkItem?
+    
+    private var has: (title: Bool, content: Bool) {
+        (
+            title: title != nil,
+            content: content != nil && Defaults[.tipsEnabled]
+        )
+    }
+    
+    private var views: (vstack: NSStackView, title: NSHostingView<Title?>, content: NSTextField) = (
+        vstack: Tip.createStackView(),
+        title: .init(rootView: nil),
+        content: Tip.createTextField()
+    )
+    
+    private var viewController: NSViewController? {
+        popover.contentViewController
+    }
+    
+    var isAvailable: Bool {
+        has.title || has.content
+    }
     
     var isShown: Bool {
         popover.isShown
     }
     
-    var has: (data: Bool, tip: Bool, tipRuntime: Bool) {
-        (data: dataString() != nil, tip: tipString() != nil, tipRuntime: Defaults[.tipsEnabled] && tipString() != nil)
-    }
     
-    var lastHas: (data: Bool, tip: Bool, tipRuntime: Bool)?
     
-    private var willShow: DispatchWorkItem?
-    private var views = (data: NSTextField(), tip: NSTextField())
-    
-    init?(
-        dataString: (() -> String?)? = nil,
-        tipString: (() -> String?)? = nil,
-        preferredEdge: NSRectEdge = .maxY,
+    init(
+        preferredEdge: NSRectEdge = .minX,
         delay: CGFloat = 0.5,
-        
-        rect positionRect: (() -> NSRect)? = nil,
-        offset positionOffset: (() -> NSPoint)? = nil
+        rect positionRect: (() -> CGRect)? = nil,
+        offset positionOffset: (() -> CGPoint)? = nil,
+        title: (() -> Title)? = nil,
+        content: (() -> String)? = nil
     ) {
-        self.popover = Tips.createPopover()
-        self.dataString = dataString ?? { nil }
-        self.tipString = tipString ?? { nil }
         self.preferredEdge = preferredEdge
         self.delay = delay
         
@@ -68,160 +83,115 @@ class Tip {
             self.positionOffset = positionOffset
         }
         
-        // Data
+        self.title = title
+        self.content = content
         
-        views.data = Tips.createTextField()
+        self.popover = Tip.createPopover()
         
-        // Tip
-        
-        views.tip = Tips.createTextField()
-        views.tip.alphaValue = 0.65
+        initLayout()
     }
     
+    convenience init(
+        preferredEdge: NSRectEdge = .minX,
+        delay: CGFloat = 0.5,
+        title: (() -> Title)? = nil,
+        content: (() -> String)? = nil
+    ) {
+        self.init(
+            preferredEdge: preferredEdge, delay: delay,
+            rect: nil, offset: nil,
+            title: title, content: content
+        )
+    }
+    
+    convenience init(
+        preferredEdge: NSRectEdge = .minX,
+        delay: CGFloat = 0.5,
+        content: (() -> String)? = nil
+    ) where Title == EmptyView {
+        self.init(
+            preferredEdge: preferredEdge, delay: delay,
+            title: nil, content: content
+        )
+    }
+    
+    private func initLayout() {
+        views.vstack.subviews.removeAll()
+        views.vstack.addArrangedSubview(views.title)
+        views.vstack.addArrangedSubview(views.content)
+        
+        let view = NSView(frame: .zero)
+        view.addSubview(views.vstack)
+        
+        view.topAnchor.constraint(equalToSystemSpacingBelow: views.vstack.topAnchor, multiplier: -0.75).isActive = true
+        view.leadingAnchor.constraint(equalToSystemSpacingAfter: views.vstack.leadingAnchor, multiplier: -0.75).isActive = true
+        view.bottomAnchor.constraint(equalToSystemSpacingBelow: views.vstack.bottomAnchor, multiplier: 0.75).isActive = true
+        view.trailingAnchor.constraint(equalToSystemSpacingAfter: views.vstack.trailingAnchor, multiplier: 0.75).isActive = true
+        
+        popover.contentViewController = Tip.createViewController(view)
+    }
+    
+    @discardableResult
     func update() -> Bool {
-        guard AppDelegate.instance?.popover.isShown ?? false else { return false }
-        guard has.data || has.tipRuntime else { return false }
-        
-        if lastHas == nil || lastHas! != has {
-            lastHas = has
-            close()
-            
-            if has.data && has.tipRuntime {
-                switchToBoth()
-            } else if has.data {
-                switchToOnlyData()
-            } else if has.tipRuntime {
-                switchToOnlyTip()
-            } else { return false }
+        guard AppDelegate.shared?.popover.isShown ?? false else {
+            return false
         }
         
-        if has.data {
-            views.data.attributedStringValue = Tips.formatData(dataString()!)
+        if let title {
+            views.title.rootView = title()
         }
         
-        if has.tip {
-            views.tip.attributedStringValue = Tips.formatTip(tipString()!)
+        if let content {
+            views.content.attributedStringValue = Tip.formatMarkdown(content())
         }
         
-        popover.contentViewController?.view.layoutSubtreeIfNeeded()
+        views.title.isHidden = !has.title
+        views.content.isHidden = !has.content
         
-        if isShown {
-            updatePosition()
-        }
+        updateFrame()
+        updatePosition()
         
         return true
     }
     
-    func updatePosition() {
-        if isShown {
-            popover.positioningRect = position
+    func updateFrame() {
+        DispatchQueue.main.async {
+            self.viewController?.view.layoutSubtreeIfNeeded()
+            self.popover.contentSize = self.viewController?.view.fittingSize ?? .zero
         }
     }
     
-    private func switchToOnlyData() {
-        let controller = Tips.createViewController()
-        
-        popover.contentViewController = controller
-        controller.view.addSubview(views.data)
-        
-        Tips.addHorizontalMargins(
-            parent: controller.view,
-            child: views.data,
-            relatedBy: .equal
-        )
-        Tips.addVerticalMargins(
-            parent: controller.view,
-            child: views.data,
-            relatedBy: .equal
-        )
+    func updatePosition() {
+        if isShown {
+            DispatchQueue.main.async {
+                self.popover.positioningRect = self.position
+            }
+        }
     }
     
-    private func switchToOnlyTip() {
-        let controller = Tips.createViewController()
-        
-        popover.contentViewController = controller
-        controller.view.addSubview(views.tip)
-        
-        Tips.addHorizontalMargins(
-            parent: controller.view,
-            child: views.tip,
-            relatedBy: .equal
-        )
-        Tips.addVerticalMargins(
-            parent: controller.view,
-            child: views.tip,
-            relatedBy: .equal
-        )
+    func cache(_ sender: NSView?) {
+        cachedSender = sender
     }
     
-    private func switchToBoth() {
-        let controller = Tips.createViewController()
-        
-        popover.contentViewController = controller
-        controller.view.addSubview(views.data)
-        controller.view.addSubview(views.tip)
-        
-        Tips.addHorizontalMargins(
-            parent: controller.view,
-            child: views.tip,
-            relatedBy: .equal
-        )
-        controller.view.addConstraint(NSLayoutConstraint(
-            item: controller.view,
-            attribute: .centerX,
-            relatedBy: .equal,
-            toItem: views.data,
-            attribute: .centerX,
-            multiplier: 1,
-            constant: 0
-        ))
-        
-        controller.view.addConstraint(NSLayoutConstraint(
-            item: controller.view,
-            attribute: .top,
-            relatedBy: .equal,
-            toItem: views.data,
-            attribute: .top,
-            multiplier: 1,
-            constant: -Tips.MARGIN.height
-        ))
-        controller.view.addConstraint(NSLayoutConstraint(
-            item: views.data,
-            attribute: .bottom,
-            relatedBy: .equal,
-            toItem: views.tip,
-            attribute: .top,
-            multiplier: 1,
-            constant: -Tips.MARGIN.height
-        ))
-        controller.view.addConstraint(NSLayoutConstraint(
-            item: controller.view,
-            attribute: .bottom,
-            relatedBy: .equal,
-            toItem: views.tip,
-            attribute: .bottom,
-            multiplier: 1,
-            constant: Tips.MARGIN.height
-        ))
-    }
-    
-    func show(
-        _ sender: NSView
-    ) {
+    func show(_ sender: NSView?) {
         guard isShown || (!isShown && update()) else { return }
+        guard isAvailable else { return }
         
-        willShow = DispatchWorkItem {
+        if let sender {
+            cachedSender = sender
+        }
+        
+        guard let cachedSender else { return }
+        
+        showDispatch = .init {
             self.popover.show(
                 relativeTo:     self.position,
-                of:             sender,
+                of:             cachedSender,
                 preferredEdge:  self.preferredEdge
             )
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
-            self.willShow?.perform()
-            self.willShow = nil
-        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: showDispatch!)
         
         if hasReactivePosition {
             positionUpdateTimer = Timer.scheduledTimer(
@@ -230,88 +200,88 @@ class Tip {
             ) { [weak self] _ in
                 guard let self else { return }
                 
+                self.updateFrame()
                 self.updatePosition()
             }
         } else {
-            self.updatePosition()
+            updateFrame()
+            updatePosition()
         }
     }
     
-    func close() {
+    func hide() {
         positionUpdateTimer?.invalidate()
         
-        guard let willShow else {
-            popover.performClose(self)
-            return
-        }
+        showDispatch?.cancel()
+        showDispatch = nil
         
-        willShow.cancel()
+        popover.performClose(self)
     }
-}
-
-class Tips {
-    static let test = Tip(
-        dataString: { "Lorem Ipsum" },
-        tipString: { "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." }
-    )
     
-    static let testData = Tip(
-        dataString: test?.dataString
-    )
-    
-    static let testTip = Tip(
-        tipString: test?.tipString
-    )
-    
-    
-    
-    private var map: [NSTrackingArea: (tip: Tip, sender: NSView)] = [:]
-    
-    func mouseEntered(with event: NSEvent) {
-        if let area = event.trackingArea {
-            map
-                .filter { $0.key == area }
-                .forEach { $0.value.tip.show($0.value.sender) }
+    func toggle(_ sender: NSView? = nil, show: Bool) {
+        if show {
+            self.show(sender)
+        } else {
+            hide()
         }
     }
+}
+
+extension Tip {
     
-    func mouseExited(with event: NSEvent) {
-        if let area = event.trackingArea {
-            map
-                .filter { $0.key == area }
-                .forEach { $0.value.tip.close() }
-        }
+}
+
+extension Tip {
+    static func createPopover() -> NSPopover {
+        let popover = NSPopover()
+        
+        popover.behavior = .applicationDefined
+        popover.animates = true
+        
+        return popover
     }
     
-    func bind(
-        _ sender: NSView,
-        trackingArea: NSTrackingArea,
-        tip: Tip
-    ) {
-        map[trackingArea] = (tip, sender)
+    static func createViewController(_ view: NSView) -> NSViewController {
+        let controller = NSViewController()
+        
+        controller.view = view
+        
+        return controller
     }
     
-    func unbind(
-        trackingArea: NSTrackingArea
-    ) -> (tip: Tip, sender: NSView)? {
-        map.removeValue(forKey: trackingArea)
+    static func createTextField() -> NSTextField {
+        let textField = NSTextField(frame: .zero)
+        
+        textField.isEditable = false
+        textField.isSelectable = false
+        textField.isBezeled = false
+        textField.drawsBackground = false
+        
+        textField.cell?.truncatesLastVisibleLine = false
+        textField.lineBreakMode = .byWordWrapping
+        
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.widthAnchor.constraint(lessThanOrEqualToConstant: 400).isActive = true
+        
+        return textField
+    }
+    
+    static func createStackView() -> NSStackView {
+        let stackView = NSStackView(frame: .zero)
+        
+        stackView.orientation = .vertical
+        stackView.spacing = 8
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return stackView
     }
 }
 
-extension Tips {
-    static let DATA_SIZE: CGFloat = 14.5
-    
-    static let TIP_SIZE: CGFloat = 10
-    
-    static let MARGIN: (width: CGFloat, height: CGFloat) = (width: 16, height: 12)
-    
-    static let MAX_WIDTH: CGFloat = 300
-}
-
-extension Tips {
-    static func generateMarkdown(
+extension Tip {
+    static func formatMarkdown(
         _ text: String,
-        font: NSFont,
+        font: NSFont = .systemFont(ofSize: NSFont.systemFontSize),
         alignment: NSTextAlignment = .natural
     ) -> NSMutableAttributedString {
         let markdown = try! NSAttributedString.init(
@@ -340,113 +310,5 @@ extension Tips {
         )
         
         return markdown
-    }
-    
-    static func formatData(
-        _ text: String
-    ) -> NSAttributedString {
-        return generateMarkdown(
-            text,
-            font: NSFont.boldSystemFont(ofSize: DATA_SIZE),
-            alignment: .center
-        )
-    }
-    
-    static func formatTip(
-        _ text: String
-    ) -> NSAttributedString {
-        return generateMarkdown(
-            text,
-            font: NSFont.systemFont(ofSize: TIP_SIZE)
-        )
-    }
-}
-
-extension Tips {
-    static func createPopover() -> NSPopover {
-        let popover = NSPopover()
-        
-        popover.behavior = .applicationDefined
-        popover.animates = true
-        
-        return popover
-    }
-    
-    static func createViewController() -> NSViewController {
-        let controller = NSViewController()
-        controller.view = NSView()
-        
-        return controller
-    }
-    
-    static func createTextField() -> NSTextField {
-        let textField = NSTextField(frame: NSRect.zero)
-        textField.cell?.truncatesLastVisibleLine = false
-        
-        textField.isEditable = false
-        textField.isSelectable = false
-        textField.isBezeled = false
-        textField.drawsBackground = false
-    
-        textField.lineBreakMode = .byWordWrapping
-        
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        textField.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
-        textField.widthAnchor.constraint(lessThanOrEqualToConstant: MAX_WIDTH).isActive = true
-        
-        return textField
-    }
-}
-
-extension Tips {
-    static func addHorizontalMargins(
-        parent: NSView,
-        child: NSView?,
-        relatedBy: NSLayoutConstraint.Relation
-    ) {
-        parent.addConstraint(NSLayoutConstraint(
-            item: parent,
-            attribute: .leading,
-            relatedBy: relatedBy,
-            toItem: child,
-            attribute: .leading,
-            multiplier: 1,
-            constant: -MARGIN.width
-        ))
-        parent.addConstraint(NSLayoutConstraint(
-            item: parent,
-            attribute: .trailing,
-            relatedBy: relatedBy,
-            toItem: child,
-            attribute: .trailing,
-            multiplier: 1,
-            constant: MARGIN.width
-        ))
-    }
-    
-    static func addVerticalMargins(
-        parent: NSView,
-        child: NSView?,
-        relatedBy: NSLayoutConstraint.Relation
-    ) {
-        parent.addConstraint(NSLayoutConstraint(
-            item: parent,
-            attribute: .top,
-            relatedBy: relatedBy,
-            toItem: child,
-            attribute: .top,
-            multiplier: 1,
-            constant: -MARGIN.height
-        ))
-        parent.addConstraint(NSLayoutConstraint(
-            item: parent,
-            attribute: .bottom,
-            relatedBy: relatedBy,
-            toItem: child,
-            attribute: .bottom,
-            multiplier: 1,
-            constant: MARGIN.height
-        ))
     }
 }
