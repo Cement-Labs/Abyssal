@@ -13,7 +13,7 @@ import SwiftUIIntrospect
 struct SettingsAdvancedSection: View {
     @Default(.timeout) private var timeout
     
-    private let timeoutTip = Tip(preferredEdge: .minY) {
+    private let timeoutTip = Tip(preferredEdge: .minY, delay: 0.1) {
         TipTimeoutTitle()
     } content: {
         .init(localized: """

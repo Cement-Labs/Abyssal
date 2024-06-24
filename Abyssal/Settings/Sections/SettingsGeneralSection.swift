@@ -13,7 +13,7 @@ struct SettingsGeneralSection: View {
     @Default(.reduceAnimationEnabled) private var reduceAnimationEnabled
     @Default(.feedback) private var feedback
     
-    private let feedbackTip = Tip(preferredEdge: .minY) {
+    private let feedbackTip = Tip(preferredEdge: .minY, delay: 0.1) {
         TipFeedbackTitle()
     } content: {
         .init(localized: """
