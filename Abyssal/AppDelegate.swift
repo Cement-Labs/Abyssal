@@ -172,7 +172,7 @@ extension AppDelegate {
         _ sender: Any?
     ) {
         DispatchQueue.main.async {
-            self.popover.performClose(sender)
+            self.popover.close() // Force it to close, thus closing all nested popovers
         }
         
         // Deactivate app

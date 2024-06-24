@@ -123,10 +123,10 @@ class Tip<Title> where Title: View {
         let view = NSView(frame: .zero)
         view.addSubview(views.vstack)
         
-        view.topAnchor.constraint(equalToSystemSpacingBelow: views.vstack.topAnchor, multiplier: -1).isActive = true
-        view.leadingAnchor.constraint(equalToSystemSpacingAfter: views.vstack.leadingAnchor, multiplier: -1).isActive = true
-        view.bottomAnchor.constraint(equalToSystemSpacingBelow: views.vstack.bottomAnchor, multiplier: 1).isActive = true
-        view.trailingAnchor.constraint(equalToSystemSpacingAfter: views.vstack.trailingAnchor, multiplier: 1).isActive = true
+        view.topAnchor.constraint(equalToSystemSpacingBelow: views.vstack.topAnchor, multiplier: -0.75).isActive = true
+        view.leadingAnchor.constraint(equalToSystemSpacingAfter: views.vstack.leadingAnchor, multiplier: -0.75).isActive = true
+        view.bottomAnchor.constraint(equalToSystemSpacingBelow: views.vstack.bottomAnchor, multiplier: 0.75).isActive = true
+        view.trailingAnchor.constraint(equalToSystemSpacingAfter: views.vstack.trailingAnchor, multiplier: 0.75).isActive = true
         
         popover.contentViewController = Tip.createViewController(view)
     }

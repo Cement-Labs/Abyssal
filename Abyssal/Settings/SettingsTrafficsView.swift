@@ -13,7 +13,7 @@ struct SettingsTrafficsView: View {
     
     @Environment(\.openURL) private var openUrl
     
-    private let sourceTip = Tip {
+    private let sourceTip = Tip(preferredEdge: .minY) {
         .init(localized: """
 **\(Bundle.main.appName)** is open source. Click to access the source code.
 """)
@@ -63,17 +63,21 @@ struct SettingsTrafficsView: View {
             }
             
             // Source
-            Box(isOn: false) {
-                AppDelegate.shared?.closePopover(nil)
-                
-                DispatchQueue.main.async {
-                    openUrl(Helper.urlSourceCode)
+            TipWrapper(tip: sourceTip) { tip in
+                Box(isOn: false) {
+                    DispatchQueue.main.async {
+                        AppDelegate.shared?.closePopover(nil)
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self.openUrl(Helper.urlSourceCode)
+                    }
+                } content: {
+                    Image(systemSymbol: .barcode)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
-            } content: {
-                Image(systemSymbol: .barcode)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .frame(width: 32)
             }
-            .frame(width: 32)
             
             // Minimize
             Box(isOn: false) {

@@ -22,7 +22,7 @@ struct TipTimeoutTitle: View {
         }
         
         TipTitle(value: $timeout) {
-            Text(verbatim: label)
+            Text(label)
         }
     }
 }

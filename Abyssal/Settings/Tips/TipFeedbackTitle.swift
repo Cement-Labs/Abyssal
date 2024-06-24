@@ -12,18 +12,20 @@ struct TipFeedbackTitle: View {
     @Default(.feedback) private var feedback
     
     var body: some View {
-        let label: LocalizedStringKey = switch feedback {
+        let label: String = switch feedback {
         case .none:
-                .init("None")
+                .init(localized: "None")
         case .light:
-                .init("Light")
+                .init(localized: "Light")
         case .medium:
-                .init("Medium")
+                .init(localized: "Medium")
         case .heavy:
-                .init("Heavy")
+                .init(localized: "Heavy")
         }
         
-        TipTitle(label, value: $feedback)
+        TipTitle(value: $feedback) {
+            Text(label)
+        }
     }
 }
 
