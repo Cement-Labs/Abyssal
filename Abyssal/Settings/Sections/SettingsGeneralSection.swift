@@ -10,31 +10,51 @@ import Defaults
 
 struct SettingsGeneralSection: View {
     @Default(.theme) private var theme
-    @Default(.autoShowsEnabled) private var autoShowsEnabled
-    @Default(.feedback) private var feedback
-    @Default(.alwaysHideAreaEnabled) private var alwaysHideAreaEnabled
     @Default(.reduceAnimationEnabled) private var reduceAnimationEnabled
+    @Default(.feedback) private var feedback
     
     private let feedbackTip = Tip {
         FeedbackTipContent()
     }
     
+    private let themeTip = Tip {
+        SimpleTipContent {
+            Text("""
+Some themes will hide the icons inside the separators automatically, while others not.
+
+Themes that automatically hide the icons will only show them when the status items inside the **Hide Area** are manually set to visible, while other themes indicate this by reducing the separators' opacity.
+""")
+        }
+    }
+    
+    private let reduceAnimationTip = Tip {
+        SimpleTipContent {
+            Text("""
+Reduce animation to gain a more performant experience.
+""")
+        }
+    }
+    
     var body: some View {
         Section {
             SpacingVStack {
-                Picker("Theme", selection: $theme) {
-                    ForEach(Theme.themes, id: \.self) { theme in
-                        HStack {
-                            Image(nsImage: theme.icon.image)
-                            Text(theme.name)
+                TipWrapper(tip: themeTip) { tip in
+                    Picker("Theme", selection: $theme) {
+                        ForEach(Theme.themes, id: \.self) { theme in
+                            HStack {
+                                Image(nsImage: theme.icon.image)
+                                Text(theme.name)
+                            }
                         }
                     }
-                }
-                .onChange(of: theme) { _, _ in
-                    AppDelegate.shared?.statusBarController.startFunctionalTimers()
+                    .onChange(of: theme) { _, _ in
+                        AppDelegate.shared?.statusBarController.startFunctionalTimers()
+                    }
                 }
                 
-                Toggle("Reduce animation", isOn: $reduceAnimationEnabled)
+                TipWrapper(tip: reduceAnimationTip) { tip in
+                    Toggle("Reduce animation", isOn: $reduceAnimationEnabled)
+                }
             }
             
             feedback: do {
@@ -54,58 +74,6 @@ struct SettingsGeneralSection: View {
                         Slider(value: binding, in: 0...Double(maxIndex), step: 1) {
                             EmptyView()
                         }
-                    }
-                }
-            }
-        }
-         
-        Section("Functions") {
-            SpacingVStack {
-                Toggle("Auto shows", isOn: $autoShowsEnabled)
-                
-                Toggle("Use always hide area", isOn: $alwaysHideAreaEnabled)
-            }
-        }
-         
-        Section {
-            SpacingVStack {
-                Picker("Auto idling", selection: .constant(1)) {
-                    Text("Test 1").tag(1)
-                    Text("Test 2").tag(2)
-                }
-                
-                Picker("Edge behavior", selection: .constant(1)) {
-                    Text("Test 1").tag(1)
-                    Text("Test 2").tag(2)
-                }
-            }
-            
-            VStack {
-                Picker(selection: .constant(1)) {
-                    Text("Percentage").tag(1)
-                    Text("Pixel").tag(2)
-                } label: {
-                    HStack(alignment: .firstTextBaseline) {
-                        Text("Dead zone")
-                        
-                        Spacer()
-                        
-                        if autoShowsEnabled {
-                            Stepper(value: .constant(42), in: 0...Int.max) {
-                                TextField(text: .constant("42")) {
-                                    EmptyView()
-                                }
-                                .multilineTextAlignment(.trailing)
-                                .lineLimit(1)
-                                .monospaced()
-                            }
-                        }
-                    }
-                }
-                
-                EmptyFormWrapper {
-                    Slider(value: .constant(0.25), in: 0...1) {
-                        EmptyView()
                     }
                 }
             }

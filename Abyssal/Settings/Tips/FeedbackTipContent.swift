@@ -13,7 +13,9 @@ struct FeedbackTipContent: View {
     
     var body: some View {
         ComposedTipContent {
-            Text("This is a description. **Markdown** ~is~ `actually` *supported!*")
+            Text("""
+The intensity of feedback given when triggering actions such as _enabling **Auto Shows**_ or _canceling **Auto Idling.**_
+""")
         } title: {
             let label: String = switch feedback {
             case .none:

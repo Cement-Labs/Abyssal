@@ -16,7 +16,7 @@ struct ComposedTipContent<Title, Content>: View where Title: View, Content: View
     
     var body: some View {
         SimpleTipContent {
-            VStack {
+            VStack(spacing: 8) {
                 title()
                     .font(.title3)
                     .bold()

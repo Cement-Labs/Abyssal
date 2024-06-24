@@ -10,10 +10,12 @@ import SwiftUI
 struct SimpleTipContent<Content>: View where Content: View {
     @ViewBuilder var content: () -> Content
     
+    @State private var size: CGSize = .zero
+    
     var body: some View {
         content()
-            .padding()
-            .frame(maxWidth: 450)
+            .frame(maxWidth: 400)
             .fixedSize()
+        .padding()
     }
 }

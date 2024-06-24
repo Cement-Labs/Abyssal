@@ -13,7 +13,11 @@ struct TimeoutTipContent: View {
     
     var body: some View {
         ComposedTipContent {
-            Text("This is a description. **Markdown** ~is~ `actually` *supported!*")
+            Text("""
+Time to countdown before disabling **Auto Idling.**
+
+After interacting with status items that will be automatically hidden, for example, status items inside the **Always Hidden Area,** **Auto Idling** will keep them visible until this timeout is reached or the cursor hovered over the `Hide Separator` or `Always Hide Separator`.
+""")
         } title: {
             Text(timeout.label)
                 .contentTransition(.numericText(countsDown: true))

@@ -19,7 +19,9 @@ struct SettingsAdvancedSection: View {
     
     private let startsWithMacOSTip = Tip {
         SimpleTipContent {
-            Text("This is a simple tip.")
+            Text("""
+Launch **\(Bundle.main.appName)** right after macOS starts.
+""")
         }
     }
     

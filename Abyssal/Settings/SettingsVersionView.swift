@@ -8,26 +8,36 @@
 import SwiftUI
 
 struct SettingsVersionView: View {
-    var body: some View {
-        HStack {
-            ProgressView()
-                .controlSize(.small)
-            
-            Button {
-                
-            } label: {
-                Image(systemSymbol: .shiftFill)
-                
-                let version = (false ? Text(Bundle.main.appVersion) : Text("\(Bundle.main.appVersion) \(Image(systemSymbol: .arrowRight)) \(Bundle.main.appVersion)"))
-                    .monospaced()
-                
-                Text("Version \(version)")
-                    .foregroundStyle(.secondary)
-            }
-            .buttonStyle(.plain)
-            .foregroundStyle(.tint)
+    private let updateTip = Tip {
+        SimpleTipContent {
+            Text("""
+An update is available. Click to access the download page.
+""")
         }
-        .frame(height: 24)
+    }
+    
+    var body: some View {
+        TipWrapper(tip: updateTip) { tip in
+            HStack {
+                ProgressView()
+                    .controlSize(.small)
+                
+                Button {
+                    
+                } label: {
+                    Image(systemSymbol: .shiftFill)
+                    
+                    let version = (false ? Text(Bundle.main.appVersion) : Text("\(Bundle.main.appVersion) \(Image(systemSymbol: .arrowRight)) \(Bundle.main.appVersion)"))
+                        .monospaced()
+                    
+                    Text("Version \(version)")
+                        .foregroundStyle(.secondary)
+                }
+                .buttonStyle(.plain)
+                .foregroundStyle(.tint)
+            }
+            .frame(height: 24)
+        }
     }
 }
 

@@ -42,6 +42,10 @@ struct SettingsView: View {
                 
                 Form {
                     SettingsGeneralSection()
+                    
+                    SettingsFunctionsSection()
+                    
+                    SettingsBehaviorsSection()
                 }
                 .defaultScrollAnchor(.bottom)
                 .padding(.top, -20)

@@ -154,7 +154,7 @@ After interacting with status items that will be automatically hidden, for examp
                 tip: _Tip(
                     tipString: {
                         NSLocalizedString("Tip/SwitchStartsWithMacOS", value: """
-Run **Abyssal** when macOS starts.
+Run **\(Bundle.main.appName)** when macOS starts.
 """, comment: "(switch) starts with macOS")
                     },
                     preferredEdge: .maxX
@@ -174,7 +174,7 @@ The tips are currently shown. Click to hide them.
                 tip: _Tip(
                     tipString: {
                         NSLocalizedString("Tip/ButtonLink", value: """
-**Abyssal** is open sourced. Click to access the source code repository.
+**\(Bundle.main.appName)** is open sourced. Click to access the source code repository.
 """, comment: "(button) link")
                     }
                 )!, trackingArea: buttonLink.visibleRect.getTrackingArea(self, viewToAdd: buttonLink)
