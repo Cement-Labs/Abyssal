@@ -14,7 +14,7 @@ struct SettingsGeneralSection: View {
     @Default(.feedback) private var feedback
     
     private let feedbackTip = Tip(preferredEdge: .minY) {
-        TipTitle("Title")
+        TipFeedbackTitle()
     } content: {
         .init(localized: """
 The intensity of feedback given when triggering actions such as _enabling **Auto Shows**_ or _canceling **Auto Idling.**_

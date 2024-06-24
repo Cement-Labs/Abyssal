@@ -32,6 +32,7 @@ struct TipTitle<Content, Value>: View where Content: View, Value: Equatable {
     
     var body: some View {
         content()
+            .fixedSize()
             .font(.title3)
             .bold()
         

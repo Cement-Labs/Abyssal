@@ -200,7 +200,8 @@ class Tip<Title> where Title: View {
             ) { [weak self] _ in
                 guard let self else { return }
                 
-                self.update()
+                self.updateFrame()
+                self.updatePosition()
             }
         } else {
             updateFrame()

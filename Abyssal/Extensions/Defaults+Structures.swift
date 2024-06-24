@@ -134,18 +134,6 @@ enum TimeoutAttribute: Int, CaseIterable, Defaults.Serializable {
         default: self.rawValue
         }
     }
-    
-    var label: String {
-        switch self {
-        case .sec5, .sec10, .sec15, .sec30, .sec45:
-            TimeFormat.inSeconds(Double(self.rawValue))
-            
-        case .sec60, .min2, .min3, .min5, .min10:
-            TimeFormat.inMinutes(Double(self.rawValue / 60))
-            
-        default: TimeFormat.forever
-        }
-    }
 }
 
 enum FeedbackAttribute: Int, CaseIterable, Defaults.Serializable {

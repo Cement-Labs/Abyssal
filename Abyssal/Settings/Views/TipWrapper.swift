@@ -55,6 +55,7 @@ where Content: View, Title: View, Value: Equatable {
         
         // Update when value changes
             .onChange(of: value) { _, _ in
+                tip.updateFrame()
                 tip.updatePosition()
             }
         

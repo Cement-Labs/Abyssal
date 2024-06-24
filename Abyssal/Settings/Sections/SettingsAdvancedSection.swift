@@ -14,7 +14,11 @@ struct SettingsAdvancedSection: View {
     @Default(.timeout) private var timeout
     
     private let timeoutTip = Tip(preferredEdge: .minY) {
-        .init(localized: "Test")
+        TipTimeoutTitle()
+    } content: {
+        .init(localized: """
+Test
+""")
     }
     
     private let startsWithMacOSTip = Tip {
