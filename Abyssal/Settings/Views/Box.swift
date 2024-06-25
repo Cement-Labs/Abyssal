@@ -63,8 +63,8 @@ where Content: View {
             content()
                 .foregroundStyle(
                     isOn
-                    ? AnyShapeStyle(BackgroundStyle.background)
-                    : AnyShapeStyle(HierarchicalShapeStyle.primary)
+                    ? AnyShapeStyle(.background)
+                    : AnyShapeStyle(.primary)
                 )
         }
         .buttonStyle(.borderless)
@@ -79,13 +79,13 @@ where Content: View {
                 RoundedRectangle(cornerSize: cornerSize)
                     .fill(
                         isHovering
-                        ? AnyShapeStyle(TintShapeStyle.tint.opacity(0.1))
-                        : AnyShapeStyle(FillShapeStyle.fill.opacity(0.1))
+                        ? AnyShapeStyle(.tint.opacity(0.1))
+                        : AnyShapeStyle(.fill.opacity(0.1))
                     )
                     .strokeBorder((
                         isHovering
-                        ? AnyShapeStyle(TintShapeStyle.tint)
-                        : AnyShapeStyle(FillShapeStyle.fill)
+                        ? AnyShapeStyle(.tint)
+                        : AnyShapeStyle(.fill)
                     ).opacity(0.5))
             }
         }

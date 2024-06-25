@@ -66,16 +66,39 @@ extension Version: Comparable {
 }
 
 struct VersionManager {
+    enum FetchState {
+        case initialized // Before first fetch
+        case fetching
+        case finished // Fetch succeed
+        case failed // Fetch failed
+        
+        var idle: Bool {
+            switch self {
+            case .fetching:
+                false
+            case .initialized, .finished, .failed:
+                true
+            }
+        }
+    }
+    
     fileprivate static var remoteVersion: Version = .app
     
     private static var task: URLSessionTask?
     
+    static var fetchState: FetchState = .initialized
+    
     static func fetchLatest() {
         task?.cancel()
+        
         print("Started fetching latest version...")
+        fetchState = .fetching
         
         task = URLSession.shared.dataTask(with: .releaseTags) { (data, response, error) in
-            guard let data else { return }
+            guard let data else { 
+                fetchState = .failed
+                return
+            }
             
             do {
                 if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] {
@@ -92,8 +115,11 @@ struct VersionManager {
                     } else {
                         print("No newer version available.")
                     }
+                    
+                    fetchState = .finished
                 }
             } catch {
+                fetchState = .failed
                 print(error.localizedDescription)
             }
         }

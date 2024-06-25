@@ -159,7 +159,16 @@
     "Dead zone" : {
 
     },
+    "Debug Fetch State" : {
+
+    },
     "Edge behavior" : {
+
+    },
+    "Failed to fetch for latest version." : {
+
+    },
+    "Fetching for latest version..." : {
 
     },
     "Forever" : {
