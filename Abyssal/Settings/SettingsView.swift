@@ -24,9 +24,6 @@ struct SettingsView: View {
                     .padding(.vertical, 42)
                 }
                 .defaultScrollAnchor(.bottom)
-#if DEBUG
-                .border(.green.opacity(0.1))
-#endif
                 
                 Form {
                     SettingsModifiersSection()
@@ -35,9 +32,6 @@ struct SettingsView: View {
                 }
                 .padding(1)
                 .defaultScrollAnchor(.bottom)
-#if DEBUG
-                .border(.orange.opacity(0.1))
-#endif
             }
             .frame(maxWidth: 370)
             
@@ -55,12 +49,10 @@ struct SettingsView: View {
                 .defaultScrollAnchor(.bottom)
                 .padding(1)
                 .padding(.top, -20)
-#if DEBUG
-                .border(.blue.opacity(0.1))
-#endif
             }
             .frame(maxWidth: 430)
         }
+        .controlSize(.regular)
         .formStyle(.grouped)
         .scrollDisabled(true)
         .padding(.horizontal, -12) // Don't know why, but needed

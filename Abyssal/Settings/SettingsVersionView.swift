@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct SettingsVersionView: View {
-    private let updateTip = Tip {
-        .init(localized: """
+    private let updateTip = Tip(permanent: true) {
+        Version.hasUpdate ? .init(localized: """
 An update is available. Click to access the download page.
-""")
+""") : .init(localized: "Click to check for updates.")
     }
     
     var body: some View {

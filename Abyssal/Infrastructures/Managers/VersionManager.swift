@@ -68,34 +68,35 @@ extension Version: Comparable {
 struct VersionManager {
     fileprivate static var remoteVersion: Version = .app
     
-    private static let task = URLSession.shared.dataTask(with: .releaseTags) { (data, response, error) in
-        print(data, response, error)
-        guard let data else { return }
-        
-        do {
-            if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] {
-                let tags = json
-                    .compactMap { element in
-                        element["name"] as? String
-                    }
-                    .compactMap { Version(from: $0) }
-                    .sorted(by: >)
-                
-                if let remote = tags.first, remote > .app {
-                    VersionManager.remoteVersion = remote
-                    print("Fetched latest version: \(remote)")
-                } else {
-                    print("No newer version available.")
-                }
-            }
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
+    private static var task: URLSessionTask?
     
     static func fetchLatest() {
-        task.cancel()
+        task?.cancel()
         print("Started fetching latest version...")
-        task.resume()
+        
+        task = URLSession.shared.dataTask(with: .releaseTags) { (data, response, error) in
+            guard let data else { return }
+            
+            do {
+                if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] {
+                    let tags = json
+                        .compactMap { element in
+                            element["name"] as? String
+                        }
+                        .compactMap { Version(from: $0) }
+                        .sorted(by: >)
+                    
+                    if let remote = tags.first, remote > .app {
+                        VersionManager.remoteVersion = remote
+                        print("Fetched latest version: \(remote)")
+                    } else {
+                        print("No newer version available.")
+                    }
+                }
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        task?.resume()
     }
 }

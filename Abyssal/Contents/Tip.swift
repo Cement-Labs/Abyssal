@@ -23,6 +23,8 @@ class Tip<Title> where Title: View {
     var title: (() -> Title)? = nil
     var content: (() -> String)? = nil
     
+    var permanent: Bool = false
+    
     private var popover: NSPopover
     private var cachedSender: NSView?
     
@@ -39,7 +41,7 @@ class Tip<Title> where Title: View {
     private var has: (title: Bool, content: Bool) {
         (
             title: title != nil,
-            content: content != nil && Defaults[.tipsEnabled]
+            content: content != nil && (permanent || Defaults[.tipsEnabled])
         )
     }
     
@@ -54,7 +56,7 @@ class Tip<Title> where Title: View {
     }
     
     var isAvailable: Bool {
-        has.title || has.content
+        has.title || has.content || permanent
     }
     
     var isShown: Bool {
@@ -66,6 +68,7 @@ class Tip<Title> where Title: View {
     init(
         preferredEdge: NSRectEdge = .minX,
         delay: CGFloat = 0.5,
+        permanent: Bool = false,
         rect positionRect: (() -> CGRect)? = nil,
         offset positionOffset: (() -> CGPoint)? = nil,
         title: (() -> Title)? = nil,
@@ -73,6 +76,7 @@ class Tip<Title> where Title: View {
     ) {
         self.preferredEdge = preferredEdge
         self.delay = delay
+        self.permanent = permanent
         
         if let positionRect {
             self.positionRect = positionRect
@@ -94,11 +98,12 @@ class Tip<Title> where Title: View {
     convenience init(
         preferredEdge: NSRectEdge = .minX,
         delay: CGFloat = 0.5,
+        permanent: Bool = false,
         title: (() -> Title)? = nil,
         content: (() -> String)? = nil
     ) {
         self.init(
-            preferredEdge: preferredEdge, delay: delay,
+            preferredEdge: preferredEdge, delay: delay, permanent: permanent,
             rect: nil, offset: nil,
             title: title, content: content
         )
@@ -107,10 +112,11 @@ class Tip<Title> where Title: View {
     convenience init(
         preferredEdge: NSRectEdge = .minX,
         delay: CGFloat = 0.5,
+        permanent: Bool = false,
         content: (() -> String)? = nil
     ) where Title == EmptyView {
         self.init(
-            preferredEdge: preferredEdge, delay: delay,
+            preferredEdge: preferredEdge, delay: delay, permanent: permanent,
             title: nil, content: content
         )
     }
