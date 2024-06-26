@@ -1,4 +1,12 @@
+# macOS
 *.DS_Store
-.idea/
-*.dmg
-/Abyssal.xcodeproj/project.xcworkspace/xcuserdata/
+
+# Xcode
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xcuserstate
+xcuserdata
+Loop.zip
+Build/
