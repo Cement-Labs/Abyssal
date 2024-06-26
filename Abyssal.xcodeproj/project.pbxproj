@@ -148,16 +148,6 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
-		28ACE7852AE948EF00DC8C1A /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				C6DEC5292A38BF6C00943448 /* StatusBarController.swift */,
-				C6DEC53C2A3A0E8900943448 /* StatusBarController+Animations.swift */,
-				C6E2C02F2A3EE9F1007D4E1B /* StatusBarController+StateManager.swift */,
-			);
-			path = Core;
-			sourceTree = "<group>";
-		};
 		28C90F672C26CC4D000AC2E3 /* Sections */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +191,15 @@
 			path = Tips;
 			sourceTree = "<group>";
 		};
+		28CB53A22C2B930C00F32A71 /* Miscellaneous */ = {
+			isa = PBXGroup;
+			children = (
+				282E928B2C27CA9100C21EE5 /* ObservationTrackingStream.swift */,
+				282E92902C27D75E00C21EE5 /* TimeFormat.swift */,
+			);
+			path = Miscellaneous;
+			sourceTree = "<group>";
+		};
 		C66CAB972A38871500E4D8E6 = {
 			isa = PBXGroup;
 			children = (
@@ -223,8 +222,10 @@
 			children = (
 				C66CABA32A38871500E4D8E6 /* AppDelegate.swift */,
 				2842500E2C253F3E008FEE08 /* Settings */,
-				C6DEC5392A3A0B2300943448 /* Contents */,
+				C6DEC5392A3A0B2300943448 /* Menu Bar */,
 				C6DEC5372A3A05E200943448 /* Infrastructures */,
+				287B85D02C29A689001FD729 /* Managers */,
+				28CB53A22C2B930C00F32A71 /* Miscellaneous */,
 				C6DEC5362A3A05D300943448 /* Events */,
 				C6DEC52D2A39C83100943448 /* Extensions */,
 				C66CABA72A38871500E4D8E6 /* Assets.xcassets */,
@@ -258,23 +259,22 @@
 		C6DEC5372A3A05E200943448 /* Infrastructures */ = {
 			isa = PBXGroup;
 			children = (
-				287B85D02C29A689001FD729 /* Managers */,
-				282E928B2C27CA9100C21EE5 /* ObservationTrackingStream.swift */,
-				282E92902C27D75E00C21EE5 /* TimeFormat.swift */,
+				28ACE7862AE9490700DC8C1A /* Separator.swift */,
+				2822C58F2BDC7748009C71DA /* Icon.swift */,
+				C6CDD0612A3F2F9000ED97F0 /* Theme.swift */,
+				282E92892C27C25000C21EE5 /* Tip.swift */,
 			);
 			path = Infrastructures;
 			sourceTree = "<group>";
 		};
-		C6DEC5392A3A0B2300943448 /* Contents */ = {
+		C6DEC5392A3A0B2300943448 /* Menu Bar */ = {
 			isa = PBXGroup;
 			children = (
-				28ACE7852AE948EF00DC8C1A /* Core */,
-				28ACE7862AE9490700DC8C1A /* Separator.swift */,
-				C6CDD0612A3F2F9000ED97F0 /* Theme.swift */,
-				2822C58F2BDC7748009C71DA /* Icon.swift */,
-				282E92892C27C25000C21EE5 /* Tip.swift */,
+				C6DEC5292A38BF6C00943448 /* StatusBarController.swift */,
+				C6DEC53C2A3A0E8900943448 /* StatusBarController+Animations.swift */,
+				C6E2C02F2A3EE9F1007D4E1B /* StatusBarController+StateManager.swift */,
 			);
-			path = Contents;
+			path = "Menu Bar";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
