@@ -44,6 +44,7 @@
 		28CAF5552C297093002BD78C /* TipTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CAF5542C297093002BD78C /* TipTitle.swift */; };
 		28CAF5572C297768002BD78C /* TipFeedbackTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CAF5562C297768002BD78C /* TipFeedbackTitle.swift */; };
 		28CAF5592C297809002BD78C /* TipTimeoutTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CAF5582C297809002BD78C /* TipTimeoutTitle.swift */; };
+		28CB53A52C2B938300F32A71 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CB53A42C2B938300F32A71 /* AppManager.swift */; };
 		C63B40532A4060E400BCAE79 /* NSStatusItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63B40522A4060E400BCAE79 /* NSStatusItem+Extension.swift */; };
 		C66CABA42A38871500E4D8E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CABA32A38871500E4D8E6 /* AppDelegate.swift */; };
 		C66CABB72A389F2500E4D8E6 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CABB62A389F2500E4D8E6 /* EventMonitor.swift */; };
@@ -91,6 +92,7 @@
 		28CAF5542C297093002BD78C /* TipTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipTitle.swift; sourceTree = "<group>"; };
 		28CAF5562C297768002BD78C /* TipFeedbackTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipFeedbackTitle.swift; sourceTree = "<group>"; };
 		28CAF5582C297809002BD78C /* TipTimeoutTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipTimeoutTitle.swift; sourceTree = "<group>"; };
+		28CB53A42C2B938300F32A71 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		C63B40522A4060E400BCAE79 /* NSStatusItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSStatusItem+Extension.swift"; sourceTree = "<group>"; };
 		C66CABA02A38871500E4D8E6 /* Abyssal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Abyssal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C66CABA32A38871500E4D8E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				287B85CE2C29A676001FD729 /* MouseManager.swift */,
 				287B85D12C29A6A0001FD729 /* VersionManager.swift */,
 				287B85D42C29A707001FD729 /* MathHelper.swift */,
+				28CB53A42C2B938300F32A71 /* AppManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -200,6 +203,16 @@
 			path = Miscellaneous;
 			sourceTree = "<group>";
 		};
+		28CB53A32C2B935700F32A71 /* AppKit */ = {
+			isa = PBXGroup;
+			children = (
+				C6B3E79A2A3D83C400B650BC /* NSRect+Extension.swift */,
+				C63B40522A4060E400BCAE79 /* NSStatusItem+Extension.swift */,
+				2852BDE82AD97A0E00AA8AD1 /* NSSlider+Extension.swift */,
+			);
+			path = AppKit;
+			sourceTree = "<group>";
+		};
 		C66CAB972A38871500E4D8E6 = {
 			isa = PBXGroup;
 			children = (
@@ -239,11 +252,9 @@
 			isa = PBXGroup;
 			children = (
 				28C90F6E2C270604000AC2E3 /* Foundation */,
+				28CB53A32C2B935700F32A71 /* AppKit */,
 				2831B15D2B751B990020DECD /* Defaults+Extensions.swift */,
 				2831B15F2B7521890020DECD /* Defaults+Structures.swift */,
-				C6B3E79A2A3D83C400B650BC /* NSRect+Extension.swift */,
-				C63B40522A4060E400BCAE79 /* NSStatusItem+Extension.swift */,
-				2852BDE82AD97A0E00AA8AD1 /* NSSlider+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -382,6 +393,7 @@
 				C63B40532A4060E400BCAE79 /* NSStatusItem+Extension.swift in Sources */,
 				282E928A2C27C25000C21EE5 /* Tip.swift in Sources */,
 				C6E2C0302A3EE9F1007D4E1B /* StatusBarController+StateManager.swift in Sources */,
+				28CB53A52C2B938300F32A71 /* AppManager.swift in Sources */,
 				28C4AC032C270C9B006AFF87 /* SettingsVersionView.swift in Sources */,
 				282E928C2C27CA9100C21EE5 /* ObservationTrackingStream.swift in Sources */,
 				2840D70D2C2679F50087EE50 /* Bool+Extensions.swift in Sources */,

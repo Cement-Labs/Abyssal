@@ -50,7 +50,7 @@ extension StatusBarController {
     
     func startAnimationTimer() {
         if animationTimer == nil {
-            animationTimer = Timer.scheduledTimer(
+            animationTimer = .scheduledTimer(
                 withTimeInterval: 1.0 / 60.0,
                 repeats: true
             ) { [weak self] _ in
@@ -63,7 +63,7 @@ extension StatusBarController {
     
     func startActionTimer() {
         if actionTimer == nil {
-            actionTimer = Timer.scheduledTimer(
+            actionTimer = .scheduledTimer(
                 withTimeInterval: 1.0 / 6.0,
                 repeats: true
             ) { [weak self] _ in
@@ -77,7 +77,7 @@ extension StatusBarController {
     
     func startFeedbackTimer() {
         if feedbackTimer == nil && shouldPresentFeedback {
-            feedbackTimer = Timer.scheduledTimer(
+            feedbackTimer = .scheduledTimer(
                 withTimeInterval: 1.0 / 30.0,
                 repeats: true
             ) { [weak self] _ in
@@ -101,7 +101,7 @@ extension StatusBarController {
     
     func startTriggerTimer() {
         if triggerTimer == nil {
-            triggerTimer = Timer.scheduledTimer(
+            triggerTimer = .scheduledTimer(
                 withTimeInterval: 1.0 / 6.0,
                 repeats: true
             ) { [weak self] _ in
@@ -207,7 +207,7 @@ extension StatusBarController {
         let timeout = Defaults[.timeout]
         
         if timeoutTimer == nil && timeout.attribute != nil {
-            timeoutTimer = Timer.scheduledTimer(
+            timeoutTimer = .scheduledTimer(
                 withTimeInterval: Double(timeout.attribute!),
                 repeats: false
             ) { [weak self] _ in
@@ -221,7 +221,7 @@ extension StatusBarController {
     
     func startIgnoringTimer() {
         if ignoringTimer == nil && ignoring {
-            ignoringTimer = Timer.scheduledTimer(
+            ignoringTimer = .scheduledTimer(
                 withTimeInterval: 1,
                 repeats: false
             ) { [weak self] _ in
