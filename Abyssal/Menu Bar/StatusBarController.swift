@@ -90,6 +90,8 @@ class StatusBarController {
     
     var timeout = false
     
+    var lastFocusedApp: NSRunningApplication?
+    
     
     
     var feedbackCount = Int.zero

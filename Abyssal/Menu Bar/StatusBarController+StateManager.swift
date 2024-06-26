@@ -199,6 +199,12 @@ extension StatusBarController {
                     self.mouseOverBody,
                     KeyboardManager.triggers
                 )
+                
+                // Update frontmost app
+                if lastFocusedApp != AppManager.frontmost {
+                    print(AppManager.frontmost)
+                    lastFocusedApp = AppManager.frontmost
+                }
             }
         }
     }
