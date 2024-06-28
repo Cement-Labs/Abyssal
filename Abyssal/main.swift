@@ -7,6 +7,7 @@
 
 import AppKit
 
+// https://stackoverflow.com/a/68502031/23452915
 let app = NSApplication.shared
 let delegate = AppDelegate() // Allocate
 app.delegate = delegate
