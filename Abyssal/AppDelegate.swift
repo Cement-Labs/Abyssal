@@ -13,7 +13,7 @@ import LaunchAtLogin
 
 let repository = "NNN-Studio/Abyssal"//"Cement-Labs/Abyssal"
 
-@main
+//@main
 class AppDelegate: NSObject, NSApplicationDelegate {
     static var shared: AppDelegate? {
         NSApplication.shared.delegate as? AppDelegate
