@@ -7,9 +7,7 @@
 
 import Foundation
 
-enum TimeFormat: Formattable {
-    typealias Value = Double
-    
+enum TimeFormat: DoubleFormattable {
     case second
     case minute
     

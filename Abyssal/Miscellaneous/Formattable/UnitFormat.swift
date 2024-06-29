@@ -7,9 +7,7 @@
 
 import Foundation
 
-enum UnitFormat: Formattable {
-    typealias Value = Double
-    
+enum UnitFormat: DoubleFormattable {
     case percentage
     case pixel
     

@@ -1,5 +1,5 @@
 //
-//  SettingsModifierSection.swift
+//  ModifierSection.swift
 //  Abyssal
 //
 //  Created by KrLite on 2024/6/22.
@@ -8,7 +8,7 @@
 import SwiftUI
 import Defaults
 
-struct SettingsModifierSection: View {
+struct ModifierSection: View {
     @Default(.modifier) private var modifiers
     @Default(.modifierMode) private var modifierMode
     
@@ -81,7 +81,7 @@ The modifier keys to use for showing the **Always Hide Area.** It is recommended
 
 #Preview {
     Form {
-        SettingsModifierSection()
+        ModifierSection()
     }
     .formStyle(.grouped)
 }

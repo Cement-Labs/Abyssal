@@ -26,11 +26,9 @@ struct SettingsView: View {
                 .defaultScrollAnchor(.bottom)
                 
                 Form {
-                    SettingsModifierSection()
+                    ModifierSection()
                     
-                    SettingsAdvancedSection()
-                    
-                    SettingsCollapseStrategySection()
+                    AdvancedSection()
                 }
                 .padding(1)
                 .defaultScrollAnchor(.bottom)
@@ -42,12 +40,12 @@ struct SettingsView: View {
                     .padding(20)
                 
                 Form {
-                    SettingsGeneralSection()
+                    GeneralSection()
                         .environment(\.hasTitle, false)
                     
-                    SettingsFunctionsSection()
+                    FunctionsSection()
                     
-                    SettingsBehaviorsSection()
+                    BehaviorsSection()
                 }
                 .defaultScrollAnchor(.bottom)
                 .padding(1)

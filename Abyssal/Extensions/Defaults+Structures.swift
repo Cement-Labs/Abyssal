@@ -183,69 +183,106 @@ enum Feedback: Int, CaseIterable, Defaults.Serializable {
 
 enum DeadZone: Codable, Defaults.Serializable {
     case percentage(Double)
-    case pixel(UInt64)
+    case pixel(Double)
     
     var range: ClosedRange<Double> {
-        switch self {
-        case .percentage(_):
-            0...0.75
-        case .pixel(_):
-            0...ScreenManager.width
-        }
+        mode.range
     }
     
-    var double: Double {
+    var value: Double {
         get {
             switch self {
             case .percentage(let percentage):
                 percentage
             case .pixel(let pixel):
-                Double(pixel)
+                pixel
             }
         }
         
-        set(double) {
-            switch self {
-            case .percentage(_):
-                self = .percentage(double)
-            case .pixel(_):
-                self = .pixel(.init(double))
-            }
+        set {
+            self = mode.wrap(newValue)
         }
     }
     
-    var percentage: Double {
+    var sliderPercentage: Double {
         get {
-            range.percentage(double)
+            range.percentage(value)
         }
         
         set(percentage) {
-            double = range.fromPercentage(percentage)
+            value = range.fromPercentage(percentage)
         }
     }
     
-    var pixel: Double {
+    var screenPixel: Double {
         switch self {
-        case .percentage(let percentage):
-            ScreenManager.width * percentage
+        case .percentage(_):
+            Mode.pixel.range.percentage(sliderPercentage)
         case .pixel(let pixel):
-                .init(pixel)
+            pixel
         }
     }
 }
 
 extension DeadZone {
-    enum `Type` {
+    enum Mode: CaseIterable {
         case percentage
         case pixel
+        
+        var range: ClosedRange<Double> {
+            switch self {
+            case .percentage:
+                0...75
+            case .pixel:
+                0...ScreenManager.width
+            }
+        }
+        
+        func wrap(_ value: Double) -> DeadZone {
+            switch self {
+            case .percentage:
+                    .percentage(value)
+            case .pixel:
+                    .pixel(value)
+            }
+        }
+        
+        func from(_ deadZone: DeadZone) -> Double {
+            guard self != deadZone.mode else {
+                return deadZone.value
+            }
+            
+            return switch self {
+            case .percentage:
+                switch deadZone {
+                case .pixel(_):
+                    deadZone.sliderPercentage * 100
+                default: deadZone.value
+                }
+            case .pixel:
+                switch deadZone {
+                case .percentage(let percentage):
+                    range.fromPercentage(percentage / 100)
+                default: deadZone.value
+                }
+            }
+        }
     }
-    
-    var `type`: `Type` {
-        switch self {
-        case .percentage(_):
-                .percentage
-        case .pixel(_):
-                .pixel
+        
+    var mode: Mode {
+        get {
+            switch self {
+            case .percentage(_):
+                    .percentage
+            case .pixel(_):
+                    .pixel
+            }
+        }
+        
+        set(type) {
+            guard type != self.mode else { return }
+            
+            self = type.wrap(type.from(self))
         }
     }
 }
@@ -269,4 +306,8 @@ struct CollapseStrategy: Codable, Defaults.Serializable {
     var enabledCount: Int {
         values.count { $0 }
     }
+}
+
+extension DeadZone: Equatable {
+    
 }

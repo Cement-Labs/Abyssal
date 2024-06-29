@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     "**%@** is open source. Click to access the source code." : {
       "localizations" : {
         "zh-Hans" : {
@@ -10,6 +13,9 @@
           }
         }
       }
+    },
+    "%" : {
+
     },
     "%@ %@ %@" : {
       "localizations" : {
@@ -57,7 +63,26 @@
       }
     },
     "%g Pixels" : {
-
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%g Pixel"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "new",
+                  "value" : "%g Pixels"
+                }
+              }
+            }
+          }
+        }
+      }
     },
     "%g Seconds" : {
       "localizations" : {
@@ -312,12 +337,6 @@
     "On Invalidation" : {
 
     },
-    "Percentage" : {
-
-    },
-    "Pixel" : {
-
-    },
     "Press" : {
       "localizations" : {
         "zh-Hans" : {
@@ -327,6 +346,9 @@
           }
         }
       }
+    },
+    "px" : {
+
     },
     "Quit %@" : {
       "localizations" : {

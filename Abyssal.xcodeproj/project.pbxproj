@@ -20,9 +20,9 @@
 		2831B1602B7521890020DECD /* Defaults+Structures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2831B15F2B7521890020DECD /* Defaults+Structures.swift */; };
 		283A1ECC2C2EE00E00A34C0A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283A1ECB2C2EE00E00A34C0A /* main.swift */; };
 		2840D70D2C2679F50087EE50 /* Bool+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2840D70C2C2679F50087EE50 /* Bool+Extensions.swift */; };
-		2840D70F2C267ECB0087EE50 /* SettingsModifierSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2840D70E2C267ECB0087EE50 /* SettingsModifierSection.swift */; };
-		2840D7112C267EE00087EE50 /* SettingsAdvancedSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2840D7102C267EE00087EE50 /* SettingsAdvancedSection.swift */; };
-		2840D7132C267EE90087EE50 /* SettingsGeneralSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2840D7122C267EE90087EE50 /* SettingsGeneralSection.swift */; };
+		2840D70F2C267ECB0087EE50 /* ModifierSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2840D70E2C267ECB0087EE50 /* ModifierSection.swift */; };
+		2840D7112C267EE00087EE50 /* AdvancedSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2840D7102C267EE00087EE50 /* AdvancedSection.swift */; };
+		2840D7132C267EE90087EE50 /* GeneralSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2840D7122C267EE90087EE50 /* GeneralSection.swift */; };
 		2840D7152C267F350087EE50 /* SettingsTrafficsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2840D7142C267F350087EE50 /* SettingsTrafficsView.swift */; };
 		284250102C253F79008FEE08 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2842500F2C253F79008FEE08 /* SettingsView.swift */; };
 		284250152C2547F1008FEE08 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284250142C2547F1008FEE08 /* SettingsViewController.swift */; };
@@ -30,11 +30,20 @@
 		284E2FE32C2F95D300BB582C /* Range+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E2FE22C2F95D300BB582C /* Range+Extensions.swift */; };
 		284E2FE52C2F9A5C00BB582C /* UnitFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E2FE42C2F9A5C00BB582C /* UnitFormat.swift */; };
 		284E2FE72C2F9B9100BB582C /* Formattable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E2FE62C2F9B9100BB582C /* Formattable.swift */; };
-		284E2FF22C2FA4C500BB582C /* SettingsCollapseStrategySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E2FF12C2FA4C500BB582C /* SettingsCollapseStrategySection.swift */; };
 		284E2FF52C2FAB8900BB582C /* EnvironmentValues+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E2FF42C2FAB8900BB582C /* EnvironmentValues+Extention.swift */; };
+		284E2FF82C2FB1A200BB582C /* CollapseStrategyControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E2FF72C2FB1A200BB582C /* CollapseStrategyControl.swift */; };
+		284E2FFA2C2FB20600BB582C /* StartsWithMacOSControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E2FF92C2FB20600BB582C /* StartsWithMacOSControl.swift */; };
+		284E2FFC2C2FB2BC00BB582C /* TimeoutControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E2FFB2C2FB2BC00BB582C /* TimeoutControl.swift */; };
+		284E2FFE2C2FB32F00BB582C /* AppearanceControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E2FFD2C2FB32F00BB582C /* AppearanceControl.swift */; };
+		284E30002C2FB3AC00BB582C /* FeedbackControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E2FFF2C2FB3AC00BB582C /* FeedbackControl.swift */; };
+		284E30022C2FB42400BB582C /* AutoShowsControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E30012C2FB42400BB582C /* AutoShowsControl.swift */; };
+		284E30042C2FB45700BB582C /* AlwaysHideAreaControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E30032C2FB45700BB582C /* AlwaysHideAreaControl.swift */; };
+		284E30062C2FB48E00BB582C /* DeadZoneControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E30052C2FB48E00BB582C /* DeadZoneControl.swift */; };
+		284E30082C2FBA4300BB582C /* TipDeadZoneTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E30072C2FBA4300BB582C /* TipDeadZoneTitle.swift */; };
+		284E300A2C2FC48000BB582C /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E30092C2FC48000BB582C /* Double+Extensions.swift */; };
 		2852BDE92AD97A0E00AA8AD1 /* NSSlider+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2852BDE82AD97A0E00AA8AD1 /* NSSlider+Extension.swift */; };
-		28743ED72C28F09500366A69 /* SettingsFunctionsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28743ED62C28F09500366A69 /* SettingsFunctionsSection.swift */; };
-		28743ED92C28F0F900366A69 /* SettingsBehaviorsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28743ED82C28F0F900366A69 /* SettingsBehaviorsSection.swift */; };
+		28743ED72C28F09500366A69 /* FunctionsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28743ED62C28F09500366A69 /* FunctionsSection.swift */; };
+		28743ED92C28F0F900366A69 /* BehaviorsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28743ED82C28F0F900366A69 /* BehaviorsSection.swift */; };
 		287B85CB2C29A606001FD729 /* ScreenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287B85CA2C29A606001FD729 /* ScreenManager.swift */; };
 		287B85CD2C29A643001FD729 /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287B85CC2C29A643001FD729 /* KeyboardManager.swift */; };
 		287B85CF2C29A676001FD729 /* MouseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287B85CE2C29A676001FD729 /* MouseManager.swift */; };
@@ -74,9 +83,9 @@
 		2831B15F2B7521890020DECD /* Defaults+Structures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Defaults+Structures.swift"; sourceTree = "<group>"; };
 		283A1ECB2C2EE00E00A34C0A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		2840D70C2C2679F50087EE50 /* Bool+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+Extensions.swift"; sourceTree = "<group>"; };
-		2840D70E2C267ECB0087EE50 /* SettingsModifierSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModifierSection.swift; sourceTree = "<group>"; };
-		2840D7102C267EE00087EE50 /* SettingsAdvancedSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAdvancedSection.swift; sourceTree = "<group>"; };
-		2840D7122C267EE90087EE50 /* SettingsGeneralSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsGeneralSection.swift; sourceTree = "<group>"; };
+		2840D70E2C267ECB0087EE50 /* ModifierSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifierSection.swift; sourceTree = "<group>"; };
+		2840D7102C267EE00087EE50 /* AdvancedSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedSection.swift; sourceTree = "<group>"; };
+		2840D7122C267EE90087EE50 /* GeneralSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSection.swift; sourceTree = "<group>"; };
 		2840D7142C267F350087EE50 /* SettingsTrafficsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTrafficsView.swift; sourceTree = "<group>"; };
 		2842500F2C253F79008FEE08 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		284250142C2547F1008FEE08 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -84,11 +93,20 @@
 		284E2FE22C2F95D300BB582C /* Range+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Range+Extensions.swift"; sourceTree = "<group>"; };
 		284E2FE42C2F9A5C00BB582C /* UnitFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitFormat.swift; sourceTree = "<group>"; };
 		284E2FE62C2F9B9100BB582C /* Formattable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formattable.swift; sourceTree = "<group>"; };
-		284E2FF12C2FA4C500BB582C /* SettingsCollapseStrategySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCollapseStrategySection.swift; sourceTree = "<group>"; };
 		284E2FF42C2FAB8900BB582C /* EnvironmentValues+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues+Extention.swift"; sourceTree = "<group>"; };
+		284E2FF72C2FB1A200BB582C /* CollapseStrategyControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapseStrategyControl.swift; sourceTree = "<group>"; };
+		284E2FF92C2FB20600BB582C /* StartsWithMacOSControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartsWithMacOSControl.swift; sourceTree = "<group>"; };
+		284E2FFB2C2FB2BC00BB582C /* TimeoutControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeoutControl.swift; sourceTree = "<group>"; };
+		284E2FFD2C2FB32F00BB582C /* AppearanceControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceControl.swift; sourceTree = "<group>"; };
+		284E2FFF2C2FB3AC00BB582C /* FeedbackControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackControl.swift; sourceTree = "<group>"; };
+		284E30012C2FB42400BB582C /* AutoShowsControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoShowsControl.swift; sourceTree = "<group>"; };
+		284E30032C2FB45700BB582C /* AlwaysHideAreaControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlwaysHideAreaControl.swift; sourceTree = "<group>"; };
+		284E30052C2FB48E00BB582C /* DeadZoneControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadZoneControl.swift; sourceTree = "<group>"; };
+		284E30072C2FBA4300BB582C /* TipDeadZoneTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipDeadZoneTitle.swift; sourceTree = "<group>"; };
+		284E30092C2FC48000BB582C /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		2852BDE82AD97A0E00AA8AD1 /* NSSlider+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSlider+Extension.swift"; sourceTree = "<group>"; };
-		28743ED62C28F09500366A69 /* SettingsFunctionsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFunctionsSection.swift; sourceTree = "<group>"; };
-		28743ED82C28F0F900366A69 /* SettingsBehaviorsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBehaviorsSection.swift; sourceTree = "<group>"; };
+		28743ED62C28F09500366A69 /* FunctionsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionsSection.swift; sourceTree = "<group>"; };
+		28743ED82C28F0F900366A69 /* BehaviorsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BehaviorsSection.swift; sourceTree = "<group>"; };
 		287B85CA2C29A606001FD729 /* ScreenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenManager.swift; sourceTree = "<group>"; };
 		287B85CC2C29A643001FD729 /* KeyboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
 		287B85CE2C29A676001FD729 /* MouseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseManager.swift; sourceTree = "<group>"; };
@@ -140,9 +158,10 @@
 				284250142C2547F1008FEE08 /* SettingsViewController.swift */,
 				2840D7142C267F350087EE50 /* SettingsTrafficsView.swift */,
 				28C4AC022C270C9B006AFF87 /* SettingsVersionView.swift */,
-				28CAF5532C297081002BD78C /* Tips */,
-				28C90F682C26D379000AC2E3 /* Views */,
 				28C90F672C26CC4D000AC2E3 /* Sections */,
+				284E2FF62C2FB17F00BB582C /* Controls */,
+				28C90F682C26D379000AC2E3 /* Views */,
+				28CAF5532C297081002BD78C /* Tips */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -165,6 +184,21 @@
 			path = SwiftUI;
 			sourceTree = "<group>";
 		};
+		284E2FF62C2FB17F00BB582C /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				284E2FF72C2FB1A200BB582C /* CollapseStrategyControl.swift */,
+				284E2FF92C2FB20600BB582C /* StartsWithMacOSControl.swift */,
+				284E2FFB2C2FB2BC00BB582C /* TimeoutControl.swift */,
+				284E2FFD2C2FB32F00BB582C /* AppearanceControl.swift */,
+				284E2FFF2C2FB3AC00BB582C /* FeedbackControl.swift */,
+				284E30012C2FB42400BB582C /* AutoShowsControl.swift */,
+				284E30032C2FB45700BB582C /* AlwaysHideAreaControl.swift */,
+				284E30052C2FB48E00BB582C /* DeadZoneControl.swift */,
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
 		287B85D02C29A689001FD729 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -182,12 +216,11 @@
 		28C90F672C26CC4D000AC2E3 /* Sections */ = {
 			isa = PBXGroup;
 			children = (
-				2840D70E2C267ECB0087EE50 /* SettingsModifierSection.swift */,
-				2840D7122C267EE90087EE50 /* SettingsGeneralSection.swift */,
-				2840D7102C267EE00087EE50 /* SettingsAdvancedSection.swift */,
-				28743ED62C28F09500366A69 /* SettingsFunctionsSection.swift */,
-				28743ED82C28F0F900366A69 /* SettingsBehaviorsSection.swift */,
-				284E2FF12C2FA4C500BB582C /* SettingsCollapseStrategySection.swift */,
+				2840D70E2C267ECB0087EE50 /* ModifierSection.swift */,
+				2840D7122C267EE90087EE50 /* GeneralSection.swift */,
+				2840D7102C267EE00087EE50 /* AdvancedSection.swift */,
+				28743ED62C28F09500366A69 /* FunctionsSection.swift */,
+				28743ED82C28F0F900366A69 /* BehaviorsSection.swift */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
@@ -210,6 +243,7 @@
 				28C90F6F2C270614000AC2E3 /* Bundle+Extensions.swift */,
 				287B85D82C29A888001FD729 /* URL+Extensions.swift */,
 				284E2FE22C2F95D300BB582C /* Range+Extensions.swift */,
+				284E30092C2FC48000BB582C /* Double+Extensions.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -220,6 +254,7 @@
 				28CAF5542C297093002BD78C /* TipTitle.swift */,
 				28CAF5562C297768002BD78C /* TipFeedbackTitle.swift */,
 				28CAF5582C297809002BD78C /* TipTimeoutTitle.swift */,
+				284E30072C2FBA4300BB582C /* TipDeadZoneTitle.swift */,
 			);
 			path = Tips;
 			sourceTree = "<group>";
@@ -405,19 +440,22 @@
 				282CB7222C2844B700AF381D /* SpacingVStack.swift in Sources */,
 				287B85D92C29A888001FD729 /* URL+Extensions.swift in Sources */,
 				2840D7152C267F350087EE50 /* SettingsTrafficsView.swift in Sources */,
-				284E2FF22C2FA4C500BB582C /* SettingsCollapseStrategySection.swift in Sources */,
 				284250102C253F79008FEE08 /* SettingsView.swift in Sources */,
 				C6B3E79B2A3D83C400B650BC /* NSRect+Extension.swift in Sources */,
 				C6DEC53D2A3A0E8900943448 /* StatusBarController+Animations.swift in Sources */,
 				282CB7202C283B7600AF381D /* EmptyFormWrapper.swift in Sources */,
+				284E2FFC2C2FB2BC00BB582C /* TimeoutControl.swift in Sources */,
+				284E30022C2FB42400BB582C /* AutoShowsControl.swift in Sources */,
 				28C90F702C270614000AC2E3 /* Bundle+Extensions.swift in Sources */,
 				C66CABB72A389F2500E4D8E6 /* EventMonitor.swift in Sources */,
-				28743ED92C28F0F900366A69 /* SettingsBehaviorsSection.swift in Sources */,
-				2840D7132C267EE90087EE50 /* SettingsGeneralSection.swift in Sources */,
+				28743ED92C28F0F900366A69 /* BehaviorsSection.swift in Sources */,
+				284E2FFA2C2FB20600BB582C /* StartsWithMacOSControl.swift in Sources */,
+				2840D7132C267EE90087EE50 /* GeneralSection.swift in Sources */,
 				C6DEC52A2A38BF6C00943448 /* StatusBarController.swift in Sources */,
+				284E2FFE2C2FB32F00BB582C /* AppearanceControl.swift in Sources */,
 				28C90F6A2C26D394000AC2E3 /* Box.swift in Sources */,
 				284E2FE32C2F95D300BB582C /* Range+Extensions.swift in Sources */,
-				2840D7112C267EE00087EE50 /* SettingsAdvancedSection.swift in Sources */,
+				2840D7112C267EE00087EE50 /* AdvancedSection.swift in Sources */,
 				28CAF5592C297809002BD78C /* TipTimeoutTitle.swift in Sources */,
 				2831B1602B7521890020DECD /* Defaults+Structures.swift in Sources */,
 				28CAF5572C297768002BD78C /* TipFeedbackTitle.swift in Sources */,
@@ -431,20 +469,26 @@
 				28C4AC032C270C9B006AFF87 /* SettingsVersionView.swift in Sources */,
 				282E928C2C27CA9100C21EE5 /* ObservationTrackingStream.swift in Sources */,
 				2840D70D2C2679F50087EE50 /* Bool+Extensions.swift in Sources */,
-				28743ED72C28F09500366A69 /* SettingsFunctionsSection.swift in Sources */,
+				284E2FF82C2FB1A200BB582C /* CollapseStrategyControl.swift in Sources */,
+				28743ED72C28F09500366A69 /* FunctionsSection.swift in Sources */,
 				C6CDD0622A3F2F9000ED97F0 /* Theme.swift in Sources */,
 				284E2FE72C2F9B9100BB582C /* Formattable.swift in Sources */,
 				287B85CF2C29A676001FD729 /* MouseManager.swift in Sources */,
+				284E30042C2FB45700BB582C /* AlwaysHideAreaControl.swift in Sources */,
 				C66CABA42A38871500E4D8E6 /* AppDelegate.swift in Sources */,
 				2831B15E2B751B990020DECD /* Defaults+Extensions.swift in Sources */,
 				287B85D52C29A707001FD729 /* MathHelper.swift in Sources */,
 				287B85CD2C29A643001FD729 /* KeyboardManager.swift in Sources */,
+				284E30062C2FB48E00BB582C /* DeadZoneControl.swift in Sources */,
 				2822C5902BDC7748009C71DA /* Icon.swift in Sources */,
 				287B85CB2C29A606001FD729 /* ScreenManager.swift in Sources */,
+				284E30002C2FB3AC00BB582C /* FeedbackControl.swift in Sources */,
 				287B85D22C29A6A0001FD729 /* VersionManager.swift in Sources */,
-				2840D70F2C267ECB0087EE50 /* SettingsModifierSection.swift in Sources */,
+				2840D70F2C267ECB0087EE50 /* ModifierSection.swift in Sources */,
 				2852BDE92AD97A0E00AA8AD1 /* NSSlider+Extension.swift in Sources */,
 				284E2FE52C2F9A5C00BB582C /* UnitFormat.swift in Sources */,
+				284E30082C2FBA4300BB582C /* TipDeadZoneTitle.swift in Sources */,
+				284E300A2C2FC48000BB582C /* Double+Extensions.swift in Sources */,
 				284630132C27A5B500A44198 /* ActivationPolicyManager.swift in Sources */,
 				28ACE7872AE9490700DC8C1A /* Separator.swift in Sources */,
 				284250152C2547F1008FEE08 /* SettingsViewController.swift in Sources */,
