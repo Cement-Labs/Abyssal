@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AppKit
 import Defaults
 import LaunchAtLogin
 
@@ -38,6 +39,15 @@ extension Defaults.Keys {
         default: .any
     )
     
+    static let collapseStrategy = Key<CollapseStrategy>(
+        "collapseStrategy",
+        default: .init(
+            frontmostAppChange: true,
+            interactionInvalidate: true,
+            screenChange: false
+        )
+    )
+    
     static let timeout = Key<Timeout>(
         "timeout",
         default: .sec30
@@ -53,12 +63,10 @@ extension Defaults.Keys {
         default: .percentage(0.5)
     )
     
-    static let collapseStrategy = Key<CollapseStrategy>(
-        "collapseStrategy",
-        default: .init(
-            frontmostAppChange: true,
-            interactionInvalidate: true,
-            screenChange: false
-        )
+    
+    
+    static let screenUniqueSettings = Key<[Int: ScreenUniqueSetting]>(
+        "screenUniqueSetting",
+        default: [:]
     )
 }

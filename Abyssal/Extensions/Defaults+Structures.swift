@@ -287,6 +287,10 @@ extension DeadZone {
     }
 }
 
+extension DeadZone: Equatable {
+    
+}
+
 struct CollapseStrategy: Codable, Defaults.Serializable {
     /// When frontmost app changes
     var frontmostAppChange: Bool
@@ -308,6 +312,7 @@ struct CollapseStrategy: Codable, Defaults.Serializable {
     }
 }
 
-extension DeadZone: Equatable {
-    
+struct ScreenUniqueSetting: Codable, Defaults.Serializable {
+    var collapseStrategy: CollapseStrategy
+    var deadZone: DeadZone
 }

@@ -34,7 +34,7 @@
 		284E2FF82C2FB1A200BB582C /* CollapseStrategyControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E2FF72C2FB1A200BB582C /* CollapseStrategyControl.swift */; };
 		284E2FFA2C2FB20600BB582C /* StartsWithMacOSControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E2FF92C2FB20600BB582C /* StartsWithMacOSControl.swift */; };
 		284E2FFC2C2FB2BC00BB582C /* TimeoutControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E2FFB2C2FB2BC00BB582C /* TimeoutControl.swift */; };
-		284E2FFE2C2FB32F00BB582C /* AppearanceControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E2FFD2C2FB32F00BB582C /* AppearanceControl.swift */; };
+		284E2FFE2C2FB32F00BB582C /* ThemeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E2FFD2C2FB32F00BB582C /* ThemeControl.swift */; };
 		284E30002C2FB3AC00BB582C /* FeedbackControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E2FFF2C2FB3AC00BB582C /* FeedbackControl.swift */; };
 		284E30022C2FB42400BB582C /* AutoShowsControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E30012C2FB42400BB582C /* AutoShowsControl.swift */; };
 		284E30042C2FB45700BB582C /* AlwaysHideAreaControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E30032C2FB45700BB582C /* AlwaysHideAreaControl.swift */; };
@@ -97,7 +97,7 @@
 		284E2FF72C2FB1A200BB582C /* CollapseStrategyControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapseStrategyControl.swift; sourceTree = "<group>"; };
 		284E2FF92C2FB20600BB582C /* StartsWithMacOSControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartsWithMacOSControl.swift; sourceTree = "<group>"; };
 		284E2FFB2C2FB2BC00BB582C /* TimeoutControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeoutControl.swift; sourceTree = "<group>"; };
-		284E2FFD2C2FB32F00BB582C /* AppearanceControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceControl.swift; sourceTree = "<group>"; };
+		284E2FFD2C2FB32F00BB582C /* ThemeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeControl.swift; sourceTree = "<group>"; };
 		284E2FFF2C2FB3AC00BB582C /* FeedbackControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackControl.swift; sourceTree = "<group>"; };
 		284E30012C2FB42400BB582C /* AutoShowsControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoShowsControl.swift; sourceTree = "<group>"; };
 		284E30032C2FB45700BB582C /* AlwaysHideAreaControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlwaysHideAreaControl.swift; sourceTree = "<group>"; };
@@ -190,7 +190,7 @@
 				284E2FF72C2FB1A200BB582C /* CollapseStrategyControl.swift */,
 				284E2FF92C2FB20600BB582C /* StartsWithMacOSControl.swift */,
 				284E2FFB2C2FB2BC00BB582C /* TimeoutControl.swift */,
-				284E2FFD2C2FB32F00BB582C /* AppearanceControl.swift */,
+				284E2FFD2C2FB32F00BB582C /* ThemeControl.swift */,
 				284E2FFF2C2FB3AC00BB582C /* FeedbackControl.swift */,
 				284E30012C2FB42400BB582C /* AutoShowsControl.swift */,
 				284E30032C2FB45700BB582C /* AlwaysHideAreaControl.swift */,
@@ -452,7 +452,7 @@
 				284E2FFA2C2FB20600BB582C /* StartsWithMacOSControl.swift in Sources */,
 				2840D7132C267EE90087EE50 /* GeneralSection.swift in Sources */,
 				C6DEC52A2A38BF6C00943448 /* StatusBarController.swift in Sources */,
-				284E2FFE2C2FB32F00BB582C /* AppearanceControl.swift in Sources */,
+				284E2FFE2C2FB32F00BB582C /* ThemeControl.swift in Sources */,
 				28C90F6A2C26D394000AC2E3 /* Box.swift in Sources */,
 				284E2FE32C2F95D300BB582C /* Range+Extensions.swift in Sources */,
 				2840D7112C267EE00087EE50 /* AdvancedSection.swift in Sources */,

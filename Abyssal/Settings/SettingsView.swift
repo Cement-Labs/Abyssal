@@ -62,4 +62,5 @@ struct SettingsView: View {
 
 #Preview {
     SettingsView()
+        .frame(minHeight: 800)
 }

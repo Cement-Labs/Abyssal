@@ -13,7 +13,7 @@ struct GeneralSection: View {
     var body: some View {
         Section {
             SpacingVStack {
-                AppearanceControl()
+                ThemeControl()
             }
             
             SpacingVStack {

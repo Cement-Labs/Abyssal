@@ -57,10 +57,10 @@ The modifier keys to use for showing the **Always Hide Area.** It is recommended
                                     }
                                 }
                             } label: {
-                                Text("Press")
+                                Text("[before modifier mode picker]")
                             }
                             
-                            Text("of the above to trigger")
+                            Text("[after modifier mode picker]")
                                 .fixedSize()
                         }
                         .foregroundStyle(.placeholder)

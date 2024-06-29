@@ -2,7 +2,39 @@
   "sourceLanguage" : "en",
   "strings" : {
     "" : {
-
+      "shouldTranslate" : false
+    },
+    "[after modifier mode picker]" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "of the above to trigger"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "键以触发"
+          }
+        }
+      }
+    },
+    "[before modifier mode picker]" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Press"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "按下以上"
+          }
+        }
+      }
     },
     "**%@** is open source. Click to access the source code." : {
       "localizations" : {
@@ -15,7 +47,14 @@
       }
     },
     "%" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%"
+          }
+        }
+      }
     },
     "%@ %@ %@" : {
       "localizations" : {
@@ -119,7 +158,14 @@
       }
     },
     "%g%%" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%g%%"
+          }
+        }
+      }
     },
     "Advanced" : {
       "localizations" : {
@@ -185,16 +231,44 @@
       }
     },
     "Behaviors" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "行为"
+          }
+        }
+      }
     },
     "Click to check for updates." : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "单击检查更新。"
+          }
+        }
+      }
     },
-    "Collapse Strategy" : {
-
+    "Collapses again" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "再次隐藏"
+          }
+        }
+      }
     },
     "Dead zone" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "忽略区域"
+          }
+        }
+      }
     },
     "Debug Fetch State" : {
 
@@ -203,10 +277,24 @@
 
     },
     "Failed to fetch for latest version." : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "拉取最新版本时失败。"
+          }
+        }
+      }
     },
-    "Fetching for latest version..." : {
-
+    "Fetching for latest version…" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正在拉取最新版本…"
+          }
+        }
+      }
     },
     "Forever" : {
       "localizations" : {
@@ -219,7 +307,14 @@
       }
     },
     "Frontmost Application" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "焦点应用"
+          }
+        }
+      }
     },
     "Functions" : {
       "localizations" : {
@@ -232,7 +327,14 @@
       }
     },
     "General" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通用"
+          }
+        }
+      }
     },
     "Haptic feedback" : {
       "localizations" : {
@@ -240,6 +342,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "震感反馈"
+          }
+        }
+      }
+    },
+    "Hash" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "哈希值"
           }
         }
       }
@@ -264,6 +376,16 @@
         }
       }
     },
+    "ID" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "标识符"
+          }
+        }
+      }
+    },
     "Launch **%@** right after macOS starts." : {
       "localizations" : {
         "zh-Hans" : {
@@ -284,6 +406,16 @@
         }
       }
     },
+    "Main Screen" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "主屏幕"
+          }
+        }
+      }
+    },
     "Medium" : {
       "localizations" : {
         "zh-Hans" : {
@@ -294,14 +426,17 @@
         }
       }
     },
-    "Menu Bar Cursor Interaction" : {
-
+    "Menu Bar Interaction" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "菜单栏交互"
+          }
+        }
+      }
     },
     "Modifier" : {
-
-    },
-    "Modifiers" : {
-      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -321,34 +456,35 @@
         }
       }
     },
-    "of the above to trigger" : {
+    "On Change" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "键以触发。"
+            "value" : "下列条件改变时"
           }
         }
       }
     },
-    "On Change" : {
-
-    },
     "On Invalidation" : {
-
-    },
-    "Press" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "按下以上"
+            "value" : "下列操作终止时"
           }
         }
       }
     },
     "px" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "像素"
+          }
+        }
+      }
     },
     "Quit %@" : {
       "localizations" : {
@@ -380,11 +516,25 @@
         }
       }
     },
-    "Satisfying %lld Rules" : {
-
+    "Remember This Screen" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "记住此屏幕"
+          }
+        }
+      }
     },
-    "Screen" : {
-
+    "Screen Information" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "屏幕信息"
+          }
+        }
+      }
     },
     "Some themes will hide the icons inside the separators automatically, while others not.\n\nThemes that automatically hide the icons will only show them when the status items inside the **Hide Area** are manually set to visible, while other themes indicate this by reducing the separators' opacity." : {
       "localizations" : {
@@ -766,6 +916,52 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@版本"
+          }
+        }
+      }
+    },
+    "When Satisfying Any of the %lld Rules" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "When Satisfying 1 Rule"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "new",
+                  "value" : "When Satisfying Any of the %lld Rules"
+                }
+              },
+              "zero" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Never"
+                }
+              }
+            }
+          }
+        },
+        "zh-Hans" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "满足%lld个条件中的任意一个时"
+                }
+              },
+              "zero" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "从不"
+                }
+              }
+            }
           }
         }
       }

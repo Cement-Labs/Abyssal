@@ -9,12 +9,29 @@ import AppKit
 import Defaults
 
 struct ScreenManager {
+    static var main: NSScreen? {
+        .main
+    }
+    
+    static var id: NSNumber? {
+        let key = NSDeviceDescriptionKey("NSScreenNumber")
+        return main?.deviceDescription[key] as? NSNumber
+    }
+    
+    static var hash: Int {
+        guard let id else {
+            return 0
+        }
+        
+        return id.hashValue
+    }
+    
     static var frame: NSRect {
-        NSScreen.main?.frame ?? .zero
+        main?.frame ?? .zero
     }
     
     static var hasNotch: Bool {
-        return NSScreen.main?.safeAreaInsets.top != 0
+        main?.safeAreaInsets.top != 0
     }
     
     static var width: CGFloat {

@@ -76,17 +76,17 @@ where Content: View {
                     .strokeBorder(.fill.opacity(isHovering ? 0.25 : 0))
                     .brightness(isHovering ? -0.05 : 0)
             } else {
-                RoundedRectangle(cornerSize: cornerSize)
-                    .fill(
-                        isHovering
-                        ? AnyShapeStyle(.tint.opacity(0.1))
-                        : AnyShapeStyle(.fill.opacity(0.1))
-                    )
-                    .strokeBorder((
-                        isHovering
-                        ? AnyShapeStyle(.tint)
-                        : AnyShapeStyle(.fill)
-                    ).opacity(0.5))
+                if isHovering {
+                    RoundedRectangle(cornerSize: cornerSize)
+                        .fill(.tint.opacity(0.1))
+                        .strokeBorder(.tint.opacity(0.5))
+                        .transition(.opacity)
+                } else {
+                    RoundedRectangle(cornerSize: cornerSize)
+                        .fill(.fill.opacity(0.1))
+                        .strokeBorder(.fill.opacity(0.5))
+                        .transition(.opacity)
+                }
             }
         }
         .animation(.default.speed(2), value: isOn)

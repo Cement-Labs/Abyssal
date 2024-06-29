@@ -32,10 +32,12 @@ struct DeadZoneControl: View {
                         TextField(value: $deadZone.value, format: .number.precision(.fractionLength(1))) {
                             EmptyView()
                         }
+                        .aspectRatio(contentMode: .fit)
                         .textFieldStyle(.plain)
                         .multilineTextAlignment(.trailing)
                         .lineLimit(1)
                         .monospaced()
+                        .animation(.none, value: deadZone)
                     }
                 }
             }

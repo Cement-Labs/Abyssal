@@ -1,5 +1,5 @@
 //
-//  AppearanceControl.swift
+//  ThemeControl.swift
 //  Abyssal
 //
 //  Created by KrLite on 2024/6/29.
@@ -8,7 +8,7 @@
 import SwiftUI
 import Defaults
 
-struct AppearanceControl: View {
+struct ThemeControl: View {
     @Default(.theme) private var theme
     @Default(.reduceAnimationEnabled) private var reduceAnimationEnabled
     
@@ -49,7 +49,7 @@ Reduce animation to gain a more performant experience.
 
 #Preview {
     Form {
-        AppearanceControl()
+        ThemeControl()
     }
     .formStyle(.grouped)
 }

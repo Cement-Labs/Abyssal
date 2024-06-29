@@ -17,7 +17,7 @@ An update is available. Click to access the download page.
 """)
             : String(localized: "Click to check for updates.")
         case .fetching:
-            String(localized: "Fetching for latest version...")
+            String(localized: "Fetching for latest version…")
         case .failed:
             String(localized: "Failed to fetch for latest version.")
         }

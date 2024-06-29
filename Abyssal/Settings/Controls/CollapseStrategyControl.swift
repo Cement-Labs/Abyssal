@@ -13,7 +13,7 @@ struct CollapseStrategyControl: View {
     
     var body: some View {
         HStack(alignment: .firstTextBaseline) {
-            Text("Collapse Strategy")
+            Text("Collapses again")
             
             Spacer()
             
@@ -21,16 +21,16 @@ struct CollapseStrategyControl: View {
                 Section("On Change") {
                     Toggle("Frontmost Application", isOn: $collapseStrategy.frontmostAppChange)
                     
-                    Toggle("Screen", isOn: $collapseStrategy.screenChange)
+                    Toggle("Main Screen", isOn: $collapseStrategy.screenChange)
                 }
                 
                 Section("On Invalidation") {
-                    Toggle("Menu Bar Cursor Interaction", isOn: $collapseStrategy.interactionInvalidate)
+                    Toggle("Menu Bar Interaction", isOn: $collapseStrategy.interactionInvalidate)
                 }
             } label: {
-                Text("Satisfying \(collapseStrategy.enabledCount) Rules")
-                    .foregroundStyle(.secondary)
+                Text("When Satisfying Any of the \(collapseStrategy.enabledCount) Rules")
             }
+            .aspectRatio(contentMode: .fit)
         }
     }
 }
