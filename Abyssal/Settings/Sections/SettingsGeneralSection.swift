@@ -13,6 +13,8 @@ struct SettingsGeneralSection: View {
     @Default(.reduceAnimationEnabled) private var reduceAnimationEnabled
     @Default(.feedback) private var feedback
     
+    @Environment(\.hasTitle) private var hasTitle
+    
     private let feedbackTip = Tip(preferredEdge: .minY, delay: 0.1) {
         TipFeedbackTitle()
     } content: {
@@ -58,24 +60,30 @@ Reduce animation to gain a more performant experience.
             }
             
             feedback: do {
-                let maxIndex = Feedback.allCases.endIndex - 1
-                let binding = Binding<Double> {
-                    Double(Feedback.allCases.firstIndex(of: feedback) ?? 0)
-                } set: { index in
-                    feedback = Feedback.allCases[Int(index)]
-                }
-                
-                EmptyFormWrapper {
+                VStack(alignment: .leading) {
                     Text("Haptic feedback")
                         .opacity(feedback == .none ? 0.45 : 1)
                         .animation(.default, value: feedback)
                     
-                    TipWrapper(alwaysVisible: true, value: $feedback, tip: feedbackTip) { tip in
-                        Slider(value: binding, in: 0...Double(maxIndex), step: 1) {
-                            EmptyView()
+                    EmptyFormWrapper {
+                        let maxIndex = Feedback.allCases.endIndex - 1
+                        let binding = Binding<Double> {
+                            Double(Feedback.allCases.firstIndex(of: feedback) ?? 0)
+                        } set: { index in
+                            feedback = Feedback.allCases[Int(index)]
+                        }
+                        
+                        TipWrapper(alwaysVisible: true, value: $feedback, tip: feedbackTip) { tip in
+                            Slider(value: binding, in: 0...Double(maxIndex), step: 1) {
+                                EmptyView()
+                            }
                         }
                     }
                 }
+            }
+        } header: {
+            if hasTitle {
+                Text("General")
             }
         }
     }

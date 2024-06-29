@@ -16,6 +16,12 @@ extension Defaults.Keys {
     
     static let tipsEnabled = Key<Bool>("tipsEnabled", default: true)
     
+    
+    
+    static let alwaysHideAreaEnabled = Key<Bool>("alwaysHideAreaEnabled", default: true)
+    
+    static let reduceAnimationEnabled = Key<Bool>("reduceAnimationEnabled", default: false)
+    
     static let autoShowsEnabled = Key<Bool>("autoShowsEnabled", default: true)
     
     
@@ -47,9 +53,12 @@ extension Defaults.Keys {
         default: .percentage(0.5)
     )
     
-    
-    
-    static let alwaysHideAreaEnabled = Key<Bool>("alwaysHideAreaEnabled", default: true)
-    
-    static let reduceAnimationEnabled = Key<Bool>("reduceAnimationEnabled", default: false)
+    static let collapseStrategy = Key<CollapseStrategy>(
+        "collapseStrategy",
+        default: .init(
+            frontmostAppChange: true,
+            interactionInvalidate: true,
+            screenChange: false
+        )
+    )
 }

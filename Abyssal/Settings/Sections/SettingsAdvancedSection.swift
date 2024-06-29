@@ -13,6 +13,8 @@ import SwiftUIIntrospect
 struct SettingsAdvancedSection: View {
     @Default(.timeout) private var timeout
     
+    @Environment(\.hasTitle) private var hasTitle
+    
     private let timeoutTip = Tip(preferredEdge: .minY, delay: 0.1) {
         TipTimeoutTitle()
     } content: {
@@ -30,28 +32,36 @@ Launch **\(Bundle.main.appName)** right after macOS starts.
     }
     
     var body: some View {
-        Section("Advanced") {
+        Section {
             timeout: do {
-                let maxIndex = Timeout.allCases.endIndex - 1
-                let binding = Binding<Double> {
-                    Double(Timeout.allCases.firstIndex(of: timeout) ?? maxIndex)
-                } set: { index in
-                    timeout = Timeout.allCases[Int(index)]
-                }
-                
-                EmptyFormWrapper {
+                VStack(alignment: .leading) {
                     Text("Timeout")
                         .opacity(timeout == .forever ? 0.45 : 1)
                         .animation(.default, value: timeout)
                     
-                    TipWrapper(alwaysVisible: true, value: $timeout, tip: timeoutTip) { tip in
-                        Slider(value: binding, in: 0...Double(maxIndex), step: 1)
+                    EmptyFormWrapper {
+                        let maxIndex = Timeout.allCases.endIndex - 1
+                        let binding = Binding<Double> {
+                            Double(Timeout.allCases.firstIndex(of: timeout) ?? maxIndex)
+                        } set: { index in
+                            timeout = Timeout.allCases[Int(index)]
+                        }
+                        
+                        TipWrapper(alwaysVisible: true, value: $timeout, tip: timeoutTip) { tip in
+                            Slider(value: binding, in: 0...Double(maxIndex), step: 1)
+                        }
                     }
                 }
             }
             
-            TipWrapper(tip: startsWithMacOSTip) { tip in
-                LaunchAtLogin.Toggle("Starts with macOS")
+            SpacingVStack {
+                TipWrapper(tip: startsWithMacOSTip) { tip in
+                    LaunchAtLogin.Toggle("Starts with macOS")
+                }
+            }
+        } header: {
+            if hasTitle {
+                Text("Advanced")
             }
         }
     }

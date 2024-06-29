@@ -20,7 +20,7 @@
 		2831B1602B7521890020DECD /* Defaults+Structures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2831B15F2B7521890020DECD /* Defaults+Structures.swift */; };
 		283A1ECC2C2EE00E00A34C0A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283A1ECB2C2EE00E00A34C0A /* main.swift */; };
 		2840D70D2C2679F50087EE50 /* Bool+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2840D70C2C2679F50087EE50 /* Bool+Extensions.swift */; };
-		2840D70F2C267ECB0087EE50 /* SettingsModifiersSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2840D70E2C267ECB0087EE50 /* SettingsModifiersSection.swift */; };
+		2840D70F2C267ECB0087EE50 /* SettingsModifierSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2840D70E2C267ECB0087EE50 /* SettingsModifierSection.swift */; };
 		2840D7112C267EE00087EE50 /* SettingsAdvancedSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2840D7102C267EE00087EE50 /* SettingsAdvancedSection.swift */; };
 		2840D7132C267EE90087EE50 /* SettingsGeneralSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2840D7122C267EE90087EE50 /* SettingsGeneralSection.swift */; };
 		2840D7152C267F350087EE50 /* SettingsTrafficsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2840D7142C267F350087EE50 /* SettingsTrafficsView.swift */; };
@@ -30,6 +30,8 @@
 		284E2FE32C2F95D300BB582C /* Range+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E2FE22C2F95D300BB582C /* Range+Extensions.swift */; };
 		284E2FE52C2F9A5C00BB582C /* UnitFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E2FE42C2F9A5C00BB582C /* UnitFormat.swift */; };
 		284E2FE72C2F9B9100BB582C /* Formattable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E2FE62C2F9B9100BB582C /* Formattable.swift */; };
+		284E2FF22C2FA4C500BB582C /* SettingsCollapseStrategySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E2FF12C2FA4C500BB582C /* SettingsCollapseStrategySection.swift */; };
+		284E2FF52C2FAB8900BB582C /* EnvironmentValues+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E2FF42C2FAB8900BB582C /* EnvironmentValues+Extention.swift */; };
 		2852BDE92AD97A0E00AA8AD1 /* NSSlider+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2852BDE82AD97A0E00AA8AD1 /* NSSlider+Extension.swift */; };
 		28743ED72C28F09500366A69 /* SettingsFunctionsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28743ED62C28F09500366A69 /* SettingsFunctionsSection.swift */; };
 		28743ED92C28F0F900366A69 /* SettingsBehaviorsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28743ED82C28F0F900366A69 /* SettingsBehaviorsSection.swift */; };
@@ -72,7 +74,7 @@
 		2831B15F2B7521890020DECD /* Defaults+Structures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Defaults+Structures.swift"; sourceTree = "<group>"; };
 		283A1ECB2C2EE00E00A34C0A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		2840D70C2C2679F50087EE50 /* Bool+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+Extensions.swift"; sourceTree = "<group>"; };
-		2840D70E2C267ECB0087EE50 /* SettingsModifiersSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModifiersSection.swift; sourceTree = "<group>"; };
+		2840D70E2C267ECB0087EE50 /* SettingsModifierSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModifierSection.swift; sourceTree = "<group>"; };
 		2840D7102C267EE00087EE50 /* SettingsAdvancedSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAdvancedSection.swift; sourceTree = "<group>"; };
 		2840D7122C267EE90087EE50 /* SettingsGeneralSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsGeneralSection.swift; sourceTree = "<group>"; };
 		2840D7142C267F350087EE50 /* SettingsTrafficsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTrafficsView.swift; sourceTree = "<group>"; };
@@ -82,6 +84,8 @@
 		284E2FE22C2F95D300BB582C /* Range+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Range+Extensions.swift"; sourceTree = "<group>"; };
 		284E2FE42C2F9A5C00BB582C /* UnitFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitFormat.swift; sourceTree = "<group>"; };
 		284E2FE62C2F9B9100BB582C /* Formattable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formattable.swift; sourceTree = "<group>"; };
+		284E2FF12C2FA4C500BB582C /* SettingsCollapseStrategySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCollapseStrategySection.swift; sourceTree = "<group>"; };
+		284E2FF42C2FAB8900BB582C /* EnvironmentValues+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues+Extention.swift"; sourceTree = "<group>"; };
 		2852BDE82AD97A0E00AA8AD1 /* NSSlider+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSlider+Extension.swift"; sourceTree = "<group>"; };
 		28743ED62C28F09500366A69 /* SettingsFunctionsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFunctionsSection.swift; sourceTree = "<group>"; };
 		28743ED82C28F0F900366A69 /* SettingsBehaviorsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBehaviorsSection.swift; sourceTree = "<group>"; };
@@ -153,6 +157,14 @@
 			path = Formattable;
 			sourceTree = "<group>";
 		};
+		284E2FF32C2FAB7700BB582C /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				284E2FF42C2FAB8900BB582C /* EnvironmentValues+Extention.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
 		287B85D02C29A689001FD729 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -170,11 +182,12 @@
 		28C90F672C26CC4D000AC2E3 /* Sections */ = {
 			isa = PBXGroup;
 			children = (
-				2840D70E2C267ECB0087EE50 /* SettingsModifiersSection.swift */,
+				2840D70E2C267ECB0087EE50 /* SettingsModifierSection.swift */,
 				2840D7122C267EE90087EE50 /* SettingsGeneralSection.swift */,
 				2840D7102C267EE00087EE50 /* SettingsAdvancedSection.swift */,
 				28743ED62C28F09500366A69 /* SettingsFunctionsSection.swift */,
 				28743ED82C28F0F900366A69 /* SettingsBehaviorsSection.swift */,
+				284E2FF12C2FA4C500BB582C /* SettingsCollapseStrategySection.swift */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
@@ -268,6 +281,7 @@
 		C6DEC52D2A39C83100943448 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				284E2FF32C2FAB7700BB582C /* SwiftUI */,
 				28C90F6E2C270604000AC2E3 /* Foundation */,
 				28CB53A32C2B935700F32A71 /* AppKit */,
 				2831B15D2B751B990020DECD /* Defaults+Extensions.swift */,
@@ -391,6 +405,7 @@
 				282CB7222C2844B700AF381D /* SpacingVStack.swift in Sources */,
 				287B85D92C29A888001FD729 /* URL+Extensions.swift in Sources */,
 				2840D7152C267F350087EE50 /* SettingsTrafficsView.swift in Sources */,
+				284E2FF22C2FA4C500BB582C /* SettingsCollapseStrategySection.swift in Sources */,
 				284250102C253F79008FEE08 /* SettingsView.swift in Sources */,
 				C6B3E79B2A3D83C400B650BC /* NSRect+Extension.swift in Sources */,
 				C6DEC53D2A3A0E8900943448 /* StatusBarController+Animations.swift in Sources */,
@@ -407,6 +422,7 @@
 				2831B1602B7521890020DECD /* Defaults+Structures.swift in Sources */,
 				28CAF5572C297768002BD78C /* TipFeedbackTitle.swift in Sources */,
 				28925BAE2C27F00C008FCC69 /* TipWrapper.swift in Sources */,
+				284E2FF52C2FAB8900BB582C /* EnvironmentValues+Extention.swift in Sources */,
 				C63B40532A4060E400BCAE79 /* NSStatusItem+Extension.swift in Sources */,
 				283A1ECC2C2EE00E00A34C0A /* main.swift in Sources */,
 				282E928A2C27C25000C21EE5 /* Tip.swift in Sources */,
@@ -426,7 +442,7 @@
 				2822C5902BDC7748009C71DA /* Icon.swift in Sources */,
 				287B85CB2C29A606001FD729 /* ScreenManager.swift in Sources */,
 				287B85D22C29A6A0001FD729 /* VersionManager.swift in Sources */,
-				2840D70F2C267ECB0087EE50 /* SettingsModifiersSection.swift in Sources */,
+				2840D70F2C267ECB0087EE50 /* SettingsModifierSection.swift in Sources */,
 				2852BDE92AD97A0E00AA8AD1 /* NSSlider+Extension.swift in Sources */,
 				284E2FE52C2F9A5C00BB582C /* UnitFormat.swift in Sources */,
 				284630132C27A5B500A44198 /* ActivationPolicyManager.swift in Sources */,

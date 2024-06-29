@@ -234,6 +234,22 @@ enum DeadZone: Codable, Defaults.Serializable {
     }
 }
 
+extension DeadZone {
+    enum `Type` {
+        case percentage
+        case pixel
+    }
+    
+    var `type`: `Type` {
+        switch self {
+        case .percentage(_):
+                .percentage
+        case .pixel(_):
+                .pixel
+        }
+    }
+}
+
 struct CollapseStrategy: Codable, Defaults.Serializable {
     /// When frontmost app changes
     var frontmostAppChange: Bool

@@ -6,8 +6,13 @@
 //
 
 import SwiftUI
+import Defaults
 
 struct SettingsBehaviorsSection: View {
+    @Default(.deadZone) var deadZone
+    
+    @Environment(\.hasTitle) private var hasTitle
+    
     var body: some View {
         Section {
             SpacingVStack {
@@ -22,34 +27,41 @@ struct SettingsBehaviorsSection: View {
                 }
             }
             
-            VStack {
-                Picker(selection: .constant(1)) {
-                    Text("Percentage").tag(1)
-                    Text("Pixel").tag(2)
-                } label: {
-                    HStack(alignment: .firstTextBaseline) {
-                        Text("Dead zone")
-                        
-                        Spacer()
-                        
-                        if true {
-                            Stepper(value: .constant(42), in: 0...Int.max) {
-                                TextField(text: .constant("42")) {
-                                    EmptyView()
+            deadZone: do {
+                VStack(alignment: .leading) {
+                    Picker(selection: .constant(1)) {
+                        Text("Percentage").tag(1)
+                        Text("Pixel").tag(2)
+                    } label: {
+                        HStack(alignment: .firstTextBaseline) {
+                            Text("Dead zone")
+                            
+                            Spacer()
+                            
+                            if true {
+                                Stepper(value: .constant(42), in: 0...Int.max) {
+                                    TextField(text: .constant("42")) {
+                                        EmptyView()
+                                    }
+                                    .multilineTextAlignment(.trailing)
+                                    .lineLimit(1)
+                                    .monospaced()
+                                    .textFieldStyle(.plain)
                                 }
-                                .multilineTextAlignment(.trailing)
-                                .lineLimit(1)
-                                .monospaced()
                             }
                         }
                     }
-                }
-                
-                EmptyFormWrapper {
-                    Slider(value: .constant(0.25), in: 0...1) {
-                        EmptyView()
+                    
+                    EmptyFormWrapper {
+                        Slider(value: .constant(0.25), in: 0...1) {
+                            EmptyView()
+                        }
                     }
                 }
+            }
+        } header: {
+            if hasTitle {
+                Text("Behaviors")
             }
         }
     }

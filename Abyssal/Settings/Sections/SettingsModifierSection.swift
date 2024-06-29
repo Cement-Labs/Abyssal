@@ -1,5 +1,5 @@
 //
-//  SettingsModifiersSection.swift
+//  SettingsModifierSection.swift
 //  Abyssal
 //
 //  Created by KrLite on 2024/6/22.
@@ -8,9 +8,11 @@
 import SwiftUI
 import Defaults
 
-struct SettingsModifiersSection: View {
+struct SettingsModifierSection: View {
     @Default(.modifier) private var modifiers
     @Default(.modifierMode) private var modifierMode
+    
+    @Environment(\.hasTitle) private var hasTitle
     
     private let modifierTip = Tip {
         .init(localized: """
@@ -69,13 +71,17 @@ The modifier keys to use for showing the **Always Hide Area.** It is recommended
                 }
                 .padding(.horizontal, 2)
             }
+        } header: {
+            if hasTitle {
+                Text("Modifier")
+            }
         }
     }
 }
 
 #Preview {
     Form {
-        SettingsModifiersSection()
+        SettingsModifierSection()
     }
     .formStyle(.grouped)
 }

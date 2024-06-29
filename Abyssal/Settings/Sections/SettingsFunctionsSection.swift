@@ -12,6 +12,8 @@ struct SettingsFunctionsSection: View {
     @Default(.autoShowsEnabled) private var autoShowsEnabled
     @Default(.alwaysHideAreaEnabled) private var alwaysHideAreaEnabled
     
+    @Environment(\.hasTitle) private var hasTitle
+    
     private let autoShowsTip = Tip {
         .init(localized: """
 Auto shows the status items inside the **Hide Area** while the cursor is hovering over the spare area.
@@ -31,7 +33,7 @@ The status items inside the **Always Hide Area** will be hidden and invisible un
     }
     
     var body: some View {
-        Section("Functions") {
+        Section {
             SpacingVStack {
                 TipWrapper(tip: autoShowsTip) { tip in
                     Toggle("Auto shows", isOn: $autoShowsEnabled)
@@ -40,6 +42,10 @@ The status items inside the **Always Hide Area** will be hidden and invisible un
                 TipWrapper(tip: alwaysHideAreaTip) { tip in
                     Toggle("Use always hide area", isOn: $alwaysHideAreaEnabled)
                 }
+            }
+        } header: {
+            if hasTitle {
+                Text("Functions")
             }
         }
     }

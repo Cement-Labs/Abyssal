@@ -11,7 +11,7 @@ struct SpacingVStack<Content>: View where Content: View {
     @ViewBuilder var content: () -> Content
     
     var body: some View {
-        VStack(spacing: 20) {
+        VStack(alignment: .leading, spacing: 20) {
             content()
         }
     }
