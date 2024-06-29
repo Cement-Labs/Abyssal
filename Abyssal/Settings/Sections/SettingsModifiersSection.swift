@@ -9,7 +9,7 @@ import SwiftUI
 import Defaults
 
 struct SettingsModifiersSection: View {
-    @Default(.modifiers) private var modifiers
+    @Default(.modifier) private var modifiers
     @Default(.modifierMode) private var modifierMode
     
     private let modifierTip = Tip {

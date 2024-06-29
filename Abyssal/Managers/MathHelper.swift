@@ -9,8 +9,7 @@ import Foundation
 
 struct MathHelper {
     static var lerpThreshold: CGFloat {
-        guard let width = ScreenManager.width else { return 75 }
-        return width / 25
+        return ScreenManager.width / 25
     }
     
     static var lerpRatio: CGFloat {

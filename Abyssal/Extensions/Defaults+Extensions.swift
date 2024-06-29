@@ -22,8 +22,8 @@ extension Defaults.Keys {
     
     static let theme = Key<Theme>("theme", default: .defaultTheme)
     
-    static let modifiers = Key<Modifier>(
-        "modifiers",
+    static let modifier = Key<Modifier>(
+        "modifier",
         default: [.option, .command]
     )
     
@@ -31,8 +31,6 @@ extension Defaults.Keys {
         "modifierMode",
         default: .any
     )
-    
-    
     
     static let timeout = Key<Timeout>(
         "timeout",
@@ -44,18 +42,9 @@ extension Defaults.Keys {
         default: .medium
     )
     
-    static let deadZone = Key<Deadzone>(
-        "deadZone",
-        default: Deadzone(percentage: 0.25)
-    )
-    
     
     
     static let alwaysHideAreaEnabled = Key<Bool>("alwaysHideAreaEnabled", default: true)
     
     static let reduceAnimationEnabled = Key<Bool>("reduceAnimationEnabled", default: false)
-    
-    
-    
-    
 }

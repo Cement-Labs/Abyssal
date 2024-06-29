@@ -71,7 +71,7 @@ class StatusBarController {
     }
     
     var maxLength: CGFloat {
-        return ScreenManager.maxWidth ?? 10000 // To cover all possible screens
+        return ScreenManager.maxWidth
     }
     
     var popoverShown: Bool {

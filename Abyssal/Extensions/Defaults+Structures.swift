@@ -124,18 +124,18 @@ struct Modifier: OptionSet, Defaults.Serializable {
 }
 
 extension Modifier {
-    enum Mode: Int, CaseIterable, Defaults.Serializable {
-        case any = 0
-        case all = 1
+    enum Mode: String, CaseIterable, Codable, Defaults.Serializable {
+        case any = "any"
+        case all = "all"
         
         func triggers(input: Modifier) -> Bool {
             switch self {
             case .any:
                 // OK if the two sets have any member in common
-                !Defaults[.modifiers].isDisjoint(with: input)
+                !Defaults[.modifier].isDisjoint(with: input)
             case .all:
                 // OK if the input is a superset of the configured
-                input.isSuperset(of: Defaults[.modifiers])
+                input.isSuperset(of: Defaults[.modifier])
             }
         }
     }
@@ -181,35 +181,41 @@ enum Feedback: Int, CaseIterable, Defaults.Serializable {
     }
 }
 
-struct Deadzone: Defaults.Serializable {
-    var percentage: Double
-    
-    static let range = 0.0...0.75
-    
-    var semantic: String {
-        String(format: "%d%%", Int(percentage * 100))
+enum DeadZone: Codable, Defaults.Serializable {
+    static let rangePercentage = 0.0...0.75
+    static var rangePixel: ClosedRange<Double> {
+        0...ScreenManager.width
     }
     
-    struct Bridge: Defaults.Bridge {
-        typealias Value = Deadzone
-        typealias Serializable = Double
-        
-        func serialize(_ value: Deadzone?) -> Double? {
-            guard let value else {
-                return nil
+    case percentage(Double)
+    case pixel(UInt64)
+    
+    var double: Double {
+        get {
+            switch self {
+            case .percentage(let percentage):
+                percentage
+            case .pixel(let pixel):
+                Double(pixel)
             }
-            
-            return value.percentage
         }
         
-        func deserialize(_ object: Double?) -> Deadzone? {
-            guard let object, Deadzone.range.contains(object) else {
-                return nil
+        set(double) {
+            switch self {
+            case .percentage(_):
+                self = .percentage(double)
+            case .pixel(_):
+                self = .pixel(.init(double))
             }
-            
-            return .init(percentage: object)
         }
     }
     
-    static let bridge = Bridge()
+    var range: ClosedRange<Double> {
+        switch self {
+        case .percentage(_):
+            Self.rangePercentage
+        case .pixel(_):
+            Self.rangePixel
+        }
+    }
 }
