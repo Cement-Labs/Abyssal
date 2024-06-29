@@ -312,7 +312,18 @@ struct CollapseStrategy: Codable, Defaults.Serializable {
     }
 }
 
-struct ScreenUniqueSetting: Codable, Defaults.Serializable {
+struct UniqueScreenSetting: Codable, Defaults.Serializable {
     var collapseStrategy: CollapseStrategy
     var deadZone: DeadZone
+    
+    static var copyFromCurrent: Self {
+        .init(
+            collapseStrategy: Defaults[.collapseStrategy],
+            deadZone: Defaults[.deadZone]
+        )
+    }
+    
+    func remember(_ hash: Int) {
+        Defaults[.uniqueScreenSettings][hash] = self
+    }
 }

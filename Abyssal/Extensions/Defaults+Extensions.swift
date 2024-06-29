@@ -65,8 +65,8 @@ extension Defaults.Keys {
     
     
     
-    static let screenUniqueSettings = Key<[Int: ScreenUniqueSetting]>(
-        "screenUniqueSetting",
+    static let uniqueScreenSettings = Key<[Int: UniqueScreenSetting]>(
+        "uniqueScreenSettings",
         default: [:]
     )
 }

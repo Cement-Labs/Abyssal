@@ -13,19 +13,6 @@ struct ScreenManager {
         .main
     }
     
-    static var id: NSNumber? {
-        let key = NSDeviceDescriptionKey("NSScreenNumber")
-        return main?.deviceDescription[key] as? NSNumber
-    }
-    
-    static var hash: Int {
-        guard let id else {
-            return 0
-        }
-        
-        return id.hashValue
-    }
-    
     static var frame: NSRect {
         main?.frame ?? .zero
     }

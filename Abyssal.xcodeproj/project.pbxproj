@@ -60,6 +60,7 @@
 		28CAF5572C297768002BD78C /* TipFeedbackTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CAF5562C297768002BD78C /* TipFeedbackTitle.swift */; };
 		28CAF5592C297809002BD78C /* TipTimeoutTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CAF5582C297809002BD78C /* TipTimeoutTitle.swift */; };
 		28CB53A52C2B938300F32A71 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CB53A42C2B938300F32A71 /* AppManager.swift */; };
+		28E929252C30169400847A67 /* NSScreen+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E929242C30169400847A67 /* NSScreen+Extensions.swift */; };
 		C63B40532A4060E400BCAE79 /* NSStatusItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63B40522A4060E400BCAE79 /* NSStatusItem+Extension.swift */; };
 		C66CABA42A38871500E4D8E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CABA32A38871500E4D8E6 /* AppDelegate.swift */; };
 		C66CABB72A389F2500E4D8E6 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CABB62A389F2500E4D8E6 /* EventMonitor.swift */; };
@@ -122,6 +123,7 @@
 		28CAF5562C297768002BD78C /* TipFeedbackTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipFeedbackTitle.swift; sourceTree = "<group>"; };
 		28CAF5582C297809002BD78C /* TipTimeoutTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipTimeoutTitle.swift; sourceTree = "<group>"; };
 		28CB53A42C2B938300F32A71 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
+		28E929242C30169400847A67 /* NSScreen+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSScreen+Extensions.swift"; sourceTree = "<group>"; };
 		C63B40522A4060E400BCAE79 /* NSStatusItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSStatusItem+Extension.swift"; sourceTree = "<group>"; };
 		C66CABA02A38871500E4D8E6 /* Abyssal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Abyssal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C66CABA32A38871500E4D8E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 				C6B3E79A2A3D83C400B650BC /* NSRect+Extension.swift */,
 				C63B40522A4060E400BCAE79 /* NSStatusItem+Extension.swift */,
 				2852BDE82AD97A0E00AA8AD1 /* NSSlider+Extension.swift */,
+				28E929242C30169400847A67 /* NSScreen+Extensions.swift */,
 			);
 			path = AppKit;
 			sourceTree = "<group>";
@@ -461,6 +464,7 @@
 				28CAF5572C297768002BD78C /* TipFeedbackTitle.swift in Sources */,
 				28925BAE2C27F00C008FCC69 /* TipWrapper.swift in Sources */,
 				284E2FF52C2FAB8900BB582C /* EnvironmentValues+Extention.swift in Sources */,
+				28E929252C30169400847A67 /* NSScreen+Extensions.swift in Sources */,
 				C63B40532A4060E400BCAE79 /* NSStatusItem+Extension.swift in Sources */,
 				283A1ECC2C2EE00E00A34C0A /* main.swift in Sources */,
 				282E928A2C27C25000C21EE5 /* Tip.swift in Sources */,

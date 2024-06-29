@@ -9,12 +9,11 @@ import SwiftUI
 import Defaults
 
 struct BehaviorsSection: View {
-    @Default(.screenUniqueSettings) var screenUniqueSettings
+    @Default(.uniqueScreenSettings) var uniqueScreenSettings
     
     @Environment(\.hasTitle) private var hasTitle
     
     @State var isScreenInformationPresented: Bool = false
-    @State var test = false
     
     var body: some View {
         Section {
@@ -46,13 +45,10 @@ struct BehaviorsSection: View {
                 Spacer()
                 
                 Group {
-                    Box(isOn: $test, behavior: .toggle) {
+                    Box(isOn: .constant(true), behavior: .toggle) {
                         Text("Remember This Screen")
                             .padding(.horizontal, 10)
                             .frame(height: 24)
-                    }
-                    .onChange(of: test) { _, _ in
-                        print(ScreenManager.id, ScreenManager.main?.deviceDescription)
                     }
                     
                     Box(isOn: $isScreenInformationPresented, behavior: .toggle) {
@@ -62,21 +58,20 @@ struct BehaviorsSection: View {
                     .popover(isPresented: $isScreenInformationPresented) {
                         EmptyFormWrapper(normalizePadding: false) {
                             Section("Screen Information") {
-                                LabeledContent("Hash") {
-                                    Button {
-                                        
-                                    } label: {
-                                        Text(String(format: "%X", ScreenManager.hash))
+                                if let id = ScreenManager.main?.displayID {
+                                    LabeledContent("Display ID") {
+                                        Text(String(id))
+                                            .monospaced()
                                     }
-                                }
-                                
-                                if let id = ScreenManager.id {
-                                    LabeledContent("ID") {
-                                        Button {
-                                            
-                                        } label: {
-                                            Text(String(describing: id))
-                                        }
+                                    
+                                    LabeledContent("Width") {
+                                        Text(UnitFormat.pixel.format(Double(ScreenManager.frame.width)))
+                                            .monospaced()
+                                    }
+                                    
+                                    LabeledContent("Height") {
+                                        Text(UnitFormat.pixel.format(Double(ScreenManager.frame.height)))
+                                            .monospaced()
                                     }
                                 }
                             }
