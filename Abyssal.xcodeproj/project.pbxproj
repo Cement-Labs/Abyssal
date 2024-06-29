@@ -27,6 +27,7 @@
 		284250102C253F79008FEE08 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2842500F2C253F79008FEE08 /* SettingsView.swift */; };
 		284250152C2547F1008FEE08 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284250142C2547F1008FEE08 /* SettingsViewController.swift */; };
 		284630132C27A5B500A44198 /* ActivationPolicyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284630122C27A5B500A44198 /* ActivationPolicyManager.swift */; };
+		284E2FE32C2F95D300BB582C /* Range+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E2FE22C2F95D300BB582C /* Range+Extensions.swift */; };
 		2852BDE92AD97A0E00AA8AD1 /* NSSlider+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2852BDE82AD97A0E00AA8AD1 /* NSSlider+Extension.swift */; };
 		28743ED72C28F09500366A69 /* SettingsFunctionsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28743ED62C28F09500366A69 /* SettingsFunctionsSection.swift */; };
 		28743ED92C28F0F900366A69 /* SettingsBehaviorsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28743ED82C28F0F900366A69 /* SettingsBehaviorsSection.swift */; };
@@ -76,6 +77,7 @@
 		2842500F2C253F79008FEE08 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		284250142C2547F1008FEE08 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		284630122C27A5B500A44198 /* ActivationPolicyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivationPolicyManager.swift; sourceTree = "<group>"; };
+		284E2FE22C2F95D300BB582C /* Range+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Range+Extensions.swift"; sourceTree = "<group>"; };
 		2852BDE82AD97A0E00AA8AD1 /* NSSlider+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSlider+Extension.swift"; sourceTree = "<group>"; };
 		28743ED62C28F09500366A69 /* SettingsFunctionsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFunctionsSection.swift; sourceTree = "<group>"; };
 		28743ED82C28F0F900366A69 /* SettingsBehaviorsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBehaviorsSection.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				2840D70C2C2679F50087EE50 /* Bool+Extensions.swift */,
 				28C90F6F2C270614000AC2E3 /* Bundle+Extensions.swift */,
 				287B85D82C29A888001FD729 /* URL+Extensions.swift */,
+				284E2FE22C2F95D300BB582C /* Range+Extensions.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 				2840D7132C267EE90087EE50 /* SettingsGeneralSection.swift in Sources */,
 				C6DEC52A2A38BF6C00943448 /* StatusBarController.swift in Sources */,
 				28C90F6A2C26D394000AC2E3 /* Box.swift in Sources */,
+				284E2FE32C2F95D300BB582C /* Range+Extensions.swift in Sources */,
 				2840D7112C267EE00087EE50 /* SettingsAdvancedSection.swift in Sources */,
 				28CAF5592C297809002BD78C /* TipTimeoutTitle.swift in Sources */,
 				2831B1602B7521890020DECD /* Defaults+Structures.swift in Sources */,

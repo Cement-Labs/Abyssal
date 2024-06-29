@@ -190,6 +190,15 @@ enum DeadZone: Codable, Defaults.Serializable {
     case percentage(Double)
     case pixel(UInt64)
     
+    var range: ClosedRange<Double> {
+        switch self {
+        case .percentage(_):
+            Self.rangePercentage
+        case .pixel(_):
+            Self.rangePixel
+        }
+    }
+    
     var double: Double {
         get {
             switch self {
@@ -210,12 +219,31 @@ enum DeadZone: Codable, Defaults.Serializable {
         }
     }
     
-    var range: ClosedRange<Double> {
+    var percentage: Double {
+        get {
+            range.percentage(double)
+        }
+        
+        set(percentage) {
+            double = range.fromPercentage(percentage)
+        }
+    }
+    
+    var pixel: Double {
         switch self {
-        case .percentage(_):
-            Self.rangePercentage
-        case .pixel(_):
-            Self.rangePixel
+        case .percentage(let percentage):
+            ScreenManager.width * percentage
+        case .pixel(let pixel):
+                .init(pixel)
+        }
+    }
+    
+    var numericString: String {
+        switch self {
+        case .percentage(let percentage):
+                .init(format: "%g%%", percentage)
+        case .pixel(let pixel):
+                .init(pixel)
         }
     }
 }
