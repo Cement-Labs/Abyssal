@@ -219,9 +219,6 @@
         }
       }
     },
-    "Auto idling" : {
-
-    },
     "Auto shows" : {
       "localizations" : {
         "zh-Hans" : {
@@ -294,9 +291,6 @@
           }
         }
       }
-    },
-    "Edge behavior" : {
-
     },
     "Failed to fetch for latest version." : {
       "localizations" : {
@@ -538,6 +532,9 @@
         }
       }
     },
+    "Respect notch" : {
+
+    },
     "Screen Information" : {
       "localizations" : {
         "zh-Hans" : {
@@ -557,12 +554,6 @@
           }
         }
       }
-    },
-    "Test 1" : {
-
-    },
-    "Test 2" : {
-
     },
     "The intensity of feedback given when triggering actions such as _enabling **Auto Shows**_ or _canceling **Auto Idling.**_" : {
       "localizations" : {

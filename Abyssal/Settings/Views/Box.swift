@@ -60,12 +60,15 @@ where Content: View {
                 isOn.toggle()
             }
         } label: {
-            content()
-                .foregroundStyle(
-                    isOn
-                    ? AnyShapeStyle(.background)
-                    : AnyShapeStyle(.primary)
-                )
+            ZStack {
+                content()
+                    .foregroundStyle(.background)
+                    .opacity(isOn ? 1 : 0)
+                
+                content()
+                    .foregroundStyle(.primary)
+                    .opacity(isOn ? 0 : 1)
+            }
         }
         .buttonStyle(.borderless)
         .buttonBorderShape(.capsule)

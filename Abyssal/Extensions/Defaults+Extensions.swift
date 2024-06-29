@@ -60,7 +60,8 @@ extension Defaults.Keys {
                     interactionInvalidate: true,
                     screenChange: false
                 ),
-                deadZone: .percentage(50)
+                deadZone: .percentage(50),
+                respectNotch: true
             ),
             unique: [:]
         )

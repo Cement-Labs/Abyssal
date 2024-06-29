@@ -316,6 +316,8 @@ struct ScreenSettings: Codable, Defaults.Serializable {
     struct Individual: Codable, Defaults.Serializable {
         var collapseStrategy: CollapseStrategy
         var deadZone: DeadZone
+        
+        var respectNotch: Bool
     }
     
     var global: Individual

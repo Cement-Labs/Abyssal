@@ -9,7 +9,9 @@ import SwiftUI
 import Defaults
 
 struct DeadZoneControl: View {
-    @Default(.screenSettings) var screenSettings
+    @Default(.screenSettings) private var screenSettings
+    
+    @FocusState private var isTextFieldFocused: Bool
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -32,11 +34,19 @@ struct DeadZoneControl: View {
                         TextField(value: $screenSettings.main.deadZone.value, format: .number.precision(.fractionLength(1))) {
                             EmptyView()
                         }
+                        .onSubmit {
+                            isTextFieldFocused = false
+                        }
                         .aspectRatio(contentMode: .fit)
                         .textFieldStyle(.plain)
+                        
+                        .monospaced()
                         .multilineTextAlignment(.trailing)
                         .lineLimit(1)
-                        .monospaced()
+                        
+                        .focused($isTextFieldFocused)
+                        .focusable(false)
+                        
                         .animation(.none, value: screenSettings.main.deadZone)
                     }
                 }

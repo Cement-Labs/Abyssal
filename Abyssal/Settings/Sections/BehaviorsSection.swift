@@ -9,7 +9,7 @@ import SwiftUI
 import Defaults
 
 struct BehaviorsSection: View {
-    @Default(.screenSettings) var screenSettings
+    @Default(.screenSettings) private var screenSettings
     
     @Environment(\.hasTitle) private var hasTitle
     
@@ -19,18 +19,8 @@ struct BehaviorsSection: View {
         Section {
             SpacingVStack {
                 CollapseStrategyControl()
-            }
-            
-            SpacingVStack {
-                Picker("Auto idling", selection: .constant(1)) {
-                    Text("Test 1").tag(1)
-                    Text("Test 2").tag(2)
-                }
                 
-                Picker("Edge behavior", selection: .constant(1)) {
-                    Text("Test 1").tag(1)
-                    Text("Test 2").tag(2)
-                }
+                RespectNotchControl()
             }
             
             SpacingVStack {
