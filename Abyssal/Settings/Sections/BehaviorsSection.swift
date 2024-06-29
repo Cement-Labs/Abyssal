@@ -9,7 +9,7 @@ import SwiftUI
 import Defaults
 
 struct BehaviorsSection: View {
-    @Default(.uniqueScreenSettings) var uniqueScreenSettings
+    @Default(.screenSettings) var screenSettings
     
     @Environment(\.hasTitle) private var hasTitle
     
@@ -45,7 +45,7 @@ struct BehaviorsSection: View {
                 Spacer()
                 
                 Group {
-                    Box(isOn: .constant(true), behavior: .toggle) {
+                    Box(isOn: $screenSettings.isMainUnique, behavior: .toggle) {
                         Text("Remember This Screen")
                             .padding(.horizontal, 10)
                             .frame(height: 24)

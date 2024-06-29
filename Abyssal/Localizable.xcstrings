@@ -120,6 +120,18 @@
               }
             }
           }
+        },
+        "zh-Hans" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%g像素"
+                }
+              }
+            }
+          }
         }
       }
     },
@@ -274,7 +286,14 @@
 
     },
     "Display ID" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "显示器编号"
+          }
+        }
+      }
     },
     "Edge behavior" : {
 
@@ -349,17 +368,6 @@
         }
       }
     },
-    "Hash" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "哈希值"
-          }
-        }
-      }
-    },
     "Heavy" : {
       "localizations" : {
         "zh-Hans" : {
@@ -371,7 +379,14 @@
       }
     },
     "Height" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "高度"
+          }
+        }
+      }
     },
     "Hide certain status items permanently by moving them left of the `Always Hide Separator` to the **Always Hide Area.**\n\nThe status items inside the **Always Hide Area** will be hidden and invisible until the cursor hovers over the spare area with a modifier key down, or while this window is opened." : {
       "localizations" : {
@@ -379,17 +394,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "通过将一些状态栏图标移到**永远隐藏区域**（位于`永远隐藏分隔符`的左侧）以永远隐藏它们。\n\n**永远隐藏区域**内的图标将会一直不可见，直到光标移到空白区域内的同时按下修饰键或此窗口打开时。"
-          }
-        }
-      }
-    },
-    "ID" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "标识符"
           }
         }
       }
@@ -975,7 +979,14 @@
       }
     },
     "Width" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "宽度"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

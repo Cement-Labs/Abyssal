@@ -268,7 +268,7 @@ extension DeadZone {
             }
         }
     }
-        
+    
     var mode: Mode {
         get {
             switch self {
@@ -312,18 +312,63 @@ struct CollapseStrategy: Codable, Defaults.Serializable {
     }
 }
 
-struct UniqueScreenSetting: Codable, Defaults.Serializable {
-    var collapseStrategy: CollapseStrategy
-    var deadZone: DeadZone
-    
-    static var copyFromCurrent: Self {
-        .init(
-            collapseStrategy: Defaults[.collapseStrategy],
-            deadZone: Defaults[.deadZone]
-        )
+struct ScreenSettings: Codable, Defaults.Serializable {
+    struct Individual: Codable, Defaults.Serializable {
+        var collapseStrategy: CollapseStrategy
+        var deadZone: DeadZone
     }
     
-    func remember(_ hash: Int) {
-        Defaults[.uniqueScreenSettings][hash] = self
+    var global: Individual
+    var unique: [CGDirectDisplayID: Individual]
+    
+    var main: Individual {
+        get {
+            guard let id = ScreenManager.main?.displayID else {
+                return global
+            }
+            
+            return unique[id] ?? global
+        }
+        
+        set(individual) {
+            guard 
+                let id = ScreenManager.main?.displayID,
+                isMainUnique
+            else {
+                global = individual
+                return
+            }
+            
+            unique[id] = individual
+        }
+    }
+    
+    var isMainUnique: Bool {
+        get {
+            guard let id = ScreenManager.main?.displayID else {
+                return false
+            }
+            
+            return unique.keys.contains { $0 == id }
+        }
+        
+        set(isUnique) {
+            guard let id = ScreenManager.main?.displayID else {
+                return
+            }
+            
+            if isUnique {
+                let encoder = JSONEncoder()
+                let data = try? encoder.encode(global)
+                if
+                    let data,
+                    let copied = try? JSONDecoder().decode(Individual.self, from: data)
+                {
+                    unique[id] = copied
+                }
+            } else {
+                unique.removeValue(forKey: id)
+            }
+        }
     }
 }

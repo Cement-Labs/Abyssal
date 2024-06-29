@@ -9,17 +9,17 @@ import SwiftUI
 import Defaults
 
 struct TipDeadZoneTitle: View {
-    @Default(.deadZone) var deadZone
+    @Default(.screenSettings) var screenSettings
     
     var body: some View {
-        let label = switch deadZone {
+        let label = switch screenSettings.main.deadZone {
         case .percentage(let percentage):
             UnitFormat.percentage.format(percentage)
         case .pixel(let pixel):
             UnitFormat.pixel.format(pixel)
         }
         
-        TipTitle(value: $deadZone) {
+        TipTitle(value: $screenSettings.main.deadZone) {
             Text(label)
         }
     }

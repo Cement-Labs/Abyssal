@@ -39,15 +39,6 @@ extension Defaults.Keys {
         default: .any
     )
     
-    static let collapseStrategy = Key<CollapseStrategy>(
-        "collapseStrategy",
-        default: .init(
-            frontmostAppChange: true,
-            interactionInvalidate: true,
-            screenChange: false
-        )
-    )
-    
     static let timeout = Key<Timeout>(
         "timeout",
         default: .sec30
@@ -58,15 +49,20 @@ extension Defaults.Keys {
         default: .medium
     )
     
-    static let deadZone = Key<DeadZone>(
-        "deadZone",
-        default: .percentage(0.5)
-    )
     
     
-    
-    static let uniqueScreenSettings = Key<[Int: UniqueScreenSetting]>(
-        "uniqueScreenSettings",
-        default: [:]
+    static let screenSettings = Key<ScreenSettings>(
+        "screenSettings",
+        default: .init(
+            global: .init(
+                collapseStrategy: .init(
+                    frontmostAppChange: true,
+                    interactionInvalidate: true,
+                    screenChange: false
+                ),
+                deadZone: .percentage(50)
+            ),
+            unique: [:]
+        )
     )
 }

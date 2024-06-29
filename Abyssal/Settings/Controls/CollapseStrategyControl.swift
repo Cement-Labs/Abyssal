@@ -9,7 +9,7 @@ import SwiftUI
 import Defaults
 
 struct CollapseStrategyControl: View {
-    @Default(.collapseStrategy) private var collapseStrategy
+    @Default(.screenSettings) private var screenSettings
     
     var body: some View {
         HStack(alignment: .firstTextBaseline) {
@@ -19,16 +19,16 @@ struct CollapseStrategyControl: View {
             
             Menu {
                 Section("On Change") {
-                    Toggle("Frontmost Application", isOn: $collapseStrategy.frontmostAppChange)
+                    Toggle("Frontmost Application", isOn: $screenSettings.main.collapseStrategy.frontmostAppChange)
                     
-                    Toggle("Main Screen", isOn: $collapseStrategy.screenChange)
+                    Toggle("Main Screen", isOn: $screenSettings.main.collapseStrategy.screenChange)
                 }
                 
                 Section("On Invalidation") {
-                    Toggle("Menu Bar Interaction", isOn: $collapseStrategy.interactionInvalidate)
+                    Toggle("Menu Bar Interaction", isOn: $screenSettings.main.collapseStrategy.interactionInvalidate)
                 }
             } label: {
-                Text("When Satisfying Any of the \(collapseStrategy.enabledCount) Rules")
+                Text("When Satisfying Any of the \(screenSettings.main.collapseStrategy.enabledCount) Rules")
             }
             .aspectRatio(contentMode: .fit)
         }

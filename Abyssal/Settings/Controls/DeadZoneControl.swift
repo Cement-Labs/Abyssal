@@ -9,11 +9,11 @@ import SwiftUI
 import Defaults
 
 struct DeadZoneControl: View {
-    @Default(.deadZone) var deadZone
+    @Default(.screenSettings) var screenSettings
     
     var body: some View {
         VStack(alignment: .leading) {
-            Picker(selection: $deadZone.mode) {
+            Picker(selection: $screenSettings.main.deadZone.mode) {
                 ForEach(DeadZone.Mode.allCases, id: \.self) { mode in
                     switch mode {
                     case .percentage:
@@ -28,8 +28,8 @@ struct DeadZoneControl: View {
                     
                     Spacer()
                     
-                    Stepper(value: $deadZone.value, in: deadZone.range, step: 5) {
-                        TextField(value: $deadZone.value, format: .number.precision(.fractionLength(1))) {
+                    Stepper(value: $screenSettings.main.deadZone.value, in: screenSettings.main.deadZone.range, step: 5) {
+                        TextField(value: $screenSettings.main.deadZone.value, format: .number.precision(.fractionLength(1))) {
                             EmptyView()
                         }
                         .aspectRatio(contentMode: .fit)
@@ -37,20 +37,20 @@ struct DeadZoneControl: View {
                         .multilineTextAlignment(.trailing)
                         .lineLimit(1)
                         .monospaced()
-                        .animation(.none, value: deadZone)
+                        .animation(.none, value: screenSettings.main.deadZone)
                     }
                 }
             }
             
             EmptyFormWrapper {
-                TipWrapper(alwaysVisible: true, value: $deadZone, tip: tip) { tip in
-                    Slider(value: $deadZone.value, in: deadZone.range) {
+                TipWrapper(alwaysVisible: true, value: $screenSettings.main.deadZone, tip: tip) { tip in
+                    Slider(value: $screenSettings.main.deadZone.value, in: screenSettings.main.deadZone.range) {
                         EmptyView()
                     }
                 }
             }
         }
-        .animation(.smooth, value: deadZone)
+        .animation(.smooth, value: screenSettings.main.deadZone)
     }
     
     private let tip = Tip(preferredEdge: .minY) {
