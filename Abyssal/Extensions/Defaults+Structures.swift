@@ -241,7 +241,7 @@ enum DeadZone: Codable, Defaults.Serializable {
     var numericString: String {
         switch self {
         case .percentage(let percentage):
-                .init(format: "%g%%", percentage)
+                .init(format: "%g", percentage)
         case .pixel(let pixel):
                 .init(pixel)
         }

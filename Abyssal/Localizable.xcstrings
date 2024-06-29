@@ -56,6 +56,9 @@
         }
       }
     },
+    "%g Pixels" : {
+
+    },
     "%g Seconds" : {
       "localizations" : {
         "en" : {
@@ -89,6 +92,9 @@
           }
         }
       }
+    },
+    "%g%%" : {
+
     },
     "Advanced" : {
       "localizations" : {
