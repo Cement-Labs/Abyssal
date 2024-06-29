@@ -21,7 +21,7 @@ The modifier keys to use for showing the **Always Hide Area.** It is recommended
     }
     
     var body: some View {
-        Section("Modifiers") {
+        Section {
             VStack(spacing: 8) {
                 TipWrapper(tip: modifierTip) { tip in
                     HStack(spacing: 8) {

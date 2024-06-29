@@ -27,7 +27,6 @@ struct SettingsView: View {
                 
                 Form {
                     SettingsModifierSection()
-                        .environment(\.hasTitle, false)
                     
                     SettingsAdvancedSection()
                     

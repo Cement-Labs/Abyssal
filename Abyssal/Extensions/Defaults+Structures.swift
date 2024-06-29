@@ -257,4 +257,16 @@ struct CollapseStrategy: Codable, Defaults.Serializable {
     var interactionInvalidate: Bool
     /// When current screen changes
     var screenChange: Bool
+    
+    var values: [Bool] {
+        [
+            frontmostAppChange,
+            interactionInvalidate,
+            screenChange
+        ]
+    }
+    
+    var enabledCount: Int {
+        values.count { $0 }
+    }
 }
