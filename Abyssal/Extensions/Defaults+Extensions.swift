@@ -12,7 +12,7 @@ import LaunchAtLogin
 extension Defaults.Keys {
     /// - `true`: the expanded state and menu bar itms are hidden.
     /// - `false`: the shrunk state and menu bar items are visible.
-    static let isCollapsed = Key<Bool>("isCollapsed", default: false)
+    static let isActive = Key<Bool>("isActive", default: false)
     
     static let tipsEnabled = Key<Bool>("tipsEnabled", default: true)
     
@@ -22,31 +22,31 @@ extension Defaults.Keys {
     
     static let theme = Key<Theme>("theme", default: .defaultTheme)
     
-    static let modifiers = Key<ModifiersAttribute>(
+    static let modifiers = Key<Modifier>(
         "modifiers",
         default: [.option, .command]
     )
     
-    static let modifierMode = Key<ModifiersAttribute.Mode>(
+    static let modifierMode = Key<Modifier.Mode>(
         "modifierMode",
         default: .any
     )
     
     
     
-    static let timeout = Key<TimeoutAttribute>(
+    static let timeout = Key<Timeout>(
         "timeout",
         default: .sec30
     )
     
-    static let feedback = Key<FeedbackAttribute>(
+    static let feedback = Key<Feedback>(
         "feedback",
         default: .medium
     )
     
-    static let deadZone = Key<DeadZoneAttribute>(
+    static let deadZone = Key<Deadzone>(
         "deadZone",
-        default: DeadZoneAttribute(percentage: 0.25)
+        default: Deadzone(percentage: 0.25)
     )
     
     
@@ -55,5 +55,7 @@ extension Defaults.Keys {
     
     static let reduceAnimationEnabled = Key<Bool>("reduceAnimationEnabled", default: false)
     
-    static let launchAtLogin = Key<Bool>("launchAtLogin", default: false)
+    
+    
+    
 }

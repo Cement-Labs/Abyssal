@@ -116,7 +116,7 @@ extension AppDelegate {
             return
         }
         
-        if Defaults[.isCollapsed] {
+        if Defaults[.isActive] {
             statusBarController.uncollapse()
         } else {
             statusBarController.collapse()
@@ -186,13 +186,5 @@ extension AppDelegate {
         mouseEventMonitor?.stop()
         statusBarController.startFunctionalTimers()
         AppDelegate.shared?.statusBarController.triggerIgnoring()
-    }
-}
-
-func runTasks() {
-    Task {
-        for await value in Defaults.updates(.launchAtLogin) {
-            LaunchAtLogin.isEnabled = value
-        }
     }
 }

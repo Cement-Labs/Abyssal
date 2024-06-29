@@ -10,15 +10,43 @@ import Defaults
 import AppKit
 import SwiftUI
 
-struct ModifiersAttribute: OptionSet, Defaults.Serializable {
+extension Theme: Defaults.Serializable {
+    struct Bridge: Defaults.Bridge {
+        typealias Value = Theme
+        typealias Serializable = String
+        
+        func serialize(_ value: Theme?) -> String? {
+            guard let value else {
+                return nil
+            }
+            
+            return value.id
+        }
+        
+        func deserialize(_ object: String?) -> Theme? {
+            guard
+                let id = object,
+                Theme.themeIds.contains(id)
+            else {
+                return nil
+            }
+            
+            return Theme.themes.first { $0.id == id }
+        }
+    }
+    
+    static let bridge = Bridge()
+}
+
+struct Modifier: OptionSet, Defaults.Serializable {
     let rawValue: UInt8
     
-    static let control  = ModifiersAttribute(rawValue: 1 << 0)
-    static let option   = ModifiersAttribute(rawValue: 1 << 1)
-    static let command  = ModifiersAttribute(rawValue: 1 << 2)
+    static let control  = Modifier(rawValue: 1 << 0)
+    static let option   = Modifier(rawValue: 1 << 1)
+    static let command  = Modifier(rawValue: 1 << 2)
     
-    static let none:    ModifiersAttribute = []
-    static let all:     ModifiersAttribute = [.control, .option, .command]
+    static let none:    Modifier = []
+    static let all:     Modifier = [.control, .option, .command]
     
     var control: Bool {
         get {
@@ -78,8 +106,8 @@ struct ModifiersAttribute: OptionSet, Defaults.Serializable {
         return result
     }
     
-    static func fromFlags(_ flags: NSEvent.ModifierFlags) -> ModifiersAttribute {
-        var result = ModifiersAttribute()
+    static func fromFlags(_ flags: NSEvent.ModifierFlags) -> Modifier {
+        var result = Modifier()
         
         if flags.contains(.control) {
             result.formUnion(.control)
@@ -95,12 +123,12 @@ struct ModifiersAttribute: OptionSet, Defaults.Serializable {
     }
 }
 
-extension ModifiersAttribute {
+extension Modifier {
     enum Mode: Int, CaseIterable, Defaults.Serializable {
         case any = 0
         case all = 1
         
-        func triggers(input: ModifiersAttribute) -> Bool {
+        func triggers(input: Modifier) -> Bool {
             switch self {
             case .any:
                 // OK if the two sets have any member in common
@@ -113,7 +141,7 @@ extension ModifiersAttribute {
     }
 }
 
-enum TimeoutAttribute: Int, CaseIterable, Defaults.Serializable {
+enum Timeout: Int, CaseIterable, Defaults.Serializable {
     case sec5   = 5
     case sec10  = 10
     case sec15  = 15
@@ -136,7 +164,7 @@ enum TimeoutAttribute: Int, CaseIterable, Defaults.Serializable {
     }
 }
 
-enum FeedbackAttribute: Int, CaseIterable, Defaults.Serializable {
+enum Feedback: Int, CaseIterable, Defaults.Serializable {
     case none   = 0
     case light  = 1
     case medium = 2
@@ -153,7 +181,7 @@ enum FeedbackAttribute: Int, CaseIterable, Defaults.Serializable {
     }
 }
 
-struct DeadZoneAttribute: Defaults.Serializable {
+struct Deadzone: Defaults.Serializable {
     var percentage: Double
     
     static let range = 0.0...0.75
@@ -163,10 +191,10 @@ struct DeadZoneAttribute: Defaults.Serializable {
     }
     
     struct Bridge: Defaults.Bridge {
-        typealias Value = DeadZoneAttribute
+        typealias Value = Deadzone
         typealias Serializable = Double
         
-        func serialize(_ value: DeadZoneAttribute?) -> Double? {
+        func serialize(_ value: Deadzone?) -> Double? {
             guard let value else {
                 return nil
             }
@@ -174,40 +202,12 @@ struct DeadZoneAttribute: Defaults.Serializable {
             return value.percentage
         }
         
-        func deserialize(_ object: Double?) -> DeadZoneAttribute? {
-            guard let object, DeadZoneAttribute.range.contains(object) else {
+        func deserialize(_ object: Double?) -> Deadzone? {
+            guard let object, Deadzone.range.contains(object) else {
                 return nil
             }
             
             return .init(percentage: object)
-        }
-    }
-    
-    static let bridge = Bridge()
-}
-
-extension Theme: Defaults.Serializable {
-    struct Bridge: Defaults.Bridge {
-        typealias Value = Theme
-        typealias Serializable = String
-        
-        func serialize(_ value: Theme?) -> String? {
-            guard let value else {
-                return nil
-            }
-            
-            return value.id
-        }
-        
-        func deserialize(_ object: String?) -> Theme? {
-            guard
-                let id = object,
-                Theme.themeIds.contains(id)
-            else {
-                return nil
-            }
-            
-            return Theme.themes.first { $0.id == id }
         }
     }
     

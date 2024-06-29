@@ -26,6 +26,6 @@ struct KeyboardManager {
     }
     
     static var triggers: Bool {
-        Defaults[.modifierMode].triggers(input: ModifiersAttribute.fromFlags(NSEvent.modifierFlags))
+        Defaults[.modifierMode].triggers(input: Modifier.fromFlags(NSEvent.modifierFlags))
     }
 }

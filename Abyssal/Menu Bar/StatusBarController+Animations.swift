@@ -12,7 +12,7 @@ import Defaults
 extension StatusBarController {
     var disabled: Bool {
         !Defaults[.theme].autoHideIcons 
-        && !Defaults[.isCollapsed]
+        && !Defaults[.isActive]
     }
     
     var triggers: (body: Bool, tail: Bool) {
@@ -23,7 +23,7 @@ extension StatusBarController {
         
     }
     
-    func icons(collapses: Bool = Defaults[.isCollapsed]) -> (head: Icon, body: Icon, tail: Icon) {
+    func icons(collapses: Bool = Defaults[.isActive]) -> (head: Icon, body: Icon, tail: Icon) {
         (
             head: collapses ? Defaults[.theme].headCollapsed : Defaults[.theme].headUncollapsed,
             body: Defaults[.theme].body,
@@ -65,7 +65,7 @@ extension StatusBarController {
         let mouseNeedsUpdate = mouseWasSpareOrUnidled != mouseSpare
         
         if 
-            Defaults[.isCollapsed]
+            Defaults[.isActive]
                 && !idling.hide
                 && !idling.alwaysHide
                 && Defaults[.autoShowsEnabled]
@@ -106,7 +106,7 @@ extension StatusBarController {
             
             guard 
                 Defaults[.autoShowsEnabled]
-                    || !Defaults[.isCollapsed]
+                    || !Defaults[.isActive]
                     || !Defaults[.theme].autoHideIcons
             else {
                 head.targetAlpha = 0
@@ -117,12 +117,12 @@ extension StatusBarController {
             }
             
             if Defaults[.theme].autoHideIcons {
-                head.targetAlpha = Defaults[.isCollapsed] ? 0 : icons().head.opacity
+                head.targetAlpha = Defaults[.isActive] ? 0 : icons().head.opacity
             } else {
                 head.targetAlpha = icons().head.opacity
                 
                 body.targetAlpha = (
-                    !Defaults[.isCollapsed]
+                    !Defaults[.isActive]
                     || triggers.body
                     || idling.hide
                     || idling.alwaysHide
@@ -145,7 +145,7 @@ extension StatusBarController {
         head: do {
             let collapses = 
             !popoverShown
-            && Defaults[.isCollapsed]
+            && Defaults[.isActive]
             && !(idling.hide || idling.alwaysHide)
             && !(Defaults[.autoShowsEnabled] && mouseSpare)
             
@@ -162,7 +162,7 @@ extension StatusBarController {
             
             let collapses = 
             !popoverShown
-            && Defaults[.isCollapsed]
+            && Defaults[.isActive]
             && !triggers.body
             && !(idling.hide || idling.alwaysHide)
             && !(Defaults[.autoShowsEnabled] && mouseSpare)
@@ -263,7 +263,7 @@ extension StatusBarController {
         body.button?.image = icons().body.image
         tail.button?.image = icons().tail.image
         
-        guard Defaults[.autoShowsEnabled] || !Defaults[.isCollapsed] || !Defaults[.theme].autoHideIcons else {
+        guard Defaults[.autoShowsEnabled] || !Defaults[.isActive] || !Defaults[.theme].autoHideIcons else {
             head.targetAlpha = 0
             body.targetAlpha = 0
             tail.targetAlpha = 0
@@ -283,7 +283,7 @@ extension StatusBarController {
             body.targetAlpha = triggers.body ? icons().body.opacity : 0
             tail.targetAlpha = triggers.tail ? icons().tail.opacity : 0
         } else {
-            head.targetAlpha = !Defaults[.isCollapsed] ? icons().head.opacity : 0
+            head.targetAlpha = !Defaults[.isActive] ? icons().head.opacity : 0
             body.targetAlpha = 0
             tail.targetAlpha = 0
         }

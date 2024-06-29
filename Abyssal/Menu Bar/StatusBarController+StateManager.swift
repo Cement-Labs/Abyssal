@@ -37,7 +37,7 @@ extension StatusBarController {
     
     func collapse() {
         unidleHideArea()
-        Defaults[.isCollapsed] = true
+        Defaults[.isActive] = true
     }
     
     func idleHideArea() {
@@ -130,10 +130,10 @@ extension StatusBarController {
                         self.draggedToUncollapse.count += 1
                     } else {
                         self.draggedToUncollapse.dragging = true
-                        self.draggedToUncollapse.shouldCollapse = Defaults[.isCollapsed]
+                        self.draggedToUncollapse.shouldCollapse = Defaults[.isActive]
                         self.draggedToUncollapse.count = 0
                         
-                        if Defaults[.isCollapsed] {
+                        if Defaults[.isActive] {
                             self.draggedToUncollapse.shouldCollapse = true
                             self.uncollapse()
                         } else {
@@ -266,7 +266,7 @@ extension StatusBarController {
                     self.mouseSpare
                 else { return }
                 
-                if Defaults[.isCollapsed] && self.mouseInHideArea && !(KeyboardManager.command && event?.type == .leftMouseDown) {
+                if Defaults[.isActive] && self.mouseInHideArea && !(KeyboardManager.command && event?.type == .leftMouseDown) {
                     self.idleHideArea()
                 }
                 
@@ -282,7 +282,7 @@ extension StatusBarController {
     // MARK: - Disables
     
     func uncollapse() {
-        Defaults[.isCollapsed] = false
+        Defaults[.isActive] = false
         unidleHideArea()
     }
     

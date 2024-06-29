@@ -183,7 +183,7 @@ class StatusBarController {
         
         startTriggerTimer()
         
-        draggedToUncollapse.shouldCollapse = Defaults[.isCollapsed]
+        draggedToUncollapse.shouldCollapse = Defaults[.isActive]
         draggedToUncollapse.shouldEnableAnimation = !Defaults[.reduceAnimationEnabled]
     }
     

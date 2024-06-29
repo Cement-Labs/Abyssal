@@ -48,7 +48,7 @@ The modifier keys to use for showing the **Always Hide Area.** It is recommended
                     EmptyFormWrapper(normalizePadding: false) {
                         HStack(alignment: .firstTextBaseline) {
                             Picker(selection: $modifierMode) {
-                                ForEach(ModifiersAttribute.Mode.allCases, id: \.self) { mode in
+                                ForEach(Modifier.Mode.allCases, id: \.self) { mode in
                                     switch mode {
                                     case .all: Text("all")
                                     case .any: Text("any")

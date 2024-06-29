@@ -58,11 +58,11 @@ Reduce animation to gain a more performant experience.
             }
             
             feedback: do {
-                let maxIndex = FeedbackAttribute.allCases.endIndex - 1
+                let maxIndex = Feedback.allCases.endIndex - 1
                 let binding = Binding<Double> {
-                    Double(FeedbackAttribute.allCases.firstIndex(of: feedback) ?? 0)
+                    Double(Feedback.allCases.firstIndex(of: feedback) ?? 0)
                 } set: { index in
-                    feedback = FeedbackAttribute.allCases[Int(index)]
+                    feedback = Feedback.allCases[Int(index)]
                 }
                 
                 EmptyFormWrapper {

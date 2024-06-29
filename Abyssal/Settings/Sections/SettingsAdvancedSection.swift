@@ -32,11 +32,11 @@ Launch **\(Bundle.main.appName)** right after macOS starts.
     var body: some View {
         Section("Advanced") {
             timeout: do {
-                let maxIndex = TimeoutAttribute.allCases.endIndex - 1
+                let maxIndex = Timeout.allCases.endIndex - 1
                 let binding = Binding<Double> {
-                    Double(TimeoutAttribute.allCases.firstIndex(of: timeout) ?? maxIndex)
+                    Double(Timeout.allCases.firstIndex(of: timeout) ?? maxIndex)
                 } set: { index in
-                    timeout = TimeoutAttribute.allCases[Int(index)]
+                    timeout = Timeout.allCases[Int(index)]
                 }
                 
                 EmptyFormWrapper {
