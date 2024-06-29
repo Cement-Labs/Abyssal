@@ -182,20 +182,15 @@ enum Feedback: Int, CaseIterable, Defaults.Serializable {
 }
 
 enum DeadZone: Codable, Defaults.Serializable {
-    static let rangePercentage = 0.0...0.75
-    static var rangePixel: ClosedRange<Double> {
-        0...ScreenManager.width
-    }
-    
     case percentage(Double)
     case pixel(UInt64)
     
     var range: ClosedRange<Double> {
         switch self {
         case .percentage(_):
-            Self.rangePercentage
+            0...0.75
         case .pixel(_):
-            Self.rangePixel
+            0...ScreenManager.width
         }
     }
     
@@ -237,13 +232,13 @@ enum DeadZone: Codable, Defaults.Serializable {
                 .init(pixel)
         }
     }
-    
-    var numericString: String {
-        switch self {
-        case .percentage(let percentage):
-                .init(format: "%g", percentage)
-        case .pixel(let pixel):
-                .init(pixel)
-        }
-    }
+}
+
+struct CollapseStrategy: Codable, Defaults.Serializable {
+    /// When frontmost app changes
+    var frontmostAppChange: Bool
+    /// When cursor interaction invalidates in menus
+    var interactionInvalidate: Bool
+    /// When current screen changes
+    var screenChange: Bool
 }

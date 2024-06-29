@@ -42,6 +42,11 @@ extension Defaults.Keys {
         default: .medium
     )
     
+    static let deadZone = Key<DeadZone>(
+        "deadZone",
+        default: .percentage(0.5)
+    )
+    
     
     
     static let alwaysHideAreaEnabled = Key<Bool>("alwaysHideAreaEnabled", default: true)
