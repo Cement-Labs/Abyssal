@@ -36,7 +36,7 @@ struct SettingsView: View {
                 .padding(1)
                 .defaultScrollAnchor(.bottom)
             }
-            .frame(maxWidth: 370)
+            .frame(maxWidth: 395)
             
             VStack(spacing: 0) {
                 SettingsTrafficsView()
@@ -54,7 +54,7 @@ struct SettingsView: View {
                 .padding(1)
                 .padding(.top, -20)
             }
-            .frame(maxWidth: 430)
+            .frame(maxWidth: 445)
         }
         .controlSize(.regular)
         .formStyle(.grouped)

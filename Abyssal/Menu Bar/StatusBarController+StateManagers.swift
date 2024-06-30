@@ -126,12 +126,6 @@ extension StatusBarController {
                     draggedToDeactivate.dragging = false
                     noAnimation = false
                     
-                    if draggedToDeactivate.shouldActivate {
-                        DispatchQueue.main.async {
-                            self.activate()
-                        }
-                    }
-                    
                     unidleAlwaysHideArea()
                     startAnimationTimer()
                 }
@@ -141,16 +135,7 @@ extension StatusBarController {
                         draggedToDeactivate.count += 1
                     } else {
                         draggedToDeactivate.dragging = true
-                        draggedToDeactivate.shouldActivate = isActive
                         draggedToDeactivate.count = 0
-                        print(isActive)
-                        
-                        if isActive {
-                            draggedToDeactivate.shouldActivate = true
-                            deactivate()
-                        } else {
-                            draggedToDeactivate.shouldActivate = false
-                        }
                         
                         noAnimation = true
                         idleAlwaysHideArea()

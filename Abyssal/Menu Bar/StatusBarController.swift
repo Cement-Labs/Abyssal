@@ -135,7 +135,7 @@ class StatusBarController {
 
     var mouseWasSpareOrUnidled = false
     
-    var draggedToDeactivate = (dragging: false, shouldActivate: false, count: Int.zero)
+    var draggedToDeactivate = (dragging: false, count: Int.zero)
     
     
     
@@ -221,8 +221,6 @@ class StatusBarController {
         startActionTimer()
         
         startTriggerTimer()
-        
-        draggedToDeactivate.shouldActivate = isActive
         
         KeyboardShortcuts.onKeyDown(for: .toggleActive) {
             self.startFunctionalTimers()
