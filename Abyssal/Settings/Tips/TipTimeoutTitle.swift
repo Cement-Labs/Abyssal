@@ -17,7 +17,9 @@ struct TipTimeoutTitle: View {
             TimeFormat.second.format(Double(timeout.rawValue))
         case .sec60, .min2, .min3, .min5, .min10:
             TimeFormat.minute.format(Double(timeout.rawValue / 60))
-        default:
+        case .instant:
+            TimeFormat.instant
+        case .forever:
             TimeFormat.forever
         }
         

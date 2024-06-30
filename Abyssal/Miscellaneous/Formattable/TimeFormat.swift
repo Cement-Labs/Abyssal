@@ -11,6 +11,7 @@ enum TimeFormat: DoubleFormattable {
     case second
     case minute
     
+    static let instant = String(localized: "Instant")
     static let forever = String(localized: "Forever")
     
     var format: String {

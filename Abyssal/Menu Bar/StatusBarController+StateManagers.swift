@@ -122,28 +122,30 @@ extension StatusBarController {
                 checkIdleStates()
                 
                 // Update dragging state
-                if draggedToDeactivate.dragging && !self.mouseDragging.value() {
+                if draggedToDeactivate.dragging && !mouseDragging.value() {
                     draggedToDeactivate.dragging = false
+                    noAnimation = false
                     
                     if draggedToDeactivate.shouldActivate {
-                        activate()
+                        DispatchQueue.main.async {
+                            self.activate()
+                        }
                     }
-                    
-                    noAnimation = false
                     
                     unidleAlwaysHideArea()
                     startAnimationTimer()
                 }
                 
-                else if mouseDragging.value() && !self.draggedToDeactivate.dragging {
+                else if mouseDragging.value() && !draggedToDeactivate.dragging {
                     if draggedToDeactivate.count < 3 {
                         draggedToDeactivate.count += 1
                     } else {
                         draggedToDeactivate.dragging = true
-                        draggedToDeactivate.shouldActivate = self.isActive
+                        draggedToDeactivate.shouldActivate = isActive
                         draggedToDeactivate.count = 0
+                        print(isActive)
                         
-                        if self.isActive {
+                        if isActive {
                             draggedToDeactivate.shouldActivate = true
                             deactivate()
                         } else {
@@ -151,7 +153,6 @@ extension StatusBarController {
                         }
                         
                         noAnimation = true
-                        
                         idleAlwaysHideArea()
                         startAnimationTimer()
                     }
@@ -191,17 +192,47 @@ extension StatusBarController {
                 }
                 
                 // Update frontmost app
-                if lastFocusedApp != AppManager.frontmost {
-                    lastFocusedApp = AppManager.frontmost
-                    
+                if focusedApp.needsUpdate {
                     if Defaults[.screenSettings].main.activeStrategy.frontmostAppChange {
-                        startFunctionalTimers()
+                        // When frontmost app changes
+                        unidleHideArea()
+                    }
+                }
+                
+                // Update main screen
+                if mainScreen.needsUpdate {
+                    if Defaults[.screenSettings].main.activeStrategy.screenChange {
+                        // When main screen changes
+                        unidleHideArea()
                     }
                 }
                 
                 // Update external menu states
-                if mouseInExternalMenu.needsUpdate {
-                    
+                if hasExternalMenus.value() {
+                    // Automatically update after once cached
+                    updateExternalMenus()
+                }
+                
+                if hasExternalMenus.needsUpdate {
+                    if hasExternalMenus.value() {
+                        // Will keep inactivated
+                        print("Has external menu")
+                    } else {
+                        // Will be normal
+                        print("No longer has external menu")
+                    }
+                }
+                
+                
+                
+                // Update blocking status
+                if blocking.needsUpdate {
+                    if blocking.value() {
+                        // Blocked
+                    } else {
+                        // Released
+                        startTimeoutTimer()
+                    }
                 }
                 
                 
@@ -211,12 +242,19 @@ extension StatusBarController {
                 mouseInHideArea.update()
                 mouseInAlwaysHideArea.update()
                 mouseSpare.update()
+                
                 mouseOverHead.update()
                 mouseOverBody.update()
                 mouseOverTail.update()
+                
                 mouseDragging.update()
-                mouseInExternalMenu.update()
+                
+                hasExternalMenus.update()
                 keyboardTriggers.update()
+                focusedApp.update()
+                mainScreen.update()
+                    
+                blocking.update()
             }
             print("START TIMER [TRIGGER]: \(triggerTimer!)")
         }
@@ -296,13 +334,11 @@ extension StatusBarController {
                 
                 // Update external menu caches
                 ExternalMenuBarManager.menuBarItems.forEach { $0.cache() }
-                self.lastExternalMenus.removeAll()
+                self.externalMenus.removeAll()
                 
                 self.updateExternalMenusDispatch?.cancel()
                 self.updateExternalMenusDispatch = .init {
-                    self.lastExternalMenus = ExternalMenuBarManager.menuBarItems.flatMap {
-                        $0.newWindowsNear
-                    }
+                    self.updateExternalMenus()
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: self.updateExternalMenusDispatch!)
             }
@@ -320,11 +356,13 @@ extension StatusBarController {
     }
     
     func unidleHideArea() {
+        guard !blocking.value() else { return }
         idling.hide = false
         unidleAlwaysHideArea()
     }
     
     func unidleAlwaysHideArea() {
+        guard !blocking.value() else { return }
         idling.alwaysHide = false
         startFunctionalTimers()
     }

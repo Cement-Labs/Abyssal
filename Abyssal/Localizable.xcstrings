@@ -392,6 +392,9 @@
         }
       }
     },
+    "Instant" : {
+
+    },
     "Launch **%@** right after macOS starts." : {
       "localizations" : {
         "zh-Hans" : {

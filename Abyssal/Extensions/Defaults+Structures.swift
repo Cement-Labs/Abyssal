@@ -142,6 +142,8 @@ extension Modifier {
 }
 
 enum Timeout: Int, CaseIterable, Defaults.Serializable {
+    case instant = 0
+    
     case sec5   = 5
     case sec10  = 10
     case sec15  = 15
@@ -154,7 +156,7 @@ enum Timeout: Int, CaseIterable, Defaults.Serializable {
     case min5   = 300
     case min10  = 600
     
-    case forever = 0
+    case forever = -1
     
     var attribute: Int? {
         switch self {

@@ -79,7 +79,12 @@ extension WindowInfo {
     }
     
     var containsMouse: Bool {
-        bounds.contains(NSEvent.mouseLocation)
+        // Change mouse coordinate (with an upside y-axis) to screen coordinate (with a down y-axis)
+        let mouseInScreen = NSEvent.mouseLocation
+            .applying(.init(translationX: 0, y: -ScreenManager.frame.height))
+            .applying(.init(scaleX: 1, y: -1))
+        
+        return bounds.contains(mouseInScreen)
     }
     
     func isPlacingNear(_ rect: NSRect, edge: NSRectEdge) -> Bool {

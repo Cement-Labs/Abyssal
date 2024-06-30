@@ -30,6 +30,7 @@ class ExternalMenuBarItem {
     var windowsNear: [WindowInfo] {
         windowInfo
             .processRelatedWindows
+            .filter(\.isOnscreen)
             .filter { $0.isPlacingNear(bounds, edge: .maxY) }
     }
     

@@ -10,7 +10,7 @@ import Defaults
 import KeyboardShortcuts
 
 class StatusBarController {
-    // MARK: - States
+    // MARK: - Lazy States
     
     lazy var mouseOnStatusBar: WithIntermediateState<Bool> = .init {
         guard
@@ -39,6 +39,8 @@ class StatusBarController {
         !self.ignoring && self.mouseOnStatusBar.value() && NSEvent.mouseLocation.x <= self.edge
     }
     
+    
+    
     lazy var mouseOverHead: WithIntermediateState<Bool> = .init {
         guard
             let origin = self.head.button?.window?.frame.origin,
@@ -63,19 +65,39 @@ class StatusBarController {
         return self.mouseOnStatusBar.value() && NSEvent.mouseLocation.x >= origin.x && NSEvent.mouseLocation.x <= origin.x + width
     }
     
+    
+    
     lazy var mouseDragging: WithIntermediateState<Bool> = .init {
         MouseManager.dragging && self.mouseOnStatusBar.value()
     }
     
-    lazy var mouseInExternalMenu: WithIntermediateState<Bool> = .init {
-        self.lastExternalMenus.contains(where: \.containsMouse)
+    
+    
+    lazy var hasExternalMenus: WithIntermediateState<Bool> = .init {
+        !self.externalMenus.isEmpty
     }
     
     lazy var keyboardTriggers: WithIntermediateState<Bool> = .init {
         KeyboardManager.triggers
     }
     
+    lazy var focusedApp: WithIntermediateState<NSRunningApplication?> = .init {
+        AppManager.frontmost
+    }
     
+    lazy var mainScreen: WithIntermediateState<NSScreen?> = .init {
+        ScreenManager.main
+    }
+    
+    
+    
+    lazy var blocking: WithIntermediateState<Bool> = .init {
+        self.hasExternalMenus.value()
+    }
+    
+    
+    
+    // MARK: - Variable States
     
     var shouldPresentFeedback: Bool {
         !timeout && MouseManager.none
@@ -103,9 +125,7 @@ class StatusBarController {
     
     var timeout = false
     
-    var lastFocusedApp: NSRunningApplication?
-    
-    var lastExternalMenus: [WindowInfo] = []
+    var externalMenus: [WindowInfo] = []
     
     
     
@@ -244,5 +264,11 @@ extension StatusBarController {
     
     func updateEdge() {
         edge = (body.origin?.x ?? 0) + body.length
+    }
+    
+    func updateExternalMenus() {
+        self.externalMenus = ExternalMenuBarManager.menuBarItems.flatMap {
+            $0.newWindowsNear
+        }
     }
 }
