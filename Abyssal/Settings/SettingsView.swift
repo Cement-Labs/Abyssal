@@ -29,6 +29,9 @@ struct SettingsView: View {
                     ModifierSection()
                     
                     AdvancedSection()
+                    
+                    ShortcutsControl()
+                        .environment(\.hasTitle, false)
                 }
                 .padding(1)
                 .defaultScrollAnchor(.bottom)

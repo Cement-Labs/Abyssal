@@ -62,6 +62,10 @@
 		28CAF5592C297809002BD78C /* TipTimeoutTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CAF5582C297809002BD78C /* TipTimeoutTitle.swift */; };
 		28CB53A52C2B938300F32A71 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CB53A42C2B938300F32A71 /* AppManager.swift */; };
 		28E929252C30169400847A67 /* NSScreen+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E929242C30169400847A67 /* NSScreen+Extensions.swift */; };
+		28F9913C2C30D805004C76ED /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 28F9913B2C30D805004C76ED /* KeyboardShortcuts */; };
+		28F9913E2C30D929004C76ED /* KeyboardShortcuts+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F9913D2C30D929004C76ED /* KeyboardShortcuts+Extensions.swift */; };
+		28F991402C30D9D2004C76ED /* ShortcutsControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F9913F2C30D9D2004C76ED /* ShortcutsControl.swift */; };
+		28F991422C30DE71004C76ED /* ShortcutsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F991412C30DE71004C76ED /* ShortcutsSection.swift */; };
 		C63B40532A4060E400BCAE79 /* NSStatusItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63B40522A4060E400BCAE79 /* NSStatusItem+Extension.swift */; };
 		C66CABA42A38871500E4D8E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CABA32A38871500E4D8E6 /* AppDelegate.swift */; };
 		C66CABB72A389F2500E4D8E6 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CABB62A389F2500E4D8E6 /* EventMonitor.swift */; };
@@ -126,6 +130,9 @@
 		28CAF5582C297809002BD78C /* TipTimeoutTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipTimeoutTitle.swift; sourceTree = "<group>"; };
 		28CB53A42C2B938300F32A71 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		28E929242C30169400847A67 /* NSScreen+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSScreen+Extensions.swift"; sourceTree = "<group>"; };
+		28F9913D2C30D929004C76ED /* KeyboardShortcuts+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyboardShortcuts+Extensions.swift"; sourceTree = "<group>"; };
+		28F9913F2C30D9D2004C76ED /* ShortcutsControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsControl.swift; sourceTree = "<group>"; };
+		28F991412C30DE71004C76ED /* ShortcutsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsSection.swift; sourceTree = "<group>"; };
 		C63B40522A4060E400BCAE79 /* NSStatusItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSStatusItem+Extension.swift"; sourceTree = "<group>"; };
 		C66CABA02A38871500E4D8E6 /* Abyssal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Abyssal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C66CABA32A38871500E4D8E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -147,6 +154,7 @@
 			files = (
 				2822C58E2BDC75DE009C71DA /* SFSafeSymbols in Frameworks */,
 				2831B15C2B751B7F0020DECD /* Defaults in Frameworks */,
+				28F9913C2C30D805004C76ED /* KeyboardShortcuts in Frameworks */,
 				C66F02AF2A3B5B4D00077CE3 /* LaunchAtLogin in Frameworks */,
 				287EADA52C27B48F00D64BED /* SwiftUIIntrospect in Frameworks */,
 			);
@@ -200,6 +208,7 @@
 				284E30032C2FB45700BB582C /* AlwaysHideAreaControl.swift */,
 				284E30052C2FB48E00BB582C /* DeadZoneControl.swift */,
 				284D6CB02C3044CF00DBEBE3 /* RespectNotchControl.swift */,
+				28F9913F2C30D9D2004C76ED /* ShortcutsControl.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -226,6 +235,7 @@
 				2840D7102C267EE00087EE50 /* AdvancedSection.swift */,
 				28743ED62C28F09500366A69 /* FunctionsSection.swift */,
 				28743ED82C28F0F900366A69 /* BehaviorsSection.swift */,
+				28F991412C30DE71004C76ED /* ShortcutsSection.swift */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
@@ -327,6 +337,7 @@
 				28CB53A32C2B935700F32A71 /* AppKit */,
 				2831B15D2B751B990020DECD /* Defaults+Extensions.swift */,
 				2831B15F2B7521890020DECD /* Defaults+Structures.swift */,
+				28F9913D2C30D929004C76ED /* KeyboardShortcuts+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -381,6 +392,7 @@
 				2831B15B2B751B7F0020DECD /* Defaults */,
 				2822C58D2BDC75DE009C71DA /* SFSafeSymbols */,
 				287EADA42C27B48F00D64BED /* SwiftUIIntrospect */,
+				28F9913B2C30D805004C76ED /* KeyboardShortcuts */,
 			);
 			productName = BarStalker;
 			productReference = C66CABA02A38871500E4D8E6 /* Abyssal.app */;
@@ -416,6 +428,7 @@
 				2831B15A2B751B7F0020DECD /* XCRemoteSwiftPackageReference "Defaults" */,
 				2822C58C2BDC75DE009C71DA /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
 				287EADA32C27B48F00D64BED /* XCRemoteSwiftPackageReference "swiftui-introspect" */,
+				28F9913A2C30D805004C76ED /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
 			);
 			productRefGroup = C66CABA12A38871500E4D8E6 /* Products */;
 			projectDirPath = "";
@@ -479,13 +492,16 @@
 				284E2FF82C2FB1A200BB582C /* CollapseStrategyControl.swift in Sources */,
 				284D6CB12C3044CF00DBEBE3 /* RespectNotchControl.swift in Sources */,
 				28743ED72C28F09500366A69 /* FunctionsSection.swift in Sources */,
+				28F9913E2C30D929004C76ED /* KeyboardShortcuts+Extensions.swift in Sources */,
 				C6CDD0622A3F2F9000ED97F0 /* Theme.swift in Sources */,
 				284E2FE72C2F9B9100BB582C /* Formattable.swift in Sources */,
 				287B85CF2C29A676001FD729 /* MouseManager.swift in Sources */,
 				284E30042C2FB45700BB582C /* AlwaysHideAreaControl.swift in Sources */,
+				28F991422C30DE71004C76ED /* ShortcutsSection.swift in Sources */,
 				C66CABA42A38871500E4D8E6 /* AppDelegate.swift in Sources */,
 				2831B15E2B751B990020DECD /* Defaults+Extensions.swift in Sources */,
 				287B85D52C29A707001FD729 /* MathHelper.swift in Sources */,
+				28F991402C30D9D2004C76ED /* ShortcutsControl.swift in Sources */,
 				287B85CD2C29A643001FD729 /* KeyboardManager.swift in Sources */,
 				284E30062C2FB48E00BB582C /* DeadZoneControl.swift in Sources */,
 				2822C5902BDC7748009C71DA /* Icon.swift in Sources */,
@@ -746,6 +762,14 @@
 				minimumVersion = 1.2.0;
 			};
 		};
+		28F9913A2C30D805004C76ED /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/KeyboardShortcuts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.1;
+			};
+		};
 		C66F02AD2A3B5B4D00077CE3 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin";
@@ -771,6 +795,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 287EADA32C27B48F00D64BED /* XCRemoteSwiftPackageReference "swiftui-introspect" */;
 			productName = SwiftUIIntrospect;
+		};
+		28F9913B2C30D805004C76ED /* KeyboardShortcuts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 28F9913A2C30D805004C76ED /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
+			productName = KeyboardShortcuts;
 		};
 		C66F02AE2A3B5B4D00077CE3 /* LaunchAtLogin */ = {
 			isa = XCSwiftPackageProductDependency;
