@@ -11,16 +11,15 @@ import Defaults
 
 extension StatusBarController {
     var disabled: Bool {
-        !Defaults[.theme].autoHidesIcons
-        && !Defaults[.isActive]
+        autoHidesIcons
+        && isInactive
     }
     
     var triggers: (body: Bool, tail: Bool) {
         (
             body: mouseOnStatusBar && KeyboardManager.triggers,
-            tail: (mouseSpare || mouseOverBody) && KeyboardManager.triggers
+            tail: mouseSpare && KeyboardManager.triggers
         )
-        
     }
     
     func icons(isActive: Bool = Defaults[.isActive]) -> (head: Icon, body: Icon, tail: Icon) {
@@ -96,7 +95,7 @@ extension StatusBarController {
     func update() {
         if shouldTimersStop.flag {
             // Make abundant for completing animations
-            if !Defaults[.reduceAnimationEnabled] && shouldTimersStop.count < 10 {
+            if !(noAnimation || Defaults[.reduceAnimationEnabled]) && shouldTimersStop.count < 10 {
                 shouldTimersStop.count += 1
             } else {
                 shouldTimersStop = (flag: false, count: 0)
@@ -167,7 +166,7 @@ extension StatusBarController {
             }
             
             if Defaults[.theme].autoHidesIcons {
-                head.targetAlpha = Defaults[.isActive] ? 0 : icons().head.opacity
+                head.targetAlpha = isActive ? 0 : icons().head.opacity
             } else {
                 head.targetAlpha = icons().head.opacity
                 
@@ -197,7 +196,7 @@ extension StatusBarController {
             && !(autoShows && mouseSpare)
             
             head.targetLength = icons(isActive: shouldActivate).head.width
-            shouldTimersStop.flag &= head.lerpLength()
+            shouldTimersStop.flag &= head.lerpLength(noAnimation: noAnimation)
         } // End of 'head'
         
         // MARK: - Body
@@ -223,9 +222,7 @@ extension StatusBarController {
                     body.applyLength()
                     body.wasUnstable = true
                     
-                    if !Defaults[.reduceAnimationEnabled] {
-                        break body
-                    }
+                    if !(noAnimation || Defaults[.reduceAnimationEnabled]) { break body }
                 }
                 
                 else if shouldActivate && !body.wasUnstable {
@@ -251,12 +248,7 @@ extension StatusBarController {
                 body.lastOrigin = body.origin
                 body.wasActive = shouldActivate
                 
-                if !body.isAvailable {
-                    body.applyAlpha()
-                    body.applyLength()
-                }
-                
-                shouldTimersStop.flag &= body.lerpLength()
+                shouldTimersStop.flag &= body.lerpLength(noAnimation: noAnimation)
             }
         } // End of 'body'
         
@@ -281,7 +273,7 @@ extension StatusBarController {
                     tail.applyLength()
                     tail.wasUnstable = true
                     
-                    if !Defaults[.reduceAnimationEnabled] { break tail }
+                    if !(noAnimation || Defaults[.reduceAnimationEnabled]) { break tail }
                 }
                 
                 else if shouldActive && !tail.wasUnstable {
@@ -307,12 +299,7 @@ extension StatusBarController {
                 tail.lastOrigin = tail.origin
                 tail.wasActive = shouldActive
                 
-                if !tail.isAvailable {
-                    tail.applyAlpha()
-                    tail.applyLength()
-                }
-                
-                shouldTimersStop.flag &= tail.lerpLength()
+                shouldTimersStop.flag &= tail.lerpLength(noAnimation: noAnimation)
             }
         } // End of 'tail'
     }

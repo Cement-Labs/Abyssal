@@ -77,8 +77,8 @@ struct Separator {
     var lastOrigin: NSPoint?
     
     var isAvailable: Bool {
-        if let origin {
-            return origin.x + length < ScreenManager.menuBarLeftEdge
+        if let origin, let width = button?.window?.frame.width {
+            return origin.x + width > ScreenManager.menuBarLeftEdge
         } else {
             return true
         }
@@ -101,8 +101,8 @@ extension Separator {
         }
     }
     
-    mutating func lerpLength() -> Bool {
-        if Defaults[.reduceAnimationEnabled] {
+    mutating func lerpLength(noAnimation: Bool) -> Bool {
+        if noAnimation || Defaults[.reduceAnimationEnabled] {
             length = targetLength
             return true
         } else {

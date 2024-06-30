@@ -125,9 +125,7 @@ extension StatusBarController {
                         self.activate()
                     }
                     
-                    if self.draggedToDeactivate.shouldEnableAnimation {
-                        Defaults[.reduceAnimationEnabled] = false
-                    }
+                    self.noAnimation = false
                     
                     self.unidleAlwaysHideArea()
                     self.startAnimationTimer()
@@ -138,22 +136,17 @@ extension StatusBarController {
                         self.draggedToDeactivate.count += 1
                     } else {
                         self.draggedToDeactivate.dragging = true
-                        self.draggedToDeactivate.shouldActivate = Defaults[.isActive]
+                        self.draggedToDeactivate.shouldActivate = self.isActive
                         self.draggedToDeactivate.count = 0
                         
-                        if Defaults[.isActive] {
+                        if self.isActive {
                             self.draggedToDeactivate.shouldActivate = true
                             self.deactivate()
                         } else {
                             self.draggedToDeactivate.shouldActivate = false
                         }
                         
-                        if !Defaults[.reduceAnimationEnabled] {
-                            self.draggedToDeactivate.shouldEnableAnimation = true
-                            Defaults[.reduceAnimationEnabled] = true
-                        } else {
-                            self.draggedToDeactivate.shouldEnableAnimation = false
-                        }
+                        self.noAnimation = true
                         
                         self.idleAlwaysHideArea()
                         self.startAnimationTimer()
@@ -171,17 +164,16 @@ extension StatusBarController {
                     self.updateEdge()
                 }
                 
-                // Update mouse and key
-                let mouseNeedsUpdate = 
+                // Update mouse and keys
+                let mouseNeedsUpdate =
                 (self.was.mouseOnStatusBar != self.mouseOnStatusBar)
                 || (self.was.mouseSpare != self.mouseSpare)
-                || (self.was.mouseOverBody != self.mouseOverBody)
                 let keyNeedsUpdate = self.was.triggers != KeyboardManager.triggers
                 
                 if !MouseManager.dragging {
                     if mouseNeedsUpdate {
                         if 
-                            self.mouseOnStatusBar || self.mouseSpare || self.mouseOverBody
+                            self.mouseOnStatusBar || self.mouseSpare
                         {
                             self.startMouseEventMonitor()
                         } else {
@@ -204,13 +196,11 @@ extension StatusBarController {
                 self.was = (
                     self.mouseOnStatusBar,
                     self.mouseSpare,
-                    self.mouseOverBody,
                     KeyboardManager.triggers
                 )
                 
                 // Update frontmost app
                 if lastFocusedApp != AppManager.frontmost {
-                    print(AppManager.frontmost)
                     lastFocusedApp = AppManager.frontmost
                 }
             }
@@ -254,11 +244,11 @@ extension StatusBarController {
         shouldEdgeUpdate.will = false
         timeout = false
         
-        if (idling.hide || idling.alwaysHide) {
+        if idlingAny {
             startTimeoutTimer()
         }
         
-        if (!idling.hide && !idling.alwaysHide) {
+        if idlingNone {
             stopTimer(&timeoutTimer) { timeout = true }
         }
     }
@@ -274,7 +264,7 @@ extension StatusBarController {
                     self.mouseSpare
                 else { return }
                 
-                if Defaults[.isActive] && self.mouseInHideArea && !(KeyboardManager.command && event?.type == .leftMouseDown) {
+                if self.isActive && self.mouseInHideArea && !(KeyboardManager.command && event?.type == .leftMouseDown) {
                     self.idleHideArea()
                 }
                 
