@@ -21,55 +21,61 @@ class StatusBarController {
         return mouseLocation.x >= ScreenManager.menuBarLeftEdge && mouseLocation.y >= headOrigin.y && mouseLocation.y <= headOrigin.y + headSize.height
     }
     
-    lazy var mouseInHideArea: Bool {
+    lazy var mouseInHideArea: WithIntermediateState<Bool> = .init {
         guard
-            let bodyOrigin = body.button?.window?.frame.origin,
-            let tailOrigin = tail.button?.window?.frame.origin,
-            let tailSize = tail.button?.window?.frame.size
+            let bodyOrigin = self.body.button?.window?.frame.origin,
+            let tailOrigin = self.tail.button?.window?.frame.origin,
+            let tailSize = self.tail.button?.window?.frame.size
         else { return false }
-        return mouseOnStatusBar && NSEvent.mouseLocation.x >= tailOrigin.x + tailSize.width && NSEvent.mouseLocation.x <= bodyOrigin.x
+        return self.mouseOnStatusBar.value() && NSEvent.mouseLocation.x >= tailOrigin.x + tailSize.width && NSEvent.mouseLocation.x <= bodyOrigin.x
     }
     
-    var mouseInAlwaysHideArea: Bool {
-        guard let origin = tail.button?.window?.frame.origin else { return false }
-        return mouseOnStatusBar && NSEvent.mouseLocation.x <= origin.x
+    lazy var mouseInAlwaysHideArea: WithIntermediateState<Bool> = .init {
+        guard let origin = self.tail.button?.window?.frame.origin else { return false }
+        return self.mouseOnStatusBar.value() && NSEvent.mouseLocation.x <= origin.x
     }
     
-    var mouseSpare: Bool {
-        !ignoring && mouseOnStatusBar && NSEvent.mouseLocation.x <= edge
+    lazy var mouseSpare: WithIntermediateState<Bool> = .init {
+        !self.ignoring && self.mouseOnStatusBar.value() && NSEvent.mouseLocation.x <= self.edge
     }
     
-    var mouseOverHead: Bool {
+    lazy var mouseOverHead: WithIntermediateState<Bool> = .init {
         guard
-            let origin = head.button?.window?.frame.origin,
-            let width = head.button?.window?.frame.width
+            let origin = self.head.button?.window?.frame.origin,
+            let width = self.head.button?.window?.frame.width
         else { return false }
-        return mouseOnStatusBar && NSEvent.mouseLocation.x >= origin.x && NSEvent.mouseLocation.x <= origin.x + width
+        return self.mouseOnStatusBar.value() && NSEvent.mouseLocation.x >= origin.x && NSEvent.mouseLocation.x <= origin.x + width
     }
     
-    var mouseOverBody: Bool {
+    lazy var mouseOverBody: WithIntermediateState<Bool> = .init {
         guard
-            let origin = body.button?.window?.frame.origin,
-            let width = body.button?.window?.frame.width
+            let origin = self.body.button?.window?.frame.origin,
+            let width = self.body.button?.window?.frame.width
         else { return false }
-        return mouseOnStatusBar && NSEvent.mouseLocation.x >= origin.x && NSEvent.mouseLocation.x <= origin.x + width
+        return self.mouseOnStatusBar.value() && NSEvent.mouseLocation.x >= origin.x && NSEvent.mouseLocation.x <= origin.x + width
     }
     
-    var mouseOverTail: Bool {
+    lazy var mouseOverTail: WithIntermediateState<Bool> = .init {
         guard
-            let origin = tail.button?.window?.frame.origin,
-            let width = tail.button?.window?.frame.width
+            let origin = self.tail.button?.window?.frame.origin,
+            let width = self.tail.button?.window?.frame.width
         else { return false }
-        return mouseOnStatusBar && NSEvent.mouseLocation.x >= origin.x && NSEvent.mouseLocation.x <= origin.x + width
+        return self.mouseOnStatusBar.value() && NSEvent.mouseLocation.x >= origin.x && NSEvent.mouseLocation.x <= origin.x + width
     }
     
-    var mouseDragging: Bool {
-        MouseManager.dragging && mouseOnStatusBar
+    lazy var mouseDragging: WithIntermediateState<Bool> = .init {
+        MouseManager.dragging && self.mouseOnStatusBar.value()
     }
     
-    var mouseInExternalMenu: Bool {
-        lastExternalMenus.contains(where: \.containsMouse)
+    lazy var mouseInExternalMenu: WithIntermediateState<Bool> = .init {
+        self.lastExternalMenus.contains(where: \.containsMouse)
     }
+    
+    lazy var keyboardTriggers: WithIntermediateState<Bool> = .init {
+        KeyboardManager.triggers
+    }
+    
+    
     
     var shouldPresentFeedback: Bool {
         !timeout && MouseManager.none
@@ -110,8 +116,6 @@ class StatusBarController {
     var mouseWasSpareOrUnidled = false
     
     var draggedToDeactivate = (dragging: false, shouldActivate: false, count: Int.zero)
-    
-    var was: IntermediateStates = (mouseOnStatusBar: false, mouseSpare: false, triggers: false, mouseInExternalMenu: false)
     
     
     

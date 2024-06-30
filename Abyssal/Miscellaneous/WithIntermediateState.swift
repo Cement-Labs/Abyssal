@@ -20,8 +20,7 @@ struct WithIntermediateState<Value> where Value: Equatable {
         self.intermediate = nil
     }
     
-    mutating func update(_ value: @escaping () -> Value) {
+    mutating func update() {
         intermediate = self.value()
-        self.value = value
     }
 }

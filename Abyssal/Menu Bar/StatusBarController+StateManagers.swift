@@ -119,93 +119,104 @@ extension StatusBarController {
                 guard let self else { return }
                 
                 // Check idle states
-                self.checkIdleStates()
+                checkIdleStates()
                 
                 // Update dragging state
-                if self.draggedToDeactivate.dragging && !self.mouseDragging {
-                    self.draggedToDeactivate.dragging = false
+                if draggedToDeactivate.dragging && !self.mouseDragging.value() {
+                    draggedToDeactivate.dragging = false
                     
-                    if self.draggedToDeactivate.shouldActivate {
-                        self.activate()
+                    if draggedToDeactivate.shouldActivate {
+                        activate()
                     }
                     
-                    self.noAnimation = false
+                    noAnimation = false
                     
-                    self.unidleAlwaysHideArea()
-                    self.startAnimationTimer()
+                    unidleAlwaysHideArea()
+                    startAnimationTimer()
                 }
                 
-                else if self.mouseDragging && !self.draggedToDeactivate.dragging {
-                    if self.draggedToDeactivate.count < 3 {
-                        self.draggedToDeactivate.count += 1
+                else if mouseDragging.value() && !self.draggedToDeactivate.dragging {
+                    if draggedToDeactivate.count < 3 {
+                        draggedToDeactivate.count += 1
                     } else {
-                        self.draggedToDeactivate.dragging = true
-                        self.draggedToDeactivate.shouldActivate = self.isActive
-                        self.draggedToDeactivate.count = 0
+                        draggedToDeactivate.dragging = true
+                        draggedToDeactivate.shouldActivate = self.isActive
+                        draggedToDeactivate.count = 0
                         
                         if self.isActive {
-                            self.draggedToDeactivate.shouldActivate = true
-                            self.deactivate()
+                            draggedToDeactivate.shouldActivate = true
+                            deactivate()
                         } else {
-                            self.draggedToDeactivate.shouldActivate = false
+                            draggedToDeactivate.shouldActivate = false
                         }
                         
-                        self.noAnimation = true
+                        noAnimation = true
                         
-                        self.idleAlwaysHideArea()
-                        self.startAnimationTimer()
+                        idleAlwaysHideArea()
+                        startAnimationTimer()
                     }
                 }
                 
                 // Update edge
-                if self.shouldEdgeUpdate.will {
-                    self.shouldEdgeUpdate.now = true
+                if shouldEdgeUpdate.will {
+                    shouldEdgeUpdate.now = true
                 } else {
-                    self.shouldEdgeUpdate.now = false
+                    shouldEdgeUpdate.now = false
                 }
                 
-                if self.shouldEdgeUpdate.now {
-                    self.updateEdge()
+                if shouldEdgeUpdate.now {
+                    updateEdge()
                 }
                 
                 // Update mouse and keys
                 if !MouseManager.dragging {
-                    if needsUpdate.mouseOnStatusBar || needsUpdate.mouseSpare {
-                        if self.mouseOnStatusBar || self.mouseSpare {
-                            self.startMouseEventMonitor()
+                    if mouseOnStatusBar.needsUpdate || mouseSpare.needsUpdate {
+                        if mouseOnStatusBar.value() || mouseSpare.value() {
+                            startMouseEventMonitor()
                         } else {
-                            self.stopMonitor(&self.mouseEventMonitor)
+                            stopMonitor(&mouseEventMonitor)
                         }
                     }
                     
-                    if needsUpdate.mouseOnStatusBar || needsUpdate.mouseSpare || needsUpdate.triggers {
+                    if mouseOnStatusBar.needsUpdate || mouseSpare.needsUpdate || keyboardTriggers.needsUpdate {
                         // Resolve animation and function updates
-                        self.startFunctionalTimers()
+                        startFunctionalTimers()
                     }
                 }
                 
-                if needsUpdate.triggers || self.mouseDragging {
+                if keyboardTriggers.needsUpdate || self.mouseDragging.value() {
                     // Key pressed || mouse dragging -> sort separators and map appearances
-                    self.sort()
-                    self.map()
+                    sort()
+                    map()
                 }
                 
                 // Update frontmost app
                 if lastFocusedApp != AppManager.frontmost {
                     lastFocusedApp = AppManager.frontmost
+                    
+                    if Defaults[.screenSettings].main.activeStrategy.frontmostAppChange {
+                        startFunctionalTimers()
+                    }
                 }
                 
                 // Update external menu states
-                if self.was.mouseInExternalMenu != self.mouseInExternalMenu {
+                if mouseInExternalMenu.needsUpdate {
                     
                 }
                 
-                self.was = (
-                    self.mouseOnStatusBar,
-                    self.mouseSpare,
-                    KeyboardManager.triggers,
-                    self.mouseInExternalMenu
-                )
+                
+                
+                // Update intermediate states
+                mouseOnStatusBar.update()
+                mouseInHideArea.update()
+                mouseInAlwaysHideArea.update()
+                mouseSpare.update()
+                mouseOverHead.update()
+                mouseOverBody.update()
+                mouseOverTail.update()
+                mouseDragging.update()
+                mouseInExternalMenu.update()
+                keyboardTriggers.update()
             }
             print("START TIMER [TRIGGER]: \(triggerTimer!)")
         }
@@ -221,8 +232,8 @@ extension StatusBarController {
             ) { [weak self] _ in
                 guard let self else { return }
                 
-                self.unidleHideArea()
-                self.stopTimer(&self.timeoutTimer) { self.timeout = true }
+                unidleHideArea()
+                stopTimer(&timeoutTimer) { self.timeout = true }
             }
             print("START TIMER [TIMEOUT]: \(timeoutTimer!)")
         }
@@ -236,7 +247,7 @@ extension StatusBarController {
             ) { [weak self] _ in
                 guard let self else { return }
                 
-                self.stopTimer(&self.ignoringTimer) { self.ignoring = false }
+                stopTimer(&ignoringTimer) { self.ignoring = false }
             }
             print("START TIMER [IGNORING]: \(ignoringTimer!)")
         }
@@ -267,15 +278,19 @@ extension StatusBarController {
             ) { [weak self] event in
                 guard
                     let self,
-                    self.mouseSpare
+                    self.mouseSpare.value()
                 else { return }
                 
                 // Update idling status
-                if self.isActive && self.mouseInHideArea && !(KeyboardManager.command && event?.type == .leftMouseDown) {
+                if
+                    self.isActive
+                        && self.mouseInHideArea.value()
+                        && !(KeyboardManager.command && event?.type == .leftMouseDown)
+                {
                     self.idleHideArea()
                 }
                 
-                if self.mouseInAlwaysHideArea {
+                if self.mouseInAlwaysHideArea.value() {
                     self.idleAlwaysHideArea()
                 }
                 

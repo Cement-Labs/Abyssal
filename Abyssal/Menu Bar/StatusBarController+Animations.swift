@@ -17,8 +17,8 @@ extension StatusBarController {
     
     var triggers: (body: Bool, tail: Bool) {
         (
-            body: mouseOnStatusBar && KeyboardManager.triggers,
-            tail: mouseSpare && KeyboardManager.triggers
+            body: mouseOnStatusBar.value() && keyboardTriggers.value(),
+            tail: mouseSpare.value() && keyboardTriggers.value()
         )
     }
     
@@ -110,7 +110,7 @@ extension StatusBarController {
         // MARK: - Feedback
         
         feedback: do {
-            let mouseNeedsUpdate = mouseWasSpareOrUnidled != mouseSpare
+            let mouseNeedsUpdate = mouseWasSpareOrUnidled != mouseSpare.value()
             
             if
                 isActive
@@ -119,7 +119,7 @@ extension StatusBarController {
                     && autoShows
                     && mouseNeedsUpdate
             {
-                mouseWasSpareOrUnidled = mouseSpare
+                mouseWasSpareOrUnidled = mouseSpare.value()
                 triggerFeedback()
             }
         }
@@ -174,7 +174,7 @@ extension StatusBarController {
                     isInactive
                     || triggers.body
                     || idlingAny
-                    || (autoShows && mouseSpare)
+                    || (autoShows && mouseSpare.value())
                 ) ? icons().body.opacity : 0
                 
                 tail.targetAlpha = (
@@ -193,7 +193,7 @@ extension StatusBarController {
             isActive
             && !popoverShown
             && idlingNone
-            && !(autoShows && mouseSpare)
+            && !(autoShows && mouseSpare.value())
             
             head.targetLength = icons(isActive: shouldActivate).head.width
             shouldTimersStop.flag &= head.lerpLength(noAnimation: noAnimation)
@@ -211,7 +211,7 @@ extension StatusBarController {
             && !popoverShown
             && !triggers.body
             && idlingNone
-            && !(autoShows && mouseSpare)
+            && !(autoShows && mouseSpare.value())
             
             do {
                 if !shouldActivate && !body.wasUnstable {
@@ -339,9 +339,9 @@ extension StatusBarController {
     
     func checkIdleStates() {
         if
-            mouseSpare
+            mouseSpare.value()
                 && idlingAny
-                && (mouseOverHead || mouseOverBody || mouseOverTail)
+                && (mouseOverHead.value() || mouseOverBody.value() || mouseOverTail.value())
         {
             unidleHideArea()
             mouseWasSpareOrUnidled = false
