@@ -18,7 +18,7 @@ struct BehaviorsSection: View {
     var body: some View {
         Section {
             SpacingVStack {
-                CollapseStrategyControl()
+                ActiveStrategyControl()
                 
                 RespectNotchControl()
             }

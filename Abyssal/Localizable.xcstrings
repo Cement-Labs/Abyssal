@@ -239,6 +239,16 @@
         }
       }
     },
+    "Becomes active again" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "再次活跃"
+          }
+        }
+      }
+    },
     "Behaviors" : {
       "localizations" : {
         "zh-Hans" : {
@@ -259,16 +269,6 @@
         }
       }
     },
-    "Collapses again" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "再次隐藏"
-          }
-        }
-      }
-    },
     "Dead zone" : {
       "localizations" : {
         "zh-Hans" : {
@@ -280,7 +280,7 @@
       }
     },
     "Debug Fetch State" : {
-
+      "shouldTranslate" : false
     },
     "Display ID" : {
       "localizations" : {
@@ -533,7 +533,14 @@
       }
     },
     "Respect notch" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保留屏幕摄像头区域"
+          }
+        }
+      }
     },
     "Screen Information" : {
       "localizations" : {
@@ -546,7 +553,14 @@
       }
     },
     "Shortcuts" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "快捷键"
+          }
+        }
+      }
     },
     "Some themes will hide the icons inside the separators automatically, while others not.\n\nThemes that automatically hide the icons will only show them when the status items inside the **Hide Area** are manually set to visible, while other themes indicate this by reducing the separators' opacity." : {
       "localizations" : {
@@ -906,8 +920,15 @@
         }
       }
     },
-    "Toggle collapse" : {
-
+    "Toggle active" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "切换活跃状态"
+          }
+        }
+      }
     },
     "Use always hide area" : {
       "localizations" : {

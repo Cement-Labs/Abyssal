@@ -32,7 +32,7 @@
 		284E2FE52C2F9A5C00BB582C /* UnitFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E2FE42C2F9A5C00BB582C /* UnitFormat.swift */; };
 		284E2FE72C2F9B9100BB582C /* Formattable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E2FE62C2F9B9100BB582C /* Formattable.swift */; };
 		284E2FF52C2FAB8900BB582C /* EnvironmentValues+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E2FF42C2FAB8900BB582C /* EnvironmentValues+Extention.swift */; };
-		284E2FF82C2FB1A200BB582C /* CollapseStrategyControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E2FF72C2FB1A200BB582C /* CollapseStrategyControl.swift */; };
+		284E2FF82C2FB1A200BB582C /* ActiveStrategyControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E2FF72C2FB1A200BB582C /* ActiveStrategyControl.swift */; };
 		284E2FFA2C2FB20600BB582C /* StartsWithMacOSControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E2FF92C2FB20600BB582C /* StartsWithMacOSControl.swift */; };
 		284E2FFC2C2FB2BC00BB582C /* TimeoutControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E2FFB2C2FB2BC00BB582C /* TimeoutControl.swift */; };
 		284E2FFE2C2FB32F00BB582C /* ThemeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E2FFD2C2FB32F00BB582C /* ThemeControl.swift */; };
@@ -75,7 +75,7 @@
 		C6CDD0622A3F2F9000ED97F0 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CDD0612A3F2F9000ED97F0 /* Theme.swift */; };
 		C6DEC52A2A38BF6C00943448 /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DEC5292A38BF6C00943448 /* StatusBarController.swift */; };
 		C6DEC53D2A3A0E8900943448 /* StatusBarController+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DEC53C2A3A0E8900943448 /* StatusBarController+Animations.swift */; };
-		C6E2C0302A3EE9F1007D4E1B /* StatusBarController+StateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E2C02F2A3EE9F1007D4E1B /* StatusBarController+StateManager.swift */; };
+		C6E2C0302A3EE9F1007D4E1B /* StatusBarController+StateManagers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E2C02F2A3EE9F1007D4E1B /* StatusBarController+StateManagers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,7 +101,7 @@
 		284E2FE42C2F9A5C00BB582C /* UnitFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitFormat.swift; sourceTree = "<group>"; };
 		284E2FE62C2F9B9100BB582C /* Formattable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formattable.swift; sourceTree = "<group>"; };
 		284E2FF42C2FAB8900BB582C /* EnvironmentValues+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues+Extention.swift"; sourceTree = "<group>"; };
-		284E2FF72C2FB1A200BB582C /* CollapseStrategyControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapseStrategyControl.swift; sourceTree = "<group>"; };
+		284E2FF72C2FB1A200BB582C /* ActiveStrategyControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveStrategyControl.swift; sourceTree = "<group>"; };
 		284E2FF92C2FB20600BB582C /* StartsWithMacOSControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartsWithMacOSControl.swift; sourceTree = "<group>"; };
 		284E2FFB2C2FB2BC00BB582C /* TimeoutControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeoutControl.swift; sourceTree = "<group>"; };
 		284E2FFD2C2FB32F00BB582C /* ThemeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeControl.swift; sourceTree = "<group>"; };
@@ -144,7 +144,7 @@
 		C6CDD0612A3F2F9000ED97F0 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		C6DEC5292A38BF6C00943448 /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
 		C6DEC53C2A3A0E8900943448 /* StatusBarController+Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatusBarController+Animations.swift"; sourceTree = "<group>"; };
-		C6E2C02F2A3EE9F1007D4E1B /* StatusBarController+StateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatusBarController+StateManager.swift"; sourceTree = "<group>"; };
+		C6E2C02F2A3EE9F1007D4E1B /* StatusBarController+StateManagers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatusBarController+StateManagers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,7 +199,7 @@
 		284E2FF62C2FB17F00BB582C /* Controls */ = {
 			isa = PBXGroup;
 			children = (
-				284E2FF72C2FB1A200BB582C /* CollapseStrategyControl.swift */,
+				284E2FF72C2FB1A200BB582C /* ActiveStrategyControl.swift */,
 				284E2FF92C2FB20600BB582C /* StartsWithMacOSControl.swift */,
 				284E2FFB2C2FB2BC00BB582C /* TimeoutControl.swift */,
 				284E2FFD2C2FB32F00BB582C /* ThemeControl.swift */,
@@ -354,8 +354,8 @@
 			isa = PBXGroup;
 			children = (
 				28ACE7862AE9490700DC8C1A /* Separator.swift */,
-				2822C58F2BDC7748009C71DA /* Icon.swift */,
 				C6CDD0612A3F2F9000ED97F0 /* Theme.swift */,
+				2822C58F2BDC7748009C71DA /* Icon.swift */,
 				282E92892C27C25000C21EE5 /* Tip.swift */,
 			);
 			path = Contents;
@@ -366,7 +366,7 @@
 			children = (
 				C6DEC5292A38BF6C00943448 /* StatusBarController.swift */,
 				C6DEC53C2A3A0E8900943448 /* StatusBarController+Animations.swift */,
-				C6E2C02F2A3EE9F1007D4E1B /* StatusBarController+StateManager.swift */,
+				C6E2C02F2A3EE9F1007D4E1B /* StatusBarController+StateManagers.swift */,
 			);
 			path = "Menu Bar";
 			sourceTree = "<group>";
@@ -484,12 +484,12 @@
 				C63B40532A4060E400BCAE79 /* NSStatusItem+Extension.swift in Sources */,
 				283A1ECC2C2EE00E00A34C0A /* main.swift in Sources */,
 				282E928A2C27C25000C21EE5 /* Tip.swift in Sources */,
-				C6E2C0302A3EE9F1007D4E1B /* StatusBarController+StateManager.swift in Sources */,
+				C6E2C0302A3EE9F1007D4E1B /* StatusBarController+StateManagers.swift in Sources */,
 				28CB53A52C2B938300F32A71 /* AppManager.swift in Sources */,
 				28C4AC032C270C9B006AFF87 /* SettingsVersionView.swift in Sources */,
 				282E928C2C27CA9100C21EE5 /* ObservationTrackingStream.swift in Sources */,
 				2840D70D2C2679F50087EE50 /* Bool+Extensions.swift in Sources */,
-				284E2FF82C2FB1A200BB582C /* CollapseStrategyControl.swift in Sources */,
+				284E2FF82C2FB1A200BB582C /* ActiveStrategyControl.swift in Sources */,
 				284D6CB12C3044CF00DBEBE3 /* RespectNotchControl.swift in Sources */,
 				28743ED72C28F09500366A69 /* FunctionsSection.swift in Sources */,
 				28F9913E2C30D929004C76ED /* KeyboardShortcuts+Extensions.swift in Sources */,

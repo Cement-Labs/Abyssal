@@ -55,7 +55,7 @@ extension Defaults.Keys {
         "screenSettings",
         default: .init(
             global: .init(
-                collapseStrategy: .init(
+                activeStrategy: .init(
                     frontmostAppChange: true,
                     interactionInvalidate: true,
                     screenChange: false

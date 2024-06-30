@@ -61,16 +61,22 @@ struct ScreenManager {
         return maxHeight
     }
     
-    // TODO: Update this.
     static var menuBarLeftEdge: CGFloat {
         let origin = origin
+        let setting = Defaults[.screenSettings].main
         
-        if hasNotch {
+        if hasNotch && setting.respectNotch {
+            // Respect notch area on screens with notches
             let notchWidth = 250.0
             return origin.x + width / 2.0 + notchWidth / 2.0
         } else {
-            let rightEdge = AppDelegate.shared?.statusBarController.edge ?? width
-            return origin.x + 50 + (rightEdge - 50)// * Defaults[.deadZone].percentage // Apple icon + app name should be at least 50 pixels wide.
+            switch setting.deadZone {
+            case .percentage(let percentage):
+                let rightEdge = AppDelegate.shared?.statusBarController.edge ?? width
+                return origin.x + 50 + (rightEdge - 50) * percentage // Apple icon + app name should be at least 50 pixels wide.
+            case .pixel(let pixel):
+                return pixel
+            }
         }
     }
 }

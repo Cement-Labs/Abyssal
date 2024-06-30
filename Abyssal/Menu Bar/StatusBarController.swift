@@ -7,6 +7,7 @@
 
 import AppKit
 import Defaults
+import KeyboardShortcuts
 
 class StatusBarController {
     // MARK: - States
@@ -102,7 +103,7 @@ class StatusBarController {
     
     var was = (mouseOnStatusBar: false, mouseSpare: false, mouseOverBody: false, triggers: false)
     
-    var draggedToUncollapse = (dragging: false, shouldCollapse: false, shouldEnableAnimation: false, count: Int.zero)
+    var draggedToDeactivate = (dragging: false, shouldActivate: false, shouldEnableAnimation: false, count: Int.zero)
     
     
     
@@ -183,8 +184,13 @@ class StatusBarController {
         
         startTriggerTimer()
         
-        draggedToUncollapse.shouldCollapse = Defaults[.isActive]
-        draggedToUncollapse.shouldEnableAnimation = !Defaults[.reduceAnimationEnabled]
+        draggedToDeactivate.shouldActivate = Defaults[.isActive]
+        draggedToDeactivate.shouldEnableAnimation = !Defaults[.reduceAnimationEnabled]
+        
+        KeyboardShortcuts.onKeyDown(for: .toggleActive) {
+            self.startFunctionalTimers()
+            self.toggle()
+        }
     }
     
     deinit {

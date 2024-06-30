@@ -9,5 +9,5 @@ import Foundation
 import KeyboardShortcuts
 
 extension KeyboardShortcuts.Name {
-    static let toggleCollapse = Self("toggleCollapse", default: .init(.backtick, modifiers: [.shift, .command]))
+    static let toggleActive = Self("toggleActive", default: .init(.backtick, modifiers: [.shift, .command]))
 }

@@ -72,9 +72,17 @@ struct Separator {
     var targetLength = CGFloat.zero
     
     var wasUnstable = false
+    var wasActive = false
     
     var lastOrigin: NSPoint?
-    var lastCollapses = false
+    
+    var isAvailable: Bool {
+        if let origin {
+            return origin.x + length < ScreenManager.menuBarLeftEdge
+        } else {
+            return true
+        }
+    }
 }
 
 extension Separator {
@@ -106,5 +114,13 @@ extension Separator {
             
             return MathHelper.approaching(length, targetLength)
         }
+    }
+    
+    mutating func applyAlpha() {
+        alpha = targetAlpha
+    }
+    
+    mutating func applyLength() {
+        length = targetLength
     }
 }

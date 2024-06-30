@@ -10,10 +10,10 @@ import KeyboardShortcuts
 
 struct ShortcutsControl: View {
     var body: some View {
-        KeyboardShortcuts.Recorder(for: .toggleCollapse) {
+        KeyboardShortcuts.Recorder(for: .toggleActive) {
             VStack {
                 Spacer()
-                Text("Toggle collapse")
+                Text("Toggle active")
                 Spacer()
             }
         }

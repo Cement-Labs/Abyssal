@@ -33,9 +33,17 @@ extension StatusBarController {
 }
 
 extension StatusBarController {
+    func toggle() {
+        if Defaults[.isActive] {
+            deactivate()
+        } else {
+            activate()
+        }
+    }
+    
     // MARK: - Enables
     
-    func collapse() {
+    func activate() {
         unidleHideArea()
         Defaults[.isActive] = true
     }
@@ -110,14 +118,14 @@ extension StatusBarController {
                 self.checkIdleStates()
                 
                 // Update dragging state
-                if self.draggedToUncollapse.dragging && !self.mouseDragging {
-                    self.draggedToUncollapse.dragging = false
+                if self.draggedToDeactivate.dragging && !self.mouseDragging {
+                    self.draggedToDeactivate.dragging = false
                     
-                    if self.draggedToUncollapse.shouldCollapse {
-                        self.collapse()
+                    if self.draggedToDeactivate.shouldActivate {
+                        self.activate()
                     }
                     
-                    if self.draggedToUncollapse.shouldEnableAnimation {
+                    if self.draggedToDeactivate.shouldEnableAnimation {
                         Defaults[.reduceAnimationEnabled] = false
                     }
                     
@@ -125,26 +133,26 @@ extension StatusBarController {
                     self.startAnimationTimer()
                 }
                 
-                else if self.mouseDragging && !self.draggedToUncollapse.dragging {
-                    if self.draggedToUncollapse.count < 3 {
-                        self.draggedToUncollapse.count += 1
+                else if self.mouseDragging && !self.draggedToDeactivate.dragging {
+                    if self.draggedToDeactivate.count < 3 {
+                        self.draggedToDeactivate.count += 1
                     } else {
-                        self.draggedToUncollapse.dragging = true
-                        self.draggedToUncollapse.shouldCollapse = Defaults[.isActive]
-                        self.draggedToUncollapse.count = 0
+                        self.draggedToDeactivate.dragging = true
+                        self.draggedToDeactivate.shouldActivate = Defaults[.isActive]
+                        self.draggedToDeactivate.count = 0
                         
                         if Defaults[.isActive] {
-                            self.draggedToUncollapse.shouldCollapse = true
-                            self.uncollapse()
+                            self.draggedToDeactivate.shouldActivate = true
+                            self.deactivate()
                         } else {
-                            self.draggedToUncollapse.shouldCollapse = false
+                            self.draggedToDeactivate.shouldActivate = false
                         }
                         
                         if !Defaults[.reduceAnimationEnabled] {
-                            self.draggedToUncollapse.shouldEnableAnimation = true
+                            self.draggedToDeactivate.shouldEnableAnimation = true
                             Defaults[.reduceAnimationEnabled] = true
                         } else {
-                            self.draggedToUncollapse.shouldEnableAnimation = false
+                            self.draggedToDeactivate.shouldEnableAnimation = false
                         }
                         
                         self.idleAlwaysHideArea()
@@ -281,7 +289,7 @@ extension StatusBarController {
     
     // MARK: - Disables
     
-    func uncollapse() {
+    func deactivate() {
         Defaults[.isActive] = false
         unidleHideArea()
     }

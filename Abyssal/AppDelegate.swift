@@ -91,7 +91,7 @@ extension AppDelegate {
         _ sender: Any?
     ) {
         guard sender as? NSStatusBarButton == AppDelegate.shared?.statusBarController.head.button else {
-            toggleCollapse(sender)
+            toggleActive(sender)
             return
         }
         
@@ -101,12 +101,12 @@ extension AppDelegate {
             if let event = NSApp.currentEvent, event.type == .rightMouseUp {
                 togglePopover(sender)
             } else {
-                toggleCollapse(sender)
+                toggleActive(sender)
             }
         }
     }
     
-    @objc func toggleCollapse(
+    @objc func toggleActive(
         _ sender: Any?
     ) {
         statusBarController.startFunctionalTimers()
@@ -117,9 +117,9 @@ extension AppDelegate {
         }
         
         if Defaults[.isActive] {
-            statusBarController.uncollapse()
+            statusBarController.deactivate()
         } else {
-            statusBarController.collapse()
+            statusBarController.activate()
         }
     }
     

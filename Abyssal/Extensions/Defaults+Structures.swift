@@ -291,7 +291,7 @@ extension DeadZone: Equatable {
     
 }
 
-struct CollapseStrategy: Codable, Defaults.Serializable {
+struct ActiveStrategy: Codable, Defaults.Serializable {
     /// When frontmost app changes
     var frontmostAppChange: Bool
     /// When cursor interaction invalidates in menus
@@ -314,7 +314,7 @@ struct CollapseStrategy: Codable, Defaults.Serializable {
 
 struct ScreenSettings: Codable, Defaults.Serializable {
     struct Individual: Codable, Defaults.Serializable {
-        var collapseStrategy: CollapseStrategy
+        var activeStrategy: ActiveStrategy
         var deadZone: DeadZone
         
         var respectNotch: Bool

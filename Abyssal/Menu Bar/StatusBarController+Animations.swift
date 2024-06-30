@@ -11,7 +11,7 @@ import Defaults
 
 extension StatusBarController {
     var disabled: Bool {
-        !Defaults[.theme].autoHideIcons 
+        !Defaults[.theme].autoHidesIcons
         && !Defaults[.isActive]
     }
     
@@ -23,9 +23,9 @@ extension StatusBarController {
         
     }
     
-    func icons(collapses: Bool = Defaults[.isActive]) -> (head: Icon, body: Icon, tail: Icon) {
+    func icons(isActive: Bool = Defaults[.isActive]) -> (head: Icon, body: Icon, tail: Icon) {
         (
-            head: collapses ? Defaults[.theme].headCollapsed : Defaults[.theme].headUncollapsed,
+            head: isActive ? Defaults[.theme].headActive : Defaults[.theme].headInactive,
             body: Defaults[.theme].body,
             tail: Defaults[.theme].tail
         )
@@ -41,6 +41,54 @@ extension StatusBarController {
     func triggerIgnoring() {
         ignoring = true
         startIgnoringTimer()
+    }
+    
+    
+    
+    // MARK: - Convenient Constant Declearations
+    
+    // Positives
+    
+    var autoShows: Bool {
+        Defaults[.autoShowsEnabled]
+    }
+    
+    var isActive: Bool {
+        !Defaults[.isActive]
+    }
+    
+    var autoHidesIcons: Bool {
+        !Defaults[.theme].autoHidesIcons
+    }
+    
+    var idlingAny: Bool {
+        idling.hide || idling.alwaysHide
+    }
+    
+    var idlingAll: Bool {
+        idling.hide && idling.alwaysHide
+    }
+    
+    // Negatives
+    
+    var alwaysHides: Bool {
+        !autoShows
+    }
+    
+    var isInactive: Bool {
+        !isActive
+    }
+    
+    var alwaysShowsIcons: Bool {
+        !autoHidesIcons
+    }
+    
+    var idlingNone: Bool {
+        !idlingAny
+    }
+    
+    var idlingButNotAll: Bool {
+        !idlingAll
     }
     
     
@@ -62,31 +110,33 @@ extension StatusBarController {
         
         // MARK: - Feedback
         
-        let mouseNeedsUpdate = mouseWasSpareOrUnidled != mouseSpare
-        
-        if 
-            Defaults[.isActive]
-                && !idling.hide
-                && !idling.alwaysHide
-                && Defaults[.autoShowsEnabled]
-                && !popoverShown
-                && !(idling.hide && idling.alwaysHide) 
-                && mouseNeedsUpdate
-        {
-            mouseWasSpareOrUnidled = mouseSpare
-            triggerFeedback()
+        feedback: do {
+            let mouseNeedsUpdate = mouseWasSpareOrUnidled != mouseSpare
+            
+            if
+                isActive
+                    && !popoverShown
+                    && idlingNone
+                    && autoShows
+                    && mouseNeedsUpdate
+            {
+                mouseWasSpareOrUnidled = mouseSpare
+                triggerFeedback()
+            }
         }
         
         // MARK: - Basic appearances
         
-        head.button?.appearsDisabled = disabled
-        body.button?.appearsDisabled = disabled
-        tail.button?.appearsDisabled = disabled
-        
-        if disabled {
-            head.targetAlpha = 1
-            body.targetAlpha = 1
-            tail.targetAlpha = 1
+        appearances: do {
+            head.button?.appearsDisabled = disabled
+            body.button?.appearsDisabled = disabled
+            tail.button?.appearsDisabled = disabled
+            
+            if disabled {
+                head.targetAlpha = 1
+                body.targetAlpha = 1
+                tail.targetAlpha = 1
+            }
         }
         
         // MARK: - Special Judge for #map()
@@ -104,10 +154,10 @@ extension StatusBarController {
                 break map
             }
             
-            guard 
-                Defaults[.autoShowsEnabled]
-                    || !Defaults[.isActive]
-                    || !Defaults[.theme].autoHideIcons
+            guard
+                autoShows
+                    || isInactive
+                    || alwaysShowsIcons
             else {
                 head.targetAlpha = 0
                 body.targetAlpha = 0
@@ -116,41 +166,38 @@ extension StatusBarController {
                 break map
             }
             
-            if Defaults[.theme].autoHideIcons {
+            if Defaults[.theme].autoHidesIcons {
                 head.targetAlpha = Defaults[.isActive] ? 0 : icons().head.opacity
             } else {
                 head.targetAlpha = icons().head.opacity
                 
                 body.targetAlpha = (
-                    !Defaults[.isActive]
+                    isInactive
                     || triggers.body
-                    || idling.hide
-                    || idling.alwaysHide
-                    || (Defaults[.autoShowsEnabled] && mouseSpare)
+                    || idlingAny
+                    || (autoShows && mouseSpare)
                 ) ? icons().body.opacity : 0
                 
                 tail.targetAlpha = (
-                    idling.alwaysHide
-                    || triggers.tail
+                    triggers.tail
+                    || idling.alwaysHide
                 ) ? icons().tail.opacity : 0
             }
         } // End of 'map'
-        
-        // To collapse means to hide the status items and to expand the separators.
         
         // MARK: - Head
         
         shouldTimersStop.flag &= head.lerpAlpha()
         
         head: do {
-            let collapses = 
-            !popoverShown
-            && Defaults[.isActive]
-            && !(idling.hide || idling.alwaysHide)
-            && !(Defaults[.autoShowsEnabled] && mouseSpare)
+            let shouldActivate =
+            isActive
+            && !popoverShown
+            && idlingNone
+            && !(autoShows && mouseSpare)
             
-            head.targetLength = icons(collapses: collapses).head.width
-            shouldTimersStop.flag = head.lerpLength() && shouldTimersStop.flag
+            head.targetLength = icons(isActive: shouldActivate).head.width
+            shouldTimersStop.flag &= head.lerpLength()
         } // End of 'head'
         
         // MARK: - Body
@@ -160,20 +207,20 @@ extension StatusBarController {
         body: do {
             guard let x = body.origin?.x else { break body }
             
-            let collapses = 
-            !popoverShown
-            && Defaults[.isActive]
+            let shouldActivate =
+            isActive
+            && !popoverShown
             && !triggers.body
-            && !(idling.hide || idling.alwaysHide)
-            && !(Defaults[.autoShowsEnabled] && mouseSpare)
+            && idlingNone
+            && !(autoShows && mouseSpare)
             
             do {
-                if !collapses && !body.wasUnstable {
+                if !shouldActivate && !body.wasUnstable {
                     if body.targetLength <= 0 {
                         body.targetLength = x + body.length - ScreenManager.menuBarLeftEdge
                     }
                     
-                    body.length = body.targetLength
+                    body.applyLength()
                     body.wasUnstable = true
                     
                     if !Defaults[.reduceAnimationEnabled] {
@@ -181,28 +228,35 @@ extension StatusBarController {
                     }
                 }
                 
-                else if collapses && !body.wasUnstable {
+                else if shouldActivate && !body.wasUnstable {
                     body.length = maxLength
                     break body
                 }
                 
                 else if body.wasUnstable {
-                    body.wasUnstable = !collapses || body.wasUnstable && x > ScreenManager.menuBarLeftEdge + 5
+                    body.wasUnstable = !shouldActivate || body.wasUnstable && x > ScreenManager.menuBarLeftEdge + 5
                 }
                 
                 
                 
                 if
                     let lastOrigin = body.lastOrigin,
-                    body.lastCollapses != collapses || x != lastOrigin.x
+                    body.wasActive != shouldActivate || x != lastOrigin.x
                 {
-                    body.targetLength = collapses ? max(0, x + body.length - ScreenManager.menuBarLeftEdge) : icons().body.width
+                    body.targetLength = shouldActivate
+                    ? max(0, x + body.length - ScreenManager.menuBarLeftEdge)
+                    : icons().body.width
                 }
                 
                 body.lastOrigin = body.origin
-                body.lastCollapses = collapses
+                body.wasActive = shouldActivate
                 
-                shouldTimersStop.flag = body.lerpLength() && shouldTimersStop.flag
+                if !body.isAvailable {
+                    body.applyAlpha()
+                    body.applyLength()
+                }
+                
+                shouldTimersStop.flag &= body.lerpLength()
             }
         } // End of 'body'
         
@@ -213,45 +267,52 @@ extension StatusBarController {
         tail: do {
             guard let x = tail.origin?.x else { break tail }
             
-            let collapses =
+            let shouldActive =
             !popoverShown
             && !triggers.tail
             && !idling.alwaysHide
             
             do {
-                if !collapses && !tail.wasUnstable {
+                if !shouldActive && !tail.wasUnstable {
                     if tail.targetLength <= 0 {
                         tail.targetLength = x + tail.length - ScreenManager.menuBarLeftEdge
                     }
                     
-                    tail.length = tail.targetLength
+                    tail.applyLength()
                     tail.wasUnstable = true
                     
                     if !Defaults[.reduceAnimationEnabled] { break tail }
                 }
                 
-                else if collapses && !tail.wasUnstable {
+                else if shouldActive && !tail.wasUnstable {
                     tail.length = maxLength
                     break tail
                 }
                 
                 else if tail.wasUnstable {
-                    tail.wasUnstable = !collapses || tail.wasUnstable && x > ScreenManager.menuBarLeftEdge + 5
+                    tail.wasUnstable = !shouldActive || tail.wasUnstable && x > ScreenManager.menuBarLeftEdge + 5
                 }
                 
                 
                 
                 if
                     let lastOrigin = tail.lastOrigin,
-                    tail.lastCollapses != collapses || x != lastOrigin.x
+                    tail.wasActive != shouldActive || x != lastOrigin.x
                 {
-                    tail.targetLength = collapses ? max(0, x + tail.length - ScreenManager.menuBarLeftEdge) : icons().tail.width
+                    tail.targetLength = shouldActive
+                    ? max(0, x + tail.length - ScreenManager.menuBarLeftEdge)
+                    : icons().tail.width
                 }
                 
                 tail.lastOrigin = tail.origin
-                tail.lastCollapses = collapses
+                tail.wasActive = shouldActive
                 
-                shouldTimersStop.flag = tail.lerpLength() && shouldTimersStop.flag
+                if !tail.isAvailable {
+                    tail.applyAlpha()
+                    tail.applyLength()
+                }
+                
+                shouldTimersStop.flag &= tail.lerpLength()
             }
         } // End of 'tail'
     }
@@ -263,22 +324,22 @@ extension StatusBarController {
         body.button?.image = icons().body.image
         tail.button?.image = icons().tail.image
         
-        guard Defaults[.autoShowsEnabled] || !Defaults[.isActive] || !Defaults[.theme].autoHideIcons else {
+        guard autoShows || isInactive || alwaysShowsIcons else {
             head.targetAlpha = 0
             body.targetAlpha = 0
             tail.targetAlpha = 0
             return
         }
         
-        if !Defaults[.theme].autoHideIcons {
+        if alwaysShowsIcons {
             // Special judge. See #update()
         } else if popoverShown {
-            head.button?.image = Defaults[.theme].headUncollapsed.image
+            head.button?.image = Defaults[.theme].headInactive.image
             head.targetAlpha = icons().head.opacity
             body.targetAlpha = icons().body.opacity
             tail.targetAlpha = icons().tail.opacity
         } else if KeyboardManager.triggers {
-            head.button?.image = Defaults[.theme].headUncollapsed.image
+            head.button?.image = Defaults[.theme].headInactive.image
             head.targetAlpha = icons().head.opacity
             body.targetAlpha = triggers.body ? icons().body.opacity : 0
             tail.targetAlpha = triggers.tail ? icons().tail.opacity : 0
@@ -292,7 +353,7 @@ extension StatusBarController {
     func checkIdleStates() {
         if
             mouseSpare
-                && (idling.hide || idling.alwaysHide)
+                && idlingAny
                 && (mouseOverHead || mouseOverBody || mouseOverTail)
         {
             unidleHideArea()
