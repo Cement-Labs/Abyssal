@@ -115,6 +115,8 @@ extension StatusBarController {
             ) { [weak self] _ in
                 guard let self else { return }
                 
+                
+                
                 self.checkIdleStates()
                 
                 // Update dragging state

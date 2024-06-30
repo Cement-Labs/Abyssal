@@ -66,6 +66,8 @@
 		28F9913E2C30D929004C76ED /* KeyboardShortcuts+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F9913D2C30D929004C76ED /* KeyboardShortcuts+Extensions.swift */; };
 		28F991402C30D9D2004C76ED /* ShortcutsControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F9913F2C30D9D2004C76ED /* ShortcutsControl.swift */; };
 		28F991422C30DE71004C76ED /* ShortcutsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F991412C30DE71004C76ED /* ShortcutsSection.swift */; };
+		28F991442C30F83B004C76ED /* WindowInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F991432C30F83B004C76ED /* WindowInfo.swift */; };
+		28F991462C30F872004C76ED /* ExternalMenuBarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F991452C30F872004C76ED /* ExternalMenuBarManager.swift */; };
 		C63B40532A4060E400BCAE79 /* NSStatusItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63B40522A4060E400BCAE79 /* NSStatusItem+Extension.swift */; };
 		C66CABA42A38871500E4D8E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CABA32A38871500E4D8E6 /* AppDelegate.swift */; };
 		C66CABB72A389F2500E4D8E6 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CABB62A389F2500E4D8E6 /* EventMonitor.swift */; };
@@ -133,6 +135,8 @@
 		28F9913D2C30D929004C76ED /* KeyboardShortcuts+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyboardShortcuts+Extensions.swift"; sourceTree = "<group>"; };
 		28F9913F2C30D9D2004C76ED /* ShortcutsControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsControl.swift; sourceTree = "<group>"; };
 		28F991412C30DE71004C76ED /* ShortcutsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsSection.swift; sourceTree = "<group>"; };
+		28F991432C30F83B004C76ED /* WindowInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowInfo.swift; sourceTree = "<group>"; };
+		28F991452C30F872004C76ED /* ExternalMenuBarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalMenuBarManager.swift; sourceTree = "<group>"; };
 		C63B40522A4060E400BCAE79 /* NSStatusItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSStatusItem+Extension.swift"; sourceTree = "<group>"; };
 		C66CABA02A38871500E4D8E6 /* Abyssal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Abyssal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C66CABA32A38871500E4D8E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -223,6 +227,7 @@
 				287B85D12C29A6A0001FD729 /* VersionManager.swift */,
 				287B85D42C29A707001FD729 /* MathHelper.swift */,
 				28CB53A42C2B938300F32A71 /* AppManager.swift */,
+				28F991452C30F872004C76ED /* ExternalMenuBarManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -277,9 +282,10 @@
 		28CB53A22C2B930C00F32A71 /* Miscellaneous */ = {
 			isa = PBXGroup;
 			children = (
-				282E928B2C27CA9100C21EE5 /* ObservationTrackingStream.swift */,
 				284E2FE82C2F9C1700BB582C /* Formattable */,
 				C6DEC5362A3A05D300943448 /* Events */,
+				282E928B2C27CA9100C21EE5 /* ObservationTrackingStream.swift */,
+				28F991432C30F83B004C76ED /* WindowInfo.swift */,
 			);
 			path = Miscellaneous;
 			sourceTree = "<group>";
@@ -466,6 +472,7 @@
 				284E2FFC2C2FB2BC00BB582C /* TimeoutControl.swift in Sources */,
 				284E30022C2FB42400BB582C /* AutoShowsControl.swift in Sources */,
 				28C90F702C270614000AC2E3 /* Bundle+Extensions.swift in Sources */,
+				28F991442C30F83B004C76ED /* WindowInfo.swift in Sources */,
 				C66CABB72A389F2500E4D8E6 /* EventMonitor.swift in Sources */,
 				28743ED92C28F0F900366A69 /* BehaviorsSection.swift in Sources */,
 				284E2FFA2C2FB20600BB582C /* StartsWithMacOSControl.swift in Sources */,
@@ -486,6 +493,7 @@
 				282E928A2C27C25000C21EE5 /* Tip.swift in Sources */,
 				C6E2C0302A3EE9F1007D4E1B /* StatusBarController+StateManagers.swift in Sources */,
 				28CB53A52C2B938300F32A71 /* AppManager.swift in Sources */,
+				28F991462C30F872004C76ED /* ExternalMenuBarManager.swift in Sources */,
 				28C4AC032C270C9B006AFF87 /* SettingsVersionView.swift in Sources */,
 				282E928C2C27CA9100C21EE5 /* ObservationTrackingStream.swift in Sources */,
 				2840D70D2C2679F50087EE50 /* Bool+Extensions.swift in Sources */,
