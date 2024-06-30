@@ -66,6 +66,7 @@ extension StatusBarController {
                 
                 self.update()
             }
+            print("START TIMER [ANIMATION]: \(animationTimer!)")
         }
     }
     
@@ -80,6 +81,7 @@ extension StatusBarController {
                 self.sort()
                 self.map()
             }
+            print("START TIMER [ACTION]: \(actionTimer!)")
         }
     }
     
@@ -104,6 +106,7 @@ extension StatusBarController {
                 
                 self.feedbackCount += 1
             }
+            print("START TIMER [FEEDBACK]: \(feedbackTimer!)")
         }
     }
     
@@ -115,8 +118,7 @@ extension StatusBarController {
             ) { [weak self] _ in
                 guard let self else { return }
                 
-                
-                
+                // Check idle states
                 self.checkIdleStates()
                 
                 // Update dragging state
@@ -167,45 +169,45 @@ extension StatusBarController {
                 }
                 
                 // Update mouse and keys
-                let mouseNeedsUpdate =
-                (self.was.mouseOnStatusBar != self.mouseOnStatusBar)
-                || (self.was.mouseSpare != self.mouseSpare)
-                let keyNeedsUpdate = self.was.triggers != KeyboardManager.triggers
-                
                 if !MouseManager.dragging {
-                    if mouseNeedsUpdate {
-                        if 
-                            self.mouseOnStatusBar || self.mouseSpare
-                        {
+                    if needsUpdate.mouseOnStatusBar || needsUpdate.mouseSpare {
+                        if self.mouseOnStatusBar || self.mouseSpare {
                             self.startMouseEventMonitor()
                         } else {
                             self.stopMonitor(&self.mouseEventMonitor)
                         }
                     }
                     
-                    if mouseNeedsUpdate || keyNeedsUpdate {
+                    if needsUpdate.mouseOnStatusBar || needsUpdate.mouseSpare || needsUpdate.triggers {
                         // Resolve animation and function updates
                         self.startFunctionalTimers()
                     }
                 }
                 
-                if keyNeedsUpdate || self.mouseDragging {
+                if needsUpdate.triggers || self.mouseDragging {
                     // Key pressed || mouse dragging -> sort separators and map appearances
                     self.sort()
                     self.map()
                 }
                 
-                self.was = (
-                    self.mouseOnStatusBar,
-                    self.mouseSpare,
-                    KeyboardManager.triggers
-                )
-                
                 // Update frontmost app
                 if lastFocusedApp != AppManager.frontmost {
                     lastFocusedApp = AppManager.frontmost
                 }
+                
+                // Update external menu states
+                if self.was.mouseInExternalMenu != self.mouseInExternalMenu {
+                    
+                }
+                
+                self.was = (
+                    self.mouseOnStatusBar,
+                    self.mouseSpare,
+                    KeyboardManager.triggers,
+                    self.mouseInExternalMenu
+                )
             }
+            print("START TIMER [TRIGGER]: \(triggerTimer!)")
         }
     }
     
@@ -222,6 +224,7 @@ extension StatusBarController {
                 self.unidleHideArea()
                 self.stopTimer(&self.timeoutTimer) { self.timeout = true }
             }
+            print("START TIMER [TIMEOUT]: \(timeoutTimer!)")
         }
     }
     
@@ -235,6 +238,7 @@ extension StatusBarController {
                 
                 self.stopTimer(&self.ignoringTimer) { self.ignoring = false }
             }
+            print("START TIMER [IGNORING]: \(ignoringTimer!)")
         }
     }
     
@@ -266,6 +270,7 @@ extension StatusBarController {
                     self.mouseSpare
                 else { return }
                 
+                // Update idling status
                 if self.isActive && self.mouseInHideArea && !(KeyboardManager.command && event?.type == .leftMouseDown) {
                     self.idleHideArea()
                 }
@@ -273,9 +278,22 @@ extension StatusBarController {
                 if self.mouseInAlwaysHideArea {
                     self.idleAlwaysHideArea()
                 }
+                
+                // Update external menu caches
+                ExternalMenuBarManager.menuBarItems.forEach { $0.cache() }
+                self.lastExternalMenus.removeAll()
+                
+                self.updateExternalMenusDispatch?.cancel()
+                self.updateExternalMenusDispatch = .init {
+                    self.lastExternalMenus = ExternalMenuBarManager.menuBarItems.flatMap {
+                        $0.newWindowsNear
+                    }
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: self.updateExternalMenusDispatch!)
             }
             
             mouseEventMonitor?.start()
+            print("START MONITOR [MOUSE EVENT]: \(mouseEventMonitor!)")
         }
     }
     
@@ -298,6 +316,7 @@ extension StatusBarController {
     
     func stopTimer(_ timer: inout Timer?, afterStopped: () -> Void = {}) {
         if timer != nil {
+            print("STOP TIMER: \(timer!)")
             timer?.invalidate()
             timer = nil
             
@@ -307,6 +326,7 @@ extension StatusBarController {
     
     func stopMonitor(_ monitor: inout EventMonitor?, afterStopped: () -> Void = {}) {
         if monitor != nil {
+            print("STOP MONITOR: \(monitor!)")
             monitor?.stop()
             monitor = nil
             

@@ -62,6 +62,7 @@
 		28CAF5592C297809002BD78C /* TipTimeoutTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CAF5582C297809002BD78C /* TipTimeoutTitle.swift */; };
 		28CB53A52C2B938300F32A71 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CB53A42C2B938300F32A71 /* AppManager.swift */; };
 		28E929252C30169400847A67 /* NSScreen+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E929242C30169400847A67 /* NSScreen+Extensions.swift */; };
+		28EDD9392C3153C100BA7171 /* WithIntermediateState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EDD9382C3153C100BA7171 /* WithIntermediateState.swift */; };
 		28F9913C2C30D805004C76ED /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 28F9913B2C30D805004C76ED /* KeyboardShortcuts */; };
 		28F9913E2C30D929004C76ED /* KeyboardShortcuts+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F9913D2C30D929004C76ED /* KeyboardShortcuts+Extensions.swift */; };
 		28F991402C30D9D2004C76ED /* ShortcutsControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F9913F2C30D9D2004C76ED /* ShortcutsControl.swift */; };
@@ -132,6 +133,7 @@
 		28CAF5582C297809002BD78C /* TipTimeoutTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipTimeoutTitle.swift; sourceTree = "<group>"; };
 		28CB53A42C2B938300F32A71 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		28E929242C30169400847A67 /* NSScreen+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSScreen+Extensions.swift"; sourceTree = "<group>"; };
+		28EDD9382C3153C100BA7171 /* WithIntermediateState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithIntermediateState.swift; sourceTree = "<group>"; };
 		28F9913D2C30D929004C76ED /* KeyboardShortcuts+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyboardShortcuts+Extensions.swift"; sourceTree = "<group>"; };
 		28F9913F2C30D9D2004C76ED /* ShortcutsControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsControl.swift; sourceTree = "<group>"; };
 		28F991412C30DE71004C76ED /* ShortcutsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsSection.swift; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 				C6DEC5362A3A05D300943448 /* Events */,
 				282E928B2C27CA9100C21EE5 /* ObservationTrackingStream.swift */,
 				28F991432C30F83B004C76ED /* WindowInfo.swift */,
+				28EDD9382C3153C100BA7171 /* WithIntermediateState.swift */,
 			);
 			path = Miscellaneous;
 			sourceTree = "<group>";
@@ -485,6 +488,7 @@
 				28CAF5592C297809002BD78C /* TipTimeoutTitle.swift in Sources */,
 				2831B1602B7521890020DECD /* Defaults+Structures.swift in Sources */,
 				28CAF5572C297768002BD78C /* TipFeedbackTitle.swift in Sources */,
+				28EDD9392C3153C100BA7171 /* WithIntermediateState.swift in Sources */,
 				28925BAE2C27F00C008FCC69 /* TipWrapper.swift in Sources */,
 				284E2FF52C2FAB8900BB582C /* EnvironmentValues+Extention.swift in Sources */,
 				28E929252C30169400847A67 /* NSScreen+Extensions.swift in Sources */,

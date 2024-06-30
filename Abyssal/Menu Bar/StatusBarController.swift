@@ -12,16 +12,16 @@ import KeyboardShortcuts
 class StatusBarController {
     // MARK: - States
     
-    var mouseOnStatusBar: Bool {
+    lazy var mouseOnStatusBar: WithIntermediateState<Bool> = .init {
         guard
-            let headOrigin = head.button?.window?.frame.origin,
-            let headSize = head.button?.window?.frame.size
+            let headOrigin = self.head.button?.window?.frame.origin,
+            let headSize = self.head.button?.window?.frame.size
         else { return false }
         let mouseLocation = NSEvent.mouseLocation
         return mouseLocation.x >= ScreenManager.menuBarLeftEdge && mouseLocation.y >= headOrigin.y && mouseLocation.y <= headOrigin.y + headSize.height
     }
     
-    var mouseInHideArea: Bool {
+    lazy var mouseInHideArea: Bool {
         guard
             let bodyOrigin = body.button?.window?.frame.origin,
             let tailOrigin = tail.button?.window?.frame.origin,
@@ -36,7 +36,7 @@ class StatusBarController {
     }
     
     var mouseSpare: Bool {
-        return !ignoring && mouseOnStatusBar && NSEvent.mouseLocation.x <= edge
+        !ignoring && mouseOnStatusBar && NSEvent.mouseLocation.x <= edge
     }
     
     var mouseOverHead: Bool {
@@ -67,16 +67,20 @@ class StatusBarController {
         MouseManager.dragging && mouseOnStatusBar
     }
     
+    var mouseInExternalMenu: Bool {
+        lastExternalMenus.contains(where: \.containsMouse)
+    }
+    
     var shouldPresentFeedback: Bool {
-        return !timeout && MouseManager.none
+        !timeout && MouseManager.none
     }
     
     var maxLength: CGFloat {
-        return ScreenManager.maxWidth
+        ScreenManager.maxWidth
     }
     
     var popoverShown: Bool {
-        return AppDelegate.shared?.popover.isShown ?? false
+        AppDelegate.shared?.popover.isShown ?? false
     }
     
     
@@ -95,6 +99,8 @@ class StatusBarController {
     
     var lastFocusedApp: NSRunningApplication?
     
+    var lastExternalMenus: [WindowInfo] = []
+    
     
     
     var feedbackCount = Int.zero
@@ -103,9 +109,9 @@ class StatusBarController {
 
     var mouseWasSpareOrUnidled = false
     
-    var was = (mouseOnStatusBar: false, mouseSpare: false, triggers: false)
-    
     var draggedToDeactivate = (dragging: false, shouldActivate: false, count: Int.zero)
+    
+    var was: IntermediateStates = (mouseOnStatusBar: false, mouseSpare: false, triggers: false, mouseInExternalMenu: false)
     
     
     
@@ -126,6 +132,12 @@ class StatusBarController {
 
 
     var mouseEventMonitor: EventMonitor?
+    
+    
+    
+    // MARK: - Dispatches
+    
+    var updateExternalMenusDispatch: DispatchWorkItem?
     
     
     
