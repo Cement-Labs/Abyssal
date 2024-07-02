@@ -16,7 +16,8 @@ let delegate = AppDelegate() // Allocate
 
 // MARK: - Application Menu
 
-var appMenu = NSMenu()
+let appMenu = NSMenu()
+let emptyMenu = NSMenu() // Without any siblings
 
 do {
     let appMenuMain = NSMenu(title: Bundle.main.appName)

@@ -64,9 +64,7 @@ extension StatusBarController {
         }
         
         KeyboardShortcuts.onKeyDown(for: .toggleFrontmost) {
-            ActivationPolicyManager.set(.regular)
-            NSMenu.setMenuBarVisible(false)
-            NSMenu.setMenuBarVisible(true)
+            ActivationPolicyManager.toggleBetweenFallback(.regular)
             NSApp.activate()
         }
     }

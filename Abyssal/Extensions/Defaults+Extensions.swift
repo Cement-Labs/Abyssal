@@ -25,6 +25,8 @@ extension Defaults.Keys {
     
     static let autoShowsEnabled = Key<Bool>("autoShowsEnabled", default: true)
     
+    static let autoOverridesMenuBarEnabled = Key<Bool>("autoOverridesMenuBar", default: false)
+    
     
     
     static let theme = Key<Theme>("theme", default: .defaultTheme)
@@ -65,5 +67,10 @@ extension Defaults.Keys {
             ),
             unique: [:]
         )
+    )
+    
+    static let menuBarOverride = Key<MenuBarOverride>(
+        "menuBarOverride",
+        default: .app
     )
 }

@@ -33,7 +33,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         _ aNotification: Notification
     ) {
         // Deactivate app after launched
-        ActivationPolicyManager.set(.prohibited)
+        ActivationPolicyManager.set(.prohibited, asFallback: true)
         
         let controller = SettingsViewController()
         controller.view = NSHostingView(rootView: SettingsView())
@@ -162,7 +162,14 @@ extension AppDelegate {
             )
             
             // Activate app
-            ActivationPolicyManager.set(.accessory)
+            let overridesMenuBar = Defaults[.autoOverridesMenuBarEnabled]
+            let activationPolicy: NSApplication.ActivationPolicy = overridesMenuBar ? .regular : .accessory
+            
+            if overridesMenuBar {
+                Defaults[.menuBarOverride].setMenu()
+            }
+            
+            ActivationPolicyManager.set(activationPolicy, asFallback: true)
             NSApp.activate()
             
             DispatchQueue.main.async {
@@ -181,7 +188,7 @@ extension AppDelegate {
         }
         
         // Deactivate app
-        ActivationPolicyManager.set(.prohibited, deadline: .now() + 0.2)
+        ActivationPolicyManager.set(.prohibited, asFallback: true, deadline: .now() + 0.2)
         
         mouseEventMonitor?.stop()
         statusBarController.function()
