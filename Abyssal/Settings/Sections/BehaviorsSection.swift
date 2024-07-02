@@ -17,13 +17,13 @@ struct BehaviorsSection: View {
     
     var body: some View {
         Section {
-            SpacingVStack {
+            UnifiedVStack {
                 ActiveStrategyControl()
                 
                 RespectNotchControl()
             }
             
-            SpacingVStack {
+            UnifiedVStack {
                 DeadZoneControl()
             }
         } header: {

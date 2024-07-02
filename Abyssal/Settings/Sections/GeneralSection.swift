@@ -12,11 +12,11 @@ struct GeneralSection: View {
     
     var body: some View {
         Section {
-            SpacingVStack {
+            UnifiedVStack {
                 ThemeControl()
             }
             
-            SpacingVStack {
+            UnifiedVStack {
                 FeedbackControl()
             }
         } header: {

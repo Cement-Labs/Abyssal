@@ -28,10 +28,10 @@ struct SettingsView: View {
                 Form {
                     ModifierSection()
                     
-                    AdvancedSection()
-                    
-                    ShortcutsControl()
+                    ShortcutsSection()
                         .environment(\.hasTitle, false)
+                    
+                    AdvancedSection()
                 }
                 .padding(1)
                 .defaultScrollAnchor(.bottom)

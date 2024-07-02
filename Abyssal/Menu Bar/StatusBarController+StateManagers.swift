@@ -66,7 +66,7 @@ extension StatusBarController {
                 
                 self.update()
             }
-            print("START TIMER [ANIMATION]: \(animationTimer!)")
+            //print("START TIMER [ANIMATION]: \(animationTimer!)")
         }
     }
     
@@ -81,7 +81,7 @@ extension StatusBarController {
                 self.sort()
                 self.map()
             }
-            print("START TIMER [ACTION]: \(actionTimer!)")
+            //print("START TIMER [ACTION]: \(actionTimer!)")
         }
     }
     
@@ -106,7 +106,7 @@ extension StatusBarController {
                 
                 self.feedbackCount += 1
             }
-            print("START TIMER [FEEDBACK]: \(feedbackTimer!)")
+            //print("START TIMER [FEEDBACK]: \(feedbackTimer!)")
         }
     }
     
@@ -241,7 +241,7 @@ extension StatusBarController {
                     
                 blocking.update()
             }
-            print("START TIMER [TRIGGER]: \(triggerTimer!)")
+            //print("START TIMER [TRIGGER]: \(triggerTimer!)")
         }
     }
     
@@ -258,7 +258,7 @@ extension StatusBarController {
                 unidleHideArea()
                 stopTimer(&timeoutTimer) { self.timeout = true }
             }
-            print("START TIMER [TIMEOUT]: \(timeoutTimer!)")
+            //print("START TIMER [TIMEOUT]: \(timeoutTimer!)")
         }
     }
     
@@ -272,7 +272,7 @@ extension StatusBarController {
                 
                 stopTimer(&ignoringTimer) { self.ignoring = false }
             }
-            print("START TIMER [IGNORING]: \(ignoringTimer!)")
+            //print("START TIMER [IGNORING]: \(ignoringTimer!)")
         }
     }
     
@@ -329,7 +329,7 @@ extension StatusBarController {
             }
             
             mouseEventMonitor?.start()
-            print("START MONITOR [MOUSE EVENT]: \(mouseEventMonitor!)")
+            //print("START MONITOR [MOUSE EVENT]: \(mouseEventMonitor!)")
         }
     }
     
@@ -354,7 +354,7 @@ extension StatusBarController {
     
     func stopTimer(_ timer: inout Timer?, afterStopped: () -> Void = {}) {
         if timer != nil {
-            print("STOP TIMER: \(timer!)")
+            //print("STOP TIMER: \(timer!)")
             timer?.invalidate()
             timer = nil
             
@@ -364,7 +364,7 @@ extension StatusBarController {
     
     func stopMonitor(_ monitor: inout EventMonitor?, afterStopped: () -> Void = {}) {
         if monitor != nil {
-            print("STOP MONITOR: \(monitor!)")
+            //print("STOP MONITOR: \(monitor!)")
             monitor?.stop()
             monitor = nil
             

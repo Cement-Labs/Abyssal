@@ -10,4 +10,5 @@ import KeyboardShortcuts
 
 extension KeyboardShortcuts.Name {
     static let toggleActive = Self("toggleActive", default: .init(.backtick, modifiers: [.shift, .command]))
+    static let toggleFrontmost = Self("toggleFrontmost", default: .init(.backtick, modifiers: [.shift, .option, .command]))
 }

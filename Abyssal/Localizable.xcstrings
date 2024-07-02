@@ -933,6 +933,9 @@
         }
       }
     },
+    "Toggle frontmost" : {
+
+    },
     "Use always hide area" : {
       "localizations" : {
         "zh-Hans" : {

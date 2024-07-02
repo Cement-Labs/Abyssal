@@ -12,11 +12,11 @@ struct AdvancedSection: View {
     
     var body: some View {
         Section {
-            SpacingVStack {
+            UnifiedVStack {
                 TimeoutControl()
             }
             
-            SpacingVStack {
+            UnifiedVStack {
                 StartsWithMacOSControl()
             }
         } header: {

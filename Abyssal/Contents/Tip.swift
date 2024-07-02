@@ -234,10 +234,6 @@ class Tip<Title> where Title: View {
 }
 
 extension Tip {
-    
-}
-
-extension Tip {
     static func createPopover() -> NSPopover {
         let popover = NSPopover()
         

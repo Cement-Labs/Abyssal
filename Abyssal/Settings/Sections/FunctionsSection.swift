@@ -12,7 +12,7 @@ struct FunctionsSection: View {
     
     var body: some View {
         Section {
-            SpacingVStack {
+            UnifiedVStack {
                 AutoShowsControl()
                 
                 AlwaysHideAreaControl()
