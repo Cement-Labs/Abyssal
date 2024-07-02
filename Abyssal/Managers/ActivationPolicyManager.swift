@@ -47,31 +47,35 @@ struct ActivationPolicyManager {
     static func toggleBetweenFallback(
         _ activationPolicy: NSApplication.ActivationPolicy,
         deadline: DispatchTime
-    ) {
+    ) -> Bool {
         guard activationPolicy != fallback else {
             setToFallback(deadline: deadline)
-            return
+            return false
         }
         
         if NSApp.activationPolicy() == fallback {
             set(activationPolicy, deadline: deadline)
+            return true
         } else {
             setToFallback(deadline: deadline)
+            return false
         }
     }
     
     static func toggleBetweenFallback(
         _ activationPolicy: NSApplication.ActivationPolicy
-    ) {
+    ) -> Bool {
         guard activationPolicy != fallback else {
             setToFallback()
-            return
+            return false
         }
         
         if NSApp.activationPolicy() == fallback {
             set(activationPolicy)
+            return true
         } else {
             setToFallback()
+            return false
         }
     }
     

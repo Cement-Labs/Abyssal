@@ -78,7 +78,7 @@ class StatusBarController {
         KeyboardManager.triggers
     }
     
-    lazy var focusedApp: WithIntermediateState<NSRunningApplication?> = .init {
+    lazy var focusedApp: WithIntermediateState<NSRunningApplication> = .init {
         AppManager.frontmost
     }
     

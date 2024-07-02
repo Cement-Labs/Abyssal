@@ -64,8 +64,14 @@ extension StatusBarController {
         }
         
         KeyboardShortcuts.onKeyDown(for: .toggleFrontmost) {
-            ActivationPolicyManager.toggleBetweenFallback(.regular)
-            NSApp.activate()
+            if ActivationPolicyManager.toggleBetweenFallback(.regular) {
+                // Overridden
+                NSApp.activate()
+                self.idleHideArea()
+            } else {
+                // Normal
+                self.unidleHideArea()
+            }
         }
     }
     
@@ -191,9 +197,18 @@ extension StatusBarController {
                 
                 // Update frontmost app
                 if focusedApp.needsUpdate {
-                    if Defaults[.screenSettings].main.activeStrategy.frontmostAppChange {
-                        // When frontmost app changes
+                    let pid = ProcessInfo.processInfo.processIdentifier
+                    if focusedApp.intermediate?.processIdentifier == pid {
+                        // From Abyssal, must be ending the overriden state or closing the popover
                         unidleHideArea()
+                    } else if focusedApp.value().processIdentifier == pid {
+                        // To Abyssal
+                    } else {
+                        // Neither to nor from Abyssal
+                        if Defaults[.screenSettings].main.activeStrategy.frontmostAppChange {
+                            // When frontmost app changes
+                            unidleHideArea()
+                        }
                     }
                 }
                 
