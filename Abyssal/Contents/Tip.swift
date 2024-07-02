@@ -14,6 +14,8 @@ import SwiftUIIntrospect
 class Tip<Title> where Title: View {
     var preferredEdge: NSRectEdge = .minX
     var delay: CGFloat = 0.5
+    var sustain: CGFloat = 0.5
+    var permanent: Bool = false
     
     var positionRect = { CGRect.zero }
     var positionOffset = { CGPoint.zero }
@@ -23,10 +25,14 @@ class Tip<Title> where Title: View {
     var title: (() -> Title)? = nil
     var content: (() -> String)? = nil
     
-    var permanent: Bool = false
-    
     private var popover: NSPopover
     private var cachedSender: NSView?
+    private var lastShown: Date?
+    
+    private var positionUpdateTimer: Timer?
+    
+    private var showDispatch: DispatchWorkItem?
+    private var hideDispatch: DispatchWorkItem?
     
     private var position: CGRect {
         positionRect().offsetBy(
@@ -35,8 +41,13 @@ class Tip<Title> where Title: View {
         )
     }
     
-    private var positionUpdateTimer: Timer?
-    private var showDispatch: DispatchWorkItem?
+    private var timeToLastShown: TimeInterval {
+        if let lastShown {
+            Date.now.timeIntervalSince(lastShown)
+        } else {
+            0
+        }
+    }
     
     private var has: (title: Bool, content: Bool) {
         (
@@ -68,6 +79,7 @@ class Tip<Title> where Title: View {
     init(
         preferredEdge: NSRectEdge = .minX,
         delay: CGFloat = 0.5,
+        sustain: CGFloat = 0.5,
         permanent: Bool = false,
         rect positionRect: (() -> CGRect)? = nil,
         offset positionOffset: (() -> CGPoint)? = nil,
@@ -76,6 +88,7 @@ class Tip<Title> where Title: View {
     ) {
         self.preferredEdge = preferredEdge
         self.delay = delay
+        self.sustain = sustain
         self.permanent = permanent
         
         if let positionRect {
@@ -98,12 +111,13 @@ class Tip<Title> where Title: View {
     convenience init(
         preferredEdge: NSRectEdge = .minX,
         delay: CGFloat = 0.5,
+        sustain: CGFloat = 0.5,
         permanent: Bool = false,
         title: (() -> Title)? = nil,
         content: (() -> String)? = nil
     ) {
         self.init(
-            preferredEdge: preferredEdge, delay: delay, permanent: permanent,
+            preferredEdge: preferredEdge, delay: delay, sustain: sustain, permanent: permanent,
             rect: nil, offset: nil,
             title: title, content: content
         )
@@ -112,11 +126,12 @@ class Tip<Title> where Title: View {
     convenience init(
         preferredEdge: NSRectEdge = .minX,
         delay: CGFloat = 0.5,
+        sustain: CGFloat = 0.5,
         permanent: Bool = false,
         content: (() -> String)? = nil
     ) where Title == EmptyView {
         self.init(
-            preferredEdge: preferredEdge, delay: delay, permanent: permanent,
+            preferredEdge: preferredEdge, delay: delay, sustain: sustain, permanent: permanent,
             title: nil, content: content
         )
     }
@@ -180,8 +195,8 @@ class Tip<Title> where Title: View {
     }
     
     func show(_ sender: NSView?) {
-        guard isShown || (!isShown && update()) else { return }
         guard isAvailable else { return }
+        guard isShown || (!isShown && update()) else { return }
         
         if let sender {
             cachedSender = sender
@@ -189,7 +204,11 @@ class Tip<Title> where Title: View {
         
         guard let cachedSender else { return }
         
+        hideDispatch?.cancel()
+        hideDispatch = nil
+        
         showDispatch = .init {
+            self.lastShown = .now
             self.popover.show(
                 relativeTo:     self.position,
                 of:             cachedSender,
@@ -216,12 +235,19 @@ class Tip<Title> where Title: View {
     }
     
     func hide() {
-        positionUpdateTimer?.invalidate()
+        guard isAvailable else { return }
         
         showDispatch?.cancel()
         showDispatch = nil
         
-        popover.performClose(self)
+        hideDispatch = .init {
+            self.positionUpdateTimer?.invalidate()
+            
+            self.popover.performClose(self)
+        }
+        
+        let interval = max(0, sustain - timeToLastShown)
+        DispatchQueue.main.asyncAfter(deadline: .now() + interval, execute: hideDispatch!)
     }
     
     func toggle(_ sender: NSView? = nil, show: Bool) {
