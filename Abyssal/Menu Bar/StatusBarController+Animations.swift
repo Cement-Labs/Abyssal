@@ -99,7 +99,7 @@ extension StatusBarController {
                 shouldTimersStop.count += 1
             } else {
                 shouldTimersStop = (flag: false, count: 0)
-                stopFunctionalTimers()
+                terminate()
             }
         } else {
             shouldTimersStop.count = 0

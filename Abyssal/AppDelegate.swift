@@ -109,7 +109,7 @@ extension AppDelegate {
     @objc func toggleActive(
         _ sender: Any?
     ) {
-        statusBarController.startFunctionalTimers()
+        statusBarController.function()
         
         guard !(statusBarController.idling.hide || statusBarController.idling.alwaysHide) else {
             statusBarController.unidleHideArea()
@@ -163,7 +163,7 @@ extension AppDelegate {
             
             // Activate app
             ActivationPolicyManager.set(.accessory)
-            NSRunningApplication.current.activate()
+            NSApp.activate()
             
             DispatchQueue.main.async {
                 self.popover.contentViewController?.view.window?.makeKeyAndOrderFront(nil)
@@ -184,7 +184,7 @@ extension AppDelegate {
         ActivationPolicyManager.set(.prohibited, deadline: .now() + 0.2)
         
         mouseEventMonitor?.stop()
-        statusBarController.startFunctionalTimers()
+        statusBarController.function()
         AppDelegate.shared?.statusBarController.triggerIgnoring()
     }
 }

@@ -7,7 +7,6 @@
 
 import AppKit
 import Defaults
-import KeyboardShortcuts
 
 class StatusBarController {
     // MARK: - Lazy States
@@ -64,8 +63,6 @@ class StatusBarController {
         else { return false }
         return self.mouseOnStatusBar.value() && NSEvent.mouseLocation.x >= origin.x && NSEvent.mouseLocation.x <= origin.x + width
     }
-    
-    
     
     lazy var mouseDragging: WithIntermediateState<Bool> = .init {
         MouseManager.dragging && self.mouseOnStatusBar.value()
@@ -222,10 +219,7 @@ class StatusBarController {
         
         startTriggerTimer()
         
-        KeyboardShortcuts.onKeyDown(for: .toggleActive) {
-            self.startFunctionalTimers()
-            self.toggle()
-        }
+        registerShortcuts()
     }
     
     deinit {

@@ -7,6 +7,7 @@
 
 import AppKit
 import Defaults
+import KeyboardShortcuts
 
 extension StatusBarController {
     // MARK: - Icon Visibilities
@@ -54,6 +55,20 @@ extension StatusBarController {
     
     func idleAlwaysHideArea() {
         idling.alwaysHide = true
+    }
+    
+    func registerShortcuts() {
+        KeyboardShortcuts.onKeyDown(for: .toggleActive) {
+            self.function()
+            self.toggle()
+        }
+        
+        KeyboardShortcuts.onKeyDown(for: .toggleFrontmost) {
+            ActivationPolicyManager.set(.regular)
+            NSMenu.setMenuBarVisible(false)
+            NSMenu.setMenuBarVisible(true)
+            NSApp.activate()
+        }
     }
     
     func startAnimationTimer() {
@@ -166,7 +181,7 @@ extension StatusBarController {
                     
                     if mouseOnStatusBar.needsUpdate || mouseSpare.needsUpdate || keyboardTriggers.needsUpdate {
                         // Resolve animation and function updates
-                        startFunctionalTimers()
+                        function()
                     }
                 }
                 
@@ -231,7 +246,6 @@ extension StatusBarController {
                 mouseOverHead.update()
                 mouseOverBody.update()
                 mouseOverTail.update()
-                
                 mouseDragging.update()
                 
                 hasExternalMenus.update()
@@ -276,7 +290,7 @@ extension StatusBarController {
         }
     }
     
-    func startFunctionalTimers() {
+    func function() {
         guard !MouseManager.dragging else { return }
         startAnimationTimer()
         startActionTimer()
@@ -349,7 +363,7 @@ extension StatusBarController {
     func unidleAlwaysHideArea() {
         guard !blocking.value() else { return }
         idling.alwaysHide = false
-        startFunctionalTimers()
+        function()
     }
     
     func stopTimer(_ timer: inout Timer?, afterStopped: () -> Void = {}) {
@@ -372,7 +386,7 @@ extension StatusBarController {
         }
     }
     
-    func stopFunctionalTimers() {
+    func terminate() {
         stopTimer(&animationTimer)
         stopTimer(&actionTimer)
         

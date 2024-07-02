@@ -18,13 +18,13 @@ class SettingsViewController: NSViewController {
         initializeFrame()
         
         DispatchQueue.main.async {
-            AppDelegate.shared?.statusBarController.startFunctionalTimers()
+            AppDelegate.shared?.statusBarController.function()
         }
     }
     
     override func viewWillDisappear() {
         DispatchQueue.main.async {
-            AppDelegate.shared?.statusBarController.startFunctionalTimers()
+            AppDelegate.shared?.statusBarController.function()
         }
     }
 }
