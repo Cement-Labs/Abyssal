@@ -17,6 +17,10 @@ struct FunctionsSection: View {
                 
                 AlwaysHideAreaControl()
             }
+            
+            UnifiedVStack {
+                MenuBarOverrideControl()
+            }
         } header: {
             if hasTitle {
                 Text("Functions")

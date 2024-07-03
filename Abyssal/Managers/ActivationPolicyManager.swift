@@ -15,13 +15,17 @@ struct ActivationPolicyManager {
     static func set(
         _ activationPolicy: NSApplication.ActivationPolicy,
         asFallback: Bool = false,
-        deadline: DispatchTime
+        deadline: DispatchTime,
+        andRun: @escaping () -> Void = {}
     ) {
         dispatch = .init() {
             set(activationPolicy, asFallback: asFallback)
         }
         
-        DispatchQueue.main.asyncAfter(deadline: deadline, execute: dispatch!)
+        DispatchQueue.main.asyncAfter(deadline: deadline) {
+            dispatch?.perform()
+            andRun()
+        }
     }
     
     static func set(
@@ -36,8 +40,11 @@ struct ActivationPolicyManager {
         }
     }
     
-    static func setToFallback(deadline: DispatchTime) {
-        set(fallback, deadline: deadline)
+    static func setToFallback(
+        deadline: DispatchTime,
+        andRun: @escaping () -> Void = {}
+    ) {
+        set(fallback, deadline: deadline, andRun: andRun)
     }
     
     static func setToFallback() {
@@ -46,18 +53,19 @@ struct ActivationPolicyManager {
     
     static func toggleBetweenFallback(
         _ activationPolicy: NSApplication.ActivationPolicy,
-        deadline: DispatchTime
+        deadline: DispatchTime,
+        andRun: @escaping () -> Void = {}
     ) -> Bool {
         guard activationPolicy != fallback else {
-            setToFallback(deadline: deadline)
+            setToFallback(deadline: deadline, andRun: andRun)
             return false
         }
         
         if NSApp.activationPolicy() == fallback {
-            set(activationPolicy, deadline: deadline)
+            set(activationPolicy, deadline: deadline, andRun: andRun)
             return true
         } else {
-            setToFallback(deadline: deadline)
+            setToFallback(deadline: deadline, andRun: andRun)
             return false
         }
     }

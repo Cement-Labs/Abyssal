@@ -32,7 +32,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(
         _ aNotification: Notification
     ) {
-        // Deactivate app after launched
+        // Set activation policy to `prohibited` after launched
         ActivationPolicyManager.set(.prohibited, asFallback: true)
         
         let controller = SettingsViewController()
@@ -137,6 +137,8 @@ extension AppDelegate {
         _ sender: Any?
     ) {
         if let button = statusBarController.head.button ?? sender as? NSButton {
+            // Position popover
+            
             let buttonRect = button.convert(button.bounds, to: nil)
             let screenRect = button.window!.convertToScreen(buttonRect)
             
@@ -161,14 +163,12 @@ extension AppDelegate {
                 preferredEdge: 	.maxY
             )
             
-            // Activate app
+            // Set to foreground activation policy
+            
             let overridesMenuBar = Defaults[.autoOverridesMenuBarEnabled]
             let activationPolicy: NSApplication.ActivationPolicy = overridesMenuBar ? .regular : .accessory
             
-            if overridesMenuBar {
-                Defaults[.menuBarOverride].setMenu()
-            }
-            
+            Defaults[.menuBarOverride].apply()
             ActivationPolicyManager.set(activationPolicy, asFallback: true)
             NSApp.activate()
             
@@ -187,11 +187,18 @@ extension AppDelegate {
             self.popover.close() // Force it to close, thus closing all nested popovers
         }
         
-        // Deactivate app
-        ActivationPolicyManager.set(.prohibited, asFallback: true, deadline: .now() + 0.2)
+        // Restore activation policy
+        
+        // 1. Set to `accessory` after closed to prevent the popover from not being able to open properly again
+        ActivationPolicyManager.set(.accessory, asFallback: true, deadline: .now() + 0.2) {
+            // 2. Set to `prohibited` asynchronously to order out
+            ActivationPolicyManager.set(.prohibited, asFallback: true, deadline: .now())
+        }
+        
+        // Stop functioning
         
         mouseEventMonitor?.stop()
         statusBarController.function()
-        AppDelegate.shared?.statusBarController.triggerIgnoring()
+        statusBarController.triggerIgnoring()
     }
 }

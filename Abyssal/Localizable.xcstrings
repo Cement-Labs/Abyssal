@@ -219,6 +219,12 @@
         }
       }
     },
+    "Application menu" : {
+
+    },
+    "Auto overrides menu bar" : {
+
+    },
     "Auto shows" : {
       "localizations" : {
         "zh-Hans" : {
@@ -291,6 +297,9 @@
           }
         }
       }
+    },
+    "Empty" : {
+
     },
     "Failed to fetch for latest version." : {
       "localizations" : {

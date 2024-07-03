@@ -64,6 +64,9 @@ extension StatusBarController {
         }
         
         KeyboardShortcuts.onKeyDown(for: .toggleFrontmost) {
+            // Apply application menu before everything to correctly handle application activation states
+            Defaults[.menuBarOverride].apply()
+            
             if ActivationPolicyManager.toggleBetweenFallback(.regular) {
                 // Overridden
                 NSApp.activate()
@@ -201,6 +204,7 @@ extension StatusBarController {
                     if focusedApp.intermediate?.processIdentifier == pid {
                         // From Abyssal, must be ending the overriden state or closing the popover
                         unidleHideArea()
+                        ActivationPolicyManager.set(.accessory, asFallback: true)
                     } else if focusedApp.value().processIdentifier == pid {
                         // To Abyssal
                     } else {

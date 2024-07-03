@@ -390,7 +390,7 @@ enum MenuBarOverride: CaseIterable, Codable, Defaults.Serializable {
         }
     }
     
-    func setMenu() {
-        ApplicationMenuManager.set(menu)
+    func apply() {
+        ApplicationMenuManager.apply(menu)
     }
 }

@@ -8,11 +8,7 @@
 import AppKit
 
 struct ApplicationMenuManager {
-    static func set(_ menu: NSMenu?) {
+    static func apply(_ menu: NSMenu?) {
         NSApp.mainMenu = menu
-        
-        // Do this
-        NSMenu.setMenuBarVisible(false)
-        NSMenu.setMenuBarVisible(true)
     }
 }
