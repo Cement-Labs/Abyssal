@@ -220,10 +220,24 @@
       }
     },
     "Application menu" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "菜单栏样式"
+          }
+        }
+      }
     },
     "Auto overrides menu bar" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自动覆盖菜单栏"
+          }
+        }
+      }
     },
     "Auto shows" : {
       "localizations" : {
@@ -265,9 +279,6 @@
         }
       }
     },
-    "Changes won't be made until this window is closed." : {
-
-    },
     "Click to check for updates." : {
       "localizations" : {
         "zh-Hans" : {
@@ -300,9 +311,6 @@
           }
         }
       }
-    },
-    "Empty" : {
-
     },
     "Failed to fetch for latest version." : {
       "localizations" : {
@@ -405,7 +413,14 @@
       }
     },
     "Instant" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "即刻"
+          }
+        }
+      }
     },
     "Launch **%@** right after macOS starts." : {
       "localizations" : {
@@ -477,6 +492,16 @@
         }
       }
     },
+    "Nothing" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无内容"
+          }
+        }
+      }
+    },
     "On Change" : {
       "localizations" : {
         "zh-Hans" : {
@@ -508,7 +533,14 @@
       }
     },
     "Quit" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "退出"
+          }
+        }
+      }
     },
     "Quit %@" : {
       "localizations" : {
@@ -910,24 +942,6 @@
         }
       }
     },
-    "Tip/SliderDeadZone" : {
-      "comment" : "(slider) dead zone",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "The ignored status bar width on screens without notches, in percentage.\nDue to the limitations of macOS, **Abyssal** can't infer the available width used for collapsing. Therefore, you may need to toggle it manually in order to acquire a better experience. On screens with notches, the ignored width is set to about 55% of the screen width."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "在无刘海的屏幕上忽略的状态栏长度，以百分比计算。\n因为macOS的限制，**Abyssal**无法判断可用状态栏区域的长度。因此，你可能需要手动调整它以获得最佳体验。在有刘海的屏幕上，此长度约为屏幕宽度的55%。"
-          }
-        }
-      }
-    },
     "Tips" : {
       "localizations" : {
         "zh-Hans" : {
@@ -948,8 +962,15 @@
         }
       }
     },
-    "Toggle frontmost" : {
-
+    "Toggle menu bar override" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "切换菜单栏覆盖"
+          }
+        }
+      }
     },
     "Use always hide area" : {
       "localizations" : {

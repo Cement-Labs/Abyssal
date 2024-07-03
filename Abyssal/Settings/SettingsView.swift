@@ -29,14 +29,13 @@ struct SettingsView: View {
                     ModifierSection()
                     
                     ShortcutsSection()
-                        .environment(\.hasTitle, false)
                     
                     AdvancedSection()
                 }
                 .padding(1)
                 .defaultScrollAnchor(.bottom)
             }
-            .frame(maxWidth: 395)
+            .frame(width: 400)
             
             VStack(spacing: 0) {
                 SettingsTrafficsView()
@@ -54,12 +53,11 @@ struct SettingsView: View {
                 .padding(1)
                 .padding(.top, -20)
             }
-            .frame(maxWidth: 445)
+            .frame(width: 450)
         }
         .controlSize(.regular)
         .formStyle(.grouped)
         .scrollDisabled(true)
-        .padding(.horizontal, -12) // Don't know why, but needed
     }
 }
 

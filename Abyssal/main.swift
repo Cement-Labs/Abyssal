@@ -21,6 +21,7 @@ let emptyMenu = NSMenu() // Without any siblings
 
 do {
     let appMenuMain = NSMenu(title: Bundle.main.appName)
+    
     appMenuMain.addItem(.init(
         title: .init(localized: "Quit"),
         action: #selector(delegate.quit(_:)), keyEquivalent: "q"

@@ -11,7 +11,7 @@ struct UnifiedVStack<Content>: View where Content: View {
     @ViewBuilder var content: () -> Content
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
+        VStack(alignment: .leading, spacing: 21) {
             content()
         }
     }

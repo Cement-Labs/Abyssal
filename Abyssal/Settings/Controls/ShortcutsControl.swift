@@ -22,7 +22,7 @@ struct ShortcutsControl: View {
             KeyboardShortcuts.Recorder(for: .toggleFrontmost) {
                 VStack {
                     Spacer()
-                    Text("Toggle frontmost")
+                    Text("Toggle menu bar override")
                     Spacer()
                 }
             }

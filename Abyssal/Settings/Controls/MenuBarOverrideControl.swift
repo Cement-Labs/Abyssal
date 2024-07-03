@@ -25,7 +25,7 @@ struct MenuBarOverrideControl: View {
                 case .app:
                     Text(Bundle.main.appName)
                 case .empty:
-                    Text("Empty")
+                    Text("Nothing")
                 }
             }
         }
