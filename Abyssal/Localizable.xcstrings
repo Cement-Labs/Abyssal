@@ -265,6 +265,9 @@
         }
       }
     },
+    "Changes won't be made until this window is closed." : {
+
+    },
     "Click to check for updates." : {
       "localizations" : {
         "zh-Hans" : {

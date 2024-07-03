@@ -13,7 +13,11 @@ struct MenuBarOverrideControl: View {
     @Default(.menuBarOverride) var menuBarOverride
     
     var body: some View {
-        Toggle("Auto overrides menu bar", isOn: $autoOverridesMenuBarEnabled)
+        Toggle(isOn: $autoOverridesMenuBarEnabled) {
+            HStack {
+                Text("Auto overrides menu bar")
+            }
+        }
         
         Picker("Application menu", selection: $menuBarOverride) {
             ForEach(MenuBarOverride.allCases, id: \.self) { override in

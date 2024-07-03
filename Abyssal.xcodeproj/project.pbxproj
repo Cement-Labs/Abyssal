@@ -65,6 +65,7 @@
 		28CB53A52C2B938300F32A71 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CB53A42C2B938300F32A71 /* AppManager.swift */; };
 		28E929252C30169400847A67 /* NSScreen+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E929242C30169400847A67 /* NSScreen+Extensions.swift */; };
 		28EDD9392C3153C100BA7171 /* WithIntermediateState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EDD9382C3153C100BA7171 /* WithIntermediateState.swift */; };
+		28F024A02C3581FC00F23617 /* PopoverHint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F0249F2C3581FC00F23617 /* PopoverHint.swift */; };
 		28F9913C2C30D805004C76ED /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 28F9913B2C30D805004C76ED /* KeyboardShortcuts */; };
 		28F9913E2C30D929004C76ED /* KeyboardShortcuts+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F9913D2C30D929004C76ED /* KeyboardShortcuts+Extensions.swift */; };
 		28F991402C30D9D2004C76ED /* ShortcutsControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F9913F2C30D9D2004C76ED /* ShortcutsControl.swift */; };
@@ -138,6 +139,7 @@
 		28CB53A42C2B938300F32A71 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		28E929242C30169400847A67 /* NSScreen+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSScreen+Extensions.swift"; sourceTree = "<group>"; };
 		28EDD9382C3153C100BA7171 /* WithIntermediateState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithIntermediateState.swift; sourceTree = "<group>"; };
+		28F0249F2C3581FC00F23617 /* PopoverHint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverHint.swift; sourceTree = "<group>"; };
 		28F9913D2C30D929004C76ED /* KeyboardShortcuts+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyboardShortcuts+Extensions.swift"; sourceTree = "<group>"; };
 		28F9913F2C30D9D2004C76ED /* ShortcutsControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsControl.swift; sourceTree = "<group>"; };
 		28F991412C30DE71004C76ED /* ShortcutsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsSection.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				28925BAD2C27F00C008FCC69 /* TipWrapper.swift */,
 				282CB71F2C283B7600AF381D /* EmptyFormWrapper.swift */,
 				282CB7212C2844B700AF381D /* UnifiedVStack.swift */,
+				28F0249F2C3581FC00F23617 /* PopoverHint.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 				2840D7112C267EE00087EE50 /* AdvancedSection.swift in Sources */,
 				28CAF5592C297809002BD78C /* TipTimeoutTitle.swift in Sources */,
 				2831B1602B7521890020DECD /* Defaults+Structures.swift in Sources */,
+				28F024A02C3581FC00F23617 /* PopoverHint.swift in Sources */,
 				28CAF5572C297768002BD78C /* TipFeedbackTitle.swift in Sources */,
 				28EDD9392C3153C100BA7171 /* WithIntermediateState.swift in Sources */,
 				28925BAE2C27F00C008FCC69 /* TipWrapper.swift in Sources */,

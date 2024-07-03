@@ -173,7 +173,9 @@ extension AppDelegate {
             NSApp.activate()
             
             DispatchQueue.main.async {
+                self.popover.contentViewController?.viewWillAppear()
                 self.popover.contentViewController?.view.window?.makeKeyAndOrderFront(nil)
+                self.popover.contentViewController?.viewDidAppear()
             }
         }
         
@@ -184,7 +186,9 @@ extension AppDelegate {
         _ sender: Any?
     ) {
         DispatchQueue.main.async {
+            self.popover.contentViewController?.viewWillDisappear()
             self.popover.close() // Force it to close, thus closing all nested popovers
+            self.popover.contentViewController?.viewDidDisappear()
         }
         
         // Restore activation policy
