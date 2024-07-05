@@ -22,4 +22,13 @@ struct VersionTests {
         #expect(component != nil)
         #expect(component == .number(42))
     }
+    
+    @Test func compareVersions() async throws {
+        let version1 = Version(from: "3.3.1")!
+        let version2 = Version(from: "4.0.0-alpha.1")!
+        let version3 = Version(from: "4.0.0")!
+        #expect(version1 < version2)
+        #expect(version1 < version3)
+        #expect(version2 < version3)
+    }
 }
