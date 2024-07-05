@@ -8,11 +8,38 @@
 import Foundation
 
 struct Version: Codable {
-    var components: [UInt]
+    enum Component: Codable {
+        case number(UInt)
+        case beta
+        case alpha
+        case patch
+        case blank
+        
+        var semantic: String {
+            switch self {
+            case .number(let uInt):
+                String(uInt)
+            case .beta:
+                "beta"
+            case .alpha:
+                "alpha"
+            case .patch:
+                "patch"
+            case .blank:
+                "blank"
+            }
+        }
+        
+        static var nonNumerics: [Self] {
+            [.beta, .alpha, .patch]
+        }
+    }
+    
+    var components: [Component]
     
     var string: String {
         components
-            .map { String($0) }
+            .map(\.semantic)
             .joined(separator: ".")
     }
     
@@ -28,13 +55,13 @@ struct Version: Codable {
         app < remote
     }
     
-    init(components: [UInt]) {
+    init(components: [Component]) {
         self.components = components
     }
     
     init?(from: String) {
-        let parts = from.replacing(/[^\d\.]/, with: "").split(separator: ".")
-        let components = parts.compactMap({ UInt($0) })
+        let parts = from.split(separator: /[\.-]/) // Split by `.` or `-`
+        let components = parts.compactMap({ Component(parsing: String($0)) })
         
         if components.isEmpty {
             return nil
@@ -44,24 +71,68 @@ struct Version: Codable {
     }
 }
 
-extension Version: Comparable {
-    func raisedSum(decimal: UInt) -> Double {
-        let count = components.count
-        var sum: Double = 0
-        
-        for (index, component) in self.components.enumerated() {
-            let power = count - index
-            sum += Double(component) * pow(10, Double(power))
-        }
-        
-        return sum
-    }
-    
-    static func <(lhs: Version, rhs: Version) -> Bool {
+extension Version.Component: Comparable {
+    static func <(lhs: Self, rhs: Self) -> Bool {
         guard lhs != rhs else { return false }
         
-        let count = UInt(max(lhs.components.count, rhs.components.count))
-        return lhs.raisedSum(decimal: count) < rhs.raisedSum(decimal: count)
+        return switch lhs {
+        case .number(let this):
+            switch rhs {
+            case .number(let other):
+                this < other
+            default: true
+            }
+        case .beta:
+            switch rhs {
+            case .number(_): false
+            default: true
+            }
+        case .alpha:
+            switch rhs {
+            case .number(_), .beta: false
+            default: true
+            }
+        case .patch:
+            switch rhs {
+            case .number(_), .beta, .alpha: false
+            default: true
+            }
+        case .blank: true
+        }
+    }
+}
+
+extension Version.Component {
+    init?(parsing: String) {
+        for nonNumeric in Self.nonNumerics {
+            if parsing.lowercased() == nonNumeric.semantic.lowercased() {
+                self = nonNumeric
+            }
+        }
+        
+        if let number = UInt(parsing) {
+            self = .number(number)
+        }
+        
+        return nil
+    }
+}
+
+extension Version: Comparable {
+    static func <(lhs: Self, rhs: Self) -> Bool {
+        guard lhs != rhs else { return false }
+        
+        let count = max(lhs.components.count, rhs.components.count)
+        for index in 0..<count {
+            let lhsComponent = index < lhs.components.count ? lhs.components[index] : .blank
+            let rhsComponent = index < rhs.components.count ? rhs.components[index] : .blank
+            
+            if lhsComponent < rhsComponent {
+                return true
+            }
+        }
+        
+        return false
     }
 }
 
