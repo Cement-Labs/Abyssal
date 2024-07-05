@@ -63,6 +63,7 @@
 		28CAF5572C297768002BD78C /* TipFeedbackTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CAF5562C297768002BD78C /* TipFeedbackTitle.swift */; };
 		28CAF5592C297809002BD78C /* TipTimeoutTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CAF5582C297809002BD78C /* TipTimeoutTitle.swift */; };
 		28CB53A52C2B938300F32A71 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CB53A42C2B938300F32A71 /* AppManager.swift */; };
+		28D46C3B2C381C9800EC6EAE /* VersionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D46C3A2C381C9800EC6EAE /* VersionTests.swift */; };
 		28E929252C30169400847A67 /* NSScreen+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E929242C30169400847A67 /* NSScreen+Extensions.swift */; };
 		28EDD9392C3153C100BA7171 /* WithIntermediateState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EDD9382C3153C100BA7171 /* WithIntermediateState.swift */; };
 		28F024A02C3581FC00F23617 /* PopoverHint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F0249F2C3581FC00F23617 /* PopoverHint.swift */; };
@@ -83,6 +84,16 @@
 		C6DEC53D2A3A0E8900943448 /* StatusBarController+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DEC53C2A3A0E8900943448 /* StatusBarController+Animations.swift */; };
 		C6E2C0302A3EE9F1007D4E1B /* StatusBarController+StateManagers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E2C02F2A3EE9F1007D4E1B /* StatusBarController+StateManagers.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		28D46C3C2C381DC700EC6EAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C66CAB982A38871500E4D8E6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C66CAB9F2A38871500E4D8E6;
+			remoteInfo = Abyssal;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2822C58F2BDC7748009C71DA /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
@@ -137,6 +148,8 @@
 		28CAF5562C297768002BD78C /* TipFeedbackTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipFeedbackTitle.swift; sourceTree = "<group>"; };
 		28CAF5582C297809002BD78C /* TipTimeoutTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipTimeoutTitle.swift; sourceTree = "<group>"; };
 		28CB53A42C2B938300F32A71 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
+		28D46C332C381BB100EC6EAE /* AbyssalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AbyssalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		28D46C3A2C381C9800EC6EAE /* VersionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionTests.swift; sourceTree = "<group>"; };
 		28E929242C30169400847A67 /* NSScreen+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSScreen+Extensions.swift"; sourceTree = "<group>"; };
 		28EDD9382C3153C100BA7171 /* WithIntermediateState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithIntermediateState.swift; sourceTree = "<group>"; };
 		28F0249F2C3581FC00F23617 /* PopoverHint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverHint.swift; sourceTree = "<group>"; };
@@ -160,6 +173,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		28D46C302C381BB100EC6EAE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C66CAB9D2A38871500E4D8E6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -313,11 +333,28 @@
 			path = AppKit;
 			sourceTree = "<group>";
 		};
+		28D46C2A2C381A8600EC6EAE /* Miscellaneous */ = {
+			isa = PBXGroup;
+			children = (
+				28D46C3A2C381C9800EC6EAE /* VersionTests.swift */,
+			);
+			path = Miscellaneous;
+			sourceTree = "<group>";
+		};
+		28D46C342C381BB100EC6EAE /* AbyssalTests */ = {
+			isa = PBXGroup;
+			children = (
+				28D46C2A2C381A8600EC6EAE /* Miscellaneous */,
+			);
+			path = AbyssalTests;
+			sourceTree = "<group>";
+		};
 		C66CAB972A38871500E4D8E6 = {
 			isa = PBXGroup;
 			children = (
 				C66CABAC2A38871500E4D8E6 /* Abyssal.entitlements */,
 				C66CABA22A38871500E4D8E6 /* Abyssal */,
+				28D46C342C381BB100EC6EAE /* AbyssalTests */,
 				C66CABA12A38871500E4D8E6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -326,6 +363,7 @@
 			isa = PBXGroup;
 			children = (
 				C66CABA02A38871500E4D8E6 /* Abyssal.app */,
+				28D46C332C381BB100EC6EAE /* AbyssalTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -392,6 +430,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		28D46C322C381BB100EC6EAE /* AbyssalTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 28D46C372C381BB100EC6EAE /* Build configuration list for PBXNativeTarget "AbyssalTests" */;
+			buildPhases = (
+				28D46C2F2C381BB100EC6EAE /* Sources */,
+				28D46C302C381BB100EC6EAE /* Frameworks */,
+				28D46C312C381BB100EC6EAE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				28D46C3D2C381DC700EC6EAE /* PBXTargetDependency */,
+			);
+			name = AbyssalTests;
+			productName = AbyssalTests;
+			productReference = 28D46C332C381BB100EC6EAE /* AbyssalTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		C66CAB9F2A38871500E4D8E6 /* Abyssal */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C66CABAF2A38871500E4D8E6 /* Build configuration list for PBXNativeTarget "Abyssal" */;
@@ -423,9 +479,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1500;
+				LastSwiftUpdateCheck = 1600;
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
+					28D46C322C381BB100EC6EAE = {
+						CreatedOnToolsVersion = 16.0;
+						LastSwiftMigration = 1600;
+						TestTargetID = C66CAB9F2A38871500E4D8E6;
+					};
 					C66CAB9F2A38871500E4D8E6 = {
 						CreatedOnToolsVersion = 15.0;
 					};
@@ -453,11 +514,19 @@
 			projectRoot = "";
 			targets = (
 				C66CAB9F2A38871500E4D8E6 /* Abyssal */,
+				28D46C322C381BB100EC6EAE /* AbyssalTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		28D46C312C381BB100EC6EAE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C66CAB9E2A38871500E4D8E6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -470,6 +539,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		28D46C2F2C381BB100EC6EAE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28D46C3B2C381C9800EC6EAE /* VersionTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C66CAB9C2A38871500E4D8E6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -547,7 +624,67 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		28D46C3D2C381DC700EC6EAE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C66CAB9F2A38871500E4D8E6 /* Abyssal */;
+			targetProxy = 28D46C3C2C381DC700EC6EAE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		28D46C382C381BB100EC6EAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7XRF3J9RS4;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = studio.nnn.AbyssalTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Abyssal.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Abyssal";
+			};
+			name = Debug;
+		};
+		28D46C392C381BB100EC6EAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7XRF3J9RS4;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = studio.nnn.AbyssalTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Abyssal.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Abyssal";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		C66CABAD2A38871500E4D8E6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -741,6 +878,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		28D46C372C381BB100EC6EAE /* Build configuration list for PBXNativeTarget "AbyssalTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28D46C382C381BB100EC6EAE /* Debug */,
+				28D46C392C381BB100EC6EAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C66CAB9B2A38871500E4D8E6 /* Build configuration list for PBXProject "Abyssal" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

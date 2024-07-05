@@ -60,7 +60,9 @@ struct Version: Codable {
     }
     
     init?(from: String) {
-        let parts = from.split(separator: /[\.-]/) // Split by `.` or `-`
+        let parts = from
+            .replacing(/\s/, with: "")
+            .split(separator: /[\.-]/) // Split by `.` or `-`
         let components = parts.compactMap({ Component(parsing: String($0)) })
         
         if components.isEmpty {
@@ -107,11 +109,13 @@ extension Version.Component {
         for nonNumeric in Self.nonNumerics {
             if parsing.lowercased() == nonNumeric.semantic.lowercased() {
                 self = nonNumeric
+                return
             }
         }
         
         if let number = UInt(parsing) {
             self = .number(number)
+            return
         }
         
         return nil
