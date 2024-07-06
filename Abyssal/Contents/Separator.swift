@@ -68,8 +68,18 @@ struct Separator {
         }
     }
     
+    private var _targetLength = CGFloat.zero
+    
     var targetAlpha = CGFloat.zero
-    var targetLength = CGFloat.zero
+    var targetLength: CGFloat {
+        get {
+            _targetLength
+        }
+        
+        set {
+            _targetLength = min(newValue, 10000)
+        }
+    }
     
     var wasUnstable = false
     var wasActive = false

@@ -146,7 +146,8 @@ extension AppDelegate {
                 contentRect: NSMakeRect(0, 0, 1, 5),
                 styleMask: [.borderless],
                 backing: .buffered,
-                defer: false
+                defer: false,
+                screen: .main
             )
             invisiblePanel.isFloatingPanel = true
             invisiblePanel.alphaValue = 0
