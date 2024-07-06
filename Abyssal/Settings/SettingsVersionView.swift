@@ -25,8 +25,10 @@ An update is available. Click to access the download page.
     
     @State private var versionModel = VersionModel.shared
     
+    @Environment(\.openURL) private var openUrl
+    
     var body: some View {
-        TipWrapper(tip: updateTip) { tip in
+        TipWrapper(alwaysVisible: true, tip: updateTip) { tip in
             HStack {
                 if versionModel.fetchState == .fetching {
                     ProgressView()
@@ -36,10 +38,13 @@ An update is available. Click to access the download page.
                 Button {
                     if versionModel.hasUpdate {
                         // Access the download page
-                        
+                        openUrl(.release)
                     } else {
                         versionModel.fetchLatest()
                     }
+                    
+                    tip.hide()
+                    tip.show(nil)
                 } label: {
                     if versionModel.fetchState == .failed {
                         Image(systemSymbol: .exclamationmarkCircleFill)
