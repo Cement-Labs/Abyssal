@@ -86,8 +86,11 @@ struct Separator {
 }
 
 extension Separator {
-    mutating func lerpAlpha() -> Bool {
-        if let alpha {
+    mutating func lerpAlpha(noAnimation: Bool = false) -> Bool {
+        if noAnimation || Defaults[.reduceAnimationEnabled] {
+            alpha = targetAlpha
+            return true
+        } else if let alpha {
             self.alpha = MathHelper.lerp(
                 a: alpha,
                 b: targetAlpha,
@@ -101,7 +104,7 @@ extension Separator {
         }
     }
     
-    mutating func lerpLength(noAnimation: Bool) -> Bool {
+    mutating func lerpLength(noAnimation: Bool = false) -> Bool {
         if noAnimation || Defaults[.reduceAnimationEnabled] {
             length = targetLength
             return true

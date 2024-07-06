@@ -27,6 +27,7 @@ struct DeadZoneControl: View {
             } label: {
                 HStack(alignment: .firstTextBaseline) {
                     Text("Dead zone")
+                        .opacity(screenSettings.main.respectNotch ? 0.45 : 1)
                     
                     Spacer()
                     
@@ -53,14 +54,16 @@ struct DeadZoneControl: View {
             }
             
             EmptyFormWrapper {
-                TipWrapper(alwaysVisible: true, value: $screenSettings.main.deadZone, tip: tip) { tip in
+                TipWrapper(tip: tip, alwaysVisible: true, value: $screenSettings.main.deadZone) { tip in
                     Slider(value: $screenSettings.main.deadZone.value, in: screenSettings.main.deadZone.range) {
                         EmptyView()
                     }
                 }
             }
         }
+        .disabled(screenSettings.main.respectNotch)
         .animation(.smooth, value: screenSettings.main.deadZone)
+        .animation(.smooth, value: screenSettings.main.respectNotch)
     }
     
     private let tip = Tip(preferredEdge: .minY) {

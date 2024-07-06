@@ -25,7 +25,7 @@ struct TimeoutControl: View {
                     timeout = Timeout.allCases[Int(index)]
                 }
                 
-                TipWrapper(alwaysVisible: true, value: $timeout, tip: tip) { tip in
+                TipWrapper(tip: tip, alwaysVisible: true, value: $timeout) { tip in
                     Slider(value: binding, in: 0...Double(maxIndex), step: 1)
                 }
             }

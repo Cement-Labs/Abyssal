@@ -28,7 +28,7 @@ An update is available. Click to access the download page.
     @Environment(\.openURL) private var openUrl
     
     var body: some View {
-        TipWrapper(alwaysVisible: true, tip: updateTip) { tip in
+        TipWrapper(tip: updateTip, alwaysVisible: true, value: $versionModel.fetchState) { tip in
             HStack {
                 if versionModel.fetchState == .fetching {
                     ProgressView()
@@ -67,10 +67,6 @@ An update is available. Click to access the download page.
                                  : AnyShapeStyle(.placeholder)
                 )
                 .disabled(!versionModel.fetchState.idle)
-                
-                .onChange(of: versionModel.fetchState) { _, _ in
-                    tip.update()
-                }
                 
 #if DEBUG
                 Button("Debug Fetch State") {

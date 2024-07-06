@@ -231,17 +231,10 @@
 		284E2FF62C2FB17F00BB582C /* Controls */ = {
 			isa = PBXGroup;
 			children = (
-				284E2FF72C2FB1A200BB582C /* ActiveStrategyControl.swift */,
-				284E2FF92C2FB20600BB582C /* StartsWithMacOSControl.swift */,
-				284E2FFB2C2FB2BC00BB582C /* TimeoutControl.swift */,
-				284E2FFD2C2FB32F00BB582C /* ThemeControl.swift */,
-				284E2FFF2C2FB3AC00BB582C /* FeedbackControl.swift */,
-				284E30012C2FB42400BB582C /* AutoShowsControl.swift */,
-				284E30032C2FB45700BB582C /* AlwaysHideAreaControl.swift */,
-				284E30052C2FB48E00BB582C /* DeadZoneControl.swift */,
-				284D6CB02C3044CF00DBEBE3 /* RespectNotchControl.swift */,
+				28A23C5C2C38DDE90081ED12 /* Toggles */,
+				28A23C5B2C38DDCA0081ED12 /* Popovers */,
+				28A23C5A2C38DDC00081ED12 /* Sliders */,
 				28F9913F2C30D9D2004C76ED /* ShortcutsControl.swift */,
-				28AF26292C3565F8009D685B /* MenuBarOverrideControl.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -267,6 +260,37 @@
 				287B85D12C29A6A0001FD729 /* VersionModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		28A23C5A2C38DDC00081ED12 /* Sliders */ = {
+			isa = PBXGroup;
+			children = (
+				284E2FFB2C2FB2BC00BB582C /* TimeoutControl.swift */,
+				284E2FFF2C2FB3AC00BB582C /* FeedbackControl.swift */,
+				284E30052C2FB48E00BB582C /* DeadZoneControl.swift */,
+			);
+			path = Sliders;
+			sourceTree = "<group>";
+		};
+		28A23C5B2C38DDCA0081ED12 /* Popovers */ = {
+			isa = PBXGroup;
+			children = (
+				284E2FF72C2FB1A200BB582C /* ActiveStrategyControl.swift */,
+				284E2FFD2C2FB32F00BB582C /* ThemeControl.swift */,
+				28AF26292C3565F8009D685B /* MenuBarOverrideControl.swift */,
+			);
+			path = Popovers;
+			sourceTree = "<group>";
+		};
+		28A23C5C2C38DDE90081ED12 /* Toggles */ = {
+			isa = PBXGroup;
+			children = (
+				284E2FF92C2FB20600BB582C /* StartsWithMacOSControl.swift */,
+				284E30012C2FB42400BB582C /* AutoShowsControl.swift */,
+				284E30032C2FB45700BB582C /* AlwaysHideAreaControl.swift */,
+				284D6CB02C3044CF00DBEBE3 /* RespectNotchControl.swift */,
+			);
+			path = Toggles;
 			sourceTree = "<group>";
 		};
 		28C90F672C26CC4D000AC2E3 /* Sections */ = {
@@ -841,7 +865,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = "4.0.0-alpha.1";
+				MARKETING_VERSION = "4.0.0-alpha.2";
 				PRODUCT_BUNDLE_IDENTIFIER = labs.cement.Abyssal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -875,7 +899,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = "4.0.0-alpha.1";
+				MARKETING_VERSION = "4.0.0-alpha.2";
 				PRODUCT_BUNDLE_IDENTIFIER = labs.cement.Abyssal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

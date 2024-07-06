@@ -15,31 +15,31 @@ where Content: View, Title: View, Value: Equatable {
     
     @Default(.tipsEnabled) private var tipsEnabled
     
+    var tip: Tip
     var alwaysVisible: Bool = false
     @Binding var value: Value
-    var tip: Tip
     @ViewBuilder var content: (Tip) -> Content
     
     @State private var isHovering: Bool = false
     
     init(
+        tip: Tip,
         alwaysVisible: Bool = false,
         value: Binding<Value>,
-        tip: Tip,
         @ViewBuilder content: @escaping (Tip) -> Content
     ) {
+        self.tip = tip
         self.alwaysVisible = alwaysVisible
         self._value = value
-        self.tip = tip
         self.content = content
     }
     
     init(
-        alwaysVisible: Bool = false,
         tip: Tip,
+        alwaysVisible: Bool = false,
         @ViewBuilder content: @escaping (Tip) -> Content
     ) where Value == Bool {
-        self.init(alwaysVisible: alwaysVisible, value: .constant(false), tip: tip, content: content)
+        self.init(tip: tip, alwaysVisible: alwaysVisible, value: .constant(false), content: content)
     }
     
     var body: some View {

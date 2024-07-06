@@ -25,9 +25,14 @@ struct FeedbackControl: View {
                     feedback = Feedback.allCases[Int(index)]
                 }
                 
-                TipWrapper(alwaysVisible: true, value: $feedback, tip: tip) { tip in
+                TipWrapper(tip: tip, alwaysVisible: true, value: $feedback) { tip in
                     Slider(value: binding, in: 0...Double(maxIndex), step: 1) {
                         EmptyView()
+                    }
+                }
+                .onChange(of: feedback) { _, _ in
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                        AppDelegate.shared?.statusBarController.startFeedbackTimer()
                     }
                 }
             }
