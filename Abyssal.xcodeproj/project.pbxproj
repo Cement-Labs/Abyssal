@@ -251,15 +251,22 @@
 			children = (
 				284630122C27A5B500A44198 /* ActivationPolicyManager.swift */,
 				287B85CA2C29A606001FD729 /* ScreenManager.swift */,
-				287B85CC2C29A643001FD729 /* KeyboardManager.swift */,
-				287B85CE2C29A676001FD729 /* MouseManager.swift */,
-				287B85D12C29A6A0001FD729 /* VersionManager.swift */,
 				287B85D42C29A707001FD729 /* MathHelper.swift */,
 				28CB53A42C2B938300F32A71 /* AppManager.swift */,
 				28F991452C30F872004C76ED /* ExternalMenuBarManager.swift */,
 				28577D412C3441B200C1397D /* ApplicationMenuManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		28A23C592C38C8160081ED12 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				287B85CC2C29A643001FD729 /* KeyboardManager.swift */,
+				287B85CE2C29A676001FD729 /* MouseManager.swift */,
+				287B85D12C29A6A0001FD729 /* VersionManager.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		28C90F672C26CC4D000AC2E3 /* Sections */ = {
@@ -377,6 +384,7 @@
 				C6DEC5392A3A0B2300943448 /* Menu Bar */,
 				C6DEC5372A3A05E200943448 /* Contents */,
 				287B85D02C29A689001FD729 /* Managers */,
+				28A23C592C38C8160081ED12 /* Models */,
 				28CB53A22C2B930C00F32A71 /* Miscellaneous */,
 				C6DEC52D2A39C83100943448 /* Extensions */,
 				C66CABA72A38871500E4D8E6 /* Assets.xcassets */,

@@ -186,7 +186,7 @@ struct VersionManager {
                     
                     if let remote = tags.first, remote > .app {
                         VersionManager.remoteVersion = remote
-                        print("Fetched latest version: \(remote)")
+                        print("Fetched latest version: \(remote.string)")
                     } else {
                         print("No newer version available.")
                     }

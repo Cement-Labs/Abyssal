@@ -21,13 +21,15 @@ An update is available. Click to access the download page.
         case .failed:
             String(localized: "Failed to fetch for latest version.")
         }
-        
     }
+    
+    @State var hasUpdate: Bool = false
+    @State var fetchState: VersionManager.FetchState = .initialized
     
     var body: some View {
         TipWrapper(tip: updateTip) { tip in
             HStack {
-                if VersionManager.fetchState == .fetching {
+                if fetchState == .fetching {
                     ProgressView()
                         .controlSize(.small)
                 }
@@ -35,28 +37,35 @@ An update is available. Click to access the download page.
                 Button {
                     VersionManager.fetchLatest()
                 } label: {
-                    if VersionManager.fetchState == .failed {
+                    if fetchState == .failed {
                         Image(systemSymbol: .exclamationmarkCircleFill)
-                    } else if Version.hasUpdate {
+                    } else if hasUpdate {
                         Image(systemSymbol: .shiftFill)
                     }
                     
-                    let version = Version.hasUpdate
-                    ? Text("\(Version.app.string) \(Image(systemSymbol: .arrowRight)) \(Version.remote.string)")
-                    : Text(Version.app.string)
+                    let version = hasUpdate
+                    ? Text("\(Bundle.main.appVersion) \(Image(systemSymbol: .arrowRight)) \(Version.remote.string)")
+                    : Text(Bundle.main.appVersion)
                     
                     Text("Version \(version.monospaced())")
                         .foregroundStyle(.secondary)
                 }
                 .buttonStyle(.plain)
-                .foregroundStyle(VersionManager.fetchState == .failed
+                .foregroundStyle(fetchState == .failed
                                  ? AnyShapeStyle(.red)
-                                 : Version.hasUpdate
+                                 : hasUpdate
                                  ? AnyShapeStyle(.tint)
                                  : AnyShapeStyle(.placeholder)
                 )
-                .disabled(!VersionManager.fetchState.idle)
-                .onChange(of: VersionManager.fetchState) { _, _ in
+                .disabled(!fetchState.idle)
+                
+                .onChange(of: Version.hasUpdate, initial: true) { _, hasUpdate in
+                    self.hasUpdate = hasUpdate
+                }
+                .onChange(of: VersionManager.fetchState, initial: true) { _, fetchState in
+                    self.fetchState = fetchState
+                }
+                .onChange(of: fetchState) { _, _ in
                     tip.update()
                 }
                 
