@@ -1,5 +1,5 @@
 //
-//  MouseManager.swift
+//  MouseModel.swift
 //  Abyssal
 //
 //  Created by KrLite on 2024/6/24.
@@ -7,20 +7,23 @@
 
 import AppKit
 
-struct MouseManager {
-    static var none: Bool {
+@Observable
+class MouseModel {
+    static var shared = MouseModel()
+    
+    var none: Bool {
         NSEvent.pressedMouseButtons == 0;
     }
     
-    static var left: Bool {
+    var left: Bool {
         NSEvent.pressedMouseButtons & 0x1 == 1
     }
     
-    static var dragging: Bool {
-        KeyboardManager.command && left
+    var dragging: Bool {
+        KeyboardModel.shared.command && left
     }
     
-    static func inside(
+    func inside(
         _ rect: NSRect?
     ) -> Bool {
         rect?.contains(NSEvent.mouseLocation) ?? false

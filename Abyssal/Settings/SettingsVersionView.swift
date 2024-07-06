@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SettingsVersionView: View {
     private let updateTip = Tip(permanent: true) {
-        switch VersionManager.fetchState {
+        switch VersionModel.shared.fetchState {
         case .initialized, .finished:
             Version.hasUpdate
             ? String(localized: """
@@ -23,55 +23,48 @@ An update is available. Click to access the download page.
         }
     }
     
-    @State var hasUpdate: Bool = false
-    @State var fetchState: VersionManager.FetchState = .initialized
+    @State private var versionModel = VersionModel.shared
     
     var body: some View {
         TipWrapper(tip: updateTip) { tip in
             HStack {
-                if fetchState == .fetching {
+                if versionModel.fetchState == .fetching {
                     ProgressView()
                         .controlSize(.small)
                 }
                 
                 Button {
-                    VersionManager.fetchLatest()
+                    versionModel.fetchLatest()
                 } label: {
-                    if fetchState == .failed {
+                    if versionModel.fetchState == .failed {
                         Image(systemSymbol: .exclamationmarkCircleFill)
-                    } else if hasUpdate {
+                    } else if versionModel.hasUpdate {
                         Image(systemSymbol: .shiftFill)
                     }
                     
-                    let version = hasUpdate
-                    ? Text("\(Bundle.main.appVersion) \(Image(systemSymbol: .arrowRight)) \(Version.remote.string)")
+                    let version = versionModel.hasUpdate
+                    ? Text("\(Bundle.main.appVersion) \(Image(systemSymbol: .arrowRight)) \(versionModel.remote.string)")
                     : Text(Bundle.main.appVersion)
                     
                     Text("Version \(version.monospaced())")
                         .foregroundStyle(.secondary)
                 }
                 .buttonStyle(.plain)
-                .foregroundStyle(fetchState == .failed
+                .foregroundStyle(versionModel.fetchState == .failed
                                  ? AnyShapeStyle(.red)
-                                 : hasUpdate
+                                 : versionModel.hasUpdate
                                  ? AnyShapeStyle(.tint)
                                  : AnyShapeStyle(.placeholder)
                 )
-                .disabled(!fetchState.idle)
+                .disabled(!versionModel.fetchState.idle)
                 
-                .onChange(of: Version.hasUpdate, initial: true) { _, hasUpdate in
-                    self.hasUpdate = hasUpdate
-                }
-                .onChange(of: VersionManager.fetchState, initial: true) { _, fetchState in
-                    self.fetchState = fetchState
-                }
-                .onChange(of: fetchState) { _, _ in
+                .onChange(of: versionModel.fetchState) { _, _ in
                     tip.update()
                 }
                 
 #if DEBUG
                 Button("Debug Fetch State") {
-                    VersionManager.fetchState = switch VersionManager.fetchState {
+                    versionModel.fetchState = switch versionModel.fetchState {
                     case .initialized: .fetching
                     case .fetching: .finished
                     case .finished: .failed

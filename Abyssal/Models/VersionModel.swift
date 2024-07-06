@@ -1,5 +1,5 @@
 //
-//  VersionManager.swift
+//  VersionModel.swift
 //  Abyssal
 //
 //  Created by KrLite on 2024/6/24.
@@ -48,7 +48,7 @@ struct Version: Codable {
         .init(from: Bundle.main.appVersion) ?? .empty
     }
     static var remote: Version {
-        VersionManager.remoteVersion
+        VersionModel.shared.fetchedRemoteVersion
     }
     
     static var hasUpdate: Bool {
@@ -140,7 +140,10 @@ extension Version: Comparable {
     }
 }
 
-struct VersionManager {
+@Observable
+class VersionModel {
+    static var shared = VersionModel()
+    
     enum FetchState {
         case initialized // Before first fetch
         case fetching
@@ -157,13 +160,29 @@ struct VersionManager {
         }
     }
     
-    fileprivate static var remoteVersion: Version = .app
+    fileprivate var fetchedRemoteVersion: Version = .app
     
-    private static var task: URLSessionTask?
+    private var task: URLSessionTask?
     
-    static var fetchState: FetchState = .initialized
+    var fetchState: FetchState = .initialized
     
-    static func fetchLatest() {
+    var empty: Version {
+        .empty
+    }
+    
+    var app: Version {
+        .app
+    }
+    
+    var remote: Version {
+        fetchedRemoteVersion
+    }
+    
+    var hasUpdate: Bool {
+        Version.hasUpdate
+    }
+    
+    func fetchLatest() {
         task?.cancel()
         
         print("Started fetching latest version...")
@@ -171,7 +190,7 @@ struct VersionManager {
         
         task = URLSession.shared.dataTask(with: .releaseTags) { (data, response, error) in
             guard let data else { 
-                fetchState = .failed
+                self.fetchState = .failed
                 return
             }
             
@@ -185,16 +204,16 @@ struct VersionManager {
                         .sorted(by: >)
                     
                     if let remote = tags.first, remote > .app {
-                        VersionManager.remoteVersion = remote
+                        self.fetchedRemoteVersion = remote
                         print("Fetched latest version: \(remote.string)")
                     } else {
                         print("No newer version available.")
                     }
                     
-                    fetchState = .finished
+                    self.fetchState = .finished
                 }
             } catch {
-                fetchState = .failed
+                self.fetchState = .failed
                 print(error.localizedDescription)
             }
         }

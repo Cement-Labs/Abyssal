@@ -47,9 +47,9 @@
 		28743ED72C28F09500366A69 /* FunctionsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28743ED62C28F09500366A69 /* FunctionsSection.swift */; };
 		28743ED92C28F0F900366A69 /* BehaviorsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28743ED82C28F0F900366A69 /* BehaviorsSection.swift */; };
 		287B85CB2C29A606001FD729 /* ScreenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287B85CA2C29A606001FD729 /* ScreenManager.swift */; };
-		287B85CD2C29A643001FD729 /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287B85CC2C29A643001FD729 /* KeyboardManager.swift */; };
-		287B85CF2C29A676001FD729 /* MouseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287B85CE2C29A676001FD729 /* MouseManager.swift */; };
-		287B85D22C29A6A0001FD729 /* VersionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287B85D12C29A6A0001FD729 /* VersionManager.swift */; };
+		287B85CD2C29A643001FD729 /* KeyboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287B85CC2C29A643001FD729 /* KeyboardModel.swift */; };
+		287B85CF2C29A676001FD729 /* MouseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287B85CE2C29A676001FD729 /* MouseModel.swift */; };
+		287B85D22C29A6A0001FD729 /* VersionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287B85D12C29A6A0001FD729 /* VersionModel.swift */; };
 		287B85D52C29A707001FD729 /* MathHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287B85D42C29A707001FD729 /* MathHelper.swift */; };
 		287B85D92C29A888001FD729 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287B85D82C29A888001FD729 /* URL+Extensions.swift */; };
 		287EADA52C27B48F00D64BED /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = 287EADA42C27B48F00D64BED /* SwiftUIIntrospect */; };
@@ -133,9 +133,9 @@
 		28743ED62C28F09500366A69 /* FunctionsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionsSection.swift; sourceTree = "<group>"; };
 		28743ED82C28F0F900366A69 /* BehaviorsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BehaviorsSection.swift; sourceTree = "<group>"; };
 		287B85CA2C29A606001FD729 /* ScreenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenManager.swift; sourceTree = "<group>"; };
-		287B85CC2C29A643001FD729 /* KeyboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
-		287B85CE2C29A676001FD729 /* MouseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseManager.swift; sourceTree = "<group>"; };
-		287B85D12C29A6A0001FD729 /* VersionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionManager.swift; sourceTree = "<group>"; };
+		287B85CC2C29A643001FD729 /* KeyboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardModel.swift; sourceTree = "<group>"; };
+		287B85CE2C29A676001FD729 /* MouseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseModel.swift; sourceTree = "<group>"; };
+		287B85D12C29A6A0001FD729 /* VersionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionModel.swift; sourceTree = "<group>"; };
 		287B85D42C29A707001FD729 /* MathHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathHelper.swift; sourceTree = "<group>"; };
 		287B85D82C29A888001FD729 /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 		28925BAD2C27F00C008FCC69 /* TipWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipWrapper.swift; sourceTree = "<group>"; };
@@ -262,9 +262,9 @@
 		28A23C592C38C8160081ED12 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				287B85CC2C29A643001FD729 /* KeyboardManager.swift */,
-				287B85CE2C29A676001FD729 /* MouseManager.swift */,
-				287B85D12C29A6A0001FD729 /* VersionManager.swift */,
+				287B85CC2C29A643001FD729 /* KeyboardModel.swift */,
+				287B85CE2C29A676001FD729 /* MouseModel.swift */,
+				287B85D12C29A6A0001FD729 /* VersionModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -603,7 +603,7 @@
 				28F9913E2C30D929004C76ED /* KeyboardShortcuts+Extensions.swift in Sources */,
 				C6CDD0622A3F2F9000ED97F0 /* Theme.swift in Sources */,
 				284E2FE72C2F9B9100BB582C /* Formattable.swift in Sources */,
-				287B85CF2C29A676001FD729 /* MouseManager.swift in Sources */,
+				287B85CF2C29A676001FD729 /* MouseModel.swift in Sources */,
 				284E30042C2FB45700BB582C /* AlwaysHideAreaControl.swift in Sources */,
 				28F991422C30DE71004C76ED /* ShortcutsSection.swift in Sources */,
 				28AF262A2C3565F8009D685B /* MenuBarOverrideControl.swift in Sources */,
@@ -611,12 +611,12 @@
 				2831B15E2B751B990020DECD /* Defaults+Extensions.swift in Sources */,
 				287B85D52C29A707001FD729 /* MathHelper.swift in Sources */,
 				28F991402C30D9D2004C76ED /* ShortcutsControl.swift in Sources */,
-				287B85CD2C29A643001FD729 /* KeyboardManager.swift in Sources */,
+				287B85CD2C29A643001FD729 /* KeyboardModel.swift in Sources */,
 				284E30062C2FB48E00BB582C /* DeadZoneControl.swift in Sources */,
 				2822C5902BDC7748009C71DA /* Icon.swift in Sources */,
 				287B85CB2C29A606001FD729 /* ScreenManager.swift in Sources */,
 				284E30002C2FB3AC00BB582C /* FeedbackControl.swift in Sources */,
-				287B85D22C29A6A0001FD729 /* VersionManager.swift in Sources */,
+				287B85D22C29A6A0001FD729 /* VersionModel.swift in Sources */,
 				2840D70F2C267ECB0087EE50 /* ModifierSection.swift in Sources */,
 				2852BDE92AD97A0E00AA8AD1 /* NSSlider+Extension.swift in Sources */,
 				284E2FE52C2F9A5C00BB582C /* UnitFormat.swift in Sources */,
