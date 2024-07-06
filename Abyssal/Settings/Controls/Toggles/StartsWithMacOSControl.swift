@@ -11,7 +11,9 @@ import LaunchAtLogin
 struct StartsWithMacOSControl: View {
     var body: some View {
         TipWrapper(tip: tip) { tip in
-            LaunchAtLogin.Toggle("Starts with macOS")
+            LaunchAtLogin.Toggle {
+                Text("Starts with macOS")
+            }
         }
     }
     

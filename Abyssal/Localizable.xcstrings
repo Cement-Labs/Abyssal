@@ -622,6 +622,16 @@
         }
       }
     },
+    "Starts with macOS" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "随macOS启动"
+          }
+        }
+      }
+    },
     "The intensity of feedback given when triggering actions such as _enabling **Auto Shows**_ or _canceling **Auto Idling.**_" : {
       "localizations" : {
         "zh-Hans" : {
