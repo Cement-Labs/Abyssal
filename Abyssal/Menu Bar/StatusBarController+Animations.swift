@@ -325,7 +325,7 @@ extension StatusBarController {
             head.targetAlpha = icons().head.opacity
             body.targetAlpha = icons().body.opacity
             tail.targetAlpha = icons().tail.opacity
-        } else if KeyboardManager.triggers {
+        } else if KeyboardModel.shared.triggers {
             head.button?.image = Defaults[.theme].headInactive.image
             head.targetAlpha = icons().head.opacity
             body.targetAlpha = triggers.body ? icons().body.opacity : 0

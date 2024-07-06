@@ -15,6 +15,13 @@ struct Version: Codable {
         case patch
         case blank
         
+        var nonNumeric: Bool {
+            switch self {
+            case .number(_), .blank: false
+            case .beta, .alpha, .patch: true
+            }
+        }
+        
         var semantic: String {
             switch self {
             case .number(let uInt):
@@ -26,12 +33,12 @@ struct Version: Codable {
             case .patch:
                 "patch"
             case .blank:
-                "blank"
+                "<blank>"
             }
         }
         
-        static var nonNumerics: [Self] {
-            [.beta, .alpha, .patch]
+        var separator: String {
+            nonNumeric ? "-" : "."
         }
     }
     
@@ -39,8 +46,13 @@ struct Version: Codable {
     
     var string: String {
         components
-            .map(\.semantic)
-            .joined(separator: ".")
+            .reduce("") { result, component in
+                if result.isEmpty {
+                    component.semantic
+                } else {
+                    result + component.separator + component.semantic
+                }
+            }
     }
     
     static var empty: Version = .init(components: [])
@@ -82,24 +94,27 @@ extension Version.Component: Comparable {
             switch rhs {
             case .number(let other):
                 this < other
-            default: true
+            case .beta, .alpha, .patch, .blank: false
             }
         case .beta:
             switch rhs {
-            case .number(_): false
-            default: true
+            case .number(_), .blank: true
+            case .beta, .alpha, .patch: false
             }
         case .alpha:
             switch rhs {
-            case .number(_), .beta: false
-            default: true
+            case .number(_), .beta, .blank: true
+            case .alpha, .patch: false
             }
         case .patch:
             switch rhs {
-            case .number(_), .beta, .alpha: false
-            default: true
+            case .number(_), .beta, .alpha, .patch, .blank: false
             }
-        case .blank: true
+        case .blank:
+            switch rhs {
+            case .number(_): true
+            case .beta, .alpha, .patch, .blank: false
+            }
         }
     }
 }
@@ -120,6 +135,14 @@ extension Version.Component {
         
         return nil
     }
+    
+    static var iterables: [Self] {
+        [.beta, .alpha, .patch, .blank]
+    }
+    
+    static var nonNumerics: [Self] {
+        iterables.filter(\.nonNumeric)
+    }
 }
 
 extension Version: Comparable {
@@ -133,7 +156,11 @@ extension Version: Comparable {
             
             if lhsComponent < rhsComponent {
                 return true
+            } else if lhsComponent > rhsComponent {
+                return false
             }
+            
+            // Two components are equal, continue
         }
         
         return false
@@ -206,6 +233,7 @@ class VersionModel {
                     if let remote = tags.first, remote > .app {
                         self.fetchedRemoteVersion = remote
                         print("Fetched latest version: \(remote.string)")
+                        print(self.app < self.remote)
                     } else {
                         print("No newer version available.")
                     }

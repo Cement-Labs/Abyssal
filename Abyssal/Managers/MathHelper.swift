@@ -14,7 +14,7 @@ struct MathHelper {
     
     static var lerpRatio: CGFloat {
         let baseValue = 0.42
-        return baseValue * (KeyboardManager.shift ? 0.25 : 1) // Slow down when shift key is down
+        return baseValue * (KeyboardModel.shared.shift ? 0.25 : 1) // Slow down when shift key is down
     }
     
     static func approaching(

@@ -34,7 +34,12 @@ An update is available. Click to access the download page.
                 }
                 
                 Button {
-                    versionModel.fetchLatest()
+                    if versionModel.hasUpdate {
+                        // Access the download page
+                        
+                    } else {
+                        versionModel.fetchLatest()
+                    }
                 } label: {
                     if versionModel.fetchState == .failed {
                         Image(systemSymbol: .exclamationmarkCircleFill)
@@ -43,8 +48,8 @@ An update is available. Click to access the download page.
                     }
                     
                     let version = versionModel.hasUpdate
-                    ? Text("\(Bundle.main.appVersion) \(Image(systemSymbol: .arrowRight)) \(versionModel.remote.string)")
-                    : Text(Bundle.main.appVersion)
+                    ? Text("\(versionModel.app.string) \(Image(systemSymbol: .arrowRight)) \(versionModel.remote.string)")
+                    : Text(versionModel.app.string)
                     
                     Text("Version \(version.monospaced())")
                         .foregroundStyle(.secondary)

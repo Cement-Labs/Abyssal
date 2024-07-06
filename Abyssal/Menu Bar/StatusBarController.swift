@@ -65,7 +65,7 @@ class StatusBarController {
     }
     
     lazy var mouseDragging: WithIntermediateState<Bool> = .init {
-        MouseManager.dragging && self.mouseOnStatusBar.value()
+        MouseModel.shared.dragging && self.mouseOnStatusBar.value()
     }
     
     
@@ -75,7 +75,7 @@ class StatusBarController {
     }
     
     lazy var keyboardTriggers: WithIntermediateState<Bool> = .init {
-        KeyboardManager.triggers
+        KeyboardModel.shared.triggers
     }
     
     lazy var focusedApp: WithIntermediateState<NSRunningApplication> = .init {
@@ -97,7 +97,7 @@ class StatusBarController {
     // MARK: - Variable States
     
     var shouldPresentFeedback: Bool {
-        !timeout && MouseManager.none
+        !timeout && MouseModel.shared.none
     }
     
     var maxLength: CGFloat {

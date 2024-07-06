@@ -177,7 +177,7 @@ extension StatusBarController {
                 }
                 
                 // Update mouse and keys
-                if !MouseManager.dragging {
+                if !MouseModel.shared.dragging {
                     if mouseOnStatusBar.needsUpdate || mouseSpare.needsUpdate {
                         if mouseOnStatusBar.value() || mouseSpare.value() {
                             startMouseEventMonitor()
@@ -308,7 +308,7 @@ extension StatusBarController {
     }
     
     func function() {
-        guard !MouseManager.dragging else { return }
+        guard !MouseModel.shared.dragging else { return }
         startAnimationTimer()
         startActionTimer()
         
@@ -339,7 +339,7 @@ extension StatusBarController {
                 if
                     self.isActive
                         && self.mouseInHideArea.value()
-                        && !(KeyboardManager.command && event?.type == .leftMouseDown)
+                        && !(KeyboardModel.shared.command && event?.type == .leftMouseDown)
                 {
                     self.idleHideArea()
                 }

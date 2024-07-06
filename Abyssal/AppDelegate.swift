@@ -40,7 +40,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         popover.contentViewController = controller
         
         // Fetch latest version
-        VersionManager.fetchLatest()
+        VersionModel.shared.fetchLatest()
         
         // Pre-initialize view frame
         controller.initializeFrame()
@@ -95,7 +95,7 @@ extension AppDelegate {
             return
         }
         
-        if KeyboardManager.option {
+        if KeyboardModel.shared.option {
             togglePopover(sender)
         } else {
             if let event = NSApp.currentEvent, event.type == .rightMouseUp {
