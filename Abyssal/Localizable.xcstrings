@@ -974,7 +974,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "使用自动隐藏区域"
+            "value" : "使用永久隐藏区域"
           }
         }
       }
