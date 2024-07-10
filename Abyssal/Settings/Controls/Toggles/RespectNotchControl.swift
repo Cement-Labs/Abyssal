@@ -12,7 +12,15 @@ struct RespectNotchControl: View {
     @Default(.screenSettings) private var screenSettings
     
     var body: some View {
-        Toggle("Respect notch", isOn: $screenSettings.main.respectNotch)
+        TipWrapper(tip: respectNotchTip) { tip in
+            Toggle("Respect notch", isOn: $screenSettings.main.respectNotch)
+        }
+    }
+    
+    private let respectNotchTip = Tip {
+        .init(localized: """
+If the screen has a notch, use the menu bar's trailing side of the notch as available area and ignore dead zone settings.
+""")
     }
 }
 

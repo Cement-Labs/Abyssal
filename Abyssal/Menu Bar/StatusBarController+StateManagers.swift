@@ -63,7 +63,7 @@ extension StatusBarController {
             self.toggle()
         }
         
-        KeyboardShortcuts.onKeyDown(for: .toggleFrontmost) {
+        KeyboardShortcuts.onKeyDown(for: .toggleMenuBarOverride) {
             // Apply application menu before everything to correctly handle application activation states
             Defaults[.menuBarOverride].apply()
             

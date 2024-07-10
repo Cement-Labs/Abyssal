@@ -10,5 +10,5 @@ import KeyboardShortcuts
 
 extension KeyboardShortcuts.Name {
     static let toggleActive = Self("toggleActive", default: .init(.backtick, modifiers: [.control]))
-    static let toggleFrontmost = Self("toggleFrontmost", default: .init(.backtick, modifiers: [.control, .option]))
+    static let toggleMenuBarOverride = Self("toggleMenuBarOverride", default: .init(.backtick, modifiers: [.control, .option]))
 }

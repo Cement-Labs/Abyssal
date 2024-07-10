@@ -19,7 +19,7 @@ struct ShortcutsControl: View {
                 }
             }
             
-            KeyboardShortcuts.Recorder(for: .toggleFrontmost) {
+            KeyboardShortcuts.Recorder(for: .toggleMenuBarOverride) {
                 VStack {
                     Spacer()
                     Text("Toggle menu bar override")
@@ -28,6 +28,18 @@ struct ShortcutsControl: View {
             }
         }
         .controlSize(.large)
+    }
+    
+    private let activeTip = Tip {
+        .init(localized: """
+The global shortcut used to toggle **\(Bundle.main.appName)**'s active state.
+""")
+    }
+    
+    private let menuBarOverrideTip = Tip {
+        .init(localized: """
+The global shortcut used to toggle menu bar override.
+""")
     }
 }
 

@@ -11,20 +11,7 @@ import SwiftUIIntrospect
 struct SettingsView: View {
     var body: some View {
         HStack(spacing: -20) {
-            VStack(spacing: 0) {
-                EmptyFormWrapper(normalizePadding: false) {
-                    VStack {
-                        Text(Bundle.main.appName)
-                            .font(.title)
-                            .bold()
-                            .padding(8)
-                        
-                        SettingsVersionView()
-                    }
-                    .padding(.vertical, 42)
-                }
-                .defaultScrollAnchor(.bottom)
-                
+            ZStack {
                 Form {
                     ModifierSection()
                     
@@ -34,6 +21,22 @@ struct SettingsView: View {
                 }
                 .padding(1)
                 .defaultScrollAnchor(.bottom)
+                
+                VStack {
+                    Spacer()
+                        .frame(height: 85)
+                    
+                    VStack {
+                        Text(Bundle.main.appName)
+                            .font(.title)
+                            .bold()
+                            .padding(8)
+                        
+                        SettingsVersionView()
+                    }
+                    
+                    Spacer()
+                }
             }
             .frame(width: 400)
             

@@ -13,8 +13,8 @@ struct MenuBarOverrideControl: View {
     @Default(.menuBarOverride) var menuBarOverride
     
     var body: some View {
-        Toggle(isOn: $autoOverridesMenuBarEnabled) {
-            HStack {
+        TipWrapper(tip: autoOverridesMenuBarTip) { tip in
+            Toggle(isOn: $autoOverridesMenuBarEnabled) {
                 Text("Auto overrides menu bar")
             }
         }
@@ -32,6 +32,12 @@ struct MenuBarOverrideControl: View {
         .onChange(of: menuBarOverride) { _, override in
             override.apply()
         }
+    }
+    
+    private let autoOverridesMenuBarTip = Tip {
+        .init(localized: """
+Allow **\(Bundle.main.appName)** to takeover the menu bar when showing popover or toggled manually.
+""")
     }
 }
 

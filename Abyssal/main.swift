@@ -22,10 +22,17 @@ let emptyMenu = NSMenu() // Without any siblings
 do {
     let appMenuMain = NSMenu(title: Bundle.main.appName)
     
-    appMenuMain.addItem(.init(
-        title: .init(localized: "Quit"),
+    appMenuMain.addItem(
+        withTitle: .init(localized: "Escape from Overriding"),
+        action: #selector(delegate.escapeFromOverridingMenuBar(_:)), keyEquivalent: ""
+    )
+    
+    appMenuMain.addItem(.separator())
+    
+    appMenuMain.addItem(
+        withTitle: .init(localized: "Quit"),
         action: #selector(delegate.quit(_:)), keyEquivalent: "q"
-    ))
+    )
     
     appMenu.addItem({
         let item = NSMenuItem()

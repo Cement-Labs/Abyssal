@@ -54,7 +54,7 @@ struct DeadZoneControl: View {
             }
             
             EmptyFormWrapper {
-                TipWrapper(tip: tip, alwaysVisible: true, value: $screenSettings.main.deadZone) { tip in
+                TipWrapper(tip: deadZoneTip, alwaysVisible: true, value: $screenSettings.main.deadZone) { tip in
                     Slider(value: $screenSettings.main.deadZone.value, in: screenSettings.main.deadZone.range) {
                         EmptyView()
                     }
@@ -66,10 +66,13 @@ struct DeadZoneControl: View {
         .animation(.smooth, value: screenSettings.main.respectNotch)
     }
     
-    private let tip = Tip(preferredEdge: .minY) {
+    private let deadZoneTip = Tip(preferredEdge: .minY) {
         TipDeadZoneTitle()
     } content: {
         .init(localized: """
+Controls the dead zone area on the screen.
+
+**\(Bundle.main.appName)** will treat dead zone area as if it is not a part of the screen, which means only the non dead zone area is capable for interactions and hiding menu bar items.
 """)
     }
 }

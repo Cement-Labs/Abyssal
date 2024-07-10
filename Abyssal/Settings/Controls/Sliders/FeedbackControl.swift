@@ -25,7 +25,7 @@ struct FeedbackControl: View {
                     feedback = Feedback.allCases[Int(index)]
                 }
                 
-                TipWrapper(tip: tip, alwaysVisible: true, value: $feedback) { tip in
+                TipWrapper(tip: feedbackTip, alwaysVisible: true, value: $feedback) { tip in
                     Slider(value: binding, in: 0...Double(maxIndex), step: 1) {
                         EmptyView()
                     }
@@ -39,7 +39,7 @@ struct FeedbackControl: View {
         }
     }
     
-    private let tip = Tip(preferredEdge: .minY, delay: 0.1) {
+    private let feedbackTip = Tip(preferredEdge: .minY, delay: 0.1) {
         TipFeedbackTitle()
     } content: {
         .init(localized: """

@@ -85,6 +85,17 @@ extension AppDelegate {
         NSApplication.shared.terminate(sender)
     }
     
+    @objc func escapeFromOverridingMenuBar(
+        _ sender: Any?
+    ) {
+        if popover.isShown {
+            closePopover(sender)
+        } else {
+            ActivationPolicyManager.set(.prohibited, asFallback: true)
+            statusBarController.unidleHideArea()
+        }
+    }
+    
     // MARK: - Toggles
     
     @objc func toggle(

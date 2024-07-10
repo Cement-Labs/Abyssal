@@ -13,12 +13,6 @@ struct SettingsTrafficsView: View {
     
     @Environment(\.openURL) private var openUrl
     
-    private let sourceTip = Tip(preferredEdge: .minY) {
-        .init(localized: """
-**\(Bundle.main.appName)** is open source. Click to access the source code.
-""")
-    }
-    
     var body: some View {
         HStack {
             // Quit
@@ -87,11 +81,17 @@ struct SettingsTrafficsView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
             .frame(width: 32)
-            .tint(.green)
-            .foregroundStyle(.green)
+            .tint(.yellow)
+            .foregroundStyle(.yellow)
             .keyboardShortcut("w", modifiers: .command)
         }
         .frame(height: 32)
+    }
+    
+    private let sourceTip = Tip(preferredEdge: .minY) {
+        .init(localized: """
+**\(Bundle.main.appName)** is open source. Click to access the source code.
+""")
     }
 }
 

@@ -25,14 +25,14 @@ struct TimeoutControl: View {
                     timeout = Timeout.allCases[Int(index)]
                 }
                 
-                TipWrapper(tip: tip, alwaysVisible: true, value: $timeout) { tip in
+                TipWrapper(tip: timeoutTip, alwaysVisible: true, value: $timeout) { tip in
                     Slider(value: binding, in: 0...Double(maxIndex), step: 1)
                 }
             }
         }
     }
     
-    private let tip = Tip(preferredEdge: .minY, delay: 0.1) {
+    private let timeoutTip = Tip(preferredEdge: .minY, delay: 0.1) {
         TipTimeoutTitle()
     } content: {
         .init(localized: """
