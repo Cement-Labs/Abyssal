@@ -11,7 +11,7 @@ import AppKit
 import Defaults
 import LaunchAtLogin
 
-let repository = "NNN-Studio/Abyssal"//"Cement-Labs/Abyssal"
+let repository = "Cement-Labs/Abyssal"
 
 //@main
 class AppDelegate: NSObject, NSApplicationDelegate {
