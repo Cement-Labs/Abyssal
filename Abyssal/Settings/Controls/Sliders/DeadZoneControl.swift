@@ -72,7 +72,7 @@ struct DeadZoneControl: View {
         .init(localized: """
 Controls the dead zone area on the screen.
 
-**\(Bundle.main.appName)** will treat dead zone area as if it is not a part of the screen, which means only the non dead zone area is capable for interactions and hiding menu bar items.
+**\(Bundle.main.appName)** will treat dead zone area as if it is not a part of the screen, which means only the non dead zone menu bar area is capable for interactions and hiding menu bar items.
 """)
     }
 }

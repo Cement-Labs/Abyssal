@@ -19,9 +19,9 @@ struct AlwaysHideAreaControl: View {
     
     private let tip = Tip {
         .init(localized: """
-Hide certain status items permanently by moving them left of the `Always Hide Separator` to the **Always Hide Area.**
+Hide certain status items permanently by moving them to the leading of the `Always Hide Separator`, that is, to the **Always Hide Area.**
 
-The status items inside the **Always Hide Area** will be hidden and invisible until the cursor hovers over the spare area with a modifier key down, or while this window is opened.
+The status items inside the **Always Hide Area** will be hidden and kept invisible until the cursor hovers over the spare area with a modifier key down, or while this window is opened.
 """)
     }
 }

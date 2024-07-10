@@ -38,7 +38,7 @@ struct ActiveStrategyControl: View {
     
     private let activeStrategyTip = Tip {
         .init(localized: """
-The stratrgy used for automatically disabling **Auto Idling.** When the condition is met, **\(Bundle.main.appName)** will recover the active state where menu bar items in both **Hide Area** and **Always Hide Area** become hidden.
+The stratrgy used for automatically cancelling **Auto Idling.** When the condition is met, **\(Bundle.main.appName)** will recover the active state where menu bar items in both **Hide Area** and **Always Hide Area** become hidden.
 """)
     }
 }

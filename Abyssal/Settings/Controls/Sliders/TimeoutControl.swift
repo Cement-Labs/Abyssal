@@ -38,7 +38,7 @@ struct TimeoutControl: View {
         .init(localized: """
 Time to countdown before disabling **Auto Idling.**
 
-After interacting with status items that will be automatically hidden, for example, status items inside the **Always Hidden Area,** **Auto Idling** will keep them visible until this timeout is reached or the cursor hovered over the `Hide Separator` or `Always Hide Separator`.
+After interacting with status items that will be automatically hidden, for example, status items inside the **Always Hidden Area,** **Auto Idling** will keep them visible until this timeout is reached, the cursor hovered over the `Hide Separator` or `Always Hide Separator`, or the specified active strategy is met.
 """)
     }
 }

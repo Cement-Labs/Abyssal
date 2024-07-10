@@ -196,8 +196,15 @@
         }
       }
     },
-    "Allow **%@** to takeover the menu bar when showing popover or toggled manually." : {
-
+    "Allow **%@** to takeover the menu bar when showing this window or toggled manually." : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "允许**%@**在此窗口打开或手动切换时接管菜单栏前缘的应用菜单。"
+          }
+        }
+      }
     },
     "An update is available. Click to access the download page." : {
       "localizations" : {
@@ -264,7 +271,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "再次活跃"
+            "value" : "重新激活"
           }
         }
       }
@@ -289,12 +296,12 @@
         }
       }
     },
-    "Controls the dead zone area on the screen.\n\n**%@** will treat dead zone area as if it is not a part of the screen, which means only the non dead zone area is capable for interactions and hiding menu bar items." : {
+    "Controls the dead zone area on the screen.\n\n**%@** will treat dead zone area as if it is not a part of the screen, which means only the non dead zone menu bar area is capable for interactions and hiding menu bar items." : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "控制屏幕死区的大小。\n\n**%@**会将死区视为不存在于屏幕上的区域。"
+            "value" : "控制屏幕死区的大小。\n\n**%@**会将死区视为不存在于屏幕上的区域，只有不包含在死区内的菜单栏区域会被用作交互区域和可供隐藏菜单栏图标的区域。"
           }
         }
       }
@@ -422,18 +429,25 @@
         }
       }
     },
-    "Hide certain status items permanently by moving them left of the `Always Hide Separator` to the **Always Hide Area.**\n\nThe status items inside the **Always Hide Area** will be hidden and invisible until the cursor hovers over the spare area with a modifier key down, or while this window is opened." : {
+    "Hide certain status items permanently by moving them to the leading of the `Always Hide Separator`, that is, to the **Always Hide Area.**\n\nThe status items inside the **Always Hide Area** will be hidden and kept invisible until the cursor hovers over the spare area with a modifier key down, or while this window is opened." : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "通过将一些状态栏图标移到**永远隐藏区域**（位于`永远隐藏分隔符`的左侧）以永远隐藏它们。\n\n**永远隐藏区域**内的图标将会一直不可见，直到光标移到空白区域内的同时按下修饰键或此窗口打开时。"
+            "value" : "通过将一些状态栏图标移到**永远隐藏区域**（位于`永远隐藏分隔符`的前缘）以永远隐藏它们。\n\n**永远隐藏区域**内的图标将会一直不可见，直到光标移到空白区域内的同时按下修饰键或此窗口打开时。"
           }
         }
       }
     },
     "If the screen has a notch, use the menu bar's trailing side of the notch as available area and ignore dead zone settings." : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "如果当前屏幕有内置摄像头（又称**刘海**），则使用摄像头后缘的所有菜单栏区域作为可用区域并忽略死区设置。"
+          }
+        }
+      }
     },
     "Instant" : {
       "localizations" : {
@@ -610,7 +624,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "保留屏幕摄像头区域"
+            "value" : "保留内置摄像头区域"
           }
         }
       }
@@ -660,7 +674,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "用于切换**%@**活跃状态的全局快捷键。"
+            "value" : "用于切换**%@**激活状态的全局快捷键。"
           }
         }
       }
@@ -695,8 +709,15 @@
         }
       }
     },
-    "The stratrgy used for automatically disabling **Auto Idling.** When the condition is met, **%@** will recover the active state where menu bar items in both **Hide Area** and **Always Hide Area** become hidden." : {
-
+    "The stratrgy used for automatically cancelling **Auto Idling.** When the condition is met, **%@** will recover the active state where menu bar items in both **Hide Area** and **Always Hide Area** become hidden." : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自动取消**自动闲置**时需要满足的条件。**%@**会在条件满足后自动切换到激活状态，隐藏位于**隐藏区域**和**永久隐藏区域**的菜单栏图标。"
+          }
+        }
+      }
     },
     "Theme" : {
       "localizations" : {
@@ -978,12 +999,12 @@
         }
       }
     },
-    "Time to countdown before disabling **Auto Idling.**\n\nAfter interacting with status items that will be automatically hidden, for example, status items inside the **Always Hidden Area,** **Auto Idling** will keep them visible until this timeout is reached or the cursor hovered over the `Hide Separator` or `Always Hide Separator`." : {
+    "Time to countdown before disabling **Auto Idling.**\n\nAfter interacting with status items that will be automatically hidden, for example, status items inside the **Always Hidden Area,** **Auto Idling** will keep them visible until this timeout is reached, the cursor hovered over the `Hide Separator` or `Always Hide Separator`, or the specified active strategy is met." : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "在自动取消**自动闲置**之前等待的时间。\n\n在与将会被自动隐藏的状态栏图标（例如**永远隐藏区域**内的图标）交互后，**自动闲置**功能将会自动启用以保持这些图标可见，直到达到此时间限制或光标移过`隐藏分隔符`或`永远隐藏分隔符`时。"
+            "value" : "自动取消**自动闲置**之前等待的时间。\n\n在与将会被自动隐藏的状态栏图标（例如**永远隐藏区域**内的图标）交互后，**自动闲置**功能将会自动启用以保持这些图标可见，直到达到此时间限制、光标移过`隐藏分隔符`或`永远隐藏分隔符`，或设置的激活策略达成时。"
           }
         }
       }
@@ -1013,7 +1034,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "切换活跃状态"
+            "value" : "切换激活状态"
           }
         }
       }
