@@ -196,12 +196,12 @@
         }
       }
     },
-    "Allow **%@** to takeover the menu bar when showing this window or toggled manually." : {
+    "Allow **%@** to takeover the menu bar when showing this window or toggled manually. **Applies after this window is closed.**" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "允许**%@**在此窗口打开或手动切换时接管菜单栏前缘的应用菜单。"
+            "value" : "允许**%@**在此窗口打开或手动切换时接管菜单栏前缘的应用菜单。**在此窗口关闭后生效。**"
           }
         }
       }
@@ -315,9 +315,6 @@
           }
         }
       }
-    },
-    "Debug Fetch State" : {
-
     },
     "Display ID" : {
       "localizations" : {

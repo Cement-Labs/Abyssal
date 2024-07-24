@@ -95,7 +95,7 @@ extension StatusBarController {
     func startActionTimer() {
         if actionTimer == nil {
             actionTimer = .scheduledTimer(
-                withTimeInterval: 1.0 / 3.0,
+                withTimeInterval: 1.0 / 2.0,
                 repeats: true
             ) { [weak self] _ in
                 guard let self else { return }
@@ -153,7 +153,7 @@ extension StatusBarController {
                 }
                 
                 else if mouseDragging.value() && !draggedToDeactivate.dragging {
-                    if draggedToDeactivate.count < 3 {
+                    if draggedToDeactivate.count < 1 {
                         draggedToDeactivate.count += 1
                     } else {
                         draggedToDeactivate.dragging = true

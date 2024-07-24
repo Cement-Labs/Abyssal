@@ -36,7 +36,7 @@ struct MenuBarOverrideControl: View {
     
     private let autoOverridesMenuBarTip = Tip {
         .init(localized: """
-Allow **\(Bundle.main.appName)** to takeover the menu bar when showing this window or toggled manually.
+Allow **\(Bundle.main.appName)** to takeover the menu bar when showing this window or toggled manually. **Applies after this window is closed.**
 """)
     }
 }
