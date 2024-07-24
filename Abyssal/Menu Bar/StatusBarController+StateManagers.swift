@@ -350,9 +350,8 @@ extension StatusBarController {
                 
                 // Update external menu caches
                 ExternalMenuBarManager.menuBarItems.forEach { $0.cache() }
-                self.externalMenus.removeAll()
-                
-                DispatchQueue.main.asyncAfter(ExternalMenuBarManager.identifier, deadline: .now() + 0.1) {
+                DispatchQueue.main.asyncAfter(ExternalMenuBarManager.identifier, deadline: .now() + 0.5) {
+                    // A delay is crucial for detecting new windows abundantly
                     self.updateExternalMenus()
                 }
             }

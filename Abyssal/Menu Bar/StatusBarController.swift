@@ -253,7 +253,7 @@ extension StatusBarController {
     }
     
     func updateExternalMenus() {
-        self.externalMenus = ExternalMenuBarManager.menuBarItems.flatMap {
+        externalMenus = ExternalMenuBarManager.menuBarItems.flatMap {
             $0.newWindowsNear
         }
     }

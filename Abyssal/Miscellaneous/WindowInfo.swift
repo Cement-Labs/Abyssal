@@ -88,7 +88,7 @@ extension WindowInfo {
     }
     
     func isPlacingNear(_ rect: NSRect, edge: NSRectEdge) -> Bool {
-        let gap: Double = 10
+        let gap: Double = 25
         switch edge {
         case .minX:
             let verticallyOK = inGap(bounds.maxX, rect.minX, gap: gap)
