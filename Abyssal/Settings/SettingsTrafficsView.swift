@@ -81,8 +81,8 @@ struct SettingsTrafficsView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
             .frame(width: 32)
-            .tint(.yellow)
-            .foregroundStyle(.yellow)
+            .tint(.orange)
+            .foregroundStyle(.orange)
             .keyboardShortcut("w", modifiers: .command)
         }
         .frame(height: 32)

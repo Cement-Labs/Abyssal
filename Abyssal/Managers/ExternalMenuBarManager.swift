@@ -55,6 +55,7 @@ class ExternalMenuBarItem {
 }
 
 struct ExternalMenuBarManager {
+    static let identifier = UUID()
     fileprivate static var cachedWindowNumbersNear: [Int: [Int]] = [:]
     
     static var menuBarWindowInfos: [WindowInfo] {

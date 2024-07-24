@@ -156,12 +156,6 @@ class StatusBarController {
     
     
     
-    // MARK: - Dispatches
-    
-    var updateExternalMenusDispatch: DispatchWorkItem?
-    
-    
-    
     // MARK: - Icons
     
     // Status items

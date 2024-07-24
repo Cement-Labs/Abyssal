@@ -9,7 +9,7 @@ import Foundation
 import AppKit
 
 struct ActivationPolicyManager {
-    private static var dispatch: DispatchWorkItem?
+    static let identifier = UUID()
     private static var fallback: NSApplication.ActivationPolicy = .accessory
     
     static func set(
@@ -18,12 +18,8 @@ struct ActivationPolicyManager {
         deadline: DispatchTime,
         andRun: @escaping () -> Void = {}
     ) {
-        dispatch = .init() {
+        DispatchQueue.main.asyncAfter(identifier, deadline: deadline) {
             set(activationPolicy, asFallback: asFallback)
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: deadline) {
-            dispatch?.perform()
             andRun()
         }
     }
@@ -32,7 +28,7 @@ struct ActivationPolicyManager {
         _ activationPolicy: NSApplication.ActivationPolicy,
         asFallback: Bool = false
     ) {
-        cancel()
+        DispatchQueue.main.cancel(identifier)
         NSApp.setActivationPolicy(activationPolicy)
         
         if asFallback {
@@ -85,10 +81,5 @@ struct ActivationPolicyManager {
             setToFallback()
             return false
         }
-    }
-    
-    static func cancel() {
-        dispatch?.cancel()
-        dispatch = nil
     }
 }

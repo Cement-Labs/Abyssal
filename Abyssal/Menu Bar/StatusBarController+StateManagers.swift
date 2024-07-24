@@ -95,7 +95,7 @@ extension StatusBarController {
     func startActionTimer() {
         if actionTimer == nil {
             actionTimer = .scheduledTimer(
-                withTimeInterval: 1.0 / 6.0,
+                withTimeInterval: 1.0 / 3.0,
                 repeats: true
             ) { [weak self] _ in
                 guard let self else { return }
@@ -110,7 +110,7 @@ extension StatusBarController {
     func startFeedbackTimer() {
         if feedbackTimer == nil && shouldPresentFeedback {
             feedbackTimer = .scheduledTimer(
-                withTimeInterval: 1.0 / 30.0,
+                withTimeInterval: 1.0 / 24.0,
                 repeats: true
             ) { [weak self] _ in
                 guard let self else { return }
@@ -135,7 +135,7 @@ extension StatusBarController {
     func startTriggerTimer() {
         if triggerTimer == nil {
             triggerTimer = .scheduledTimer(
-                withTimeInterval: 1.0 / 6.0,
+                withTimeInterval: 1.0 / 3.0,
                 repeats: true
             ) { [weak self] _ in
                 guard let self else { return }
@@ -352,11 +352,9 @@ extension StatusBarController {
                 ExternalMenuBarManager.menuBarItems.forEach { $0.cache() }
                 self.externalMenus.removeAll()
                 
-                self.updateExternalMenusDispatch?.cancel()
-                self.updateExternalMenusDispatch = .init {
+                DispatchQueue.main.asyncAfter(ExternalMenuBarManager.identifier, deadline: .now() + 0.1) {
                     self.updateExternalMenus()
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: self.updateExternalMenusDispatch!)
             }
             
             mouseEventMonitor?.start()

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2822C58E2BDC75DE009C71DA /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 2822C58D2BDC75DE009C71DA /* SFSafeSymbols */; };
 		2822C5902BDC7748009C71DA /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2822C58F2BDC7748009C71DA /* Icon.swift */; };
+		282A34E92C50818D000338D8 /* DispatchQueue+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282A34E82C50818D000338D8 /* DispatchQueue+Extensions.swift */; };
 		282CB7202C283B7600AF381D /* EmptyFormWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282CB71F2C283B7600AF381D /* EmptyFormWrapper.swift */; };
 		282CB7222C2844B700AF381D /* UnifiedVStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282CB7212C2844B700AF381D /* UnifiedVStack.swift */; };
 		282D880A2AD58BEA0015111C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C66CABA72A38871500E4D8E6 /* Assets.xcassets */; };
@@ -97,6 +98,7 @@
 
 /* Begin PBXFileReference section */
 		2822C58F2BDC7748009C71DA /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
+		282A34E82C50818D000338D8 /* DispatchQueue+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Extensions.swift"; sourceTree = "<group>"; };
 		282CB71F2C283B7600AF381D /* EmptyFormWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyFormWrapper.swift; sourceTree = "<group>"; };
 		282CB7212C2844B700AF381D /* UnifiedVStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnifiedVStack.swift; sourceTree = "<group>"; };
 		282E92892C27C25000C21EE5 /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 				287B85D82C29A888001FD729 /* URL+Extensions.swift */,
 				284E2FE22C2F95D300BB582C /* Range+Extensions.swift */,
 				284E30092C2FC48000BB582C /* Double+Extensions.swift */,
+				282A34E82C50818D000338D8 /* DispatchQueue+Extensions.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -598,6 +601,7 @@
 				28743ED92C28F0F900366A69 /* BehaviorsSection.swift in Sources */,
 				284E2FFA2C2FB20600BB582C /* StartsWithMacOSControl.swift in Sources */,
 				2840D7132C267EE90087EE50 /* GeneralSection.swift in Sources */,
+				282A34E92C50818D000338D8 /* DispatchQueue+Extensions.swift in Sources */,
 				C6DEC52A2A38BF6C00943448 /* StatusBarController.swift in Sources */,
 				284E2FFE2C2FB32F00BB582C /* ThemeControl.swift in Sources */,
 				28C90F6A2C26D394000AC2E3 /* Box.swift in Sources */,

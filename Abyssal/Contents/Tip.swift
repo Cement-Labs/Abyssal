@@ -31,8 +31,8 @@ class Tip<Title> where Title: View {
     
     private var positionUpdateTimer: Timer?
     
-    private var showDispatch: DispatchWorkItem?
-    private var hideDispatch: DispatchWorkItem?
+    private let showIdentifier = UUID()
+    private var hideIdentifier = UUID()
     
     private var position: CGRect {
         positionRect().offsetBy(
@@ -204,10 +204,8 @@ class Tip<Title> where Title: View {
         
         guard let cachedSender else { return }
         
-        hideDispatch?.cancel()
-        hideDispatch = nil
-        
-        showDispatch = .init {
+        DispatchQueue.main.cancel(hideIdentifier)
+        DispatchQueue.main.asyncAfter(showIdentifier, deadline: .now() + delay) {
             self.lastShown = .now
             self.popover.show(
                 relativeTo:     self.position,
@@ -215,8 +213,6 @@ class Tip<Title> where Title: View {
                 preferredEdge:  self.preferredEdge
             )
         }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: showDispatch!)
         
         if hasReactivePosition {
             positionUpdateTimer = Timer.scheduledTimer(
@@ -237,22 +233,17 @@ class Tip<Title> where Title: View {
     func hide() {
         guard isAvailable else { return }
         
-        showDispatch?.cancel()
-        showDispatch = nil
+        let interval = max(0, sustain - timeToLastShown)
         
-        hideDispatch = .init {
+        DispatchQueue.main.cancel(showIdentifier)
+        DispatchQueue.main.asyncAfter(hideIdentifier, deadline: .now() + interval) {
             self.positionUpdateTimer?.invalidate()
-            
             self.popover.performClose(self)
             
-            self.hideDispatch = .init {
+            DispatchQueue.main.asyncAfter(self.hideIdentifier, deadline: .now() + 0.2) {
                 self.popover.contentViewController = nil
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: self.hideDispatch!)
         }
-        
-        let interval = max(0, sustain - timeToLastShown)
-        DispatchQueue.main.asyncAfter(deadline: .now() + interval, execute: hideDispatch!)
     }
     
     func toggle(_ sender: NSView? = nil, show: Bool) {
