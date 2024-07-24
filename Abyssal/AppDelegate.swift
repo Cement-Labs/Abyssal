@@ -35,15 +35,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Set activation policy to `prohibited` after launched
         ActivationPolicyManager.set(.prohibited, asFallback: true)
         
+        // Initialize view controller
         let controller = SettingsViewController()
         controller.view = NSHostingView(rootView: SettingsView())
         popover.contentViewController = controller
         
-        // Fetch latest version
-        VersionModel.shared.fetchLatest()
-        
         // Pre-initialize view frame
         controller.initializeFrame()
+        
+        
+        // Fetch latest version
+        VersionModel.shared.fetchLatest()
         
         popover.behavior = .applicationDefined
         popover.delegate = self
@@ -147,74 +149,78 @@ extension AppDelegate {
     func showPopover(
         _ sender: Any?
     ) {
-        if let button = statusBarController.head.button ?? sender as? NSButton {
-            // Position popover
-            
-            let buttonRect = button.convert(button.bounds, to: nil)
-            let screenRect = button.window!.convertToScreen(buttonRect)
-            
-            let invisiblePanel = NSPanel(
-                contentRect: NSMakeRect(0, 0, 1, 5),
-                styleMask: [.borderless],
-                backing: .buffered,
-                defer: false,
-                screen: .main
-            )
-            invisiblePanel.isFloatingPanel = true
-            invisiblePanel.alphaValue = 0
-
-            invisiblePanel.setFrameOrigin(NSPoint(
-                x: screenRect.maxX,
-                y: screenRect.maxY
-            ))
-            invisiblePanel.makeKeyAndOrderFront(nil)
-            
-            popover.show(
-                relativeTo: 	invisiblePanel.contentView!.frame,
-                of: 			invisiblePanel.contentView!,
-                preferredEdge: 	.maxY
-            )
-            
-            // Set to foreground activation policy
-            
-            let overridesMenuBar = Defaults[.autoOverridesMenuBarEnabled]
-            let activationPolicy: NSApplication.ActivationPolicy = overridesMenuBar ? .regular : .accessory
-            
-            Defaults[.menuBarOverride].apply()
-            ActivationPolicyManager.set(activationPolicy, asFallback: true)
-            NSApp.activate()
-            
-            DispatchQueue.main.async {
-                self.popover.contentViewController?.viewWillAppear()
-                self.popover.contentViewController?.view.window?.makeKeyAndOrderFront(nil)
-                self.popover.contentViewController?.viewDidAppear()
+        if let controller = popover.contentViewController {
+            if let button = statusBarController.head.button ?? sender as? NSButton {
+                // Position popover
+                
+                let buttonRect = button.convert(button.bounds, to: nil)
+                let screenRect = button.window!.convertToScreen(buttonRect)
+                
+                let invisiblePanel = NSPanel(
+                    contentRect: NSMakeRect(0, 0, 1, 5),
+                    styleMask: [.borderless],
+                    backing: .buffered,
+                    defer: false,
+                    screen: .main
+                )
+                invisiblePanel.isFloatingPanel = true
+                invisiblePanel.alphaValue = 0
+                
+                invisiblePanel.setFrameOrigin(NSPoint(
+                    x: screenRect.maxX,
+                    y: screenRect.maxY
+                ))
+                invisiblePanel.makeKeyAndOrderFront(nil)
+                
+                popover.show(
+                    relativeTo: 	invisiblePanel.contentView!.frame,
+                    of: 			invisiblePanel.contentView!,
+                    preferredEdge: 	.maxY
+                )
+                
+                // Set to foreground activation policy
+                
+                let overridesMenuBar = Defaults[.autoOverridesMenuBarEnabled]
+                let activationPolicy: NSApplication.ActivationPolicy = overridesMenuBar ? .regular : .accessory
+                
+                Defaults[.menuBarOverride].apply()
+                ActivationPolicyManager.set(activationPolicy, asFallback: true)
+                NSApp.activate()
+                
+                DispatchQueue.main.async {
+                    controller.viewWillAppear()
+                    controller.view.window?.makeKeyAndOrderFront(nil)
+                    controller.viewDidAppear()
+                }
             }
+            
+            mouseEventMonitor?.start()
         }
-        
-        mouseEventMonitor?.start()
     }
     
     func closePopover(
         _ sender: Any?
     ) {
-        DispatchQueue.main.async {
-            self.popover.contentViewController?.viewWillDisappear()
-            self.popover.close() // Force it to close, thus closing all nested popovers
-            self.popover.contentViewController?.viewDidDisappear()
+        if let controller = popover.contentViewController {
+            DispatchQueue.main.async {
+                controller.viewWillDisappear()
+                self.popover.close() // Force it to close, thus closing all nested popovers
+                controller.viewDidDisappear()
+            }
+            
+            // Restore activation policy
+            
+            // 1. Set to `accessory` after closed to prevent the popover from not being able to open properly again
+            ActivationPolicyManager.set(.accessory, asFallback: true, deadline: .now() + 0.2) {
+                // 2. Set to `prohibited` asynchronously to order out
+                ActivationPolicyManager.set(.prohibited, asFallback: true, deadline: .now())
+            }
+            
+            // Stop functioning
+            
+            mouseEventMonitor?.stop()
+            statusBarController.function()
+            statusBarController.triggerIgnoring()
         }
-        
-        // Restore activation policy
-        
-        // 1. Set to `accessory` after closed to prevent the popover from not being able to open properly again
-        ActivationPolicyManager.set(.accessory, asFallback: true, deadline: .now() + 0.2) {
-            // 2. Set to `prohibited` asynchronously to order out
-            ActivationPolicyManager.set(.prohibited, asFallback: true, deadline: .now())
-        }
-        
-        // Stop functioning
-        
-        mouseEventMonitor?.stop()
-        statusBarController.function()
-        statusBarController.triggerIgnoring()
     }
 }

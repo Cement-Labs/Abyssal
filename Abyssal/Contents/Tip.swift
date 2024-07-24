@@ -104,8 +104,6 @@ class Tip<Title> where Title: View {
         self.content = content
         
         self.popover = Tip.createPopover()
-        
-        initLayout()
     }
     
     convenience init(
@@ -198,6 +196,8 @@ class Tip<Title> where Title: View {
         guard isAvailable else { return }
         guard isShown || (!isShown && update()) else { return }
         
+        initLayout()
+        
         if let sender {
             cachedSender = sender
         }
@@ -244,6 +244,11 @@ class Tip<Title> where Title: View {
             self.positionUpdateTimer?.invalidate()
             
             self.popover.performClose(self)
+            
+            self.hideDispatch = .init {
+                self.popover.contentViewController = nil
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: self.hideDispatch!)
         }
         
         let interval = max(0, sustain - timeToLastShown)
