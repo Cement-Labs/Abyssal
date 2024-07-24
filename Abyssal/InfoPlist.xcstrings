@@ -44,13 +44,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "\u0012©2024 Cement Labs"
+            "value" : "\u0012Copyright © 2024 Cement Labs"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "\u0012©2024 Cement Labs"
+            "value" : "版权所有 © 2024 Cement Labs"
           }
         }
       }
