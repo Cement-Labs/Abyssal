@@ -70,7 +70,7 @@ extension StatusBarController {
             if ActivationPolicyManager.toggleBetweenFallback(.regular) {
                 // Overridden
                 NSApp.activate()
-                self.idleHideArea()
+                self.idleAlwaysHideArea()
             } else {
                 // Normal
                 self.unidleHideArea()

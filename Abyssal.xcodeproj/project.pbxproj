@@ -236,7 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				28A23C5C2C38DDE90081ED12 /* Toggles */,
-				28A23C5B2C38DDCA0081ED12 /* Popovers */,
+				28A23C5B2C38DDCA0081ED12 /* Popups */,
 				28A23C5A2C38DDC00081ED12 /* Sliders */,
 				28F9913F2C30D9D2004C76ED /* ShortcutsControl.swift */,
 			);
@@ -276,14 +276,14 @@
 			path = Sliders;
 			sourceTree = "<group>";
 		};
-		28A23C5B2C38DDCA0081ED12 /* Popovers */ = {
+		28A23C5B2C38DDCA0081ED12 /* Popups */ = {
 			isa = PBXGroup;
 			children = (
 				284E2FF72C2FB1A200BB582C /* ActiveStrategyControl.swift */,
 				284E2FFD2C2FB32F00BB582C /* ThemeControl.swift */,
 				28AF26292C3565F8009D685B /* MenuBarOverrideControl.swift */,
 			);
-			path = Popovers;
+			path = Popups;
 			sourceTree = "<group>";
 		};
 		28A23C5C2C38DDE90081ED12 /* Toggles */ = {
@@ -874,7 +874,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 4.1.0;
+				MARKETING_VERSION = 4.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = labs.cement.Abyssal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -907,7 +907,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 4.1.0;
+				MARKETING_VERSION = 4.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = labs.cement.Abyssal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

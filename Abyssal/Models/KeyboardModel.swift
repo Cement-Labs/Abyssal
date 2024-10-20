@@ -29,6 +29,6 @@ class KeyboardModel {
     }
     
     var triggers: Bool {
-        Defaults[.modifierMode].triggers(input: Modifier.fromFlags(NSEvent.modifierFlags))
+        Defaults[.modifierCompose].triggers(input: Modifier.fromFlags(NSEvent.modifierFlags))
     }
 }

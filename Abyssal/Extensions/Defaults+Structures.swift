@@ -124,7 +124,7 @@ struct Modifier: OptionSet, Defaults.Serializable {
 }
 
 extension Modifier {
-    enum Mode: String, CaseIterable, Codable, Defaults.Serializable {
+    enum Compose: String, CaseIterable, Codable, Defaults.Serializable {
         case any = "any"
         case all = "all"
         

@@ -10,7 +10,7 @@ import Defaults
 
 struct ModifierSection: View {
     @Default(.modifier) private var modifiers
-    @Default(.modifierMode) private var modifierMode
+    @Default(.modifierCompose) private var modifierCompose
     
     @Environment(\.hasTitle) private var hasTitle
     
@@ -49,8 +49,8 @@ The modifier keys to use for showing the **Always Hide Area.** It is recommended
                     // Use a column styled Form to diminish the Picker's empty label
                     EmptyFormWrapper(normalizePadding: false) {
                         HStack(alignment: .firstTextBaseline) {
-                            Picker(selection: $modifierMode) {
-                                ForEach(Modifier.Mode.allCases, id: \.self) { mode in
+                            Picker(selection: $modifierCompose) {
+                                ForEach(Modifier.Compose.allCases, id: \.self) { mode in
                                     switch mode {
                                     case .all: Text("all")
                                     case .any: Text("any")
