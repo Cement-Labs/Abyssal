@@ -46,6 +46,12 @@
 		284E300A2C2FC48000BB582C /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E30092C2FC48000BB582C /* Double+Extensions.swift */; };
 		2852BDE92AD97A0E00AA8AD1 /* NSSlider+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2852BDE82AD97A0E00AA8AD1 /* NSSlider+Extension.swift */; };
 		28577D422C3441B200C1397D /* ApplicationMenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577D412C3441B200C1397D /* ApplicationMenuManager.swift */; };
+		2858B75F2CC4CA13004597EE /* Luminare in Frameworks */ = {isa = PBXBuildFile; productRef = 2858B75E2CC4CA13004597EE /* Luminare */; };
+		2858B7612CC4CA2C004597EE /* LuminareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2858B7602CC4CA2C004597EE /* LuminareManager.swift */; };
+		2858B7642CC4CD88004597EE /* AppearanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2858B7632CC4CD88004597EE /* AppearanceView.swift */; };
+		2858B7662CC4CD93004597EE /* FunctionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2858B7652CC4CD93004597EE /* FunctionsView.swift */; };
+		2858B7692CC4CDA1004597EE /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2858B7682CC4CDA1004597EE /* AboutView.swift */; };
+		2858B76B2CC4CDAA004597EE /* PermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2858B76A2CC4CDAA004597EE /* PermissionsView.swift */; };
 		28743ED72C28F09500366A69 /* FunctionsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28743ED62C28F09500366A69 /* FunctionsSection.swift */; };
 		28743ED92C28F0F900366A69 /* BehaviorsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28743ED82C28F0F900366A69 /* BehaviorsSection.swift */; };
 		287B85CB2C29A606001FD729 /* ScreenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287B85CA2C29A606001FD729 /* ScreenManager.swift */; };
@@ -134,6 +140,11 @@
 		284E30092C2FC48000BB582C /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		2852BDE82AD97A0E00AA8AD1 /* NSSlider+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSlider+Extension.swift"; sourceTree = "<group>"; };
 		28577D412C3441B200C1397D /* ApplicationMenuManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationMenuManager.swift; sourceTree = "<group>"; };
+		2858B7602CC4CA2C004597EE /* LuminareManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuminareManager.swift; sourceTree = "<group>"; };
+		2858B7632CC4CD88004597EE /* AppearanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceView.swift; sourceTree = "<group>"; };
+		2858B7652CC4CD93004597EE /* FunctionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionsView.swift; sourceTree = "<group>"; };
+		2858B7682CC4CDA1004597EE /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		2858B76A2CC4CDAA004597EE /* PermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsView.swift; sourceTree = "<group>"; };
 		28743ED62C28F09500366A69 /* FunctionsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionsSection.swift; sourceTree = "<group>"; };
 		28743ED82C28F0F900366A69 /* BehaviorsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BehaviorsSection.swift; sourceTree = "<group>"; };
 		287B85CA2C29A606001FD729 /* ScreenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenManager.swift; sourceTree = "<group>"; };
@@ -189,6 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2822C58E2BDC75DE009C71DA /* SFSafeSymbols in Frameworks */,
+				2858B75F2CC4CA13004597EE /* Luminare in Frameworks */,
 				2831B15C2B751B7F0020DECD /* Defaults in Frameworks */,
 				28F9913C2C30D805004C76ED /* KeyboardShortcuts in Frameworks */,
 				C66F02AF2A3B5B4D00077CE3 /* LaunchAtLogin in Frameworks */,
@@ -202,14 +214,11 @@
 		2842500E2C253F3E008FEE08 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				2842500F2C253F79008FEE08 /* SettingsView.swift */,
-				284250142C2547F1008FEE08 /* SettingsViewController.swift */,
-				2840D7142C267F350087EE50 /* SettingsTrafficsView.swift */,
-				28C4AC022C270C9B006AFF87 /* SettingsVersionView.swift */,
-				28C90F672C26CC4D000AC2E3 /* Sections */,
-				284E2FF62C2FB17F00BB582C /* Controls */,
-				28C90F682C26D379000AC2E3 /* Views */,
-				28CAF5532C297081002BD78C /* Tips */,
+				2858B7622CC4CD6F004597EE /* Old */,
+				2858B7632CC4CD88004597EE /* AppearanceView.swift */,
+				2858B7652CC4CD93004597EE /* FunctionsView.swift */,
+				2858B76A2CC4CDAA004597EE /* PermissionsView.swift */,
+				2858B7682CC4CDA1004597EE /* AboutView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -243,6 +252,21 @@
 			path = Controls;
 			sourceTree = "<group>";
 		};
+		2858B7622CC4CD6F004597EE /* Old */ = {
+			isa = PBXGroup;
+			children = (
+				2842500F2C253F79008FEE08 /* SettingsView.swift */,
+				284250142C2547F1008FEE08 /* SettingsViewController.swift */,
+				2840D7142C267F350087EE50 /* SettingsTrafficsView.swift */,
+				28C4AC022C270C9B006AFF87 /* SettingsVersionView.swift */,
+				28C90F672C26CC4D000AC2E3 /* Sections */,
+				284E2FF62C2FB17F00BB582C /* Controls */,
+				28C90F682C26D379000AC2E3 /* Views */,
+				28CAF5532C297081002BD78C /* Tips */,
+			);
+			path = Old;
+			sourceTree = "<group>";
+		};
 		287B85D02C29A689001FD729 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -252,6 +276,7 @@
 				28CB53A42C2B938300F32A71 /* AppManager.swift */,
 				28F991452C30F872004C76ED /* ExternalMenuBarManager.swift */,
 				28577D412C3441B200C1397D /* ApplicationMenuManager.swift */,
+				2858B7602CC4CA2C004597EE /* LuminareManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -505,6 +530,7 @@
 				2822C58D2BDC75DE009C71DA /* SFSafeSymbols */,
 				287EADA42C27B48F00D64BED /* SwiftUIIntrospect */,
 				28F9913B2C30D805004C76ED /* KeyboardShortcuts */,
+				2858B75E2CC4CA13004597EE /* Luminare */,
 			);
 			productName = BarStalker;
 			productReference = C66CABA02A38871500E4D8E6 /* Abyssal.app */;
@@ -546,6 +572,7 @@
 				2822C58C2BDC75DE009C71DA /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
 				287EADA32C27B48F00D64BED /* XCRemoteSwiftPackageReference "swiftui-introspect" */,
 				28F9913A2C30D805004C76ED /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
+				2858B75D2CC4CA13004597EE /* XCRemoteSwiftPackageReference "Luminare" */,
 			);
 			productRefGroup = C66CABA12A38871500E4D8E6 /* Products */;
 			projectDirPath = "";
@@ -598,14 +625,17 @@
 				C6DEC53D2A3A0E8900943448 /* StatusBarController+Animations.swift in Sources */,
 				282CB7202C283B7600AF381D /* EmptyFormWrapper.swift in Sources */,
 				284E2FFC2C2FB2BC00BB582C /* TimeoutControl.swift in Sources */,
+				2858B7642CC4CD88004597EE /* AppearanceView.swift in Sources */,
 				284E30022C2FB42400BB582C /* AutoShowsControl.swift in Sources */,
 				28C90F702C270614000AC2E3 /* Bundle+Extensions.swift in Sources */,
+				2858B76B2CC4CDAA004597EE /* PermissionsView.swift in Sources */,
 				28F991442C30F83B004C76ED /* WindowInfo.swift in Sources */,
 				C66CABB72A389F2500E4D8E6 /* EventMonitor.swift in Sources */,
 				28743ED92C28F0F900366A69 /* BehaviorsSection.swift in Sources */,
 				284E2FFA2C2FB20600BB582C /* StartsWithMacOSControl.swift in Sources */,
 				2840D7132C267EE90087EE50 /* GeneralSection.swift in Sources */,
 				282A34E92C50818D000338D8 /* DispatchQueue+Extensions.swift in Sources */,
+				2858B7612CC4CA2C004597EE /* LuminareManager.swift in Sources */,
 				C6DEC52A2A38BF6C00943448 /* StatusBarController.swift in Sources */,
 				284E2FFE2C2FB32F00BB582C /* ThemeControl.swift in Sources */,
 				28C90F6A2C26D394000AC2E3 /* Box.swift in Sources */,
@@ -622,6 +652,7 @@
 				C63B40532A4060E400BCAE79 /* NSStatusItem+Extension.swift in Sources */,
 				283A1ECC2C2EE00E00A34C0A /* main.swift in Sources */,
 				282E928A2C27C25000C21EE5 /* Tip.swift in Sources */,
+				2858B7662CC4CD93004597EE /* FunctionsView.swift in Sources */,
 				C6E2C0302A3EE9F1007D4E1B /* StatusBarController+StateManagers.swift in Sources */,
 				28CB53A52C2B938300F32A71 /* AppManager.swift in Sources */,
 				28F991462C30F872004C76ED /* ExternalMenuBarManager.swift in Sources */,
@@ -642,6 +673,7 @@
 				C66CABA42A38871500E4D8E6 /* AppDelegate.swift in Sources */,
 				2831B15E2B751B990020DECD /* Defaults+Extensions.swift in Sources */,
 				287B85D52C29A707001FD729 /* MathHelper.swift in Sources */,
+				2858B7692CC4CDA1004597EE /* AboutView.swift in Sources */,
 				28F991402C30D9D2004C76ED /* ShortcutsControl.swift in Sources */,
 				287B85CD2C29A643001FD729 /* KeyboardModel.swift in Sources */,
 				284E30062C2FB48E00BB582C /* DeadZoneControl.swift in Sources */,
@@ -964,6 +996,14 @@
 				kind = branch;
 			};
 		};
+		2858B75D2CC4CA13004597EE /* XCRemoteSwiftPackageReference "Luminare" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MrKai77/Luminare";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		287EADA32C27B48F00D64BED /* XCRemoteSwiftPackageReference "swiftui-introspect" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/siteline/swiftui-introspect";
@@ -1000,6 +1040,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2831B15A2B751B7F0020DECD /* XCRemoteSwiftPackageReference "Defaults" */;
 			productName = Defaults;
+		};
+		2858B75E2CC4CA13004597EE /* Luminare */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2858B75D2CC4CA13004597EE /* XCRemoteSwiftPackageReference "Luminare" */;
+			productName = Luminare;
 		};
 		287EADA42C27B48F00D64BED /* SwiftUIIntrospect */ = {
 			isa = XCSwiftPackageProductDependency;

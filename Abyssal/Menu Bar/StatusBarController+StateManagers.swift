@@ -35,18 +35,18 @@ extension StatusBarController {
 
 extension StatusBarController {
     func toggle() {
-        if Defaults[.isActive] {
-            deactivate()
+        if Defaults[.isStandby] {
+            restore()
         } else {
-            activate()
+            standby()
         }
     }
     
     // MARK: - Enables
     
-    func activate() {
+    func standby() {
         unidleHideArea()
-        Defaults[.isActive] = true
+        Defaults[.isStandby] = true
     }
     
     func idleHideArea() {
@@ -363,8 +363,8 @@ extension StatusBarController {
     
     // MARK: - Disables
     
-    func deactivate() {
-        Defaults[.isActive] = false
+    func restore() {
+        Defaults[.isStandby] = false
         unidleHideArea()
     }
     

@@ -11,9 +11,7 @@ import Defaults
 import LaunchAtLogin
 
 extension Defaults.Keys {
-    /// - `true`: the expanded state and menu bar itms are hidden.
-    /// - `false`: the shrunk state and menu bar items are visible.
-    static let isActive = Key<Bool>("isActive", default: false)
+    static let isStandby = Key<Bool>("isStandby", default: false)
     
     static let tipsEnabled = Key<Bool>("tipsEnabled", default: true)
     

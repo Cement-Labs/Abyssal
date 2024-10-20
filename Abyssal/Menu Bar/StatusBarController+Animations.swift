@@ -22,7 +22,7 @@ extension StatusBarController {
         )
     }
     
-    func icons(isActive: Bool = Defaults[.isActive]) -> (head: Icon, body: Icon, tail: Icon) {
+    func icons(isActive: Bool = Defaults[.isStandby]) -> (head: Icon, body: Icon, tail: Icon) {
         (
             head: isActive ? Defaults[.theme].headActive : Defaults[.theme].headInactive,
             body: Defaults[.theme].body,
@@ -53,7 +53,7 @@ extension StatusBarController {
     }
     
     var isActive: Bool {
-        !Defaults[.isActive]
+        !Defaults[.isStandby]
     }
     
     var autoHidesIcons: Bool {

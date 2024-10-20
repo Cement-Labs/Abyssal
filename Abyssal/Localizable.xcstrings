@@ -53,6 +53,9 @@
         }
       }
     },
+    "%@" : {
+
+    },
     "%@ %@ %@" : {
       "localizations" : {
         "en" : {
@@ -176,6 +179,9 @@
         }
       }
     },
+    "About" : {
+
+    },
     "Advanced" : {
       "localizations" : {
         "zh-Hans" : {
@@ -225,6 +231,9 @@
           }
         }
       }
+    },
+    "Appearance" : {
+
     },
     "Application menu" : {
       "localizations" : {
@@ -305,6 +314,9 @@
           }
         }
       }
+    },
+    "Customization" : {
+
     },
     "Dead zone" : {
       "localizations" : {
@@ -428,6 +440,9 @@
           }
         }
       }
+    },
+    "Hello, World!" : {
+
     },
     "Hide certain status items permanently by moving them to the leading of the `Always Hide Separator`, that is, to the **Always Hide Area.**\n\nThe status items inside the **Always Hide Area** will be hidden and kept invisible until the cursor hovers over the spare area with a modifier key down, or while this window is opened." : {
       "localizations" : {
@@ -558,6 +573,9 @@
           }
         }
       }
+    },
+    "Permissions" : {
+
     },
     "px" : {
       "localizations" : {

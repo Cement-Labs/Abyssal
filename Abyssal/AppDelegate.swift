@@ -19,6 +19,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSApplication.shared.delegate as? AppDelegate
     }
     
+    var isActive: Bool = false
+    
     let popover: NSPopover = NSPopover()
     
     let statusBarController = StatusBarController()
@@ -60,6 +62,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 }
             }
         }
+        
+        LuminareManager.open()
     }
     
     func applicationWillTerminate(
@@ -71,6 +75,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         _ app: NSApplication
     ) -> Bool {
         true
+    }
+    
+    func applicationWillBecomeActive(_: Notification) {
+        isActive = true
+    }
+    
+    func applicationWillResignActive(_: Notification) {
+        isActive = false
     }
 }
 
@@ -129,10 +141,10 @@ extension AppDelegate {
             return
         }
         
-        if Defaults[.isActive] {
-            statusBarController.deactivate()
+        if Defaults[.isStandby] {
+            statusBarController.restore()
         } else {
-            statusBarController.activate()
+            statusBarController.standby()
         }
     }
     
