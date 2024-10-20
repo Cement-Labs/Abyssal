@@ -66,9 +66,4 @@ extension Defaults.Keys {
             unique: [:]
         )
     )
-    
-    static let menuBarOverride = Key<MenuBarOverride>(
-        "menuBarOverride",
-        default: .app
-    )
 }

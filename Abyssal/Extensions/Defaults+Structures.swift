@@ -376,21 +376,3 @@ struct ScreenSettings: Codable, Defaults.Serializable {
         }
     }
 }
-
-enum MenuBarOverride: CaseIterable, Codable, Defaults.Serializable {
-    case app
-    case empty
-    
-    var menu: NSMenu? {
-        switch self {
-        case .app:
-            appMenu
-        case .empty:
-            emptyMenu
-        }
-    }
-    
-    func apply() {
-        ApplicationMenuManager.apply(menu)
-    }
-}

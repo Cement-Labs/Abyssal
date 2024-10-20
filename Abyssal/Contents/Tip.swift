@@ -152,10 +152,6 @@ class Tip<Title> where Title: View {
     
     @discardableResult
     func update() -> Bool {
-        guard AppDelegate.shared?.popover.isShown ?? false else {
-            return false
-        }
-        
         if let title {
             views.title.rootView = title()
         }
@@ -334,5 +330,27 @@ extension Tip {
         )
         
         return markdown
+    }
+}
+
+struct ExampleTips {
+    static func loremTitle(_ preferredEdge: NSRectEdge = .minX) -> Tip<Text> {
+        .init(preferredEdge: preferredEdge) {
+            Text("Lorem Ipsum")
+        }
+    }
+    
+    static func loremContent(_ preferredEdge: NSRectEdge = .minX) -> Tip<EmptyView> {
+        .init(preferredEdge: preferredEdge) {
+            "Velit labore consequat consectetur fugiat sunt laboris id est non dolor amet labore officia incididunt laborum."
+        }
+    }
+    
+    static func loremTitleContent(_ preferredEdge: NSRectEdge = .minX) -> Tip<Text> {
+        .init(preferredEdge: preferredEdge) {
+            Text("Lorem Ipsum")
+        } content: {
+            "Velit labore consequat consectetur fugiat sunt laboris id est non dolor amet labore officia incididunt laborum."
+        }
     }
 }

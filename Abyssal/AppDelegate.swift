@@ -195,7 +195,6 @@ extension AppDelegate {
                 let overridesMenuBar = Defaults[.autoOverridesMenuBarEnabled]
                 let activationPolicy: NSApplication.ActivationPolicy = overridesMenuBar ? .regular : .accessory
                 
-                Defaults[.menuBarOverride].apply()
                 ActivationPolicyManager.set(activationPolicy, asFallback: true)
                 NSApp.activate()
                 

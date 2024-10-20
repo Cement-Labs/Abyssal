@@ -203,6 +203,7 @@
       }
     },
     "Allow **%@** to takeover the menu bar when showing this window or toggled manually. **Applies after this window is closed.**" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -236,6 +237,7 @@
 
     },
     "Application menu" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -246,6 +248,7 @@
       }
     },
     "Auto overrides menu bar" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -342,6 +345,7 @@
       }
     },
     "Escape from Overriding" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -494,6 +498,9 @@
         }
       }
     },
+    "Lorem Ipsum" : {
+
+    },
     "Main Screen" : {
       "localizations" : {
         "zh-Hans" : {
@@ -545,6 +552,7 @@
       }
     },
     "Nothing" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -588,6 +596,7 @@
       }
     },
     "Quit" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {

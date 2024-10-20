@@ -64,9 +64,6 @@ extension StatusBarController {
         }
         
         KeyboardShortcuts.onKeyDown(for: .toggleMenuBarOverride) {
-            // Apply application menu before everything to correctly handle application activation states
-            Defaults[.menuBarOverride].apply()
-            
             if ActivationPolicyManager.toggleBetweenFallback(.regular) {
                 // Overridden
                 NSApp.activate()
