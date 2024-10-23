@@ -1076,7 +1076,11 @@
         }
       }
     },
+    "Use always hidden area" : {
+
+    },
     "Use always hide area" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {

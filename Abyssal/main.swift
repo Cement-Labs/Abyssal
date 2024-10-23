@@ -12,7 +12,7 @@ import AppKit
 // MARK: - Application
 
 let app = NSApplication.shared
-let delegate = AppDelegate() // Allocate
+let delegate = AbyssalApp() // Allocate
 
 // MARK: - Application Menu
 

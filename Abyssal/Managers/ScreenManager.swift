@@ -72,7 +72,7 @@ struct ScreenManager {
         } else {
             switch setting.deadZone {
             case .percentage(let percentage):
-                let rightEdge = AppDelegate.shared?.statusBarController.edge ?? width
+                let rightEdge = AbyssalApp.statusBarController.edge
                 return origin.x + 50 + (rightEdge - 50) * (percentage / 100) // Apple icon + app name should be at least 50 pixels wide.
             case .pixel(let pixel):
                 return pixel

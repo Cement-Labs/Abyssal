@@ -20,7 +20,7 @@ class StatusBarController {
         return mouseLocation.x >= ScreenManager.menuBarLeftEdge && mouseLocation.y >= headOrigin.y && mouseLocation.y <= headOrigin.y + headSize.height
     }
     
-    lazy var mouseInHideArea: WithIntermediateState<Bool> = .init {
+    lazy var mouseInHiddenArea: WithIntermediateState<Bool> = .init {
         guard
             let bodyOrigin = self.body.button?.window?.frame.origin,
             let tailOrigin = self.tail.button?.window?.frame.origin,
@@ -29,7 +29,7 @@ class StatusBarController {
         return self.mouseOnStatusBar.value() && NSEvent.mouseLocation.x >= tailOrigin.x + tailSize.width && NSEvent.mouseLocation.x <= bodyOrigin.x
     }
     
-    lazy var mouseInAlwaysHideArea: WithIntermediateState<Bool> = .init {
+    lazy var mouseInAlwaysHiddenArea: WithIntermediateState<Bool> = .init {
         guard let origin = self.tail.button?.window?.frame.origin else { return false }
         return self.mouseOnStatusBar.value() && NSEvent.mouseLocation.x <= origin.x
     }
@@ -104,8 +104,8 @@ class StatusBarController {
         ScreenManager.maxWidth
     }
     
-    var popoverShown: Bool {
-        AppDelegate.shared?.popover.isShown ?? false
+    var settingsOpened: Bool {
+        LuminareManager.isOpened
     }
     
     
@@ -114,7 +114,7 @@ class StatusBarController {
     
     var shouldEdgeUpdate = (now: false, will: false)
     
-    var idling = (hide: false, alwaysHide: false)
+    var idling = (hidden: false, alwaysHidden: false)
     
     var noAnimation = false
     
@@ -192,17 +192,17 @@ class StatusBarController {
         sort()
         
         if let button = StatusBarController._item0.button {
-            button.action = #selector(AppDelegate.toggle(_:))
+            button.action = #selector(AbyssalApp.toggle(_:))
             button.sendAction(on: [.leftMouseUp, .rightMouseUp])
         }
         
         if let button = StatusBarController._item1.button {
-            button.action = #selector(AppDelegate.toggle(_:))
+            button.action = #selector(AbyssalApp.toggle(_:))
             button.sendAction(on: [.leftMouseUp, .rightMouseUp])
         }
         
         if let button = StatusBarController._item2.button {
-            button.action = #selector(AppDelegate.toggle(_:))
+            button.action = #selector(AbyssalApp.toggle(_:))
             button.sendAction(on: [.leftMouseUp, .rightMouseUp])
         }
         

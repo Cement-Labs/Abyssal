@@ -45,16 +45,16 @@ extension StatusBarController {
     // MARK: - Enables
     
     func standby() {
-        unidleHideArea()
+        unidleHiddenArea()
         Defaults[.isStandby] = true
     }
     
-    func idleHideArea() {
-        idling.hide = true
+    func idleHiddenArea() {
+        idling.hidden = true
     }
     
-    func idleAlwaysHideArea() {
-        idling.alwaysHide = true
+    func idleAlwaysHiddenArea() {
+        idling.alwaysHidden = true
     }
     
     func registerShortcuts() {
@@ -67,10 +67,10 @@ extension StatusBarController {
             if ActivationPolicyManager.toggleBetweenFallback(.regular) {
                 // Overridden
                 NSApp.activate()
-                self.idleAlwaysHideArea()
+                self.idleAlwaysHiddenArea()
             } else {
                 // Normal
-                self.unidleHideArea()
+                self.unidleHiddenArea()
             }
         }
     }
@@ -145,7 +145,7 @@ extension StatusBarController {
                     draggedToDeactivate.dragging = false
                     noAnimation = false
                     
-                    unidleAlwaysHideArea()
+                    unidleAlwaysHiddenArea()
                     startAnimationTimer()
                 }
                 
@@ -157,7 +157,7 @@ extension StatusBarController {
                         draggedToDeactivate.count = 0
                         
                         noAnimation = true
-                        idleAlwaysHideArea()
+                        idleAlwaysHiddenArea()
                         startAnimationTimer()
                     }
                 }
@@ -200,7 +200,7 @@ extension StatusBarController {
                     let pid = ProcessInfo.processInfo.processIdentifier
                     if focusedApp.intermediate?.processIdentifier == pid {
                         // From Abyssal, must be ending the overriden state or closing the popover
-                        unidleHideArea()
+                        unidleHiddenArea()
                         ActivationPolicyManager.set(.accessory, asFallback: true)
                     } else if focusedApp.value().processIdentifier == pid {
                         // To Abyssal
@@ -208,7 +208,7 @@ extension StatusBarController {
                         // Neither to nor from Abyssal
                         if Defaults[.screenSettings].main.activeStrategy.frontmostAppChange {
                             // When frontmost app changes
-                            unidleHideArea()
+                            unidleHiddenArea()
                         }
                     }
                 }
@@ -217,7 +217,7 @@ extension StatusBarController {
                 if mainScreen.needsUpdate {
                     if Defaults[.screenSettings].main.activeStrategy.screenChange {
                         // When main screen changes
-                        unidleHideArea()
+                        unidleHiddenArea()
                     }
                 }
                 
@@ -253,8 +253,8 @@ extension StatusBarController {
                 
                 // Update intermediate states
                 mouseOnStatusBar.update()
-                mouseInHideArea.update()
-                mouseInAlwaysHideArea.update()
+                mouseInHiddenArea.update()
+                mouseInAlwaysHiddenArea.update()
                 mouseSpare.update()
                 
                 mouseOverHead.update()
@@ -283,7 +283,7 @@ extension StatusBarController {
             ) { [weak self] _ in
                 guard let self else { return }
                 
-                unidleHideArea()
+                unidleHiddenArea()
                 stopTimer(&timeoutTimer) { self.timeout = true }
             }
             //print("START TIMER [TIMEOUT]: \(timeoutTimer!)")
@@ -335,14 +335,14 @@ extension StatusBarController {
                 // Update idling status
                 if
                     self.isActive
-                        && self.mouseInHideArea.value()
+                        && self.mouseInHiddenArea.value()
                         && !(KeyboardModel.shared.command && event?.type == .leftMouseDown)
                 {
-                    self.idleHideArea()
+                    self.idleHiddenArea()
                 }
                 
-                if self.mouseInAlwaysHideArea.value() {
-                    self.idleAlwaysHideArea()
+                if self.mouseInAlwaysHiddenArea.value() {
+                    self.idleAlwaysHiddenArea()
                 }
                 
                 // Update external menu caches
@@ -362,18 +362,18 @@ extension StatusBarController {
     
     func restore() {
         Defaults[.isStandby] = false
-        unidleHideArea()
+        unidleHiddenArea()
     }
     
-    func unidleHideArea() {
+    func unidleHiddenArea() {
         guard !blocking.value() else { return }
-        idling.hide = false
-        unidleAlwaysHideArea()
+        idling.hidden = false
+        unidleAlwaysHiddenArea()
     }
     
-    func unidleAlwaysHideArea() {
+    func unidleAlwaysHiddenArea() {
         guard !blocking.value() else { return }
-        idling.alwaysHide = false
+        idling.alwaysHidden = false
         function()
     }
     

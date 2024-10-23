@@ -23,7 +23,7 @@ struct ThemeControl: View {
                 }
             }
             .onChange(of: theme) { _, _ in
-                AppDelegate.shared?.statusBarController.function()
+                AbyssalApp.statusBarController.function()
             }
         }
         

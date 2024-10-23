@@ -66,11 +66,12 @@ extension Tab: Identifiable {
 
 class LuminareManager {
     static var luminare: LuminareWindow?
+    static var isOpened: Bool = false
     
     static func open() {
         if luminare == nil {
             LuminareConstants.tint = {
-                AppDelegate.shared?.isActive ?? false ? .accentColor : .gray
+                AbyssalApp.isActive ? .accentColor : .gray
             }
             luminare = LuminareWindow(blurRadius: 20) {
                 LuminareContentView()
@@ -79,13 +80,15 @@ class LuminareManager {
         }
         
         luminare?.show()
+        isOpened = true
         
-        AppDelegate.shared?.isActive = true
+        AbyssalApp.isActive = true
     }
     
     static func fullyClose() {
         luminare?.close()
         luminare = nil
+        isOpened = false
     }
 }
 
@@ -112,16 +115,6 @@ struct LuminareContentView: View {
                         .font(.title2)
                     
                     Spacer()
-                    
-                    HStack {
-                        Button {
-                            AppDelegate.shared?.statusBarController.toggle()
-                        } label: {
-                            Image(systemSymbol: isStandby ? .lockFill : .lockOpenFill)
-                                .frame(width: 16)
-                                .contentTransition(.symbolEffect(.replace))
-                        }
-                    }
                 }
             } content: {
                 currentTab.view()

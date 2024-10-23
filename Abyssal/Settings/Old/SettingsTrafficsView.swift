@@ -17,10 +17,10 @@ struct SettingsTrafficsView: View {
         HStack {
             // Quit
             Box(isOn: false) {
-                AppDelegate.shared?.closePopover(nil)
+                AbyssalApp.shared?.closeSettings(self)
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                    AppDelegate.shared?.quit(nil)
+                    AbyssalApp.shared?.quit(self)
                 }
             } content: {
                 HStack {
@@ -60,7 +60,7 @@ struct SettingsTrafficsView: View {
             TipWrapper(tip: sourceTip) { tip in
                 Box(isOn: false) {
                     DispatchQueue.main.async {
-                        AppDelegate.shared?.closePopover(nil)
+                        AbyssalApp.shared?.closeSettings(self)
                     }
                     
                     DispatchQueue.main.async {
@@ -75,7 +75,7 @@ struct SettingsTrafficsView: View {
             
             // Minimize
             Box(isOn: false) {
-                AppDelegate.shared?.closePopover(nil)
+                AbyssalApp.shared?.closeSettings(self)
             } content: {
                 Image(systemSymbol: .arrowDownRightAndArrowUpLeft)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)

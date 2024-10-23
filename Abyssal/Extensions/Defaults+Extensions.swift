@@ -17,7 +17,7 @@ extension Defaults.Keys {
     
     
     
-    static let alwaysHideAreaEnabled = Key<Bool>("alwaysHideAreaEnabled", default: true)
+    static let alwaysHiddenAreaEnabled = Key<Bool>("alwaysHiddenAreaEnabled", default: true)
     
     static let reduceAnimationEnabled = Key<Bool>("reduceAnimationEnabled", default: false)
     

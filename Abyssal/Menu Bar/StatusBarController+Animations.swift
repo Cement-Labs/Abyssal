@@ -61,16 +61,16 @@ extension StatusBarController {
     }
     
     var idlingAny: Bool {
-        idling.hide || idling.alwaysHide
+        idling.hidden || idling.alwaysHidden
     }
     
     var idlingAll: Bool {
-        idling.hide && idling.alwaysHide
+        idling.hidden && idling.alwaysHidden
     }
     
     // Negatives
     
-    var alwaysHides: Bool {
+    var alwaysHiddens: Bool {
         !autoShows
     }
     
@@ -114,7 +114,7 @@ extension StatusBarController {
             
             if
                 isActive
-                    && !popoverShown
+                    && !settingsOpened
                     && idlingNone
                     && autoShows
                     && mouseNeedsUpdate
@@ -159,7 +159,7 @@ extension StatusBarController {
                 break map
             }
             
-            guard !popoverShown else {
+            guard !settingsOpened else {
                 head.targetAlpha = icons().head.opacity
                 body.targetAlpha = icons().body.opacity
                 tail.targetAlpha = icons().tail.opacity
@@ -193,7 +193,7 @@ extension StatusBarController {
                 
                 tail.targetAlpha = (
                     triggers.tail
-                    || idling.alwaysHide
+                    || idling.alwaysHidden
                 ) ? icons().tail.opacity : 0
             }
         } // End of `map`
@@ -205,7 +205,7 @@ extension StatusBarController {
         head: do {
             let shouldActivate =
             isActive
-            && !popoverShown
+            && !settingsOpened
             && idlingNone
             && !(autoShows && mouseSpare.value())
             
@@ -222,7 +222,7 @@ extension StatusBarController {
             
             let shouldActivate =
             isActive
-            && !popoverShown
+            && !settingsOpened
             && !triggers.body
             && idlingNone
             && !(autoShows && mouseSpare.value())
@@ -274,9 +274,9 @@ extension StatusBarController {
             guard let x = tail.origin?.x else { break tail }
             
             let shouldActive =
-            !popoverShown
+            !settingsOpened
             && !triggers.tail
-            && !idling.alwaysHide
+            && !idling.alwaysHidden
             
             do {
                 if !shouldActive && !tail.wasUnstable {
@@ -335,7 +335,7 @@ extension StatusBarController {
         
         if alwaysShowsIcons {
             // Special judge. See #update()
-        } else if popoverShown {
+        } else if settingsOpened {
             // Popover shown, display all
             
             head.button?.image = Defaults[.theme].headInactive.image
@@ -366,7 +366,7 @@ extension StatusBarController {
                 && idlingAny
                 && (mouseOverHead.value() || mouseOverBody.value() || mouseOverTail.value())
         {
-            unidleHideArea()
+            unidleHiddenArea()
             mouseWasSpareOrUnidled = false
         }
     }

@@ -1,5 +1,5 @@
 //
-//  AlwaysHideAreaControl.swift
+//  AlwaysHiddenAreaControl.swift
 //  Abyssal
 //
 //  Created by KrLite on 2024/6/29.
@@ -8,12 +8,12 @@
 import SwiftUI
 import Defaults
 
-struct AlwaysHideAreaControl: View {
-    @Default(.alwaysHideAreaEnabled) private var alwaysHideAreaEnabled
+struct AlwaysHiddenAreaControl: View {
+    @Default(.alwaysHiddenAreaEnabled) private var alwaysHiddenAreaEnabled
     
     var body: some View {
         TipWrapper(tip: tip) { tip in
-            Toggle("Use always hide area", isOn: $alwaysHideAreaEnabled)
+            Toggle("Use always hidden area", isOn: $alwaysHiddenAreaEnabled)
         }
     }
     
@@ -28,7 +28,7 @@ The status items inside the **Always Hide Area** will be hidden and kept invisib
 
 #Preview {
     Form {
-        AlwaysHideAreaControl()
+        AlwaysHiddenAreaControl()
     }
     .formStyle(.grouped)
 }

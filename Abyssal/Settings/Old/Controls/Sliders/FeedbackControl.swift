@@ -32,7 +32,7 @@ struct FeedbackControl: View {
                 }
                 .onChange(of: feedback) { _, _ in
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                        AppDelegate.shared?.statusBarController.startFeedbackTimer()
+                        AbyssalApp.statusBarController.startFeedbackTimer()
                     }
                 }
             }

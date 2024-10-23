@@ -27,7 +27,6 @@
 		2840D7132C267EE90087EE50 /* GeneralSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2840D7122C267EE90087EE50 /* GeneralSection.swift */; };
 		2840D7152C267F350087EE50 /* SettingsTrafficsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2840D7142C267F350087EE50 /* SettingsTrafficsView.swift */; };
 		284250102C253F79008FEE08 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2842500F2C253F79008FEE08 /* SettingsView.swift */; };
-		284250152C2547F1008FEE08 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284250142C2547F1008FEE08 /* SettingsViewController.swift */; };
 		284630132C27A5B500A44198 /* ActivationPolicyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284630122C27A5B500A44198 /* ActivationPolicyManager.swift */; };
 		284D6CB12C3044CF00DBEBE3 /* RespectNotchControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284D6CB02C3044CF00DBEBE3 /* RespectNotchControl.swift */; };
 		284E2FE32C2F95D300BB582C /* Range+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E2FE22C2F95D300BB582C /* Range+Extensions.swift */; };
@@ -40,7 +39,7 @@
 		284E2FFE2C2FB32F00BB582C /* ThemeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E2FFD2C2FB32F00BB582C /* ThemeControl.swift */; };
 		284E30002C2FB3AC00BB582C /* FeedbackControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E2FFF2C2FB3AC00BB582C /* FeedbackControl.swift */; };
 		284E30022C2FB42400BB582C /* AutoShowsControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E30012C2FB42400BB582C /* AutoShowsControl.swift */; };
-		284E30042C2FB45700BB582C /* AlwaysHideAreaControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E30032C2FB45700BB582C /* AlwaysHideAreaControl.swift */; };
+		284E30042C2FB45700BB582C /* AlwaysHiddenAreaControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E30032C2FB45700BB582C /* AlwaysHiddenAreaControl.swift */; };
 		284E30062C2FB48E00BB582C /* DeadZoneControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E30052C2FB48E00BB582C /* DeadZoneControl.swift */; };
 		284E30082C2FBA4300BB582C /* TipDeadZoneTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E30072C2FBA4300BB582C /* TipDeadZoneTitle.swift */; };
 		284E300A2C2FC48000BB582C /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E30092C2FC48000BB582C /* Double+Extensions.swift */; };
@@ -79,7 +78,7 @@
 		28F991442C30F83B004C76ED /* WindowInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F991432C30F83B004C76ED /* WindowInfo.swift */; };
 		28F991462C30F872004C76ED /* ExternalMenuBarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F991452C30F872004C76ED /* ExternalMenuBarManager.swift */; };
 		C63B40532A4060E400BCAE79 /* NSStatusItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63B40522A4060E400BCAE79 /* NSStatusItem+Extension.swift */; };
-		C66CABA42A38871500E4D8E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CABA32A38871500E4D8E6 /* AppDelegate.swift */; };
+		C66CABA42A38871500E4D8E6 /* AbyssalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CABA32A38871500E4D8E6 /* AbyssalApp.swift */; };
 		C66CABB72A389F2500E4D8E6 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CABB62A389F2500E4D8E6 /* EventMonitor.swift */; };
 		C66F02AF2A3B5B4D00077CE3 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = C66F02AE2A3B5B4D00077CE3 /* LaunchAtLogin */; };
 		C69873BC2A42880C00C5E259 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = C69873BB2A42880C00C5E259 /* Localizable.xcstrings */; };
@@ -118,7 +117,6 @@
 		2840D7122C267EE90087EE50 /* GeneralSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSection.swift; sourceTree = "<group>"; };
 		2840D7142C267F350087EE50 /* SettingsTrafficsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTrafficsView.swift; sourceTree = "<group>"; };
 		2842500F2C253F79008FEE08 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		284250142C2547F1008FEE08 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		284630122C27A5B500A44198 /* ActivationPolicyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivationPolicyManager.swift; sourceTree = "<group>"; };
 		284D6CB02C3044CF00DBEBE3 /* RespectNotchControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespectNotchControl.swift; sourceTree = "<group>"; };
 		284E2FE22C2F95D300BB582C /* Range+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Range+Extensions.swift"; sourceTree = "<group>"; };
@@ -131,7 +129,7 @@
 		284E2FFD2C2FB32F00BB582C /* ThemeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeControl.swift; sourceTree = "<group>"; };
 		284E2FFF2C2FB3AC00BB582C /* FeedbackControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackControl.swift; sourceTree = "<group>"; };
 		284E30012C2FB42400BB582C /* AutoShowsControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoShowsControl.swift; sourceTree = "<group>"; };
-		284E30032C2FB45700BB582C /* AlwaysHideAreaControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlwaysHideAreaControl.swift; sourceTree = "<group>"; };
+		284E30032C2FB45700BB582C /* AlwaysHiddenAreaControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlwaysHiddenAreaControl.swift; sourceTree = "<group>"; };
 		284E30052C2FB48E00BB582C /* DeadZoneControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadZoneControl.swift; sourceTree = "<group>"; };
 		284E30072C2FBA4300BB582C /* TipDeadZoneTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipDeadZoneTitle.swift; sourceTree = "<group>"; };
 		284E30092C2FC48000BB582C /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
@@ -169,7 +167,7 @@
 		28F991452C30F872004C76ED /* ExternalMenuBarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalMenuBarManager.swift; sourceTree = "<group>"; };
 		C63B40522A4060E400BCAE79 /* NSStatusItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSStatusItem+Extension.swift"; sourceTree = "<group>"; };
 		C66CABA02A38871500E4D8E6 /* Abyssal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Abyssal.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C66CABA32A38871500E4D8E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C66CABA32A38871500E4D8E6 /* AbyssalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbyssalApp.swift; sourceTree = "<group>"; };
 		C66CABA72A38871500E4D8E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C66CABAC2A38871500E4D8E6 /* Abyssal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Abyssal.entitlements; sourceTree = "<group>"; };
 		C66CABB62A389F2500E4D8E6 /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
@@ -250,7 +248,6 @@
 			isa = PBXGroup;
 			children = (
 				2842500F2C253F79008FEE08 /* SettingsView.swift */,
-				284250142C2547F1008FEE08 /* SettingsViewController.swift */,
 				2840D7142C267F350087EE50 /* SettingsTrafficsView.swift */,
 				28C4AC022C270C9B006AFF87 /* SettingsVersionView.swift */,
 				28C90F672C26CC4D000AC2E3 /* Sections */,
@@ -308,7 +305,7 @@
 			children = (
 				284E2FF92C2FB20600BB582C /* StartsWithMacOSControl.swift */,
 				284E30012C2FB42400BB582C /* AutoShowsControl.swift */,
-				284E30032C2FB45700BB582C /* AlwaysHideAreaControl.swift */,
+				284E30032C2FB45700BB582C /* AlwaysHiddenAreaControl.swift */,
 				284D6CB02C3044CF00DBEBE3 /* RespectNotchControl.swift */,
 			);
 			path = Toggles;
@@ -424,7 +421,7 @@
 			isa = PBXGroup;
 			children = (
 				283A1ECB2C2EE00E00A34C0A /* main.swift */,
-				C66CABA32A38871500E4D8E6 /* AppDelegate.swift */,
+				C66CABA32A38871500E4D8E6 /* AbyssalApp.swift */,
 				2842500E2C253F3E008FEE08 /* Settings */,
 				C6DEC5392A3A0B2300943448 /* Menu Bar */,
 				C6DEC5372A3A05E200943448 /* Contents */,
@@ -656,9 +653,9 @@
 				C6CDD0622A3F2F9000ED97F0 /* Theme.swift in Sources */,
 				284E2FE72C2F9B9100BB582C /* Formattable.swift in Sources */,
 				287B85CF2C29A676001FD729 /* MouseModel.swift in Sources */,
-				284E30042C2FB45700BB582C /* AlwaysHideAreaControl.swift in Sources */,
+				284E30042C2FB45700BB582C /* AlwaysHiddenAreaControl.swift in Sources */,
 				28F991422C30DE71004C76ED /* ShortcutsSection.swift in Sources */,
-				C66CABA42A38871500E4D8E6 /* AppDelegate.swift in Sources */,
+				C66CABA42A38871500E4D8E6 /* AbyssalApp.swift in Sources */,
 				2831B15E2B751B990020DECD /* Defaults+Extensions.swift in Sources */,
 				287B85D52C29A707001FD729 /* MathHelper.swift in Sources */,
 				2858B7692CC4CDA1004597EE /* AboutView.swift in Sources */,
@@ -676,7 +673,6 @@
 				284E300A2C2FC48000BB582C /* Double+Extensions.swift in Sources */,
 				284630132C27A5B500A44198 /* ActivationPolicyManager.swift in Sources */,
 				28ACE7872AE9490700DC8C1A /* Separator.swift in Sources */,
-				284250152C2547F1008FEE08 /* SettingsViewController.swift in Sources */,
 				28CAF5552C297093002BD78C /* TipTitle.swift in Sources */,
 				282E92912C27D75E00C21EE5 /* TimeFormat.swift in Sources */,
 			);

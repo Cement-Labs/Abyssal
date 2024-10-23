@@ -15,7 +15,7 @@ struct FunctionsSection: View {
             UnifiedVStack {
                 AutoShowsControl()
                 
-                AlwaysHideAreaControl()
+                AlwaysHiddenAreaControl()
             }
         } header: {
             if hasTitle {
