@@ -66,7 +66,9 @@ extension Tab: Identifiable {
 
 class LuminareManager {
     static var luminare: LuminareWindow?
-    static var isOpened: Bool = false
+    static var isOpened: Bool {
+        luminare?.isVisible ?? false
+    }
     
     static func open() {
         if luminare == nil {
@@ -80,15 +82,25 @@ class LuminareManager {
         }
         
         luminare?.show()
-        isOpened = true
         
         AbyssalApp.isActive = true
     }
     
-    static func fullyClose() {
+    static func close() {
         luminare?.close()
+    }
+    
+    static func fullyClose() {
+        close()
         luminare = nil
-        isOpened = false
+    }
+    
+    static func toggle() {
+        if isOpened {
+            close()
+        } else {
+            open()
+        }
     }
 }
 

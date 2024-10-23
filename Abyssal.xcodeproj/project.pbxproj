@@ -20,7 +20,6 @@
 		2831B15C2B751B7F0020DECD /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 2831B15B2B751B7F0020DECD /* Defaults */; };
 		2831B15E2B751B990020DECD /* Defaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2831B15D2B751B990020DECD /* Defaults+Extensions.swift */; };
 		2831B1602B7521890020DECD /* Defaults+Structures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2831B15F2B7521890020DECD /* Defaults+Structures.swift */; };
-		283A1ECC2C2EE00E00A34C0A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283A1ECB2C2EE00E00A34C0A /* main.swift */; };
 		2840D70D2C2679F50087EE50 /* Bool+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2840D70C2C2679F50087EE50 /* Bool+Extensions.swift */; };
 		2840D70F2C267ECB0087EE50 /* ModifierSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2840D70E2C267ECB0087EE50 /* ModifierSection.swift */; };
 		2840D7112C267EE00087EE50 /* AdvancedSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2840D7102C267EE00087EE50 /* AdvancedSection.swift */; };
@@ -28,6 +27,8 @@
 		2840D7152C267F350087EE50 /* SettingsTrafficsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2840D7142C267F350087EE50 /* SettingsTrafficsView.swift */; };
 		284250102C253F79008FEE08 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2842500F2C253F79008FEE08 /* SettingsView.swift */; };
 		284630132C27A5B500A44198 /* ActivationPolicyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284630122C27A5B500A44198 /* ActivationPolicyManager.swift */; };
+		284C2C092CC9353B00A0B520 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284C2C082CC9353B00A0B520 /* main.swift */; };
+		284C2C0C2CC935E100A0B520 /* MenuBarMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284C2C0B2CC935E100A0B520 /* MenuBarMenuView.swift */; };
 		284D6CB12C3044CF00DBEBE3 /* RespectNotchControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284D6CB02C3044CF00DBEBE3 /* RespectNotchControl.swift */; };
 		284E2FE32C2F95D300BB582C /* Range+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E2FE22C2F95D300BB582C /* Range+Extensions.swift */; };
 		284E2FE52C2F9A5C00BB582C /* UnitFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E2FE42C2F9A5C00BB582C /* UnitFormat.swift */; };
@@ -110,7 +111,6 @@
 		282E92902C27D75E00C21EE5 /* TimeFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormat.swift; sourceTree = "<group>"; };
 		2831B15D2B751B990020DECD /* Defaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Defaults+Extensions.swift"; sourceTree = "<group>"; };
 		2831B15F2B7521890020DECD /* Defaults+Structures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Defaults+Structures.swift"; sourceTree = "<group>"; };
-		283A1ECB2C2EE00E00A34C0A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		2840D70C2C2679F50087EE50 /* Bool+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+Extensions.swift"; sourceTree = "<group>"; };
 		2840D70E2C267ECB0087EE50 /* ModifierSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifierSection.swift; sourceTree = "<group>"; };
 		2840D7102C267EE00087EE50 /* AdvancedSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedSection.swift; sourceTree = "<group>"; };
@@ -118,6 +118,8 @@
 		2840D7142C267F350087EE50 /* SettingsTrafficsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTrafficsView.swift; sourceTree = "<group>"; };
 		2842500F2C253F79008FEE08 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		284630122C27A5B500A44198 /* ActivationPolicyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivationPolicyManager.swift; sourceTree = "<group>"; };
+		284C2C082CC9353B00A0B520 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		284C2C0B2CC935E100A0B520 /* MenuBarMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarMenuView.swift; sourceTree = "<group>"; };
 		284D6CB02C3044CF00DBEBE3 /* RespectNotchControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespectNotchControl.swift; sourceTree = "<group>"; };
 		284E2FE22C2F95D300BB582C /* Range+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Range+Extensions.swift"; sourceTree = "<group>"; };
 		284E2FE42C2F9A5C00BB582C /* UnitFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitFormat.swift; sourceTree = "<group>"; };
@@ -213,6 +215,14 @@
 				2858B7682CC4CDA1004597EE /* AboutView.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		284C2C0A2CC935C900A0B520 /* Menu Bar */ = {
+			isa = PBXGroup;
+			children = (
+				284C2C0B2CC935E100A0B520 /* MenuBarMenuView.swift */,
+			);
+			path = "Menu Bar";
 			sourceTree = "<group>";
 		};
 		284E2FE82C2F9C1700BB582C /* Formattable */ = {
@@ -420,10 +430,11 @@
 		C66CABA22A38871500E4D8E6 /* Abyssal */ = {
 			isa = PBXGroup;
 			children = (
-				283A1ECB2C2EE00E00A34C0A /* main.swift */,
+				284C2C082CC9353B00A0B520 /* main.swift */,
 				C66CABA32A38871500E4D8E6 /* AbyssalApp.swift */,
 				2842500E2C253F3E008FEE08 /* Settings */,
-				C6DEC5392A3A0B2300943448 /* Menu Bar */,
+				284C2C0A2CC935C900A0B520 /* Menu Bar */,
+				C6DEC5392A3A0B2300943448 /* Core */,
 				C6DEC5372A3A05E200943448 /* Contents */,
 				287B85D02C29A689001FD729 /* Managers */,
 				28A23C592C38C8160081ED12 /* Models */,
@@ -468,14 +479,14 @@
 			path = Contents;
 			sourceTree = "<group>";
 		};
-		C6DEC5392A3A0B2300943448 /* Menu Bar */ = {
+		C6DEC5392A3A0B2300943448 /* Core */ = {
 			isa = PBXGroup;
 			children = (
 				C6DEC5292A38BF6C00943448 /* StatusBarController.swift */,
 				C6DEC53C2A3A0E8900943448 /* StatusBarController+Animations.swift */,
 				C6E2C02F2A3EE9F1007D4E1B /* StatusBarController+StateManagers.swift */,
 			);
-			path = "Menu Bar";
+			path = Core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -607,6 +618,7 @@
 			files = (
 				282CB7222C2844B700AF381D /* UnifiedVStack.swift in Sources */,
 				287B85D92C29A888001FD729 /* URL+Extensions.swift in Sources */,
+				284C2C0C2CC935E100A0B520 /* MenuBarMenuView.swift in Sources */,
 				2840D7152C267F350087EE50 /* SettingsTrafficsView.swift in Sources */,
 				284250102C253F79008FEE08 /* SettingsView.swift in Sources */,
 				C6B3E79B2A3D83C400B650BC /* NSRect+Extension.swift in Sources */,
@@ -637,11 +649,11 @@
 				284E2FF52C2FAB8900BB582C /* EnvironmentValues+Extention.swift in Sources */,
 				28E929252C30169400847A67 /* NSScreen+Extensions.swift in Sources */,
 				C63B40532A4060E400BCAE79 /* NSStatusItem+Extension.swift in Sources */,
-				283A1ECC2C2EE00E00A34C0A /* main.swift in Sources */,
 				282E928A2C27C25000C21EE5 /* Tip.swift in Sources */,
 				2858B7662CC4CD93004597EE /* FunctionsView.swift in Sources */,
 				C6E2C0302A3EE9F1007D4E1B /* StatusBarController+StateManagers.swift in Sources */,
 				28CB53A52C2B938300F32A71 /* AppManager.swift in Sources */,
+				284C2C092CC9353B00A0B520 /* main.swift in Sources */,
 				28F991462C30F872004C76ED /* ExternalMenuBarManager.swift in Sources */,
 				28C4AC032C270C9B006AFF87 /* SettingsVersionView.swift in Sources */,
 				282E928C2C27CA9100C21EE5 /* ObservationTrackingStream.swift in Sources */,
@@ -889,7 +901,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				MARKETING_VERSION = 4.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = labs.cement.Abyssal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -922,7 +934,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				MARKETING_VERSION = 4.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = labs.cement.Abyssal;
 				PRODUCT_NAME = "$(TARGET_NAME)";

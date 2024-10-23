@@ -31,10 +31,10 @@ class AbyssalApp: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(
         _ aNotification: Notification
     ) {
-        // Set activation policy to `prohibited` after launched
+        // set activation policy to `prohibited` after launched
         ActivationPolicyManager.set(.prohibited, asFallback: true)
         
-        // Fetch latest version
+        // fetch latest version
         VersionModel.shared.fetchLatest()
         
         Self.statusBarController.function()
@@ -78,7 +78,11 @@ extension AbyssalApp {
     @objc func toggle(
         _ sender: Any?
     ) {
-        guard sender as? NSStatusBarButton == Self.statusBarController.head.button else {
+        guard let sender = sender as? NSStatusBarButton else {
+            return
+        }
+        
+        guard sender == Self.statusBarController.head.button else {
             toggleActive(sender)
             return
         }
@@ -87,7 +91,12 @@ extension AbyssalApp {
             openSettings(sender)
         } else {
             if let event = NSApp.currentEvent, event.type == .rightMouseUp {
-                openSettings(sender)
+                if let item = statusItems.filter({ $0.button == sender }).first {
+                    // opens menu
+                    item.menu = NSHostingMenu(rootView: MenuBarMenuView())
+                    sender.performClick(nil)
+                    item.menu = nil
+                }
             } else {
                 toggleActive(sender)
             }
@@ -115,11 +124,13 @@ extension AbyssalApp {
         _ sender: Any?
     ) {
         LuminareManager.open()
+        AbyssalApp.statusBarController.function()
     }
     
     @objc func closeSettings(
         _ sender: Any?
     ) {
-        LuminareManager.fullyClose()
+        LuminareManager.close()
+        AbyssalApp.statusBarController.function()
     }
 }

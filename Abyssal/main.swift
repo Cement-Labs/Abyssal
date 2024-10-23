@@ -12,14 +12,14 @@ import AppKit
 // MARK: - Application
 
 let app = NSApplication.shared
-let delegate = AbyssalApp() // Allocate
+let delegate = AbyssalApp() // allocate
 
 // MARK: - Application Menu
 
-let emptyMenu = NSMenu() // Without any siblings
+let menu = NSMenu()
 
 // MARK: - Run
 
 app.delegate = delegate
-app.mainMenu = emptyMenu
+app.mainMenu = menu
 app.run()
