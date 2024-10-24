@@ -695,6 +695,9 @@
         }
       }
     },
+    "Standby" : {
+
+    },
     "Starts with macOS" : {
       "localizations" : {
         "zh-Hans" : {

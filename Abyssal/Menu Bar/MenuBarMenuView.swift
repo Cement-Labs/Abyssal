@@ -6,9 +6,22 @@
 //
 
 import SwiftUI
+import Defaults
 
 struct MenuBarMenuView: View {
+    @Default(.isStandby) var isStandby
+    
     var body: some View {
+        Toggle("Standby", isOn: .init(
+            get: { isStandby },
+            set: { newValue in
+                isStandby = newValue
+                AbyssalApp.statusBarController.function()
+            }
+        ))
+        
+        Divider()
+        
         Button("Settings…") {
             abyssal.openSettings()
         }
