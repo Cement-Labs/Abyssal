@@ -15,7 +15,7 @@ extension String: @retroactive Identifiable {
     public var id: String { self }
 }
 
-enum Tab: LuminareTabItem, CaseIterable {
+enum LuminareTab: LuminareTabItem, CaseIterable {
     case appearance
     case functions
     
@@ -58,7 +58,7 @@ enum Tab: LuminareTabItem, CaseIterable {
     static let app: [Self] = [.permissions, .about]
 }
 
-extension Tab: Identifiable {
+extension LuminareTab: Identifiable {
     var id: String {
         .init(describing: self)
     }
@@ -66,28 +66,29 @@ extension Tab: Identifiable {
 
 class LuminareManager {
     static var luminare: LuminareWindow?
+    static var model = LuminareWindowModel()
     static var isOpened: Bool {
         luminare?.isVisible ?? false
     }
     
-    static func open() {
+    static func open(with tab: LuminareTab = .appearance) {
         if luminare == nil {
             LuminareConstants.tint = {
                 AbyssalApp.isActive ? .accentColor : .gray
             }
             luminare = LuminareWindow(blurRadius: 20) {
-                LuminareContentView()
+                LuminareContentView(model: model)
             }
             luminare?.center()
             luminare?.becomeKey()
         }
         
+        model.currentTab = tab
+        
         luminare?.show()
         app.mainMenu = appMainMenu
         
         AbyssalApp.isActive = true
-        ActivationPolicyManager.set(.regular)
-        NSApp.activate()
     }
     
     static func close() {
@@ -96,7 +97,6 @@ class LuminareManager {
         app.mainMenu = nil
         
         AbyssalApp.isActive = false
-        ActivationPolicyManager.setToFallback()
     }
     
     static func toggle() {
@@ -108,16 +108,20 @@ class LuminareManager {
     }
 }
 
+class LuminareWindowModel: ObservableObject {
+    @Published var currentTab: LuminareTab = .appearance
+}
+
 struct LuminareContentView: View {
-    @State private var currentTab: Tab = .appearance
+    @ObservedObject var model: LuminareWindowModel
     
     @Default(.isStandby) private var isStandby
     
     var body: some View {
         LuminareDividedStack {
             LuminareSidebar {
-                LuminareSidebarSection("Customization", selection: $currentTab, items: Tab.customization)
-                LuminareSidebarSection("\(Bundle.main.appName)", selection: $currentTab, items: Tab.app)
+                LuminareSidebarSection("Customization", selection: $model.currentTab, items: LuminareTab.customization)
+                LuminareSidebarSection("\(Bundle.main.appName)", selection: $model.currentTab, items: LuminareTab.app)
                 
                 Spacer()
             }
@@ -125,15 +129,15 @@ struct LuminareContentView: View {
             
             LuminarePane {
                 HStack {
-                    currentTab.iconView()
+                    model.currentTab.iconView()
                     
-                    Text(currentTab.title)
+                    Text(model.currentTab.title)
                         .font(.title2)
                     
                     Spacer()
                 }
             } content: {
-                currentTab.view()
+                model.currentTab.view()
                     .transition(.blurReplace().animation(.default))
             }
             .frame(width: 390)

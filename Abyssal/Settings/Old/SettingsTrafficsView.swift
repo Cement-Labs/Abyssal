@@ -15,9 +15,9 @@ struct SettingsTrafficsView: View {
     
     var body: some View {
         HStack {
-            // Quit
+            // quit
             Box(isOn: false) {
-                abyssal.closeSettings(self)
+                abyssal.closeSettings()
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                     abyssal.quit(self)
@@ -40,7 +40,7 @@ struct SettingsTrafficsView: View {
             
             Spacer(minLength: 32)
             
-            // Tips
+            // tips
             Box(isOn: $tipsEnabled, behavior: .toggle) {
                 HStack {
                     Image(systemSymbol: tipsEnabled ? .tagFill : .tagSlashFill)
@@ -56,11 +56,11 @@ struct SettingsTrafficsView: View {
                 .frame(maxHeight: .infinity)
             }
             
-            // Source
+            // source
             TipWrapper(tip: sourceTip) { tip in
                 Box(isOn: false) {
                     DispatchQueue.main.async {
-                        abyssal.closeSettings(self)
+                        abyssal.closeSettings()
                     }
                     
                     DispatchQueue.main.async {
@@ -73,9 +73,9 @@ struct SettingsTrafficsView: View {
                 .frame(width: 32)
             }
             
-            // Minimize
+            // minimize
             Box(isOn: false) {
-                abyssal.closeSettings(self)
+                abyssal.closeSettings()
             } content: {
                 Image(systemSymbol: .arrowDownRightAndArrowUpLeft)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)

@@ -47,12 +47,12 @@ class AbyssalApp: NSObject, NSApplicationDelegate {
     }
     
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows: Bool) -> Bool {
-        openSettings(sender)
+        openSettingsSelector(sender)
         return true
     }
     
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
-        closeSettings(sender)
+        closeSettingsSelector(sender)
         return false
     }
     
@@ -64,6 +64,21 @@ class AbyssalApp: NSObject, NSApplicationDelegate {
     func applicationWillResignActive(_ notification: Notification) {
         Self.isActive = false
         Self.statusBarController.function()
+    }
+}
+
+extension AbyssalApp {
+    func openSettings(
+        with: LuminareTab = .appearance
+    ) {
+        LuminareManager.open(with: with)
+        ActivationPolicyManager.set(.regular)
+        NSApp.activate()
+    }
+    
+    func closeSettings() {
+        LuminareManager.close()
+        ActivationPolicyManager.setToFallback()
     }
 }
 
@@ -94,7 +109,7 @@ extension AbyssalApp {
         }
         
         if KeyboardModel.shared.option {
-            openSettings(sender)
+            openSettingsSelector(sender)
         } else {
             if let event = NSApp.currentEvent, event.type == .rightMouseUp {
                 if let item = statusItems.filter({ $0.button == sender }).first {
@@ -126,15 +141,15 @@ extension AbyssalApp {
         }
     }
     
-    @objc func openSettings(
+    @objc func openSettingsSelector(
         _ sender: Any?
     ) {
-        LuminareManager.open()
+        openSettings()
     }
     
-    @objc func closeSettings(
+    @objc func closeSettingsSelector(
         _ sender: Any?
     ) {
-        LuminareManager.close()
+        closeSettings()
     }
 }

@@ -11,13 +11,13 @@ struct ApplicationMenuView: View {
     var body: some View {
         Menu("\(Bundle.main.appName)") {
             Button("About \(Bundle.main.appName)") {
-                
+                abyssal.openSettings(with: .about)
             }
             
             Divider()
             
             Button("Close Settings") {
-                abyssal.closeSettings(self)
+                abyssal.closeSettings()
             }
             .keyboardShortcut("w", modifiers: .command)
             
