@@ -58,7 +58,7 @@ extension StatusBarController {
     }
     
     func registerShortcuts() {
-        KeyboardShortcuts.onKeyDown(for: .toggleActive) {
+        KeyboardShortcuts.onKeyDown(for: .toggleStandby) {
             self.function()
             self.toggle()
         }
@@ -137,10 +137,10 @@ extension StatusBarController {
             ) { [weak self] _ in
                 guard let self else { return }
                 
-                // Check idle states
+                // check idle states
                 checkIdleStates()
                 
-                // Update dragging state
+                // update dragging state
                 if draggedToDeactivate.dragging && !mouseDragging.value() {
                     draggedToDeactivate.dragging = false
                     noAnimation = false
@@ -162,7 +162,7 @@ extension StatusBarController {
                     }
                 }
                 
-                // Update edge
+                // update edge
                 if shouldEdgeUpdate.will {
                     shouldEdgeUpdate.now = true
                 } else {
@@ -173,7 +173,7 @@ extension StatusBarController {
                     updateEdge()
                 }
                 
-                // Update mouse and keys
+                // update mouse and keys
                 if !MouseModel.shared.dragging {
                     if mouseOnStatusBar.needsUpdate || mouseSpare.needsUpdate {
                         if mouseOnStatusBar.value() || mouseSpare.value() {
@@ -184,36 +184,36 @@ extension StatusBarController {
                     }
                     
                     if mouseOnStatusBar.needsUpdate || mouseSpare.needsUpdate || keyboardTriggers.needsUpdate {
-                        // Resolve animation and function updates
+                        // resolve animation and function updates
                         function()
                     }
                 }
                 
                 if keyboardTriggers.needsUpdate || self.mouseDragging.value() {
-                    // Key pressed || mouse dragging -> sort separators and map appearances
+                    // key pressed || mouse dragging -> sort separators and map appearances
                     sort()
                     map()
                 }
                 
-                // Update frontmost app
+                // update frontmost app
                 if focusedApp.needsUpdate {
                     let pid = ProcessInfo.processInfo.processIdentifier
                     if focusedApp.intermediate?.processIdentifier == pid {
-                        // From Abyssal, must be ending the overriden state or closing the popover
+                        // from Abyssal, must be ending the overriden state or closing the popover
                         unidleHiddenArea()
-                        ActivationPolicyManager.set(.accessory, asFallback: true)
+//                        ActivationPolicyManager.set(.accessory, asFallback: true)
                     } else if focusedApp.value().processIdentifier == pid {
-                        // To Abyssal
+                        // to Abyssal
                     } else {
-                        // Neither to nor from Abyssal
+                        // neither to nor from Abyssal
                         if Defaults[.screenSettings].main.activeStrategy.frontmostAppChange {
-                            // When frontmost app changes
+                            // when frontmost app changes
                             unidleHiddenArea()
                         }
                     }
                 }
                 
-                // Update main screen
+                // update main screen
                 if mainScreen.needsUpdate {
                     if Defaults[.screenSettings].main.activeStrategy.screenChange {
                         // When main screen changes
@@ -221,37 +221,37 @@ extension StatusBarController {
                     }
                 }
                 
-                // Update external menu states
+                // update external menu states
                 if hasExternalMenus.value() {
-                    // Automatically update after once cached
+                    // automatically update after once cached
                     updateExternalMenus()
                 }
                 
                 if hasExternalMenus.needsUpdate {
                     if hasExternalMenus.value() {
-                        // Will keep inactivated
+                        // will keep inactivated
                         print("Has external menu")
                     } else {
-                        // Will be normal
+                        // will be normal
                         print("No longer has external menu")
                     }
                 }
                 
                 
                 
-                // Update blocking status
+                // update blocking status
                 if blocking.needsUpdate {
                     if blocking.value() {
-                        // Blocked
+                        // blocked
                     } else {
-                        // Released
+                        // released
                         startTimeoutTimer()
                     }
                 }
                 
                 
                 
-                // Update intermediate states
+                // update intermediate states
                 mouseOnStatusBar.update()
                 mouseInHiddenArea.update()
                 mouseInAlwaysHiddenArea.update()
@@ -334,7 +334,7 @@ extension StatusBarController {
                 
                 // Update idling status
                 if
-                    self.isActive
+                    self.isStandby
                         && self.mouseInHiddenArea.value()
                         && !(KeyboardModel.shared.command && event?.type == .leftMouseDown)
                 {

@@ -8,18 +8,19 @@
 // https://stackoverflow.com/a/68502031/23452915
 
 import AppKit
+import SwiftUI
 
 // MARK: - Application
 
 let app = NSApplication.shared
-let delegate = AbyssalApp() // allocate
+let abyssal = AbyssalApp() // allocate
 
 // MARK: - Application Menu
 
-let menu = NSMenu()
+let appMainMenu = NSHostingMenu(rootView: ApplicationMenuView())
 
 // MARK: - Run
 
-app.delegate = delegate
-app.mainMenu = menu
+app.delegate = abyssal
+app.mainMenu = appMainMenu
 app.run()

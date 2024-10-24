@@ -11,7 +11,7 @@ import KeyboardShortcuts
 struct ShortcutsControl: View {
     var body: some View {
         VStack {
-            KeyboardShortcuts.Recorder(for: .toggleActive) {
+            KeyboardShortcuts.Recorder(for: .toggleStandby) {
                 VStack {
                     Spacer()
                     Text("Toggle active")

@@ -79,20 +79,24 @@ class LuminareManager {
                 LuminareContentView()
             }
             luminare?.center()
+            luminare?.becomeKey()
         }
         
         luminare?.show()
+        app.mainMenu = appMainMenu
         
         AbyssalApp.isActive = true
+        ActivationPolicyManager.set(.regular)
+        NSApp.activate()
     }
     
     static func close() {
         luminare?.close()
-    }
-    
-    static func fullyClose() {
-        close()
         luminare = nil
+        app.mainMenu = nil
+        
+        AbyssalApp.isActive = false
+        ActivationPolicyManager.setToFallback()
     }
     
     static func toggle() {

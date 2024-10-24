@@ -11,7 +11,7 @@ import Defaults
 
 extension StatusBarController {
     var disabled: Bool {
-        (autoHidesIcons && isInactive)
+        (autoHidesIcons && isFunctioning)
         || mouseDragging.value()
     }
     
@@ -46,13 +46,13 @@ extension StatusBarController {
     
     // MARK: - Convenient Constant Declearations
     
-    // Positives
+    // positives
     
     var autoShows: Bool {
         Defaults[.autoShowsEnabled]
     }
     
-    var isActive: Bool {
+    var isStandby: Bool {
         !Defaults[.isStandby]
     }
     
@@ -68,14 +68,14 @@ extension StatusBarController {
         idling.hidden && idling.alwaysHidden
     }
     
-    // Negatives
+    // negatives
     
     var alwaysHiddens: Bool {
         !autoShows
     }
     
-    var isInactive: Bool {
-        !isActive
+    var isFunctioning: Bool {
+        !isStandby
     }
     
     var alwaysShowsIcons: Bool {
@@ -94,7 +94,7 @@ extension StatusBarController {
     
     func update() {
         if shouldTimersStop.flag {
-            // Make abundant for completing animations
+            // make abundant for completing animations
             if !Defaults[.reduceAnimationEnabled] && shouldTimersStop.count < 10 {
                 shouldTimersStop.count += 1
             } else {
@@ -113,8 +113,8 @@ extension StatusBarController {
             let mouseNeedsUpdate = mouseWasSpareOrUnidled != mouseSpare.value()
             
             if
-                isActive
-                    && !settingsOpened
+                isStandby
+                    && !isActive
                     && idlingNone
                     && autoShows
                     && mouseNeedsUpdate
@@ -127,7 +127,7 @@ extension StatusBarController {
         // MARK: - Basic appearances
         
         appearances: do {
-            // Disabled button appearances are hard to recognise
+            // disabled button appearances are hard to recognise
             /*
             head.button?.appearsDisabled = disabled
             body.button?.appearsDisabled = disabled
@@ -140,7 +140,7 @@ extension StatusBarController {
             }
              */
             
-            // Simply just reset opacities is good
+            // simply just reset opacities is good
             if disabled {
                 head.targetAlpha = icons().head.opacity
                 body.targetAlpha = icons().body.opacity
@@ -159,7 +159,7 @@ extension StatusBarController {
                 break map
             }
             
-            guard !settingsOpened else {
+            guard !isActive else {
                 head.targetAlpha = icons().head.opacity
                 body.targetAlpha = icons().body.opacity
                 tail.targetAlpha = icons().tail.opacity
@@ -169,7 +169,7 @@ extension StatusBarController {
             
             guard
                 autoShows
-                    || isInactive
+                    || isFunctioning
                     || alwaysShowsIcons
             else {
                 head.targetAlpha = 0
@@ -180,12 +180,12 @@ extension StatusBarController {
             }
             
             if autoHidesIcons {
-                head.targetAlpha = isActive ? 0 : icons().head.opacity
+                head.targetAlpha = isStandby ? 0 : icons().head.opacity
             } else {
                 head.targetAlpha = icons().head.opacity
                 
                 body.targetAlpha = (
-                    isInactive
+                    isFunctioning
                     || triggers.body
                     || idlingAny
                     || (autoShows && mouseSpare.value())
@@ -196,7 +196,7 @@ extension StatusBarController {
                     || idling.alwaysHidden
                 ) ? icons().tail.opacity : 0
             }
-        } // End of `map`
+        } // end of `map`
         
         // MARK: - Head
         
@@ -204,14 +204,14 @@ extension StatusBarController {
         
         head: do {
             let shouldActivate =
-            isActive
-            && !settingsOpened
+            isStandby
+            && !isActive
             && idlingNone
             && !(autoShows && mouseSpare.value())
             
             head.targetLength = icons(isActive: shouldActivate).head.width
             shouldTimersStop.flag &= head.lerpLength(noAnimation: noAnimation)
-        } // End of `head`
+        } // end of `head`
         
         // MARK: - Body
         
@@ -221,8 +221,8 @@ extension StatusBarController {
             guard let x = body.origin?.x else { break body }
             
             let shouldActivate =
-            isActive
-            && !settingsOpened
+            isStandby
+            && !isActive
             && !triggers.body
             && idlingNone
             && !(autoShows && mouseSpare.value())
@@ -264,7 +264,7 @@ extension StatusBarController {
                 
                 shouldTimersStop.flag &= body.lerpLength(noAnimation: noAnimation)
             }
-        } // End of `body`
+        } // end of `body`
         
         // MARK: - Tail
         
@@ -274,7 +274,7 @@ extension StatusBarController {
             guard let x = tail.origin?.x else { break tail }
             
             let shouldActive =
-            !settingsOpened
+            !isActive
             && !triggers.tail
             && !idling.alwaysHidden
             
@@ -315,7 +315,7 @@ extension StatusBarController {
                 
                 shouldTimersStop.flag &= tail.lerpLength(noAnimation: noAnimation)
             }
-        } // End of `tail`
+        } // end of `tail`
     }
     
     
@@ -325,8 +325,8 @@ extension StatusBarController {
         body.button?.image = icons().body.image
         tail.button?.image = icons().tail.image
         
-        guard autoShows || isInactive || alwaysShowsIcons else {
-            // Always hidden
+        guard autoShows || isFunctioning || alwaysShowsIcons else {
+            // always hidden
             head.targetAlpha = 0
             body.targetAlpha = 0
             tail.targetAlpha = 0
@@ -334,9 +334,9 @@ extension StatusBarController {
         }
         
         if alwaysShowsIcons {
-            // Special judge. See #update()
-        } else if settingsOpened {
-            // Popover shown, display all
+            // special judge. See #update()
+        } else if isActive {
+            // popover shown, display all
             
             head.button?.image = Defaults[.theme].headInactive.image
             
@@ -344,7 +344,7 @@ extension StatusBarController {
             body.targetAlpha = icons().body.opacity
             tail.targetAlpha = icons().tail.opacity
         } else if keyboardTriggers.value() {
-            // Keyboard triggers, display triggered appearances
+            // keyboard triggers, display triggered appearances
             
             head.button?.image = Defaults[.theme].headInactive.image
             
@@ -352,9 +352,9 @@ extension StatusBarController {
             body.targetAlpha = triggers.body ? icons().body.opacity : 0
             tail.targetAlpha = triggers.tail ? icons().tail.opacity : 0
         } else {
-            // Auto hide icons
+            // auto hide icons
             
-            head.targetAlpha = isInactive ? icons().head.opacity : 0
+            head.targetAlpha = isFunctioning ? icons().head.opacity : 0
             body.targetAlpha = 0
             tail.targetAlpha = 0
         }

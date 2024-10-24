@@ -182,6 +182,9 @@
     "About" : {
 
     },
+    "About %@" : {
+
+    },
     "Advanced" : {
       "localizations" : {
         "zh-Hans" : {
@@ -307,6 +310,9 @@
           }
         }
       }
+    },
+    "Close Settings" : {
+
     },
     "Controls the dead zone area on the screen.\n\n**%@** will treat dead zone area as if it is not a part of the screen, which means only the non dead zone menu bar area is capable for interactions and hiding menu bar items." : {
       "localizations" : {

@@ -7,7 +7,6 @@
 
 import AppKit
 import Defaults
-import SwiftUI
 
 // status items
 
@@ -121,8 +120,8 @@ class StatusBarController {
         ScreenManager.maxWidth
     }
     
-    var settingsOpened: Bool {
-        LuminareManager.isOpened
+    var isActive: Bool {
+        AbyssalApp.isActive
     }
     
     

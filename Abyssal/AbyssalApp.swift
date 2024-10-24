@@ -14,10 +14,6 @@ import LaunchAtLogin
 let repository = "Cement-Labs/Abyssal"
 
 class AbyssalApp: NSObject, NSApplicationDelegate {
-    static var shared: AbyssalApp? {
-        NSApplication.shared.delegate as? AbyssalApp
-    }
-    
     static var isActive: Bool = false
     
     static let statusBarController = StatusBarController()
@@ -31,7 +27,6 @@ class AbyssalApp: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(
         _ aNotification: Notification
     ) {
-        // set activation policy to `prohibited` after launched
         ActivationPolicyManager.set(.prohibited, asFallback: true)
         
         // fetch latest version
@@ -51,18 +46,24 @@ class AbyssalApp: NSObject, NSApplicationDelegate {
         true
     }
     
-    func applicationWillBecomeActive(_: Notification) {
-        AbyssalApp.isActive = true
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows: Bool) -> Bool {
+        openSettings(sender)
+        return true
     }
     
-    func applicationWillResignActive(_: Notification) {
-        Self.isActive = false
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+        closeSettings(sender)
+        return false
     }
-}
-
-extension AbyssalApp: NSPopoverDelegate {
-    func popoverShouldDetach(_ popover: NSPopover) -> Bool {
-        true
+    
+    func applicationWillBecomeActive(_: Notification) {
+        Self.isActive = true
+        Self.statusBarController.function()
+    }
+    
+    func applicationWillResignActive(_ notification: Notification) {
+        Self.isActive = false
+        Self.statusBarController.function()
     }
 }
 
@@ -82,8 +83,13 @@ extension AbyssalApp {
             return
         }
         
+        guard !LuminareManager.isOpened else {
+            toggleStandby(sender)
+            return
+        }
+        
         guard sender == Self.statusBarController.head.button else {
-            toggleActive(sender)
+            toggleStandby(sender)
             return
         }
         
@@ -98,12 +104,12 @@ extension AbyssalApp {
                     item.menu = nil
                 }
             } else {
-                toggleActive(sender)
+                toggleStandby(sender)
             }
         }
     }
     
-    @objc func toggleActive(
+    @objc func toggleStandby(
         _ sender: Any?
     ) {
         Self.statusBarController.function()
@@ -124,13 +130,11 @@ extension AbyssalApp {
         _ sender: Any?
     ) {
         LuminareManager.open()
-        AbyssalApp.statusBarController.function()
     }
     
     @objc func closeSettings(
         _ sender: Any?
     ) {
         LuminareManager.close()
-        AbyssalApp.statusBarController.function()
     }
 }

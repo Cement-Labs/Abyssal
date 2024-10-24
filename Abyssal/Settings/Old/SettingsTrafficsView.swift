@@ -17,10 +17,10 @@ struct SettingsTrafficsView: View {
         HStack {
             // Quit
             Box(isOn: false) {
-                AbyssalApp.shared?.closeSettings(self)
+                abyssal.closeSettings(self)
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                    AbyssalApp.shared?.quit(self)
+                    abyssal.quit(self)
                 }
             } content: {
                 HStack {
@@ -60,7 +60,7 @@ struct SettingsTrafficsView: View {
             TipWrapper(tip: sourceTip) { tip in
                 Box(isOn: false) {
                     DispatchQueue.main.async {
-                        AbyssalApp.shared?.closeSettings(self)
+                        abyssal.closeSettings(self)
                     }
                     
                     DispatchQueue.main.async {
@@ -75,7 +75,7 @@ struct SettingsTrafficsView: View {
             
             // Minimize
             Box(isOn: false) {
-                AbyssalApp.shared?.closeSettings(self)
+                abyssal.closeSettings(self)
             } content: {
                 Image(systemSymbol: .arrowDownRightAndArrowUpLeft)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)

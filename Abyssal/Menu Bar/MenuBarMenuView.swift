@@ -10,7 +10,11 @@ import SwiftUI
 struct MenuBarMenuView: View {
     var body: some View {
         Button("Settings…") {
-            AbyssalApp.shared?.openSettings(self)
+            abyssal.openSettings(self)
+        }
+        
+        Button("Quit \(Bundle.main.appName)") {
+            abyssal.quit(self)
         }
     }
 }

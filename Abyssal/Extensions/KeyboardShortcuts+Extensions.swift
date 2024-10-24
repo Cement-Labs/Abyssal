@@ -9,6 +9,6 @@ import Foundation
 import KeyboardShortcuts
 
 extension KeyboardShortcuts.Name {
-    static let toggleActive = Self("toggleActive", default: .init(.backtick, modifiers: [.control]))
+    static let toggleStandby = Self("toggleStandby", default: .init(.backtick, modifiers: [.control]))
     static let toggleMenuBarOverride = Self("toggleMenuBarOverride", default: .init(.backtick, modifiers: [.control, .option]))
 }
