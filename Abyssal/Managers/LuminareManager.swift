@@ -76,6 +76,7 @@ class LuminareManager {
             LuminareConstants.tint = {
                 AbyssalApp.isActive ? .accentColor : .gray
             }
+            
             luminare = LuminareWindow(blurRadius: 20) {
                 LuminareContentView(model: model)
             }

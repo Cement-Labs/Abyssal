@@ -63,6 +63,8 @@
 		28925BAE2C27F00C008FCC69 /* TipWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28925BAD2C27F00C008FCC69 /* TipWrapper.swift */; };
 		28ACE7872AE9490700DC8C1A /* Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28ACE7862AE9490700DC8C1A /* Separator.swift */; };
 		28BDABD32CCBD67C0028E43E /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BDABD22CCBD67C0028E43E /* View+Extensions.swift */; };
+		28BDABDC2CCBDD1A0028E43E /* ThemePopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BDABDB2CCBDD1A0028E43E /* ThemePopup.swift */; };
+		28BDABDE2CCBDF4B0028E43E /* LuminareCompactPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BDABDD2CCBDF4B0028E43E /* LuminareCompactPicker.swift */; };
 		28C4AC032C270C9B006AFF87 /* SettingsVersionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4AC022C270C9B006AFF87 /* SettingsVersionView.swift */; };
 		28C90F6A2C26D394000AC2E3 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C90F692C26D394000AC2E3 /* Box.swift */; };
 		28C90F702C270614000AC2E3 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C90F6F2C270614000AC2E3 /* Bundle+Extensions.swift */; };
@@ -154,6 +156,8 @@
 		28925BAD2C27F00C008FCC69 /* TipWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipWrapper.swift; sourceTree = "<group>"; };
 		28ACE7862AE9490700DC8C1A /* Separator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Separator.swift; sourceTree = "<group>"; };
 		28BDABD22CCBD67C0028E43E /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		28BDABDB2CCBDD1A0028E43E /* ThemePopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemePopup.swift; sourceTree = "<group>"; };
+		28BDABDD2CCBDF4B0028E43E /* LuminareCompactPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuminareCompactPicker.swift; sourceTree = "<group>"; };
 		28C4AC022C270C9B006AFF87 /* SettingsVersionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVersionView.swift; sourceTree = "<group>"; };
 		28C90F692C26D394000AC2E3 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		28C90F6F2C270614000AC2E3 /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
@@ -217,6 +221,8 @@
 				2858B7652CC4CD93004597EE /* FunctionsView.swift */,
 				2858B76A2CC4CDAA004597EE /* PermissionsView.swift */,
 				2858B7682CC4CDA1004597EE /* AboutView.swift */,
+				28BDABD92CCBDCC80028E43E /* Auxiliary Views */,
+				28BDABDA2CCBDCF50028E43E /* Popups */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -327,6 +333,23 @@
 			path = Toggles;
 			sourceTree = "<group>";
 		};
+		28BDABD92CCBDCC80028E43E /* Auxiliary Views */ = {
+			isa = PBXGroup;
+			children = (
+				28BDABDD2CCBDF4B0028E43E /* LuminareCompactPicker.swift */,
+				28925BAD2C27F00C008FCC69 /* TipWrapper.swift */,
+			);
+			path = "Auxiliary Views";
+			sourceTree = "<group>";
+		};
+		28BDABDA2CCBDCF50028E43E /* Popups */ = {
+			isa = PBXGroup;
+			children = (
+				28BDABDB2CCBDD1A0028E43E /* ThemePopup.swift */,
+			);
+			path = Popups;
+			sourceTree = "<group>";
+		};
 		28C90F672C26CC4D000AC2E3 /* Sections */ = {
 			isa = PBXGroup;
 			children = (
@@ -344,7 +367,6 @@
 			isa = PBXGroup;
 			children = (
 				28C90F692C26D394000AC2E3 /* Box.swift */,
-				28925BAD2C27F00C008FCC69 /* TipWrapper.swift */,
 				282CB71F2C283B7600AF381D /* EmptyFormWrapper.swift */,
 				282CB7212C2844B700AF381D /* UnifiedVStack.swift */,
 			);
@@ -630,6 +652,7 @@
 				C6B3E79B2A3D83C400B650BC /* NSRect+Extension.swift in Sources */,
 				C6DEC53D2A3A0E8900943448 /* StatusBarController+Animations.swift in Sources */,
 				282CB7202C283B7600AF381D /* EmptyFormWrapper.swift in Sources */,
+				28BDABDC2CCBDD1A0028E43E /* ThemePopup.swift in Sources */,
 				284E2FFC2C2FB2BC00BB582C /* TimeoutControl.swift in Sources */,
 				2858B7642CC4CD88004597EE /* AppearanceView.swift in Sources */,
 				284E30022C2FB42400BB582C /* AutoShowsControl.swift in Sources */,
@@ -658,6 +681,7 @@
 				282E928A2C27C25000C21EE5 /* Tip.swift in Sources */,
 				2858B7662CC4CD93004597EE /* FunctionsView.swift in Sources */,
 				C6E2C0302A3EE9F1007D4E1B /* StatusBarController+StateManagers.swift in Sources */,
+				28BDABDE2CCBDF4B0028E43E /* LuminareCompactPicker.swift in Sources */,
 				28BDABD32CCBD67C0028E43E /* View+Extensions.swift in Sources */,
 				28CB53A52C2B938300F32A71 /* AppManager.swift in Sources */,
 				284C2C092CC9353B00A0B520 /* main.swift in Sources */,
