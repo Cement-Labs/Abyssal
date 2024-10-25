@@ -12,15 +12,15 @@ import Defaults
 import SwiftUIIntrospect
 
 class Tip<Title> where Title: View {
-    var preferredEdge: NSRectEdge = .minX
-    var delay: CGFloat = 0.5
-    var sustain: CGFloat = 0.5
-    var permanent: Bool = false
+    let preferredEdge: NSRectEdge
+    let delay: CGFloat
+    let sustain: CGFloat
+    let permanent: Bool
     
     var positionRect = { CGRect.zero }
     var positionOffset = { CGPoint.zero }
     
-    var hasReactivePosition = false
+    let hasReactivePosition
     
     var title: (() -> Title)? = nil
     var content: (() -> String)? = nil
@@ -32,7 +32,7 @@ class Tip<Title> where Title: View {
     private var positionUpdateTimer: Timer?
     
     private let showIdentifier = UUID()
-    private var hideIdentifier = UUID()
+    private let hideIdentifier = UUID()
     
     private var position: CGRect {
         positionRect().offsetBy(
@@ -77,7 +77,7 @@ class Tip<Title> where Title: View {
     
     
     init(
-        preferredEdge: NSRectEdge = .minX,
+        preferredEdge: NSRectEdge = .maxX,
         delay: CGFloat = 0.5,
         sustain: CGFloat = 0.5,
         permanent: Bool = false,
@@ -122,7 +122,7 @@ class Tip<Title> where Title: View {
     }
     
     convenience init(
-        preferredEdge: NSRectEdge = .minX,
+        preferredEdge: NSRectEdge = .maxX,
         delay: CGFloat = 0.5,
         sustain: CGFloat = 0.5,
         permanent: Bool = false,
