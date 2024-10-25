@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Defaults
+import KeyboardShortcuts
 
 struct MenuBarMenuView: View {
     @Default(.isStandby) var isStandby
@@ -25,9 +26,11 @@ struct MenuBarMenuView: View {
         Button("Settings…") {
             abyssal.openSettings()
         }
+        .keyboardShortcut(",", modifiers: .command)
         
         Button("Quit \(Bundle.main.appName)") {
             abyssal.quit(self)
         }
+        .keyboardShortcut("q", modifiers: .command)
     }
 }

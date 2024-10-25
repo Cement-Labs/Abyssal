@@ -80,12 +80,12 @@ class LuminareManager {
                 LuminareContentView(model: model)
             }
             luminare?.center()
-            luminare?.becomeKey()
         }
         
         model.currentTab = tab
         
         luminare?.show()
+        luminare?.becomeKey()
         app.mainMenu = appMainMenu
         
         AbyssalApp.isActive = true

@@ -62,6 +62,7 @@
 		287EADA52C27B48F00D64BED /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = 287EADA42C27B48F00D64BED /* SwiftUIIntrospect */; };
 		28925BAE2C27F00C008FCC69 /* TipWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28925BAD2C27F00C008FCC69 /* TipWrapper.swift */; };
 		28ACE7872AE9490700DC8C1A /* Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28ACE7862AE9490700DC8C1A /* Separator.swift */; };
+		28BDABD32CCBD67C0028E43E /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BDABD22CCBD67C0028E43E /* View+Extensions.swift */; };
 		28C4AC032C270C9B006AFF87 /* SettingsVersionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4AC022C270C9B006AFF87 /* SettingsVersionView.swift */; };
 		28C90F6A2C26D394000AC2E3 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C90F692C26D394000AC2E3 /* Box.swift */; };
 		28C90F702C270614000AC2E3 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C90F6F2C270614000AC2E3 /* Bundle+Extensions.swift */; };
@@ -152,6 +153,7 @@
 		287B85D82C29A888001FD729 /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 		28925BAD2C27F00C008FCC69 /* TipWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipWrapper.swift; sourceTree = "<group>"; };
 		28ACE7862AE9490700DC8C1A /* Separator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Separator.swift; sourceTree = "<group>"; };
+		28BDABD22CCBD67C0028E43E /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		28C4AC022C270C9B006AFF87 /* SettingsVersionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVersionView.swift; sourceTree = "<group>"; };
 		28C90F692C26D394000AC2E3 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		28C90F6F2C270614000AC2E3 /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				284E2FF42C2FAB8900BB582C /* EnvironmentValues+Extention.swift */,
+				28BDABD22CCBD67C0028E43E /* View+Extensions.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -655,6 +658,7 @@
 				282E928A2C27C25000C21EE5 /* Tip.swift in Sources */,
 				2858B7662CC4CD93004597EE /* FunctionsView.swift in Sources */,
 				C6E2C0302A3EE9F1007D4E1B /* StatusBarController+StateManagers.swift in Sources */,
+				28BDABD32CCBD67C0028E43E /* View+Extensions.swift in Sources */,
 				28CB53A52C2B938300F32A71 /* AppManager.swift in Sources */,
 				284C2C092CC9353B00A0B520 /* main.swift in Sources */,
 				28F991462C30F872004C76ED /* ExternalMenuBarManager.swift in Sources */,

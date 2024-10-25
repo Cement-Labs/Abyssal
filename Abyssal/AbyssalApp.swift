@@ -71,9 +71,9 @@ extension AbyssalApp {
     func openSettings(
         with: LuminareTab = .appearance
     ) {
-        LuminareManager.open(with: with)
         ActivationPolicyManager.set(.regular)
         NSApp.activate()
+        LuminareManager.open(with: with)
     }
     
     func closeSettings() {
