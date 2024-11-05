@@ -31,4 +31,12 @@ extension View {
             ifFalse?(self)
         }
     }
+    
+    @ViewBuilder func simpleTextFormat(maxWidth: CGFloat? = 480) -> some View {
+        MaxWidth(maxWidth: maxWidth) {
+            self
+                .multilineTextAlignment(.leading)
+        }
+        .padding()
+    }
 }

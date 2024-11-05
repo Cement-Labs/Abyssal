@@ -1,5 +1,5 @@
 {
-  "originHash" : "ed186e494e4500ff5e792d373941ec943efb1cd2ddb7835d54b0fd97de660d5d",
+  "originHash" : "9d24ba10801451a1d16b834a90aae10b01f6395bd6f901085e40ccfe08c74a99",
   "pins" : [
     {
       "identity" : "defaults",
@@ -7,7 +7,7 @@
       "location" : "https://github.com/sindresorhus/Defaults",
       "state" : {
         "branch" : "main",
-        "revision" : "0f73f9401a416336931f2d598662cc524a13b21f"
+        "revision" : "a89f799930c92a85aa04b72131849d46c0833ab3"
       }
     },
     {
@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/sindresorhus/KeyboardShortcuts",
       "state" : {
-        "revision" : "2e5f15581fefb821d4b366e57d817be8bf12aa58",
-        "version" : "2.0.1"
+        "revision" : "c3c361f409b8dbe1eab186078b41c330a6a82c9a",
+        "version" : "2.2.2"
       }
     },
     {
@@ -25,16 +25,16 @@
       "location" : "https://github.com/sindresorhus/LaunchAtLogin",
       "state" : {
         "branch" : "main",
-        "revision" : "7ad6331f9c38953eb1ce8737758e18f7607e984a"
+        "revision" : "9a894d799269cb591037f9f9cb0961510d4dca81"
       }
     },
     {
       "identity" : "luminare",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/MrKai77/Luminare",
+      "location" : "https://github.com/Cement-Labs/Luminare",
       "state" : {
         "branch" : "main",
-        "revision" : "0fef01b69ea5eea0fdb0328b4f9be3cd41c9d34c"
+        "revision" : "594a59da3a41e64cd746b1950231fe90ba562301"
       }
     },
     {
@@ -42,8 +42,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SFSafeSymbols/SFSafeSymbols",
       "state" : {
-        "revision" : "afd0a1da4ed62bab1413caa6dd6b60a7a7089ed2",
-        "version" : "5.2.0"
+        "revision" : "e2e28f4e56e1769c2ec3c61c9355fc64eb7a535a",
+        "version" : "5.3.0"
       }
     },
     {
@@ -51,8 +51,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/siteline/swiftui-introspect",
       "state" : {
-        "revision" : "668a65735751432b640260c56dfa621cec568368",
-        "version" : "1.2.0"
+        "revision" : "807f73ce09a9b9723f12385e592b4e0aaebd3336",
+        "version" : "1.3.0"
       }
     }
   ],

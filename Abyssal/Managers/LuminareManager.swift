@@ -73,12 +73,11 @@ class LuminareManager {
     
     static func open(with tab: LuminareTab = .appearance) {
         if luminare == nil {
-            LuminareConstants.tint = {
-                AbyssalApp.isActive ? .accentColor : .gray
-            }
-            
             luminare = LuminareWindow(blurRadius: 20) {
                 LuminareContentView(model: model)
+                    .environment(\.luminareTint) {
+                        AbyssalApp.isActive ? .accentColor : .gray
+                    }
             }
             luminare?.center()
         }
@@ -129,6 +128,9 @@ struct LuminareContentView: View {
             .frame(width: 260)
             
             LuminarePane {
+                model.currentTab.view()
+                    .transition(.blurReplace().animation(.default))
+            } header: {
                 HStack {
                     model.currentTab.iconView()
                     
@@ -137,11 +139,9 @@ struct LuminareContentView: View {
                     
                     Spacer()
                 }
-            } content: {
-                model.currentTab.view()
-                    .transition(.blurReplace().animation(.default))
             }
             .frame(width: 390)
         }
+        .frame(height: 540)
     }
 }

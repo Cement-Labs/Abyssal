@@ -1,7 +1,11 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     "[after modifier mode picker]" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -18,6 +22,7 @@
       }
     },
     "[before modifier mode picker]" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -34,6 +39,7 @@
       }
     },
     "**%@** is open source. Click to access the source code." : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -44,6 +50,7 @@
       }
     },
     "%" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -55,17 +62,6 @@
     },
     "%@" : {
 
-    },
-    "%@ %@ %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@ %2$@ %3$@"
-          }
-        }
-      },
-      "shouldTranslate" : false
     },
     "%g Minutes" : {
       "localizations" : {
@@ -186,6 +182,7 @@
 
     },
     "Advanced" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -196,6 +193,7 @@
       }
     },
     "all" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -217,6 +215,7 @@
       }
     },
     "An update is available. Click to access the download page." : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -227,6 +226,7 @@
       }
     },
     "any" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -262,6 +262,7 @@
       }
     },
     "Auto shows" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -272,6 +273,7 @@
       }
     },
     "Auto shows the status items inside the **Hide Area** while the cursor is hovering over the spare area.\n\nIf this option is enabled, the status items inside the **Hide Area,** which is between the `Hide Separator` (the middle one) and the `Always Hide Separator` (the furthest one from the screen corner), will be hidden and kept invisible, until the cursor hovers over the spare area, where the status items in **Hide Area** used to stay. Otherwise the status items will be hidden until you switch their visibility state manually.\n\nBy left clicking on the `Menu Separator` (the nearest one to the screen corner), or clicking using either of the mouse buttons on the other separators, you can manually switch the visibility state of the status items inside the **Hide Area.** If you set them visible, they will never be hidden again until you manually switch their visibility state. Otherwise they will follow the behavior defined above." : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -282,6 +284,7 @@
       }
     },
     "Becomes active again" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -292,6 +295,7 @@
       }
     },
     "Behaviors" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -302,6 +306,7 @@
       }
     },
     "Click to check for updates." : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -315,6 +320,7 @@
 
     },
     "Controls the dead zone area on the screen.\n\n**%@** will treat dead zone area as if it is not a part of the screen, which means only the non dead zone menu bar area is capable for interactions and hiding menu bar items." : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -328,6 +334,7 @@
 
     },
     "Dead zone" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -337,10 +344,8 @@
         }
       }
     },
-    "Debug Fetch State" : {
-
-    },
     "Display ID" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -362,6 +367,7 @@
       }
     },
     "Failed to fetch for latest version." : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -372,6 +378,7 @@
       }
     },
     "Fetching for latest version…" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -392,6 +399,7 @@
       }
     },
     "Frontmost Application" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -412,6 +420,7 @@
       }
     },
     "General" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -422,6 +431,7 @@
       }
     },
     "Haptic feedback" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -432,6 +442,7 @@
       }
     },
     "Heavy" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -442,6 +453,7 @@
       }
     },
     "Height" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -455,6 +467,7 @@
 
     },
     "Hide certain status items permanently by moving them to the leading of the `Always Hide Separator`, that is, to the **Always Hide Area.**\n\nThe status items inside the **Always Hide Area** will be hidden and kept invisible until the cursor hovers over the spare area with a modifier key down, or while this window is opened." : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -465,6 +478,7 @@
       }
     },
     "If the screen has a notch, use the menu bar's trailing side of the notch as available area and ignore dead zone settings." : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -485,6 +499,7 @@
       }
     },
     "Launch **%@** right after macOS starts." : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -495,6 +510,7 @@
       }
     },
     "Light" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -504,10 +520,8 @@
         }
       }
     },
-    "Lorem Ipsum" : {
-
-    },
     "Main Screen" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -518,6 +532,7 @@
       }
     },
     "Medium" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -528,6 +543,7 @@
       }
     },
     "Menu Bar Interaction" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -538,6 +554,7 @@
       }
     },
     "Modifier" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -548,6 +565,7 @@
       }
     },
     "None" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -569,6 +587,7 @@
       }
     },
     "On Change" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -579,6 +598,7 @@
       }
     },
     "On Invalidation" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -592,6 +612,7 @@
 
     },
     "px" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -643,6 +664,7 @@
       }
     },
     "Remember This Screen" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -653,6 +675,7 @@
       }
     },
     "Respect notch" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -663,6 +686,7 @@
       }
     },
     "Screen Information" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -676,6 +700,7 @@
 
     },
     "Shortcuts" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -699,6 +724,7 @@
 
     },
     "Starts with macOS" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -709,6 +735,7 @@
       }
     },
     "The global shortcut used to toggle **%@**'s active state." : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -719,6 +746,7 @@
       }
     },
     "The global shortcut used to toggle menu bar override." : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -729,6 +757,7 @@
       }
     },
     "The intensity of feedback given when triggering actions such as _enabling **Auto Shows**_ or _canceling **Auto Idling.**_" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -739,6 +768,7 @@
       }
     },
     "The modifier keys to use for showing the **Always Hide Area.** It is recommended to keep `⌘` enabled." : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -749,6 +779,7 @@
       }
     },
     "The stratrgy used for automatically cancelling **Auto Idling.** When the condition is met, **%@** will recover the active state where menu bar items in both **Hide Area** and **Always Hide Area** become hidden." : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1039,6 +1070,7 @@
       }
     },
     "Time to countdown before disabling **Auto Idling.**\n\nAfter interacting with status items that will be automatically hidden, for example, status items inside the **Always Hidden Area,** **Auto Idling** will keep them visible until this timeout is reached, the cursor hovered over the `Hide Separator` or `Always Hide Separator`, or the specified active strategy is met." : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1049,6 +1081,7 @@
       }
     },
     "Timeout" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1059,6 +1092,7 @@
       }
     },
     "Tips" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1069,6 +1103,7 @@
       }
     },
     "Toggle active" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1079,6 +1114,7 @@
       }
     },
     "Toggle menu bar override" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1087,9 +1123,6 @@
           }
         }
       }
-    },
-    "Use always hidden area" : {
-
     },
     "Use always hide area" : {
       "extractionState" : "stale",
@@ -1103,6 +1136,7 @@
       }
     },
     "Version %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1113,6 +1147,7 @@
       }
     },
     "When Satisfying Any of the %lld Rules" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "variations" : {
@@ -1159,6 +1194,7 @@
       }
     },
     "Width" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
