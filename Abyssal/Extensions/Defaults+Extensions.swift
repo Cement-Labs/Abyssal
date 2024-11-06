@@ -21,9 +21,7 @@ extension Defaults.Keys {
     
     static let reduceAnimationEnabled = Key<Bool>("reduceAnimationEnabled", default: false)
     
-    static let autoShowsEnabled = Key<Bool>("autoShowsEnabled", default: true)
-    
-    static let autoOverridesMenuBarEnabled = Key<Bool>("autoOverridesMenuBar", default: false)
+    static let autoStandbyEnabled = Key<Bool>("autoStandbyEnabled", default: true)
     
     
     
@@ -51,8 +49,8 @@ extension Defaults.Keys {
     
     
     
-    static let screenSettings = Key<ScreenSettings>(
-        "screenSettings",
+    static let displaySettings = Key<DisplaySettings>(
+        "displaySettings",
         default: .init(
             global: .init(
                 activeStrategy: .init(
@@ -60,7 +58,7 @@ extension Defaults.Keys {
                     interactionInvalidate: true,
                     screenChange: false
                 ),
-                deadZone: .percentage(50),
+                deadzone: .percentage(50),
                 respectNotch: true
             ),
             unique: [:]

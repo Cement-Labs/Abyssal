@@ -41,5 +41,8 @@ Themes that automatically hide the icons will only show them when the status ite
 }
 
 #Preview {
-    ThemePicker()
+    LuminareSection {
+        ThemePicker()
+    }
+    .padding()
 }

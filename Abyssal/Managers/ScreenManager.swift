@@ -63,14 +63,14 @@ struct ScreenManager {
     
     static var menuBarLeftEdge: CGFloat {
         let origin = origin
-        let setting = Defaults[.screenSettings].main
+        let setting = Defaults[.displaySettings].main
         
         if hasNotch && setting.respectNotch {
             // Respect notch area on screens with notches
             let notchWidth = 250.0
             return origin.x + width / 2.0 + notchWidth / 2.0
         } else {
-            switch setting.deadZone {
+            switch setting.deadzone {
             case .percentage(let percentage):
                 let rightEdge = AbyssalApp.statusBarController.edge
                 return origin.x + 50 + (rightEdge - 50) * (percentage / 100) // Apple icon + app name should be at least 50 pixels wide.

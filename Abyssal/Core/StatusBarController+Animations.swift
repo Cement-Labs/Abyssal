@@ -49,7 +49,7 @@ extension StatusBarController {
     // positives
     
     var autoShows: Bool {
-        Defaults[.autoShowsEnabled]
+        Defaults[.autoStandbyEnabled]
     }
     
     var isStandby: Bool {

@@ -183,7 +183,7 @@ enum Feedback: Int, CaseIterable, Defaults.Serializable {
     }
 }
 
-enum DeadZone: Codable, Defaults.Serializable {
+enum Deadzone: Codable, Defaults.Serializable {
     case percentage(Double)
     case pixel(Double)
     
@@ -226,7 +226,7 @@ enum DeadZone: Codable, Defaults.Serializable {
     }
 }
 
-extension DeadZone {
+extension Deadzone {
     enum Mode: CaseIterable {
         case percentage
         case pixel
@@ -240,7 +240,7 @@ extension DeadZone {
             }
         }
         
-        func wrap(_ value: Double) -> DeadZone {
+        func wrap(_ value: Double) -> Deadzone {
             switch self {
             case .percentage:
                     .percentage(value)
@@ -249,23 +249,23 @@ extension DeadZone {
             }
         }
         
-        func from(_ deadZone: DeadZone) -> Double {
-            guard self != deadZone.mode else {
-                return deadZone.value
+        func from(_ deadzone: Deadzone) -> Double {
+            guard self != deadzone.mode else {
+                return deadzone.value
             }
             
             return switch self {
             case .percentage:
-                switch deadZone {
+                switch deadzone {
                 case .pixel(_):
-                    deadZone.sliderPercentage * 100
-                default: deadZone.value
+                    deadzone.sliderPercentage * 100
+                default: deadzone.value
                 }
             case .pixel:
-                switch deadZone {
+                switch deadzone {
                 case .percentage(let percentage):
                     range.fromPercentage(percentage / 100)
-                default: deadZone.value
+                default: deadzone.value
                 }
             }
         }
@@ -289,7 +289,7 @@ extension DeadZone {
     }
 }
 
-extension DeadZone: Equatable {
+extension Deadzone: Equatable {
     
 }
 
@@ -314,10 +314,10 @@ struct ActiveStrategy: Codable, Defaults.Serializable {
     }
 }
 
-struct ScreenSettings: Codable, Defaults.Serializable {
+struct DisplaySettings: Codable, Defaults.Serializable {
     struct Individual: Codable, Defaults.Serializable {
         var activeStrategy: ActiveStrategy
-        var deadZone: DeadZone
+        var deadzone: Deadzone
         
         var respectNotch: Bool
     }

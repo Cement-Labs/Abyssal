@@ -206,7 +206,7 @@ extension StatusBarController {
                         // to Abyssal
                     } else {
                         // neither to nor from Abyssal
-                        if Defaults[.screenSettings].main.activeStrategy.frontmostAppChange {
+                        if Defaults[.displaySettings].main.activeStrategy.frontmostAppChange {
                             // when frontmost app changes
                             unidleHiddenArea()
                         }
@@ -215,7 +215,7 @@ extension StatusBarController {
                 
                 // update main screen
                 if mainScreen.needsUpdate {
-                    if Defaults[.screenSettings].main.activeStrategy.screenChange {
+                    if Defaults[.displaySettings].main.activeStrategy.screenChange {
                         // When main screen changes
                         unidleHiddenArea()
                     }

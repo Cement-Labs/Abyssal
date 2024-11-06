@@ -22,7 +22,7 @@ struct AppearanceView: View {
                     .labelsHidden()
             }
             
-            FeedbackIntensitySlider()
+            FeedbackSlider()
         }
     }
 }

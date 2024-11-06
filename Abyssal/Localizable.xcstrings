@@ -50,7 +50,6 @@
       }
     },
     "%" : {
-      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -214,6 +213,9 @@
         }
       }
     },
+    "Always hidden area" : {
+
+    },
     "An update is available. Click to access the download page." : {
       "extractionState" : "stale",
       "localizations" : {
@@ -283,6 +285,9 @@
         }
       }
     },
+    "Auto standby" : {
+
+    },
     "Becomes active again" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -319,6 +324,12 @@
     "Close Settings" : {
 
     },
+    "Command" : {
+
+    },
+    "Control" : {
+
+    },
     "Controls the dead zone area on the screen.\n\n**%@** will treat dead zone area as if it is not a part of the screen, which means only the non dead zone menu bar area is capable for interactions and hiding menu bar items." : {
       "extractionState" : "stale",
       "localizations" : {
@@ -343,6 +354,12 @@
           }
         }
       }
+    },
+    "Deadzone" : {
+
+    },
+    "Display %u" : {
+
     },
     "Display ID" : {
       "extractionState" : "stale",
@@ -376,6 +393,9 @@
           }
         }
       }
+    },
+    "Feedback Intensity" : {
+
     },
     "Fetching for latest version…" : {
       "extractionState" : "stale",
@@ -442,7 +462,6 @@
       }
     },
     "Heavy" : {
-      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -510,7 +529,6 @@
       }
     },
     "Light" : {
-      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -531,8 +549,10 @@
         }
       }
     },
+    "Make Unique" : {
+
+    },
     "Medium" : {
-      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -565,7 +585,6 @@
       }
     },
     "None" : {
-      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -608,11 +627,13 @@
         }
       }
     },
+    "Option" : {
+
+    },
     "Permissions" : {
 
     },
     "px" : {
-      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -654,6 +675,7 @@
       }
     },
     "Reduce animation to gain a more performant experience." : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -675,7 +697,6 @@
       }
     },
     "Respect notch" : {
-      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -684,6 +705,9 @@
           }
         }
       }
+    },
+    "Revert to Global" : {
+
     },
     "Screen Information" : {
       "extractionState" : "stale",
@@ -700,7 +724,6 @@
 
     },
     "Shortcuts" : {
-      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1123,6 +1146,12 @@
           }
         }
       }
+    },
+    "Trigger" : {
+
+    },
+    "Unknown Display" : {
+
     },
     "Use always hide area" : {
       "extractionState" : "stale",
