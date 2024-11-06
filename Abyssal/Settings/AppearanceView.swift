@@ -21,10 +21,13 @@ struct AppearanceView: View {
                     .toggleStyle(.switch)
                     .labelsHidden()
             }
+            
+            FeedbackIntensitySlider()
         }
     }
 }
 
 #Preview {
     AppearanceView()
+        .padding()
 }

@@ -6,13 +6,31 @@
 //
 
 import SwiftUI
+import Luminare
+import Defaults
 
 struct FunctionsView: View {
+    @Default(.autoShowsEnabled) private var autoShowsEnabled
+    @Default(.alwaysHiddenAreaEnabled) private var alwaysHiddenAreaEnabled
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        LuminareSection {
+            LuminareCompose("Auto shows", reducesTrailingSpace: true) {
+                Toggle("", isOn: $autoShowsEnabled)
+                    .toggleStyle(.switch)
+                    .labelsHidden()
+            }
+            
+            LuminareCompose("Always hidden area", reducesTrailingSpace: true) {
+                Toggle("", isOn: $alwaysHiddenAreaEnabled)
+                    .toggleStyle(.switch)
+                    .labelsHidden()
+            }
+        }
     }
 }
 
 #Preview {
     FunctionsView()
+        .padding()
 }

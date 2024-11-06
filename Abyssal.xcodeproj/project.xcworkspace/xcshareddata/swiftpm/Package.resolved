@@ -33,8 +33,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Cement-Labs/Luminare",
       "state" : {
-        "branch" : "main",
-        "revision" : "1bd4182d791c50d9130622fe063e86ff4072c977"
+        "branch" : "docs",
+        "revision" : "b9b18d24c6d2d11f54e66a1160b581375342c689"
       }
     },
     {
