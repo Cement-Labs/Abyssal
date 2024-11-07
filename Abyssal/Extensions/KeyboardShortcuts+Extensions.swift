@@ -13,8 +13,4 @@ extension KeyboardShortcuts.Name {
         "toggleStandby",
         default: .init(.backtick, modifiers: [.control])
     )
-    static let toggleMenuBarOverride = Self(
-        "toggleMenuBarOverride",
-        default: .init(.backtick, modifiers: [.control, .option])
-    )
 }

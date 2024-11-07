@@ -13,15 +13,17 @@ struct FeedbackSlider: View {
     @Default(.feedback) private var feedback
 
     var body: some View {
-        LuminareSliderPickerCompose("Feedback Intensity", Feedback.allCases, selection: $feedback) { feedback in
-            switch feedback {
-            case .none: Text("None")
-            case .light: Text("Light")
-            case .medium: Text("Medium")
-            case .heavy: Text("Heavy")
+        LuminareSliderPickerCompose("Feedback intensity", Feedback.allCases, selection: $feedback) { feedback in
+            Group {
+                switch feedback {
+                case .none: Text("None")
+                case .light: Text("Light")
+                case .medium: Text("Medium")
+                case .heavy: Text("Heavy")
+                }
             }
+            .monospaced()
         }
-        .monospaced()
         .onChange(of: feedback) { _, _ in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 AbyssalApp.statusBarController.startFeedbackTimer()

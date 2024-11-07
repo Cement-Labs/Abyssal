@@ -37,7 +37,11 @@ struct FunctionsView: View {
                 KeyboardShortcuts.Recorder(for: .toggleStandby)
                     .controlSize(.large)
                     .clipShape(.rect(cornerRadius: 8).inset(by: 2))
-                    .modifier(LuminareBordered())
+                    .padding(-1)
+                    .background {
+                        RoundedRectangle(cornerRadius: 8)
+                            .strokeBorder(.quaternary, lineWidth: 1)
+                    }
             }
         }
 

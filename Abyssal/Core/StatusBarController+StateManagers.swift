@@ -62,17 +62,6 @@ extension StatusBarController {
             self.function()
             self.toggle()
         }
-
-        KeyboardShortcuts.onKeyDown(for: .toggleMenuBarOverride) {
-            if ActivationPolicyManager.toggleBetweenFallback(.regular) {
-                // Overridden
-                NSApp.activate()
-                self.idleAlwaysHiddenArea()
-            } else {
-                // Normal
-                self.unidleHiddenArea()
-            }
-        }
     }
 
     func startAnimationTimer() {

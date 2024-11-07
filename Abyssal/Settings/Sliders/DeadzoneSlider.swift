@@ -16,8 +16,7 @@ struct DeadzoneSlider: View {
         LuminareValueAdjusterCompose(
             "Deadzone",
             value: $displaySettings.main.deadzone.value,
-            sliderRange: displaySettings.main.deadzone.range,
-            controlSize: .compact
+            sliderRange: displaySettings.main.deadzone.range
         ) { view in
             HStack(spacing: 2) {
                 view

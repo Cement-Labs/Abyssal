@@ -17,8 +17,18 @@ struct TriggerControl: View {
     @Default(.modifierCompose) private var modifierCompose
 
     var body: some View {
-        LuminareCompose("Trigger", reducesTrailingSpace: true) {
+        VStack {
+            LuminareCompose("Trigger", reducesTrailingSpace: true) {
+                HStack(spacing: 0) {
+                    Text("by")
+                    compose()
+                }
+                .foregroundStyle(.secondary)
+            }
+
             HStack {
+                Spacer()
+
                 Group {
                     toggle(isOn: $modifier.control) {
                         expandableLabel(modifier.control) {
@@ -48,6 +58,7 @@ struct TriggerControl: View {
             .toggleStyle(.button)
             .buttonStyle(LuminareCompactButtonStyle(extraCompact: true))
             .animation(animation, value: modifier)
+            .padding(4)
         }
     }
 
@@ -80,6 +91,21 @@ struct TriggerControl: View {
             }
 
             image()
+        }
+    }
+
+    @ViewBuilder private func compose() -> some View {
+        LuminareCompactPicker(selection: $modifierCompose, isBordered: false) {
+            ForEach(Modifier.Compose.allCases, id: \.self) {compose in
+                switch compose {
+                case .any:
+                    Text("any")
+                        .id(Modifier.Compose.any)
+                case .all:
+                    Text("all")
+                        .id(Modifier.Compose.all)
+                }
+            }
         }
     }
 }

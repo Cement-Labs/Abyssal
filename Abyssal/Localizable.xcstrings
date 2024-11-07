@@ -198,7 +198,6 @@
       }
     },
     "all" : {
-      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -234,7 +233,6 @@
       }
     },
     "any" : {
-      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -415,7 +413,7 @@
         }
       }
     },
-    "Feedback Intensity" : {
+    "Feedback intensity" : {
 
     },
     "Fetching for latest version…" : {
