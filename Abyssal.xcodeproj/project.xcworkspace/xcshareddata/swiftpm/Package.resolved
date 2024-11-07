@@ -1,5 +1,5 @@
 {
-  "originHash" : "6c074e1ff5bb9369808c8e00597cac79e9d33d06c36ba82e6369ebf6984fc6f6",
+  "originHash" : "fdf154853b98d10689ca749f93ab45ff209f38a1388ced699df4423395344040",
   "pins" : [
     {
       "identity" : "defaults",
@@ -34,7 +34,7 @@
       "location" : "https://github.com/Cement-Labs/Luminare",
       "state" : {
         "branch" : "docs",
-        "revision" : "86a65ee1bada0c05a72d47bdfd02a9894c51ba83"
+        "revision" : "e09f04c370c4809fa50af0bbe49fdbc70caf34f9"
       }
     },
     {
