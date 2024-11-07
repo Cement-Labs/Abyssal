@@ -13,7 +13,7 @@ class AppManager {
     static var frontmost: NSRunningApplication {
         NSWorkspace.shared.frontmostApplication ?? .current
     }
-    
+
     static var fronsmostName: String {
         frontmost.localizedName ?? String(frontmost.hashValue)
     }

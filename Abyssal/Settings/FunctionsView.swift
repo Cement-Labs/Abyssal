@@ -14,7 +14,7 @@ struct FunctionsView: View {
     @Default(.autoStandbyEnabled) private var autoStandbyEnabled
     @Default(.alwaysHiddenAreaEnabled) private var alwaysHiddenAreaEnabled
     @Default(.displaySettings) private var displaySettings
-    
+
     var body: some View {
         LuminareSection {
             LuminareCompose("Auto standby", reducesTrailingSpace: true) {
@@ -22,17 +22,17 @@ struct FunctionsView: View {
                     .toggleStyle(.switch)
                     .labelsHidden()
             }
-            
+
             LuminareCompose("Always hidden area", reducesTrailingSpace: true) {
                 Toggle("", isOn: $alwaysHiddenAreaEnabled)
                     .toggleStyle(.switch)
                     .labelsHidden()
             }
         }
-        
+
         LuminareSection("Shortcuts") {
             TriggerControl()
-            
+
             LuminareCompose("Standby", reducesTrailingSpace: true) {
                 KeyboardShortcuts.Recorder(for: .toggleStandby)
                     .controlSize(.large)
@@ -40,10 +40,10 @@ struct FunctionsView: View {
                     .modifier(LuminareBordered())
             }
         }
-        
+
         LuminareSection {
             DeadzoneSlider()
-            
+
             LuminareCompose("Respect notch") {
                 Toggle("", isOn: $displaySettings.main.respectNotch)
                     .toggleStyle(.switch)
@@ -53,16 +53,16 @@ struct FunctionsView: View {
             HStack {
                 if let main = ScreenManager.main {
                     Text("Display \(main.displayID ?? .zero)")
-                    
+
                     Text(String(format: "%1$.0f×%2$.0f", main.frame.width, main.frame.height))
                         .monospaced()
                         .foregroundStyle(.tertiary)
                 } else {
                     Text("Unknown Display")
                 }
-                
+
                 Spacer()
-                
+
                 Toggle(isOn: $displaySettings.isMainUnique) {
                     Group {
                         if displaySettings.isMainUnique {

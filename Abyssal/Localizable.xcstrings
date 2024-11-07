@@ -38,6 +38,9 @@
         }
       }
     },
+    "【=◈︿◈=】" : {
+
+    },
     "**%@** is open source. Click to access the source code." : {
       "extractionState" : "stale",
       "localizations" : {
@@ -180,6 +183,9 @@
     "About %@" : {
 
     },
+    "Abyssal" : {
+
+    },
     "Advanced" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -251,6 +257,9 @@
           }
         }
       }
+    },
+    "Approaching" : {
+
     },
     "Auto overrides menu bar" : {
       "extractionState" : "stale",
@@ -324,6 +333,12 @@
     "Close Settings" : {
 
     },
+    "Codec" : {
+
+    },
+    "Colons" : {
+
+    },
     "Command" : {
 
     },
@@ -371,6 +386,12 @@
           }
         }
       }
+    },
+    "Droplets" : {
+
+    },
+    "Electrodiagram" : {
+
     },
     "Escape from Overriding" : {
       "extractionState" : "stale",
@@ -485,6 +506,9 @@
     "Hello, World!" : {
 
     },
+    "Hidden Bar" : {
+
+    },
     "Hide certain status items permanently by moving them to the leading of the `Always Hide Separator`, that is, to the **Always Hide Area.**\n\nThe status items inside the **Always Hide Area** will be hidden and kept invisible until the cursor hovers over the spare area with a modifier key down, or while this window is opened." : {
       "extractionState" : "stale",
       "localizations" : {
@@ -507,6 +531,9 @@
         }
       }
     },
+    "Implication" : {
+
+    },
     "Instant" : {
       "localizations" : {
         "zh-Hans" : {
@@ -516,6 +543,9 @@
           }
         }
       }
+    },
+    "Interstellar" : {
+
     },
     "Launch **%@** right after macOS starts." : {
       "extractionState" : "stale",
@@ -537,6 +567,9 @@
           }
         }
       }
+    },
+    "macOS" : {
+
     },
     "Main Screen" : {
       "extractionState" : "stale",
@@ -573,6 +606,9 @@
         }
       }
     },
+    "Metres Away" : {
+
+    },
     "Modifier" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -593,6 +629,9 @@
           }
         }
       }
+    },
+    "Not So Happy" : {
+
     },
     "Nothing" : {
       "extractionState" : "stale",
@@ -631,6 +670,9 @@
 
     },
     "Permissions" : {
+
+    },
+    "Play Pause" : {
 
     },
     "px" : {
@@ -733,6 +775,9 @@
         }
       }
     },
+    "Simplicity" : {
+
+    },
     "Some themes will hide the icons inside the separators automatically, while others not.\n\nThemes that automatically hide the icons will only show them when the status items inside the **Hide Area** are manually set to visible, while other themes indicate this by reducing the separators' opacity." : {
       "localizations" : {
         "zh-Hans" : {
@@ -824,7 +869,7 @@
     },
     "Theme/Abyssal" : {
       "comment" : "name for theme 'Abyssal'",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -842,7 +887,7 @@
     },
     "Theme/Approaching" : {
       "comment" : "name for theme 'Approaching'",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -860,7 +905,7 @@
     },
     "Theme/Codec" : {
       "comment" : "name for theme 'Codec'",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -878,7 +923,7 @@
     },
     "Theme/Colons" : {
       "comment" : "name for theme 'Colons'",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -896,7 +941,7 @@
     },
     "Theme/Droplets" : {
       "comment" : "name for theme 'Droplets'",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -914,7 +959,7 @@
     },
     "Theme/Electrodiagram" : {
       "comment" : "name for theme 'Electrodiagram'",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -932,7 +977,7 @@
     },
     "Theme/HiddenBar" : {
       "comment" : "name for theme 'Hidden Bar'",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -950,7 +995,7 @@
     },
     "Theme/Implication" : {
       "comment" : "name for theme 'Implication'",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -968,7 +1013,7 @@
     },
     "Theme/Interstellar" : {
       "comment" : "name for theme 'Interstellar'",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -986,7 +1031,7 @@
     },
     "Theme/macOS" : {
       "comment" : "name for theme 'macOS'",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1004,7 +1049,7 @@
     },
     "Theme/MetresAway" : {
       "comment" : "name for theme 'Metres Away'",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1022,7 +1067,7 @@
     },
     "Theme/NotSoHappy" : {
       "comment" : "name for theme 'Not So Happy'",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1040,7 +1085,7 @@
     },
     "Theme/PlayPause" : {
       "comment" : "name for theme 'Play Pause'",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1058,7 +1103,7 @@
     },
     "Theme/Simplicity" : {
       "comment" : "name for theme 'Simplicity'",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1076,7 +1121,7 @@
     },
     "Theme/TheFace" : {
       "comment" : "name for theme '【=◈︿◈=】'",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

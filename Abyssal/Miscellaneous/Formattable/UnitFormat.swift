@@ -10,7 +10,7 @@ import Foundation
 enum UnitFormat: DoubleFormattable {
     case percentage
     case pixel
-    
+
     var format: String {
         switch self {
         case .percentage:

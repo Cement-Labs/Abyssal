@@ -19,10 +19,10 @@ func observationTrackingStream<T>(
                     observe()
                 }
             }
-            
+
             continuation.yield(result)
         }
-        
+
         observe()
     }
 }

@@ -13,14 +13,14 @@ struct ApplicationMenuView: View {
             Button("About \(Bundle.main.appName)") {
                 abyssal.openSettings(with: .about)
             }
-            
+
             Divider()
-            
+
             Button("Close Settings") {
                 abyssal.closeSettings()
             }
             .keyboardShortcut("w", modifiers: .command)
-            
+
             Button("Quit \(Bundle.main.appName)") {
                 abyssal.quit(self)
             }

@@ -12,10 +12,10 @@ import Defaults
 struct TriggerControl: View {
     @Environment(\.luminareAnimation) private var animation
     @Environment(\.luminareAnimationFast) private var animationFast
-    
+
     @Default(.modifier) private var modifier
     @Default(.modifierCompose) private var modifierCompose
-    
+
     var body: some View {
         LuminareCompose("Trigger", reducesTrailingSpace: true) {
             HStack {
@@ -27,7 +27,7 @@ struct TriggerControl: View {
                             Image(systemSymbol: .control)
                         }
                     }
-                    
+
                     toggle(isOn: $modifier.option) {
                         expandableLabel(modifier.option) {
                             Text("Option")
@@ -35,7 +35,7 @@ struct TriggerControl: View {
                             Image(systemSymbol: .option)
                         }
                     }
-                    
+
                     toggle(isOn: $modifier.command) {
                         expandableLabel(modifier.command) {
                             Text("Command")
@@ -50,7 +50,7 @@ struct TriggerControl: View {
             .animation(animation, value: modifier)
         }
     }
-    
+
     @ViewBuilder private func toggle(isOn: Binding<Bool>, @ViewBuilder label: @escaping () -> some View) -> some View {
         Toggle(isOn: isOn) {
             label()
@@ -68,7 +68,7 @@ struct TriggerControl: View {
                 .animation(animationFast, value: isOn.wrappedValue)
         }
     }
-    
+
     @ViewBuilder private func expandableLabel(
         _ isExpanded: Bool,
         @ViewBuilder text: @escaping () -> some View,
@@ -78,7 +78,7 @@ struct TriggerControl: View {
             if isExpanded {
                 text()
             }
-            
+
             image()
         }
     }

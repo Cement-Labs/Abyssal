@@ -19,12 +19,12 @@ extension DispatchQueue {
                 return [:]
             }
         }
-        
+
         set {
             Abyssal.dispatches[self] = newValue
         }
     }
-    
+
     func asyncAfter(
         _ identifier: AnyHashable,
         deadline: DispatchTime,
@@ -34,11 +34,11 @@ extension DispatchQueue {
             self.cancel(identifier)
             work()
         }
-        
+
         dispatches[identifier] = dispatch
         asyncAfter(deadline: deadline, execute: dispatch)
     }
-    
+
     func async(
         _ identifier: AnyHashable,
         execute work: @escaping @Sendable @convention(block) () -> Void
@@ -47,11 +47,11 @@ extension DispatchQueue {
             self.cancel(identifier)
             work()
         }
-        
+
         dispatches[identifier] = dispatch
         async(execute: dispatch)
     }
-    
+
     func cancel(_ identifier: AnyHashable) {
         dispatches[identifier]?.cancel()
         dispatches[identifier] = nil

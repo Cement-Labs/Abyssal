@@ -11,7 +11,7 @@ import AppKit
 struct ActivationPolicyManager {
     static let identifier = UUID()
     private static var fallback: NSApplication.ActivationPolicy = .accessory
-    
+
     static func set(
         _ activationPolicy: NSApplication.ActivationPolicy,
         asFallback: Bool = false,
@@ -23,30 +23,30 @@ struct ActivationPolicyManager {
             andRun()
         }
     }
-    
+
     static func set(
         _ activationPolicy: NSApplication.ActivationPolicy,
         asFallback: Bool = false
     ) {
         DispatchQueue.main.cancel(identifier)
         NSApp.setActivationPolicy(activationPolicy)
-        
+
         if asFallback {
             fallback = activationPolicy
         }
     }
-    
+
     static func setToFallback(
         deadline: DispatchTime,
         andRun: @escaping () -> Void = {}
     ) {
         set(fallback, deadline: deadline, andRun: andRun)
     }
-    
+
     static func setToFallback() {
         set(fallback)
     }
-    
+
     static func toggleBetweenFallback(
         _ activationPolicy: NSApplication.ActivationPolicy,
         deadline: DispatchTime,
@@ -56,7 +56,7 @@ struct ActivationPolicyManager {
             setToFallback(deadline: deadline, andRun: andRun)
             return false
         }
-        
+
         if NSApp.activationPolicy() == fallback {
             set(activationPolicy, deadline: deadline, andRun: andRun)
             return true
@@ -65,7 +65,7 @@ struct ActivationPolicyManager {
             return false
         }
     }
-    
+
     static func toggleBetweenFallback(
         _ activationPolicy: NSApplication.ActivationPolicy
     ) -> Bool {
@@ -73,7 +73,7 @@ struct ActivationPolicyManager {
             setToFallback()
             return false
         }
-        
+
         if NSApp.activationPolicy() == fallback {
             set(activationPolicy)
             return true

@@ -8,7 +8,7 @@
 import Foundation
 
 extension Bool {
-    static func &=(lhs: inout Bool, rhs: Bool) {
+    static func &= (lhs: inout Bool, rhs: Bool) {
         lhs = lhs && rhs
     }
 }

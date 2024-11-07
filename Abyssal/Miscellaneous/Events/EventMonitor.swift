@@ -10,13 +10,13 @@ import AppKit
 
 public class EventMonitor {
     private var monitor: Any?
-    
+
     private let mask: NSEvent.EventTypeMask
-    
+
     private let handler: (
         NSEvent?
     ) -> Void
-    
+
     public init(
         mask: 		NSEvent.EventTypeMask,
         handler: 	@escaping (NSEvent?) -> Void
@@ -24,11 +24,11 @@ public class EventMonitor {
         self.mask = mask
         self.handler = handler
     }
-    
+
     deinit {
         stop()
     }
-    
+
     public func start(
     ) {
         monitor = NSEvent.addGlobalMonitorForEvents(
@@ -36,7 +36,7 @@ public class EventMonitor {
             handler: 	handler
         )
     }
-    
+
     public func stop(
     ) {
         if monitor != nil {

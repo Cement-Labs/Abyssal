@@ -13,7 +13,7 @@ extension Range where Bound: FloatingPoint {
         let span = upperBound - lowerBound
         return (value - base) / span
     }
-    
+
     func fromPercentage(_ percentage: Bound) -> Bound {
         let base = lowerBound
         let span = upperBound - lowerBound
@@ -27,7 +27,7 @@ extension ClosedRange where Bound: FloatingPoint {
         let span = upperBound - lowerBound
         return (value - base) / span
     }
-    
+
     func fromPercentage(_ percentage: Bound) -> Bound {
         let base = lowerBound
         let span = upperBound - lowerBound

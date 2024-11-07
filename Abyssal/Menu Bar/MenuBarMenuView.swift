@@ -11,7 +11,7 @@ import KeyboardShortcuts
 
 struct MenuBarMenuView: View {
     @Default(.isStandby) var isStandby
-    
+
     var body: some View {
         Toggle("Standby", isOn: .init(
             get: { isStandby },
@@ -20,14 +20,14 @@ struct MenuBarMenuView: View {
                 AbyssalApp.statusBarController.function()
             }
         ))
-        
+
         Divider()
-        
+
         Button("Settings…") {
             abyssal.openSettings()
         }
         .keyboardShortcut(",", modifiers: .command)
-        
+
         Button("Quit \(Bundle.main.appName)") {
             abyssal.quit(self)
         }

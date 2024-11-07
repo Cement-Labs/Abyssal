@@ -11,7 +11,7 @@ import Luminare
 struct AboutView: View {
     var body: some View {
         LuminareSection {
-            
+
         }
     }
 }

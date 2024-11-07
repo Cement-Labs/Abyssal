@@ -11,17 +11,17 @@ import Defaults
 
 struct AppearanceView: View {
     @Default(.reduceAnimationEnabled) private var reduceAnimationEnabled
-    
+
     var body: some View {
         LuminareSection {
             ThemePicker()
-            
+
             LuminareCompose("Reduce animation", reducesTrailingSpace: true) {
                 Toggle("", isOn: $reduceAnimationEnabled)
                     .toggleStyle(.switch)
                     .labelsHidden()
             }
-            
+
             FeedbackSlider()
         }
     }

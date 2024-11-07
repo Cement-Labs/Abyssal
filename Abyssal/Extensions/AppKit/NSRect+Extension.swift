@@ -12,7 +12,7 @@ extension NSRect {
     var containsMouse: Bool {
         return MouseModel.shared.inside(self)
     }
-    
+
     func getTrackingArea(
         _ owner: Any?,
         viewToAdd view: NSView? = nil
@@ -24,11 +24,11 @@ extension NSRect {
                       .mouseEnteredAndExited],
             owner: owner
         )
-        
+
         if view != nil {
             view?.addTrackingArea(trackingArea)
         }
-        
+
         return trackingArea
     }
 }

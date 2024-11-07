@@ -31,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		281235F92CDCECD600ACA506 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		282A34EA2C50957F000338D8 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		284C2C082CC9353B00A0B520 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		28D46C332C381BB100EC6EAE /* AbyssalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AbyssalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +89,7 @@
 		C66CAB972A38871500E4D8E6 = {
 			isa = PBXGroup;
 			children = (
+				281235F92CDCECD600ACA506 /* .swiftlint.yml */,
 				C66CABAC2A38871500E4D8E6 /* Abyssal.entitlements */,
 				C66CABA22A38871500E4D8E6 /* Abyssal */,
 				28D46C342C381BB100EC6EAE /* AbyssalTests */,
@@ -138,6 +140,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				281235F82CDCEC8600ACA506 /* PBXTargetDependency */,
 				28D46C3D2C381DC700EC6EAE /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
@@ -159,6 +162,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				281235F62CDCEC7D00ACA506 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				28D431EC2CDA435B0043CA4E /* Contents */,
@@ -220,6 +224,7 @@
 				287EADA32C27B48F00D64BED /* XCRemoteSwiftPackageReference "swiftui-introspect" */,
 				28F9913A2C30D805004C76ED /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
 				2858B75D2CC4CA13004597EE /* XCRemoteSwiftPackageReference "Luminare" */,
+				281235F42CDCEB8500ACA506 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
 			);
 			productRefGroup = C66CABA12A38871500E4D8E6 /* Products */;
 			projectDirPath = "";
@@ -271,6 +276,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		281235F62CDCEC7D00ACA506 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 281235F52CDCEC7D00ACA506 /* SwiftLintBuildToolPlugin */;
+		};
+		281235F82CDCEC8600ACA506 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 281235F72CDCEC8600ACA506 /* SwiftLintBuildToolPlugin */;
+		};
 		28D46C3D2C381DC700EC6EAE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C66CAB9F2A38871500E4D8E6 /* Abyssal */;
@@ -289,6 +302,7 @@
 				DEVELOPMENT_TEAM = 7XRF3J9RS4;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = studio.nnn.AbyssalTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -315,6 +329,7 @@
 				DEVELOPMENT_TEAM = 7XRF3J9RS4;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = studio.nnn.AbyssalTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -554,6 +569,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		281235F42CDCEB8500ACA506 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SimplyDanny/SwiftLintPlugins";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		2822C58C2BDC75DE009C71DA /* XCRemoteSwiftPackageReference "SFSafeSymbols" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SFSafeSymbols/SFSafeSymbols";
@@ -605,6 +628,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		281235F52CDCEC7D00ACA506 /* SwiftLintBuildToolPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 281235F42CDCEB8500ACA506 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
+			productName = "plugin:SwiftLintBuildToolPlugin";
+		};
+		281235F72CDCEC8600ACA506 /* SwiftLintBuildToolPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 281235F42CDCEB8500ACA506 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
+			productName = "plugin:SwiftLintBuildToolPlugin";
+		};
 		2822C58D2BDC75DE009C71DA /* SFSafeSymbols */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2822C58C2BDC75DE009C71DA /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;

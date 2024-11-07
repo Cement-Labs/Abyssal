@@ -11,31 +11,31 @@ struct MathHelper {
     static var lerpThreshold: CGFloat {
         return ScreenManager.width / 25
     }
-    
+
     static var lerpRatio: CGFloat {
         let baseValue = 0.42
         return baseValue * (KeyboardModel.shared.shift ? 0.25 : 1) // Slow down when shift key is down
     }
-    
+
     static func approaching(
         _ a: CGFloat, _ b: CGFloat,
         _ ignoreSmallValues: Bool = true
     ) -> Bool {
         abs(a - b) < (ignoreSmallValues ? 1 : 0.001)
     }
-    
+
     static func lerp(
-        a:      CGFloat,
-        b:      CGFloat,
-        ratio:  CGFloat,
+        a: CGFloat,
+        b: CGFloat,
+        ratio: CGFloat,
         _ ignoreSmallValues: Bool = true
     ) -> CGFloat {
         guard !ignoreSmallValues || !approaching(a, b, ignoreSmallValues) else { return b }
         let diff = b - a
-        
+
         return a + log10ClampWithThreshold(diff, threshold: lerpThreshold) * ratio
     }
-    
+
     static func log10ClampWithThreshold(
         _ x: CGFloat,
         threshold: CGFloat

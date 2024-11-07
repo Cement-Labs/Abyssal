@@ -17,11 +17,11 @@ protocol Icon {
 
 struct NamedIcon: Icon {
     var name: String
-    
+
     var image: NSImage {
         .init(named: .init(name))!
     }
-    
+
     var width: CGFloat
     var opacity: CGFloat = 1
 }
@@ -29,30 +29,29 @@ struct NamedIcon: Icon {
 struct SymbolIcon: Icon {
     var symbol: SFSymbol
     var configuration: NSImage.SymbolConfiguration?
-    
+
     var image: NSImage {
         let image = NSImage(systemSymbol: symbol)
-        
+
         if
             let configuration,
-            let image = image.withSymbolConfiguration(configuration)
-        {
+            let image = image.withSymbolConfiguration(configuration) {
             return image
         } else {
             return image
         }
     }
-    
+
     var width: CGFloat
     var opacity: CGFloat = 1
 }
 
 protocol IconBuilder {
     associatedtype Target: Icon
-    
+
     var width: CGFloat { get }
     var opacity: CGFloat { get }
-    
+
     func build(identifier: String) -> Target
     func build(identifier: String, width: CGFloat) -> Target
 }
@@ -65,11 +64,11 @@ extension IconBuilder {
 
 struct NamedIconBuilder: IconBuilder {
     typealias Target = NamedIcon
-    
+
     var name: String
     var width: CGFloat
     var opacity: CGFloat = 1
-    
+
     func build(identifier: String, width: CGFloat) -> NamedIcon {
         .init(name: "Themes/\(identifier)/" + name, width: width, opacity: opacity)
     }
@@ -77,12 +76,12 @@ struct NamedIconBuilder: IconBuilder {
 
 struct SymbolIconBuilder: IconBuilder {
     typealias Target = SymbolIcon
-    
+
     var symbol: SFSymbol
     var configuration: NSImage.SymbolConfiguration?
     var width: CGFloat
     var opacity: CGFloat = 1
-    
+
     func build(identifier: String, width: CGFloat) -> SymbolIcon {
         .init(symbol: symbol, configuration: configuration, width: width, opacity: opacity)
     }

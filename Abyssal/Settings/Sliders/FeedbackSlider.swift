@@ -11,7 +11,7 @@ import Defaults
 
 struct FeedbackSlider: View {
     @Default(.feedback) private var feedback
-    
+
     var body: some View {
         LuminareSliderPickerCompose("Feedback Intensity", Feedback.allCases, selection: $feedback) { feedback in
             switch feedback {

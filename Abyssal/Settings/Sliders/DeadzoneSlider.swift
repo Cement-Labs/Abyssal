@@ -11,12 +11,17 @@ import Defaults
 
 struct DeadzoneSlider: View {
     @Default(.displaySettings) private var displaySettings
-    
+
     var body: some View {
-        LuminareValueAdjusterCompose("Deadzone", value: $displaySettings.main.deadzone.value, sliderRange: displaySettings.main.deadzone.range, controlSize: .compact) { view in
+        LuminareValueAdjusterCompose(
+            "Deadzone",
+            value: $displaySettings.main.deadzone.value,
+            sliderRange: displaySettings.main.deadzone.range,
+            controlSize: .compact
+        ) { view in
             HStack(spacing: 2) {
                 view
-                
+
                 Picker("", selection: $displaySettings.main.deadzone.mode) {
                     ForEach(Deadzone.Mode.allCases, id: \.self) { mode in
                         switch mode {

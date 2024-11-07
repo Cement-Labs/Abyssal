@@ -19,7 +19,7 @@ extension View {
             ifFalse?(self)
         }
     }
-    
+
     @ViewBuilder func ifLet<T: View, V>(
         _ conditionalValue: V?,
         ifTrue: @escaping (Self, V) -> T,
@@ -31,7 +31,7 @@ extension View {
             ifFalse?(self)
         }
     }
-    
+
     @ViewBuilder func simpleTextFormat(maxWidth: CGFloat? = 480) -> some View {
         MaxWidth(maxWidth: maxWidth) {
             self
