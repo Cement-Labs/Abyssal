@@ -48,7 +48,26 @@ struct FunctionsView: View {
         LuminareSection {
             DeadzoneSlider()
 
-            LuminareCompose("Respect notch") {
+            LuminareCompose("Standby strategy", reducesTrailingSpace: true) {
+                Menu {
+                    Section("On Change") {
+                        Toggle("Frontmost Application", isOn: $displaySettings.main.activeStrategy.frontmostAppChange)
+
+                        Toggle("Main Screen", isOn: $displaySettings.main.activeStrategy.screenChange)
+                    }
+
+                    Section("On Invalidation") {
+                        Toggle("Menu Bar Interaction", isOn: $displaySettings.main.activeStrategy.interactionInvalidate)
+                    }
+                } label: {
+                    Text("Satisfying Any of the \(displaySettings.main.activeStrategy.enabledCount) Rules")
+                }
+                .buttonStyle(.borderless)
+                .padding(.trailing, -4)
+                .modifier(LuminareHoverable(horizontalPadding: 8))
+            }
+
+            LuminareCompose("Respect notch", reducesTrailingSpace: true) {
                 Toggle("", isOn: $displaySettings.main.respectNotch)
                     .toggleStyle(.switch)
                     .labelsHidden()

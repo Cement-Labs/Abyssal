@@ -317,6 +317,9 @@
         }
       }
     },
+    "by" : {
+
+    },
     "Click to check for updates." : {
       "extractionState" : "stale",
       "localizations" : {
@@ -438,7 +441,6 @@
       }
     },
     "Frontmost Application" : {
-      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -570,7 +572,6 @@
 
     },
     "Main Screen" : {
-      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -594,7 +595,6 @@
       }
     },
     "Menu Bar Interaction" : {
-      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -643,7 +643,6 @@
       }
     },
     "On Change" : {
-      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -654,7 +653,6 @@
       }
     },
     "On Invalidation" : {
-      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -787,6 +785,9 @@
       }
     },
     "Standby" : {
+
+    },
+    "Standby strategy" : {
 
     },
     "Starts with macOS" : {
@@ -1219,7 +1220,6 @@
       }
     },
     "When Satisfying Any of the %lld Rules" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "variations" : {

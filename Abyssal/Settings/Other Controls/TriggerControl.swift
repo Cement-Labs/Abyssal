@@ -54,11 +54,12 @@ struct TriggerControl: View {
                         }
                     }
                 }
+                .animation(animation, value: modifier)
             }
             .toggleStyle(.button)
             .buttonStyle(LuminareCompactButtonStyle(extraCompact: true))
-            .animation(animation, value: modifier)
             .padding(4)
+            .padding(.top, -8)
         }
     }
 
@@ -100,10 +101,8 @@ struct TriggerControl: View {
                 switch compose {
                 case .any:
                     Text("any")
-                        .id(Modifier.Compose.any)
                 case .all:
                     Text("all")
-                        .id(Modifier.Compose.all)
                 }
             }
         }
