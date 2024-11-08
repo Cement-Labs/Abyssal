@@ -204,8 +204,6 @@ class StatusBarController {
         startActionTimer()
 
         startTriggerTimer()
-
-        registerShortcuts()
     }
 
     deinit {

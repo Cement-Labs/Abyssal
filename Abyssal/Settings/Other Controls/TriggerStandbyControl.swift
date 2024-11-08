@@ -1,5 +1,5 @@
 //
-//  TriggerControl.swift
+//  TriggerStandbyControl.swift
 //  Abyssal
 //
 //  Created by KrLite on 2024/11/6.
@@ -9,7 +9,7 @@ import SwiftUI
 import Luminare
 import Defaults
 
-struct TriggerControl: View {
+struct TriggerStandbyControl: View {
     @Environment(\.luminareAnimation) private var animation
     @Environment(\.luminareAnimationFast) private var animationFast
 
@@ -18,7 +18,7 @@ struct TriggerControl: View {
 
     var body: some View {
         VStack {
-            LuminareCompose("Trigger", reducesTrailingSpace: true) {
+            LuminareCompose("Trigger standby", reducesTrailingSpace: true) {
                 HStack(spacing: 0) {
                     Text("by")
                     compose()
@@ -59,7 +59,7 @@ struct TriggerControl: View {
             .toggleStyle(.button)
             .buttonStyle(LuminareCompactButtonStyle(extraCompact: true))
             .padding(4)
-            .padding(.top, -8)
+            .padding(.top, -4)
         }
     }
 
@@ -111,7 +111,7 @@ struct TriggerControl: View {
 
 #Preview {
     LuminareSection {
-        TriggerControl()
+        TriggerStandbyControl()
     }
     .padding()
 }

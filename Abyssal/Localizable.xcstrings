@@ -187,7 +187,6 @@
 
     },
     "Advanced" : {
-      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -242,7 +241,7 @@
         }
       }
     },
-    "Appearance" : {
+    "Appearance & Behaviors" : {
 
     },
     "Application menu" : {
@@ -547,6 +546,9 @@
     "Interstellar" : {
 
     },
+    "Keyboard Actions" : {
+
+    },
     "Launch **%@** right after macOS starts." : {
       "extractionState" : "stale",
       "localizations" : {
@@ -747,6 +749,9 @@
     "Revert to Global" : {
 
     },
+    "Satisfying Any of the %lld Rules" : {
+
+    },
     "Screen Information" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -762,6 +767,7 @@
 
     },
     "Shortcuts" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -791,7 +797,6 @@
 
     },
     "Starts with macOS" : {
-      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1148,7 +1153,6 @@
       }
     },
     "Timeout" : {
-      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1191,7 +1195,7 @@
         }
       }
     },
-    "Trigger" : {
+    "Trigger standby" : {
 
     },
     "Unknown Display" : {
@@ -1220,6 +1224,7 @@
       }
     },
     "When Satisfying Any of the %lld Rules" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "variations" : {

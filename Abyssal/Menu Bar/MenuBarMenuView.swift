@@ -7,7 +7,6 @@
 
 import SwiftUI
 import Defaults
-import KeyboardShortcuts
 
 struct MenuBarMenuView: View {
     @Default(.isStandby) var isStandby

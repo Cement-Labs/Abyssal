@@ -7,7 +7,6 @@
 
 import AppKit
 import Defaults
-import KeyboardShortcuts
 
 extension StatusBarController {
     // MARK: - Icon Visibilities
@@ -55,13 +54,6 @@ extension StatusBarController {
 
     func idleAlwaysHiddenArea() {
         idling.alwaysHidden = true
-    }
-
-    func registerShortcuts() {
-        KeyboardShortcuts.onKeyDown(for: .toggleStandby) {
-            self.function()
-            self.toggle()
-        }
     }
 
     func startAnimationTimer() {

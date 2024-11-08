@@ -8,7 +8,6 @@
 import SwiftUI
 import Luminare
 import Defaults
-import KeyboardShortcuts
 
 struct FunctionsView: View {
     @Default(.autoStandbyEnabled) private var autoStandbyEnabled
@@ -30,48 +29,12 @@ struct FunctionsView: View {
             }
         }
 
-        LuminareSection("Shortcuts") {
-            TriggerControl()
-
-            LuminareCompose("Standby", reducesTrailingSpace: true) {
-                KeyboardShortcuts.Recorder(for: .toggleStandby)
-                    .controlSize(.large)
-                    .clipShape(.rect(cornerRadius: 8).inset(by: 2))
-                    .padding(-1)
-                    .background {
-                        RoundedRectangle(cornerRadius: 8)
-                            .strokeBorder(.quaternary, lineWidth: 1)
-                    }
-            }
+        LuminareSection("Keyboard Actions") {
+            TriggerStandbyControl()
         }
 
         LuminareSection {
-            DeadzoneSlider()
-
-            LuminareCompose("Standby strategy", reducesTrailingSpace: true) {
-                Menu {
-                    Section("On Change") {
-                        Toggle("Frontmost Application", isOn: $displaySettings.main.activeStrategy.frontmostAppChange)
-
-                        Toggle("Main Screen", isOn: $displaySettings.main.activeStrategy.screenChange)
-                    }
-
-                    Section("On Invalidation") {
-                        Toggle("Menu Bar Interaction", isOn: $displaySettings.main.activeStrategy.interactionInvalidate)
-                    }
-                } label: {
-                    Text("Satisfying Any of the \(displaySettings.main.activeStrategy.enabledCount) Rules")
-                }
-                .buttonStyle(.borderless)
-                .padding(.trailing, -4)
-                .modifier(LuminareHoverable(horizontalPadding: 8))
-            }
-
-            LuminareCompose("Respect notch", reducesTrailingSpace: true) {
-                Toggle("", isOn: $displaySettings.main.respectNotch)
-                    .toggleStyle(.switch)
-                    .labelsHidden()
-            }
+            DisplaySettingsControl()
         } header: {
             HStack {
                 if let main = ScreenManager.main {

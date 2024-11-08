@@ -8,6 +8,7 @@
 import SwiftUI
 import Luminare
 import Defaults
+import LaunchAtLogin
 
 struct AppearanceView: View {
     @Default(.reduceAnimationEnabled) private var reduceAnimationEnabled
@@ -23,6 +24,16 @@ struct AppearanceView: View {
             }
 
             FeedbackSlider()
+        }
+
+        LuminareSection("Advanced") {
+            TimeoutSlider()
+
+            LuminareCompose("Starts with macOS", reducesTrailingSpace: true) {
+                LaunchAtLogin.Toggle()
+                    .labelsHidden()
+                    .toggleStyle(.switch)
+            }
         }
     }
 }

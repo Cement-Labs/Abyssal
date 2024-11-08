@@ -25,7 +25,7 @@ enum LuminareTab: LuminareTabItem, CaseIterable {
     var title: String {
         switch self {
         case .appearance:
-                .init(localized: "Appearance")
+                .init(localized: "Appearance & Behaviors")
         case .functions:
                 .init(localized: "Functions")
         case .permissions:

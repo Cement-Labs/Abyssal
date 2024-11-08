@@ -14,7 +14,6 @@
 		284C2C092CC9353B00A0B520 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284C2C082CC9353B00A0B520 /* main.swift */; };
 		2858B75F2CC4CA13004597EE /* Luminare in Frameworks */ = {isa = PBXBuildFile; productRef = 2858B75E2CC4CA13004597EE /* Luminare */; };
 		287EADA52C27B48F00D64BED /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = 287EADA42C27B48F00D64BED /* SwiftUIIntrospect */; };
-		28F9913C2C30D805004C76ED /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 28F9913B2C30D805004C76ED /* KeyboardShortcuts */; };
 		C66CABA42A38871500E4D8E6 /* AbyssalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CABA32A38871500E4D8E6 /* AbyssalApp.swift */; };
 		C66F02AF2A3B5B4D00077CE3 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = C66F02AE2A3B5B4D00077CE3 /* LaunchAtLogin */; };
 		C69873BC2A42880C00C5E259 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = C69873BB2A42880C00C5E259 /* Localizable.xcstrings */; };
@@ -69,7 +68,6 @@
 				2822C58E2BDC75DE009C71DA /* SFSafeSymbols in Frameworks */,
 				2858B75F2CC4CA13004597EE /* Luminare in Frameworks */,
 				2831B15C2B751B7F0020DECD /* Defaults in Frameworks */,
-				28F9913C2C30D805004C76ED /* KeyboardShortcuts in Frameworks */,
 				C66F02AF2A3B5B4D00077CE3 /* LaunchAtLogin in Frameworks */,
 				287EADA52C27B48F00D64BED /* SwiftUIIntrospect in Frameworks */,
 			);
@@ -180,7 +178,6 @@
 				2831B15B2B751B7F0020DECD /* Defaults */,
 				2822C58D2BDC75DE009C71DA /* SFSafeSymbols */,
 				287EADA42C27B48F00D64BED /* SwiftUIIntrospect */,
-				28F9913B2C30D805004C76ED /* KeyboardShortcuts */,
 				2858B75E2CC4CA13004597EE /* Luminare */,
 			);
 			productName = BarStalker;
@@ -222,7 +219,6 @@
 				2831B15A2B751B7F0020DECD /* XCRemoteSwiftPackageReference "Defaults" */,
 				2822C58C2BDC75DE009C71DA /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
 				287EADA32C27B48F00D64BED /* XCRemoteSwiftPackageReference "swiftui-introspect" */,
-				28F9913A2C30D805004C76ED /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
 				2858B75D2CC4CA13004597EE /* XCRemoteSwiftPackageReference "Luminare" */,
 				281235F42CDCEB8500ACA506 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
 			);
@@ -609,14 +605,6 @@
 				minimumVersion = 1.2.0;
 			};
 		};
-		28F9913A2C30D805004C76ED /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/sindresorhus/KeyboardShortcuts";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.1;
-			};
-		};
 		C66F02AD2A3B5B4D00077CE3 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin";
@@ -657,11 +645,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 287EADA32C27B48F00D64BED /* XCRemoteSwiftPackageReference "swiftui-introspect" */;
 			productName = SwiftUIIntrospect;
-		};
-		28F9913B2C30D805004C76ED /* KeyboardShortcuts */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 28F9913A2C30D805004C76ED /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
-			productName = KeyboardShortcuts;
 		};
 		C66F02AE2A3B5B4D00077CE3 /* LaunchAtLogin */ = {
 			isa = XCSwiftPackageProductDependency;
