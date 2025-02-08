@@ -117,7 +117,7 @@ After you **triggered or canceled** **Auto Hide or Auto Idling,** **Abyssal** wi
 
 > [!NOTE]
 > 
-> As an open-source and free software, **Abyssal** can't afford an [Apple Developer Account.](https://developer.apple.com/help/account) Therefore, you can't install **Abyssal** directly from App Store, and you may need to allow **Abyssal** to run as an unidentified app[^open_as_unidentified].
+> As an open source and free software, **Abyssal** can't afford an [Apple Developer Account.](https://developer.apple.com/help/account) Therefore, you can't install **Abyssal** directly from App Store, and you may need to allow **Abyssal** to run as an unidentified app[^open_as_unidentified].
 >
 > You can download the zipped app of **Abyssal** only from [Releases](https://github.com?KrLite/Abyssal/releases) page manually for now.
 
