@@ -25,6 +25,7 @@
 ### <div><!--Empty Lines--><br /><br /></div>
 
 > [!IMPORTANT]
+> 
 > **Abyssal** requires **macOS 14.0 Sonoma**[^check_your_macos_version] or above to run.
 
 [^check_your_macos_version]: [`↗ Find out which macOS your Mac is using`](https://support.apple.com/en-us/HT201260)
@@ -115,6 +116,7 @@ After you **triggered or canceled** **Auto Hide or Auto Idling,** **Abyssal** wi
 ## Install & Run
 
 > [!NOTE]
+> 
 > As an open-source and free software, **Abyssal** can't afford an [Apple Developer Account.](https://developer.apple.com/help/account) Therefore, you can't install **Abyssal** directly from App Store, and you may need to allow **Abyssal** to run as an unidentified app[^open_as_unidentified].
 >
 > You can download the zipped app of **Abyssal** only from [Releases](https://github.com?KrLite/Abyssal/releases) page manually for now.
