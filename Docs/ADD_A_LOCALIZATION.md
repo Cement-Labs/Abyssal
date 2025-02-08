@@ -1,7 +1,7 @@
-# Add a Localization for Stalker
+# Add a Localization for Abyssal
 
-In order to contribute to **Stalker** by localizing it, you need to follow the steps below.
+In order to contribute to **Abyssal** by localizing it, you need to follow the steps below.
 
-## The Stalker App
+## The Abyssal App
 
 ## The Documentations
