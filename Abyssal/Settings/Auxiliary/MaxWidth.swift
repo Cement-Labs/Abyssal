@@ -45,14 +45,14 @@ struct MaxWidth<Content>: View where Content: View {
 #Preview("Long") {
     MaxWidth {
         Text("""
-Minim duis excepteur do eiusmod est officia consequat aute veniam qui excepteur Lorem. \
-Quis pariatur dolore est irure deserunt adipisicing ex eu dolor minim sunt ullamco aliqua. \
-Cupidatat ea cillum aute ad adipisicing dolor non non do nulla ea ullamco tempor amet. \
-Voluptate in elit aliquip occaecat nulla esse quis enim officia consectetur nisi. \
-Ad elit ut excepteur in est consectetur fugiat velit dolore. \
-Aliquip dolore duis eiusmod Lorem duis duis adipisicing eu exercitation eiusmod ut eiusmod magna. \
-Est deserunt occaecat exercitation quis qui deserunt.
-""")
+        Minim duis excepteur do eiusmod est officia consequat aute veniam qui excepteur Lorem. \
+        Quis pariatur dolore est irure deserunt adipisicing ex eu dolor minim sunt ullamco aliqua. \
+        Cupidatat ea cillum aute ad adipisicing dolor non non do nulla ea ullamco tempor amet. \
+        Voluptate in elit aliquip occaecat nulla esse quis enim officia consectetur nisi. \
+        Ad elit ut excepteur in est consectetur fugiat velit dolore. \
+        Aliquip dolore duis eiusmod Lorem duis duis adipisicing eu exercitation eiusmod ut eiusmod magna. \
+        Est deserunt occaecat exercitation quis qui deserunt.
+        """)
     }
     .background(.red)
 }

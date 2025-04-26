@@ -24,7 +24,7 @@ struct Version: Codable {
 
         var semantic: String {
             switch self {
-            case .number(let uInt):
+            case let .number(uInt):
                 String(uInt)
             case .beta:
                 "beta"
@@ -59,6 +59,7 @@ struct Version: Codable {
     static var app: Version {
         .init(from: Bundle.main.appVersion) ?? .empty
     }
+
     static var remote: Version {
         VersionModel.shared.fetchedRemoteVersion
     }
@@ -75,7 +76,7 @@ struct Version: Codable {
         let parts = from
             .replacing(/\s/, with: "")
             .split(separator: /[\.-]/) // Split by `.` or `-`
-        let components = parts.compactMap({ Component(parsing: String($0)) })
+        let components = parts.compactMap { Component(parsing: String($0)) }
 
         if components.isEmpty {
             return nil
@@ -91,9 +92,9 @@ extension Version.Component: Comparable {
         guard lhs != rhs else { return false }
 
         return switch lhs {
-        case .number(let this):
+        case let .number(this):
             switch rhs {
-            case .number(let other):
+            case let .number(other):
                 this < other
             case .beta, .alpha, .patch, .blank: false
             }
@@ -148,7 +149,7 @@ extension Version: Comparable {
         guard lhs != rhs else { return false }
 
         let count = max(lhs.components.count, rhs.components.count)
-        for index in 0..<count {
+        for index in 0 ..< count {
             let lhsComponent = index < lhs.components.count ? lhs.components[index] : .blank
             let rhsComponent = index < rhs.components.count ? rhs.components[index] : .blank
 
@@ -213,7 +214,7 @@ class VersionModel {
         print("Started fetching latest version...")
         fetchState = .fetching
 
-        task = URLSession.shared.dataTask(with: .releaseTags) { (data, _, error) in
+        task = URLSession.shared.dataTask(with: .releaseTags) { data, _, error in
             guard let data else {
                 self.fetchState = .failed
                 return

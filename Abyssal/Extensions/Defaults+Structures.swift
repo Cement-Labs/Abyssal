@@ -5,9 +5,9 @@
 //  Created by KrLite on 2024/2/8.
 //
 
-import Foundation
-import Defaults
 import AppKit
+import Defaults
+import Foundation
 import SwiftUI
 
 extension Theme: Defaults.Serializable {
@@ -41,51 +41,51 @@ extension Theme: Defaults.Serializable {
 struct Modifier: OptionSet, Defaults.Serializable {
     let rawValue: UInt8
 
-    static let control  = Modifier(rawValue: 1 << 0)
-    static let option   = Modifier(rawValue: 1 << 1)
-    static let command  = Modifier(rawValue: 1 << 2)
+    static let control = Modifier(rawValue: 1 << 0)
+    static let option = Modifier(rawValue: 1 << 1)
+    static let command = Modifier(rawValue: 1 << 2)
 
     static let none: Modifier = []
     static let all: Modifier = [.control, .option, .command]
 
     var control: Bool {
         get {
-            self.contains(.control)
+            contains(.control)
         }
 
         set {
             if newValue {
-                self.formUnion(.control)
+                formUnion(.control)
             } else {
-                self.remove(.control)
+                remove(.control)
             }
         }
     }
 
     var option: Bool {
         get {
-            self.contains(.option)
+            contains(.option)
         }
 
         set {
             if newValue {
-                self.formUnion(.option)
+                formUnion(.option)
             } else {
-                self.remove(.option)
+                remove(.option)
             }
         }
     }
 
     var command: Bool {
         get {
-            self.contains(.command)
+            contains(.command)
         }
 
         set {
             if newValue {
-                self.formUnion(.command)
+                formUnion(.command)
             } else {
-                self.remove(.command)
+                remove(.command)
             }
         }
     }
@@ -93,13 +93,13 @@ struct Modifier: OptionSet, Defaults.Serializable {
     var flags: NSEvent.ModifierFlags {
         var result = NSEvent.ModifierFlags()
 
-        if self.contains(.control) {
+        if contains(.control) {
             result.formUnion(.control)
         }
-        if self.contains(.option) {
+        if contains(.option) {
             result.formUnion(.option)
         }
-        if self.contains(.command) {
+        if contains(.command) {
             result.formUnion(.command)
         }
 
@@ -144,40 +144,39 @@ extension Modifier {
 enum Timeout: Int, CaseIterable, Defaults.Serializable {
     case instant = 0
 
-    case sec5   = 5
-    case sec10  = 10
-    case sec15  = 15
-    case sec30  = 30
-    case sec45  = 45
-    case sec60  = 60
+    case sec5 = 5
+    case sec10 = 10
+    case sec15 = 15
+    case sec30 = 30
+    case sec45 = 45
+    case sec60 = 60
 
-    case min2   = 120
-    case min3   = 180
-    case min5   = 300
-    case min10  = 600
+    case min2 = 120
+    case min3 = 180
+    case min5 = 300
+    case min10 = 600
 
     case forever = -1
 
     var attribute: Int? {
         switch self {
         case .forever: nil
-        default: self.rawValue
+        default: rawValue
         }
     }
 }
 
 enum Feedback: Int, CaseIterable, Defaults.Serializable {
-    case none   = 0
-    case light  = 1
+    case none = 0
+    case light = 1
     case medium = 2
-    case heavy  = 3
+    case heavy = 3
 
     var pattern: [NSHapticFeedbackManager.FeedbackPattern?] {
         switch self {
         case .light: [.levelChange]
         case .medium: [.generic, nil, .alignment]
         case .heavy: [.levelChange, .alignment, .alignment, nil, nil, nil, .levelChange]
-
         default: []
         }
     }
@@ -194,9 +193,9 @@ enum Deadzone: Codable, Defaults.Serializable {
     var value: Double {
         get {
             switch self {
-            case .percentage(let percentage):
+            case let .percentage(percentage):
                 percentage
-            case .pixel(let pixel):
+            case let .pixel(pixel):
                 pixel
             }
         }
@@ -220,7 +219,7 @@ enum Deadzone: Codable, Defaults.Serializable {
         switch self {
         case .percentage:
             Mode.pixel.range.percentage(sliderPercentage)
-        case .pixel(let pixel):
+        case let .pixel(pixel):
             pixel
         }
     }
@@ -243,9 +242,9 @@ extension Deadzone {
         func wrap(_ value: Double) -> Deadzone {
             switch self {
             case .percentage:
-                    .percentage(value)
+                .percentage(value)
             case .pixel:
-                    .pixel(value)
+                .pixel(value)
             }
         }
 
@@ -263,7 +262,7 @@ extension Deadzone {
                 }
             case .pixel:
                 switch deadzone {
-                case .percentage(let percentage):
+                case let .percentage(percentage):
                     range.fromPercentage(percentage / 100)
                 default: deadzone.value
                 }
@@ -275,9 +274,9 @@ extension Deadzone {
         get {
             switch self {
             case .percentage:
-                    .percentage
+                .percentage
             case .pixel:
-                    .pixel
+                .pixel
             }
         }
 
@@ -289,9 +288,7 @@ extension Deadzone {
     }
 }
 
-extension Deadzone: Equatable {
-
-}
+extension Deadzone: Equatable {}
 
 struct ActiveStrategy: Codable, Defaults.Serializable {
     /// When frontmost app changes

@@ -1,6 +1,0 @@
-disabled_rules:
-  - function_body_length
-  - identifier_name
-  - large_tuple
-  - file_length
-  - nesting

@@ -8,7 +8,7 @@
 import AppKit
 import Defaults
 
-struct ScreenManager {
+enum ScreenManager {
     static var main: NSScreen? {
         .main
     }
@@ -65,17 +65,17 @@ struct ScreenManager {
         let origin = origin
         let setting = Defaults[.displaySettings].main
 
-        if hasNotch && setting.respectNotch {
+        if hasNotch, setting.respectNotch {
             // respect notch area on screens with notches
             let notchWidth = 250.0
             return origin.x + width / 2.0 + notchWidth / 2.0
         } else {
             switch setting.deadzone {
-            case .percentage(let percentage):
+            case let .percentage(percentage):
                 let rightEdge = AbyssalApp.statusBarController.edge
                 // Apple icon + app name should be at least 50 pixels wide
                 return origin.x + 50 + (rightEdge - 50) * (percentage / 100)
-            case .pixel(let pixel):
+            case let .pixel(pixel):
                 return pixel
             }
         }

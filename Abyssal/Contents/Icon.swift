@@ -5,8 +5,8 @@
 //  Created by KrLite on 2024/4/27.
 //
 
-import Foundation
 import AppKit
+import Foundation
 import SFSafeSymbols
 
 protocol Icon {
@@ -82,7 +82,7 @@ struct SymbolIconBuilder: IconBuilder {
     var width: CGFloat
     var opacity: CGFloat = 1
 
-    func build(identifier: String, width: CGFloat) -> SymbolIcon {
+    func build(identifier _: String, width: CGFloat) -> SymbolIcon {
         .init(symbol: symbol, configuration: configuration, width: width, opacity: opacity)
     }
 }

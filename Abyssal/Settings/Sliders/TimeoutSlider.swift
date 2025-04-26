@@ -5,9 +5,9 @@
 //  Created by KrLite on 2024/11/8.
 //
 
-import SwiftUI
-import Luminare
 import Defaults
+import Luminare
+import SwiftUI
 
 struct TimeoutSlider: View {
     @Default(.timeout) private var timeout

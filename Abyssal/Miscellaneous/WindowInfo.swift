@@ -74,6 +74,7 @@ extension WindowInfo {
         )
     }
 }
+
 // swiftlint:enable force_cast
 
 extension WindowInfo {

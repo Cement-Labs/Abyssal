@@ -1,18 +1,18 @@
 //
-//  Animations.swift
+//  StatusBarController+Animations.swift
 //  Abyssal
 //
 //  Created by KrLite on 2023/6/14.
 //
 
-import Foundation
 import AppKit
 import Defaults
+import Foundation
 
 extension StatusBarController {
     var disabled: Bool {
         (autoHidesIcons && isFunctioning)
-        || mouseDragging.value()
+            || mouseDragging.value()
     }
 
     var triggers: (body: Bool, tail: Bool) {
@@ -90,7 +90,7 @@ extension StatusBarController {
     func update() {
         if shouldTimersStop.flag {
             // make abundant for completing animations
-            if !Defaults[.reduceAnimationEnabled] && shouldTimersStop.count < 10 {
+            if !Defaults[.reduceAnimationEnabled], shouldTimersStop.count < 10 {
                 shouldTimersStop.count += 1
             } else {
                 shouldTimersStop = (flag: false, count: 0)
@@ -108,11 +108,11 @@ extension StatusBarController {
             let mouseNeedsUpdate = mouseWasSpareOrUnidled != mouseSpare.value()
 
             if
-                isStandby
-                    && !isActive
-                    && idlingNone
-                    && autoShows
-                    && mouseNeedsUpdate {
+                isStandby,
+                !isActive,
+                idlingNone,
+                autoShows,
+                mouseNeedsUpdate {
                 mouseWasSpareOrUnidled = mouseSpare.value()
                 triggerFeedback()
             }
@@ -123,16 +123,16 @@ extension StatusBarController {
         do {
             // disabled button appearances are hard to recognise
             /*
-            head.button?.appearsDisabled = disabled
-            body.button?.appearsDisabled = disabled
-            tail.button?.appearsDisabled = disabled
-            
-            if disabled {
-                head.targetAlpha = 1
-                body.targetAlpha = 1
-                tail.targetAlpha = 1
-            }
-             */
+             head.button?.appearsDisabled = disabled
+             body.button?.appearsDisabled = disabled
+             tail.button?.appearsDisabled = disabled
+
+             if disabled {
+                 head.targetAlpha = 1
+                 body.targetAlpha = 1
+                 tail.targetAlpha = 1
+             }
+              */
 
             // simply just reset opacities is good
             if disabled {
@@ -163,8 +163,8 @@ extension StatusBarController {
 
             guard
                 autoShows
-                    || isFunctioning
-                    || alwaysShowsIcons
+                || isFunctioning
+                || alwaysShowsIcons
             else {
                 head.targetAlpha = 0
                 body.targetAlpha = 0
@@ -180,14 +180,14 @@ extension StatusBarController {
 
                 body.targetAlpha = (
                     isFunctioning
-                    || triggers.body
-                    || idlingAny
-                    || (autoShows && mouseSpare.value())
+                        || triggers.body
+                        || idlingAny
+                        || (autoShows && mouseSpare.value())
                 ) ? icons().body.opacity : 0
 
                 tail.targetAlpha = (
                     triggers.tail
-                    || idling.alwaysHidden
+                        || idling.alwaysHidden
                 ) ? icons().tail.opacity : 0
             }
         } // end of `map`
@@ -198,10 +198,10 @@ extension StatusBarController {
 
         do {
             let shouldActivate =
-            isStandby
-            && !isActive
-            && idlingNone
-            && !(autoShows && mouseSpare.value())
+                isStandby
+                    && !isActive
+                    && idlingNone
+                    && !(autoShows && mouseSpare.value())
 
             head.targetLength = icons(isActive: shouldActivate).head.width
             shouldTimersStop.flag &= head.lerpLength(noAnimation: noAnimation)
@@ -215,11 +215,11 @@ extension StatusBarController {
             guard let x = body.origin?.x else { break body }
 
             let shouldActivate =
-            isStandby
-            && !isActive
-            && !triggers.body
-            && idlingNone
-            && !(autoShows && mouseSpare.value())
+                isStandby
+                    && !isActive
+                    && !triggers.body
+                    && idlingNone
+                    && !(autoShows && mouseSpare.value())
 
             do {
                 if !shouldActivate && !body.wasUnstable {
@@ -242,8 +242,8 @@ extension StatusBarController {
                     let lastOrigin = body.lastOrigin,
                     body.wasActive != shouldActivate || x != lastOrigin.x {
                     body.targetLength = shouldActivate
-                    ? max(0, x + body.length - ScreenManager.menuBarLeftEdge)
-                    : icons().body.width
+                        ? max(0, x + body.length - ScreenManager.menuBarLeftEdge)
+                        : icons().body.width
                 }
 
                 body.lastOrigin = body.origin
@@ -261,9 +261,9 @@ extension StatusBarController {
             guard let x = tail.origin?.x else { break tail }
 
             let shouldActive =
-            !isActive
-            && !triggers.tail
-            && !idling.alwaysHidden
+                !isActive
+                    && !triggers.tail
+                    && !idling.alwaysHidden
 
             do {
                 if !shouldActive && !tail.wasUnstable {
@@ -286,8 +286,8 @@ extension StatusBarController {
                     let lastOrigin = tail.lastOrigin,
                     tail.wasActive != shouldActive || x != lastOrigin.x {
                     tail.targetLength = shouldActive
-                    ? max(0, x + tail.length - ScreenManager.menuBarLeftEdge)
-                    : icons().tail.width
+                        ? max(0, x + tail.length - ScreenManager.menuBarLeftEdge)
+                        : icons().tail.width
                 }
 
                 tail.lastOrigin = tail.origin
@@ -340,9 +340,9 @@ extension StatusBarController {
 
     func checkIdleStates() {
         if
-            mouseSpare.value()
-                && idlingAny
-                && (mouseOverHead.value() || mouseOverBody.value() || mouseOverTail.value()) {
+            mouseSpare.value(),
+            idlingAny,
+            mouseOverHead.value() || mouseOverBody.value() || mouseOverTail.value() {
             unidleHiddenArea()
             mouseWasSpareOrUnidled = false
         }

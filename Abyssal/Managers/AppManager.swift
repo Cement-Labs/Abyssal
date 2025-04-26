@@ -5,8 +5,8 @@
 //  Created by KrLite on 2024/6/26.
 //
 
-import Foundation
 import AppKit
+import Foundation
 
 @Observable
 class AppManager {

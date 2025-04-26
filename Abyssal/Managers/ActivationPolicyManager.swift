@@ -5,10 +5,10 @@
 //  Created by KrLite on 2024/6/23.
 //
 
-import Foundation
 import AppKit
+import Foundation
 
-struct ActivationPolicyManager {
+enum ActivationPolicyManager {
     static let identifier = UUID()
     private static var fallback: NSApplication.ActivationPolicy = .accessory
 
@@ -16,7 +16,7 @@ struct ActivationPolicyManager {
         _ activationPolicy: NSApplication.ActivationPolicy,
         asFallback: Bool = false,
         deadline: DispatchTime,
-        andRun: @escaping () -> Void = {}
+        andRun: @escaping () -> () = {}
     ) {
         DispatchQueue.main.asyncAfter(identifier, deadline: deadline) {
             set(activationPolicy, asFallback: asFallback)
@@ -38,7 +38,7 @@ struct ActivationPolicyManager {
 
     static func setToFallback(
         deadline: DispatchTime,
-        andRun: @escaping () -> Void = {}
+        andRun: @escaping () -> () = {}
     ) {
         set(fallback, deadline: deadline, andRun: andRun)
     }
@@ -50,7 +50,7 @@ struct ActivationPolicyManager {
     static func toggleBetweenFallback(
         _ activationPolicy: NSApplication.ActivationPolicy,
         deadline: DispatchTime,
-        andRun: @escaping () -> Void = {}
+        andRun: @escaping () -> () = {}
     ) -> Bool {
         guard activationPolicy != fallback else {
             setToFallback(deadline: deadline, andRun: andRun)

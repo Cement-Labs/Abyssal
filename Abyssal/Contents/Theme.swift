@@ -5,9 +5,9 @@
 //  Created by KrLite on 2023/6/18.
 //
 
-import Foundation
 import AppKit
 import Defaults
+import Foundation
 
 enum SelectFromExistingIconBuilder {
     case headInactive
@@ -54,8 +54,8 @@ class Theme: Equatable, Identifiable {
 
         self.headActive = switch headActive ?? .head {
         case .head: self.headInactive
-        case .headWithWidth(let width): headInactive.build(identifier: identifier, width: width)
-        case .custom(let iconBuilder): iconBuilder.build(identifier: identifier)
+        case let .headWithWidth(width): headInactive.build(identifier: identifier, width: width)
+        case let .custom(iconBuilder): iconBuilder.build(identifier: identifier)
         }
 
         self.body = body.build(identifier: identifier)
@@ -68,7 +68,7 @@ class Theme: Equatable, Identifiable {
         case .headActive: self.headActive
         case .body: self.body
         case .tail: self.tail
-        case .custom(let iconBuilder): iconBuilder.build(identifier: identifier)
+        case let .custom(iconBuilder): iconBuilder.build(identifier: identifier)
         }
     }
 
@@ -295,15 +295,15 @@ extension Theme {
     }
 
     static var defaultTheme: Theme {
-        return abyssal
+        abyssal
     }
 
     static var themeIds: [String] {
-        return themes.map { $0.id }
+        themes.map(\.id)
     }
 
     static var themeNames: [String] {
-        return themes.map { $0.name }
+        themes.map(\.name)
     }
 }
 

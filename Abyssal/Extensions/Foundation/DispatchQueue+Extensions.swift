@@ -28,7 +28,7 @@ extension DispatchQueue {
     func asyncAfter(
         _ identifier: AnyHashable,
         deadline: DispatchTime,
-        execute work: @escaping @Sendable @convention(block) () -> Void
+        execute work: @escaping @Sendable @convention(block) () -> ()
     ) {
         let dispatch = DispatchWorkItem {
             self.cancel(identifier)
@@ -41,7 +41,7 @@ extension DispatchQueue {
 
     func async(
         _ identifier: AnyHashable,
-        execute work: @escaping @Sendable @convention(block) () -> Void
+        execute work: @escaping @Sendable @convention(block) () -> ()
     ) {
         let dispatch = DispatchWorkItem {
             self.cancel(identifier)

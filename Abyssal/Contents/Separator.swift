@@ -5,9 +5,9 @@
 //  Created by KrLite on 2023/10/25.
 //
 
-import Foundation
 import AppKit
 import Defaults
+import Foundation
 
 struct Separator {
     init(
@@ -88,9 +88,9 @@ struct Separator {
 
     var isAvailable: Bool {
         if let origin, let width = button?.window?.frame.width {
-            return origin.x + width > ScreenManager.menuBarLeftEdge
+            origin.x + width > ScreenManager.menuBarLeftEdge
         } else {
-            return true
+            true
         }
     }
 }

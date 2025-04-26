@@ -21,6 +21,6 @@ struct WithIntermediateState<Value> where Value: Equatable {
     }
 
     mutating func update() {
-        intermediate = self.value()
+        intermediate = value()
     }
 }

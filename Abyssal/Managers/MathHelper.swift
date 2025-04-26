@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct MathHelper {
+enum MathHelper {
     static var lerpThreshold: CGFloat {
-        return ScreenManager.width / 25
+        ScreenManager.width / 25
     }
 
     static var lerpRatio: CGFloat {
@@ -41,11 +41,11 @@ struct MathHelper {
         threshold: CGFloat
     ) -> CGFloat {
         if x < -threshold {
-            return -(threshold + log10(-x / threshold) * threshold)
+            -(threshold + log10(-x / threshold) * threshold)
         } else if x > threshold {
-            return threshold + log10(x / threshold) * threshold
+            threshold + log10(x / threshold) * threshold
         } else {
-            return x
+            x
         }
     }
 }

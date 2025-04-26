@@ -5,8 +5,8 @@
 //  Created by KrLite on 2024/6/30.
 //
 
-import Foundation
 import AppKit
+import Foundation
 
 class ExternalMenuBarItem {
     let windowInfo: WindowInfo
@@ -54,7 +54,7 @@ class ExternalMenuBarItem {
     }
 }
 
-struct ExternalMenuBarManager {
+enum ExternalMenuBarManager {
     static let identifier = UUID()
     fileprivate static var cachedWindowNumbersNear: [Int: [Int]] = [:]
 

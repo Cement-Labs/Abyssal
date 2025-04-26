@@ -8,7 +8,7 @@
 import Foundation
 
 extension Bundle {
-    var appName: String { getInfo("CFBundleName")  }
+    var appName: String { getInfo("CFBundleName") }
     var displayName: String { getInfo("CFBundleDisplayName") }
     var bundleID: String { getInfo("CFBundleIdentifier") }
     var copyright: String { getInfo("NSHumanReadableCopyright") }

@@ -1,5 +1,5 @@
 //
-//  StateManager.swift
+//  StatusBarController+StateManagers.swift
 //  Abyssal
 //
 //  Created by KrLite on 2023/6/18.
@@ -64,7 +64,7 @@ extension StatusBarController {
             ) { [weak self] _ in
                 guard let self else { return }
 
-                self.update()
+                update()
             }
             // print("START TIMER [ANIMATION]: \(animationTimer!)")
         }
@@ -78,33 +78,33 @@ extension StatusBarController {
             ) { [weak self] _ in
                 guard let self else { return }
 
-                self.sort()
-                self.map()
+                sort()
+                map()
             }
             // print("START TIMER [ACTION]: \(actionTimer!)")
         }
     }
 
     func startFeedbackTimer() {
-        if feedbackTimer == nil && shouldPresentFeedback {
+        if feedbackTimer == nil, shouldPresentFeedback {
             feedbackTimer = .scheduledTimer(
                 withTimeInterval: 1.0 / 24.0,
                 repeats: true
             ) { [weak self] _ in
                 guard let self else { return }
 
-                guard self.feedbackCount < Defaults[.feedback].pattern.count else {
-                    self.feedbackCount = 0
-                    self.stopTimer(&self.feedbackTimer)
+                guard feedbackCount < Defaults[.feedback].pattern.count else {
+                    feedbackCount = 0
+                    stopTimer(&feedbackTimer)
 
                     return
                 }
 
-                if let pattern = Defaults[.feedback].pattern[self.feedbackCount] {
+                if let pattern = Defaults[.feedback].pattern[feedbackCount] {
                     NSHapticFeedbackManager.defaultPerformer.perform(pattern, performanceTime: .default)
                 }
 
-                self.feedbackCount += 1
+                feedbackCount += 1
             }
             // print("START TIMER [FEEDBACK]: \(feedbackTimer!)")
         }
@@ -169,7 +169,7 @@ extension StatusBarController {
                     }
                 }
 
-                if keyboardTriggers.needsUpdate || self.mouseDragging.value() {
+                if keyboardTriggers.needsUpdate || mouseDragging.value() {
                     // key pressed || mouse dragging -> sort separators and map appearances
                     sort()
                     map()
@@ -252,7 +252,7 @@ extension StatusBarController {
     func startTimeoutTimer() {
         let timeout = Defaults[.timeout]
 
-        if timeoutTimer == nil && timeout.attribute != nil {
+        if timeoutTimer == nil, timeout.attribute != nil {
             timeoutTimer = .scheduledTimer(
                 withTimeInterval: Double(timeout.attribute!),
                 repeats: false
@@ -267,7 +267,7 @@ extension StatusBarController {
     }
 
     func startIgnoringTimer() {
-        if ignoringTimer == nil && ignoring {
+        if ignoringTimer == nil, ignoring {
             ignoringTimer = .scheduledTimer(
                 withTimeInterval: 1,
                 repeats: false
@@ -301,23 +301,23 @@ extension StatusBarController {
         if mouseEventMonitor == nil {
             mouseEventMonitor = EventMonitor(
                 mask: [.leftMouseDown,
-                       .rightMouseDown ]
+                       .rightMouseDown]
             ) { [weak self] event in
                 guard
                     let self,
-                    self.mouseSpare.value()
+                    mouseSpare.value()
                 else { return }
 
                 // Update idling status
                 if
-                    self.isStandby
-                        && self.mouseInHiddenArea.value()
-                        && !(KeyboardModel.shared.command && event?.type == .leftMouseDown) {
-                    self.idleHiddenArea()
+                    isStandby,
+                    mouseInHiddenArea.value(),
+                    !(KeyboardModel.shared.command && event?.type == .leftMouseDown) {
+                    idleHiddenArea()
                 }
 
-                if self.mouseInAlwaysHiddenArea.value() {
-                    self.idleAlwaysHiddenArea()
+                if mouseInAlwaysHiddenArea.value() {
+                    idleAlwaysHiddenArea()
                 }
 
                 // Update external menu caches
@@ -352,7 +352,7 @@ extension StatusBarController {
         function()
     }
 
-    func stopTimer(_ timer: inout Timer?, afterStopped: () -> Void = {}) {
+    func stopTimer(_ timer: inout Timer?, afterStopped: () -> () = {}) {
         if timer != nil {
             // print("STOP TIMER: \(timer!)")
             timer?.invalidate()
@@ -362,7 +362,7 @@ extension StatusBarController {
         }
     }
 
-    func stopMonitor(_ monitor: inout EventMonitor?, afterStopped: () -> Void = {}) {
+    func stopMonitor(_ monitor: inout EventMonitor?, afterStopped: () -> () = {}) {
         if monitor != nil {
             // print("STOP MONITOR: \(monitor!)")
             monitor?.stop()

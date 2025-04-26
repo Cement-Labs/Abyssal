@@ -34,8 +34,8 @@ class StatusBarController {
         else { return false }
         let mouseLocation = NSEvent.mouseLocation
         return mouseLocation.x >= ScreenManager.menuBarLeftEdge
-        && mouseLocation.y >= headOrigin.y
-        && mouseLocation.y <= headOrigin.y + headSize.height
+            && mouseLocation.y >= headOrigin.y
+            && mouseLocation.y <= headOrigin.y + headSize.height
     }
 
     lazy var mouseInHiddenArea: WithIntermediateState<Bool> = .init {
@@ -45,8 +45,8 @@ class StatusBarController {
             let tailSize = self.tail.button?.window?.frame.size
         else { return false }
         return self.mouseOnStatusBar.value()
-        && NSEvent.mouseLocation.x >= tailOrigin.x + tailSize.width
-        && NSEvent.mouseLocation.x <= bodyOrigin.x
+            && NSEvent.mouseLocation.x >= tailOrigin.x + tailSize.width
+            && NSEvent.mouseLocation.x <= bodyOrigin.x
     }
 
     lazy var mouseInAlwaysHiddenArea: WithIntermediateState<Bool> = .init {
@@ -56,8 +56,8 @@ class StatusBarController {
 
     lazy var mouseSpare: WithIntermediateState<Bool> = .init {
         !self.ignoring
-        && self.mouseOnStatusBar.value()
-        && NSEvent.mouseLocation.x <= self.edge
+            && self.mouseOnStatusBar.value()
+            && NSEvent.mouseLocation.x <= self.edge
     }
 
     lazy var mouseOverHead: WithIntermediateState<Bool> = .init {
@@ -66,8 +66,8 @@ class StatusBarController {
             let width = self.head.button?.window?.frame.width
         else { return false }
         return self.mouseOnStatusBar.value()
-        && NSEvent.mouseLocation.x >= origin.x
-        && NSEvent.mouseLocation.x <= origin.x + width
+            && NSEvent.mouseLocation.x >= origin.x
+            && NSEvent.mouseLocation.x <= origin.x + width
     }
 
     lazy var mouseOverBody: WithIntermediateState<Bool> = .init {
@@ -76,8 +76,8 @@ class StatusBarController {
             let width = self.body.button?.window?.frame.width
         else { return false }
         return self.mouseOnStatusBar.value()
-        && NSEvent.mouseLocation.x >= origin.x
-        && NSEvent.mouseLocation.x <= origin.x + width
+            && NSEvent.mouseLocation.x >= origin.x
+            && NSEvent.mouseLocation.x <= origin.x + width
     }
 
     lazy var mouseOverTail: WithIntermediateState<Bool> = .init {
@@ -86,8 +86,8 @@ class StatusBarController {
             let width = self.tail.button?.window?.frame.width
         else { return false }
         return self.mouseOnStatusBar.value()
-        && NSEvent.mouseLocation.x >= origin.x
-        && NSEvent.mouseLocation.x <= origin.x + width
+            && NSEvent.mouseLocation.x >= origin.x
+            && NSEvent.mouseLocation.x <= origin.x + width
     }
 
     lazy var mouseDragging: WithIntermediateState<Bool> = .init {
@@ -224,17 +224,17 @@ class StatusBarController {
 extension StatusBarController {
     func sort() {
         // make sure the rightmost separator is positioned further back in the array
-        statusItems.sort { (first, second) in
+        statusItems.sort { first, second in
             if !first.isVisible {
                 // the first one is invisible -> the first one is more lefty
-                return true
+                true
             } else if !second.isVisible {
                 // the first one is visible while the second one is invisible -> the second one is more lefty
-                return false
+                false
             } else if let x1 = first.origin?.x, let x2 = second.origin?.x {
                 // both have reasonable x positions -> the leftmost one is more lefty
-                return x1 <= x2
-            } else { return true }
+                x1 <= x2
+            } else { true }
         }
     }
 
@@ -243,8 +243,6 @@ extension StatusBarController {
     }
 
     func updateExternalMenus() {
-        externalMenus = ExternalMenuBarManager.menuBarItems.flatMap {
-            $0.newWindowsNear
-        }
+        externalMenus = ExternalMenuBarManager.menuBarItems.flatMap(\.newWindowsNear)
     }
 }

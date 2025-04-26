@@ -8,15 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		2822C58E2BDC75DE009C71DA /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 2822C58D2BDC75DE009C71DA /* SFSafeSymbols */; };
-		282A34EB2C50957F000338D8 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 282A34EA2C50957F000338D8 /* InfoPlist.xcstrings */; };
-		282D880A2AD58BEA0015111C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C66CABA72A38871500E4D8E6 /* Assets.xcassets */; };
 		2831B15C2B751B7F0020DECD /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 2831B15B2B751B7F0020DECD /* Defaults */; };
-		284C2C092CC9353B00A0B520 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284C2C082CC9353B00A0B520 /* main.swift */; };
 		2858B75F2CC4CA13004597EE /* Luminare in Frameworks */ = {isa = PBXBuildFile; productRef = 2858B75E2CC4CA13004597EE /* Luminare */; };
 		287EADA52C27B48F00D64BED /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = 287EADA42C27B48F00D64BED /* SwiftUIIntrospect */; };
-		C66CABA42A38871500E4D8E6 /* AbyssalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66CABA32A38871500E4D8E6 /* AbyssalApp.swift */; };
 		C66F02AF2A3B5B4D00077CE3 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = C66F02AE2A3B5B4D00077CE3 /* LaunchAtLogin */; };
-		C69873BC2A42880C00C5E259 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = C69873BB2A42880C00C5E259 /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,27 +25,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		281235F92CDCECD600ACA506 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
-		282A34EA2C50957F000338D8 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
-		284C2C082CC9353B00A0B520 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		28D46C332C381BB100EC6EAE /* AbyssalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AbyssalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C66CABA02A38871500E4D8E6 /* Abyssal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Abyssal.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C66CABA32A38871500E4D8E6 /* AbyssalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbyssalApp.swift; sourceTree = "<group>"; };
-		C66CABA72A38871500E4D8E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C66CABAC2A38871500E4D8E6 /* Abyssal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Abyssal.entitlements; sourceTree = "<group>"; };
-		C69873BB2A42880C00C5E259 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		289184612DBCD6D70088B169 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Miscellaneous/VersionTests.swift,
+			);
+			target = 28D46C322C381BB100EC6EAE /* AbyssalTests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		28D431EC2CDA435B0043CA4E /* Contents */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Contents; sourceTree = "<group>"; };
-		28D431F32CDA43610043CA4E /* Core */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Core; sourceTree = "<group>"; };
-		28D432092CDA436B0043CA4E /* Extensions */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Extensions; sourceTree = "<group>"; };
-		28D432202CDA43730043CA4E /* Managers */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Managers; sourceTree = "<group>"; };
-		28D432302CDA43770043CA4E /* Miscellaneous */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Miscellaneous; sourceTree = "<group>"; };
-		28D4323B2CDA43790043CA4E /* Models */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Models; sourceTree = "<group>"; };
-		28D432452CDA437B0043CA4E /* Settings */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Settings; sourceTree = "<group>"; };
-		28D4324C2CDA437E0043CA4E /* Miscellaneous */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Miscellaneous; sourceTree = "<group>"; };
-		28D432502CDA43AE0043CA4E /* Menu Bar */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "Menu Bar"; sourceTree = "<group>"; };
+		2891845F2DBCD6D60088B169 /* AbyssalTests */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (289184612DBCD6D70088B169 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = AbyssalTests; sourceTree = "<group>"; };
+		289184AC2DBCD7020088B169 /* Abyssal */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Abyssal; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,21 +68,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		28D46C342C381BB100EC6EAE /* AbyssalTests */ = {
-			isa = PBXGroup;
-			children = (
-				28D4324C2CDA437E0043CA4E /* Miscellaneous */,
-			);
-			path = AbyssalTests;
-			sourceTree = "<group>";
-		};
 		C66CAB972A38871500E4D8E6 = {
 			isa = PBXGroup;
 			children = (
-				281235F92CDCECD600ACA506 /* .swiftlint.yml */,
 				C66CABAC2A38871500E4D8E6 /* Abyssal.entitlements */,
-				C66CABA22A38871500E4D8E6 /* Abyssal */,
-				28D46C342C381BB100EC6EAE /* AbyssalTests */,
+				289184AC2DBCD7020088B169 /* Abyssal */,
+				2891845F2DBCD6D60088B169 /* AbyssalTests */,
 				C66CABA12A38871500E4D8E6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -102,26 +85,6 @@
 				28D46C332C381BB100EC6EAE /* AbyssalTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		C66CABA22A38871500E4D8E6 /* Abyssal */ = {
-			isa = PBXGroup;
-			children = (
-				C66CABA32A38871500E4D8E6 /* AbyssalApp.swift */,
-				284C2C082CC9353B00A0B520 /* main.swift */,
-				C66CABA72A38871500E4D8E6 /* Assets.xcassets */,
-				282A34EA2C50957F000338D8 /* InfoPlist.xcstrings */,
-				C69873BB2A42880C00C5E259 /* Localizable.xcstrings */,
-				28D431EC2CDA435B0043CA4E /* Contents */,
-				28D431F32CDA43610043CA4E /* Core */,
-				28D432092CDA436B0043CA4E /* Extensions */,
-				28D432202CDA43730043CA4E /* Managers */,
-				28D432502CDA43AE0043CA4E /* Menu Bar */,
-				28D432302CDA43770043CA4E /* Miscellaneous */,
-				28D4323B2CDA43790043CA4E /* Models */,
-				28D432452CDA437B0043CA4E /* Settings */,
-			);
-			path = Abyssal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,11 +101,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				281235F82CDCEC8600ACA506 /* PBXTargetDependency */,
 				28D46C3D2C381DC700EC6EAE /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				28D4324C2CDA437E0043CA4E /* Miscellaneous */,
 			);
 			name = AbyssalTests;
 			productName = AbyssalTests;
@@ -160,17 +119,9 @@
 			buildRules = (
 			);
 			dependencies = (
-				281235F62CDCEC7D00ACA506 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				28D431EC2CDA435B0043CA4E /* Contents */,
-				28D431F32CDA43610043CA4E /* Core */,
-				28D432092CDA436B0043CA4E /* Extensions */,
-				28D432202CDA43730043CA4E /* Managers */,
-				28D432302CDA43770043CA4E /* Miscellaneous */,
-				28D4323B2CDA43790043CA4E /* Models */,
-				28D432452CDA437B0043CA4E /* Settings */,
-				28D432502CDA43AE0043CA4E /* Menu Bar */,
+				289184AC2DBCD7020088B169 /* Abyssal */,
 			);
 			name = Abyssal;
 			packageProductDependencies = (
@@ -220,7 +171,6 @@
 				2822C58C2BDC75DE009C71DA /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
 				287EADA32C27B48F00D64BED /* XCRemoteSwiftPackageReference "swiftui-introspect" */,
 				2858B75D2CC4CA13004597EE /* XCRemoteSwiftPackageReference "Luminare" */,
-				281235F42CDCEB8500ACA506 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
 			);
 			productRefGroup = C66CABA12A38871500E4D8E6 /* Products */;
 			projectDirPath = "";
@@ -244,9 +194,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				282A34EB2C50957F000338D8 /* InfoPlist.xcstrings in Resources */,
-				282D880A2AD58BEA0015111C /* Assets.xcassets in Resources */,
-				C69873BC2A42880C00C5E259 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,22 +211,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				284C2C092CC9353B00A0B520 /* main.swift in Sources */,
-				C66CABA42A38871500E4D8E6 /* AbyssalApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		281235F62CDCEC7D00ACA506 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = 281235F52CDCEC7D00ACA506 /* SwiftLintBuildToolPlugin */;
-		};
-		281235F82CDCEC8600ACA506 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = 281235F72CDCEC8600ACA506 /* SwiftLintBuildToolPlugin */;
-		};
 		28D46C3D2C381DC700EC6EAE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C66CAB9F2A38871500E4D8E6 /* Abyssal */;
@@ -565,14 +502,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		281235F42CDCEB8500ACA506 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SimplyDanny/SwiftLintPlugins";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 		2822C58C2BDC75DE009C71DA /* XCRemoteSwiftPackageReference "SFSafeSymbols" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SFSafeSymbols/SFSafeSymbols";
@@ -593,7 +522,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Cement-Labs/Luminare";
 			requirement = {
-				branch = docs;
+				branch = main;
 				kind = branch;
 			};
 		};
@@ -616,16 +545,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		281235F52CDCEC7D00ACA506 /* SwiftLintBuildToolPlugin */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 281235F42CDCEB8500ACA506 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
-			productName = "plugin:SwiftLintBuildToolPlugin";
-		};
-		281235F72CDCEC8600ACA506 /* SwiftLintBuildToolPlugin */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 281235F42CDCEB8500ACA506 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
-			productName = "plugin:SwiftLintBuildToolPlugin";
-		};
 		2822C58D2BDC75DE009C71DA /* SFSafeSymbols */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2822C58C2BDC75DE009C71DA /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;

@@ -1,5 +1,5 @@
 {
-  "originHash" : "ae6cbd382ad4751b16f4ce8c952afb349e41d0e12bea7015d1713324e8fc7294",
+  "originHash" : "0ee628cd85fc2fa6009bd0fdf3a021225a25697ca561c614982a97386ebfd6d7",
   "pins" : [
     {
       "identity" : "defaults",
@@ -24,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Cement-Labs/Luminare",
       "state" : {
-        "branch" : "docs",
-        "revision" : "0dc3e4d26904ce51ceffd0b8ec083af6fc4a5ddc"
+        "branch" : "main",
+        "revision" : "743af3d762d3a4e7c0ad7eac07cc8ed62c2bab2a"
       }
     },
     {
@@ -38,21 +38,21 @@
       }
     },
     {
-      "identity" : "swiftlintplugins",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/SimplyDanny/SwiftLintPlugins",
-      "state" : {
-        "branch" : "main",
-        "revision" : "53ff980f22f9b08b1f7f6623e58b2a4ac12889fb"
-      }
-    },
-    {
       "identity" : "swiftui-introspect",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/siteline/swiftui-introspect",
       "state" : {
         "revision" : "807f73ce09a9b9723f12385e592b4e0aaebd3336",
         "version" : "1.3.0"
+      }
+    },
+    {
+      "identity" : "swiftui-variadic-views",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/lorenzofiamingo/swiftui-variadic-views",
+      "state" : {
+        "revision" : "af67d0e85bd2b499fbfb4cda834117e7c52b12b0",
+        "version" : "1.0.0"
       }
     }
   ],

@@ -5,9 +5,9 @@
 //  Created by KrLite on 2024/10/20.
 //
 
-import SwiftUI
-import Luminare
 import Defaults
+import Luminare
+import SwiftUI
 
 struct FunctionsView: View {
     @Default(.autoStandbyEnabled) private var autoStandbyEnabled

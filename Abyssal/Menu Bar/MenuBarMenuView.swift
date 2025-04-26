@@ -5,8 +5,8 @@
 //  Created by KrLite on 2024/10/23.
 //
 
-import SwiftUI
 import Defaults
+import SwiftUI
 
 struct MenuBarMenuView: View {
     @Default(.isStandby) var isStandby

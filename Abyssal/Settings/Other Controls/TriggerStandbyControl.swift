@@ -5,9 +5,9 @@
 //  Created by KrLite on 2024/11/6.
 //
 
-import SwiftUI
-import Luminare
 import Defaults
+import Luminare
+import SwiftUI
 
 struct TriggerStandbyControl: View {
     @Environment(\.luminareAnimation) private var animation
@@ -97,7 +97,7 @@ struct TriggerStandbyControl: View {
 
     @ViewBuilder private func compose() -> some View {
         LuminareCompactPicker(selection: $modifierCompose, isBordered: false) {
-            ForEach(Modifier.Compose.allCases, id: \.self) {compose in
+            ForEach(Modifier.Compose.allCases, id: \.self) { compose in
                 switch compose {
                 case .any:
                     Text("any")

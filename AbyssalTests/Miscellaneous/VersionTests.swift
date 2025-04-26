@@ -5,8 +5,8 @@
 //  Created by KrLite on 2024/7/5.
 //
 
-import Testing
 @testable import Abyssal
+import Testing
 
 struct VersionTests {
     @Test func parseComponent() async throws {

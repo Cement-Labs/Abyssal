@@ -1,13 +1,13 @@
 //
-//  Defaults.swift
+//  Defaults+Extensions.swift
 //  Abyssal
 //
 //  Created by KrLite on 2024/2/8.
 //
 
-import Foundation
 import AppKit
 import Defaults
+import Foundation
 import LaunchAtLogin
 
 extension Defaults.Keys {

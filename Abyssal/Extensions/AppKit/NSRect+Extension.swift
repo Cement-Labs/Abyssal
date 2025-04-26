@@ -5,12 +5,12 @@
 //  Created by KrLite on 2023/6/17.
 //
 
-import Foundation
 import AppKit
+import Foundation
 
 extension NSRect {
     var containsMouse: Bool {
-        return MouseModel.shared.inside(self)
+        MouseModel.shared.inside(self)
     }
 
     func getTrackingArea(

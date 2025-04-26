@@ -5,10 +5,10 @@
 //  Created by KrLite on 2024/10/20.
 //
 
-import SwiftUI
-import Luminare
 import Defaults
 import LaunchAtLogin
+import Luminare
+import SwiftUI
 
 struct AppearanceView: View {
     @Default(.reduceAnimationEnabled) private var reduceAnimationEnabled

@@ -5,9 +5,9 @@
 //  Created by KrLite on 2024/11/6.
 //
 
-import SwiftUI
-import Luminare
 import Defaults
+import Luminare
+import SwiftUI
 
 struct FeedbackSlider: View {
     @Default(.feedback) private var feedback

@@ -5,9 +5,9 @@
 //  Created by KrLite on 2024/10/25.
 //
 
-import SwiftUI
 import Defaults
 import Luminare
+import SwiftUI
 
 struct ThemePicker: View {
     @Default(.theme) private var theme
@@ -15,11 +15,11 @@ struct ThemePicker: View {
     var body: some View {
         LuminarePopover(arrowEdge: .leading) {
             Text("""
-Some themes will hide the icons inside the separators automatically, while others not.
+            Some themes will hide the icons inside the separators automatically, while others not.
 
-Themes that automatically hide the icons will only show them when the status items inside the **Hide Area** are \
-manually set to visible, while other themes indicate this by reducing the separators' opacity.
-""")
+            Themes that automatically hide the icons will only show them when the status items inside the **Hide Area** are \
+            manually set to visible, while other themes indicate this by reducing the separators' opacity.
+            """)
             .simpleTextFormat()
         } badge: {
             LuminareCompose("Theme", reducesTrailingSpace: true) {

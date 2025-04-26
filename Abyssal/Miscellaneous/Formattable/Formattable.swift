@@ -27,8 +27,7 @@ extension Formattable {
     }
 }
 
-protocol DoubleFormattable: Formattable where Value == Double {
-}
+protocol DoubleFormattable: Formattable where Value == Double {}
 
 extension DoubleFormattable {
     func format(_ value: Double) -> String {

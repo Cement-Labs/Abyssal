@@ -5,11 +5,11 @@
 //  Created by KrLite on 2023/6/13.
 //
 
-import Cocoa
-import SwiftUI
 import AppKit
+import Cocoa
 import Defaults
 import LaunchAtLogin
+import SwiftUI
 
 let repository = "Cement-Labs/Abyssal"
 
@@ -25,7 +25,7 @@ class AbyssalApp: NSObject, NSApplicationDelegate {
     // MARK: - Application Methods
 
     func applicationDidFinishLaunching(
-        _ aNotification: Notification
+        _: Notification
     ) {
         ActivationPolicyManager.set(.prohibited, asFallback: true)
 
@@ -36,17 +36,16 @@ class AbyssalApp: NSObject, NSApplicationDelegate {
     }
 
     func applicationWillTerminate(
-        _ aNotification: Notification
-    ) {
-    }
+        _: Notification
+    ) {}
 
     func applicationSupportsSecureRestorableState(
-        _ app: NSApplication
+        _: NSApplication
     ) -> Bool {
         true
     }
 
-    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows: Bool) -> Bool {
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows _: Bool) -> Bool {
         openSettingsSelector(sender)
         return true
     }
@@ -61,7 +60,7 @@ class AbyssalApp: NSObject, NSApplicationDelegate {
         Self.statusBarController.function()
     }
 
-    func applicationWillResignActive(_ notification: Notification) {
+    func applicationWillResignActive(_: Notification) {
         Self.isActive = false
         Self.statusBarController.function()
     }
@@ -125,7 +124,7 @@ extension AbyssalApp {
     }
 
     @objc func toggleStandby(
-        _ sender: Any?
+        _: Any?
     ) {
         Self.statusBarController.function()
 
@@ -142,13 +141,13 @@ extension AbyssalApp {
     }
 
     @objc func openSettingsSelector(
-        _ sender: Any?
+        _: Any?
     ) {
         openSettings()
     }
 
     @objc func closeSettingsSelector(
-        _ sender: Any?
+        _: Any?
     ) {
         closeSettings()
     }

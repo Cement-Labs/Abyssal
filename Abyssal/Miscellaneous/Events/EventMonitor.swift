@@ -5,8 +5,8 @@
 //  Created by KrLite on 2023/6/13.
 //
 
-import Cocoa
 import AppKit
+import Cocoa
 
 public class EventMonitor {
     private var monitor: Any?
@@ -15,11 +15,11 @@ public class EventMonitor {
 
     private let handler: (
         NSEvent?
-    ) -> Void
+    ) -> ()
 
     public init(
-        mask: 		NSEvent.EventTypeMask,
-        handler: 	@escaping (NSEvent?) -> Void
+        mask: NSEvent.EventTypeMask,
+        handler: @escaping (NSEvent?) -> ()
     ) {
         self.mask = mask
         self.handler = handler
@@ -32,8 +32,8 @@ public class EventMonitor {
     public func start(
     ) {
         monitor = NSEvent.addGlobalMonitorForEvents(
-            matching: 	mask,
-            handler: 	handler
+            matching: mask,
+            handler: handler
         )
     }
 

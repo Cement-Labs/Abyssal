@@ -5,11 +5,11 @@
 //  Created by KrLite on 2024/10/20.
 //
 
+import Defaults
 import Foundation
 import Luminare
-import SwiftUI
 import SFSafeSymbols
-import Defaults
+import SwiftUI
 
 extension String: @retroactive Identifiable {
     public var id: String { self }
@@ -25,13 +25,13 @@ enum LuminareTab: LuminareTabItem, CaseIterable {
     var title: String {
         switch self {
         case .appearance:
-                .init(localized: "Appearance & Behaviors")
+            .init(localized: "Appearance & Behaviors")
         case .functions:
-                .init(localized: "Functions")
+            .init(localized: "Functions")
         case .permissions:
-                .init(localized: "Permissions")
+            .init(localized: "Permissions")
         case .about:
-                .init(localized: "About")
+            .init(localized: "About")
         }
     }
 
